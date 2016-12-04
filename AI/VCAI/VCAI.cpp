@@ -271,7 +271,8 @@ void VCAI::heroVisit(const CGHeroInstance *visitor, const CGObjectInstance *visi
 {
 	LOG_TRACE_PARAMS(logAi, "start '%i'; obj '%s'", start % (visitedObj ? visitedObj->getObjectName() : std::string("n/a")));
 	NET_EVENT_HANDLER;
-	if(start)
+
+	if(start && visitedObj) //we can end visit with null object, anyway
 	{
 		markObjectVisited (visitedObj);
 		unreserveObject(visitor, visitedObj);
@@ -1071,7 +1072,7 @@ void VCAI::pickBestArtifacts(const CGHeroInstance * h, const CGHeroInstance * ot
 			//we give stuff to one hero or another, depending on giveStuffToFirstHero
 
 			const CGHeroInstance * target = nullptr;
-			if (giveStuffToFirstHero)
+			if (giveStuffToFirstHero || !otherh)
 				target = h;
 			else
 				target = otherh;
@@ -1618,14 +1619,19 @@ void VCAI::wander(HeroPtr h)
 }
 
 void VCAI::setGoal(HeroPtr h, Goals::TSubgoal goal)
-{ //TODO: check for presence?
+{
 	if(goal->invalid())
 		vstd::erase_if_present(lockedHeroes, h);
 	else
 	{
 		lockedHeroes[h] = goal;
-		goal->setisElementar(false); //always evaluate goals before realizing
+		goal->setisElementar(false); //Force always evaluate goals before realizing
 	}
+}
+void VCAI::evaluateGoal(HeroPtr h)
+{
+	if (vstd::contains(lockedHeroes, h))
+		fh->setPriority(lockedHeroes[h]);
 }
 
 void VCAI::completeGoal (Goals::TSubgoal goal)
@@ -1865,6 +1871,8 @@ bool VCAI::isAccessibleForHero(const int3 & pos, HeroPtr h, bool includeAllies /
 
 bool VCAI::moveHeroToTile(int3 dst, HeroPtr h)
 {
+	//TODO: consider if blockVisit objects change something in our checks: AIUtility::isBlockVisitObj()
+
 	auto afterMovementCheck = [&]() -> void
 	{
 		waitTillFree(); //movement may cause battle or blocking dialog
@@ -2037,6 +2045,7 @@ bool VCAI::moveHeroToTile(int3 dst, HeroPtr h)
 			vstd::erase_if_present(lockedHeroes, h); //hero seemingly is confused
 			throw cannotFulfillGoalException("Invalid path found!"); //FIXME: should never happen
 		}
+		evaluateGoal(h); //new hero position means new game situation
 		logAi->debug("Hero %s moved from %s to %s. Returning %d.", h->name, startHpos(), h->visitablePos()(), ret);
 	}
 	return ret;
@@ -2552,11 +2561,19 @@ int3 VCAI::explorationBestNeighbour(int3 hpos, int radius, HeroPtr h)
 {
 	int3 ourPos = h->convertPosition(h->pos, false);
 	std::map<int3, int> dstToRevealedTiles;
-	for(crint3 dir : int3::getDirs())
-		if(cb->isInTheMap(hpos+dir))
+	for (crint3 dir : int3::getDirs())
+	{
+		int3 tile = hpos + dir;
+		if (cb->isInTheMap(tile))
 			if (ourPos != dir) //don't stand in place
-				if (isSafeToVisit(h, hpos + dir) && isAccessibleForHero (hpos + dir, h))
-					dstToRevealedTiles[hpos + dir] = howManyTilesWillBeDiscovered(radius, hpos, dir);
+				if (isSafeToVisit(h, tile) && isAccessibleForHero(tile, h))
+				{
+					if (isBlockVisitObj(tile))
+						continue;
+					else
+						dstToRevealedTiles[tile] = howManyTilesWillBeDiscovered(radius, hpos, dir);
+				}
+	}
 
 	if (dstToRevealedTiles.empty()) //yes, it DID happen!
 		throw cannotFulfillGoalException("No neighbour will bring new discoveries!");
@@ -2613,8 +2630,10 @@ int3 VCAI::explorationNewPoint(HeroPtr h)
 
 			if (ourValue > bestValue) //avoid costly checks of tiles that don't reveal much
 			{
-				if(isSafeToVisit(h, tile) && !isBlockedBorderGate(tile))
+				if(isSafeToVisit(h, tile))
 				{
+					if (isBlockVisitObj(tile)) //we can't stand on that object
+						continue;
 					bestTile = tile;
 					bestValue = ourValue;
 				}
@@ -2661,7 +2680,7 @@ int3 VCAI::explorationDesperate(HeroPtr h)
 				ui64 ourDanger = evaluateDanger(t, h.h);
 				if (ourDanger < lowestDanger)
 				{
-					if(!isBlockedBorderGate(t))
+					if(!isBlockVisitObj(t))
 					{
 						if (!ourDanger) //at least one safe place found
 							return t;
@@ -3240,6 +3259,8 @@ bool shouldVisit(HeroPtr h, const CGObjectInstance * obj)
 		case Obj::BOAT:
 			return false;
 			//Boats are handled by pathfinder
+		case Obj::EYE_OF_MAGI:
+			return false; //this object is useless to visit, but could be visited indefinitely
 	}
 
 	if (obj->wasVisited(*h)) //it must pointer to hero instance, heroPtr calls function wasVisited(ui8 player);

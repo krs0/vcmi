@@ -926,11 +926,17 @@ TSubgoal GatherTroops::whatToDoToAchieve()
 		{
 			nearestDwellings[hero] = *boost::range::min_element(dwellings, CDistanceSorter(hero));
 		}
+		if (nearestDwellings.size())
+		{
+			// find hero who is nearest to a dwelling
+			const CGDwelling * nearest = boost::range::min_element(nearestDwellings, comparator)->second;
+			if (!nearest)
+				throw cannotFulfillGoalException("Cannot find nearest dwelling!");
 
-		// find hero who is nearest to a dwelling
-		const CGDwelling * nearest = boost::range::min_element(nearestDwellings, comparator)->second;
-
-		return sptr (Goals::GetObj(nearest->id.getNum()));
+			return sptr(Goals::GetObj(nearest->id.getNum()));
+		}
+		else
+			return sptr(Goals::Explore());
 	}
 	else
 		return sptr (Goals::Explore());
