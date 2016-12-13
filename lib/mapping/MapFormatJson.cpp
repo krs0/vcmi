@@ -99,6 +99,12 @@ namespace HeaderDetail
 		"EXPERT",
 		"IMPOSSIBLE"
 	};
+
+	static const std::vector<std::string> canPlayMap =
+	{
+		"AIOnly",
+		"PlayerOrAI"
+	};
 }
 
 namespace TriggeredEventsDetail
@@ -299,13 +305,7 @@ void CMapFormatJson::serializePlayerInfo(JsonSerializeFormat & handler)
 
 		serializeAllowedFactions(handler, info.allowedFactions);
 
-		static const std::vector<std::string> canPlayMap =
-		{
-			"AIOnly",
-			"PlayerOrAI"
-		};
-
-		handler.serializeEnum("canPlay", info.canHumanPlay, canPlayMap);
+		handler.serializeEnum("canPlay", info.canHumanPlay, HeaderDetail::canPlayMap);
 
 		//saving whole structure only if position is valid
 		if(!handler.saving || info.posOfMainTown.valid())
