@@ -1402,13 +1402,17 @@ void CGTownInstance::serializeJsonOptions(JsonSerializeFormat & handler)
 	}
 
 	{
-		JsonSerializeFormat::LIC spellsLIC(VLC->spellh->getDefaultAllowed(), CSpellHandler::decodeSpell, CSpellHandler::encodeSpell);
+		std::vector<bool> standard = VLC->spellh->getDefaultAllowed();
+		JsonSerializeFormat::LIC spellsLIC(standard, CSpellHandler::decodeSpell, CSpellHandler::encodeSpell);
 
-		for(SpellID id : possibleSpells)
-			spellsLIC.any[id.num] = true;
+		if(handler.saving)
+		{
+			for(SpellID id : possibleSpells)
+				spellsLIC.any[id.num] = true;
 
-		for(SpellID id : obligatorySpells)
-			spellsLIC.all[id.num] = true;
+			for(SpellID id : obligatorySpells)
+				spellsLIC.all[id.num] = true;
+		}
 
 		handler.serializeLIC("spells", spellsLIC);
 
@@ -1418,18 +1422,14 @@ void CGTownInstance::serializeJsonOptions(JsonSerializeFormat & handler)
 			for(si32 idx = 0; idx < spellsLIC.any.size(); idx++)
 			{
 				if(spellsLIC.any[idx])
-				{
 					possibleSpells.push_back(SpellID(idx));
-				}
 			}
 
 			obligatorySpells.clear();
 			for(si32 idx = 0; idx < spellsLIC.all.size(); idx++)
 			{
 				if(spellsLIC.all[idx])
-				{
 					obligatorySpells.push_back(SpellID(idx));
-				}
 			}
 		}
 	}
