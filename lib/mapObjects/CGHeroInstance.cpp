@@ -1578,7 +1578,31 @@ void CGHeroInstance::serializeCommonOptions(JsonSerializeFormat & handler)
 	handler.serializeInt("experience", exp, 0);
 	handler.serializeString("name", name);
 	handler.serializeBool<ui8>("female", sex, 1, 0, 0xFF);
-	handler.serializeInt("portrait", portrait, -1);
+
+	{
+		const int legacyHeroes = VLC->modh->settings.data["textData"]["hero"].Integer();
+		const int moddedStart = legacyHeroes + GameConstants::HERO_PORTRAIT_SHIFT;
+
+		if(handler.saving)
+		{
+			if(portrait >= 0)
+			{
+				if(portrait < legacyHeroes || portrait >= moddedStart)
+					handler.serializeId("portrait", portrait, -1, &VLC->heroh->decodeHero, &VLC->heroh->encodeHero);
+				else
+					handler.serializeInt("portrait", portrait, -1);
+			}
+		}
+		else
+		{
+			const JsonNode & portraitNode = handler.getCurrent()["portrait"];
+
+			if(portraitNode.getType() == JsonNode::DATA_STRING)
+				handler.serializeId("portrait", portrait, -1, &VLC->heroh->decodeHero, &VLC->heroh->encodeHero);
+			else
+				handler.serializeInt("portrait", portrait, -1);
+		}
+	}
 
 	{
 		if(handler.saving)

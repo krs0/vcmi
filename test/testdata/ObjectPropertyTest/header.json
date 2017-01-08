@@ -314,7 +314,7 @@
 		},
 		"red" : {
 			"canPlay" : "PlayerOrAI",
-			"mainHero" : "ingham",
+			"mainHero" : "hero_101",
 			"heroes" : {
 				"hero_101" : {
 					"type" : "ingham"

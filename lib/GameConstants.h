@@ -54,11 +54,14 @@ namespace GameConstants
 	const int CREATURES_COUNT = 197;
 
 	const ui32 BASE_MOVEMENT_COST = 100; //default cost for non-diagonal movement
+
+	const int HERO_PORTRAIT_SHIFT = 30;// 2 special frames + some extra portraits
 }
 
 class CArtifact;
 class CArtifactInstance;
 class CCreature;
+class CHero;
 class CSpell;
 class CGameInfoCallback;
 class CNonConstInfoCallback;
@@ -203,7 +206,6 @@ class ArtifactInstanceID : public BaseForID<ArtifactInstanceID, si32>
 	friend class CNonConstInfoCallback;
 };
 
-
 class QueryID : public BaseForID<QueryID, si32>
 {
 	INSTID_LIKE_CLASS_COMMON(QueryID, si32)
@@ -222,7 +224,6 @@ class ObjectInstanceID : public BaseForID<ObjectInstanceID, si32>
 	friend class CGameInfoCallback;
 	friend class CNonConstInfoCallback;
 };
-
 
 class HeroTypeID : public BaseForID<HeroTypeID, si32>
 {
