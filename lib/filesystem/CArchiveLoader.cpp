@@ -5,6 +5,7 @@
 #include "CCompressedStream.h"
 
 #include "CBinaryReader.h"
+const bool extractArchive = 0;
 
 ArchiveEntry::ArchiveEntry()
 	: offset(0), fullSize(0), compressedSize(0)
@@ -66,6 +67,28 @@ void CArchiveLoader::initLODArchive(const std::string &mountPoint, CFileInputStr
 
 		// Add lod entry to local entries map
 		entries[ResourceID(mountPoint + entry.name)] = entry;
+
+		if(extractArchive)
+		{
+			si64 currentPosition = fileStream.tell(); // save filestream position
+		
+			boost::locale::generator gen;
+			std::locale::global(gen(""));         // Create locale generator
+
+			std::string fName = filename;
+			boost::to_upper(fName);
+
+			if(fName.find(".PCX") != std::string::npos)
+				extractToFolder("Images", mountPoint, entry);
+			else if ((fName.find(".DEF") != std::string::npos ) || (fName.find(".MSK") != std::string::npos) || (fName.find(".FNT") != std::string::npos) || (fName.find(".PAL") != std::string::npos))
+				extractToFolder("Sprites", mountPoint, entry);
+			else if ((fName.find(".h3c") != std::string::npos))
+				extractToFolder("Sprites", mountPoint, entry);
+			else
+				extractToFolder("Misc", mountPoint, entry);
+
+			fileStream.seek(currentPosition); // restore filestream position
+		}
 	}
 }
 
@@ -101,6 +124,9 @@ void CArchiveLoader::initVIDArchive(const std::string &mountPoint, CFileInputStr
 		auto it = offsets.find(entry.second.offset);
 		it++;
 		entry.second.fullSize = *it - entry.second.offset;
+
+		if(extractArchive)
+			extractToFolder("Video", fileStream, entry.second);
 	}
 }
 
@@ -128,6 +154,9 @@ void CArchiveLoader::initSNDArchive(const std::string &mountPoint, CFileInputStr
 		entry.fullSize = reader.readInt32();
 		entry.compressedSize = 0;
 		entries[ResourceID(mountPoint + entry.name)] = entry;
+
+		if(extractArchive)
+			extractToFolder("Sound", fileStream, entry);
 	}
 }
 
@@ -169,4 +198,32 @@ std::unordered_set<ResourceID> CArchiveLoader::getFilteredFiles(std::function<bo
 			foundID.insert(file.first);
 	}
 	return foundID;
+}
+
+void CArchiveLoader::extractToFolder( std::string outputSubFolder, CFileInputStream & fileStream, ArchiveEntry entry)
+{
+	si64 currentPosition = fileStream.tell(); // save filestream position
+
+	std::unique_ptr<char[]> data = std::unique_ptr<char[]>(new char[entry.fullSize]);
+	fileStream.seek(entry.offset);
+	fileStream.read((ui8*)data.get(), entry.fullSize);
+
+	std::ofstream out(VCMIDirs::get().binaryPath().string() + "\\Data\\Temp\\" + outputSubFolder + "\\" + entry.name, std::ofstream::binary);
+	out.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+	out.write(data.get(), entry.fullSize);
+
+	fileStream.seek(currentPosition); // restore filestream position
+}
+
+void CArchiveLoader::extractToFolder( std::string outputSubFolder, const std::string &mountPoint, ArchiveEntry entry)
+{
+
+	std::unique_ptr<CInputStream> & inputStream = load(ResourceID(mountPoint + entry.name));
+
+	std::unique_ptr<char[]> data = std::unique_ptr<char[]>(new char[entry.fullSize]);
+	inputStream->read((ui8*)data.get(), entry.fullSize);
+
+	std::ofstream out(VCMIDirs::get().binaryPath().string() + "\\Data\\Temp\\" + outputSubFolder + "\\" + entry.name, std::ofstream::binary);
+	out.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+	out.write(data.get(), entry.fullSize);
 }

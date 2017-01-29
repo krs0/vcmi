@@ -198,6 +198,7 @@
     <ClCompile Include="CMusicHandler.cpp" />
     <ClCompile Include="CPlayerInterface.cpp" />
     <ClCompile Include="CPreGame.cpp" />
+    <ClCompile Include="CResourceExtractor.cpp" />
     <ClCompile Include="CVideoHandler.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="gui\CAnimation.cpp" />
@@ -250,6 +251,7 @@
     <ClInclude Include="CMusicHandler.h" />
     <ClInclude Include="CPlayerInterface.h" />
     <ClInclude Include="CPreGame.h" />
+    <ClInclude Include="CResourceExtractor.h" />
     <ClInclude Include="CVideoHandler.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="gui\CAnimation.h" />

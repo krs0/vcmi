@@ -12,6 +12,7 @@
 
 #include "ISimpleResourceLoader.h"
 #include "ResourceID.h"
+#include "../VCMIDirs.h"
 
 class CFileInputStream;
 
@@ -63,6 +64,8 @@ public:
 	std::string getMountPoint() const override;
 	void updateFilteredFiles(std::function<bool(const std::string &)> filter) const override {}
 	std::unordered_set<ResourceID> getFilteredFiles(std::function<bool(const ResourceID &)> filter) const override;
+	void extractToFolder(std::string outputSubFolder, CFileInputStream & fileStream, ArchiveEntry entry);
+	void extractToFolder(std::string outputSubFolder, const std::string &mountPoint, ArchiveEntry entry);
 
 private:
 	/**

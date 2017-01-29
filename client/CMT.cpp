@@ -46,6 +46,7 @@
 #include "../lib/StringConstants.h"
 #include "../lib/CPlayerState.h"
 #include "gui/CAnimation.h"
+#include "CResourceExtractor.h"
 
 #ifdef VCMI_WINDOWS
 #include "SDL_syswm.h"
@@ -310,6 +311,9 @@ int main(int argc, char** argv)
 
 	// Init filesystem and settings
 	preinitDLL(::console);
+
+	parseFolders();
+
 	settings.init();
 
 	// Init special testing settings
