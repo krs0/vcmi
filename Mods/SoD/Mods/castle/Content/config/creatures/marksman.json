@@ -39,10 +39,10 @@
 		},
 		"abilityText" : "Shoots twice.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CHCBOW.def",
-			"map" : "sprites/creatures/adventureMap/AvWHcrs.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL5.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort5.bmp",
+			"animation" : "creatures/battle/CHCBOW.def",
+			"map" : "creatures/adventureMap/AvWHcrs.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL5.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort5.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -50,7 +50,7 @@
 				"walk" : 1
 			},
 			"missile" : {
-				"projectile" : "sprites/creatures/projectile/PLCBOWX.DEF",
+				"projectile" : "creatures/projectile/PLCBOWX.DEF",
 				"attackClimaxFrame" : 7,
 				"frameAngles" : [
 					90,
@@ -79,12 +79,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/HCRSATTK.wav",
-			"defend" : "sounds/creatures/HCRSDFND.wav",
-			"killed" : "sounds/creatures/HCRSKILL.wav",
-			"move" : "sounds/creatures/HCRSMOVE.wav",
-			"shoot" : "sounds/creatures/HCRSSHOT.wav",
-			"wince" : "sounds/creatures/HCRSWNCE.wav"
+			"attack" : "creatures/HCRSATTK.wav",
+			"defend" : "creatures/HCRSDFND.wav",
+			"killed" : "creatures/HCRSKILL.wav",
+			"move" : "creatures/HCRSMOVE.wav",
+			"shoot" : "creatures/HCRSSHOT.wav",
+			"wince" : "creatures/HCRSWNCE.wav"
 		}
 	}
 }

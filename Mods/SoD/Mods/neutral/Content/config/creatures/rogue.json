@@ -51,10 +51,10 @@
 		},
 		"abilityText" : "Spying.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CROGUE.def",
-			"map" : "sprites/creatures/adventureMap/AVWrog.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL145.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort145.bmp",
+			"animation" : "creatures/battle/CROGUE.def",
+			"map" : "creatures/adventureMap/AVWrog.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL145.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort145.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -65,11 +65,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/ROGUATTK.wav",
-			"defend" : "sounds/creatures/ROGUDFND.wav",
-			"killed" : "sounds/creatures/ROGUKILL.wav",
-			"move" : "sounds/creatures/ROGUMOVE.wav",
-			"wince" : "sounds/creatures/ROGUWNCE.wav"
+			"attack" : "creatures/ROGUATTK.wav",
+			"defend" : "creatures/ROGUDFND.wav",
+			"killed" : "creatures/ROGUKILL.wav",
+			"move" : "creatures/ROGUMOVE.wav",
+			"wince" : "creatures/ROGUWNCE.wav"
 		}
 	}
 }

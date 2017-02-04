@@ -38,10 +38,10 @@
 		},
 		"abilityText" : "Poisonous.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CWYVMN.def",
-			"map" : "sprites/creatures/adventureMap/AVWwyvx0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL111.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort111.bmp",
+			"animation" : "creatures/battle/CWYVMN.def",
+			"map" : "creatures/adventureMap/AVWwyvx0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL111.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort111.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -52,11 +52,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/WYVMATTK.wav",
-			"defend" : "sounds/creatures/WYVMDFND.wav",
-			"killed" : "sounds/creatures/WYVMKILL.wav",
-			"move" : "sounds/creatures/WYVMMOVE.wav",
-			"wince" : "sounds/creatures/WYVMWNCE.wav"
+			"attack" : "creatures/WYVMATTK.wav",
+			"defend" : "creatures/WYVMDFND.wav",
+			"killed" : "creatures/WYVMKILL.wav",
+			"move" : "creatures/WYVMMOVE.wav",
+			"wince" : "creatures/WYVMWNCE.wav"
 		}
 	}
 }

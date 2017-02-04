@@ -3,14 +3,14 @@
 	{
 		"town" :
 		{
-			"musicTheme" : "music/factions/InfernoTown.mp3",
+			"musicTheme" : "factions/InfernoTown.mp3",
 			"defaultTavern" : 5,
 
-			"townBackground": "sprites/factions/inferno/townScreen/TBINBACK.bmp",
-			"guildBackground" : "sprites/factions/inferno/townScreen/TPMAGE.bmp",
-			"guildWindow": "sprites/factions/inferno/townScreen/TPMAGEIN.bmp",
-			"hallBackground": "sprites/factions/inferno/TPTHBKIN.BMP",
-			"tavernVideo" : "video/SoD/TAVERN.BIK",
+			"townBackground": "factions/inferno/townScreen/TBINBACK.bmp",
+			"guildBackground" : "factions/inferno/townScreen/TPMAGE.bmp",
+			"guildWindow": "factions/inferno/townScreen/TPMAGEIN.bmp",
+			"hallBackground": "factions/inferno/TPTHBKIN.BMP",
+			"tavernVideo" : "SoD/TAVERN.BIK",
 			"hallSlots":
 			[
 				[ [ "villageHall", "townHall", "cityHall", "capitol" ], [ "fort", "citadel", "castle" ], [ "tavern" ], [ "blacksmith" ] ],
@@ -75,27 +75,27 @@
 			"mageGuild" : 5,
 			"warMachine" : "ammoCart",
 			"primaryResource" : "mercury",
-			"buildingsIcons" : "sprites/factions/inferno/HALLINFR.DEF",
+			"buildingsIcons" : "factions/inferno/HALLINFR.DEF",
 			"icons" :
 			{
 				"village" : {
 					"normal" : {
-						"small" : "sprites/factions/inferno/icons/small/itpa26.bmp",
-					 	"large" : "sprites/factions/inferno/icons/large/itpt24.bmp"
+						"small" : "factions/inferno/icons/small/itpa26.bmp",
+					 	"large" : "factions/inferno/icons/large/itpt24.bmp"
 					 },
 					"built"  : {
-						"small" : "sprites/factions/inferno/icons/small/itpa27.bmp",
-						"large" : "sprites/factions/inferno/icons/large/itpt25.bmp" 
+						"small" : "factions/inferno/icons/small/itpa27.bmp",
+						"large" : "factions/inferno/icons/large/itpt25.bmp" 
 					}
 				},
 				"fort" : {
 					"normal" : {
-						"small" : "sprites/factions/inferno/icons/small/itpa8.bmp",
-					 	"large" : "sprites/factions/inferno/icons/large/itpt6.bmp" 
+						"small" : "factions/inferno/icons/small/itpa8.bmp",
+					 	"large" : "factions/inferno/icons/large/itpt6.bmp" 
 					 },
 					"built"  : {
-						"small" : "sprites/factions/inferno/icons/small/itpa9.bmp",
-						 "large" : "sprites/factions/inferno/icons/large/itpt7.bmp"
+						"small" : "factions/inferno/icons/small/itpa9.bmp",
+						 "large" : "factions/inferno/icons/large/itpt7.bmp"
 					}
 				}
 			},
@@ -103,11 +103,11 @@
 			"mapObject" :
 			{
 				"templates" : {
-					"castle" :  { "animation" : "sprites/factions/inferno/adventureMap/AVCinfx0.def" },
-					"citadel" : { "animation" : "sprites/factions/inferno/adventureMap/AVCinfx0.def" },
-					"fort"    : { "animation" : "sprites/factions/inferno/adventureMap/AVCinfx0.def" },
-					"village" : { "animation" : "sprites/factions/inferno/adventureMap/AVCINFT0.DEF" },
-					"capitol" : { "animation" : "sprites/factions/inferno/adventureMap/AVCINFZ0.DEF" }
+					"castle" :  { "animation" : "factions/inferno/adventureMap/AVCinfx0.def" },
+					"citadel" : { "animation" : "factions/inferno/adventureMap/AVCinfx0.def" },
+					"fort"    : { "animation" : "factions/inferno/adventureMap/AVCinfx0.def" },
+					"village" : { "animation" : "factions/inferno/adventureMap/AVCINFT0.DEF" },
+					"capitol" : { "animation" : "factions/inferno/adventureMap/AVCINFZ0.DEF" }
 				}
 			},
 

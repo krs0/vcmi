@@ -34,10 +34,10 @@
 		},
 		"abilityText" : "",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CWYVER.def",
-			"map" : "sprites/creatures/adventureMap/AvWWyvr.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL110.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort110.bmp",
+			"animation" : "creatures/battle/CWYVER.def",
+			"map" : "creatures/adventureMap/AvWWyvr.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL110.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort110.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -48,11 +48,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/WYVNATTK.wav",
-			"defend" : "sounds/creatures/WYVNDFND.wav",
-			"killed" : "sounds/creatures/WYVNKILL.wav",
-			"move" : "sounds/creatures/WYVNMOVE.wav",
-			"wince" : "sounds/creatures/WYVNWNCE.wav"
+			"attack" : "creatures/WYVNATTK.wav",
+			"defend" : "creatures/WYVNDFND.wav",
+			"killed" : "creatures/WYVNKILL.wav",
+			"move" : "creatures/WYVNMOVE.wav",
+			"wince" : "creatures/WYVNWNCE.wav"
 		}
 	}
 }

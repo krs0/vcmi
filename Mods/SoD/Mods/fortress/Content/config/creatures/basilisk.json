@@ -36,10 +36,10 @@
 		},
 		"abilityText" : "Petrifying attack.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CBASIL.def",
-			"map" : "sprites/creatures/adventureMap/AvWBasl.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL108.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort108.bmp",
+			"animation" : "creatures/battle/CBASIL.def",
+			"map" : "creatures/adventureMap/AvWBasl.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL108.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort108.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -50,11 +50,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/BASLATTK.wav",
-			"defend" : "sounds/creatures/BASLDFND.wav",
-			"killed" : "sounds/creatures/BASLKILL.wav",
-			"move" : "sounds/creatures/BASLMOVE.wav",
-			"wince" : "sounds/creatures/BASLWNCE.wav"
+			"attack" : "creatures/BASLATTK.wav",
+			"defend" : "creatures/BASLDFND.wav",
+			"killed" : "creatures/BASLKILL.wav",
+			"move" : "creatures/BASLMOVE.wav",
+			"wince" : "creatures/BASLWNCE.wav"
 		}
 	}
 }

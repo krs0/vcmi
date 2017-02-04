@@ -22,8 +22,8 @@
 		],
 		"creatureBackground" :
 		{
-			"120px" : "sprites/factions/castle/TPCASCAS.bmp",
-			"130px" : "sprites/factions/castle/CRBKGCAS.bmp"
+			"120px" : "factions/castle/TPCASCAS.bmp",
+			"130px" : "factions/castle/CRBKGCAS.bmp"
 		},
 	}
 }

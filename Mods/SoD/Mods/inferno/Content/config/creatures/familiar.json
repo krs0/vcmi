@@ -34,10 +34,10 @@
 		},
 		"abilityText" : "Magic channel.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CFAMIL.def",
-			"map" : "sprites/creatures/adventureMap/AVWimpx0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL45.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort45.bmp",
+			"animation" : "creatures/battle/CFAMIL.def",
+			"map" : "creatures/adventureMap/AVWimpx0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL45.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort45.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -48,11 +48,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/FMLRATTK.wav",
-			"defend" : "sounds/creatures/FMLRDFND.wav",
-			"killed" : "sounds/creatures/FMLRKILL.wav",
-			"move" : "sounds/creatures/FMLRMOVE.wav",
-			"wince" : "sounds/creatures/FMLRWNCE.wav"
+			"attack" : "creatures/FMLRATTK.wav",
+			"defend" : "creatures/FMLRDFND.wav",
+			"killed" : "creatures/FMLRKILL.wav",
+			"move" : "creatures/FMLRMOVE.wav",
+			"wince" : "creatures/FMLRWNCE.wav"
 		}
 	}
 }

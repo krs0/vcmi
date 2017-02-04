@@ -37,10 +37,10 @@
 		"abilityText" : "Unlimited retaliations.",
 		"hasDoubleWeek" : true,
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CRGRIF.def",
-			"map" : "sprites/creatures/adventureMap/AVWgrix0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL7.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort7.bmp",
+			"animation" : "creatures/battle/CRGRIF.def",
+			"map" : "creatures/adventureMap/AVWgrix0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL7.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort7.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -51,11 +51,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/RGRFATTK.wav",
-			"defend" : "sounds/creatures/RGRFDFND.wav",
-			"killed" : "sounds/creatures/RGRFKILL.wav",
-			"move" : "sounds/creatures/RGRFMOVE.wav",
-			"wince" : "sounds/creatures/RGRFWNCE.wav"
+			"attack" : "creatures/RGRFATTK.wav",
+			"defend" : "creatures/RGRFDFND.wav",
+			"killed" : "creatures/RGRFKILL.wav",
+			"move" : "creatures/RGRFMOVE.wav",
+			"wince" : "creatures/RGRFWNCE.wav"
 		}
 	}
 }

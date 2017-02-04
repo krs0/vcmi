@@ -39,10 +39,10 @@
 		},
 		"abilityText" : "Magic damper.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CPEGAS.def",
-			"map" : "sprites/creatures/adventureMap/AVWpega0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL22.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort22.bmp",
+			"animation" : "creatures/battle/CPEGAS.def",
+			"map" : "creatures/adventureMap/AVWpega0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL22.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort22.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -53,11 +53,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/PEGAATTK.wav",
-			"defend" : "sounds/creatures/PEGADFND.wav",
-			"killed" : "sounds/creatures/PEGAKILL.wav",
-			"move" : "sounds/creatures/PEGAMOVE.wav",
-			"wince" : "sounds/creatures/PEGAWNCE.wav"
+			"attack" : "creatures/PEGAATTK.wav",
+			"defend" : "creatures/PEGADFND.wav",
+			"killed" : "creatures/PEGAKILL.wav",
+			"move" : "creatures/PEGAMOVE.wav",
+			"wince" : "creatures/PEGAWNCE.wav"
 		}
 	}
 }

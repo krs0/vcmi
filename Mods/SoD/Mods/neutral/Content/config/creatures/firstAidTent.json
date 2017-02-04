@@ -36,9 +36,9 @@
 		},
 		"abilityText" : "Heals troops.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/SMTENT.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL149.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort149.bmp",
+			"animation" : "creatures/battle/SMTENT.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL149.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort149.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -49,8 +49,8 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"killed" : "sounds/creatures/FAIDKILL.wav",
-			"wince" : "sounds/creatures/FAIDWNCE.wav"
+			"killed" : "creatures/FAIDKILL.wav",
+			"wince" : "creatures/FAIDWNCE.wav"
 		},
 		"special" : true
 	}

@@ -38,10 +38,10 @@
 		},
 		"abilityText" : "Damage from spells reduced 95%.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CDGOLE.def",
-			"map" : "sprites/creatures/adventureMap/AVWglmd0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL119.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort119.bmp",
+			"animation" : "creatures/battle/CDGOLE.def",
+			"map" : "creatures/adventureMap/AVWglmd0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL119.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort119.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -52,11 +52,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/DGLMATTK.wav",
-			"defend" : "sounds/creatures/DGLMDFND.wav",
-			"killed" : "sounds/creatures/DGLMKILL.wav",
-			"move" : "sounds/creatures/DGLMMOVE.wav",
-			"wince" : "sounds/creatures/DGLMWNCE.wav"
+			"attack" : "creatures/DGLMATTK.wav",
+			"defend" : "creatures/DGLMDFND.wav",
+			"killed" : "creatures/DGLMKILL.wav",
+			"move" : "creatures/DGLMMOVE.wav",
+			"wince" : "creatures/DGLMWNCE.wav"
 		}
 	}
 }

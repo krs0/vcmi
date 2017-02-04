@@ -42,10 +42,10 @@
 		},
 		"abilityText" : "Undead.  Regenerating.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CWIGHT.def",
-			"map" : "sprites/creatures/adventureMap/AvWWigh.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL62.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort62.bmp",
+			"animation" : "creatures/battle/CWIGHT.def",
+			"map" : "creatures/adventureMap/AvWWigh.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL62.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort62.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -56,11 +56,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/WGHTATTK.wav",
-			"defend" : "sounds/creatures/WGHTDFND.wav",
-			"killed" : "sounds/creatures/WGHTKILL.wav",
-			"move" : "sounds/creatures/WGHTMOVE.wav",
-			"wince" : "sounds/creatures/WGHTWNCE.wav"
+			"attack" : "creatures/WGHTATTK.wav",
+			"defend" : "creatures/WGHTDFND.wav",
+			"killed" : "creatures/WGHTKILL.wav",
+			"move" : "creatures/WGHTMOVE.wav",
+			"wince" : "creatures/WGHTWNCE.wav"
 		}
 	}
 }

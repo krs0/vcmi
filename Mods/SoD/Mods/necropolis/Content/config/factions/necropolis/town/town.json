@@ -3,14 +3,14 @@
 	{
 		"town" :
 		{
-			"musicTheme" : "music/factions/NecroTown.mp3",
+			"musicTheme" : "factions/NecroTown.mp3",
 			"defaultTavern" : 5,
 
-			"townBackground": "sprites/factions/necropolis/townScreen/TBNCBACK.bmp",
-			"guildBackground" : "sprites/factions/necropolis/townScreen/TPMAGE.bmp",
-			"guildWindow": "sprites/factions/necropolis/townScreen/TPMAGENC.bmp",
-			"hallBackground": "sprites/factions/necropolis/TPTHBKNC.BMP",
-			"tavernVideo" : "video/SoD/TAVERN.BIK",
+			"townBackground": "factions/necropolis/townScreen/TBNCBACK.bmp",
+			"guildBackground" : "factions/necropolis/townScreen/TPMAGE.bmp",
+			"guildWindow": "factions/necropolis/townScreen/TPMAGENC.bmp",
+			"hallBackground": "factions/necropolis/TPTHBKNC.BMP",
+			"tavernVideo" : "SoD/TAVERN.BIK",
 			"hallSlots":
 			[
 				[ [ "villageHall", "townHall", "cityHall", "capitol" ], [ "fort", "citadel", "castle" ], [ "tavern" ], [ "blacksmith" ] ],
@@ -78,27 +78,27 @@
 			"horde" : [ 0, -1 ],
 			"mageGuild" : 5,
 			"warMachine" : "firstAidTent",
-			"buildingsIcons" : "sprites/factions/necropolis/HALLNECR.DEF",
+			"buildingsIcons" : "factions/necropolis/HALLNECR.DEF",
 			"icons" :
 			{
 				"village" : {
 					"normal" : {
-						"small" : "sprites/factions/necropolis/icons/small/itpa10.bmp",
-					 	"large" : "sprites/factions/necropolis/icons/large/itpt24.bmp"
+						"small" : "factions/necropolis/icons/small/itpa10.bmp",
+					 	"large" : "factions/necropolis/icons/large/itpt24.bmp"
 					 },
 					"built"  : {
-						"small" : "sprites/factions/necropolis/icons/small/itpa11.bmp",
-						"large" : "sprites/factions/necropolis/icons/large/itpt25.bmp" 
+						"small" : "factions/necropolis/icons/small/itpa11.bmp",
+						"large" : "factions/necropolis/icons/large/itpt25.bmp" 
 					}
 				},
 				"fort" : {
 					"normal" : {
-						"small" : "sprites/factions/necropolis/icons/small/itpa26.bmp",
-					 	"large" : "sprites/factions/necropolis/icons/large/itpt8.bmp" 
+						"small" : "factions/necropolis/icons/small/itpa26.bmp",
+					 	"large" : "factions/necropolis/icons/large/itpt8.bmp" 
 					 },
 					"built"  : {
-						"small" : "sprites/factions/necropolis/icons/small/itpa27.bmp",
-						 "large" : "sprites/factions/necropolis/icons/large/itpt9.bmp"
+						"small" : "factions/necropolis/icons/small/itpa27.bmp",
+						 "large" : "factions/necropolis/icons/large/itpt9.bmp"
 					}
 				}
 			},
@@ -106,11 +106,11 @@
 			"mapObject" :
 			{
 				"templates" : {
-					"castle" :  { "animation" : "sprites/factions/necropolis/adventureMap/AVCnecx0.def" },
-					"citadel" : { "animation" : "sprites/factions/necropolis/adventureMap/AVCnecx0.def" },
-					"fort"    : { "animation" : "sprites/factions/necropolis/adventureMap/AVCnecx0.def" },
-					"village" : { "animation" : "sprites/factions/necropolis/adventureMap/AVCNECR0.DEF" },
-					"capitol" : { "animation" : "sprites/factions/necropolis/adventureMap/AVCNECZ0.DEF" }
+					"castle" :  { "animation" : "factions/necropolis/adventureMap/AVCnecx0.def" },
+					"citadel" : { "animation" : "factions/necropolis/adventureMap/AVCnecx0.def" },
+					"fort"    : { "animation" : "factions/necropolis/adventureMap/AVCnecx0.def" },
+					"village" : { "animation" : "factions/necropolis/adventureMap/AVCNECR0.DEF" },
+					"capitol" : { "animation" : "factions/necropolis/adventureMap/AVCNECZ0.DEF" }
 				}
 			},
 

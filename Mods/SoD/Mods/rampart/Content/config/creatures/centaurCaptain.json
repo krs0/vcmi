@@ -30,10 +30,10 @@
 		"abilityText" : "",
 		"hasDoubleWeek" : true,
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CECENT.def",
-			"map" : "sprites/creatures/adventureMap/AVWcentx0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL17.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort17.bmp",
+			"animation" : "creatures/battle/CECENT.def",
+			"map" : "creatures/adventureMap/AVWcentx0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL17.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort17.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -45,11 +45,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/ECNTATTK.wav",
-			"defend" : "sounds/creatures/ECNTDFND.wav",
-			"killed" : "sounds/creatures/ECNTKILL.wav",
-			"move" : "sounds/creatures/ECNTMOVE.wav",
-			"wince" : "sounds/creatures/ECNTWNCE.wav"
+			"attack" : "creatures/ECNTATTK.wav",
+			"defend" : "creatures/ECNTDFND.wav",
+			"killed" : "creatures/ECNTKILL.wav",
+			"move" : "creatures/ECNTMOVE.wav",
+			"wince" : "creatures/ECNTWNCE.wav"
 		}
 	}
 }

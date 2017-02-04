@@ -49,10 +49,10 @@
 		},
 		"abilityText" : "No melee penalty. Mind spell immunity.  Hates Black Dragons.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CGTITA.def",
-			"map" : "sprites/creatures/adventureMap/AVWtitx0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL43.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort43.bmp",
+			"animation" : "creatures/battle/CGTITA.def",
+			"map" : "creatures/adventureMap/AVWtitx0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL43.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort43.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -60,7 +60,7 @@
 				"walk" : 1.38
 			},
 			"missile" : {
-				"projectile" : "sprites/creatures/projectile/CPRGTIX.DEF",
+				"projectile" : "creatures/projectile/CPRGTIX.DEF",
 				"attackClimaxFrame" : 6,
 				"frameAngles" : [
 					90,
@@ -89,12 +89,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/GTITATTK.wav",
-			"defend" : "sounds/creatures/GTITDFND.wav",
-			"killed" : "sounds/creatures/GTITKILL.wav",
-			"move" : "sounds/creatures/GTITMOVE.wav",
-			"shoot" : "sounds/creatures/GTITSHOT.wav",
-			"wince" : "sounds/creatures/GTITWNCE.wav"
+			"attack" : "creatures/GTITATTK.wav",
+			"defend" : "creatures/GTITDFND.wav",
+			"killed" : "creatures/GTITKILL.wav",
+			"move" : "creatures/GTITMOVE.wav",
+			"shoot" : "creatures/GTITSHOT.wav",
+			"wince" : "creatures/GTITWNCE.wav"
 		}
 	}
 }

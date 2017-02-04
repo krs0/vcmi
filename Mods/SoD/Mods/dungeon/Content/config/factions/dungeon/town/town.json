@@ -3,14 +3,14 @@
 	{
 		"town" :
 		{
-			"musicTheme" : "music/factions/sprites/factions/Dungeon.mp3",
+			"musicTheme" : "factions/sprites/factions/Dungeon.mp3",
 			"defaultTavern" : 5,
 
-			"townBackground": "sprites/factions/dungeon/townScreen/TBDNBACK.bmp",
-			"guildBackground" : "sprites/factions/dungeon/townScreen/TPMAGE.bmp",
-			"guildWindow": "sprites/factions/dungeon/townScreen/TPMAGEDN.bmp",
-			"hallBackground": "sprites/factions/dungeon/TPTHBKDG.BMP",
-			"tavernVideo" : "video/SoD/TAVERN.BIK",
+			"townBackground": "factions/dungeon/townScreen/TBDNBACK.bmp",
+			"guildBackground" : "factions/dungeon/townScreen/TPMAGE.bmp",
+			"guildWindow": "factions/dungeon/townScreen/TPMAGEDN.bmp",
+			"hallBackground": "factions/dungeon/TPTHBKDG.BMP",
+			"tavernVideo" : "SoD/TAVERN.BIK",
 			"hallSlots":
 			[
 				[ [ "villageHall", "townHall", "cityHall", "capitol" ], [ "fort", "citadel", "castle" ], [ "tavern" ], [ "blacksmith" ] ],
@@ -74,27 +74,27 @@
 			"mageGuild" : 5,
 			"warMachine" : "ballista",
 			"primaryResource" : "sulfur",
-			"buildingsIcons" : "sprites/factions/dungeon/HALLDUNG.DEF",
+			"buildingsIcons" : "factions/dungeon/HALLDUNG.DEF",
 			"icons" :
 			{
 				"village" : {
 					"normal" : {
-						"small" : "sprites/factions/dungeon/icons/small/itpa30.bmp",
-					 	"large" : "sprites/factions/dungeon/icons/largeitpt10.bmp"
+						"small" : "factions/dungeon/icons/small/itpa30.bmp",
+					 	"large" : "factions/dungeon/icons/largeitpt10.bmp"
 					 },
 					"built"  : {
-						"small" : "sprites/factions/dungeon/icons/small/itpa31.bmp",
-						"large" : "sprites/factions/dungeon/icons/largeitpt11.bmp" 
+						"small" : "factions/dungeon/icons/small/itpa31.bmp",
+						"large" : "factions/dungeon/icons/largeitpt11.bmp" 
 					}
 				},
 				"fort" : {
 					"normal" : {
-						"small" : "sprites/factions/dungeon/icons/small/itpa12.bmp",
-					 	"large" : "sprites/factions/dungeon/icons/largeitpt28.bmp" 
+						"small" : "factions/dungeon/icons/small/itpa12.bmp",
+					 	"large" : "factions/dungeon/icons/largeitpt28.bmp" 
 					 },
 					"built"  : {
-						"small" : "sprites/factions/dungeon/icons/small/itpa13.bmp",
-						 "large" : "sprites/factions/dungeon/icons/largeitpt29.bmp"
+						"small" : "factions/dungeon/icons/small/itpa13.bmp",
+						 "large" : "factions/dungeon/icons/largeitpt29.bmp"
 					}
 				}
 			},
@@ -102,11 +102,11 @@
 			"mapObject" :
 			{
 				"templates" : {
-					"castle" :  { "animation" : "sprites/factions/dungeon/adventureMap/AVCdunx0.def" },
-					"citadel" : { "animation" : "sprites/factions/dungeon/adventureMap/AVCdunx0.def" },
-					"fort"    : { "animation" : "sprites/factions/dungeon/adventureMap/AVCdunx0.def" },
-					"village" : { "animation" : "sprites/factions/dungeon/adventureMap/AVCDUNG0.DEF" },
-					"capitol" : { "animation" : "sprites/factions/dungeon/adventureMap/AVCDUNZ0.DEF" }
+					"castle" :  { "animation" : "factions/dungeon/adventureMap/AVCdunx0.def" },
+					"citadel" : { "animation" : "factions/dungeon/adventureMap/AVCdunx0.def" },
+					"fort"    : { "animation" : "factions/dungeon/adventureMap/AVCdunx0.def" },
+					"village" : { "animation" : "factions/dungeon/adventureMap/AVCDUNG0.DEF" },
+					"capitol" : { "animation" : "factions/dungeon/adventureMap/AVCDUNZ0.DEF" }
 				}
 			},
 

@@ -22,8 +22,8 @@
 		],
 		"creatureBackground" :
 		{
-			"120px" : "sprites/factions/neutral/TPCASNEU.bmp",
-			"130px" : "sprites/factions/neutral/CRBKGNEU.bmp"
+			"120px" : "factions/neutral/TPCASNEU.bmp",
+			"130px" : "factions/neutral/CRBKGNEU.bmp"
 		}
 	}
 }

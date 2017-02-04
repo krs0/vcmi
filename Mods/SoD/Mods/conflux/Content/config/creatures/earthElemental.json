@@ -54,10 +54,10 @@
 		},
 		"abilityText" : "Meteor shower vulnerability.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CEELEM.def",
-			"map" : "sprites/creatures/adventureMap/AVWelme0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL115.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort115.bmp",
+			"animation" : "creatures/battle/CEELEM.def",
+			"map" : "creatures/adventureMap/AVWelme0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL115.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort115.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -68,11 +68,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/EELMATTK.wav",
-			"defend" : "sounds/creatures/EELMDFND.wav",
-			"killed" : "sounds/creatures/EELMKILL.wav",
-			"move" : "sounds/creatures/EELMMOVE.wav",
-			"wince" : "sounds/creatures/EELMWNCE.wav"
+			"attack" : "creatures/EELMATTK.wav",
+			"defend" : "creatures/EELMDFND.wav",
+			"killed" : "creatures/EELMKILL.wav",
+			"move" : "creatures/EELMMOVE.wav",
+			"wince" : "creatures/EELMWNCE.wav"
 		},
 	}
 }

@@ -22,8 +22,8 @@
 		],
 		"creatureBackground" :
 		{
-			"120px" : "sprites/factions/inferno/TPCASINF.bmp",
-			"130px" : "sprites/factions/inferno/CRBKGINF.bmp"
+			"120px" : "factions/inferno/TPCASINF.bmp",
+			"130px" : "factions/inferno/CRBKGINF.bmp"
 		},
 	}
 }

@@ -35,10 +35,10 @@
 		},
 		"abilityText" : "Death stare.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CBGOG.def",
-			"map" : "sprites/creatures/adventureMap/AVWgorx0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL105.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort105.bmp",
+			"animation" : "creatures/battle/CBGOG.def",
+			"map" : "creatures/adventureMap/AVWgorx0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL105.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort105.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -49,11 +49,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/BGORATTK.wav",
-			"defend" : "sounds/creatures/BGORDFND.wav",
-			"killed" : "sounds/creatures/BGORKILL.wav",
-			"move" : "sounds/creatures/BGORMOVE.wav",
-			"wince" : "sounds/creatures/BGORWNCE.wav"
+			"attack" : "creatures/BGORATTK.wav",
+			"defend" : "creatures/BGORDFND.wav",
+			"killed" : "creatures/BGORKILL.wav",
+			"move" : "creatures/BGORMOVE.wav",
+			"wince" : "creatures/BGORWNCE.wav"
 		}
 	}
 }

@@ -44,10 +44,10 @@
 		"abilityText" : "No melee penalty.\nStone gaze.",
 		"hasDoubleWeek" : true,
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CMEDUQ.def",
-			"map" : "sprites/creatures/adventureMap/AVWmedx0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL79.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort79.bmp",
+			"animation" : "creatures/battle/CMEDUQ.def",
+			"map" : "creatures/adventureMap/AVWmedx0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL79.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort79.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -56,7 +56,7 @@
 			},
 			"missile" :
 			{
-				"projectile" : "sprites/creatures/projectile/PMEDUSX.DEF",
+				"projectile" : "creatures/projectile/PMEDUSX.DEF",
 				"attackClimaxFrame" : 9,
 				"frameAngles" : [
 					90,
@@ -85,12 +85,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/MEDQATTK.wav",
-			"defend" : "sounds/creatures/MEDQDFND.wav",
-			"killed" : "sounds/creatures/MEDQKILL.wav",
-			"move" : "sounds/creatures/MEDQMOVE.wav",
-			"shoot" : "sounds/creatures/MEDQSHOT.wav",
-			"wince" : "sounds/creatures/MEDQWNCE.wav"
+			"attack" : "creatures/MEDQATTK.wav",
+			"defend" : "creatures/MEDQDFND.wav",
+			"killed" : "creatures/MEDQKILL.wav",
+			"move" : "creatures/MEDQMOVE.wav",
+			"shoot" : "creatures/MEDQSHOT.wav",
+			"wince" : "creatures/MEDQWNCE.wav"
 		}
 	}
 }

@@ -34,10 +34,10 @@
 		},
 		"abilityText" : "Undead.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CSKELE.def",
-			"map" : "sprites/creatures/adventureMap/AVWskel0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL58.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort58.bmp",
+			"animation" : "creatures/battle/CSKELE.def",
+			"map" : "creatures/adventureMap/AVWskel0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL58.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort58.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -48,11 +48,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/SKELATTK.wav",
-			"defend" : "sounds/creatures/SKELDFND.wav",
-			"killed" : "sounds/creatures/SKELKILL.wav",
-			"move" : "sounds/creatures/SKELMOVE.wav",
-			"wince" : "sounds/creatures/SKELWNCE.wav"
+			"attack" : "creatures/SKELATTK.wav",
+			"defend" : "creatures/SKELDFND.wav",
+			"killed" : "creatures/SKELKILL.wav",
+			"move" : "creatures/SKELMOVE.wav",
+			"wince" : "creatures/SKELWNCE.wav"
 		},
 	}
 }

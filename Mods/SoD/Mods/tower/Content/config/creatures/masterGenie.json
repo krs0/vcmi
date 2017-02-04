@@ -56,10 +56,10 @@
 		},
 		"abilityText" : "Spellcaster: Random benefit.\nHates Efreet.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CSULTA.def",
-			"map" : "sprites/creatures/adventureMap/AVWgenx0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL39.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort39.bmp",
+			"animation" : "creatures/battle/CSULTA.def",
+			"map" : "creatures/adventureMap/AVWgenx0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL39.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort39.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -70,12 +70,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/CALFATTK.wav",
-			"defend" : "sounds/creatures/CALFDFND.wav",
-			"killed" : "sounds/creatures/CALFKILL.wav",
-			"move" : "sounds/creatures/CALFMOVE.wav",
-			"shoot" : "sounds/creatures/CALFSHOT.wav",
-			"wince" : "sounds/creatures/CALFWNCE.wav"
+			"attack" : "creatures/CALFATTK.wav",
+			"defend" : "creatures/CALFDFND.wav",
+			"killed" : "creatures/CALFKILL.wav",
+			"move" : "creatures/CALFMOVE.wav",
+			"shoot" : "creatures/CALFSHOT.wav",
+			"wince" : "creatures/CALFWNCE.wav"
 		}
 	}
 }

@@ -6,37 +6,37 @@
 			"impCrucible" : 
 			{
 				"name" : "Imp Crucible",
-				"graphics" : "sprites/factions/inferno/adventureMap/dwellings/AVGimp0.def"
+				"graphics" : "factions/inferno/adventureMap/dwellings/AVGimp0.def"
 			},
 			"hallOfSins" : 
 			{
 				"name" : "Hall of Sins",
-				"graphics" : "sprites/factions/inferno/adventureMap/dwellings/AVGgogs0.def"
+				"graphics" : "factions/inferno/adventureMap/dwellings/AVGgogs0.def"
 			},
 			"kennels" : 
 			{
 				"name" : "Kennels",
-				"graphics" : "sprites/factions/inferno/adventureMap/dwellings/AVGhell0.def"
+				"graphics" : "factions/inferno/adventureMap/dwellings/AVGhell0.def"
 			},
 			"demonGate" : 
 			{
 				"name" : "Demon Gate",
-				"graphics" : "sprites/factions/inferno/adventureMap/dwellings/AVGDEMN0.def"
+				"graphics" : "factions/inferno/adventureMap/dwellings/AVGDEMN0.def"
 			},
 			"hellHole" : 
 			{
 				"name" : "Hell Hole",
-				"graphics" : "sprites/factions/inferno/adventureMap/dwellings/AVGpit0.def"
+				"graphics" : "factions/inferno/adventureMap/dwellings/AVGpit0.def"
 			},
 			"fireLake" : 
 			{
 				"name" : "Fire Lake",
-				"graphics" : "sprites/factions/inferno/adventureMap/dwellings/AVGefre0.def"
+				"graphics" : "factions/inferno/adventureMap/dwellings/AVGefre0.def"
 			},
 			"forsakenPalace" : 
 			{
 				"name" : "Forsaken Palace",
-				"graphics" : "sprites/factions/inferno/adventureMap/dwellings/AVGdevl0.def"
+				"graphics" : "factions/inferno/adventureMap/dwellings/AVGdevl0.def"
 			}
 		}
 	}

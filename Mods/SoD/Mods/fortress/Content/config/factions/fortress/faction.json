@@ -22,8 +22,8 @@
 		],
 		"creatureBackground" :
 		{
-			"120px" : "sprites/factions/fortress/TPCASFOR.bmp",
-			"130px" : "sprites/factions/fortress/CRBKGFOR.bmp"
+			"120px" : "factions/fortress/TPCASFOR.bmp",
+			"130px" : "factions/fortress/CRBKGFOR.bmp"
 		},
 	}
 }

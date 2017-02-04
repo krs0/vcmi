@@ -10,8 +10,8 @@
 		{
 			"specialtySmall" : "", // index is used in UN32.def
 			"specialtyLarge" : "", // index is used in UN44.def
-			"large" : "sprites/heroes/icons/portrait/large/HPL085OV.bmp",
-			"small" : "sprites/heroes/icons/portrait/small/HPS085OV.bmp"
+			"large" : "heroes/icons/portrait/large/HPL085OV.bmp",
+			"small" : "heroes/icons/portrait/small/HPS085OV.bmp"
 		},
 
 		"army" : [

@@ -6,37 +6,37 @@
 			"goblinBarracks" : 
 			{
 				"name" : "Goblin Barracks",
-				"graphics" : "sprites/factions/stronghold/adventureMap/dwellings/AVGgobl0.def"
+				"graphics" : "factions/stronghold/adventureMap/dwellings/AVGgobl0.def"
 			},
 			"wolfPen" : 
 			{
 				"name" : "Wolf Pen",
-				"graphics" : "sprites/factions/stronghold/adventureMap/dwellings/AVGWOLF0.def"
+				"graphics" : "factions/stronghold/adventureMap/dwellings/AVGWOLF0.def"
 			},
 			"orcTower" : 
 			{
 				"name" : "Orc Tower",
-				"graphics" : "sprites/factions/stronghold/adventureMap/dwellings/AVGorcg0.def"
+				"graphics" : "factions/stronghold/adventureMap/dwellings/AVGorcg0.def"
 			},
 			"ogreFort" : 
 			{
 				"name" : "Ogre Fort",
-				"graphics" : "sprites/factions/stronghold/adventureMap/dwellings/AVGogre0.def"
+				"graphics" : "factions/stronghold/adventureMap/dwellings/AVGogre0.def"
 			},
 			"cliffNest" : 
 			{
 				"name" : "Cliff Nest",
-				"graphics" : "sprites/factions/stronghold/adventureMap/dwellings/AVGrocs0.def"
+				"graphics" : "factions/stronghold/adventureMap/dwellings/AVGrocs0.def"
 			},
 			"cyclopsCave" : 
 			{
 				"name" : "Cyclops Cave",
-				"graphics" : "sprites/factions/stronghold/adventureMap/dwellings/AVGcycl0.def"
+				"graphics" : "factions/stronghold/adventureMap/dwellings/AVGcycl0.def"
 			},
 			"behemothLair" : 
 			{
 				"name" : "Behemoth Lair",
-				"graphics" : "sprites/factions/stronghold/adventureMap/dwellings/AVGbhmt0.def"
+				"graphics" : "factions/stronghold/adventureMap/dwellings/AVGbhmt0.def"
 			}
 		}
 	}

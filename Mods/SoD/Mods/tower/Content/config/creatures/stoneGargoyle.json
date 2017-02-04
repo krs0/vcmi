@@ -37,10 +37,10 @@
 		},
 		"abilityText" : "",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CGARGO.def",
-			"map" : "sprites/creatures/adventureMap/AVWgarg0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL32.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort32.bmp",
+			"animation" : "creatures/battle/CGARGO.def",
+			"map" : "creatures/adventureMap/AVWgarg0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL32.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort32.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -51,11 +51,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/SGRGATTK.wav",
-			"defend" : "sounds/creatures/SGRGDFND.wav",
-			"killed" : "sounds/creatures/SGRGKILL.wav",
-			"move" : "sounds/creatures/SGRGMOVE.wav",
-			"wince" : "sounds/creatures/SGRGWNCE.wav"
+			"attack" : "creatures/SGRGATTK.wav",
+			"defend" : "creatures/SGRGDFND.wav",
+			"killed" : "creatures/SGRGKILL.wav",
+			"move" : "creatures/SGRGMOVE.wav",
+			"wince" : "creatures/SGRGWNCE.wav"
 		}
 	}
 }

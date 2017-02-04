@@ -36,10 +36,10 @@
 		},
 		"abilityText" : "No enemy retaliation.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CSPRITE.def",
-			"map" : "sprites/creatures/adventureMap/AVWsprit.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL120.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort120.bmp",
+			"animation" : "creatures/battle/CSPRITE.def",
+			"map" : "creatures/adventureMap/AVWsprit.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL120.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort120.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -50,11 +50,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/SPRTATTK.wav",
-			"defend" : "sounds/creatures/SPRTDFND.wav",
-			"killed" : "sounds/creatures/SPRTKILL.wav",
-			"move" : "sounds/creatures/SPRTMOVE.wav",
-			"wince" : "sounds/creatures/SPRTWNCE.wav"
+			"attack" : "creatures/SPRTATTK.wav",
+			"defend" : "creatures/SPRTDFND.wav",
+			"killed" : "creatures/SPRTKILL.wav",
+			"move" : "creatures/SPRTMOVE.wav",
+			"wince" : "creatures/SPRTWNCE.wav"
 		}
 	}
 }

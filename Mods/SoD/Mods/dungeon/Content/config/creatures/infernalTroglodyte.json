@@ -40,10 +40,10 @@
 		},
 		"abilityText" : "Immune to Blinding.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CITROG.def",
-			"map" : "sprites/creatures/adventureMap/AvWInfr.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL73.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort73.bmp",
+			"animation" : "creatures/battle/CITROG.def",
+			"map" : "creatures/adventureMap/AvWInfr.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL73.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort73.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -54,11 +54,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/ITRGATTK.wav",
-			"defend" : "sounds/creatures/ITRGDFND.wav",
-			"killed" : "sounds/creatures/ITRGKILL.wav",
-			"move" : "sounds/creatures/ITRGMOVE.wav",
-			"wince" : "sounds/creatures/ITRGWNCE.wav"
+			"attack" : "creatures/ITRGATTK.wav",
+			"defend" : "creatures/ITRGDFND.wav",
+			"killed" : "creatures/ITRGKILL.wav",
+			"move" : "creatures/ITRGMOVE.wav",
+			"wince" : "creatures/ITRGWNCE.wav"
 		}
 	}
 }

@@ -3,14 +3,14 @@
 	{
 		"town" :
 		{
-			"musicTheme" : "music/factions/CstleTown.mp3", //don't fix its not a typo!!!
+			"musicTheme" : "factions/CstleTown.mp3", //don't fix its not a typo!!!
 			"defaultTavern" : 5,
 			
-			"townBackground": "sprites/factions/castle/townScreen/TBCSBACK.bmp",
+			"townBackground": "factions/castle/townScreen/TBCSBACK.bmp",
 			"guildBackground" : "TPMAGE.bmp",
-			"guildWindow": "sprites/factions/castle/townScreen/TPMAGECS.bmp",
-			"hallBackground": "sprites/factions/castle/TPTHBKCS.BMP",
-			"tavernVideo" : "video/SoD/TAVERN.BIK",
+			"guildWindow": "factions/castle/townScreen/TPMAGECS.bmp",
+			"hallBackground": "factions/castle/TPTHBKCS.BMP",
+			"tavernVideo" : "SoD/TAVERN.BIK",
 			"hallSlots":
 			[
 				[ [ "villageHall", "townHall", "cityHall", "capitol" ], [ "fort", "citadel", "castle" ], [ "tavern", "special3" ], [ "blacksmith" ] ],
@@ -74,27 +74,27 @@
 			"horde" : [ 2, -1 ],
 			"mageGuild" : 4,
 			"warMachine" : "ballista",
-			"buildingsIcons" : "sprites/factions/castle/HALLCSTL.DEF",
+			"buildingsIcons" : "factions/castle/HALLCSTL.DEF",
 			"icons" :
 			{
 				"village" : {
 					"normal" : {
-						"small" : "sprites/factions/castle/icons/small/itpa20.bmp",
-					 	"large" : "sprites/factions/castle/icons/large/itpt18.bmp"
+						"small" : "factions/castle/icons/small/itpa20.bmp",
+					 	"large" : "factions/castle/icons/large/itpt18.bmp"
 					 },
 					"built"  : {
-						"small" : "sprites/factions/castle/icons/small/itpa21.bmp",
-						"large" : "sprites/factions/castle/icons/large/itpt19.bmp" 
+						"small" : "factions/castle/icons/small/itpa21.bmp",
+						"large" : "factions/castle/icons/large/itpt19.bmp" 
 					}
 				},
 				"fort" : {
 					"normal" : {
-						"small" : "sprites/factions/castle/icons/small/itpa2.bmp",
-					 	"large" : "sprites/factions/castle/icons/large/itpt0.bmp" 
+						"small" : "factions/castle/icons/small/itpa2.bmp",
+					 	"large" : "factions/castle/icons/large/itpt0.bmp" 
 					 },
 					"built"  : {
-						"small" : "sprites/factions/castle/icons/small/itpa3.bmp",
-						 "large" : "sprites/factions/castle/icons/large/itpt1.bmp"
+						"small" : "factions/castle/icons/small/itpa3.bmp",
+						 "large" : "factions/castle/icons/large/itpt1.bmp"
 					}
 				}
 			},
@@ -102,11 +102,11 @@
 			"mapObject" :
 			{
 				"templates" : {
-					"castle" :  { "animation" : "sprites/factions/castle/adventureMap/AVCcasx0.def" },
-					"citadel" : { "animation" : "sprites/factions/castle/adventureMap/AVCcasx0.def" },
-					"fort"    : { "animation" : "sprites/factions/castle/adventureMap/AVCcasx0.def" },
-					"village" : { "animation" : "sprites/factions/castle/adventureMap/AVCCAST0.DEF" },
-					"capitol" : { "animation" : "sprites/factions/castle/adventureMap/AVCCASZ0.DEF" }
+					"castle" :  { "animation" : "factions/castle/adventureMap/AVCcasx0.def" },
+					"citadel" : { "animation" : "factions/castle/adventureMap/AVCcasx0.def" },
+					"fort"    : { "animation" : "factions/castle/adventureMap/AVCcasx0.def" },
+					"village" : { "animation" : "factions/castle/adventureMap/AVCCAST0.DEF" },
+					"capitol" : { "animation" : "factions/castle/adventureMap/AVCCASZ0.DEF" }
 				}
 			},
 

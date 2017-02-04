@@ -43,10 +43,10 @@
 		"abilityText" : "Dispels beneficial spells.",
 		"hasDoubleWeek" : true,
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CDRFLY.def",
-			"map" : "sprites/creatures/adventureMap/AvWDfly.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL106.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort106.bmp",
+			"animation" : "creatures/battle/CDRFLY.def",
+			"map" : "creatures/adventureMap/AvWDfly.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL106.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort106.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -57,11 +57,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/DFLYATTK.wav",
-			"defend" : "sounds/creatures/DFLYDFND.wav",
-			"killed" : "sounds/creatures/DFLYKILL.wav",
-			"move" : "sounds/creatures/DFLYMOVE.wav",
-			"wince" : "sounds/creatures/DFLYWNCE.wav"
+			"attack" : "creatures/DFLYATTK.wav",
+			"defend" : "creatures/DFLYDFND.wav",
+			"killed" : "creatures/DFLYKILL.wav",
+			"move" : "creatures/DFLYMOVE.wav",
+			"wince" : "creatures/DFLYWNCE.wav"
 		},
 	}
 }

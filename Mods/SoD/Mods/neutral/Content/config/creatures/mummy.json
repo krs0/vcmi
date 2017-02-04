@@ -33,10 +33,10 @@
 		},
 		"abilityText" : "Curse.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CMUMMY.def",
-			"map" : "sprites/creatures/adventureMap/AVWmumy.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL143.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort143.bmp",
+			"animation" : "creatures/battle/CMUMMY.def",
+			"map" : "creatures/adventureMap/AVWmumy.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL143.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort143.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -47,11 +47,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/MUMYATTK.wav",
-			"defend" : "sounds/creatures/MUMYDFND.wav",
-			"killed" : "sounds/creatures/MUMYKILL.wav",
-			"move" : "sounds/creatures/MUMYMOVE.wav",
-			"wince" : "sounds/creatures/MUMYWNCE.wav"
+			"attack" : "creatures/MUMYATTK.wav",
+			"defend" : "creatures/MUMYDFND.wav",
+			"killed" : "creatures/MUMYKILL.wav",
+			"move" : "creatures/MUMYMOVE.wav",
+			"wince" : "creatures/MUMYWNCE.wav"
 		}
 	}
 }

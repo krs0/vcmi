@@ -7,15 +7,15 @@
 		"defaultTavern" : 5,
 		"animation" : {
 			"battle" : {
-				"female" : "sprites/heroClasses/CH01.DEF",
-				"male" : "sprites/heroClasses/CH00.DEF"
+				"female" : "heroClasses/CH01.DEF",
+				"male" : "heroClasses/CH00.DEF"
 			}
 		},
 		"mapObject" : {
 			"templates" : {
 				"default" : {
-					"animation" : "sprites/heroClasses/AH06_.def",
-					"editorAnimation" : "sprites/heroClasses/AH06_E.def"
+					"animation" : "heroClasses/AH06_.def",
+					"editorAnimation" : "heroClasses/AH06_E.def"
 				}
 			}
 		},

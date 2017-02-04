@@ -57,10 +57,10 @@
 		},
 		"abilityText" : "Casts Protect from Fire. Mind & fire immunity, cold vulnerability.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CNRG.def",
-			"map" : "sprites/creatures/adventureMap/AVWnrg.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL131.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort131.bmp",
+			"animation" : "creatures/battle/CNRG.def",
+			"map" : "creatures/adventureMap/AVWnrg.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL131.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort131.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -71,11 +71,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/ENERATTK.wav",
-			"defend" : "sounds/creatures/ENERDFND.wav",
-			"killed" : "sounds/creatures/ENERKILL.wav",
-			"move" : "sounds/creatures/ENERMOVE.wav",
-			"wince" : "sounds/creatures/ENERWNCE.wav"
+			"attack" : "creatures/ENERATTK.wav",
+			"defend" : "creatures/ENERDFND.wav",
+			"killed" : "creatures/ENERKILL.wav",
+			"move" : "creatures/ENERMOVE.wav",
+			"wince" : "creatures/ENERWNCE.wav"
 		}
 	}
 }

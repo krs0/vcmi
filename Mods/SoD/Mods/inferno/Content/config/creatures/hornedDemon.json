@@ -28,10 +28,10 @@
 		},
 		"abilityText" : "",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CTHDEM.def",
-			"map" : "sprites/creatures/adventureMap/AVWdemx0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL51.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort51.bmp",
+			"animation" : "creatures/battle/CTHDEM.def",
+			"map" : "creatures/adventureMap/AVWdemx0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL51.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort51.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -42,11 +42,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/DHDMATTK.wav",
-			"defend" : "sounds/creatures/DHDMDFND.wav",
-			"killed" : "sounds/creatures/DHDMKILL.wav",
-			"move" : "sounds/creatures/DHDMMOVE.wav",
-			"wince" : "sounds/creatures/DHDMWNCE.wav"
+			"attack" : "creatures/DHDMATTK.wav",
+			"defend" : "creatures/DHDMDFND.wav",
+			"killed" : "creatures/DHDMKILL.wav",
+			"move" : "creatures/DHDMMOVE.wav",
+			"wince" : "creatures/DHDMWNCE.wav"
 		}
 	}
 }

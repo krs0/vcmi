@@ -42,10 +42,10 @@
 		},
 		"abilityText" : "No melee penalty.\nHero spells cost less.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CMAGE.def",
-			"map" : "sprites/creatures/adventureMap/AVWmage0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL36.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort36.bmp",
+			"animation" : "creatures/battle/CMAGE.def",
+			"map" : "creatures/adventureMap/AVWmage0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL36.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort36.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -53,7 +53,7 @@
 				"walk" : 1
 			},
 			"missile" : {
-				"projectile" : "sprites/creatures/projectile/PMAGEX.DEF",
+				"projectile" : "creatures/projectile/PMAGEX.DEF",
 				"attackClimaxFrame" : 9,
 				"frameAngles" : [
 					90,
@@ -82,12 +82,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/MAGEATTK.wav",
-			"defend" : "sounds/creatures/MAGEDFND.wav",
-			"killed" : "sounds/creatures/MAGEKILL.wav",
-			"move" : "sounds/creatures/MAGEMOVE.wav",
-			"shoot" : "sounds/creatures/MAGESHOT.wav",
-			"wince" : "sounds/creatures/MAGEWNCE.wav"
+			"attack" : "creatures/MAGEATTK.wav",
+			"defend" : "creatures/MAGEDFND.wav",
+			"killed" : "creatures/MAGEKILL.wav",
+			"move" : "creatures/MAGEMOVE.wav",
+			"shoot" : "creatures/MAGESHOT.wav",
+			"wince" : "creatures/MAGEWNCE.wav"
 		}
 	}
 }

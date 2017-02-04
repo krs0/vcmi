@@ -22,8 +22,8 @@
 		],
 		"creatureBackground" :
 		{
-			"120px" : "sprites/factions/dungeon/TPCASDUN.bmp",
-			"130px" : "sprites/factions/dungeon/CRBKGDUN.bmp"
+			"120px" : "factions/dungeon/TPCASDUN.bmp",
+			"130px" : "factions/dungeon/CRBKGDUN.bmp"
 		},
 	}
 }

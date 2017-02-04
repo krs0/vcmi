@@ -54,10 +54,10 @@
 		},
 		"abilityText" : "Lightning and firestorm vulnerability.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CAELEM.def",
-			"map" : "sprites/creatures/adventureMap/AVWelma0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL114.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort114.bmp",
+			"animation" : "creatures/battle/CAELEM.def",
+			"map" : "creatures/adventureMap/AVWelma0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL114.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort114.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -68,11 +68,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/AELMATTK.wav",
-			"defend" : "sounds/creatures/AELMDFND.wav",
-			"killed" : "sounds/creatures/AELMKILL.wav",
-			"move" : "sounds/creatures/AELMMOVE.wav",
-			"wince" : "sounds/creatures/AELMWNCE.wav"
+			"attack" : "creatures/AELMATTK.wav",
+			"defend" : "creatures/AELMDFND.wav",
+			"killed" : "creatures/AELMKILL.wav",
+			"move" : "creatures/AELMMOVE.wav",
+			"wince" : "creatures/AELMWNCE.wav"
 		}
 	}
 }

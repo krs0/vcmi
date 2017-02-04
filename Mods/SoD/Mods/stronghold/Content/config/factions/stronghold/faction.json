@@ -22,8 +22,8 @@
 		],
 		"creatureBackground" :
 		{
-			"120px" : "sprites/factions/stronghold/TPCASSTR.bmp",
-			"130px" : "sprites/factions/stronghold/CRBKGSTR.bmp"
+			"120px" : "factions/stronghold/TPCASSTR.bmp",
+			"130px" : "factions/stronghold/CRBKGSTR.bmp"
 		},
 	}
 }

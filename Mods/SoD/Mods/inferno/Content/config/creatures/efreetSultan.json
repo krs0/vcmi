@@ -51,10 +51,10 @@
 		},
 		"abilityText" : "Fire shield.  Immune to fire.  Hates Genies.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CEFRES.def",
-			"map" : "sprites/creatures/adventureMap/AVWefrx0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL55.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort55.bmp",
+			"animation" : "creatures/battle/CEFRES.def",
+			"map" : "creatures/adventureMap/AVWefrx0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL55.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort55.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -65,12 +65,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/ESULATTK.wav",
-			"defend" : "sounds/creatures/ESULDFND.wav",
-			"killed" : "sounds/creatures/ESULKILL.wav",
-			"move" : "sounds/creatures/ESULMOVE.wav",
-			"shoot" : "sounds/creatures/ESULSHOT.wav",
-			"wince" : "sounds/creatures/ESULWNCE.wav"
+			"attack" : "creatures/ESULATTK.wav",
+			"defend" : "creatures/ESULDFND.wav",
+			"killed" : "creatures/ESULKILL.wav",
+			"move" : "creatures/ESULMOVE.wav",
+			"shoot" : "creatures/ESULSHOT.wav",
+			"wince" : "creatures/ESULWNCE.wav"
 		}
 	}
 }

@@ -68,10 +68,10 @@
 		},
 		"abilityText" : "No melee penalty.  Lightning and firestorm vulnerability.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CSTORM.def",
-			"map" : "sprites/creatures/adventureMap/AVWstorm.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL129.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort129.bmp",
+			"animation" : "creatures/battle/CSTORM.def",
+			"map" : "creatures/adventureMap/AVWstorm.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL129.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort129.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -79,7 +79,7 @@
 				"walk" : 1.33
 			},
 			"missile" : {
-				"projectile" : "sprites/creatures/projectile/CPRGTIX.DEF",
+				"projectile" : "creatures/projectile/CPRGTIX.DEF",
 				"attackClimaxFrame" : 4,
 				"frameAngles" : [
 					90,
@@ -108,12 +108,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/STORATTK.wav",
-			"defend" : "sounds/creatures/STORDFND.wav",
-			"killed" : "sounds/creatures/STORKILL.wav",
-			"move" : "sounds/creatures/STORMOVE.wav",
-			"shoot" : "sounds/creatures/STORSHOT.wav",
-			"wince" : "sounds/creatures/STORWNCE.wav"
+			"attack" : "creatures/STORATTK.wav",
+			"defend" : "creatures/STORDFND.wav",
+			"killed" : "creatures/STORKILL.wav",
+			"move" : "creatures/STORMOVE.wav",
+			"shoot" : "creatures/STORSHOT.wav",
+			"wince" : "creatures/STORWNCE.wav"
 		}
 	}
 }

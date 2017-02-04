@@ -22,8 +22,8 @@
 		],
 		"creatureBackground" :
 		{
-			"120px" : "sprites/factions/conflux/TPCASELE.bmp",
-			"130px" : "sprites/factions/conflux/CRBKGELE.bmp"
+			"120px" : "factions/conflux/TPCASELE.bmp",
+			"130px" : "factions/conflux/CRBKGELE.bmp"
 		},
 	}
 }

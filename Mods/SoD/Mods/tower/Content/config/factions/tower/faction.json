@@ -22,8 +22,8 @@
 		],
 		"creatureBackground" :
 		{
-			"120px" : "sprites/factions/tower/TPCASTOW.bmp",
-			"130px" : "sprites/factions/tower/CRBKGTOW.bmp"
+			"120px" : "factions/tower/TPCASTOW.bmp",
+			"130px" : "factions/tower/CRBKGTOW.bmp"
 		},
 	}
 }

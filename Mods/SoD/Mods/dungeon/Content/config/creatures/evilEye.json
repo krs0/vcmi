@@ -38,10 +38,10 @@
 		"abilityText" : "No melee penalty.",
 		"hasDoubleWeek" : true,
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CEVEYE.def",
-			"map" : "sprites/creatures/adventureMap/AVWbehx0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL77.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort77.bmp",
+			"animation" : "creatures/battle/CEVEYE.def",
+			"map" : "creatures/adventureMap/AVWbehx0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL77.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort77.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -50,7 +50,7 @@
 			},
 			"missile" :
 			{
-				"projectile" : "sprites/creatures/projectile/SMBALX.DEF",
+				"projectile" : "creatures/projectile/SMBALX.DEF",
 				"attackClimaxFrame" : 5,
 				"frameAngles" : [
 					0,
@@ -79,12 +79,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/EVLIATTK.wav",
-			"defend" : "sounds/creatures/EVLIDFND.wav",
-			"killed" : "sounds/creatures/EVLIKILL.wav",
-			"move" : "sounds/creatures/EVLIMOVE.wav",
-			"shoot" : "sounds/creatures/EVLISHOT.wav",
-			"wince" : "sounds/creatures/EVLIWNCE.wav"
+			"attack" : "creatures/EVLIATTK.wav",
+			"defend" : "creatures/EVLIDFND.wav",
+			"killed" : "creatures/EVLIKILL.wav",
+			"move" : "creatures/EVLIMOVE.wav",
+			"shoot" : "creatures/EVLISHOT.wav",
+			"wince" : "creatures/EVLIWNCE.wav"
 		}
 	}
 }

@@ -32,10 +32,10 @@
 		},
 		"abilityText" : "",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CHHOUN.def",
-			"map" : "sprites/creatures/adventureMap/AVWhoun0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL49.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort49.bmp",
+			"animation" : "creatures/battle/CHHOUN.def",
+			"map" : "creatures/adventureMap/AVWhoun0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL49.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort49.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -46,11 +46,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/HHNDATTK.wav",
-			"defend" : "sounds/creatures/HHNDDFND.wav",
-			"killed" : "sounds/creatures/HHNDKILL.wav",
-			"move" : "sounds/creatures/HHNDMOVE.wav",
-			"wince" : "sounds/creatures/HHNDWNCE.wav"
+			"attack" : "creatures/HHNDATTK.wav",
+			"defend" : "creatures/HHNDDFND.wav",
+			"killed" : "creatures/HHNDKILL.wav",
+			"move" : "creatures/HHNDMOVE.wav",
+			"wince" : "creatures/HHNDWNCE.wav"
 		},
 	}
 }

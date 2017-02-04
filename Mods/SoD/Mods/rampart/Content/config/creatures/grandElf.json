@@ -39,10 +39,10 @@
 		},
 		"abilityText" : "Shoots twice.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CGRELF.def",
-			"map" : "sprites/creatures/adventureMap/AVWelfx0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL21.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort21.bmp",
+			"animation" : "creatures/battle/CGRELF.def",
+			"map" : "creatures/adventureMap/AVWelfx0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL21.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort21.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -50,7 +50,7 @@
 				"walk" : 1.02
 			},
 			"missile" : {
-				"projectile" : "sprites/creatures/projectile/PELFX.DEF",
+				"projectile" : "creatures/projectile/PELFX.DEF",
 				"attackClimaxFrame" : 11,
 				"frameAngles" : [
 					90,
@@ -79,12 +79,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/GELFATTK.wav",
-			"defend" : "sounds/creatures/GELFDFND.wav",
-			"killed" : "sounds/creatures/GELFKILL.wav",
-			"move" : "sounds/creatures/GELFMOVE.wav",
-			"shoot" : "sounds/creatures/GELFSHOT.wav",
-			"wince" : "sounds/creatures/GELFWNCE.wav"
+			"attack" : "creatures/GELFATTK.wav",
+			"defend" : "creatures/GELFDFND.wav",
+			"killed" : "creatures/GELFKILL.wav",
+			"move" : "creatures/GELFMOVE.wav",
+			"shoot" : "creatures/GELFSHOT.wav",
+			"wince" : "creatures/GELFWNCE.wav"
 		}
 	}
 }

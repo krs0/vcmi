@@ -34,10 +34,10 @@
 		},
 		"abilityText" : "40% magic resistance.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CBDWAR.def",
-			"map" : "sprites/creatures/adventureMap/AVWdwrx0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL19.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort19.bmp",
+			"animation" : "creatures/battle/CBDWAR.def",
+			"map" : "creatures/adventureMap/AVWdwrx0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL19.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort19.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -48,11 +48,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/BDRFATTK.wav",
-			"defend" : "sounds/creatures/BDRFDFND.wav",
-			"killed" : "sounds/creatures/BDRFKILL.wav",
-			"move" : "sounds/creatures/BDRFMOVE.wav",
-			"wince" : "sounds/creatures/BDRFWNCE.wav"
+			"attack" : "creatures/BDRFATTK.wav",
+			"defend" : "creatures/BDRFDFND.wav",
+			"killed" : "creatures/BDRFKILL.wav",
+			"move" : "creatures/BDRFMOVE.wav",
+			"wince" : "creatures/BDRFWNCE.wav"
 		}
 	}
 }

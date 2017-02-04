@@ -44,10 +44,10 @@
 		},
 		"abilityText" : "Undead.  Regenerating.\nDrains enemy mana.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CWRAIT.def",
-			"map" : "sprites/creatures/adventureMap/AVWwigx0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL63.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort63.bmp",
+			"animation" : "creatures/battle/CWRAIT.def",
+			"map" : "creatures/adventureMap/AVWwigx0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL63.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort63.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -58,11 +58,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/WRTHATTK.wav",
-			"defend" : "sounds/creatures/WRTHDFND.wav",
-			"killed" : "sounds/creatures/WRTHKILL.wav",
-			"move" : "sounds/creatures/WRTHMOVE.wav",
-			"wince" : "sounds/creatures/WRTHWNCE.wav"
+			"attack" : "creatures/WRTHATTK.wav",
+			"defend" : "creatures/WRTHDFND.wav",
+			"killed" : "creatures/WRTHKILL.wav",
+			"move" : "creatures/WRTHMOVE.wav",
+			"wince" : "creatures/WRTHWNCE.wav"
 		}
 	}
 }

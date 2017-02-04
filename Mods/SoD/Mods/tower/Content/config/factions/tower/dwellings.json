@@ -6,37 +6,37 @@
 			"workshop" : 
 			{
 				"name" : "Workshop",
-				"graphics" : "sprites/factions/tower/adventureMap/dwellings/AVGGREM0.def"
+				"graphics" : "factions/tower/adventureMap/dwellings/AVGGREM0.def"
 			},
 			"parapet" : 
 			{
 				"name" : "Parapet",
-				"graphics" : "sprites/factions/tower/adventureMap/dwellings/AVGGARG0.def"
+				"graphics" : "factions/tower/adventureMap/dwellings/AVGGARG0.def"
 			},
 			"golemFactory" : 
 			{
 				"name" : "Golem Factory",
-				"graphics" : "sprites/factions/tower/adventureMap/dwellings/AVGgolm0.def"
+				"graphics" : "factions/tower/adventureMap/dwellings/AVGgolm0.def"
 			},
 			"mageTower" : 
 			{
 				"name" : "Mage Tower",
-				"graphics" : "sprites/factions/tower/adventureMap/dwellings/AVGmage0.def"
+				"graphics" : "factions/tower/adventureMap/dwellings/AVGmage0.def"
 			},
 			"altarOfWishes" : 
 			{
 				"name" : "Altar of Wishes",
-				"graphics" : "sprites/factions/tower/adventureMap/dwellings/AVGgeni0.def"
+				"graphics" : "factions/tower/adventureMap/dwellings/AVGgeni0.def"
 			},
 			"goldenPavilion" : 
 			{
 				"name" : "Golden Pavilion",
-				"graphics" : "sprites/factions/tower/adventureMap/dwellings/AVGnaga0.def"
+				"graphics" : "factions/tower/adventureMap/dwellings/AVGnaga0.def"
 			},
 			"cloudTemple" : 
 			{
 				"name" : "Cloud Temple",
-				"graphics" : "sprites/factions/tower/adventureMap/dwellings/AVGtitn0.def"
+				"graphics" : "factions/tower/adventureMap/dwellings/AVGtitn0.def"
 			}
 		}
 	}

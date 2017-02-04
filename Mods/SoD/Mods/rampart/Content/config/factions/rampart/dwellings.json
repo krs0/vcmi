@@ -6,37 +6,37 @@
 			"centaurStables" : 
 			{
 				"name" : "Centaur Stables",
-				"graphics" : "sprites/factions/rampart/adventureMap/dwellings/AVGCENT0.def"
+				"graphics" : "factions/rampart/adventureMap/dwellings/AVGCENT0.def"
 			},
 			"dwarfCottage" : 
 			{
 				"name" : "Dwarf Cottage",
-				"graphics" : "sprites/factions/rampart/adventureMap/dwellings/AVGdwrf0.def"
+				"graphics" : "factions/rampart/adventureMap/dwellings/AVGdwrf0.def"
 			},
 			"homestead" : 
 			{
 				"name" : "Homestead",
-				"graphics" : "sprites/factions/rampart/adventureMap/dwellings/AVGelf0.def"
+				"graphics" : "factions/rampart/adventureMap/dwellings/AVGelf0.def"
 			},
 			"enchantedSpring" : 
 			{
 				"name" : "Enchanted Spring",
-				"graphics" : "sprites/factions/rampart/adventureMap/dwellings/AVGpega0.def"
+				"graphics" : "factions/rampart/adventureMap/dwellings/AVGpega0.def"
 			},
 			"dendroidArches" : 
 			{
 				"name" : "Dendroid Arches",
-				"graphics" : "sprites/factions/rampart/adventureMap/dwellings/AVGtree0.def"
+				"graphics" : "factions/rampart/adventureMap/dwellings/AVGtree0.def"
 			},
 			"unicornGlade" : 
 			{
 				"name" : "Unicorn Glade",
-				"graphics" : "sprites/factions/rampart/adventureMap/dwellings/AVGUNIC0.def"
+				"graphics" : "factions/rampart/adventureMap/dwellings/AVGUNIC0.def"
 			},
 			"dragonCliffs" : 
 			{
 				"name" : "Dragon Cliffs",
-				"graphics" : "sprites/factions/rampart/adventureMap/dwellings/AVGgdrg0.def"
+				"graphics" : "factions/rampart/adventureMap/dwellings/AVGgdrg0.def"
 			}
 		}
 	}

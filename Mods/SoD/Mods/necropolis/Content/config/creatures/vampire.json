@@ -41,10 +41,10 @@
 		},
 		"abilityText" : "Undead.\nNo enemy retaliation.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CVAMP.def",
-			"map" : "sprites/creatures/adventureMap/AVWvamp0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL64.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort64.bmp",
+			"animation" : "creatures/battle/CVAMP.def",
+			"map" : "creatures/adventureMap/AVWvamp0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL64.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort64.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -55,13 +55,13 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/VAMPATTK.wav",
-			"defend" : "sounds/creatures/VAMPDFND.wav",
-			"endMoving" : "sounds/creatures/VAMPEXT2.wav",
-			"killed" : "sounds/creatures/VAMPKILL.wav",
-			"move" : "sounds/creatures/VAMPMOVE.wav",
-			"startMoving" : "sounds/creatures/VAMPEXT1.wav",
-			"wince" : "sounds/creatures/VAMPWNCE.wav"
+			"attack" : "creatures/VAMPATTK.wav",
+			"defend" : "creatures/VAMPDFND.wav",
+			"endMoving" : "creatures/VAMPEXT2.wav",
+			"killed" : "creatures/VAMPKILL.wav",
+			"move" : "creatures/VAMPMOVE.wav",
+			"startMoving" : "creatures/VAMPEXT1.wav",
+			"wince" : "creatures/VAMPWNCE.wav"
 		}
 	}
 }

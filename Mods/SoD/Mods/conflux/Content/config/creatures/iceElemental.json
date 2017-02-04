@@ -58,10 +58,10 @@
 		},
 		"abilityText" : "Mind spell immunity. Ice immunity. Fire vulnerability.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CICEE.def",
-			"map" : "sprites/creatures/adventureMap/AVWicee.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL125.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort125.bmp",
+			"animation" : "creatures/battle/CICEE.def",
+			"map" : "creatures/adventureMap/AVWicee.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL125.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort125.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -69,7 +69,7 @@
 				"walk" : 1
 			},
 			"missile" : {
-				"projectile" : "sprites/creatures/projectile/PICEE.DEF",
+				"projectile" : "creatures/projectile/PICEE.DEF",
 				"attackClimaxFrame" : 4,
 				"frameAngles" : [
 					90,
@@ -98,12 +98,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/ICELATTK.wav",
-			"defend" : "sounds/creatures/ICELDFND.wav",
-			"killed" : "sounds/creatures/ICELKILL.wav",
-			"move" : "sounds/creatures/ICELMOVE.wav",
-			"shoot" : "sounds/creatures/ICELSHOT.wav",
-			"wince" : "sounds/creatures/ICELWNCE.wav"
+			"attack" : "creatures/ICELATTK.wav",
+			"defend" : "creatures/ICELDFND.wav",
+			"killed" : "creatures/ICELKILL.wav",
+			"move" : "creatures/ICELMOVE.wav",
+			"shoot" : "creatures/ICELSHOT.wav",
+			"wince" : "creatures/ICELWNCE.wav"
 		}
 	}
 }

@@ -53,10 +53,10 @@
 		},
 		"abilityText" : "Undead.  -1 to enemy morale.  Attack ages enemies.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CHDRGN.def",
-			"map" : "sprites/creatures/adventureMap/AVWbonx0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL71.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort71.bmp",
+			"animation" : "creatures/battle/CHDRGN.def",
+			"map" : "creatures/adventureMap/AVWbonx0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL71.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort71.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -67,11 +67,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/GHDRATTK.wav",
-			"defend" : "sounds/creatures/GHDRDFND.wav",
-			"killed" : "sounds/creatures/GHDRKILL.wav",
-			"move" : "sounds/creatures/GHDRMOVE.wav",
-			"wince" : "sounds/creatures/GHDRWNCE.wav"
+			"attack" : "creatures/GHDRATTK.wav",
+			"defend" : "creatures/GHDRDFND.wav",
+			"killed" : "creatures/GHDRKILL.wav",
+			"move" : "creatures/GHDRMOVE.wav",
+			"wince" : "creatures/GHDRWNCE.wav"
 		}
 	}
 }

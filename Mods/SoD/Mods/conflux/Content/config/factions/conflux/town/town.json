@@ -3,14 +3,14 @@
 	{
 		"town" :
 		{
-			"musicTheme" : "music/factions/ElemTown.mp3",
+			"musicTheme" : "factions/ElemTown.mp3",
 			"defaultTavern" : 5,
 
-			"townBackground": "sprites/factions/conflux/townScreen/TBELBACK.bmp",
-			"guildBackground" : "sprites/factions/conflux/townScreen/TPMAGE.bmp",
-			"guildWindow": "sprites/factions/conflux/townScreen/TPMAGEEL.bmp",
-			"hallBackground": "sprites/factions/conflux/TPTHBKFR.BMP",
-			"tavernVideo" : "video/SoD/TAVERN.BIK",
+			"townBackground": "factions/conflux/townScreen/TBELBACK.bmp",
+			"guildBackground" : "factions/conflux/townScreen/TPMAGE.bmp",
+			"guildWindow": "factions/conflux/townScreen/TPMAGEEL.bmp",
+			"hallBackground": "factions/conflux/TPTHBKFR.BMP",
+			"tavernVideo" : "SoD/TAVERN.BIK",
 			"hallSlots":
 			[
 				[ [ "villageHall", "townHall", "cityHall", "capitol" ], [ "fort", "citadel", "castle" ], [ "tavern" ], [ "blacksmith" ] ],
@@ -77,27 +77,27 @@
 			"mageGuild" : 5,
 			"warMachine" : "ballista",
 			"primaryResource" : "mercury",
-			"buildingsIcons" : "sprites/factions/conflux/HALLELEM.DEF",
+			"buildingsIcons" : "factions/conflux/HALLELEM.DEF",
 			"icons" :
 			{
 				"village" : {
 					"normal" : {
-						"small" : "sprites/factions/conflux/icons/small/itpa36.bmp",
-					 	"large" : "sprites/factions/conflux/icons/large/itpt34.bmp"
+						"small" : "factions/conflux/icons/small/itpa36.bmp",
+					 	"large" : "factions/conflux/icons/large/itpt34.bmp"
 					 },
 					"built"  : {
-						"small" : "sprites/factions/conflux/icons/small/itpa37.bmp",
-						"large" : "sprites/factions/conflux/icons/large/itpt35.bmp" 
+						"small" : "factions/conflux/icons/small/itpa37.bmp",
+						"large" : "factions/conflux/icons/large/itpt35.bmp" 
 					}
 				},
 				"fort" : {
 					"normal" : {
-						"small" : "sprites/factions/conflux/icons/small/itpa18.bmp",
-					 	"large" : "sprites/factions/conflux/icons/large/itpt16.bmp" 
+						"small" : "factions/conflux/icons/small/itpa18.bmp",
+					 	"large" : "factions/conflux/icons/large/itpt16.bmp" 
 					 },
 					"built"  : {
-						"small" : "sprites/factions/conflux/icons/small/itpa19.bmp",
-						 "large" : "sprites/factions/conflux/icons/large/itpt17.bmp"
+						"small" : "factions/conflux/icons/small/itpa19.bmp",
+						 "large" : "factions/conflux/icons/large/itpt17.bmp"
 					}
 				}
 			},
@@ -105,11 +105,11 @@
 			"mapObject" :
 			{
 				"templates" : {
-					"castle" :  { "animation" : "sprites/factions/conflux/adventureMap/avchforx.def" },
-					"citadel" : { "animation" : "sprites/factions/conflux/adventureMap/avchforx.def" },
-					"fort"    : { "animation" : "sprites/factions/conflux/adventureMap/avchforx.def" },
-					"village" : { "animation" : "sprites/factions/conflux/adventureMap/AVCHFOR0.DEF" },
-					"capitol" : { "animation" : "sprites/factions/conflux/adventureMap/AVCHFORZ.DEF" }
+					"castle" :  { "animation" : "factions/conflux/adventureMap/avchforx.def" },
+					"citadel" : { "animation" : "factions/conflux/adventureMap/avchforx.def" },
+					"fort"    : { "animation" : "factions/conflux/adventureMap/avchforx.def" },
+					"village" : { "animation" : "factions/conflux/adventureMap/AVCHFOR0.DEF" },
+					"capitol" : { "animation" : "factions/conflux/adventureMap/AVCHFORZ.DEF" }
 				}
 			},
 

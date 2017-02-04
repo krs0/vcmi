@@ -38,10 +38,10 @@
 		},
 		"abilityText" : "Attacks siege walls.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CCYCLR.def",
-			"map" : "sprites/creatures/adventureMap/AVWcycl0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL96.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort96.bmp",
+			"animation" : "creatures/battle/CCYCLR.def",
+			"map" : "creatures/adventureMap/AVWcycl0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL96.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort96.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -49,7 +49,7 @@
 				"walk" : 1
 			},
 			"missile" : {
-				"projectile" : "sprites/creatures/projectile/PCYCLBX.DEF",
+				"projectile" : "creatures/projectile/PCYCLBX.DEF",
 				"attackClimaxFrame" : 7,
 				"frameAngles" : [
 					0,
@@ -78,12 +78,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/CCYCATTK.wav",
-			"defend" : "sounds/creatures/CCYCDFND.wav",
-			"killed" : "sounds/creatures/CCYCKILL.wav",
-			"move" : "sounds/creatures/CCYCMOVE.wav",
-			"shoot" : "sounds/creatures/CCYCSHOT.wav",
-			"wince" : "sounds/creatures/CCYCWNCE.wav"
+			"attack" : "creatures/CCYCATTK.wav",
+			"defend" : "creatures/CCYCDFND.wav",
+			"killed" : "creatures/CCYCKILL.wav",
+			"move" : "creatures/CCYCMOVE.wav",
+			"shoot" : "creatures/CCYCSHOT.wav",
+			"wince" : "creatures/CCYCWNCE.wav"
 		}
 	}
 }

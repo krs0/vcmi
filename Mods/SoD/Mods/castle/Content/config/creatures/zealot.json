@@ -37,10 +37,10 @@
 		},
 		"abilityText" : "No melee penalty.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CZEALT.def",
-			"map" : "sprites/creatures/adventureMap/AVWmonx0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL11.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort11.bmp",
+			"animation" : "creatures/battle/CZEALT.def",
+			"map" : "creatures/adventureMap/AVWmonx0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL11.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort11.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -48,7 +48,7 @@
 				"walk" : 1
 			},
 			"missile" : {
-				"projectile" : "sprites/creatures/projectile/CPRZEAX.DEF",
+				"projectile" : "creatures/projectile/CPRZEAX.DEF",
 				"attackClimaxFrame" : 6,
 				"frameAngles" : [
 					90,
@@ -77,12 +77,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/ZELTATTK.wav",
-			"defend" : "sounds/creatures/ZELTDFND.wav",
-			"killed" : "sounds/creatures/ZELTKILL.wav",
-			"move" : "sounds/creatures/ZELTMOVE.wav",
-			"shoot" : "sounds/creatures/ZELTSHOT.wav",
-			"wince" : "sounds/creatures/ZELTWNCE.wav"
+			"attack" : "creatures/ZELTATTK.wav",
+			"defend" : "creatures/ZELTDFND.wav",
+			"killed" : "creatures/ZELTKILL.wav",
+			"move" : "creatures/ZELTMOVE.wav",
+			"shoot" : "creatures/ZELTSHOT.wav",
+			"wince" : "creatures/ZELTWNCE.wav"
 		}
 	}
 }

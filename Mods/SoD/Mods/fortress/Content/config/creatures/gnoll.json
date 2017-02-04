@@ -30,10 +30,10 @@
 		"abilityText" : "",
 		"hasDoubleWeek" : true,
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CGNOLL.def",
-			"map" : "sprites/creatures/adventureMap/AVWgnll0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL100.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort100.bmp",
+			"animation" : "creatures/battle/CGNOLL.def",
+			"map" : "creatures/adventureMap/AVWgnll0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL100.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort100.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -44,11 +44,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/GNOLATTK.wav",
-			"defend" : "sounds/creatures/GNOLDFND.wav",
-			"killed" : "sounds/creatures/GNOLKILL.wav",
-			"move" : "sounds/creatures/GNOLMOVE.wav",
-			"wince" : "sounds/creatures/GNOLWNCE.wav"
+			"attack" : "creatures/GNOLATTK.wav",
+			"defend" : "creatures/GNOLDFND.wav",
+			"killed" : "creatures/GNOLKILL.wav",
+			"move" : "creatures/GNOLMOVE.wav",
+			"wince" : "creatures/GNOLWNCE.wav"
 		},
 	}
 }

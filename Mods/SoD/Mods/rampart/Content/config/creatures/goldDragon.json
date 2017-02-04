@@ -47,10 +47,10 @@
 		},
 		"abilityText" : "Immune to spell levels 1-4.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CDDRAG.def",
-			"map" : "sprites/creatures/adventureMap/AVWdrax0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL29.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort29.bmp",
+			"animation" : "creatures/battle/CDDRAG.def",
+			"map" : "creatures/adventureMap/AVWdrax0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL29.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort29.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -61,11 +61,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/GODRATTK.wav",
-			"defend" : "sounds/creatures/GODRDFND.wav",
-			"killed" : "sounds/creatures/GODRKILL.wav",
-			"move" : "sounds/creatures/GODRMOVE.wav",
-			"wince" : "sounds/creatures/GODRWNCE.wav"
+			"attack" : "creatures/GODRATTK.wav",
+			"defend" : "creatures/GODRDFND.wav",
+			"killed" : "creatures/GODRKILL.wav",
+			"move" : "creatures/GODRMOVE.wav",
+			"wince" : "creatures/GODRWNCE.wav"
 		}
 	}
 }

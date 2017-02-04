@@ -38,10 +38,10 @@
 		},
 		"abilityText" : "Mind spell immunity",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CLTITA.def",
-			"map" : "sprites/creatures/adventureMap/AVWtitn0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL42.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort42.bmp",
+			"animation" : "creatures/battle/CLTITA.def",
+			"map" : "creatures/adventureMap/AVWtitn0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL42.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort42.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -52,11 +52,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/LTITATTK.wav",
-			"defend" : "sounds/creatures/LTITDFND.wav",
-			"killed" : "sounds/creatures/LTITKILL.wav",
-			"move" : "sounds/creatures/LTITMOVE.wav",
-			"wince" : "sounds/creatures/LTITWNCE.wav"
+			"attack" : "creatures/LTITATTK.wav",
+			"defend" : "creatures/LTITDFND.wav",
+			"killed" : "creatures/LTITKILL.wav",
+			"move" : "creatures/LTITMOVE.wav",
+			"wince" : "creatures/LTITWNCE.wav"
 		}
 	}
 }

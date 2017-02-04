@@ -34,10 +34,10 @@
 		},
 		"abilityText" : "Strikes twice.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CCRUSD.def",
-			"map" : "sprites/creatures/adventureMap/AVWswrx0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL9.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort9.bmp",
+			"animation" : "creatures/battle/CCRUSD.def",
+			"map" : "creatures/adventureMap/AVWswrx0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL9.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort9.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -48,11 +48,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/CRUSATTK.wav",
-			"defend" : "sounds/creatures/CRUSDFND.wav",
-			"killed" : "sounds/creatures/CRUSKILL.wav",
-			"move" : "sounds/creatures/CRUSMOVE.wav",
-			"wince" : "sounds/creatures/CRUSWNCE.wav"
+			"attack" : "creatures/CRUSATTK.wav",
+			"defend" : "creatures/CRUSDFND.wav",
+			"killed" : "creatures/CRUSKILL.wav",
+			"move" : "creatures/CRUSMOVE.wav",
+			"wince" : "creatures/CRUSWNCE.wav"
 		}
 	}
 }

@@ -34,10 +34,10 @@
 		},
 		"abilityText" : "",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CORCCH.def",
-			"map" : "sprites/creatures/adventureMap/AVWorcx0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL91.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort91.bmp",
+			"animation" : "creatures/battle/CORCCH.def",
+			"map" : "creatures/adventureMap/AVWorcx0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL91.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort91.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -45,7 +45,7 @@
 				"walk" : 1
 			},
 			"missile" : {
-				"projectile" : "sprites/creatures/projectile/PORCHX.DEF",
+				"projectile" : "creatures/projectile/PORCHX.DEF",
 				"attackClimaxFrame" : 4,
 				"frameAngles" : [
 					90,
@@ -74,12 +74,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/ORCCATTK.wav",
-			"defend" : "sounds/creatures/ORCCDFND.wav",
-			"killed" : "sounds/creatures/ORCCKILL.wav",
-			"move" : "sounds/creatures/ORCCMOVE.wav",
-			"shoot" : "sounds/creatures/ORCCSHOT.wav",
-			"wince" : "sounds/creatures/ORCCWNCE.wav"
+			"attack" : "creatures/ORCCATTK.wav",
+			"defend" : "creatures/ORCCDFND.wav",
+			"killed" : "creatures/ORCCKILL.wav",
+			"move" : "creatures/ORCCMOVE.wav",
+			"shoot" : "creatures/ORCCSHOT.wav",
+			"wince" : "creatures/ORCCWNCE.wav"
 		}
 	}
 }

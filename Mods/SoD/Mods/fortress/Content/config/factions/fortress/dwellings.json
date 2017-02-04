@@ -6,37 +6,37 @@
 			"gnollHut" : 
 			{
 				"name" : "Gnoll Hut",
-				"graphics" : "sprites/factions/fortress/adventureMap/dwellings/AVGGNLL0.def"
+				"graphics" : "factions/fortress/adventureMap/dwellings/AVGGNLL0.def"
 			},
 			"lizardDen" : 
 			{
 				"name" : "Lizard Den",
-				"graphics" : "sprites/factions/fortress/adventureMap/dwellings/AVGlzrd0.def"
+				"graphics" : "factions/fortress/adventureMap/dwellings/AVGlzrd0.def"
 			},
 			"serpentFlyHive" : 
 			{
 				"name" : "Serpent Fly Hive",
-				"graphics" : "sprites/factions/fortress/adventureMap/dwellings/AVGdfly0.def"
+				"graphics" : "factions/fortress/adventureMap/dwellings/AVGdfly0.def"
 			},
 			"basiliskPit" : 
 			{
 				"name" : "Basilisk Pit",
-				"graphics" : "sprites/factions/fortress/adventureMap/dwellings/AVGbasl0.def"
+				"graphics" : "factions/fortress/adventureMap/dwellings/AVGbasl0.def"
 			},
 			"gorgonLair" : 
 			{
 				"name" : "Gorgon Lair",
-				"graphics" : "sprites/factions/fortress/adventureMap/dwellings/AVGgorg0.def"
+				"graphics" : "factions/fortress/adventureMap/dwellings/AVGgorg0.def"
 			},
 			"wyvernNest" : 
 			{
 				"name" : "Wyvern Nest",
-				"graphics" : "sprites/factions/fortress/adventureMap/dwellings/AVGwyvn0.def"
+				"graphics" : "factions/fortress/adventureMap/dwellings/AVGwyvn0.def"
 			},
 			"hydraPond" : 
 			{
 				"name" : "Hydra Pond",
-				"graphics" : "sprites/factions/fortress/adventureMap/dwellings/AVGhydr0.def"
+				"graphics" : "factions/fortress/adventureMap/dwellings/AVGhydr0.def"
 			}
 		}
 	}

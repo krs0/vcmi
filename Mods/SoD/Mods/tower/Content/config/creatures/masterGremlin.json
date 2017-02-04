@@ -34,10 +34,10 @@
 		},
 		"abilityText" : "Ranged attacker.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CGREMM.def",
-			"map" : "sprites/creatures/adventureMap/AVWgrex0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL31.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort31.bmp",
+			"animation" : "creatures/battle/CGREMM.def",
+			"map" : "creatures/adventureMap/AVWgrex0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL31.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort31.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -73,12 +73,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/MGRMATTK.wav",
-			"defend" : "sounds/creatures/MGRMDFND.wav",
-			"killed" : "sounds/creatures/MGRMKILL.wav",
-			"move" : "sounds/creatures/MGRMMOVE.wav",
-			"shoot" : "sounds/creatures/MGRMSHOT.wav",
-			"wince" : "sounds/creatures/MGRMWNCE.wav"
+			"attack" : "creatures/MGRMATTK.wav",
+			"defend" : "creatures/MGRMDFND.wav",
+			"killed" : "creatures/MGRMKILL.wav",
+			"move" : "creatures/MGRMMOVE.wav",
+			"shoot" : "creatures/MGRMSHOT.wav",
+			"wince" : "creatures/MGRMWNCE.wav"
 		}
 	}
 }

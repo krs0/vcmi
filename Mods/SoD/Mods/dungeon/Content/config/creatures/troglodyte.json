@@ -42,10 +42,10 @@
 		"abilityText" : "Immune to Blinding.",
 		"hasDoubleWeek" : true,
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CTROGL.def",
-			"map" : "sprites/creatures/adventureMap/AVWtrog0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL72.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort72.bmp",
+			"animation" : "creatures/battle/CTROGL.def",
+			"map" : "creatures/adventureMap/AVWtrog0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL72.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort72.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -56,11 +56,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/TROGATTK.wav",
-			"defend" : "sounds/creatures/TROGDFND.wav",
-			"killed" : "sounds/creatures/TROGKILL.wav",
-			"move" : "sounds/creatures/TROGMOVE.wav",
-			"wince" : "sounds/creatures/TROGWNCE.wav"
+			"attack" : "creatures/TROGATTK.wav",
+			"defend" : "creatures/TROGDFND.wav",
+			"killed" : "creatures/TROGKILL.wav",
+			"move" : "creatures/TROGMOVE.wav",
+			"wince" : "creatures/TROGWNCE.wav"
 		}
 	}
 }

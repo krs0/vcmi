@@ -43,10 +43,10 @@
 		},
 		"abilityText" : "Dispels beneficial spells.  Weakens enemies.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CDRFIR.def",
-			"map" : "sprites/creatures/adventureMap/AvWDfir.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL107.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort107.bmp",
+			"animation" : "creatures/battle/CDRFIR.def",
+			"map" : "creatures/adventureMap/AvWDfir.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL107.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort107.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -57,12 +57,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/FDFLATTK.wav",
-			"defend" : "sounds/creatures/FDFLDFND.wav",
-			"killed" : "sounds/creatures/FDFLKILL.wav",
-			"move" : "sounds/creatures/FDFLMOVE.wav",
-			"shoot" : "sounds/creatures/FDFLSHOT.wav",
-			"wince" : "sounds/creatures/FDFLWNCE.wav"
+			"attack" : "creatures/FDFLATTK.wav",
+			"defend" : "creatures/FDFLDFND.wav",
+			"killed" : "creatures/FDFLKILL.wav",
+			"move" : "creatures/FDFLMOVE.wav",
+			"shoot" : "creatures/FDFLSHOT.wav",
+			"wince" : "creatures/FDFLWNCE.wav"
 		}
 	}
 }

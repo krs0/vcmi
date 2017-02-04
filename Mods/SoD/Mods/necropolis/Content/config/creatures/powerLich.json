@@ -41,10 +41,10 @@
 		},
 		"abilityText" : "Undead.  Death cloud attack.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CPLICH.def",
-			"map" : "sprites/creatures/adventureMap/AVWlicx0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL67.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort67.bmp",
+			"animation" : "creatures/battle/CPLICH.def",
+			"map" : "creatures/adventureMap/AVWlicx0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL67.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort67.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -52,7 +52,7 @@
 				"walk" : 1
 			},
 			"missile" : {
-				"projectile" : "sprites/creatures/projectile/PLICH.DEF",
+				"projectile" : "creatures/projectile/PLICH.DEF",
 				"attackClimaxFrame" : 8,
 				"frameAngles" : [
 					90,
@@ -81,12 +81,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/PLCHATTK.wav",
-			"defend" : "sounds/creatures/PLCHDFND.wav",
-			"killed" : "sounds/creatures/PLCHKILL.wav",
-			"move" : "sounds/creatures/PLCHMOVE.wav",
-			"shoot" : "sounds/creatures/PLCHSHOT.wav",
-			"wince" : "sounds/creatures/PLCHWNCE.wav"
+			"attack" : "creatures/PLCHATTK.wav",
+			"defend" : "creatures/PLCHDFND.wav",
+			"killed" : "creatures/PLCHKILL.wav",
+			"move" : "creatures/PLCHMOVE.wav",
+			"shoot" : "creatures/PLCHSHOT.wav",
+			"wince" : "creatures/PLCHWNCE.wav"
 		}
 	}
 }

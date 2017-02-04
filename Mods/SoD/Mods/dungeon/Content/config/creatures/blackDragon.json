@@ -59,10 +59,10 @@
 		"abilityText" : "Immune to all spells.",
 		"hasDoubleWeek" : true,
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CBDRGN.def",
-			"map" : "sprites/creatures/adventureMap/AVWddrx0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL85.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort85.bmp",
+			"animation" : "creatures/battle/CBDRGN.def",
+			"map" : "creatures/adventureMap/AVWddrx0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL85.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort85.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -73,11 +73,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/BKDRATTK.wav",
-			"defend" : "sounds/creatures/BKDRDFND.wav",
-			"killed" : "sounds/creatures/BKDRKILL.wav",
-			"move" : "sounds/creatures/BKDRMOVE.wav",
-			"wince" : "sounds/creatures/BKDRWNCE.wav"
+			"attack" : "creatures/BKDRATTK.wav",
+			"defend" : "creatures/BKDRDFND.wav",
+			"killed" : "creatures/BKDRKILL.wav",
+			"move" : "creatures/BKDRMOVE.wav",
+			"wince" : "creatures/BKDRWNCE.wav"
 		}
 	}
 }

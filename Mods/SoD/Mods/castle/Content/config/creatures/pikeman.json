@@ -34,10 +34,10 @@
 		},
 		"abilityText" : "",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CPKMAN.def",
-			"map" : "sprites/creatures/adventureMap/AvWPike.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL2.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort2.bmp",
+			"animation" : "creatures/battle/CPKMAN.def",
+			"map" : "creatures/adventureMap/AvWPike.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL2.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort2.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -48,11 +48,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/PIKEATTK.wav",
-			"defend" : "sounds/creatures/PIKEDFND.wav",
-			"killed" : "sounds/creatures/PIKEKILL.wav",
-			"move" : "sounds/creatures/PIKEMOVE.wav",
-			"wince" : "sounds/creatures/PIKEWNCE.wav"
+			"attack" : "creatures/PIKEATTK.wav",
+			"defend" : "creatures/PIKEDFND.wav",
+			"killed" : "creatures/PIKEKILL.wav",
+			"move" : "creatures/PIKEMOVE.wav",
+			"wince" : "creatures/PIKEWNCE.wav"
 		}
 	}
 }

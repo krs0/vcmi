@@ -35,10 +35,10 @@
 		},
 		"abilityText" : "",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CMONKK.def",
-			"map" : "sprites/creatures/adventureMap/AvWMonk.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL10.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort10.bmp",
+			"animation" : "creatures/battle/CMONKK.def",
+			"map" : "creatures/adventureMap/AvWMonk.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL10.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort10.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -46,7 +46,7 @@
 				"walk" : 1
 			},
 			"missile" : {
-				"projectile" : "sprites/creatures/projectile/CPRZEAX.DEF",
+				"projectile" : "creatures/projectile/CPRZEAX.DEF",
 				"attackClimaxFrame" : 8,
 				"frameAngles" : [
 					90,
@@ -75,12 +75,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/MONKATTK.wav",
-			"defend" : "sounds/creatures/MONKDFND.wav",
-			"killed" : "sounds/creatures/MONKKILL.wav",
-			"move" : "sounds/creatures/MONKMOVE.wav",
-			"shoot" : "sounds/creatures/MONKSHOT.wav",
-			"wince" : "sounds/creatures/MONKWNCE.wav"
+			"attack" : "creatures/MONKATTK.wav",
+			"defend" : "creatures/MONKDFND.wav",
+			"killed" : "creatures/MONKKILL.wav",
+			"move" : "creatures/MONKMOVE.wav",
+			"shoot" : "creatures/MONKSHOT.wav",
+			"wince" : "creatures/MONKWNCE.wav"
 		}
 	}
 }

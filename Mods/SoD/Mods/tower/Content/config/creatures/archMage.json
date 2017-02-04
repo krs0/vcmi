@@ -44,10 +44,10 @@
 		},
 		"abilityText" : "No melee penalty.\nHero spells cost less.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CAMAGE.def",
-			"map" : "sprites/creatures/adventureMap/AVWmagx0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL37.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort37.bmp",
+			"animation" : "creatures/battle/CAMAGE.def",
+			"map" : "creatures/adventureMap/AVWmagx0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL37.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort37.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -55,7 +55,7 @@
 				"walk" : 1
 			},
 			"missile" : {
-				"projectile" : "sprites/creatures/projectile/PMAGEX.DEF",
+				"projectile" : "creatures/projectile/PMAGEX.DEF",
 				"attackClimaxFrame" : 9,
 				"frameAngles" : [
 					90,
@@ -84,12 +84,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/AMAGATTK.wav",
-			"defend" : "sounds/creatures/AMAGDFND.wav",
-			"killed" : "sounds/creatures/AMAGKILL.wav",
-			"move" : "sounds/creatures/AMAGMOVE.wav",
-			"shoot" : "sounds/creatures/AMAGSHOT.wav",
-			"wince" : "sounds/creatures/AMAGWNCE.wav"
+			"attack" : "creatures/AMAGATTK.wav",
+			"defend" : "creatures/AMAGDFND.wav",
+			"killed" : "creatures/AMAGKILL.wav",
+			"move" : "creatures/AMAGMOVE.wav",
+			"shoot" : "creatures/AMAGSHOT.wav",
+			"wince" : "creatures/AMAGWNCE.wav"
 		}
 	}
 }

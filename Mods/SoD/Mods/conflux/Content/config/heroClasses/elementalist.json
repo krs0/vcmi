@@ -8,15 +8,15 @@
 		"mapObject" : {
 			"templates" : {
 				"default" : {
-				 "animation" : "sprites/heroClasses/AH17_.def",
-				 "editorAnimation": "sprites/heroClasses/AH17_E.def"
+				 "animation" : "heroClasses/AH17_.def",
+				 "editorAnimation": "heroClasses/AH17_E.def"
 				}
 			}
 		},
 		"animation" : {
 			"battle" : { 
-				"male" : "sprites/heroClasses/CH17.DEF",
-				"female" : "sprites/heroClasses/CH17.DEF"
+				"male" : "heroClasses/CH17.DEF",
+				"female" : "heroClasses/CH17.DEF"
 			}
 		},
 		"primarySkills" : {

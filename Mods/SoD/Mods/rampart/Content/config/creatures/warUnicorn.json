@@ -39,10 +39,10 @@
 		},
 		"abilityText" : "Aura of magic resistance. Blinding attack.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CWUNIC.def",
-			"map" : "sprites/creatures/adventureMap/AVWunix0.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL27.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort27.bmp",
+			"animation" : "creatures/battle/CWUNIC.def",
+			"map" : "creatures/adventureMap/AVWunix0.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL27.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort27.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -53,12 +53,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/WUNCATTK.wav",
-			"defend" : "sounds/creatures/WUNCDFND.wav",
-			"killed" : "sounds/creatures/WUNCKILL.wav",
-			"move" : "sounds/creatures/WUNCMOVE.wav",
-			"shoot" : "sounds/creatures/WUNCSHOT.wav",
-			"wince" : "sounds/creatures/WUNCWNCE.wav"
+			"attack" : "creatures/WUNCATTK.wav",
+			"defend" : "creatures/WUNCDFND.wav",
+			"killed" : "creatures/WUNCKILL.wav",
+			"move" : "creatures/WUNCMOVE.wav",
+			"shoot" : "creatures/WUNCSHOT.wav",
+			"wince" : "creatures/WUNCWNCE.wav"
 		}
 	}
 }

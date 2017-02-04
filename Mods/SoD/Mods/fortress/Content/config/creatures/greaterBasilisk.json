@@ -35,10 +35,10 @@
 		},
 		"abilityText" : "Petrifying attack.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CGBASI.def",
-			"map" : "sprites/creatures/adventureMap/AvWGBas.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL109.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort109.bmp",
+			"animation" : "creatures/battle/CGBASI.def",
+			"map" : "creatures/adventureMap/AvWGBas.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL109.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort109.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -49,11 +49,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/GBASATTK.wav",
-			"defend" : "sounds/creatures/GBASDFND.wav",
-			"killed" : "sounds/creatures/GBASKILL.wav",
-			"move" : "sounds/creatures/GBASMOVE.wav",
-			"wince" : "sounds/creatures/GBASWNCE.wav"
+			"attack" : "creatures/GBASATTK.wav",
+			"defend" : "creatures/GBASDFND.wav",
+			"killed" : "creatures/GBASKILL.wav",
+			"move" : "creatures/GBASMOVE.wav",
+			"wince" : "creatures/GBASWNCE.wav"
 		}
 	}
 }

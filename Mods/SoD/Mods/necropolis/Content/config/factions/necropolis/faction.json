@@ -22,8 +22,8 @@
 		],
 		"creatureBackground" :
 		{
-			"120px" : "sprites/factions/necropolis/TPCASNEC.bmp",
-			"130px" : "sprites/factions/necropolis/CRBKGNEC.bmp"
+			"120px" : "factions/necropolis/TPCASNEC.bmp",
+			"130px" : "factions/necropolis/CRBKGNEC.bmp"
 		},
 	}
 }

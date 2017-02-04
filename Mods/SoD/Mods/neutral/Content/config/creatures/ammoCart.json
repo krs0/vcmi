@@ -36,9 +36,9 @@
 		},
 		"abilityText" : "Unlimited ammunition.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/SMCART.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL150.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort150.bmp",
+			"animation" : "creatures/battle/SMCART.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL150.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort150.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -49,8 +49,8 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"killed" : "sounds/creatures/CARTKILL.wav",
-			"wince" : "sounds/creatures/CARTWNCE.wav"
+			"killed" : "creatures/CARTKILL.wav",
+			"wince" : "creatures/CARTWNCE.wav"
 		},
 		"special" : true
 	}

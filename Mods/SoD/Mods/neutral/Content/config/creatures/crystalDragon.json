@@ -44,10 +44,10 @@
 		},
 		"abilityText" : "Crystal generation.",
 		"graphics" : {
-			"animation" : "sprites/creatures/battle/CCDRGN.def",
-			"map" : "sprites/creatures/adventureMap/AVWcdrg.def",
-			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL135.bmp",
-			"iconLarge" : "sprites/creatures/icons/large/TwCrPort135.bmp",
+			"animation" : "creatures/battle/CCDRGN.def",
+			"map" : "creatures/adventureMap/AVWcdrg.def",
+			"iconSmall" : "creatures/icons/small/CPRSMALL135.bmp",
+			"iconLarge" : "creatures/icons/large/TwCrPort135.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -58,11 +58,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "sounds/creatures/CRYSATTK.wav",
-			"defend" : "sounds/creatures/CRYSDFND.wav",
-			"killed" : "sounds/creatures/CRYSKILL.wav",
-			"move" : "sounds/creatures/CRYSMOVE.wav",
-			"wince" : "sounds/creatures/CRYSWNCE.wav"
+			"attack" : "creatures/CRYSATTK.wav",
+			"defend" : "creatures/CRYSDFND.wav",
+			"killed" : "creatures/CRYSKILL.wav",
+			"move" : "creatures/CRYSMOVE.wav",
+			"wince" : "creatures/CRYSWNCE.wav"
 		},
 
 		"special" : true

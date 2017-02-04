@@ -221,7 +221,7 @@ void parseOriginalDataFilesAndMoveToMods()
 	//// Move creature banks files
 
 	//destinationPath = modPath.append("SoD/mods/creatureBanks/resources/sprites/SoD/");
-	//const JsonNode configCreatureBanks(ResourceID("ModsTemp/SoD/mods/creatureBanks/resources/config/SoD/creatureBanks.json"));
+	//const JsonNode configCreatureBanks(ResourceID("Mods/SoD/mods/creatureBanks/resources/config/SoD/creatureBanks.json"));
 	//for(const JsonNode &oneBank : configCreatureBanks["banks"].Vector())
 	//{
 	//	for(const JsonNode &graphics : oneBank["graphics"].Vector())
@@ -236,7 +236,7 @@ void parseOriginalDataFilesAndMoveToMods()
 
 	//// Move spell sound files
 	//destinationPath = modPath / "SoD/mods/spells/resources/";
-	//const JsonNode configSpellInfo(ResourceID("ModsTemp/SoD/mods/spells/resources/config/SoD/spellInfo.json"));
+	//const JsonNode configSpellInfo(ResourceID("Mods/SoD/mods/spells/resources/config/SoD/spellInfo.json"));
 	//for(auto &spell : configSpellInfo["spells"].Struct())
 	//{
 	//	std::string spellSoundPath = spell.second["soundfile"].String();
@@ -284,7 +284,7 @@ void parseOriginalDataFilesAndMoveToMods()
 		// move creature files
 
 		// get list of creature config files
-		const JsonNode configCreatureList(ResourceID("ModsTemp/SoD/mods/" + faction + "/mod.json"));
+		const JsonNode configCreatureList(ResourceID("Mods/SoD/mods/" + faction + "/mod.json"));
 		destinationPath = modPath / "SoD\\mods" / faction / "resources";
 		for(const JsonNode &creatureMod : configCreatureList["creatures"].Vector())
 		{
@@ -293,7 +293,7 @@ void parseOriginalDataFilesAndMoveToMods()
 			std::string creatureName = removeExtension(configFileName);
 
 			// move creature sprites
-			const JsonNode configCreatures(ResourceID("ModsTemp/SoD/mods/"+ faction + "/resources/" + configFilePath));
+			const JsonNode configCreatures(ResourceID("Mods/SoD/mods/"+ faction + "/resources/" + configFilePath));
 
 			moveFileFromConfig(configCreatures, creatureName, "graphics", "animation", spritesPath, destinationPath);
 			moveFileFromConfig(configCreatures, creatureName, "graphics", "map", spritesPath, destinationPath);
@@ -320,7 +320,7 @@ void parseOriginalDataFilesAndMoveToMods()
 		// move hero files
 		
 		destinationPath = modPath / "SoD\\mods" / faction / "resources";
-		const JsonNode configHeroesList(ResourceID("ModsTemp/SoD/mods/" + faction + "/mod.json")); // list of config files
+		const JsonNode configHeroesList(ResourceID("Mods/SoD/mods/" + faction + "/mod.json")); // list of config files
 
 		// move hero classes files
 		for(const JsonNode &heroClasesNode : configHeroesList["heroClasses"].Vector())
@@ -329,7 +329,7 @@ void parseOriginalDataFilesAndMoveToMods()
 			std::string configFileName = extractFileName(sTemp);
 			std::string heroClassName = removeExtension(configFileName);
 
-			const JsonNode configHeroClass(ResourceID("ModsTemp/SoD/mods/" + faction + "/resources/config/heroClasses/" + configFileName));
+			const JsonNode configHeroClass(ResourceID("Mods/SoD/mods/" + faction + "/resources/config/heroClasses/" + configFileName));
 
 			moveFileFromConfig(configHeroClass, heroClassName, "animation", "battle", "female", spritesPath, destinationPath);
 			moveFileFromConfig(configHeroClass, heroClassName, "animation", "battle", "male", spritesPath, destinationPath);
@@ -345,7 +345,7 @@ void parseOriginalDataFilesAndMoveToMods()
 			std::string configFileName = extractFileName(sTemp);
 			std::string heroName = removeExtension(configFileName);
 
-			const JsonNode configHeroes(ResourceID("ModsTemp/SoD/mods/" + faction + "/resources/config/heroes/" + configFileName));
+			const JsonNode configHeroes(ResourceID("Mods/SoD/mods/" + faction + "/resources/config/heroes/" + configFileName));
 
 			moveFileFromConfig(configHeroes, heroName, "images", "large", imagesPath, destinationPath);
 			moveFileFromConfig(configHeroes, heroName, "images", "small", imagesPath, destinationPath);
@@ -357,12 +357,12 @@ void parseOriginalDataFilesAndMoveToMods()
 
 		// move dwellings files
 		destinationPath = modPath / "SoD\\mods" / faction / "resources";
-		const JsonNode configDwellings(ResourceID("ModsTemp/SoD/mods/"+ faction + "/resources/config/factions/" + faction + "/dwellings.json"));
+		const JsonNode configDwellings(ResourceID("Mods/SoD/mods/"+ faction + "/resources/config/factions/" + faction + "/dwellings.json"));
 		for(auto &nodeName : configDwellings[faction]["dwellings"].Struct())
 			moveFileFromConfig(configDwellings[faction], "dwellings", nodeName.first, "graphics", spritesPath, destinationPath );
 
 		// move creature backgrounds
-		const JsonNode configFaction(ResourceID("ModsTemp/SoD/mods/" + faction + "/resources/config/factions/" + faction + "/faction.json"));
+		const JsonNode configFaction(ResourceID("Mods/SoD/mods/" + faction + "/resources/config/factions/" + faction + "/faction.json"));
 		moveFileFromConfig(configFaction[faction], "creatureBackground", "120px", imagesPath, destinationPath );
 		moveFileFromConfig(configFaction[faction], "creatureBackground", "130px", imagesPath, destinationPath );
 
@@ -372,7 +372,7 @@ void parseOriginalDataFilesAndMoveToMods()
 
 		// move puzzle files
 		destinationPath = modPath / "SoD\\mods" / faction / "resources\\sprites\\factions" / faction / "puzzleMap";
-		const JsonNode configPuzzle(ResourceID("ModsTemp/SoD/mods/" + faction + "/resources/config/factions/" + faction +  "/puzzleMap.json"));
+		const JsonNode configPuzzle(ResourceID("Mods/SoD/mods/" + faction + "/resources/config/factions/" + faction +  "/puzzleMap.json"));
 		std::string puzzlePrefix =  configPuzzle[faction]["puzzleMap"]["prefix"].String();
 
 		for(int i=0; i<=48; i++)
@@ -392,7 +392,7 @@ void parseOriginalDataFilesAndMoveToMods()
 
 		// move siege files
 		destinationPath = modPath / "SoD\\mods" / faction / "resources\\sprites\\factions" / faction / "siege";
-		const JsonNode configSiege(ResourceID("ModsTemp/SoD/mods/" + faction + "/resources/config/factions/" + faction + "/town/siege.json"));
+		const JsonNode configSiege(ResourceID("Mods/SoD/mods/" + faction + "/resources/config/factions/" + faction + "/town/siege.json"));
 		std::string siegePrefix =  configSiege[faction]["town"]["siege"]["imagePrefix"].String();
 
 		for(std::string siegeBuilding : siegeBuildings)
@@ -403,7 +403,7 @@ void parseOriginalDataFilesAndMoveToMods()
 
 		// move structure files
 		destinationPath = modPath / "SoD\\mods" / faction / "resources\\sprites\\factions" / faction / "townScreen";
-		const JsonNode configStructures(ResourceID("ModsTemp/SoD/mods/" + faction + "/resources/config/factions/" + faction + "/town/structures.json"));
+		const JsonNode configStructures(ResourceID("Mods/SoD/mods/" + faction + "/resources/config/factions/" + faction + "/town/structures.json"));
 		const JsonNode &structuresNode = configStructures[faction]["town"];
 
 		// move animation sprites + area and border images
@@ -416,7 +416,7 @@ void parseOriginalDataFilesAndMoveToMods()
 
 		// move town files
 
-		const JsonNode configTown(ResourceID("ModsTemp/SoD/mods/" + faction + "/resources/config/factions/" + faction + "/town/town.json"));
+		const JsonNode configTown(ResourceID("Mods/SoD/mods/" + faction + "/resources/config/factions/" + faction + "/town/town.json"));
 		destinationPath = modPath / "SoD\\mods" / faction / "resources";
 		
 		moveFileFromConfig(configTown, faction, "town", "townBackground", imagesPath, destinationPath);

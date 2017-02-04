@@ -22,8 +22,8 @@
 		],
 		"creatureBackground" :
 		{
-			"120px" : "sprites/factions/rampart/TPCASRAM.bmp",
-			"130px" : "sprites/factions/rampart/CRBKGRAM.bmp"
+			"120px" : "factions/rampart/TPCASRAM.bmp",
+			"130px" : "factions/rampart/CRBKGRAM.bmp"
 		},
 	}
 }
