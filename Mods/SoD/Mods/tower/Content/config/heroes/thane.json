@@ -1,0 +1,64 @@
+{
+	"thane" :
+	{
+		"class" : "alchemist",
+		"female" : false,
+
+		"index" : 33,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL033AL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS033AL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "apprenticeGremlin",
+				"max" : 40,
+				"min" : 30
+			},
+			{
+				"creature" : "stoneGargoyle",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "ironGolem",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "advanced",
+				"skill" : "scholar"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 36,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+		"spellbook" : [
+			"magicArrow"
+		],
+
+		"texts" : {
+			"biography" : "No one really knows Thane's background, but he has been teaching Alchemy in Bracada for so long that not even the elders remember a time without him.",
+			"name" : "Thane",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Genies or Master Genies for each level attained after 5th level.",
+				"name" : "Genies",
+				"tooltip" : "Creature Bonus: Genies"
+			}
+		}
+	}
+}
+

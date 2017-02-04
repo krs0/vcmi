@@ -1,0 +1,65 @@
+{
+	"calh" :
+	{
+		"class" : "demoniac",
+		"female" : false,
+
+		"index" : 53,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL053HR.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS053HR.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "gog",
+				"max" : 7,
+				"min" : 4
+			},
+			{
+				"creature" : "gog",
+				"max" : 7,
+				"min" : 4
+			},
+			{
+				"creature" : "gog",
+				"max" : 7,
+				"min" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "archery"
+			},
+			{
+				"level" : "basic",
+				"skill" : "scouting"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 42,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+		
+		"texts" : {
+			"biography" : "Calh was mated to Marius for several years, but it soon became clear that she was obsessed with the total destruction of, of all things, Dendroids.  They split up, and Calh went on to have a glorious military career.",
+			"name" : "Calh",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Gogs or Magogs for each level attained after 2nd level.",
+				"name" : "Gogs",
+				"tooltip" : "Creature Bonus: Gogs"
+			}
+		}
+	}
+}
+

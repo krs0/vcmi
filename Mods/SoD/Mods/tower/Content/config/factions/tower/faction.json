@@ -1,0 +1,29 @@
+{
+	"tower" :
+	{
+		"town" : "tower",
+		"alignment" : "good",
+		"nativeTerrain" : "snow",
+		"heroClases" : [ "alchemist" , "wizard" ],
+		"creatures" :
+		[
+			["gremlin", "masterGremlin"],
+			["stoneGargoyle", "obsidianGargoyle"],
+			["ironGolem", "stoneGolem"],
+			["mage", "archMage"],
+			["genie", "masterGenie"],
+			["naga", "nagaQueen"],
+			["giant", "titan"]
+		],
+		"dwellings" :
+		[
+			"workshop", "parapet", "golemFactory", "mageTower",
+			"altarOfWishes", "goldenPavilion", "cloudTemple"
+		],
+		"creatureBackground" :
+		{
+			"120px" : "sprites/factions/tower/TPCASTOW.bmp",
+			"130px" : "sprites/factions/tower/CRBKGTOW.bmp"
+		},
+	}
+}

@@ -1,0 +1,65 @@
+// list of mods inside
+{
+	"name" : "SoD",
+	"description" : "Original SoD contents as mod",
+
+	"version" : "0.99",
+	"author" : "Original SoD - mod by VCMI Team",
+	"contact" : "http://forum.vcmi.eu/index.php",
+	"modType" : "Expansion"
+
+	//"modList" :
+	//[
+	    //"mods/factions/castle/faction/mod.json",
+		//"mods/factions/castle/creatures/mod.json",
+		//"mods/factions/castle/heroes/mod.json",
+		//"mods/factions/castle/town/mod.json"
+
+		//"mods/factions/conflux/faction/mod.json",
+		//"mods/factions/conflux/creatures/mod.json",
+		//"mods/factions/conflux/heroes/mod.json",
+		//"mods/factions/conflux/town/mod.json",
+
+		//"mods/factions/dungeon/faction/mod.json",
+		//"mods/factions/dungeon/creatures/mod.json",
+		//"mods/factions/dungeon/heroes/mod.json",
+		//"mods/factions/dungeon/town/mod.json",
+
+		//"mods/factions/fortress/faction/mod.json",
+		//"mods/factions/fortress/creatures/mod.json",
+		//"mods/factions/fortress/heroes/mod.json",
+		//"mods/factions/fortress/town/mod.json",
+
+		//"mods/factions/inferno/faction/mod.json",
+		//"mods/factions/inferno/creatures/mod.json",
+		//"mods/factions/inferno/heroes/mod.json",
+		//"mods/factions/inferno/town/mod.json",
+
+		//"mods/factions/necropolis/faction/mod.json",
+		//"mods/factions/necropolis/creatures/mod.json",
+		//"mods/factions/necropolis/heroes/mod.json",
+		//"mods/factions/necropolis/town/mod.json",
+
+		//"mods/factions/rampart/faction/mod.json",
+		//"mods/factions/rampart/creatures/mod.json",
+		//"mods/factions/rampart/heroes/mod.json",
+		//"mods/factions/rampart/town/mod.json",
+
+		//"mods/factions/stronghold/faction/mod.json",
+		//"mods/factions/stronghold/creatures/mod.json",
+		//"mods/factions/stronghold/heroes/mod.json",
+		//"mods/factions/stronghold/town/mod.json",
+
+		//"mods/factions/tower/faction/mod.json",
+		//"mods/factions/tower/creatures/mod.json",
+		//"mods/factions/tower/heroes/mod.json",
+		//"mods/factions/tower/town/mod.json",
+
+		//"mods/factions/neutral/faction/mod.json",
+		//"mods/factions/neutral/creatures/mod.json"
+
+		//"artifacts/mod.json", 
+		//"spells/mod.json", 
+		//"creatureBanks/mod.json"
+	//]
+}

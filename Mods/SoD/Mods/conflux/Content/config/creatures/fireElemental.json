@@ -1,0 +1,75 @@
+{
+	"fireElemental": {
+		"name" : {
+			"plural" : "Fire Elementals",
+			"singular" : "Fire Elemental"
+		},
+		"faction" : "conflux",
+		"level" : 4,
+		"upgrades": ["energyElemental"],
+		"cost" : {
+			"gold" : 350
+		},
+		"speed" : 6,
+		"hitPoints" : 35,
+		"attack" : 10,
+		"defense" : 8,
+		"damage" : {
+			"max" : 6,
+			"min" : 4
+		},
+		"doubleWide" : false,
+		"growth" : 5,
+		"horde" : 0,
+		"aiValue" : 345,
+		"fightValue" : 345,
+		"advMapAmount" : {
+			"max" : 25,
+			"min" : 16
+		},
+		"abilities" : {
+			"frostRingVulnerablity" : {
+				"subtype" : "spell.frostRing",
+				"type" : "MORE_DAMAGE_FROM_SPELL",
+				"val" : 100
+			},
+			"iceBoltVulnerablity" : {
+				"subtype" : "spell.iceBolt",
+				"type" : "MORE_DAMAGE_FROM_SPELL",
+				"val" : 100
+			},
+			"immuneToFire" : {
+				"subtype" : 0,
+				"type" : "FIRE_IMMUNITY"
+			},
+			"immuneToMind" : {
+				"type" : "MIND_IMMUNITY"
+			},
+			"nonLiving" : {
+				"type" : "NON_LIVING"
+			}
+		},
+		"abilityText" : "Immune to fire.\nVulnerable to ice.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CFELEM.def",
+			"map" : "sprites/creatures/adventureMap/AVWelmf0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL116.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort116.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 0,
+				"walk" : 0.5
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/FELMATTK.wav",
+			"defend" : "sounds/creatures/FELMDFND.wav",
+			"killed" : "sounds/creatures/FELMKILL.wav",
+			"move" : "sounds/creatures/FELMMOVE.wav",
+			"wince" : "sounds/creatures/FELMWNCE.wav"
+		}
+	}
+}

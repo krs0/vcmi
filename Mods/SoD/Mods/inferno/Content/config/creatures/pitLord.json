@@ -1,0 +1,64 @@
+{
+	"pitLord": {
+		"name" : {
+			"plural" : "Pit Lords",
+			"singular" : "Pit Lord"
+		},
+		"faction" : "inferno",
+		"level" : 5,
+		"cost" : {
+			"gold" : 700
+		},
+		"speed" : 7,
+		"hitPoints" : 45,
+		"attack" : 13,
+		"defense" : 13,
+		"damage" : {
+			"max" : 17,
+			"min" : 13
+		},
+		"spellPoints" : 1,
+		"doubleWide" : false,
+		"growth" : 3,
+		"horde" : 0,
+		"aiValue" : 1224,
+		"fightValue" : 1071,
+		"advMapAmount" : {
+			"max" : 12,
+			"min" : 8
+		},
+		"abilities" : {
+			"castsAmount" : {
+				"type" : "CASTS",
+				"val" : 1
+			},
+			"demonSummon" : {
+				"subtype" : "creature.demon",
+				"type" : "DAEMON_SUMMONING",
+				"val" : 50
+			}
+		},
+		"abilityText" : "Summon demons from\na dead ally.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CPFOE.def",
+			"map" : "sprites/creatures/adventureMap/AVWpitx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL53.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort53.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/PFOEATTK.wav",
+			"defend" : "sounds/creatures/PFOEDFND.wav",
+			"killed" : "sounds/creatures/PFOEKILL.wav",
+			"move" : "sounds/creatures/PFOEMOVE.wav",
+			"wince" : "sounds/creatures/PFOEWNCE.wav"
+		}
+	}
+}

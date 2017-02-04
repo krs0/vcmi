@@ -1,0 +1,29 @@
+{
+	"inferno" :
+	{
+		"town" : "inferno",
+		"alignment" : "evil",
+		"nativeTerrain" : "lava",
+		"heroClases" : [ "beastmaster" , "witch" ],
+		"creatures" :
+		[
+			["imp", "familiar"],
+			["gog", "magog"],
+			["hellHound", "cerberus"],
+			["demon", "hornedDemon"],
+			["pitFiend", "pitLord"],
+			["efreet", "efreetSultan"],
+			["devil", "archDevil"]
+		],
+		"dwellings" :
+		[
+			"impCrucible", "hallOfSins", "kennels", "demonGate",
+			"hellHole", "fireLake", "forsakenPalace"
+		],
+		"creatureBackground" :
+		{
+			"120px" : "sprites/factions/inferno/TPCASINF.bmp",
+			"130px" : "sprites/factions/inferno/CRBKGINF.bmp"
+		},
+	}
+}

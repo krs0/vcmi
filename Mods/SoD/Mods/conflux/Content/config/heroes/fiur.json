@@ -1,0 +1,73 @@
+{
+	"fiur" :
+	{
+		"class" : "planeswalker",
+		"female" : false,
+
+		"index" : 134,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL006PL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS006PL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "pixies",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "airElementals",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "waterElementals",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "advanced",
+				"skill" : "offence"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 114,
+				"subtype" : 1,
+				"type" : 4,
+				"val" : 1
+			},
+			{
+				"info" : 114,
+				"subtype" : 1,
+				"type" : 4,
+				"val" : 2
+			},
+			{
+				"info" : 114,
+				"subtype" : 3,
+				"type" : 4,
+				"val" : 2
+			}
+		],
+
+		"texts" : {
+			"biography" : "Fiur is young, and his battle prowess untried, but he has a ferociousness like no other.  It is believed he will become one of the most powerful heroes of the Conflux.",
+			"name" : "Fiur",
+			"specialty" : {
+				"description" : "Fire/Energy elementals receive +1 Att, +2 Def, and +2 Dmg.",
+				"name" : "Fire Ele.",
+				"tooltip" : "Creature Bonus: Fire Elementals"
+			}
+		}
+	}
+}
+

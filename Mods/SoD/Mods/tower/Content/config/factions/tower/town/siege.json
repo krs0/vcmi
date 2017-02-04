@@ -1,0 +1,57 @@
+{
+	"tower" :
+	{
+		"town" :
+		{
+			"siege" :
+			{
+				"shooter" : "mage",
+				"imagePrefix" : "SGTW",
+				"gate" :
+				{
+					"arch" : { "x" : 471, "y" : 187 },
+					"gate" : { "x" : 400, "y" : 253 }
+				},
+				"moat" :
+				{
+					"bank" : { "x" : 410, "y" : 80 },
+					"moat" : { "x" : 410, "y" : 90 }
+				},
+				"static" :
+				{
+					"background" : { "x" : 615, "y" : 57 },
+					"bottom" : { "x" : 517, "y" : 365 },
+					"top" : { "x" : 514, "y" : 79 }
+				},
+				"towers" :
+				{
+					"bottom" :
+					{
+						"battlement" : { "x" : 592, "y" : 516 },
+						"creature" : { "x" : 355, "y" : 311 },
+						"tower" : { "x" : 592, "y" : 516 }
+					},
+					"keep" :
+					{
+						"battlement" : { "x" : 726, "y" : 148 },
+						"creature" : { "x" : 499, "y" : -16 },
+						"tower" : { "x" : 726, "y" : 148 }
+					},
+					"top" :
+					{
+						"battlement" : { "x" : 580, "y" : 36 },
+						"creature" : { "x" : 346, "y" : -175 },
+						"tower" : { "x" : 580, "y" : 36 }
+					}
+				},
+				"walls" :
+				{
+					"bottom" : { "x" : 547, "y" : 452 },
+					"bottomMid" : { "x" : 475, "y" : 298 },
+					"upper" : { "x" : 547, "y" : 66 },
+					"upperMid" : { "x" : 488, "y" : 190 }
+				}
+			}
+		}
+	}
+}

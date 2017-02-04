@@ -1,0 +1,86 @@
+{
+	"orc": {
+		"name" : {
+			"plural" : "Orcs",
+			"singular" : "Orc"
+		},
+		"faction" : "stronghold",
+		"level" : 3,
+		"upgrades": ["orcChieftain"],
+		"cost" : {
+			"gold" : 150
+		},
+		"speed" : 4,
+		"hitPoints" : 15,
+		"attack" : 8,
+		"defense" : 4,
+		"damage" : {
+			"max" : 5,
+			"min" : 2
+		},
+		"shots" : 12,
+		"doubleWide" : false,
+		"growth" : 7,
+		"horde" : 0,
+		"aiValue" : 192,
+		"fightValue" : 175,
+		"advMapAmount" : {
+			"max" : 25,
+			"min" : 12
+		},
+		"abilities" : {
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			}
+		},
+		"abilityText" : "",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CORC.def",
+			"map" : "sprites/creatures/adventureMap/AVWorc0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL90.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort90.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"missile" : {
+				"projectile" : "sprites/creatures/projectile/PORCHX.DEF",
+				"attackClimaxFrame" : 4,
+				"frameAngles" : [
+					90,
+					72,
+					45,
+					27,
+					0,
+					-27,
+					-45,
+					-72,
+					-90,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 33,
+					"lowerY" : -26,
+					"middleX" : 43,
+					"middleY" : -66,
+					"upperX" : 42,
+					"upperY" : -83
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/OORCATTK.wav",
+			"defend" : "sounds/creatures/OORCDFND.wav",
+			"killed" : "sounds/creatures/OORCKILL.wav",
+			"move" : "sounds/creatures/OORCMOVE.wav",
+			"shoot" : "sounds/creatures/OORCSHOT.wav",
+			"wince" : "sounds/creatures/OORCWNCE.wav"
+		}
+	}
+}

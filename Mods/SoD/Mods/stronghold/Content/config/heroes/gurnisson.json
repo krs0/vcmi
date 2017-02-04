@@ -1,0 +1,65 @@
+{
+	"gurnisson" :
+	{
+		"class" : "barbarian",
+		"female" : false,
+
+		"index" : 97,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL097BR.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS097BR.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "goblin",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "ballista",
+				"max" : 1,
+				"min" : 1
+			},
+			{
+				"creature" : "orc",
+				"max" : 6,
+				"min" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "offence"
+			},
+			{
+				"level" : "basic",
+				"skill" : "artillery"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 146,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+
+		"texts" : {
+			"biography" : "It is unusual for a Goblin to rise to any sort of position of power, but Gurnisson demonstrated a natural aptitude in Ballistics that quite literally launched him into a successful career as a hero for hire.",
+			"name" : "Gurnisson",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skill of any Ballista for each level attained after 4th level.",
+				"name" : "Ballista",
+				"tooltip" : "Artillery Bonus: Ballista"
+			}
+		}
+	}
+}
+

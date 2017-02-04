@@ -1,0 +1,65 @@
+{
+	"korbac" :
+	{
+		"class" : "beastmaster",
+		"female" : false,
+
+		"index" : 117,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL117BS.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS117BS.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "gnoll",
+				"max" : 20,
+				"min" : 10
+			},
+			{
+				"creature" : "serpentFly",
+				"max" : 4,
+				"min" : 2
+			},
+			{
+				"creature" : "dragonFly",
+				"max" : 4,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "armorer"
+			},
+			{
+				"level" : "basic",
+				"skill" : "pathfinding"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 102,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+
+		"texts" : {
+			"biography" : "Korbac became known to the humans of Erathia as the 'hero who saved the scholar, Xanthor.'  However true this might be, Korbac has proven his bravery on more than one occasion in the service of Tatalia.",
+			"name" : "Korbac",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Serpent or Dragon Flies for each level attained after 3rd level.",
+				"name" : "Serpent Flies",
+				"tooltip" : "Creature Bonus: Serpent Flies"
+			}
+		}
+	}
+}
+

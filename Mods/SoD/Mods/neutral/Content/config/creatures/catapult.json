@@ -1,0 +1,88 @@
+{
+	"catapult": {
+		"name" : {
+			"plural" : "Catapults",
+			"singular" : "Catapult"
+		},
+		"faction" : "neutral",
+		"level" : 0,
+		"cost" : {
+			"gold" : 1
+		},
+		"speed" : 0,
+		"hitPoints" : 1000,
+		"attack" : 10,
+		"defense" : 10,
+		"damage" : {
+			"max" : 0,
+			"min" : 0
+		},
+		"shots" : 24,
+		"doubleWide" : false,
+		"growth" : 0,
+		"horde" : 0,
+		"aiValue" : 500,
+		"fightValue" : 5,
+		"advMapAmount" : {
+			"max" : 0,
+			"min" : 0
+		},
+		"abilities" : {
+			"CATAPULT" : {
+				"type" : "CATAPULT"
+			},
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			},
+			"SIEGE_WEAPON" : {
+				"type" : "SIEGE_WEAPON"
+			}
+		},
+		"abilityText" : "Attacks siege walls.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/SMCATA.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL147.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort147.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"missile" : {
+				"projectile" : "sprites/creatures/projectile/SMCATX.DEF",
+				"attackClimaxFrame" : 4,
+				"frameAngles" : [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 69,
+					"lowerY" : -119,
+					"middleX" : 69,
+					"middleY" : -119,
+					"upperX" : 69,
+					"upperY" : -119
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"killed" : "sounds/creatures/CATAKILL.wav",
+			"shoot" : "sounds/creatures/CATASHOT.wav",
+			"wince" : "sounds/creatures/CATAWNCE.wav"
+		},
+		"special" : true
+	}
+}

@@ -1,0 +1,66 @@
+{
+	"sorsha" :
+	{
+		"class" : "knight",
+		"female" : true,
+
+		"index" : 5,
+		
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL005KN.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS005KN.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "pikeman",
+				"max" : 20,
+				"min" : 10
+			},
+			{
+				"creature" : "archer",
+				"max" : 7,
+				"min" : 4
+			},
+			{
+				"creature" : "griffin",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "leadership"
+			},
+			{
+				"level" : "basic",
+				"skill" : "offence"
+			}
+		],
+		
+		"specialties" : [
+			{
+				"info" : 6,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+
+		"texts" : {
+			"biography" : "Following Queen Catherine's example, Sorsha joined the ranks of the Erathian Military, quickly proving herself as a master of swordplay.  She was granted her first command shortly after the Kreegans arrived in Erathia.",
+			"name" : "Sorsha",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Swordsmen or Crusaders for each level attained after 4th level.",
+				"name" : "Swordsmen",
+				"tooltip" : "Creature Bonus: Swordsmen"
+			}
+		}
+	}
+}
+

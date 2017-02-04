@@ -1,0 +1,75 @@
+{
+	"rustDragon": {
+		"name" : {
+			"plural" : "Rust Dragons",
+			"singular" : "Rust Dragon"
+		},
+		"faction" : "neutral",
+		"level" : 10,
+		"cost" : {
+			"sulfur" : 14,
+			"gold" : 15000
+		},
+		"speed" : 17,
+		"hitPoints" : 750,
+		"attack" : 30,
+		"defense" : 30,
+		"damage" : {
+			"max" : 50,
+			"min" : 50
+		},
+		"doubleWide" : true,
+		"growth" : 1,
+		"horde" : 0,
+		"aiValue" : 26433,
+		"fightValue" : 24030,
+		"advMapAmount" : {
+			"max" : 3,
+			"min" : 1
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"KING_1" : {
+				"type" : "KING1"
+			},
+			"acidBreath" : {
+				"addInfo" : 20,
+				"type" : "ACID_BREATH",
+				"val" : 25
+			},
+			"dragon" : {
+				"type" : "DRAGON_NATURE"
+			},
+			"reduceDefence" : {
+				"subtype" : "spell.acidBreath",
+				"type" : "SPELL_AFTER_ATTACK",
+				"val" : 100
+			}
+		},
+		"abilityText" : "Spits acid.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CRSDGN.def",
+			"map" : "sprites/creatures/adventureMap/AVWrust.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL137.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort137.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.6
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/RUSTATTK.wav",
+			"defend" : "sounds/creatures/RUSTDFND.wav",
+			"killed" : "sounds/creatures/RUSTKILL.wav",
+			"move" : "sounds/creatures/RUSTMOVE.wav",
+			"wince" : "sounds/creatures/RUSTWNCE.wav"
+		},
+		"special" : true
+	}
+}

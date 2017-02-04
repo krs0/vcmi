@@ -1,0 +1,66 @@
+{
+	"troglodyte": {
+		"name" : {
+			"plural" : "Troglodytes",
+			"singular" : "Troglodyte"
+		},
+		"faction" : "dungeon",
+		"level" : 1,
+		"upgrades": ["infernalTroglodyte"],
+		"cost" : {
+			"gold" : 50
+		},
+		"speed" : 4,
+		"hitPoints" : 5,
+		"attack" : 4,
+		"defense" : 3,
+		"damage" : {
+			"max" : 3,
+			"min" : 1
+		},
+		"doubleWide" : false,
+		"growth" : 14,
+		"horde" : 7,
+		"aiValue" : 59,
+		"fightValue" : 73,
+		"advMapAmount" : {
+			"max" : 50,
+			"min" : 20
+		},
+		"abilities" : {
+			"blindImmunity" : {
+				"addInfo" : 1,
+				"subtype" : "spell.blind",
+				"type" : "SPELL_IMMUNITY"
+			},
+			"petrifyImmunity" : {
+				"addInfo" : 1,
+				"subtype" : "spell.stoneGaze",
+				"type" : "SPELL_IMMUNITY"
+			}
+		},
+		"abilityText" : "Immune to Blinding.",
+		"hasDoubleWeek" : true,
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CTROGL.def",
+			"map" : "sprites/creatures/adventureMap/AVWtrog0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL72.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort72.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.8
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/TROGATTK.wav",
+			"defend" : "sounds/creatures/TROGDFND.wav",
+			"killed" : "sounds/creatures/TROGKILL.wav",
+			"move" : "sounds/creatures/TROGMOVE.wav",
+			"wince" : "sounds/creatures/TROGWNCE.wav"
+		}
+	}
+}

@@ -1,0 +1,29 @@
+{
+	"castle" :
+	{
+		"town" : "castle",
+		"alignment" : "good",
+		"nativeTerrain" : "grass",
+		"heroClases" : [ "cleric" , "knight" ],
+		"creatures" :
+		[
+			[ "pikeman", "halberdier" ],
+			[ "archer", "marksman" ],
+			[ "griffin", "royalGriffin" ],
+			[ "swordsman", "crusader" ],
+			[ "monk", "zealot" ],
+			[ "cavalier", "champion" ],
+			[ "angel", "archangel" ]
+		],
+		"dwellings" :
+		[
+			"guardhouse", "archersTower", "griffinTower", "barracks",
+			"monastery", "trainingGrounds", "portalOfGlory"
+		],
+		"creatureBackground" :
+		{
+			"120px" : "sprites/factions/castle/TPCASCAS.bmp",
+			"130px" : "sprites/factions/castle/CRBKGCAS.bmp"
+		},
+	}
+}

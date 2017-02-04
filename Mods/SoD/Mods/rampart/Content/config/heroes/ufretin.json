@@ -1,0 +1,65 @@
+{
+	"ufretin" :
+	{
+		"class" : "ranger",
+		"female" : false,
+
+		"index" : 17,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL017RN.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS017RN.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "dwarf",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "dwarf",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "dwarf",
+				"max" : 5,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "luck"
+			},
+			{
+				"level" : "basic",
+				"skill" : "resistance"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 16,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+
+		"texts" : {
+			"biography" : "It is unusual to see a Dwarven Ranger, but for Ufretin the skills came naturally.  He has become an icon to the surface-dwelling dwarven population, and a natural born leader among all dwarvenkind.",
+			"name" : "Ufretin",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Dwarves of Battle Dwarves for each level attained after 2nd level.",
+				"name" : "Dwarves",
+				"tooltip" : "Creature Bonus: Dwarves"
+			}
+		}
+	}
+}
+

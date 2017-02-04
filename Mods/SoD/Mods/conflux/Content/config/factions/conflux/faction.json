@@ -1,0 +1,29 @@
+{
+	"conflux" :
+	{
+		"town" : "conflux",
+		"alignment" : "neutral",
+		"nativeTerrain" : "grass",
+		"heroClases" : [ "elementalist" , "planeswalker" ],
+		"creatures" :
+		[
+			["pixie", "sprite"],
+			["airElemental", "stormElemental"],
+			["waterElemental", "iceElemental"],
+			["fireElemental", "energyElemental"],
+			["earthElemental", "magmaElemental"],
+			["psychicElemental", "magicElemental"],
+			["firebird", "phoenix"]
+		],
+		"dwellings" :
+		[
+			"magicLantern", "altarOfAir", "altarOfWater", "altarOfFire",
+			"altarOfEarth", "altarOfThought", "pyre"
+		],
+		"creatureBackground" :
+		{
+			"120px" : "sprites/factions/conflux/TPCASELE.bmp",
+			"130px" : "sprites/factions/conflux/CRBKGELE.bmp"
+		},
+	}
+}

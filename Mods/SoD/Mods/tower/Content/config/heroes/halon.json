@@ -1,0 +1,68 @@
+{
+	"halon" :
+	{
+		"class" : "wizard",
+		"female" : false,
+
+		"index" : 41,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL041WZ.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS041WZ.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "apprenticeGremlin",
+				"max" : 40,
+				"min" : 30
+			},
+			{
+				"creature" : "stoneGargoyle",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "ironGolem",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "mysticism"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 1,
+				"subtype" : 8,
+				"type" : 2,
+				"val" : 5
+			}
+		],
+		"spellbook" : [
+			"stoneSkin"
+		],
+		
+		"texts" : {
+			"biography" : "Halon was a well respected hero in Enroth, but became so bored after the Succession Wars that he left to explore the world.  He recently accepted a command rank in Bracada's military, hoping that it would give him something new to do.",
+			"name" : "Halon",
+			"specialty" : {
+				"description" : "Receives a 5% per level bonus to Mysticism skill.",
+				"name" : "Mysticism",
+				"tooltip" : "Secondary Skill Bonus: Mysticism"
+			}
+		}
+	}
+}
+

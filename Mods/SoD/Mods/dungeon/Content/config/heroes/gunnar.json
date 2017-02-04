@@ -1,0 +1,65 @@
+{
+	"gunnar" :
+	{
+		"class" : "warlock",
+		"female" : false,
+
+		"index" : 85,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL085OV.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS085OV.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "troglodyte",
+				"max" : 40,
+				"min" : 30
+			},
+			{
+				"creature" : "harpy",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "beholder",
+				"max" : 4,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "logistics"
+			},
+			{
+				"level" : "basic",
+				"skill" : "tactics"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 2,
+				"type" : 2,
+				"val" : 5
+			}
+		],
+
+		"texts" : {
+			"biography" : "Gunnar served first as a scout for the Dungeon Overlords, then as a guide and bodyguard to various high-ranking officials, before finally being granted command of a garrison force on the rugged Nighon borders.  What he lacks in brains he makes up for in instinct.",
+			"name" : "Gunnar",
+			"specialty" : {
+				"description" : "Receives a 5% per level bonus to Logistics skill percentage.",
+				"name" : "Logistics",
+				"tooltip" : "Secondary Skill Bonus: Logistics"
+			}
+		}
+	}
+}
+

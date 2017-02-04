@@ -1,0 +1,68 @@
+{
+	"neela" :
+	{
+		"class" : "alchemist",
+		"female" : true,
+
+		"index" : 35,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL035AL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS035AL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "apprenticeGremlin",
+				"max" : 40,
+				"min" : 30
+			},
+			{
+				"creature" : "stoneGargoyle",
+				"max" : 4,
+				"min" : 4
+			},
+			{
+				"creature" : "ironGolem",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "scholar"
+			},
+			{
+				"level" : "basic",
+				"skill" : "armorer"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 23,
+				"type" : 2,
+				"val" : 5
+			}
+		],
+		"spellbook" : [
+			"shield"
+		],
+		
+		"texts" : {
+			"biography" : "Neela is one of the strongest of her kind, being able to resist an incredible amount of punishment.  She somehow is able to instill this resistance in the troops she commands.",
+			"name" : "Neela",
+			"specialty" : {
+				"description" : "Receives a 5% per level bonus to Armorer skill percentage.",
+				"name" : "Armorer",
+				"tooltip" : "Secondary Skill Bonus: Armorer"
+			}
+		}
+	}
+}
+

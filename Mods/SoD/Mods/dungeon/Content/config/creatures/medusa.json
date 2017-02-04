@@ -1,0 +1,97 @@
+{
+	"medusa": {
+		"name" : {
+			"plural" : "Medusas",
+			"singular" : "Medusa"
+		},
+		"faction" : "dungeon",
+		"level" : 4,
+		"upgrades" : ["medusaQueen"],
+		"cost" : {
+			"gold" : 300
+		},
+		"speed" : 5,
+		"hitPoints" : 25,
+		"attack" : 9,
+		"defense" : 9,
+		"damage" : {
+			"max" : 8,
+			"min" : 6
+		},
+		"shots" : 4,
+		"doubleWide" : true,
+		"growth" : 4,
+		"horde" : 0,
+		"aiValue" : 517,
+		"fightValue" : 379,
+		"advMapAmount" : {
+			"max" : 20,
+			"min" : 10
+		},
+		"abilities" : {
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			},
+			"const_no_melee_penalty" : {
+				"type" : "NO_MELEE_PENALTY"
+			},
+			"petrification" : {
+				"addInfo" : 2000,
+				"subtype" : "spell.stoneGaze",
+				"type" : "SPELL_AFTER_ATTACK",
+				"val" : 20
+			}
+		},
+		"abilityText" : "No melee penalty.\nStone gaze.",
+		"hasDoubleWeek" : true,
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CMEDUS.def",
+			"map" : "sprites/creatures/adventureMap/AvWMeds.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL78.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort78.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"missile" :
+			{
+				"projectile" : "sprites/creatures/projectile/PMEDUSX.DEF",
+				"attackClimaxFrame" : 9,
+				"frameAngles" : [
+					90,
+					72,
+					45,
+					27,
+					0,
+					-27,
+					-45,
+					-72,
+					-90,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 53,
+					"lowerY" : -53,
+					"middleX" : 72,
+					"middleY" : -63,
+					"upperX" : 76,
+					"upperY" : -79
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/MEDUATTK.wav",
+			"defend" : "sounds/creatures/MEDUDFND.wav",
+			"killed" : "sounds/creatures/MEDUKILL.wav",
+			"move" : "sounds/creatures/MEDUMOVE.wav",
+			"shoot" : "sounds/creatures/MEDUSHOT.wav",
+			"wince" : "sounds/creatures/MEDUWNCE.wav"
+		}
+	}
+}

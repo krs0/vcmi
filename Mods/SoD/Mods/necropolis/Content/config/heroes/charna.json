@@ -1,0 +1,69 @@
+{
+	"charna" :
+	{
+		"class" : "deathKnight",
+		"female" : true,
+
+		"index" : 67,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL067DK.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS067DK.bmp"
+		},
+
+
+		"army" : [
+			{
+				"creature" : "skeleton",
+				"max" : 30,
+				"min" : 20
+			},
+			{
+				"creature" : "wight",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "wight",
+				"max" : 6,
+				"min" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "necromancy"
+			},
+			{
+				"level" : "basic",
+				"skill" : "tactics"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 60,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+		"spellbook" : [
+			"magicArrow"
+		],
+			
+		"texts" : {
+			"biography" : "Charna was seduced by the temptation of the powers of darkness.  Though her magical abilities will never allow her to be a true Necromancer, she is a more than effective warrior.",
+			"name" : "Charna",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Wights or Wraiths for each level attained after 3rd level.",
+				"name" : "Wights",
+				"tooltip" : "Creature Bonus: Wights"
+			}
+		}
+	}
+}
+

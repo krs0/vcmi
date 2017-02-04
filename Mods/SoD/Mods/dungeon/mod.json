@@ -1,0 +1,73 @@
+{
+	"name" : "Dungeon faction",
+	"description" : "Dungeon faction as Mod",
+
+	"version" : "0.99",
+	"author" : "Original SoD Faction - mod by VCMI Team",
+	"contact" : "http://forum.vcmi.eu/index.php",
+	"modType" : "Faction",
+
+	"factions" :
+	[
+		"config/factions/dungeon/faction.json",
+		"config/factions/dungeon/dwellings.json",
+		"config/factions/dungeon/puzzleMap.json",
+		"config/factions/dungeon/town/town.json",
+		"config/factions/dungeon/town/buildings.json",
+		"config/factions/dungeon/town/structures.json",
+		"config/factions/dungeon/town/guildSpells.json",
+		"config/factions/dungeon/town/siege.json"
+	],
+
+	"creatures" :
+	[
+		"config/creatures/troglodyte.json",
+		"config/creatures/infernalTroglodyte.json",
+
+		"config/creatures/harpy.json",
+		"config/creatures/harpyHag.json",
+
+		"config/creatures/beholder.json",
+		"config/creatures/evilEye.json",
+
+		"config/creatures/medusa.json",
+		"config/creatures/medusaQueen.json",
+
+		"config/creatures/minotaur.json",
+		"config/creatures/minotaurKing.json",
+
+		"config/creatures/manticore.json",
+		"config/creatures/scorpicore.json",
+
+		"config/creatures/redDragon.json",
+		"config/creatures/blackDragon.json",
+	],
+
+	"heroClasses" :
+	[
+		"config/heroClasses/warlock.json",
+		"config/heroClasses/overlord.json"
+	],
+
+	"heroes" :
+	[
+		// warloks
+		"config/heroes/lorelei.json",
+		"config/heroes/arlach.json",
+		"config/heroes/dace.json",
+		"config/heroes/ajit.json",
+		"config/heroes/damacon.json",
+		"config/heroes/gunnar.json",
+		"config/heroes/synca.json",
+		"config/heroes/shakti.json",
+		// overlords
+		"config/heroes/alamar.json",
+		"config/heroes/jaegar.json",
+		"config/heroes/malekith.json",
+		"config/heroes/jeddite.json",
+		"config/heroes/geon.json",
+		"config/heroes/deemer.json",
+		"config/heroes/sephinroth.json",
+		"config/heroes/darkstorn.json"
+	]
+}

@@ -1,0 +1,43 @@
+{
+	"dungeon" :
+	{
+		"dwellings" :
+		{
+			"warren" : 
+			{
+				"name" : "Warren",
+				"graphics" : "sprites/factions/dungeon/adventureMap/dwellings/AVGtrog0.def"
+			},
+			"harpyLoft" : 
+			{
+				"name" : "Harpy Loft",
+				"graphics" : "sprites/factions/dungeon/adventureMap/dwellings/AVGharp0.def"
+			},
+			"pillarOfEyes" : 
+			{
+				"name" : "Pillar of Eyes",
+				"graphics" : "sprites/factions/dungeon/adventureMap/dwellings/AVGbhld0.def"
+			},
+			"chappelOfStilledVoices" : 
+			{
+				"name" : "Chapel of Stilled Voices",
+				"graphics" : "sprites/factions/dungeon/adventureMap/dwellings/AVGmdsa0.def"
+			},
+			"labyrinth" : 
+			{
+				"name" : "Labyrinth",
+				"graphics" : "sprites/factions/dungeon/adventureMap/dwellings/AVGmino0.def"
+			},
+			"manticoreLair" : 
+			{
+				"name" : "Manticore Lair",
+				"graphics" : "sprites/factions/dungeon/adventureMap/dwellings/AVGmant0.def"
+			},
+			"dragonCave" : 
+			{
+				"name" : "Dragon Cave",
+				"graphics" : "sprites/factions/dungeon/adventureMap/dwellings/AVGrdrg0.def"
+			}
+		}
+	}
+}

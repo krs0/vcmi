@@ -1,0 +1,70 @@
+{
+	"crystalDragon": {
+		"name" : {
+			"plural" : "Crystal Dragons",
+			"singular" : "Crystal Dragon"
+		},
+		"faction" : "neutral",
+		"level" : 10,
+		"cost" : {
+			"crystal" : 10,
+			"gold" : 20000
+		},
+		"speed" : 16,
+		"hitPoints" : 800,
+		"attack" : 40,
+		"defense" : 40,
+		"damage" : {
+			"max" : 75,
+			"min" : 60
+		},
+		"doubleWide" : true,
+		"growth" : 1,
+		"horde" : 0,
+		"aiValue" : 39338,
+		"fightValue" : 30260,
+		"advMapAmount" : {
+			"max" : 3,
+			"min" : 1
+		},
+		"abilities" : {
+			"FLYING_ARMY" : null,
+			"KING_1" : {
+				"type" : "KING1"
+			},
+			"crystals" : {
+				"propagator" : "HERO",
+				"subtype" : "resource.crystal",
+				"type" : "GENERATE_RESOURCE",
+				"val" : 1
+			},
+			"dragon" : {
+				"type" : "DRAGON_NATURE"
+			}
+		},
+		"abilityText" : "Crystal generation.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CCDRGN.def",
+			"map" : "sprites/creatures/adventureMap/AVWcdrg.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL135.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort135.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.6
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/CRYSATTK.wav",
+			"defend" : "sounds/creatures/CRYSDFND.wav",
+			"killed" : "sounds/creatures/CRYSKILL.wav",
+			"move" : "sounds/creatures/CRYSMOVE.wav",
+			"wince" : "sounds/creatures/CRYSWNCE.wav"
+		},
+
+		"special" : true
+	}
+}

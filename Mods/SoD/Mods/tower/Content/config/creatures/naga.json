@@ -1,0 +1,58 @@
+{
+	"naga": {
+		"name" : {
+			"plural" : "Nagas",
+			"singular" : "Naga"
+		},
+		"faction" : "tower",
+		"level" : 6,
+		"upgrades": ["nagaQueen"],
+		"cost" : {
+			"gold" : 1100
+		},
+		"speed" : 5,
+		"hitPoints" : 110,
+		"attack" : 16,
+		"defense" : 13,
+		"damage" : {
+			"max" : 20,
+			"min" : 20
+		},
+		"doubleWide" : true,
+		"growth" : 2,
+		"horde" : 0,
+		"aiValue" : 2016,
+		"fightValue" : 2016,
+		"advMapAmount" : {
+			"max" : 12,
+			"min" : 5
+		},
+		"abilities" : {
+			"noRetaliation" : {
+				"type" : "BLOCKS_RETALIATION"
+			}
+		},
+		"abilityText" : "No enemy retaliation.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CNAGA.def",
+			"map" : "sprites/creatures/adventureMap/AVWnaga0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL40.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort40.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/NSENATTK.wav",
+			"defend" : "sounds/creatures/NSENDFND.wav",
+			"killed" : "sounds/creatures/NSENKILL.wav",
+			"move" : "sounds/creatures/NSENMOVE.wav",
+			"wince" : "sounds/creatures/NSENWNCE.wav"
+		}
+	}
+}

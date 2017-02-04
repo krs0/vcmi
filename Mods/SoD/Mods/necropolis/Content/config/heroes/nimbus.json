@@ -1,0 +1,68 @@
+{
+	"nimbus" :
+	{
+		"class" : "necromancer",
+		"female" : false,
+		"index" : 75,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL075NC.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS075NC.bmp"
+		},
+
+
+		"army" : [
+			{
+				"creature" : "skeleton",
+				"max" : 30,
+				"min" : 20
+			},
+			{
+				"creature" : "zombie",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "wight",
+				"max" : 6,
+				"min" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "necromancy"
+			},
+			{
+				"level" : "basic",
+				"skill" : "eagleEye"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 1,
+				"subtype" : 11,
+				"type" : 2,
+				"val" : 5
+			}
+		],
+		"spellbook" : [
+			"shield"
+		],
+			
+		"texts" : {
+			"biography" : "When Nimbus was a child he had a small dog that eventually died of old age.  Nimbus discovered that by sacrificing a small bird or other creature, he could resurrect his pet, a feat which he repeated each time the dog died.  Little did he realize that he was already exploring the beginnings of Necromancy.",
+			"name" : "Nimbus",
+			"specialty" : {
+				"description" : "Receives a 5% per level bonus to Eagle Eye skill percentage.",
+				"name" : "Eagle Eye",
+				"tooltip" : "Secondary Skill Bonus: Eagle Eye"
+			}
+		}
+	}
+}
+

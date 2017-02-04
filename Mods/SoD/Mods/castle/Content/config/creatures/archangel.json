@@ -1,0 +1,91 @@
+{
+	"archangel": {
+		"name" : {
+			"plural" : "Archangels",
+			"singular" : "Archangel"
+		},
+		"faction" : "castle",
+		"level" : 7,
+		"cost" : {
+			"gems" : 3,
+			"gold" : 5000
+		},
+		"speed" : 18,
+		"hitPoints" : 250,
+		"attack" : 30,
+		"defense" : 30,
+		"damage" : {
+			"max" : 50,
+			"min" : 50
+		},
+		"spellPoints" : 1,
+		"doubleWide" : true,
+		"growth" : 1,
+		"horde" : 0,
+		"aiValue" : 8776,
+		"fightValue" : 6033,
+		"advMapAmount" : {
+			"max" : 8,
+			"min" : 3
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"KING_2" : {
+				"type" : "KING2"
+			},
+			"const_raises_morale" : {
+				"propagator" : "HERO",
+				"type" : "MORALE",
+				"val" : 1
+			},
+			"hateArchDevils" : {
+				"subtype" : "creature.archDevil",
+				"type" : "HATE",
+				"val" : 50
+			},
+			"hateDevils" : {
+				"subtype" : "creature.devil",
+				"type" : "HATE",
+				"val" : 50
+			},
+			"resurrection100hp" : {
+				"subtype" : "spell.resurrection",
+				"type" : "SPECIFIC_SPELL_POWER",
+				"val" : 100
+			},
+			"resurrects" : {
+				"subtype" : "spell.resurrection",
+				"type" : "SPELLCASTER",
+				"val" : 3
+			},
+			"spellpoints" : {
+				"type" : "CASTS",
+				"val" : 1
+			}
+		},
+		"abilityText" : "+1 morale.  Hates Devils.\nResurrects allies.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CRANGL.def",
+			"map" : "sprites/creatures/adventureMap/AvWArch.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL15.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort15.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.82
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/AAGLATTK.wav",
+			"defend" : "sounds/creatures/AAGLDFND.wav",
+			"killed" : "sounds/creatures/AAGLKILL.wav",
+			"move" : "sounds/creatures/AAGLMOVE.wav",
+			"wince" : "sounds/creatures/AAGLWNCE.wav"
+		}
+	}
+}

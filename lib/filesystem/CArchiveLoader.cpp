@@ -208,7 +208,9 @@ void CArchiveLoader::extractToFolder( std::string outputSubFolder, CFileInputStr
 	fileStream.seek(entry.offset);
 	fileStream.read((ui8*)data.get(), entry.fullSize);
 
-	std::ofstream out(VCMIDirs::get().binaryPath().string() + "\\Data\\Temp\\" + outputSubFolder + "\\" + entry.name, std::ofstream::binary);
+	boost::filesystem::path extractionFilePath = VCMIDirs::get().binaryPath() / "Data" / "Temp" / outputSubFolder / entry.name;
+	std::ofstream out(extractionFilePath.string(), std::ofstream::binary);
+
 	out.exceptions(std::ifstream::failbit | std::ifstream::badbit);
 	out.write(data.get(), entry.fullSize);
 
@@ -223,7 +225,9 @@ void CArchiveLoader::extractToFolder( std::string outputSubFolder, const std::st
 	std::unique_ptr<char[]> data = std::unique_ptr<char[]>(new char[entry.fullSize]);
 	inputStream->read((ui8*)data.get(), entry.fullSize);
 
-	std::ofstream out(VCMIDirs::get().binaryPath().string() + "\\Data\\Temp\\" + outputSubFolder + "\\" + entry.name, std::ofstream::binary);
+	boost::filesystem::path extractionFilePath = VCMIDirs::get().binaryPath() / "Data" / "Temp" / outputSubFolder / entry.name;
+	std::ofstream out(extractionFilePath.string(), std::ofstream::binary);
+
 	out.exceptions(std::ifstream::failbit | std::ifstream::badbit);
 	out.write(data.get(), entry.fullSize);
 }

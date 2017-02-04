@@ -1,0 +1,119 @@
+{
+	"stormElemental": {
+		"name" : {
+			"plural" : "Storm Elementals",
+			"singular" : "Storm Elemental"
+		},
+		"faction" : "conflux",
+		"level" : 2,
+		"cost" : {
+			"gold" : 275
+		},
+		"speed" : 8,
+		"hitPoints" : 25,
+		"attack" : 9,
+		"defense" : 9,
+		"damage" : {
+			"max" : 8,
+			"min" : 2
+		},
+		"shots" : 24,
+		"spellPoints" : 3,
+		"doubleWide" : false,
+		"growth" : 6,
+		"horde" : 0,
+		"aiValue" : 486,
+		"fightValue" : 324,
+		"advMapAmount" : {
+			"max" : 12,
+			"min" : 6
+		},
+		"abilities" : {
+			"IMMUNE_TO_MIND_SPELLS" : {
+				"type" : "MIND_IMMUNITY"
+			},
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			},
+			"chainLightingVulnerablity" : {
+				"subtype" : "spell.chainLightning",
+				"type" : "MORE_DAMAGE_FROM_SPELL",
+				"val" : 100
+			},
+			"lightingVulnerablity" : {
+				"subtype" : "spell.lightningBolt",
+				"type" : "MORE_DAMAGE_FROM_SPELL",
+				"val" : 100
+			},
+			"meteorShowerImmunity" : {
+				"subtype" : "spell.meteorShower",
+				"type" : "SPELL_IMMUNITY"
+			},
+			"nonLiving" : {
+				"type" : "NON_LIVING"
+			},
+			"spellPoints" : {
+				"type" : "CASTS",
+				"val" : 3
+			},
+			"spellPower" : {
+				"type" : "CREATURE_ENCHANT_POWER",
+				"val" : 6
+			},
+			"spellcaster" : {
+				"subtype" : "spell.protectAir",
+				"type" : "SPELLCASTER",
+				"val" : 2
+			}
+		},
+		"abilityText" : "No melee penalty.  Lightning and firestorm vulnerability.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CSTORM.def",
+			"map" : "sprites/creatures/adventureMap/AVWstorm.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL129.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort129.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 0,
+				"walk" : 1.33
+			},
+			"missile" : {
+				"projectile" : "sprites/creatures/projectile/CPRGTIX.DEF",
+				"attackClimaxFrame" : 4,
+				"frameAngles" : [
+					90,
+					72,
+					45,
+					27,
+					0,
+					-27,
+					-45,
+					-72,
+					-90,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 45,
+					"lowerY" : -40,
+					"middleX" : 80,
+					"middleY" : -80,
+					"upperX" : 50,
+					"upperY" : -100
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/STORATTK.wav",
+			"defend" : "sounds/creatures/STORDFND.wav",
+			"killed" : "sounds/creatures/STORKILL.wav",
+			"move" : "sounds/creatures/STORMOVE.wav",
+			"shoot" : "sounds/creatures/STORSHOT.wav",
+			"wince" : "sounds/creatures/STORWNCE.wav"
+		}
+	}
+}

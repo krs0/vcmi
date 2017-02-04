@@ -1,0 +1,82 @@
+{
+	"heretic" :
+	{
+		"name" : "Heretic",
+		"faction" : "inferno",
+		"affinity" : "magic",
+		"defaultTavern" : 5,
+		"mapObject" : {
+			"templates" : {
+				"default" : {
+					"animation" : "sprites/heroClasses/AH07_.def",
+					"editorAnimation" : "sprites/heroClasses/AH07_E.def"
+				}
+			}
+		},
+		"animation" : {
+			"battle" : {
+				"female" : "sprites/heroClasses/CH07.DEF",
+				"male" : "sprites/heroClasses/CH06.DEF"
+			}
+		},
+		"primarySkills" : {
+			"attack" : 1,
+			"defence" : 1,
+			"knowledge" : 1,
+			"spellpower" : 2
+		},
+		"highLevelChance" : {
+			"attack" : 20,
+			"defence" : 20,
+			"knowledge" : 30,
+			"spellpower" : 30
+		},
+		"lowLevelChance" : {
+			"attack" : 15,
+			"defence" : 15,
+			"knowledge" : 35,
+			"spellpower" : 35
+		},
+		"secondarySkills" : {
+			"airMagic" : 3,
+			"archery" : 4,
+			"armorer" : 4,
+			"artillery" : 4,
+			"ballistics" : 6,
+			"diplomacy" : 3,
+			"eagleEye" : 4,
+			"earthMagic" : 4,
+			"estates" : 2,
+			"fireMagic" : 5,
+			"firstAid" : 5,
+			"intelligence" : 6,
+			"leadership" : 2,
+			"learning" : 4,
+			"logistics" : 3,
+			"luck" : 2,
+			"mysticism" : 10,
+			"navigation" : 2,
+			"necromancy" : 0,
+			"offence" : 4,
+			"pathfinding" : 4,
+			"resistance" : 3,
+			"scholar" : 5,
+			"scouting" : 3,
+			"sorcery" : 6,
+			"tactics" : 4,
+			"waterMagic" : 2,
+			"wisdom" : 8
+		},
+		"tavern" : {
+			"castle" : 5,
+			"conflux" : 5,
+			"dungeon" : 6,
+			"fortress" : 6,
+			"inferno" : 6,
+			"necropolis" : 6,
+			"rampart" : 5,
+			"stronghold" : 5,
+			"tower" : 5
+		}
+	}
+}

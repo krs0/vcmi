@@ -1,0 +1,82 @@
+{
+	"druid" :
+	{
+		"name" : "Druid",
+		"faction" : "rampart",
+		"affinity" : "magic",
+		"defaultTavern" : 5,
+		"mapObject" : {
+			"templates" : {
+				"default" : {
+					"animation" : "sprites/heroClasses/AH03_.def",
+					"editorAnimation" : "sprites/heroClasses/AH03_E.def"
+				}
+			}
+		},
+		"animation" : {
+			"battle" : {
+				"female" : "sprites/heroClasses/CH03.DEF",
+				"male" : "sprites/heroClasses/CH02.DEF"
+			}
+		},
+		"primarySkills" : {
+			"attack" : 0,
+			"defence" : 2,
+			"knowledge" : 2,
+			"spellpower" : 1
+		},
+		"highLevelChance" : {
+			"attack" : 20,
+			"defence" : 20,
+			"knowledge" : 30,
+			"spellpower" : 30
+		},
+		"lowLevelChance" : {
+			"attack" : 10,
+			"defence" : 20,
+			"knowledge" : 35,
+			"spellpower" : 35
+		},
+		"secondarySkills" : {
+			"airMagic" : 2,
+			"archery" : 5,
+			"armorer" : 3,
+			"artillery" : 1,
+			"ballistics" : 4,
+			"diplomacy" : 4,
+			"eagleEye" : 7,
+			"earthMagic" : 4,
+			"estates" : 3,
+			"fireMagic" : 1,
+			"firstAid" : 7,
+			"intelligence" : 7,
+			"leadership" : 2,
+			"learning" : 4,
+			"logistics" : 5,
+			"luck" : 9,
+			"mysticism" : 6,
+			"navigation" : 2,
+			"necromancy" : 0,
+			"offence" : 1,
+			"pathfinding" : 5,
+			"resistance" : 1,
+			"scholar" : 8,
+			"scouting" : 2,
+			"sorcery" : 6,
+			"tactics" : 1,
+			"waterMagic" : 4,
+			"wisdom" : 8
+		},
+		"tavern" : {
+			"castle" : 6,
+			"conflux" : 6,
+			"dungeon" : 5,
+			"fortress" : 6,
+			"inferno" : 5,
+			"necropolis" : 5,
+			"rampart" : 6,
+			"stronghold" : 5,
+			"tower" : 6
+		}
+	}
+}

@@ -1,0 +1,86 @@
+{
+	"woodElf": {
+		"name" : {
+			"plural" : "Wood Elves",
+			"singular" : "Wood Elf"
+		},
+		"faction" : "rampart",
+		"level" : 3,
+		"upgrades": ["grandElf"],
+		"cost" : {
+			"gold" : 200
+		},
+		"speed" : 6,
+		"hitPoints" : 15,
+		"attack" : 9,
+		"defense" : 5,
+		"damage" : {
+			"max" : 5,
+			"min" : 3
+		},
+		"shots" : 24,
+		"doubleWide" : false,
+		"growth" : 7,
+		"horde" : 0,
+		"aiValue" : 234,
+		"fightValue" : 195,
+		"advMapAmount" : {
+			"max" : 25,
+			"min" : 12
+		},
+		"abilities" : {
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			}
+		},
+		"abilityText" : "",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CELF.def",
+			"map" : "sprites/creatures/adventureMap/AVWelfw0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL20.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort20.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1.02
+			},
+			"missile" : {
+				"projectile" : "sprites/creatures/projectile/PELFX.DEF",
+				"attackClimaxFrame" : 11,
+				"frameAngles" : [
+					90,
+					72,
+					45,
+					27,
+					0,
+					-27,
+					-45,
+					-72,
+					-90,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 21,
+					"lowerY" : -50,
+					"middleX" : 36,
+					"middleY" : -59,
+					"upperX" : 38,
+					"upperY" : -65
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/WELFATTK.wav",
+			"defend" : "sounds/creatures/WELFDFND.wav",
+			"killed" : "sounds/creatures/WELFKILL.wav",
+			"move" : "sounds/creatures/WELFMOVE.wav",
+			"shoot" : "sounds/creatures/WELFSHOT.wav",
+			"wince" : "sounds/creatures/WELFWNCE.wav"
+		}
+	}
+}

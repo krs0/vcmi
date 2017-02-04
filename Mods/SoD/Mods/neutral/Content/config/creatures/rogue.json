@@ -1,0 +1,75 @@
+{
+	"rogue": {
+		"name" : {
+			"plural" : "Rogues",
+			"singular" : "Rogue"
+		},
+		"faction" : "neutral",
+		"level" : 2,
+		"cost" : {
+			"gold" : 100
+		},
+		"speed" : 6,
+		"hitPoints" : 10,
+		"attack" : 8,
+		"defense" : 3,
+		"damage" : {
+			"max" : 4,
+			"min" : 2
+		},
+		"doubleWide" : false,
+		"growth" : 8,
+		"horde" : 0,
+		"aiValue" : 135,
+		"fightValue" : 135,
+		"advMapAmount" : {
+			"max" : 30,
+			"min" : 16
+		},
+		"abilities" : {
+			"visionsHeroes" : {
+				"propagator" : "HERO",
+				"subtype" : 1,
+				"type" : "VISIONS",
+				"val" : 3,
+				"valueType" : "INDEPENDENT_MAX"
+			},
+			"visionsMonsters" : {
+				"propagator" : "HERO",
+				"subtype" : 0,
+				"type" : "VISIONS",
+				"val" : 3,
+				"valueType" : "INDEPENDENT_MAX"
+			},
+			"visionsTowns" : {
+				"propagator" : "HERO",
+				"subtype" : 2,
+				"type" : "VISIONS",
+				"val" : 3,
+				"valueType" : "INDEPENDENT_MAX"
+			}
+		},
+		"abilityText" : "Spying.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CROGUE.def",
+			"map" : "sprites/creatures/adventureMap/AVWrog.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL145.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort145.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/ROGUATTK.wav",
+			"defend" : "sounds/creatures/ROGUDFND.wav",
+			"killed" : "sounds/creatures/ROGUKILL.wav",
+			"move" : "sounds/creatures/ROGUMOVE.wav",
+			"wince" : "sounds/creatures/ROGUWNCE.wav"
+		}
+	}
+}

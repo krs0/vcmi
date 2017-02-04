@@ -1,0 +1,68 @@
+{
+	"firebird": {
+		"name" : {
+			"plural" : "Firebirds",
+			"singular" : "Firebird"
+		},
+		"faction" : "conflux",
+		"level" : 7,
+		"upgrades": ["phoenix"],
+		"cost" : {
+			"gold" : 1500
+		},
+		"speed" : 15,
+		"hitPoints" : 150,
+		"attack" : 18,
+		"defense" : 18,
+		"damage" : {
+			"max" : 40,
+			"min" : 30
+		},
+		"doubleWide" : true,
+		"growth" : 2,
+		"horde" : 0,
+		"aiValue" : 4547,
+		"fightValue" : 3248,
+		"advMapAmount" : {
+			"max" : 10,
+			"min" : 4
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"HAS_EXTENDED_ATTACK" : {
+				"type" : "TWO_HEX_ATTACK_BREATH"
+			},
+			"KING_1" : {
+				"type" : "KING1"
+			},
+			"immuneToFire" : {
+				"subtype" : 0,
+				"type" : "FIRE_IMMUNITY"
+			}
+		},
+		"abilityText" : "Breath attack.  Fire spell immunity.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CFBIRD.def",
+			"map" : "sprites/creatures/adventureMap/AVWfbird.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL132.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort132.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/FIRBATTK.wav",
+			"defend" : "sounds/creatures/FIRBDFND.wav",
+			"killed" : "sounds/creatures/FIRBKILL.wav",
+			"move" : "sounds/creatures/FIRBMOVE.wav",
+			"wince" : "sounds/creatures/FIRBWNCE.wav"
+		},
+	}
+}

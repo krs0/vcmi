@@ -1,0 +1,57 @@
+{
+	"necropolis" :
+	{
+		"town" :
+		{
+			"siege" :
+			{
+				"shooter" : "lich",
+				"imagePrefix" : "SGNC",
+				"gate" :
+				{
+					"arch" : { "x" : 474, "y" : 240 },
+					"gate" : { "x" : 401, "y" : 262 }
+				},
+				"moat" :
+				{
+					"bank" : { "x" : -1, "y" : -1 },
+					"moat" : { "x" : 406, "y" : 77 }
+				},
+				"static" :
+				{
+					"background" : { "x" : 604, "y" : 58 },
+					"bottom" : { "x" : 509, "y" : 372 },
+					"top" : { "x" : 504, "y" : 97 }
+				},
+				"towers" :
+				{
+					"bottom" :
+					{
+						"battlement" : { "x" : 592, "y" : 512 },
+						"creature" : { "x" : 371, "y" : 303 },
+						"tower" : { "x" : 592, "y" : 512 }
+					},
+					"keep" :
+					{
+						"battlement" : { "x" : 730, "y" : 164 },
+						"creature" : { "x" : 501, "y" : 98 },
+						"tower" : { "x" : 730, "y" : 164 }
+					},
+					"top" :
+					{
+						"battlement" : { "x" : 561, "y" : 26 },
+						"creature" : { "x" : 339, "y" : -177 },
+						"tower" : { "x" : 561, "y" : 26 }
+					}
+				},
+				"walls" :
+				{
+					"bottom" : { "x" : 536, "y" : 445 },
+					"bottomMid" : { "x" : 478, "y" : 323 },
+					"upper" : { "x" : 543, "y" : 66 },
+					"upperMid" : { "x" : 487, "y" : 164 }
+				}
+			}
+		}
+	}
+}

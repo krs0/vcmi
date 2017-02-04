@@ -1,0 +1,4672 @@
+{
+	"spellBook":
+	{
+		"index" : 0,
+		"type" : ["HERO"],
+		"class" : "SPECIAL",
+		"slot" : [
+			"SPELLBOOK"
+		],
+		"text" : {
+			"description" : "{Spell Book}\
+
+	\
+
+	Left-click on the spell book to view your spells.",
+			"event" : "You trip over the Spell Book, dust it off, and stick it in your pack.",
+			"name" : "Spell Book"
+		},
+		"value" : 0
+	},
+
+	"spellScroll":
+	{
+		"index" : 1,
+		"type" : ["HERO"],
+		"class" : "SPECIAL",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Spell Scroll}\
+
+	\
+
+	This scroll contains the [spell name] spell which is added into your spell book for as long as you carry the scroll.",
+			"event" : "You find an elaborate container which houses an old vellum scroll. The runes on the container are very old, and the artistry with which it was put together is stunning. As you pull the scroll out, you feel imbued with magical power.",
+			"name" : "Spell Scroll"
+		},
+		"value" : 2500
+	},
+
+	"grail":
+	{
+		"index" : 2,
+		"type" : ["HERO"],
+		"class" : "SPECIAL",
+		"text" : {
+		"description" : "{The Grail}\
+
+\
+
+	Carry the Grail to the city of your choice and the populace there will build a fantastic structure which will provide a tremendous advantage to the city's owner.",
+			"event" : "You trip over the Grail, dust it off, and stick it in your pack.",
+			"name" : "The Grail"
+		},
+		"value" : 0
+	},
+
+	"catapult":
+	{
+		"index" : 3,
+		"type" : ["HERO"],
+		"class" : "SPECIAL",
+		"slot" : [
+			"MACH4"
+		],
+		"text" : {
+			"description" : "{Catapult}\
+
+	\
+
+	Use this war machine to target your enemy's fortifications in combat.",
+			"event" : "You trip over the Catapult, dust it off, and stick it in your pack.",
+			"name" : "Catapult"
+		},
+		"value" : 1000
+	},
+
+	"ballista":
+	{
+		"index" : 4,
+		"type" : ["HERO"],
+		"class" : "SPECIAL",
+		"slot" : [
+			"MACH1"
+		],
+		"text" : {
+			"description" : "{Ballista}\
+
+	\
+
+	Use this war machine to target your enemy's troops in combat.",
+			"event" : "You trip over the Ballista, dust it off, and stick it in your pack.",
+			"name" : "Ballista"
+		},
+		"value" : 2500
+	},
+
+	"ammoCart":
+	{
+		"index" : 5,
+		"type" : ["HERO"],
+		"class" : "SPECIAL",
+		"slot" : [
+			"MACH2"
+		],
+		"text" : {
+			"description" : "{Ammo Cart}\
+
+	\
+
+	The Ammo Cart ensures that your missile troops will never run out of ammunition in combat.",
+			"event" : "You trip over the Ammo Cart, dust it off, and stick it in your pack.",
+			"name" : "Ammo Cart"
+		},
+		"value" : 1000
+	},
+
+	"firstAidTent":
+	{
+		"index" : 6,
+		"type" : ["HERO"],
+		"class" : "SPECIAL",
+		"slot" : [
+			"MACH3"
+		],
+		"text" : {
+			"description" : "{First Aid Tent}\
+
+	\
+
+	The First Aid Tent provides healing to your troops during each round of combat.",
+			"event" : "You trip over the First Aid Tent, dust it off, and stick it in your pack.",
+			"name" : "First Aid Tent"
+		},
+		"value" : 750
+	},
+
+	"centaurAxe":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.attack",
+				"type" : "PRIMARY_SKILL",
+				"val" : 2,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 7,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"RIGHT_HAND"
+		],
+		"text" : {
+			"description" : "{Centaur's Axe}\
+
+	\
+
+	This right handed weapon increases your Attack skill by +2.",
+			"event" : "You see a heavy axe embedded deeply in the ground.  After several unsuccessful attempts by your army to remove it, you tightly grip the handle of the axe and effortlessly pull it free.",
+			"name" : "Centaurs Axe"
+		},
+		"value" : 2000
+	},
+
+	"blackshardOfTheDeadKnight":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.attack",
+				"type" : "PRIMARY_SKILL",
+				"val" : 3,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 8,
+		"type" : ["HERO"],
+		"class" : "MINOR",
+		"slot" : [
+			"RIGHT_HAND"
+		],
+		"text" : {
+			"description" : "{Blackshard of the Dead Knight}\
+
+	\
+
+	This right handed weapon increases your Attack skill by +3.",
+			"event" : "The widow of a former Captain of the Guard admires your quest and gives you the enchanted Sword that her husband relied on during his tour of duty.",
+			"name" : "Blackshard of the Dead Knight"
+		},
+		"value" : 3000
+	},
+
+	"greaterGnollsFlail":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.attack",
+				"type" : "PRIMARY_SKILL",
+				"val" : 4,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 9,
+		"type" : ["HERO"],
+		"class" : "MINOR",
+		"slot" : [
+			"RIGHT_HAND"
+		],
+		"text" : {
+			"description" : "{Greater Gnoll's Flail}\
+
+	\
+
+	This right handed weapon increases your Attack skill by +4.",
+			"event" : "A clumsy Gnoll has killed himself with his own flail.  Knowing your superior skill with this weapon, you confidently remove the spectacular flail from the fallen creature.",
+			"name" : "Greater Gnoll's Flail"
+		},
+		"value" : 4000
+	},
+
+	"ogresClubOfHavoc":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.attack",
+				"type" : "PRIMARY_SKILL",
+				"val" : 5,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 10,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"RIGHT_HAND"
+		],
+		"text" : {
+			"description" : "{Ogre's Club of Havoc}\
+
+	\
+
+	This right handed weapon increases your Attack skill by +5.",
+			"event" : "At a roadside tavern, a drunken Ogre challenges you to a fight.  Not wanting to hurt the creature, you subdue him instead, and take his massive club from him to prevent him from getting into any more trouble.",
+			"name" : "Ogre's Club of Havoc"
+		},
+		"value" : 5000
+	},
+
+	"swordOfHellfire":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.attack",
+				"type" : "PRIMARY_SKILL",
+				"val" : 6,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 11,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"RIGHT_HAND"
+		],
+		"text" : {
+			"description" : "{Sword of Hellfire}\
+
+	\
+
+	This right handed weapon increases your Attack skill by +6.",
+			"event" : "During a sudden storm, a bolt of lightning strikes a tree, splitting it.  Inside the tree you find a mysterious sword.",
+			"name" : "Sword of Hellfire"
+		},
+		"value" : 6000
+	},
+
+	"titansGladius":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.attack",
+				"type" : "PRIMARY_SKILL",
+				"val" : 12,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.defence",
+				"type" : "PRIMARY_SKILL",
+				"val" : -3,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 12,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"RIGHT_HAND"
+		],
+		"text" : {
+			"description" : "{Titan's Gladius}\
+
+	\
+
+	Held with the right hand, this massive relic increases your Attack skill by +12, but reduces your Defense skill by -3.",
+			"event" : "A Titan stops you and says, \"Pay me 5,000 gold, or I shall slay you where you stand.\"  You refuse.  The Titan grabs the sword hanging from its belt, but you duck between its legs.  He is so surprised by this maneuver that he trips... falling on his sword and killing himself instantly.",
+			"name" : "Titan's Gladius"
+		},
+		"value" : 10000
+	},
+
+	"shieldOfTheDwarvenLords":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.defence",
+				"type" : "PRIMARY_SKILL",
+				"val" : 2,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 13,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"LEFT_HAND"
+		],
+		"text" : {
+			"description" : "{Shield of the Dwarven Lords}\
+
+	\
+
+	This left handed item increases your Defense skill by +2.",
+			"event" : "While searching through the rubble of a caved-in mine, you free a group of trapped Dwarves.  Grateful, the leader gives you a finely crafted shield.",
+			"name" : "Shield of the Dwarven Lords"
+		},
+		"value" : 2000
+	},
+
+	"shieldOfTheYawningDead":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.defence",
+				"type" : "PRIMARY_SKILL",
+				"val" : 3,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 14,
+		"type" : ["HERO"],
+		"class" : "MINOR",
+		"slot" : [
+			"LEFT_HAND"
+		],
+		"text" : {
+			"description" : "{Shield of the Yawning Dead}\
+
+	\
+
+	This left handed item increases your Defense skill by +3.",
+			"event" : "Your troops discover an eerie shrine dedicated to the Undead.  You bless the shrine, causing the stone shield emblem above the altar to crack.  Underneath it is a real shield, which you decide to separate from this unholy place.",
+			"name" : "Shield of the Yawning Dead"
+		},
+		"value" : 3000
+	},
+
+	"bucklerOfTheGnollKing":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.defence",
+				"type" : "PRIMARY_SKILL",
+				"val" : 4,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 15,
+		"type" : ["HERO"],
+		"class" : "MINOR",
+		"slot" : [
+			"LEFT_HAND"
+		],
+		"text" : {
+			"description" : "{Buckler of the Gnoll King}\
+
+	\
+
+	This left handed item increases your Defense skill by +4.",
+			"event" : "A stone statue of a warrior holds a silver shield.  As you remove the shield, the statue crumbles into dust.",
+			"name" : "Buckler of the Gnoll King"
+		},
+		"value" : 4000
+	},
+
+	"targOfTheRampagingOgre":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.defence",
+				"type" : "PRIMARY_SKILL",
+				"val" : 5,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 16,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"LEFT_HAND"
+		],
+		"text" : {
+			"description" : "{Targ of the Rampaging Ogre}\
+
+	\
+
+	This left handed item increases your Defense skill by +5.",
+			"event" : "You come upon a bridge spanning a dry gully.  As you begin to cross, a gigantic, maddened Ogre appears from the other side and charges, forcing you to slay it.  You decide to take its shield as a trophy.",
+			"name" : "Targ of the Rampaging Ogre"
+		},
+		"value" : 5000
+	},
+
+	"shieldOfTheDamned":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.defence",
+				"type" : "PRIMARY_SKILL",
+				"val" : 6,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 17,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"LEFT_HAND"
+		],
+		"text" : {
+			"description" : "{Shield of the Damned}\
+
+	\
+
+	This left handed item increases your Defense skill by +6.",
+			"event" : "Upon cresting a small hill, you come upon a ridiculous looking sight.  A Sprite is attempting to carry a Shield that is almost as big as it is.  Trying not to laugh, you ask, \"Need help?\"  The Sprite glares at you and answers, \"You think this is funny?  Fine.  You can carry it.  I much prefer flying anyway.\"",
+			"name" : "Shield of the Damned"
+		},
+		"value" : 6000
+	},
+
+	"sentinelsShield":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.defence",
+				"type" : "PRIMARY_SKILL",
+				"val" : 12,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : 0,
+				"type" : "PRIMARY_SKILL",
+				"val" : -3,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 18,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"LEFT_HAND"
+		],
+		"text" : {
+			"description" : "{Sentinel's Shield}\
+
+	\
+
+	Held with the left hand, this relic increases your Defense skill by +12, but reduces your Attack skill by -3.",
+			"event" : "You find a large box that seems to be made from some unknown metal.  When you touch it, the box opens with a loud hiss, revealing a gleaming shield within.",
+			"name" : "Sentinel's Shield"
+		},
+		"value" : 10000
+	},
+
+	"helmOfTheAlabasterUnicorn":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.knowledge",
+				"type" : "PRIMARY_SKILL",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 19,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"HEAD"
+		],
+		"text" : {
+			"description" : "{Helm of the Alabaster Unicorn}\
+
+	\
+
+	Worn on the head, this item increases your Knowledge skill by +1.",
+			"event" : "A traveling tinker in need of supplies offers you a helm with a unicorn's horn on its top in exchange for food and water.  Curious, you accept, and later find out that the helm is magical.",
+			"name" : "Helm of the Alabaster Unicorn"
+		},
+		"value" : 1000
+	},
+
+	"skullHelmet":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.knowledge",
+				"type" : "PRIMARY_SKILL",
+				"val" : 2,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 20,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"HEAD"
+		],
+		"text" : {
+			"description" : "{Skull Helmet}\
+
+	\
+
+	Worn on the head, this item increases your Knowledge skill by +2.",
+			"event" : "A brief stop at an improbable rural inn yields an exchange of money, tales, and accidentally, luggage.  You find a magical helm in your new backpack.",
+			"name" : "Skull Helmet"
+		},
+		"value" : 3000
+	},
+
+	"helmOfChaos":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.knowledge",
+				"type" : "PRIMARY_SKILL",
+				"val" : 3,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 21,
+		"type" : ["HERO"],
+		"class" : "MINOR",
+		"slot" : [
+			"HEAD"
+		],
+		"text" : {
+			"description" : "{Helm of Chaos}\
+
+	\
+
+	Worn on the head, this item increases your Knowledge skill by +3.",
+			"event" : "Your army is ambushed by a small tribe of wild (and none too bright) Orcs.  You fend them off easily and the survivors flee in all directions.  One of the Orcs was wearing a polished horned helm.  Figuring it will make a good souvenir, you take it.",
+			"name" : "Helm of Chaos"
+		},
+		"value" : 4000
+	},
+
+	"crownOfTheSupremeMagi":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.knowledge",
+				"type" : "PRIMARY_SKILL",
+				"val" : 4,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 22,
+		"type" : ["HERO"],
+		"class" : "MINOR",
+		"slot" : [
+			"HEAD"
+		],
+		"text" : {
+			"description" : "{Crown of the Supreme Magi}\
+
+	\
+
+	Worn on the head, this item increases your Knowledge skill by +4.",
+			"event" : "A mad wizard who has been terrorizing the region has foolishly chosen you as his target today.  Realizing that his power comes from his crown, you take aim with your bow, knocking the crown from his head and releasing him from his crazed madness.  Grateful to be free, he lets you keep the crown.",
+			"name" : "Crown of the Supreme Magi"
+		},
+		"value" : 5000
+	},
+
+	"hellstormHelmet":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.knowledge",
+				"type" : "PRIMARY_SKILL",
+				"val" : 5,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 23,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"HEAD"
+		],
+		"text" : {
+			"description" : "{Hellstorm Helmet}\
+
+	\
+
+	Worn on the head, this item increases your Knowledge skill by +5.",
+			"event" : "Your army is ambushed by a small tribe of wild (and none too bright) Orcs.  You fend them off easily and the survivors flee in all directions.  One of the Orcs was wearing a polished horned helm.  Figuring it will make a good souvenir, you take it.",
+			"name" : "Hellstorm Helmet"
+		},
+		"value" : 6000
+	},
+
+	"thunderHelmet":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.knowledge",
+				"type" : "PRIMARY_SKILL",
+				"val" : 10,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.spellpower",
+				"type" : "PRIMARY_SKILL",
+				"val" : -2,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 24,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"HEAD"
+		],
+		"text" : {
+			"description" : "{Thunder Helmet}\
+
+	\
+
+	When worn, this relic increases your Knowledge skill by +10, but reduces your Power skill by -2.",
+			"event" : "A glint of golden light catches your eye.  Upon further investigation, you find a golden helm hidden under a bush.",
+			"name" : "Thunder Helmet"
+		},
+		"value" : 10000
+	},
+
+	"breastplateOfPetrifiedWood":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.spellpower",
+				"type" : "PRIMARY_SKILL",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 25,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"TORSO"
+		],
+		"text" : {
+			"description" : "{Breastplate of Petrified Wood}\
+
+	\
+
+	Worn on the torso, this item increases your Power skill by +1.",
+			"event" : "A gang of Rogues is sifting through the possessions of dead warriors.  Scaring off the scavengers, you note the Rogues had overlooked a strange breastplate.",
+			"name" : "Breastplate of Petrified Wood"
+		},
+		"value" : 1000
+	},
+
+	"ribCage":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.spellpower",
+				"type" : "PRIMARY_SKILL",
+				"val" : 2,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 26,
+		"type" : ["HERO"],
+		"class" : "MINOR",
+		"slot" : [
+			"TORSO"
+		],
+		"text" : {
+			"description" : "{Rib Cage}\
+
+	\
+
+	Worn on the torso, this item increases your Power skill by +2.",
+			"event" : "You trip over what was the rib cage of a large creature.  Upon further examination, you discover the rib cage to be a piece of armor.",
+			"name" : "Rib Cage"
+		},
+		"value" : 3000
+	},
+
+	"scalesOfTheGreaterBasilisk":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.spellpower",
+				"type" : "PRIMARY_SKILL",
+				"val" : 3,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 27,
+		"type" : ["HERO"],
+		"class" : "MINOR",
+		"slot" : [
+			"TORSO"
+		],
+		"text" : {
+			"description" : "{Scales of the Greater Basilisk}\
+
+	\
+
+	Worn on the torso, this item increases your Power skill by +3.",
+			"event" : "You meet an old Armorer who claims he owes you a favor.  Taking him up on it, he pieces together some Basilisk scales, forming a well-fashioned breastplate.",
+			"name" : "Scales of the Greater Basilisk"
+		},
+		"value" : 4000
+	},
+
+	"tunicOfTheCyclopsKing":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.spellpower",
+				"type" : "PRIMARY_SKILL",
+				"val" : 4,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 28,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"TORSO"
+		],
+		"text" : {
+			"description" : "{Tunic of the Cyclops King}\
+
+	\
+
+	Worn on the torso, this item increases your Power skill by +4.",
+			"event" : "You catch a Cyclops skinny dipping, and as a prank you make off with his clothes.  Later, you realize the tunic is magical.",
+			"name" : "Tunic of the Cyclops King"
+		},
+		"value" : 5000
+	},
+
+	"breastplateOfBrimstone":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.spellpower",
+				"type" : "PRIMARY_SKILL",
+				"val" : 5,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 29,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"TORSO"
+		],
+		"text" : {
+			"description" : "{Breastplate of Brimstone}\
+
+	\
+
+	Worn on the torso, this item increases your Power skill by +5.",
+			"event" : "You meet a blacksmith who is in the process of melting down old pieces of armor and weapons to reclaim the metal.  When he learns of your quest, he gives you a breastplate that he claims refused to melt, and is therefore of no value to him.",
+			"name" : "Breastplate of Brimstone"
+		},
+		"value" : 6000
+	},
+
+	"titansCuirass":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.spellpower",
+				"type" : "PRIMARY_SKILL",
+				"val" : 10,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.knowledge",
+				"type" : "PRIMARY_SKILL",
+				"val" : -2,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 30,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"TORSO"
+		],
+		"text" : {
+			"description" : "{Titan's Cuirass}\
+
+	\
+
+	When worn, this massive relic increases your Power skill by +10, but reduces your Knowledge skill by -2.",
+			"event" : "A Titan stops you and says, \"Pay me 5,000 gold, or I shall slay you where you stand.\"  You refuse.  The Titan grabs the sword hanging from its belt, but you duck between its legs.  He is so surprised by this maneuver that he trips... falling on his sword and killing himself instantly.  You relieve him of his belongings.",
+			"name" : "Titan's Cuirass"
+		},
+		"value" : 10000
+	},
+
+	"armorOfWonder":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.attack",
+				"type" : "PRIMARY_SKILL",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.defence",
+				"type" : "PRIMARY_SKILL",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.spellpower",
+				"type" : "PRIMARY_SKILL",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.knowledge",
+				"type" : "PRIMARY_SKILL",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 31,
+		"type" : ["HERO"],
+		"class" : "MINOR",
+		"slot" : [
+			"TORSO"
+		],
+		"text" : {
+			"description" : "{Armor of Wonder}\
+
+	\
+
+	Worn on the torso, the Armor of Wonder increases all four primary skills by +1.",
+			"event" : "A gang of Rogues is sifting through the possessions of dead warriors.  Scaring off the scavengers, you note the Rogues had overlooked a dirty, but serviceable, breastplate.",
+			"name" : "Armor of Wonder"
+		},
+		"value" : 4000
+	},
+
+	"sandalsOfTheSaint":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.attack",
+				"type" : "PRIMARY_SKILL",
+				"val" : 2,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.defence",
+				"type" : "PRIMARY_SKILL",
+				"val" : 2,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.spellpower",
+				"type" : "PRIMARY_SKILL",
+				"val" : 2,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.knowledge",
+				"type" : "PRIMARY_SKILL",
+				"val" : 2,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 32,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"FEET"
+		],
+		"text" : {
+			"description" : "{Sandals of the Saint}\
+
+	\
+
+	Worn on the feet, the Sandals of the Saint increase all four primary skills by +2.",
+			"event" : "A Nomad trader seeks protection from a tribe of Goblins.  For your assistance, he gives you a finely crafted pair of sandals made from the softest leather.  Looking closely, you see fascinating ancient carvings engraved on the leather.",
+			"name" : "Sandals of the Saint"
+		},
+		"value" : 8000
+	},
+
+	"celestialNecklaceOfBliss":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.attack",
+				"type" : "PRIMARY_SKILL",
+				"val" : 3,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.defence",
+				"type" : "PRIMARY_SKILL",
+				"val" : 3,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.spellpower",
+				"type" : "PRIMARY_SKILL",
+				"val" : 3,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.knowledge",
+				"type" : "PRIMARY_SKILL",
+				"val" : 3,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 33,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"NECK"
+		],
+		"text" : {
+			"description" : "{Celestial Necklace of Bliss}\
+
+	\
+
+	Worn about the neck, the Celestial Necklace of Bliss increases all four primary skills by +3.",
+			"event" : "After rescuing a Sorceress from a cursed tomb, she rewards your heroism with an exquisite jeweled necklace.",
+			"name" : "Celestial Necklace of Bliss"
+		},
+		"value" : 12000
+	},
+
+	"lionsShieldOfCourage":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.attack",
+				"type" : "PRIMARY_SKILL",
+				"val" : 4,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.defence",
+				"type" : "PRIMARY_SKILL",
+				"val" : 4,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.spellpower",
+				"type" : "PRIMARY_SKILL",
+				"val" : 4,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.knowledge",
+				"type" : "PRIMARY_SKILL",
+				"val" : 4,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 34,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"LEFT_HAND"
+		],
+		"text" : {
+			"description" : "{Lion's Shield of Courage}\
+
+	\
+
+	Held with the left hand, the Lion's Shield of Courage increases all four primary skills by +4.",
+			"event" : "You've come upon a fight between a Necromancer and a Paladin.  The Necromancer blasts the Paladin with a fire bolt, bringing him to his knees.  Acting quickly, you slay the evil one before the final blow.  The grateful Paladin gives you the shield that saved him.",
+			"name" : "Lion's Shield of Courage"
+		},
+		"value" : 16000
+	},
+	"swordOfJudgement":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.attack",
+				"type" : "PRIMARY_SKILL",
+				"val" : 5,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.defence",
+				"type" : "PRIMARY_SKILL",
+				"val" : 5,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.spellpower",
+				"type" : "PRIMARY_SKILL",
+				"val" : 5,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.knowledge",
+				"type" : "PRIMARY_SKILL",
+				"val" : 5,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 35,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"RIGHT_HAND"
+		],
+		"text" : {
+			"description" : "{Sword of Judgement}\
+
+	\
+
+	Held with the right hand, the Sword of Judgement increases all four primary skills by +5.",
+			"event" : "You come upon a battle where a Paladin has been mortally wounded by a group of Zombies.  He asks you to take his sword and finish what he started.  As you pick it up, it begins to hum, and then everything becomes a blur.  The Zombies lie dead, the sword dripping with blood.  You strap it to your belt.",
+			"name" : "Sword of Judgement"
+		},
+		"value" : 20000
+	},
+
+	"helmOfHeavenlyEnlightenment":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.attack",
+				"type" : "PRIMARY_SKILL",
+				"val" : 6,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.defence",
+				"type" : "PRIMARY_SKILL",
+				"val" : 6,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.spellpower",
+				"type" : "PRIMARY_SKILL",
+				"val" : 6,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.knowledge",
+				"type" : "PRIMARY_SKILL",
+				"val" : 6,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 36,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"HEAD"
+		],
+		"text" : {
+			"description" : "{Helm of Heavenly Enlightenment}\
+
+	\
+
+	Worn on the head, the Helm of Heavenly Enlightenment increases all four primary skills by +6.",
+			"event" : "You spy a gleaming object poking up out of the ground.   You send a member of your party over to investigate.  He comes back with a golden helmet in his hands.  You realize that it must be the Helm of Heavenly Enlightenment, the only helm ever rumored to be made from solid gold.",
+			"name" : "Helm of Heavenly Enlightenment"
+		},
+		"value" : 24000
+	},
+
+	"quietEyeOfTheDragon":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.attack",
+				"type" : "PRIMARY_SKILL",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.defence",
+				"type" : "PRIMARY_SKILL",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 37,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"LEFT_RING",
+			"RIGHT_RING"
+		],
+		"text" : {
+			"description" : "{Quiet Eye of the Dragon}\
+
+	\
+
+	Worn on a finger, this item increases your Attack and Defense skills by +1.",
+			"event" : "While venturing into a decrepit hut you find the skeleton of a long dead witch.  Investigation of the remains reveals a ring with a Dragon's eye set into it.",
+			"name" : "Quiet Eye of the Dragon"
+		},
+		"value" : 2000
+	},
+
+	"redDragonFlameTongue":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.attack",
+				"type" : "PRIMARY_SKILL",
+				"val" : 2,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.defence",
+				"type" : "PRIMARY_SKILL",
+				"val" : 2,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 38,
+		"type" : ["HERO"],
+		"class" : "MINOR",
+		"slot" : [
+			"RIGHT_HAND"
+		],
+		"text" : {
+			"description" : "{Red Dragon Flame Tongue}\
+
+	\
+
+	Held with the right hand, this item increases your Attack and Defense skills by +2.",
+			"event" : "As you are walking along a narrow path, a nearby bush suddenly bursts into flames.  Before your eyes the flames become the image of a beautiful woman.  She holds out a magnificent sword to you.",
+			"name" : "Red Dragon Flame Tongue"
+		},
+		"value" : 4000
+	},
+
+	"dragonScaleShield":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.attack",
+				"type" : "PRIMARY_SKILL",
+				"val" : 3,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.defence",
+				"type" : "PRIMARY_SKILL",
+				"val" : 3,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 39,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"LEFT_HAND"
+		],
+		"text" : {
+			"description" : "{Dragon Scale Shield}\
+
+	\
+
+	Held with the left hand, this item increases your Attack and Defense skills by +3.",
+			"event" : "You meet an old Armorer who claims he owes you a favor.  Taking him up on it, he pieces together some Dragon scales, forming a well-fashioned shield.",
+			"name" : "Dragon Scale Shield"
+		},
+		"value" : 6000
+	},
+
+	"dragonScaleArmor":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.attack",
+				"type" : "PRIMARY_SKILL",
+				"val" : 4,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.defence",
+				"type" : "PRIMARY_SKILL",
+				"val" : 4,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 40,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"TORSO"
+		],
+		"text" : {
+			"description" : "{Dragon Scale Armor}\
+
+	\
+
+	Worn on a torso, this item increases your Attack and Defense skills by +4.",
+			"event" : "You meet an old Armorer who claims he owes you a favor.  Taking him up on it, he pieces together some Dragon scales, forming a well-fashioned breastplate.",
+			"name" : "Dragon Scale Armor"
+		},
+		"value" : 8000
+	},
+
+	"dragonboneGreaves":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.spellpower",
+				"type" : "PRIMARY_SKILL",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.knowledge",
+				"type" : "PRIMARY_SKILL",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 41,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"FEET"
+		],
+		"text" : {
+			"description" : "{Dragonbone Greaves}\
+
+	\
+
+	Worn on the feet, this item increases your Knowledge and Power skills by +1.",
+			"event" : "You trip over what seem to be the bones of a large Dragon.  Upon further examination, you discover the bones to be a pair of greaves.",
+			"name" : "Dragonbone Greaves"
+		},
+		"value" : 2000
+	},
+
+	"dragonWingTabard":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.spellpower",
+				"type" : "PRIMARY_SKILL",
+				"val" : 2,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.knowledge",
+				"type" : "PRIMARY_SKILL",
+				"val" : 2,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 42,
+		"type" : ["HERO"],
+		"class" : "MINOR",
+		"slot" : [
+			"SHOULDERS"
+		],
+		"text" : {
+			"description" : "{Dragon Wing Tabard}\
+
+	\
+
+	Worn on the shoulders, this item increases your Knowledge and Power skills by +2.",
+			"event" : "Ridding the countryside of the hideous Dragon who made a sport of eating noblemen's Knights, you are honored with a Dragon Wing Tabard.",
+			"name" : "Dragon Wing Tabard"
+		},
+		"value" : 4000
+	},
+
+	"necklaceOfDragonteeth":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.spellpower",
+				"type" : "PRIMARY_SKILL",
+				"val" : 3,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.knowledge",
+				"type" : "PRIMARY_SKILL",
+				"val" : 3,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 43,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"NECK"
+		],
+		"text" : {
+			"description" : "{Necklace of Dragonteeth}\
+
+	\
+
+	Worn about the neck, this item increases your Knowledge and Power skills by +3.",
+			"event" : "An old shaman stands in the road before you, screaming something in a language you can't understand.  He suddenly vanishes in a cloud of smoke.  When the smoke clears, there is a long string of Dragon teeth in the spot where he was standing.",
+			"name" : "Necklace of Dragonteeth"
+		},
+		"value" : 6000
+	},
+
+	"crownOfDragontooth":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "primSkill.spellpower",
+				"type" : "PRIMARY_SKILL",
+				"val" : 4,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.knowledge",
+				"type" : "PRIMARY_SKILL",
+				"val" : 4,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 44,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"HEAD"
+		],
+		"text" : {
+			"description" : "{Crown of Dragontooth}\
+
+	\
+
+	Worn on the head, this item increases your Knowledge and Power skills by +4.",
+			"event" : "While out scaring up game, your troops find a mysterious crown levitating about three feet off of the ground.  They hand it to you, and you notice an inscription.  It reads: \"Brains best brawn and magic beats might.  Heed my words, and you'll win every fight.\"",
+			"name" : "Crown of Dragontooth"
+		},
+		"value" : 8000
+	},
+
+	"stillEyeOfTheDragon":
+	{
+		"bonuses" : [
+			{
+				"type" : "MORALE",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"type" : "LUCK",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 45,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"LEFT_RING",
+			"RIGHT_RING"
+		],
+		"text" : {
+			"description" : "{Still Eye of the Dragon}\
+
+	\
+
+	Worn on the finger, this item increases your Luck and Morale by +1.",
+			"event" : "While venturing into a decrepit hut you find the skeleton of a long dead witch.  Investigation of the remains reveals a ring with a Dragon's eye set into it.",
+			"name" : "Still Eye of the Dragon"
+		},
+		"value" : 2000
+	},
+
+	"cloverOfFortune":
+	{
+		"bonuses" : [
+			{
+				"type" : "LUCK",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 46,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Clover of Fortune}\
+
+	\
+
+	The Clover of Fortune increases your Luck by +1.",
+			"event" : "While walking across a patch of dried vegetation, you are surprised to find a healthy, green four-leaf clover.",
+			"name" : "Clover of Fortune"
+		},
+		"value" : 1000
+	},
+
+	"cardsOfProphecy":
+	{
+		"bonuses" : [
+			{
+				"type" : "LUCK",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 47,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Cards of Prophecy}\
+
+	\
+
+	The Cards of Prophecy increase your Luck by +1.",
+			"event" : "You meet a traveler who offers to let you draw a card from the strange deck that he carries.  When you refuse, he draws one himself.  He has a momentary look of surprise on his face, then vanishes with a pop, dropping the cards to the floor.  You gather them, and leave.",
+			"name" : "Cards of Prophecy"
+		},
+		"value" : 1000
+	},
+
+	"ladybirdOfLuck":
+	{
+		"bonuses" : [
+			{
+				"type" : "LUCK",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 48,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Ladybird of Luck}\
+
+	\
+
+	The Ladybird of Luck increases your Luck by +1.",
+			"event" : "An old witch who seems to have been expecting you, hands you a small statue and departs, never having said a word.",
+			"name" : "Ladybird of Luck"
+		},
+		"value" : 1000
+	},
+
+	"badgeOfCourage":
+	{
+		"bonuses" : [
+			{
+				"type" : "MORALE",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"type" : "MIND_IMMUNITY",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 49,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Badge of Courage}\
+
+	\
+
+	The Badge of Courage increases your Morale by +1.",
+			"event" : "After saving a young boy from a vicious pack of Wolves, you return him to his father's manor.  The grateful nobleman awards you with a Badge of Courage.",
+			"name" : "Badge of Courage"
+		},
+		"value" : 1000
+	},
+
+	"crestOfValor":
+	{
+		"bonuses" : [
+			{
+				"type" : "MORALE",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 50,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Crest of Valor}\
+
+	\
+
+	The Crest of Valor increases your Morale by +1.",
+			"event" : "After freeing a princess of a neighboring kingdom from the evil clutches of despicable slavers, she awards you with a Crest of Valor.",
+			"name" : "Crest of Valor"
+		},
+		"value" : 1000
+	},
+
+	"glyphOfGallantry":
+	{
+		"bonuses" : [
+			{
+				"type" : "MORALE",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 51,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Glyph of Gallantry}\
+
+	\
+
+	The Glyph of Gallantry increases your Morale by +1.",
+			"event" : "Ridding the countryside of the hideous Minotaur who made a sport of eating noblemen's Knights, you are honored with the Glyph of Gallantry.",
+			"name" : "Glyph of Gallantry"
+		},
+		"value" : 1000
+	},
+	
+	"speculum":
+	{
+		"bonuses" : [
+			{
+				"type" : "SIGHT_RADIOUS",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 52,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Speculum}\
+
+	\
+
+	The Speculum increases your Scouting radius by +1.",
+			"event" : "A merchant from far away lands trades you a new invention of his people for traveling supplies.  It makes distant objects appear closer, and he calls it... a Speculum.",
+			"name" : "Speculum"
+		},
+		"value" : 1000
+	},
+
+	"spyglass":
+	{
+		"bonuses" : [
+			{
+				"type" : "SIGHT_RADIOUS",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 53,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Spyglass}\
+
+	\
+
+	The Spyglass increases your Scouting radius by +1.",
+			"event" : "An old man claiming to be an inventor asks you to try his latest invention.  He calls it... a Spyglass.",
+			"name" : "Spyglass"
+		},
+		"value" : 1000
+	},
+
+	"amuletOfTheUndertaker":
+	{
+		"bonuses" : [
+			{
+				"subtype" : 12,
+				"type" : "SECONDARY_SKILL_PREMY",
+				"val" : 5,
+				"valueType" : "ADDITIVE_VALUE"
+			}
+		],
+		"index" : 54,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"NECK"
+		],
+		"text" : {
+			"description" : "{Amulet of the Undertaker}\
+
+	\
+
+	Worn about the neck, this amulet increases your Necromancy skill by 5%.",
+			"event" : "A dirty amulet lies next to a freshly dug grave. Upon investigation, you discover it to be the enchanted Amulet of the Undertaker, long thought lost by mortals.",
+			"name" : "Amulet of the Undertaker"
+		},
+		"value" : 2000
+	},
+
+	"vampiresCowl":
+	{
+		"bonuses" : [
+			{
+				"subtype" : 12,
+				"type" : "SECONDARY_SKILL_PREMY",
+				"val" : 10,
+				"valueType" : "ADDITIVE_VALUE"
+			}
+		],
+		"index" : 55,
+		"type" : ["HERO"],
+		"class" : "MINOR",
+		"slot" : [
+			"SHOULDERS"
+		],
+		"text" : {
+			"description" : "{Vampire's Cowl}\
+
+	\
+
+	Worn about the shoulders, this cowl increases your Necromancy skill by 10%.",
+			"event" : "You manage to find a Vampire's resting place during the day, and are able to slay him easily.  Just for good measure, you take his cowl.",
+			"name" : "Vampire's Cowl"
+		},
+		"value" : 4000
+	},
+
+	"deadMansBoots":
+	{
+		"bonuses" : [
+			{
+				"subtype" : 12,
+				"type" : "SECONDARY_SKILL_PREMY",
+				"val" : 15,
+				"valueType" : "ADDITIVE_VALUE"
+			}
+		],
+		"index" : 56,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"FEET"
+		],
+		"text" : {
+			"description" : "{Dead Man's Boots}\
+
+	\
+
+	Worn on the feet, these boots increase your Necromancy skill by 15%.",
+			"event" : "Discovering a pair of beautifully beaded boots made from the finest and softest leather, you thank the anonymous donor and add the boots to your inventory.",
+			"name" : "Dead Man's Boots"
+		},
+		"value" : 6000
+	},
+
+	"garnitureOfInterference":
+	{
+		"bonuses" : [
+			{
+				"subtype" : 0,
+				"type" : "MAGIC_RESISTANCE",
+				"val" : 5,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 57,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"NECK"
+		],
+		"text" : {
+			"description" : "{Garniture of Interference}\
+
+	\
+
+	Worn about the neck, this item increases your Magic Resistance by 5%.",
+			"event" : "You've come upon a fight between a Necromancer and a Paladin.  The Necromancer blasts the Paladin with a fire bolt, bringing him to his knees.  Acting quickly, you slay the evil one before the final blow.  The grateful Paladin gives you the armor that saved him.",
+			"name" : "Garniture of Interference"
+		},
+		"value" : 2000
+	},
+
+	"surcoatOfCounterpoise":
+	{
+		"bonuses" : [
+			{
+				"subtype" : 0,
+				"type" : "MAGIC_RESISTANCE",
+				"val" : 10,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 58,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"SHOULDERS"
+		],
+		"text" : {
+			"description" : "{Surcoat of Counterpoise}\
+
+	\
+
+	Worn about the shoulders, this item increases your Magic Resistance by 10%.",
+			"event" : "You've come upon a fight between a Necromancer and a Paladin.  The Necromancer blasts the Paladin with a fire bolt, bringing him to his knees.  Acting quickly, you slay the evil one before the final blow.  The grateful Paladin gives you the cloak that saved him.",
+			"name" : "Surcoat of Counterpoise"
+		},
+		"value" : 4000
+	},
+
+	"bootsOfPolarity":
+	{
+		"bonuses" : [
+			{
+				"subtype" : 0,
+				"type" : "MAGIC_RESISTANCE",
+				"val" : 15,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 59,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"FEET"
+		],
+		"text" : {
+			"description" : "{Boots of Polarity}\
+
+	\
+
+	Worn on the feet, these boots increase your Magic Resistance by 15%.",
+			"event" : "A Nomad trader seeks protection from a tribe of Goblins.  For your assistance, he gives you a finely crafted pair of boots made from the softest leather.  Looking closely, you see fascinating ancient carvings engraved on the leather.",
+			"name" : "Boots of Polarity"
+		},
+		"value" : 6000
+	},
+
+	"bowOfElvenCherrywood":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "skill.archery",
+				"type" : "SECONDARY_SKILL_PREMY",
+				"val" : 5,
+				"valueType" : "ADDITIVE_VALUE"
+			}
+		],
+		"index" : 60,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Bow of Elven Cherrywood}\
+
+	\
+
+	This bow increases your Archery skill by 5%.",
+			"event" : "A chance meeting with a famous Archer finds you in a game of knucklebones pitting his bow against your horse.  You win.",
+			"name" : "Bow of Elven Cherrywood"
+		},
+		"value" : 2000
+	},
+
+	"bowstringOfTheUnicornsMane":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "skill.archery",
+				"type" : "SECONDARY_SKILL_PREMY",
+				"val" : 10,
+				"valueType" : "ADDITIVE_VALUE"
+			}
+		],
+		"index" : 61,
+		"type" : ["HERO"],
+		"class" : "MINOR",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Bowstring of the Unicorn's Mane}\
+
+	\
+
+	This bowstring increases your Archery skill by 10%.",
+			"event" : "An ensnared Unicorn whinnies in fright.  Murmuring soothing words, you set her free.  Snorting and stamping her front hoof once, she gallops off.  Looking down you see that she dropped what appears to be a finely crafted bowstring.",
+			"name" : "Bowstring of the Unicorn's Mane"
+		},
+		"value" : 4000
+	},
+
+	"angelFeatherArrows":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "skill.archery",
+				"type" : "SECONDARY_SKILL_PREMY",
+				"val" : 15,
+				"valueType" : "ADDITIVE_VALUE"
+			}
+		],
+		"index" : 62,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Angel Feather Arrows}\
+
+	\
+
+	These arrows increase your Archery skill by 15%.",
+			"event" : "Not really wanting to know where the Angel is whose feathers were used for these arrows, you take them and quickly depart.",
+			"name" : "Angel Feather Arrows"
+		},
+		"value" : 6000
+	},
+
+	"birdOfPerception":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "skill.eagleEye",
+				"type" : "SECONDARY_SKILL_PREMY",
+				"val" : 5,
+				"valueType" : "ADDITIVE_VALUE"
+			}
+		],
+		"index" : 63,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Bird of Perception}\
+
+	\
+
+	This figurine increases your Eagle Eye skill by 5%.",
+			"event" : "An old witch who seems to have been expecting you, hands you a small statue and departs, never having said a word.",
+			"name" : "Bird of Perception"
+		},
+		"value" : 1000
+	},
+
+	"stoicWatchman":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "skill.eagleEye",
+				"type" : "SECONDARY_SKILL_PREMY",
+				"val" : 10,
+				"valueType" : "ADDITIVE_VALUE"
+			}
+		],
+		"index" : 64,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Stoic Watchman}\
+
+	\
+
+	This figurine increases your Eagle Eye skill by 10%.",
+			"event" : "An old witch who seems to have been expecting you, hands you a small statue and departs, never having said a word.",
+			"name" : "Stoic Watchman"
+		},
+		"value" : 2000
+	},
+
+	"emblemOfCognizance":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "skill.eagleEye",
+				"type" : "SECONDARY_SKILL_PREMY",
+				"val" : 15,
+				"valueType" : "ADDITIVE_VALUE"
+			}
+		],
+		"index" : 65,
+		"type" : ["HERO"],
+		"class" : "MINOR",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Emblem of Cognizance}\
+
+	\
+
+	This item increases your Eagle Eye skill by 15%.",
+			"event" : "An old witch who seems to have been expecting you, hands you a small talisman and departs, never having said a word.",
+			"name" : "Emblem of Cognizance"
+		},
+		"value" : 3000
+	},
+
+	"statesmansMedal":
+	{
+		"bonuses" : [
+			{
+				"type" : "SURRENDER_DISCOUNT",
+				"val" : 10,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 66,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"NECK"
+		],
+		"text" : {
+			"description" : "{Statesman's Medal}\
+
+	\
+
+	Worn about the neck, the Statesman's Medal reduces the cost of surrendering.",
+			"event" : "You pause to help a diplomat with a broken axle fix his problem.  In gratitude, he gives you a medal with magical properties which he says will, \"help people see things your way.\"",
+			"name" : "Statesman's Medal"
+		},
+		"value" : 5000
+	},
+
+	"diplomatsRing":
+	{
+		"bonuses" : [
+			{
+				"type" : "SURRENDER_DISCOUNT",
+				"val" : 10,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 67,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"LEFT_RING",
+			"RIGHT_RING"
+		],
+		"text" : {
+			"description" : "{Diplomat's Ring}\
+
+	\
+
+	Worn on the finger, the Diplomat's Ring reduces the cost of surrendering.",
+			"event" : "You pause to help a diplomat with a broken axle fix his problem.  In gratitude, he gives you a ring with magical properties which he says will, \"help people see things your way.\"",
+			"name" : "Diplomat's Ring"
+		},
+		"value" : 5000
+	},
+
+	"ambassadorsSash":
+	{
+		"bonuses" : [
+			{
+				"type" : "SURRENDER_DISCOUNT",
+				"val" : 10,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 68,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"SHOULDERS"
+		],
+		"text" : {
+			"description" : "{Ambassador's Sash}\
+
+	\
+
+	Worn about the shoulders, the Ambassador's Sash reduces the cost of surrendering.",
+			"event" : "You pause to help a diplomat with a broken axle fix his problem.  In gratitude, he gives you a sash with magical properties which he says will, \"help people see things your way.\"",
+			"name" : "Ambassador's Sash"
+		},
+		"value" : 5000
+	},
+
+	"ringOfTheWayfarer":
+	{
+		"bonuses" : [
+			{
+				"type" : "STACKS_SPEED",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 69,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"LEFT_RING",
+			"RIGHT_RING"
+		],
+		"text" : {
+			"description" : "{Ring of the Wayfarer}\
+
+	\
+
+	When placed on the finger, this ring increases the combat speed of all your units by +1.",
+			"event" : "Visiting a local wise man, you explain the intent of your journey.  He reaches into a sack and withdraws a strange ring which he hands to you.",
+			"name" : "Ring of the Wayfarer"
+		},
+		"value" : 5000
+	},
+
+	"equestriansGloves":
+	{
+		"bonuses" : [
+			{
+				"type" : "LAND_MOVEMENT",
+				"val" : 300,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 70,
+		"type" : ["HERO"],
+		"class" : "MINOR",
+		"slot" : [
+			"LEFT_RING",
+			"RIGHT_RING"
+		],
+		"text" : {
+			"description" : "{Equestrian's Gloves}\
+
+	\
+
+	Worn on the hands, these gloves increase your hero's movement rate over land.",
+			"event" : "A brief stop at an improbable rural inn yields an exchange of money, tales, and accidentally, luggage.  You find a magical pair of gloves in your new backpack.",
+			"name" : "Equestrian's Gloves"
+		},
+		"value" : 3000
+	},
+
+	"necklaceOfOceanGuidance":
+	{
+		"bonuses" : [
+			{
+				"type" : "SEA_MOVEMENT",
+				"val" : 1000,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 71,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"NECK"
+		],
+		"text" : {
+			"description" : "{Necklace of Ocean Guidance}\
+
+	\
+
+	Worn about the neck, this necklace increases your hero's movement rate at sea.",
+			"event" : "An old sea captain is being tortured by Ogres.  You save him, and in return he rewards you with a wondrous necklace that will guide you at sea.",
+			"name" : "Necklace of Ocean Guidance"
+		},
+		"value" : 10000
+	},
+
+	"angelWings":
+	{
+		"bonuses" : [
+			{
+				"subtype" : 1,
+				"type" : "FLYING_MOVEMENT",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 72,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"SHOULDERS"
+		],
+		"text" : {
+			"description" : "{Angel Wings}\
+
+	\
+
+	Worn about the shoulders, these wings allow you to fly.",
+			"event" : "Not really wanting to know where the Angel is who belongs to these wings, you take them and quickly depart.",
+			"name" : "Angel Wings"
+		},
+		"value" : 20000
+	},
+
+	"charmOfMana":
+	{
+		"bonuses" : [
+			{
+				"type" : "MANA_REGENERATION",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 73,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Charm of Mana}\
+
+	\
+
+	This charm helps you recover 1 extra spell point per day.",
+			"event" : "You come upon a caravan of gypsies who are feasting and fortifying their bodies with mead.  They call you forward and say, \"If you prove that you can dance the Rama-Buta, we will reward you.\"  You don't know it, but try anyway.  They laugh hysterically, but admire your bravery, giving you a strange charm.",
+			"name" : "Charm of Mana"
+		},
+		"value" : 500
+	},
+
+	"talismanOfMana":
+	{
+		"bonuses" : [
+			{
+				"type" : "MANA_REGENERATION",
+				"val" : 2,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 74,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Talisman of Mana}\
+
+	\
+
+	This talisman helps you recover 2 extra spell points per day.",
+			"event" : "You come upon a caravan of gypsies who are feasting and fortifying their bodies with mead.  They call you forward and say, \"If you prove that you can dance the Rama-Buta, we will reward you.\"  You don't know it, but try anyway.  They laugh hysterically, but admire your bravery, giving you a strange talisman.",
+			"name" : "Talisman of Mana"
+		},
+		"value" : 1000
+	},
+
+	"mysticOrbOfMana":
+	{
+		"bonuses" : [
+			{
+				"type" : "MANA_REGENERATION",
+				"val" : 3,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 75,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Mystic Orb of Mana}\
+
+	\
+
+	This orb helps you recover 3 extra spell points per day.",
+			"event" : "You come upon a caravan of gypsies who are feasting and fortifying their bodies with mead.  They call you forward and say, \"If you prove that you can dance the Rama-Buta, we will reward you.\"  You don't know it, but try anyway.  They laugh hysterically, but admire your bravery, giving you a strange orb.",
+			"name" : "Mystic Orb of Mana"
+		},
+		"value" : 1500
+	},
+
+	"collarOfConjuring":
+	{
+		"bonuses" : [
+			{
+				"type" : "SPELL_DURATION",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 76,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"NECK"
+		],
+		"text" : {
+			"description" : "{Collar of Conjuring}\
+
+	\
+
+	Worn about the neck, this item increases the duration of all your spells by 1.",
+			"event" : "Before you appears a levitating glass case with a golden choker perched upon a bed of crimson velvet.  At your touch, the lid opens and the choker floats into your awaiting hands.",
+			"name" : "Collar of Conjuring"
+		},
+		"value" : 500
+	},
+
+	"ringOfConjuring":
+	{
+		"bonuses" : [
+			{
+				"type" : "SPELL_DURATION",
+				"val" : 2,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 77,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"LEFT_RING",
+			"RIGHT_RING"
+		],
+		"text" : {
+			"description" : "{Ring of Conjuring}\
+
+	\
+
+	Worn on a finger, this item increases the duration of all your spells by 2.",
+			"event" : "You find a small tree that closely resembles the great Warlock, Brimstone, with a ring around one of its twigs.  Scraps of clothing and rotting leather lead you to suspect that it IS Brimstone, transformed.  Since you can't help him, you take the magic ring.",
+			"name" : "Ring of Conjuring"
+		},
+		"value" : 1000
+	},
+
+	"capeOfConjuring":
+	{
+		"bonuses" : [
+			{
+				"type" : "SPELL_DURATION",
+				"val" : 3,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 78,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"SHOULDERS"
+		],
+		"text" : {
+			"description" : "{Cape of Conjuring}\
+
+	\
+
+	Worn about the shoulders, this item increases the duration of all your spells by 3.",
+			"event" : "Before you appears a levitating glass case with a folded cloak perched upon a bed of crimson velvet.  At your touch, the lid opens and the cloak floats into your awaiting hands.",
+			"name" : "Cape of Conjuring"
+		},
+		"value" : 1500
+	},
+
+	"orbOfTheFirmament":
+	{
+		"bonuses" : [
+			{
+				"type" : "AIR_SPELL_DMG_PREMY",
+				"val" : 50,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 79,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Orb of the Firmament}\
+
+	\
+
+	This powerful orb causes your Air spells to inflict an additional 50% damage.",
+			"event" : "You come across a conjurer who begs to accompany you and your army awhile for safety.  You agree, and he offers as payment a strange orb of the elements.",
+			"name" : "Orb of the Firmament"
+		},
+		"value" : 6000
+	},
+
+	"orbOfSilt":
+	{
+		"bonuses" : [
+			{
+				"type" : "EARTH_SPELL_DMG_PREMY",
+				"val" : 50,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 80,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Orb of Silt}\
+
+	\
+
+	This powerful orb causes your Earth spells to inflict an additional 50% damage.",
+			"event" : "You come across a conjurer who begs to accompany you and your army awhile for safety.  You agree, and he offers as payment a strange orb of the elements.",
+			"name" : "Orb of Silt"
+		},
+		"value" : 6000
+	},
+
+	"orbOfTempestuousFire":
+	{
+		"bonuses" : [
+			{
+				"type" : "FIRE_SPELL_DMG_PREMY",
+				"val" : 50,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 81,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Orb of Tempestuous Fire}\
+
+	\
+
+	This powerful orb causes your Fire spells to inflict an additional 50% damage.",
+			"event" : "You come across a conjurer who begs to accompany you and your army awhile for safety.  You agree, and he offers as payment a strange orb of the elements.",
+			"name" : "Orb of Tempestuous Fire"
+		},
+		"value" : 6000
+	},
+
+	"orbOfDrivingRain":
+	{
+		"bonuses" : [
+			{
+				"type" : "WATER_SPELL_DMG_PREMY",
+				"val" : 50,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 82,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Orb of Driving Rain}\
+
+	\
+
+	This powerful orb causes your Water spells to inflict an additional 50% damage.",
+			"event" : "You come across a conjurer who begs to accompany you and your army awhile for safety.  You agree, and he offers as payment a strange orb of the elements.",
+			"name" : "Orb of Driving Rain"
+		},
+		"value" : 6000
+	},
+
+	"recantersCloak":
+	{
+		"bonuses": [
+			{
+				"type" : "BLOCK_MAGIC_ABOVE",
+				"val" : 2,
+				"valueType" : "INDEPENDENT_MIN",
+				"propagator": "BATTLE_WIDE"
+			}
+		],
+		"index" : 83,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"SHOULDERS"
+		],
+		"text" : {
+			"description" : "{Recanter's Cloak}\
+
+	\
+
+	While wearing this cloak, neither you nor your opponent will be able to cast level 3 or higher spells during combat.",
+			"event" : "Responding to the panicked cries of a damsel in distress, you discover a young woman fleeing from a hungry bear.  You slay the beast in the nick of time, and the grateful Sorceress weaves a magic cloak from the bear's hide.",
+			"name" : "Recanter's Cloak"
+		},
+		"value" : 8000
+
+	},
+
+	"spiritOfOppression":
+	{
+		"bonuses" : [
+			{
+				"type" : "BLOCK_MORALE",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 84,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Spirit of Oppression}\
+
+	\
+
+	This item negates all Morale bonuses during combat for both you and your opponent.",
+			"event" : "Walking through the ruins of an ancient walled city, you find the instrument of the city's destruction, the Spirit of Oppression.",
+			"name" : "Spirit of Oppression"
+		},
+		"value" : 2000
+	},
+
+	"hourglassOfTheEvilHour":
+	{
+		"bonuses" : [
+			{
+				"type" : "BLOCK_LUCK",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 85,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Hourglass of the Evil Hour}\
+
+	\
+
+	This item negates all Luck bonuses during combat for both you and your opponent.",
+			"event" : "A surprise turn in the landscape finds you in the midst of a grisly scene - vultures picking at the aftermath of a terrible battle.  Your cursory search of the remains turns up an enchanted hourglass.",
+			"name" : "Hourglass of the Evil Hour"
+		},
+		"value" : 2000
+	},
+
+	"tomeOfFireMagic":
+	{
+		"bonuses" : [
+			{
+				"type" : "FIRE_SPELLS",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 86,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Tome of Fire Magic}\
+
+	\
+
+	This heavy book contains all spells in the school of Fire Magic.  It must be equipped for the spells to be available.",
+			"event" : "You come across a conjurer who begs to accompany you and your army awhile for safety.  You agree, and he offers as payment a copy of a book of the elements.",
+			"name" : "Tome of Fire Magic"
+		},
+		"value" : 20000
+	},
+
+	"tomeOfAirMagic":
+	{
+		"bonuses" : [
+			{
+				"type" : "AIR_SPELLS",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 87,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Tome of Air Magic}\
+
+	\
+
+	This heavy book contains all spells in the school of Air Magic.  It must be equipped for the spells to be available.",
+			"event" : "You come across a conjurer who begs to accompany you and your army awhile for safety.  You agree, and he offers as payment a copy of a book of the elements.",
+			"name" : "Tome of Air Magic"
+		},
+		"value" : 20000
+	},
+
+	"tomeOfWaterMagic":
+	{
+		"bonuses" : [
+			{
+				"type" : "WATER_SPELLS",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 88,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Tome of Water Magic}\
+
+	\
+
+	This heavy book contains all spells in the school of Water Magic.  It must be equipped for the spells to be available.",
+			"event" : "You come across a conjurer who begs to accompany you and your army awhile for safety.  You agree, and he offers as payment a copy of a book of the elements.",
+			"name" : "Tome of Water Magic"
+		},
+		"value" : 20000
+	},
+
+	"tomeOfEarthMagic":
+	{
+		"bonuses" : [
+			{
+				"type" : "EARTH_SPELLS",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 89,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Tome of Earth Magic}\
+
+	\
+
+	This heavy book contains all spells in the school of Earth Magic.  It must be equipped for the spells to be available.",
+			"event" : "You come across a conjurer who begs to accompany you and your army awhile for safety.  You agree, and he offers as payment a copy of a book of the elements.",
+			"name" : "Tome of Earth Magic"
+		},
+		"value" : 20000
+	},
+
+	"bootsOfLevitation":
+	{
+		"bonuses" : [
+			{
+				"subtype" : 1,
+				"type" : "WATER_WALKING",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 90,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"FEET"
+		],
+		"text" : {
+			"description" : "{Boots of Levitation}\
+
+	\
+
+	When worn, these boots allow you to walk across water.",
+			"event" : "Visiting a local wise man, you explain the intent of your journey.  He reaches into a chest and withdraws a strange pair of boots which he hands to you.",
+			"name" : "Boots of Levitation"
+		},
+		"value" : 10000
+	},
+
+	"goldenBow":
+	{
+		"bonuses" : [
+			{
+				"limiters" : ["SHOOTER_ONLY"],
+				"subtype" : 0,
+				"type" : "NO_DISTANCE_PENALTY",
+				"val" : 0,
+				"valueType" : "ADDITIVE_VALUE"
+			},
+			{
+				"limiters" : ["SHOOTER_ONLY"],
+				"subtype" : 0,
+				"type" : "NO_WALL_PENALTY",
+				"val" : 0,
+				"valueType" : "ADDITIVE_VALUE"
+			}
+		],
+		"index" : 91,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Golden Bow}\
+
+	\
+
+	When wielded, the Golden Bow allows your troops to shoot through any obstacle or at any range without penalty.",
+			"event" : "A chance meeting with a famous Archer finds you in a game of knucklebones pitting his bow against your horse.  You win.",
+			"name" : "Golden Bow"
+		},
+		"value" : 8000
+	},
+
+	"sphereOfPermanence":
+	{
+		"bonuses" : [
+			{
+				"subtype" : 35,
+				"type" : "SPELL_IMMUNITY",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 92,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Sphere of Permanence}\
+
+	\
+
+	Wielding this sphere renders your units immune to the Dispel Magic spell.",
+			"event" : "You meet an old Wizard friend of yours traveling in the opposite direction.  He presents  you with a gift:  An orb that prevents the use of the dispel magic spell on your allies.",
+			"name" : "Sphere of Permanence"
+		},
+		"value" : 7500
+	},
+
+	"orbOfVulnerability":
+	{
+		"bonuses" : [
+			{
+				"type" : "NEGATE_ALL_NATURAL_IMMUNITIES",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER",
+				"propagator": "BATTLE_WIDE"
+			}
+		],
+		"index" : 93,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Orb of Vulnerability}\
+
+	\
+
+	During combat, this orb negates the natural magic resistance of all creatures on the battlefield.",
+			"event" : "You meet an old Wizard friend of yours traveling in the opposite direction.  He presents  you with a gift:  An orb that allows nearby magic resistant creatures to be harmed by magic.",
+			"name" : "Orb of Vulnerability"
+		},
+		"value" : 25000
+	},
+
+	"ringOfVitality":
+	{
+		"bonuses" : [
+			{
+				"type" : "STACK_HEALTH",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 94,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"LEFT_RING",
+			"RIGHT_RING"
+		],
+		"text" : {
+			"description" : "{Ring of Vitality}\
+
+	\
+
+	This item increases the health of all your units by +1.",
+			"event" : "While pausing to rest, you notice a bobcat climbing a short tree to get at a crow's nest.  On impulse, you climb the tree yourself and scare off the cat.  When you look in the nest, you find a collection of shiny stones and a ring.",
+			"name" : "Ring of Vitality"
+		},
+		"value" : 5000
+	},
+
+	"ringOfLife":
+	{
+		"bonuses" : [
+			{
+				"type" : "STACK_HEALTH",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 95,
+		"type" : ["HERO"],
+		"class" : "MINOR",
+		"slot" : [
+			"LEFT_RING",
+			"RIGHT_RING"
+		],
+		"text" : {
+			"description" : "{Ring of Life}\
+
+	\
+
+	This item increases the health of all your units by +1.",
+			"event" : "While pausing to rest, you notice a bobcat climbing a short tree to get at a crow's nest.  On impulse, you climb the tree yourself and scare off the cat.  When you look in the nest, you find a collection of shiny stones and a ring.",
+			"name" : "Ring of Life"
+		},
+		"value" : 5000
+	},
+
+	"vialOfLifeblood":
+	{
+		"bonuses" : [
+			{
+				"type" : "STACK_HEALTH",
+				"val" : 2,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 96,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Vial of Lifeblood}\
+
+	\
+
+	This item increases the health of all your units by +2.",
+			"event" : "You find a mystical shrine hidden among the trees.  Floating above the altar is a Vial said to contain the blood of life.  You very carefully remove it, taking care not to disturb anything else.",
+			"name" : "Vial of Lifeblood"
+		},
+		"value" : 10000
+	},
+
+	"necklaceOfSwiftness":
+	{
+		"bonuses" : [
+			{
+				"type" : "STACKS_SPEED",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 97,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"NECK"
+		],
+		"text" : {
+			"description" : "{Necklace of Swiftness}\
+
+	\
+
+	Worn about the neck, this necklace increases the combat speed of all your units by +1.",
+			"event" : "Visiting a local wise man, you explain the intent of your journey.  He reaches into a sack and withdraws a strange necklace which he hands to you.",
+			"name" : "Necklace of Swiftness"
+		},
+		"value" : 5000
+	},
+
+	"bootsOfSpeed":
+	{
+		"bonuses" : [
+			{
+				"type" : "LAND_MOVEMENT",
+				"val" : 600,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 98,
+		"type" : ["HERO"],
+		"class" : "MINOR",
+		"slot" : [
+			"FEET"
+		],
+		"text" : {
+			"description" : "{Boots of Speed}\
+
+	\
+
+	Worn on the feet, these boots increase your hero's movement rate over land.",
+			"event" : "Visiting a local wise man, you explain the intent of your journey.  He reaches into a chest and withdraws a strange pair of boots which he hands to you.",
+			"name" : "Boots of Speed"
+		},
+		"value" : 6000
+	},
+
+	"capeOfVelocity":
+	{
+		"bonuses" : [
+			{
+				"type" : "STACKS_SPEED",
+				"val" : 2,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 99,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"SHOULDERS"
+		],
+		"text" : {
+			"description" : "{Cape of Velocity}\
+
+	\
+
+	Worn about the shoulders, this cape increases the combat speed of all your units by +2.",
+			"event" : "A brief stop at an improbable rural inn yields an exchange of money, tales, and accidentally, luggage.  You find a magical cloak in your new backpack.",
+			"name" : "Cape of Velocity"
+		},
+		"value" : 10000
+	},
+
+	"pendantOfDispassion":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "spell.berserk",
+				"type" : "SPELL_IMMUNITY",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 100,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"NECK"
+		],
+		"text" : {
+			"description" : "{Pendant of Dispassion}\
+
+	\
+
+	Wearing this item renders your units immune to the Berserk spell.",
+			"event" : "The sound of combat draws you to the scene of a fight between an old Barbarian and an eight-headed Hydra.  Your timely intervention swings the battle in favor of the man, and he rewards you with a pendant he used to use to calm his mind for battle.",
+			"name" : "Pendant of Dispassion"
+		},
+		"value" : 1000
+	},
+
+	"pendantOfSecondSight":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "spell.blind",
+				"type" : "SPELL_IMMUNITY",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 101,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"NECK"
+		],
+		"text" : {
+			"description" : "{Pendant of Second Sight}\
+
+	\
+
+	Wearing this item renders your units immune to the Blind spell.",
+			"event" : "You come upon a very old woman, long blind from cataracts and dying alone.  You tend to her final needs and promise a proper burial.  Grateful, she gives you a magic pendant emblazoned with a stylized eye.  It lets you see with your eyes closed.",
+			"name" : "Pendant of Second Sight"
+		},
+		"value" : 5000
+	},
+
+	"pendantOfHoliness":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "spell.curse",
+				"type" : "SPELL_IMMUNITY",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 102,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"NECK"
+		],
+		"text" : {
+			"description" : "{Pendant of Holiness}\
+
+	\
+
+	Wearing this item renders your units immune to the Curse spell.",
+			"event" : "In your wanderings you come across a hermit living in a small, tidy hut.  Impressed with your mission, he takes time out from his meditations to bless and give you a charm against curses.",
+			"name" : "Pendant of Holiness"
+		},
+		"value" : 1000
+	},
+
+	"pendantOfLife":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "spell.deathRipple",
+				"type" : "SPELL_IMMUNITY",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 103,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"NECK"
+		],
+		"text" : {
+			"description" : "{Pendant of Life}\
+
+	\
+
+	Wearing this item renders your units immune to the Death Ripple spell.",
+			"event" : "A fierce windstorm reveals the entrance to a buried tomb.  Your investigation reveals that the tomb has already been looted, but the thieves overlooked an ankh on a gold chain in the dark.",
+			"name" : "Pendant of Life"
+		},
+		"value" : 2500
+	},
+
+	"pendantOfDeath":
+	{
+		"bonuses" : [
+			{
+				"limiters" : ["IS_UNDEAD"],
+				"subtype" : "spell.destroyUndead",
+				"type" : "SPELL_IMMUNITY",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 104,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"NECK"
+		],
+		"text" : {
+			"description" : "{Pendant of Death}\
+
+	\
+
+	Wearing this item renders your units immune to the Destroy Undead spell.",
+			"event" : "A quick and deadly battle with a Necromancer wins you his magical pendant.  Later, a Wizard tells you that the pendant protects undead under your control from spells meant to destroy them.",
+			"name" : "Pendant of Death"
+		},
+		"value" : 2500
+	},
+
+	"pendantOfFreeWill":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "spell.hypnotize",
+				"type" : "SPELL_IMMUNITY",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 105,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"NECK"
+		],
+		"text" : {
+			"description" : "{Pendant of Free Will}\
+
+	\
+
+	Wearing this item renders your units immune to the Hypnotize spell.",
+			"event" : "A brief roadside encounter with a small caravan and a game of knucklebones wins a magic pendant.  Its former owner says that it protects against hypnosis.",
+			"name" : "Pendant of Free Will"
+		},
+		"value" : 1000
+	},
+
+	"pendantOfNegativity":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "spell.lightningBolt",
+				"type" : "SPELL_IMMUNITY",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "spell.chainLightning",
+				"type" : "SPELL_IMMUNITY",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 106,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"NECK"
+		],
+		"text" : {
+			"description" : "{Pendant of Negativity}\
+
+	\
+
+	Wearing this item renders your units immune to the Lightning Bolt and Chain Lightning spells.",
+			"event" : "You come upon the remains of a small hut which was clearly destroyed by a very large bolt of lightning.  Sifting through the debris, you find an undamaged pendant that seems to tingle in your hand.",
+			"name" : "Pendant of Negativity"
+		},
+		"value" : 5000
+	},
+
+	"pendantOfTotalRecall":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "spell.forgetfulness",
+				"type" : "SPELL_IMMUNITY",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 107,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"NECK"
+		],
+		"text" : {
+			"description" : "{Pendant of Total Recall}\
+
+	\
+
+	Wearing this item renders your units immune to the Forgetfulness spell.",
+			"event" : "Alongside the remains of a burnt witch lies a beautiful pendant, intricately designed.  Approaching the corpse with caution, you add the item to your inventory.",
+			"name" : "Pendant of Total Recall"
+		},
+		"value" : 3000
+	},
+
+	"pendantOfCourage":
+	{
+		"bonuses" : [
+			{
+				"type" : "MORALE",
+				"val" : 3,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"type" : "LUCK",
+				"val" : 3,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 108,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"NECK"
+		],
+		"text" : {
+			"description" : "{Pendant of Courage}\
+
+	\
+
+	When worn, this item bestows +3 Luck and Morale to your hero's troops.",
+			"event" : "Responding to cries for help, you find river Sprites making a sport of dunking an old man.  Feeling vengeful, you rescue the man and drag a Sprite onto dry land for awhile.  The Sprite, uncomfortable in the air, gives you a magic pendant to let him go.",
+			"name" : "Pendant of Courage"
+		},
+		"value" : 7000
+	},
+
+	"everflowingCrystalCloak":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "resource.crystal",
+				"type" : "GENERATE_RESOURCE",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 109,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"SHOULDERS"
+		],
+		"text" : {
+			"description" : "{Everflowing Crystal Cloak}\
+
+	\
+
+	When worn, this cloak increases your Crystal production by +1 per day.",
+			"event" : "Taking shelter from a storm in a small cave,  you notice a small patch of crystal in one corner.  Curious, you discover that the patch is really a cloak, and when you break a piece off it mysteriously grows back.  You decide to take the cloak with you.",
+			"name" : "Everflowing Crystal Cloak"
+		},
+		"value" : 5000
+	},
+
+	"ringOfInfiniteGems":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "resource.gems",
+				"type" : "GENERATE_RESOURCE",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 110,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"LEFT_RING",
+			"RIGHT_RING"
+		],
+		"text" : {
+			"description" : "{Ring of Infinite Gems}\
+
+	\
+
+	When worn, this ring increases your Gem production by +1 per day.",
+			"event" : "A cry of pain leads you to a Centaur, caught in a trap.  Upon setting the creature free, he hands you a small pouch.  Emptying the contents, you find a dazzling jeweled ring.",
+			"name" : "Ring of Infinite Gems"
+		},
+		"value" : 5000
+	},
+
+	"everpouringVialOfMercury":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "resource.mercury",
+				"type" : "GENERATE_RESOURCE",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 111,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Everpouring Vial of Mercury}\
+
+	\
+
+	When equipped, this vial increases your Mercury production by +1 per day.",
+			"event" : "A brief stop at a hastily abandoned Wizard's tower turns up a magical vial of mercury that always has a little left on the bottom.  Recognizing a treasure when you see one, you cap it and slip it in your pocket.",
+			"name" : "Everpouring Vial of Mercury"
+		},
+		"value" : 5000
+	},
+
+	"inexhaustibleCartOfOre":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "resource.ore",
+				"type" : "GENERATE_RESOURCE",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 112,
+		"type" : ["HERO"],
+		"class" : "MINOR",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Inexhaustible Cart of Ore}\
+
+	\
+
+	When equipped, this cart provides you with an additional +1 Ore per day.",
+			"event" : "You've found a Goblin weapon smithy making weapons for use against humans.  With a tremendous yell you and your army descend upon their camp and drive them away.  A search finds a magic cart that never runs out of ore.",
+			"name" : "Inexhaustible Cart of Ore"
+		},
+		"value" : 5000
+	},
+
+	"eversmokingRingOfSulfur":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "resource.sulfur",
+				"type" : "GENERATE_RESOURCE",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 113,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"LEFT_RING",
+			"RIGHT_RING"
+		],
+		"text" : {
+			"description" : "{Eversmoking Ring of Sulfur}\
+
+	\
+
+	When worn, this ring increases your Sulfur production by +1 per day.",
+			"event" : "You visit an alchemist who, upon seeing your army, is swayed by the righteousness of your cause.  The newly loyal subject gives you his eversmoking ring of sulfur to help with the war effort.",
+			"name" : "Eversmoking Ring of Sulfur"
+		},
+		"value" : 5000
+	},
+
+	"inexhaustibleCartOfLumber":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "resource.wood",
+				"type" : "GENERATE_RESOURCE",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 114,
+		"type" : ["HERO"],
+		"class" : "MINOR",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Inexhaustible Cart of Lumber}\
+
+	\
+
+	When equipped, this cart provides you with an additional +1 Wood per day.",
+			"event" : "Pausing to rest and light a cook fire, you pull wood out of a nearby lumber cart.  As you keep pulling wood from the cart, you notice that its cargo doesn't shrink.  You realize to your delight that the cart is enchanted, so you take it along.",
+			"name" : "Inexhaustible Cart of Lumber"
+		},
+		"value" : 5000
+	},
+
+	"endlessSackOfGold":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "resource.gold",
+				"type" : "GENERATE_RESOURCE",
+				"val" : 1000,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 115,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Endless Sack of Gold}\
+
+	\
+
+	When equipped, the Endless Sack of Gold increases your income by 1000 gold per day.",
+			"event" : "A little leprechaun dances gleefully around a magic sack.  Seeing you approach, he stops in mid-stride.  The little man screams and stamps his foot ferociously, vanishing into thin air.  Remembering the old leprechaun saying 'Finders Keepers', you grab the sack and leave.",
+			"name" : "Endless Sack of Gold"
+		},
+		"value" : 10000
+	},
+
+	"endlessBagOfGold":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "resource.gold",
+				"type" : "GENERATE_RESOURCE",
+				"val" : 750,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 116,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Endless Bag of Gold}\
+
+	\
+
+	When equipped, the Endless Bag of Gold increases your income by 750 gold per day.",
+			"event" : "A noblewoman, separated from her traveling companions, asks for your help.  After escorting her home, she rewards you with a bag filled with gold.",
+			"name" : "Endless Bag of Gold"
+		},
+		"value" : 7500
+	},
+
+	"endlessPurseOfGold":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "resource.gold",
+				"type" : "GENERATE_RESOURCE",
+				"val" : 500,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 117,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Endless Purse of Gold}\
+
+	\
+
+	When equipped, the Endless Purse of Gold increases your income by 500 gold per day.",
+			"event" : "In your travels, you find a leather purse filled with gold that once belonged to a great warrior king who had the ability to transform any inanimate object into gold.",
+			"name" : "Endless Purse of Gold"
+		},
+		"value" : 5000
+	},
+
+	"legsOfLegion":
+	{
+		"bonuses" : [
+			{
+				"type" : "CREATURE_GROWTH",
+				"subtype" : 2,
+				"val" : 5,
+				"propagator": "VISITED_TOWN_AND_VISITOR"
+			}
+		],
+		"index" : 118,
+		"type" : ["HERO"],
+		"class" : "TREASURE",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Legs of Legion}\
+
+	\
+
+	This item, when equipped by a hero in a town, increases the growth of your 2nd level units (in that town) by 5 per week.",
+			"event" : "Searching a ruin, you are amazed to find a piece of the Statue of Legion.  You carefully dust it off before placing it in your pack.",
+			"name" : "Legs of Legion"
+		},
+		"value" : 5000
+	},
+
+	"loinsOfLegion":
+	{
+		"bonuses" : [
+			{
+				"type" : "CREATURE_GROWTH",
+				"subtype" : 3,
+				"val" : 4,
+				"propagator": "VISITED_TOWN_AND_VISITOR"
+			}
+		],
+		"index" : 119,
+		"type" : ["HERO"],
+
+		"class" : "MINOR",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Loins of Legion}\
+
+	\
+
+	This item, when equipped by a hero in a town, increases the growth of your 3rd level units (in that town) by 4 per week.",
+			"event" : "Searching a ruin, you are amazed to find a piece of the Statue of Legion.  You carefully dust it off before placing it in your pack.",
+			"name" : "Loins of Legion"
+		},
+		"value" : 5000
+	},
+
+	"torsoOfLegion":
+	{
+		"bonuses" : [
+			{
+				"type" : "CREATURE_GROWTH",
+				"subtype" : 4,
+				"val" : 3,
+				"propagator": "VISITED_TOWN_AND_VISITOR"
+			}
+		],
+		"index" : 120,
+		"type" : ["HERO"],
+		"class" : "MINOR",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Torso of Legion}\
+
+	\
+
+	This item, when equipped by a hero in a town, increases the growth of your 4th level units (in that town) by 3 per week.",
+			"event" : "Searching a ruin, you are amazed to find a piece of the Statue of Legion.  You carefully dust it off before placing it in your pack.",
+			"name" : "Torso of Legion"
+		},
+		"value" : 5000
+	},
+
+	"armsOfLegion":
+	{
+		"bonuses" : [
+			{
+				"type" : "CREATURE_GROWTH",
+				"subtype" : 5,
+				"val" : 2,
+				"propagator": "VISITED_TOWN_AND_VISITOR"
+			}
+		],
+		"index" : 121,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Arms of Legion}\
+
+	\
+
+	This item, when equipped by a hero in a town, increases the growth of your 5th level units (in that town) by 2 per week.",
+			"event" : "Searching a ruin, you are amazed to find a piece of the Statue of Legion.  You carefully dust it off before placing it in your pack.",
+			"name" : "Arms of Legion"
+		},
+		"value" : 5000
+	},
+
+	"headOfLegion":
+	{
+		"bonuses" : [
+			{
+				"type" : "CREATURE_GROWTH",
+				"subtype" : 6,
+				"val" : 1,
+				"propagator": "VISITED_TOWN_AND_VISITOR"
+			}
+		],
+		"index" : 122,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Head of Legion}\
+
+	\
+
+	This item, when equipped by a hero in a town, increases the growth of your 6th level units (in that town) by 1 per week.",
+			"event" : "Searching a ruin, you are amazed to find a piece of the Statue of Legion.  You carefully dust it off before placing it in your pack.",
+			"name" : "Head of Legion"
+		},
+		"value" : 5000
+
+	},
+
+	"seaCaptainsHat":
+	{
+		"bonuses" : [
+			{
+				"type" : "WHIRLPOOL_PROTECTION",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"type" : "SEA_MOVEMENT",
+				"val" : 500,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "spell.summonBoat",
+				"type" : "SPELL",
+				"val" : 3,
+				"valueType" : "INDEPENDENT_MAX"
+			},
+			{
+				"subtype" : "spell.scuttleBoat",
+				"type" : "SPELL",
+				"val" : 3,
+				"valueType" : "INDEPENDENT_MAX"
+			}
+		],
+		"index" : 123,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"HEAD"
+		],
+		"text" : {
+			"description" : "{Sea Captain's Hat}\
+
+	\
+
+	When worn, this hat increases your movement at sea, allows you to summon and destroy boats, and protects you from whirlpools.",
+			"event" : "An old seaman tells you a tale of an enchanted hat that he used in his youth to rally his crew into fits of efficiency.  He then hands you a faded map that shows where he hid it.  After much exploring, you find it stashed underneath a nearby rock.",
+			"name" : "Sea Captain's Hat"
+		},
+		"value" : 15000
+	},
+
+	"spellbindersHat":
+	{
+		"bonuses" : [
+			{
+				"subtype" : 5,
+				"type" : "SPELLS_OF_LEVEL",
+				"val" : 3,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 124,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"HEAD"
+		],
+		"text" : {
+			"description" : "{Spellbinder's Hat}\
+
+	\
+
+	When worn, this hat allows you to cast all 5th level spells.",
+			"event" : "You see a Wizard fleeing from a Dragon and riding like the wind.  The Wizard opens a portal and rides through, getting his hat knocked off by the edge of the gate.  The Dragon follows, and the gate closes.  You pick the hat up, dust it off, and put it on.",
+			"name" : "Spellbinder's Hat"
+		},
+		"value" : 30000
+	},
+
+	"shacklesOfWar":
+	{
+		"bonuses" : [
+			{
+				"type" : "BATTLE_NO_FLEEING",
+				"propagator": "BATTLE_WIDE"
+			}
+		],
+		"index" : 125,
+		"type" : ["HERO"],
+		"class" : "MAJOR",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Shackles of War}\
+
+	\
+
+	When these shackles are wielded in combat, neither you nor your opponent may retreat or surrender.",
+			"event" : "Walking through the ruins of an ancient walled city, you find the instrument of the city's destruction, the elaborately crafted Shackles of War.",
+			"name" : "Shackles of War"
+		},
+		"value" : 5000
+	},
+
+	"orbOfInhibition":
+	{
+		"bonuses" : [
+			{
+				"type" : "BLOCK_ALL_MAGIC",
+				"propagator": "BATTLE_WIDE"
+			}
+		],
+		"index" : 126,
+		"type" : ["HERO"],
+
+		"class" : "RELIC",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Orb of Inhibition}\
+
+	\
+
+	This powerful orb prevents all spell casting in combat.",
+			"event" : "You stop to help a Peasant catch a runaway mare.  To show his gratitude, he hands you a tiny sphere.  As soon as you grasp it, you feel the magical energy drain from your limbs...",
+			"name" : "Orb of Inhibition"
+		},
+		"value" : 20000
+	},
+
+	"vialOfDragonBlood":
+	{
+		"bonuses" : [
+			{
+				"limiters" : ["DRAGON_NATURE"],
+				"subtype" : "primSkill.attack",
+				"type" : "PRIMARY_SKILL",
+				"val" : 5,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"limiters" : ["DRAGON_NATURE"],
+				"subtype" : "primSkill.defence",
+				"type" : "PRIMARY_SKILL",
+				"val" : 5,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 127,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Vial of Dragon Blood}\
+
+	\
+
+	All dragons under your command receive +5 to their attack and +5 to defense.",
+			"event" : "You find a cave guarded by an ancient dragon.  After a fierce battle, you slay him.  Dragon blood supposedly has magical properties, so you carefully gather some in a vial.",
+			"name" : "Vial of Dragon Blood"
+		},
+		"value" : 20000
+	},
+
+	"armageddonsBlade":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "spell.armageddon",
+				"type" : "SPELL",
+				"val" : 3,
+				"valueType" : "INDEPENDENT_MAX"
+			},
+			{
+				"subtype" : "spell.armageddon",
+				"type" : "SPELL_IMMUNITY",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.attack",
+				"type" : "PRIMARY_SKILL",
+				"val" : 3,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.defence",
+				"type" : "PRIMARY_SKILL",
+				"val" : 3,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.spellpower",
+				"type" : "PRIMARY_SKILL",
+				"val" : 3,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.knowledge",
+				"type" : "PRIMARY_SKILL",
+				"val" : 6,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 128,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"RIGHT_HAND"
+		],
+		"text" : {
+			"description" : "{Armageddon's Blade}\
+
+	\
+
+	+ 3 Attack. + 3 Defense. + 6 Knowledge. + 3 Power. Places Expert Armageddon Spell in your hero's spell book. All allied creatures become immune to Armageddon.",
+			"event" : "Deep beneath the earth, you find a vault of the Ancients from before the Silence.  Inside, you find a sealed casket, deeply etched with dire warnings.  Ignoring them, you break the seal.  Inside, you find Armageddon's Blade.",
+			"name" : "Armageddon's Blade"
+		},
+		"value" : 50000
+	},
+
+	"angelicAlliance":
+	{
+		"bonuses" : [
+			{
+				"type" : "NONEVIL_ALIGNMENT_MIX",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "spell.prayer",
+				"type" : "OPENING_BATTLE_SPELL",
+				"val" : 10,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 129,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"RIGHT_HAND"
+		],
+		"text" : {
+			"description" : "{Angelic Alliance}\
+
+	\
+
+	Allows Rampart, Tower, Fortress, Stronghold and Castle creatures to be mixed without a morale penalty, for the player.  Casts Expert Prayer at the start of combat.",
+			"event" : "You trip over the Angelic Alliance, dust it off, and stick it in your pack.",
+			"name" : "Angelic Alliance"
+		},
+		"value" : 0,
+		"components":
+		[
+			"armorOfWonder",
+			"sandalsOfTheSaint",
+			"celestialNecklaceOfBliss",
+			"lionsShieldOfCourage",
+			"swordOfJudgement",
+			"helmOfHeavenlyEnlightenment"
+		]
+	},
+
+	"cloakOfTheUndeadKing":
+	{
+		"bonuses" : [
+			{
+				"type" : "IMPROVED_NECROMANCY", //TODO: more flexible?
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 130,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"SHOULDERS"
+		],
+		"text" : {
+			"description" : "{Cloak of the Undead King}\
+
+	\
+
+	30% of battlefield dead are resurrected as Skeletons.  If hero already has the Necromancy skill then the percentages are added to the skill and the level of skill determines what type is resurrected.  Basic: Zombies\
+
+	Advanced: Wights\
+
+	Expert:  Liches",
+			"event" : "You trip over the Cloak of the Undead King, dust it off, and stick it in your pack.",
+			"name" : "Cloak of the Undead King"
+		},
+		"value" : 0,
+		"components":
+		[
+			"amuletOfTheUndertaker",
+			"vampiresCowl",
+			"deadMansBoots"
+		]
+	},
+
+	"elixirOfLife":
+	{
+		"bonuses" : [
+			{
+				"type" : "STACK_HEALTH",
+				"val" : 25,
+				"valueType" : "PERCENT_TO_BASE"
+			},
+			{
+				"type" : "HP_REGENERATION",
+				"val" : 50,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 131,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Elixir of Life}\
+
+	\
+
+	All creatures get a 25% health bonus and gain the regeneration ability.  Does not work on Undead or unliving creatures",
+			"event" : "You trip over the Elixir of Life, dust it off, and stick it in your pack.",
+			"name" : "Elixir of Life"
+		},
+		"value" : 0,
+		"components":
+		[
+			"ringOfVitality",
+			"ringOfLife",
+			"vialOfLifeblood"
+		]
+	},
+
+	"armorOfTheDamned":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "spell.slow",
+				"type" : "OPENING_BATTLE_SPELL",
+				"val" : 50,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "spell.curse",
+				"type" : "OPENING_BATTLE_SPELL",
+				"val" : 50,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "spell.weakness",
+				"type" : "OPENING_BATTLE_SPELL",
+				"val" : 50,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "spell.misfortune",
+				"type" : "OPENING_BATTLE_SPELL",
+				"val" : 50,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 132,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"TORSO"
+		],
+		"text" : {
+			"description" : "{Armor of the Damned}\
+
+	\
+
+	All opponents have these spells effective on them for fifty turns: Slow, Curse, Weakness, and Misfortune.",
+			"event" : "You trip over the Armor of the Damned, dust it off, and stick it in your pack.",
+			"name" : "Armor of the Damned"
+		},
+		"value" : 0,
+		"components":
+		[
+			"blackshardOfTheDeadKnight",
+			"shieldOfTheYawningDead",
+			"skullHelmet",
+			"ribCage"
+		]
+	},
+
+	"statueOfLegion":
+	{
+		"bonuses" : [
+			{
+				"type" : "CREATURE_GROWTH_PERCENT",
+				"val" : 50,
+				"propagator": "PLAYER_PROPAGATOR"
+			}
+		],
+		"index" : 133,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Statue of Legion}\
+
+	\
+
+	All creature production increases by 50%, in all towns based off of the castle creature generation level, does not include flagged structures or other like bonuses.",
+			"event" : "You trip over the Statue of Legion, dust it off, and stick it in your pack.",
+			"name" : "Statue of Legion"
+		},
+		"value" : 0,
+		"components":
+		[
+			"legsOfLegion",
+			"loinsOfLegion",
+			"torsoOfLegion",
+			"armsOfLegion",
+			"headOfLegion"
+		],
+	},
+
+	"powerOfTheDragonFather":
+	{
+		"bonuses" : [
+			{
+				"type" : "LEVEL_SPELL_IMMUNITY",
+				"val" : 4,
+				"valueType" : "INDEPENDENT_MAX"
+			},
+			{
+				"subtype" : "primSkill.attack",
+				"type" : "PRIMARY_SKILL",
+				"val" : 6,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.defence",
+				"type" : "PRIMARY_SKILL",
+				"val" : 6,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.spellpower",
+				"type" : "PRIMARY_SKILL",
+				"val" : 6,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "primSkill.knowledge",
+				"type" : "PRIMARY_SKILL",
+				"val" : 6,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 134,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"TORSO"
+		],
+		"text" : {
+			"description" : "{Power of the Dragon Father}\
+
+	\
+
+	+6 to all primary skills, all troops are immune to 1-4th level spells.",
+			"event" : "You trip over the Power of the Dragon Father, dust it off, and stick it in your pack.",
+			"name" : "Power of the Dragon Father"
+		},
+		"value" : 0,
+		"components":
+		[
+			"quietEyeOfTheDragon",
+			"redDragonFlameTongue",
+			"dragonScaleShield",
+			"dragonScaleArmor",
+			"dragonboneGreaves",
+			"dragonWingTabard",
+			"necklaceOfDragonteeth",
+			"crownOfDragontooth",
+			"stillEyeOfTheDragon"
+		]
+	},
+
+	"titansThunder":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "spell.titanBolt",
+				"type" : "SPELL",
+				"val" : 3,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 135,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"RIGHT_HAND"
+		],
+		"text" : {
+			"description" : "{Titan's Thunder}\
+
+	\
+
+	Hero gains the ability to cast Lightning Bolt for 600 points of damage, does not cost any spell points, adds a spell book into their inventory (permanently).",
+			"event" : "You trip over the Titan's Thunder, dust it off, and stick it in your pack.",
+			"name" : "Titan's Thunder"
+		},
+		"value" : 0,
+		"components":
+		[
+			"titansGladius",
+			"sentinelsShield",
+			"thunderHelmet",
+			"titansCuirass"
+		]
+	},
+
+	"admiralsHat":
+	{
+		"bonuses" : [
+			{
+				"type" : "FREE_SHIP_BOARDING",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 136,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"HEAD"
+		],
+		"text" : {
+			"description" : "{Admiral's Hat}\
+
+	\
+
+	No boarding or unboarding ship penalty.  Converts movement points between the Hero's Land and Water movement.",
+			"event" : "You trip over the Admiral's Hat, dust it off, and stick it in your pack.",
+			"name" : "Admiral's Hat"
+		},
+		"value" : 0,
+		"components":
+		[
+			"necklaceOfOceanGuidance",
+			"seaCaptainsHat"
+		]
+	},
+
+	"bowOfTheSharpshooter":
+	{
+		"bonuses" : [
+			{
+				"limiters" : ["SHOOTER_ONLY"],
+				"subtype" : 0,
+				"type" : "NO_DISTANCE_PENALTY",
+				"val" : 0,
+				"valueType" : "ADDITIVE_VALUE"
+			},
+			{
+				"limiters" : ["SHOOTER_ONLY"],
+				"subtype" : 0,
+				"type" : "NO_WALL_PENALTY",
+				"val" : 0,
+				"valueType" : "ADDITIVE_VALUE"
+			},
+			{
+				"limiters" : ["SHOOTER_ONLY"],
+				"subtype" : 0,
+				"type" : "FREE_SHOOTING",
+				"val" : 0,
+				"valueType" : "ADDITIVE_VALUE"
+			}
+		],
+		"index" : 137,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Bow of the Sharpshooter}\
+
+	\
+
+	Ranged shooters may fire projectiles while adjacent to an enemy creature.  No archery penalty for range or obstacle",
+			"event" : "You trip over the Bow of the Sharpshooter, dust it off, and stick it in your pack.",
+			"name" : "Bow of the Sharpshooter"
+		},
+		"value" : 0,
+		"components":
+		[
+			"bowOfElvenCherrywood",
+			"bowstringOfTheUnicornsMane",
+			"angelFeatherArrows"
+		]
+	},
+
+	"wizardsWell":
+	{
+		"bonuses" : [
+			{
+				"type" : "FULL_MANA_REGENERATION",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 138,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Wizard's Well}\
+
+	\
+
+	Regenerates all spell points each day",
+			"event" : "You trip over the Wizard's Well, dust it off, and stick it in your pack.",
+			"name" : "Wizard's Well"
+		},
+		"value" : 0,
+		"components":
+		[
+			"charmOfMana",
+			"talismanOfMana",
+			"mysticOrbOfMana"
+		]
+	},
+
+	"ringOfTheMagi":
+	{
+		"bonuses" : [
+			{
+				"type" : "SPELL_DURATION",
+				"val" : 50,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 139,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"LEFT_RING",
+			"RIGHT_RING"
+		],
+		"text" : {
+			"description" : "{Ring of the Magi}\
+
+	\
+
+	Add 50 rounds to spell duration.",
+			"event" : "You trip over the Ring of the Magi, dust it off, and stick it in your pack.",
+			"name" : "Ring of the Magi"
+		},
+		"value" : 0,
+		"components":
+		[
+			"collarOfConjuring",
+			"ringOfConjuring",
+			"capeOfConjuring"
+		]
+	},
+	"cornucopia":
+	{
+		"bonuses" : [
+			{
+				"subtype" : "resource.crystal",
+				"type" : "GENERATE_RESOURCE",
+				"val" : 4,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "resource.gems",
+				"type" : "GENERATE_RESOURCE",
+				"val" : 4,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "resource.mercury",
+				"type" : "GENERATE_RESOURCE",
+				"val" : 4,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "resource.sulfur",
+				"type" : "GENERATE_RESOURCE",
+				"val" : 4,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 140,
+		"type" : ["HERO"],
+		"class" : "RELIC",
+		"slot" : [
+			"MISC5",
+			"MISC4",
+			"MISC3",
+			"MISC2",
+			"MISC1"
+		],
+		"text" : {
+			"description" : "{Cornucopia}\
+
+	\
+
+	Generates 4 of each precious resource, each day.",
+			"event" : "You trip over the Town of Plenty, dust it off, and stick it in your pack.",
+			"name" : "Cornucopia"
+		},
+		"value" : 0,
+		"components":
+		[
+			"everflowingCrystalCloak",
+			"ringOfInfiniteGems",
+			"everpouringVialOfMercury",
+			"eversmokingRingOfSulfur"
+		]
+	},
+
+	"magicWand":
+	{
+		"bonuses" : [
+			{
+				"type" : "CASTS",
+				"val" : 10,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "spell.implosion",
+				"type" : "SPELLCASTER",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "spell.fireball",
+				"type" : "SPELLCASTER",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"type" : "RANDOM_SPELLCASTER",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : "creature.vampireLord",
+				"type" : "DAEMON_SUMMONING",
+				"val" : 10,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"addInfo" : 2,
+				"subtype" : "spell.lightningBolt",
+				"type" : "ENCHANTER",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : 1,
+				"type" : "REBIRTH",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"type" : "MANA_DRAIN",
+				"val" : 10,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"type" : "HEALER",
+				"val" : 25,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 141,
+		"type" : ["CREATURE"]
+	},
+	
+	"goldTowerArrow":
+	{
+		"bonuses" : [
+			{
+				"type" : "NO_DISTANCE_PENALTY",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"type" : "ADDITIONAL_ATTACK",
+				"val" : 2,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : 22,
+				"type" : "SPELL_LIKE_ATTACK",
+				"val" : 1,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"type" : "CATAPULT",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"type" : "ACID_BREATH",
+				"val" : 20,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"subtype" : 0,
+				"type" : "SHOTS",
+				"val" : 200,
+				"valueType" : "PERCENT_TO_BASE"
+			},
+			{
+				"addInfo" : 1,
+				"subtype" : "spell.age",
+				"type" : "SPELL_BEFORE_ATTACK",
+				"val" : 50,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"addInfo" : 1,
+				"subtype" : "spell.berserk",
+				"type" : "SPELL_AFTER_ATTACK",
+				"val" : 50,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"addInfo" : 1,
+				"subtype" : "spell.poison",
+				"type" : "SPELL_AFTER_ATTACK",
+				"val" : 50,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"addInfo" : 1,
+				"subtype" : "spell.disruptingRay",
+				"type" : "SPELL_AFTER_ATTACK",
+				"val" : 50,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 142,
+		"type" : ["CREATURE"]
+	},
+
+	"monstersPower":
+	{
+		"bonuses" : [
+			{
+				"type" : "STACK_HEALTH",
+				"val" : 100,
+				"valueType" : "PERCENT_TO_BASE"
+			},
+			{
+				"subtype" : 2,
+				"type" : "CREATURE_DAMAGE",
+				"val" : 100,
+				"valueType" : "PERCENT_TO_ALL"
+			},
+			{
+				"type" : "HP_REGENERATION",
+				"val" : 50,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"type" : "NO_RETALIATION",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"type" : "RETURN_AFTER_STRIKE",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"type" : "ATTACKS_ALL_ADJACENT",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"type" : "SPELL_RESISTANCE_AURA",
+				"val" : 100,
+				"valueType" : "BASE_NUMBER"
+			},
+			{
+				"type" : "DIRECT_DAMAGE_IMMUNITY",
+				"val" : 0,
+				"valueType" : "BASE_NUMBER"
+			}
+		],
+		"index" : 143,
+		"type" : ["CREATURE"]
+	}
+}

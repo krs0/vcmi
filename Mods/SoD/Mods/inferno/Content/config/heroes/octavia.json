@@ -1,0 +1,65 @@
+{
+	"octavia" :
+	{
+		"class" : "demoniac",
+		"female" : true,
+
+		"index" : 52,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL052HR.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS052HR.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "imp",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "gog",
+				"max" : 7,
+				"min" : 4
+			},
+			{
+				"creature" : "hellHound",
+				"max" : 4,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "scholar"
+			},
+			{
+				"level" : "basic",
+				"skill" : "offence"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 6,
+				"type" : 10,
+				"val" : 350
+			}
+		],
+		
+		"texts" : {
+			"biography" : "It is said that Octavia could sneak gold away from a sleeping dragon, but she would have to, as she is constantly spending her wealth on anything that tickles her fancy.",
+			"name" : "Octavia",
+			"specialty" : {
+				"description" : "Increases kingdom's income by 350 gold per day.",
+				"name" : "+350 Gold",
+				"tooltip" : "+350 Gold each day"
+			}
+		}
+	}
+}
+

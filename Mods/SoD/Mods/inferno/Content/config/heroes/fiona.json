@@ -1,0 +1,61 @@
+{
+	"fiona" :
+	{
+		"class" : "demoniac",
+		"female" : true,
+
+		"index" : 48,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL048HR.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS048HR.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "imp",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "hellHound",
+				"max" : 4,
+				"min" : 3
+			},
+			{
+				"creature" : "hellHound",
+				"max" : 4,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "advanced",
+				"skill" : "scouting"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 46,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+
+		"texts" : {
+			"biography" : "Fiona was a trainer of circus animals in eastern Erathia before the Devils invaded.  She quickly proved to them that her control over animals extended to the always temperamental hell hounds, and she was immediately accepted into the ranks of Eeofol's armies.",
+			"name" : "Fiona",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Hell Hounds or Cerberi for each level attained after 3rd level.",
+				"name" : "Hell Hounds",
+				"tooltip" : "Creature Bonus: Hell Hounds"
+			}
+		}
+	}
+}
+

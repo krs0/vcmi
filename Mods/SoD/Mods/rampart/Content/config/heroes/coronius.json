@@ -1,0 +1,68 @@
+{
+	"coronius" :
+	{
+		"class" : "druid",
+		"female" : false,
+
+		"index" : 24,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL024DR.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS024DR.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "centaur",
+				"max" : 24,
+				"min" : 12
+			},
+			{
+				"creature" : "dwarf",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "woodElf",
+				"max" : 6,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "scholar"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 1,
+				"subtype" : 55,
+				"type" : 8,
+				"val" : 0
+			}
+		],
+		"spellbook" : [
+			"slayer"
+		],
+
+		"texts" : {
+			"biography" : "Coronius attended the University of Erathia for one semester before he realized that academics were overrated.  He left Erathia for AvLee, finding a Druid who could teach by example.",
+			"name" : "Coronius",
+			"specialty" : {
+				"description" : "Casts Slayer with increased effect, based on hero level compared to the level of the target unit (the bonus is greater when used on weaker units).",
+				"name" : "Slayer",
+				"tooltip" : "Spell Bonus: Slayer"
+			}
+		}
+	}
+}
+

@@ -1,0 +1,65 @@
+{
+	"krellion" :
+	{
+		"class" : "barbarian",
+		"female" : false,
+
+		"index" : 101,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL101BR.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS101BR.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "goblin",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "goblinWolfRider",
+				"max" : 7,
+				"min" : 5
+			},
+			{
+				"creature" : "orc",
+				"max" : 6,
+				"min" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "offence"
+			},
+			{
+				"level" : "basic",
+				"skill" : "resistance"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 84,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+		
+		"texts" : {
+			"biography" : "Krellion originally joined the army as a prizefighter, and became so well known that his fans insisted he be made to lead them into battle.  While probably not the smartest decision, Krellion has proven to be an exceptional leader, especially among ogrekind.",
+			"name" : "Krellion",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Ogres or Ogre Magi for each level attained after 4th level.",
+				"name" : "Ogres",
+				"tooltip" : "Creature Bonus: Ogres"
+			}
+		}
+	}
+}
+

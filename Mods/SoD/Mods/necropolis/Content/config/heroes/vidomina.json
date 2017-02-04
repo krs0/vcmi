@@ -1,0 +1,64 @@
+{
+	"vidomina" :
+	{
+		"class" : "necromancer",
+		"female" : true,
+		"index" : 78,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL078NC.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS078NC.bmp"
+		},
+
+
+		"army" : [
+			{
+				"creature" : "skeleton",
+				"max" : 30,
+				"min" : 20
+			},
+			{
+				"creature" : "zombie",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "wight",
+				"max" : 6,
+				"min" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "advanced",
+				"skill" : "necromancy"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 12,
+				"type" : 2,
+				"val" : 5
+			}
+		],
+		"spellbook" : [
+			"curse"
+		],
+			
+		"texts" : {
+			"biography" : "At a young age, Vidomina showed promise as a great Alchemist, but was driven from Bracada when it was discovered that she had been using her skills not to animate inanimate matter, but to attempt to bring life to previously living creatures.",
+			"name" : "Vidomina",
+			"specialty" : {
+				"description" : "Receives a 5% per level bonus to Necromancy skill percentage.",
+				"name" : "Necromancy",
+				"tooltip" : "Secondary Skill Bonus: Necromancy"
+			}
+		}
+	}
+}
+

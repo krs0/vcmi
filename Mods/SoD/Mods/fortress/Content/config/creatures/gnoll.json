@@ -1,0 +1,54 @@
+{
+	"gnoll": {
+		"name" : {
+			"plural" : "Gnolls",
+			"singular" : "Gnoll"
+		},
+		"faction" : "fortress",
+		"level" : 1,
+		"upgrades": ["gnollMarauder"],
+		"cost" : {
+			"gold" : 50
+		},
+		"speed" : 4,
+		"hitPoints" : 6,
+		"attack" : 3,
+		"defense" : 5,
+		"damage" : {
+			"max" : 3,
+			"min" : 2
+		},
+		"doubleWide" : false,
+		"growth" : 12,
+		"horde" : 6,
+		"aiValue" : 56,
+		"fightValue" : 70,
+		"advMapAmount" : {
+			"max" : 50,
+			"min" : 20
+		},
+		"abilityText" : "",
+		"hasDoubleWeek" : true,
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CGNOLL.def",
+			"map" : "sprites/creatures/adventureMap/AVWgnll0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL100.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort100.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/GNOLATTK.wav",
+			"defend" : "sounds/creatures/GNOLDFND.wav",
+			"killed" : "sounds/creatures/GNOLKILL.wav",
+			"move" : "sounds/creatures/GNOLMOVE.wav",
+			"wince" : "sounds/creatures/GNOLWNCE.wav"
+		},
+	}
+}

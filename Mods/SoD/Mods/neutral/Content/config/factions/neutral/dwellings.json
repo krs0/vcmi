@@ -1,0 +1,83 @@
+{
+	"neutral" :
+	{
+		"dwellings" :
+		{
+			"frozenCliffs" : 
+			{
+				"name" : "Frozen Cliffs",
+				"graphics" : "sprites/factions/neutral/adventureMap/dwellings/AVGazur.def"
+			},
+			"crystalCavern" : 
+			{
+				"name" : "Crystal Cavern",
+				"graphics" : "sprites/factions/neutral/adventureMap/dwellings/AVGcdrg.def"
+			},
+			"magicForest" : 
+			{
+				"name" : "Magic Forest",
+				"graphics" : "sprites/factions/neutral/adventureMap/dwellings/AVGfdrg.def"
+			},
+			"sulfurousLair" : 
+			{
+				"name" : "Sulfurous Lair",
+				"graphics" : "sprites/factions/neutral/adventureMap/dwellings/AVGrust.def"
+			},
+			"enchantersHollow" : 
+			{
+				"name" : "Enchanter's Hollow",
+				"graphics" : "sprites/factions/neutral/adventureMap/dwellings/AVGench.def"
+			},
+			"treetopTower" : 
+			{
+				"name" : "Treetop Tower",
+				"graphics" : "sprites/factions/neutral/adventureMap/dwellings/AVGshrp.def"
+			},
+			"thatchedHut" : 
+			{
+				"name" : "Thatched Hut",
+				"graphics" : "sprites/factions/neutral/adventureMap/dwellings/AVGhalf.def"
+			},
+			"hovel" : 
+			{
+				"name" : "Hovel",
+				"graphics" : "sprites/factions/neutral/adventureMap/dwellings/AVGpeas.def"
+			},
+			"boarGlen" : 
+			{
+				"name" : "Boar Glen",
+				"graphics" : "sprites/factions/neutral/adventureMap/dwellings/AVGboar.def"
+			},
+			"tombOfCurses" : 
+			{
+				"name" : "Tomb of Curses",
+				"graphics" : "sprites/factions/neutral/adventureMap/dwellings/AVGmumy.def"
+			},
+			"nomadTent" : 
+			{
+				"name" : "Nomad Tent",
+				"graphics" : "sprites/factions/neutral/adventureMap/dwellings/AVGnomd.def"
+			},
+			"rogueCavern" : 
+			{
+				"name" : "Rogue Cavern",
+				"graphics" : "sprites/factions/neutral/adventureMap/dwellings/AVGrog.def"
+			},
+			"trollBridge" : 
+			{
+				"name" : "Troll Bridge",
+				"graphics" : "sprites/factions/neutral/adventureMap/dwellings/AVGtrll.def"
+			},
+			"warMachineFactory" : 
+			{
+				"name" : "War Machine Factory",
+				"graphics" : "sprites/factions/neutral/adventureMap/dwellings/AVGsieg0.def"
+			},
+			"elementalConflux" : 
+			{
+				"name" : "Elemental Conflux",
+				"graphics" : "sprites/factions/neutral/adventureMap/dwellings/AVGelem0.def"
+			}
+		}
+	}
+}

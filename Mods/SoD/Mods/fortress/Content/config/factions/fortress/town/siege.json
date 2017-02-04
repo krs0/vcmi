@@ -1,0 +1,57 @@
+{
+	"fortress" :
+	{
+		"town" :
+		{
+			"siege" :
+			{
+				"shooter" : "lizardman",
+				"imagePrefix" : "SGFR",
+				"gate" :
+				{
+					"arch" : { "x" : 483, "y" : 236 },
+					"gate" : { "x" : 392, "y" : 253 }
+				},
+				"moat" :
+				{
+					"bank" : { "x" : 376, "y" : 70 },
+					"moat" : { "x" : 383, "y" : 95 }
+				},
+				"static" :
+				{
+					"background" : { "x" : 599, "y" : 62 },
+					"bottom" : { "x" : 522, "y" : 382 },
+					"top" : { "x" : 508, "y" : 130 }
+				},
+				"towers" :
+				{
+					"bottom" :
+					{
+						"battlement" : { "x" : 599, "y" : 505 },
+						"creature" : { "x" : 372, "y" : 308 },
+						"tower" : { "x" : 599, "y" : 505 }
+					},
+					"keep" :
+					{
+						"battlement" : { "x" : 721, "y" : 178 },
+						"creature" : { "x" : 541, "y" : -37 },
+						"tower" : { "x" : 721, "y" : 178 }
+					},
+					"top" :
+					{
+						"battlement" : { "x" : 548, "y" : 27 },
+						"creature" : { "x" : 326, "y" : -182 },
+						"tower" : { "x" : 548, "y" : 27 }
+					}
+				},
+				"walls" :
+				{
+					"bottom" : { "x" : 546, "y" : 441 },
+					"bottomMid" : { "x" : 486, "y" : 306 },
+					"upper" : { "x" : 526, "y" : 80 },
+					"upperMid" : { "x" : 498, "y" : 184 }
+				}
+			}
+		}
+	}
+}

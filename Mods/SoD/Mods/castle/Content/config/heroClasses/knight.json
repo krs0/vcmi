@@ -1,0 +1,82 @@
+{
+	"knight" :
+	{
+		"name" : "Knight",
+		"faction" : "castle",
+		"affinity" : "might",
+		"defaultTavern" : 5,
+		"animation" : {
+			"battle" : {
+				"female" : "sprites/heroClasses/CH01.DEF",
+				"male" : "sprites/heroClasses/CH00.DEF"
+			}
+		},
+		"mapObject" : {
+			"templates" : {
+				"default" : {
+					"animation" : "sprites/heroClasses/AH00_.def",
+					"editorAnimation" : "sprites/heroClasses/AH00_E.def"
+				}
+			}
+		},
+		"primarySkills" : {
+			"attack" : 2,
+			"defence" : 2,
+			"knowledge" : 1,
+			"spellpower" : 1
+		},
+		"highLevelChance" : {
+			"attack" : 30,
+			"defence" : 30,
+			"knowledge" : 20,
+			"spellpower" : 20
+		},
+		"lowLevelChance" : {
+			"attack" : 35,
+			"defence" : 45,
+			"knowledge" : 10,
+			"spellpower" : 10
+		},
+		"secondarySkills" : {
+			"airMagic" : 3,
+			"archery" : 5,
+			"armorer" : 5,
+			"artillery" : 5,
+			"ballistics" : 8,
+			"diplomacy" : 4,
+			"eagleEye" : 2,
+			"earthMagic" : 2,
+			"estates" : 6,
+			"fireMagic" : 1,
+			"firstAid" : 2,
+			"intelligence" : 1,
+			"leadership" : 10,
+			"learning" : 4,
+			"logistics" : 5,
+			"luck" : 3,
+			"mysticism" : 2,
+			"navigation" : 8,
+			"necromancy" : 0,
+			"offence" : 7,
+			"pathfinding" : 4,
+			"resistance" : 5,
+			"scholar" : 1,
+			"scouting" : 4,
+			"sorcery" : 1,
+			"tactics" : 7,
+			"waterMagic" : 4,
+			"wisdom" : 3
+		},
+		"tavern" : {
+			"castle" : 6,
+			"conflux" : 6,
+			"dungeon" : 5,
+			"fortress" : 6,
+			"inferno" : 5,
+			"necropolis" : 5,
+			"rampart" : 6,
+			"stronghold" : 6,
+			"tower" : 6
+		}
+	}
+}

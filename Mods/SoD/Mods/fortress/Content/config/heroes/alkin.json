@@ -1,0 +1,65 @@
+{
+	"alkin" :
+	{
+		"class" : "beastmaster",
+		"female" : false,
+
+		"index" : 116,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL116BS.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS116BS.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "gnoll",
+				"max" : 20,
+				"min" : 10
+			},
+			{
+				"creature" : "lizardman",
+				"max" : 7,
+				"min" : 4
+			},
+			{
+				"creature" : "serpentFly",
+				"max" : 4,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "armorer"
+			},
+			{
+				"level" : "basic",
+				"skill" : "offence"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 23,
+				"type" : 2,
+				"val" : 5
+			}
+		],
+
+		"texts" : {
+			"biography" : "King Tralossk never really liked Alkin, but gave him his own command in the hopes that he would one day get himself killed.  That never happened, and Alkin has led a long and glorious career, much to the displeasure of the King.",
+			"name" : "Alkin",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Gorgons or Mighty Gorgons for each level attained after 5th level.",
+				"name" : "Gorgons",
+				"tooltip" : "Creature Bonus: Gorgons"
+			}
+		}
+	}
+}
+

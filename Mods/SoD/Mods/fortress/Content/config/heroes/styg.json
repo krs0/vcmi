@@ -1,0 +1,68 @@
+{
+	"styg" :
+	{
+		"class" : "witch",
+		"female" : true,
+
+		"index" : 125,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL125WH.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS125WH.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "gnoll",
+				"max" : 20,
+				"min" : 10
+			},
+			{
+				"creature" : "lizardman",
+				"max" : 7,
+				"min" : 4
+			},
+			{
+				"creature" : "serpentFly",
+				"max" : 4,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "sorcery"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 25,
+				"type" : 2,
+				"val" : 5
+			}
+		],
+		"spellbook" : [
+			"shield"
+		],
+
+		"texts" : {
+			"biography" : "The eleventh daughter of Tralossk, King of Tatalia, Styg turned to witchcraft when it became clear that she would never ascend the Tatalian throne with ten heirs in front of her.",
+			"name" : "Styg",
+			"specialty" : {
+				"description" : "Receives a 5% per level bonus to Sorcery skill percentage.",
+				"name" : "Sorcery",
+				"tooltip" : "Secondary Skill Bonus: Sorcery"
+			}
+		}
+	}
+}
+

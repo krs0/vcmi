@@ -1,0 +1,68 @@
+{
+	"vey" :
+	{
+		"class" : "battlemage",
+		"female" : false,
+
+		"index" : 105,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL105BM.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS105BM.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "goblin",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "goblinWolfRider",
+				"max" : 7,
+				"min" : 5
+			},
+			{
+				"creature" : "orc",
+				"max" : 6,
+				"min" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "leadership"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 25,
+				"type" : 2,
+				"val" : 5
+			}
+		],
+		"spellbook" : [
+			"magicArrow"
+		],
+		
+		"texts" : {
+			"biography" : "An Ogre Mage himself, Vey has proven himself time and again that his command skills are unparalleled.  Should the Duke's son ever falter, Vey would be considered the top candidate to succeed the throne of Krewlod.",
+			"name" : "Vey",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Ogres or Ogre Magi for each level attained after 4th level.",
+				"name" : "Ogres",
+				"tooltip" : "Creature Bonus: Ogres"
+			}
+		}
+	}
+}
+

@@ -1,0 +1,64 @@
+{
+	"jeddite" :
+	{
+		"class" : "overlord",
+		"female" : false,
+
+		"index" : 91,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL091WL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS091WL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "troglodyte",
+				"max" : 40,
+				"min" : 30
+			},
+			{
+				"creature" : "harpy",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "beholder",
+				"max" : 4,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "advanced",
+				"skill" : "wisdom"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 38,
+				"type" : 3,
+				"val" : 3
+			}
+		],
+		"spellbook" : [
+			"resurrection"
+		],
+
+		"texts" : {
+			"biography" : "Some say that Jeddite has seen the face of Zenofex, but many contend that since Jeddite is still alive, the rumor of a meeting could not possibly be true.  Jeddite has never confirmed nor denied the rumor.",
+			"name" : "Jeddite",
+			"specialty" : {
+				"description" : "Casts Resurrection with increased effect, based on his level compared to the level of the target unit (the bonus is greater when used on weaker units).",
+				"name" : "Resurrection",
+				"tooltip" : "Spell Bonus: Resurrection"
+			}
+		}
+	}
+}
+

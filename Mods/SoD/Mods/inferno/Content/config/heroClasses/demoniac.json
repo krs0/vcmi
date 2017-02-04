@@ -1,0 +1,82 @@
+{
+	"demoniac" :
+	{
+		"name" : "Demoniac",
+		"faction" : "inferno",
+		"affinity" : "might",
+		"defaultTavern" : 5,
+		"mapObject" : {
+			"templates" : {
+				"default" : {
+					"animation" : "sprites/heroClasses/AH06_.def",
+					"editorAnimation" : "sprites/heroClasses/AH06_E.def"
+				}
+			}
+		},
+		"animation" : {
+			"battle" : {
+				"female" : "sprites/heroClasses/CH07.DEF",
+				"male" : "sprites/heroClasses/CH06.DEF"
+			}
+		},
+		"primarySkills" : {
+			"attack" : 2,
+			"defence" : 2,
+			"knowledge" : 1,
+			"spellpower" : 1
+		},
+		"highLevelChance" : {
+			"attack" : 30,
+			"defence" : 30,
+			"knowledge" : 20,
+			"spellpower" : 20
+		},
+		"lowLevelChance" : {
+			"attack" : 35,
+			"defence" : 35,
+			"knowledge" : 15,
+			"spellpower" : 15
+		},
+		"secondarySkills" : {
+			"airMagic" : 2,
+			"archery" : 6,
+			"armorer" : 7,
+			"artillery" : 5,
+			"ballistics" : 7,
+			"diplomacy" : 4,
+			"eagleEye" : 3,
+			"earthMagic" : 3,
+			"estates" : 3,
+			"fireMagic" : 4,
+			"firstAid" : 2,
+			"intelligence" : 2,
+			"leadership" : 3,
+			"learning" : 4,
+			"logistics" : 10,
+			"luck" : 2,
+			"mysticism" : 2,
+			"navigation" : 4,
+			"necromancy" : 0,
+			"offence" : 8,
+			"pathfinding" : 4,
+			"resistance" : 6,
+			"scholar" : 2,
+			"scouting" : 5,
+			"sorcery" : 3,
+			"tactics" : 6,
+			"waterMagic" : 1,
+			"wisdom" : 4
+		},
+		"tavern" : {
+			"castle" : 5,
+			"conflux" : 5,
+			"dungeon" : 6,
+			"fortress" : 5,
+			"inferno" : 6,
+			"necropolis" : 6,
+			"rampart" : 5,
+			"stronghold" : 6,
+			"tower" : 5
+		}
+	}
+}

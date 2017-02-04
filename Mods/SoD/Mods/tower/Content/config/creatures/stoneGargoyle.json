@@ -1,0 +1,61 @@
+{
+	"stoneGargoyle": {
+		"name" : {
+			"plural" : "Stone Gargoyles",
+			"singular" : "Stone Gargoyle"
+		},
+		"faction" : "tower",
+		"level" : 2,
+		"upgrades": ["obsidianGargoyle"],
+		"cost" : {
+			"gold" : 30
+		},
+		"speed" : 6,
+		"hitPoints" : 16,
+		"attack" : 6,
+		"defense" : 3,
+		"damage" : {
+			"max" : 2,
+			"min" : 1
+		},
+		"doubleWide" : false,
+		"growth" : 9,
+		"horde" : 4,
+		"aiValue" : 165,
+		"fightValue" : 150,
+		"advMapAmount" : {
+			"max" : 30,
+			"min" : 16
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"nonliving" : {
+				"type" : "NON_LIVING"
+			}
+		},
+		"abilityText" : "",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CGARGO.def",
+			"map" : "sprites/creatures/adventureMap/AVWgarg0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL32.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort32.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.7
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/SGRGATTK.wav",
+			"defend" : "sounds/creatures/SGRGDFND.wav",
+			"killed" : "sounds/creatures/SGRGKILL.wav",
+			"move" : "sounds/creatures/SGRGMOVE.wav",
+			"wince" : "sounds/creatures/SGRGWNCE.wav"
+		}
+	}
+}

@@ -1,0 +1,60 @@
+{
+	"sprite": {
+		"name" : {
+			"plural" : "Sprites",
+			"singular" : "Sprite"
+		},
+		"faction" : "conflux",
+		"level" : 1,
+		"cost" : {
+			"gold" : 30
+		},
+		"speed" : 9,
+		"hitPoints" : 3,
+		"attack" : 2,
+		"defense" : 2,
+		"damage" : {
+			"max" : 3,
+			"min" : 1
+		},
+		"doubleWide" : false,
+		"growth" : 20,
+		"horde" : 10,
+		"aiValue" : 95,
+		"fightValue" : 70,
+		"advMapAmount" : {
+			"max" : 30,
+			"min" : 20
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"const_free_attack" : {
+				"type" : "BLOCKS_RETALIATION"
+			}
+		},
+		"abilityText" : "No enemy retaliation.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CSPRITE.def",
+			"map" : "sprites/creatures/adventureMap/AVWsprit.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL120.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort120.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/SPRTATTK.wav",
+			"defend" : "sounds/creatures/SPRTDFND.wav",
+			"killed" : "sounds/creatures/SPRTKILL.wav",
+			"move" : "sounds/creatures/SPRTMOVE.wav",
+			"wince" : "sounds/creatures/SPRTWNCE.wav"
+		}
+	}
+}

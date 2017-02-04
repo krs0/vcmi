@@ -312,7 +312,7 @@ int main(int argc, char** argv)
 	// Init filesystem and settings
 	preinitDLL(::console);
 
-	parseFolders();
+	parseOriginalDataFilesAndMoveToMods();
 
 	settings.init();
 

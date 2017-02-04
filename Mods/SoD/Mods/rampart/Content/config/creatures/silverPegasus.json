@@ -1,0 +1,62 @@
+{
+	"silverPegasus": {
+		"name" : {
+			"plural" : "Silver Pegasi",
+			"singular" : "Silver Pegasus"
+		},
+		"faction" : "rampart",
+		"level" : 4,
+		"cost" : {
+			"gold" : 275
+		},
+		"speed" : 12,
+		"hitPoints" : 30,
+		"attack" : 9,
+		"defense" : 10,
+		"damage" : {
+			"max" : 9,
+			"min" : 5
+		},
+		"doubleWide" : true,
+		"growth" : 5,
+		"horde" : 0,
+		"hasDoubleWeek" : true,
+		"aiValue" : 532,
+		"fightValue" : 418,
+		"advMapAmount" : {
+			"max" : 16,
+			"min" : 10
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"increaseManaCost" : {
+				"type" : "CHANGES_SPELL_COST_FOR_ENEMY",
+				"val" : 2
+			}
+		},
+		"abilityText" : "Magic damper.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CAPEGS.def",
+			"map" : "sprites/creatures/adventureMap/AVWpegx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL23.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort23.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.72
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/APEGATTK.wav",
+			"defend" : "sounds/creatures/APEGDFND.wav",
+			"killed" : "sounds/creatures/APEGKILL.wav",
+			"move" : "sounds/creatures/APEGMOVE.wav",
+			"wince" : "sounds/creatures/APEGWNCE.wav"
+		}
+	}
+}

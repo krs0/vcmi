@@ -1,0 +1,52 @@
+{
+	"boar": {
+		"name" : {
+			"plural" : "Boars",
+			"singular" : "Boar"
+		},
+		"faction" : "neutral",
+		"level" : 2,
+		"cost" : {
+			"gold" : 150
+		},
+		"speed" : 6,
+		"hitPoints" : 15,
+		"attack" : 6,
+		"defense" : 5,
+		"damage" : {
+			"max" : 3,
+			"min" : 2
+		},
+		"doubleWide" : true,
+		"growth" : 8,
+		"horde" : 0,
+		"aiValue" : 145,
+		"fightValue" : 145,
+		"advMapAmount" : {
+			"max" : 30,
+			"min" : 16
+		},
+		"abilityText" : "",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CBOAR.def",
+			"map" : "sprites/creatures/adventureMap/AVWboar.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL142.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort142.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/BOARATTK.wav",
+			"defend" : "sounds/creatures/BOARDFND.wav",
+			"killed" : "sounds/creatures/BOARKILL.wav",
+			"move" : "sounds/creatures/BOARMOVE.wav",
+			"wince" : "sounds/creatures/BOARWNCE.wav"
+		}
+	}
+}

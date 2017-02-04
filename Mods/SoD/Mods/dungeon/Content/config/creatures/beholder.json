@@ -1,0 +1,92 @@
+{
+	"beholder": {
+		"name" : {
+			"plural" : "Beholders",
+			"singular" : "Beholder"
+		},
+		"faction" : "dungeon",
+		"level" : 3,
+		"upgrades" : ["evilEye"],
+		"cost" : {
+			"gold" : 250
+		},
+		"speed" : 5,
+		"hitPoints" : 22,
+		"attack" : 9,
+		"defense" : 7,
+		"damage" : {
+			"max" : 5,
+			"min" : 3
+		},
+		"shots" : 12,
+		"doubleWide" : false,
+		"growth" : 7,
+		"horde" : 0,
+		"aiValue" : 336,
+		"fightValue" : 240,
+		"advMapAmount" : {
+			"max" : 25,
+			"min" : 12
+		},
+		"abilities" : {
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			},
+			"const_no_melee_penalty" : {
+				"type" : "NO_MELEE_PENALTY"
+			}
+		},
+		"abilityText" : "No melee penalty.",
+		//"hasDoubleWeek" : true,
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CBEHOL.def",
+			"map" : "sprites/creatures/adventureMap/AVWbehl0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL76.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort76.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"missile" :
+			{
+				"projectile" : "sprites/creatures/projectile/SMBALX.DEF",
+				"attackClimaxFrame" : 5,
+				"frameAngles" : [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 9,
+					"lowerY" : -60,
+					"middleX" : 14,
+					"middleY" : -70,
+					"upperX" : 14,
+					"upperY" : -73
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" :
+		{
+			"attack": "sounds/creatures/BHDRATTK.wav",
+			"defend": "sounds/creatures/BHDRDFND.wav",
+			"killed": "sounds/creatures/BHDRKILL.wav",
+			"move": "sounds/creatures/BHDRMOVE.wav",
+			"shoot": "sounds/creatures/BHDRSHOT.wav",
+			"wince": "sounds/creatures/BHDRWNCE.wav"
+		}
+	}
+}

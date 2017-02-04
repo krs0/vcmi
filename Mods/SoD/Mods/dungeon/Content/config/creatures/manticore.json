@@ -1,0 +1,60 @@
+{
+	"manticore": {
+		"name" : {
+			"plural" : "Manticores",
+			"singular" : "Manticore"
+		},
+		"faction" : "dungeon",
+		"level" : 6,
+		"upgrades": ["scorpicore"],
+		"cost" : {
+			"gold" : 850
+		},
+		"speed" : 7,
+		"hitPoints" : 80,
+		"attack" : 15,
+		"defense" : 13,
+		"damage" : {
+			"max" : 20,
+			"min" : 14
+		},
+		"doubleWide" : true,
+		"growth" : 2,
+		"horde" : 0,
+		"aiValue" : 1547,
+		"fightValue" : 1215,
+		"advMapAmount" : {
+			"max" : 12,
+			"min" : 5
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			}
+		},
+		"abilityText" : "",
+		"hasDoubleWeek" : true,
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CMCORE.def",
+			"map" : "sprites/creatures/adventureMap/AVWmant0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL82.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort82.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.8
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/MANTATTK.wav",
+			"defend" : "sounds/creatures/MANTDFND.wav",
+			"killed" : "sounds/creatures/MANTKILL.wav",
+			"move" : "sounds/creatures/MANTMOVE.wav",
+			"shoot" : "sounds/creatures/MANTSHOT.wav",
+			"wince" : "sounds/creatures/MANTWNCE.wav"
+		}
+	}
+}

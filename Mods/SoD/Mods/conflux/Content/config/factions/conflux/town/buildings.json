@@ -1,0 +1,535 @@
+{
+	"conflux" :
+	{
+		"town" : 
+		{
+			"buildings" : 
+			{
+				"blacksmith" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "The Blacksmith provides your armies with Ballistas.",
+					"name" : "Blacksmith"
+				},
+				"capitol" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 10000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Capitol earns your kingdom 4000 gold per day.",
+					"name" : "Capitol"
+				},
+				"castle" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 5000,
+						"mercury" : 0,
+						"ore" : 10,
+						"sulfur" : 0,
+						"wood" : 10
+					},
+					"description" : "The Castle adds two arrow towers, fortifies your town's defenses, and doubles base creature growth.",
+					"name" : "Castle"
+				},
+				"citadel" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 2500,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "Including a 50% increase to base creature growth, the Citadel adds a keep, and other terrain obstacles, to a town's defenses.",
+					"name" : "Citadel"
+				},
+				"cityHall" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 5000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The City Hall allows you to purchase town structures and earns your kingdom 2000 gold per day.",
+					"name" : "City Hall"
+				},
+				"dwellingLvl1" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 300,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "The Magic Lantern allows you to recruit Pixies.",
+					"name" : "Magic Lantern"
+				},
+				"dwellingLvl2" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1500,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Altar of Air allows you to recruit Air Elementals.",
+					"name" : "Altar of Air"
+				},
+				"dwellingLvl3" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1500,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Altar of Water allows you to recruit Water Elementals.",
+					"name" : "Altar of Water"
+				},
+				"dwellingLvl4" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 2000,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "The Altar of Fire allows you to recruit Fire Elementals.",
+					"name" : "Altar of Fire"
+				},
+				"dwellingLvl5" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 2000,
+						"mercury" : 0,
+						"ore" : 10,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Altar of Earth allows you to recruit Earth Elementals.",
+					"name" : "Altar of Earth"
+				},
+				"dwellingLvl6" : {
+					"cost" : {
+						"crystal" : 2,
+						"gems" : 2,
+						"gold" : 3000,
+						"mercury" : 2,
+						"ore" : 5,
+						"sulfur" : 2,
+						"wood" : 5
+					},
+					"description" : "The Altar of Thought allows you to recruit Psychic Elementals.",
+					"name" : "Altar of Thought"
+				},
+				"dwellingLvl7" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 10000,
+						"mercury" : 10,
+						"ore" : 10,
+						"sulfur" : 0,
+						"wood" : 10
+					},
+					"description" : "The Pyre allows you to recruit Fire Birds.",
+					"name" : "Pyre"
+				},
+				"dwellingUpLvl1" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Magic Pool allows you to recruit Sprites.",
+					"name" : "Upg. Magic Lantern"
+				},
+				"dwellingUpLvl2" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 2,
+						"gold" : 1500,
+						"mercury" : 2,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 2
+					},
+					"description" : "The Temple of Thunder allows you to recruit Storm Elementals.",
+					"name" : "Upg. Altar of Air"
+				},
+				"dwellingUpLvl3" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 2000,
+						"mercury" : 5,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Temple of Ice allows you to recruit Ice Elementals.",
+					"name" : "Upg. Altar of Water"
+				},
+				"dwellingUpLvl4" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 2000,
+						"mercury" : 5,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Temple of Energy allows you to recruit Energy Elementals.",
+					"name" : "Upg. Altar of Fire"
+				},
+				"dwellingUpLvl5" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 5,
+						"wood" : 0
+					},
+					"description" : "The Temple of Magma allows you to recruit Magma Elementals.",
+					"name" : "Upg. Altar of Earth"
+				},
+				"dwellingUpLvl6" : {
+					"cost" : {
+						"crystal" : 3,
+						"gems" : 3,
+						"gold" : 3000,
+						"mercury" : 3,
+						"ore" : 0,
+						"sulfur" : 3,
+						"wood" : 0
+					},
+					"description" : "The Temple of Magic allows you to recruit Magic Elementals.",
+					"name" : "Upg. Altar of Thought"
+				},
+				"dwellingUpLvl7" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 15000,
+						"mercury" : 20,
+						"ore" : 10,
+						"sulfur" : 0,
+						"wood" : 10
+					},
+					"description" : "The Funeral Pyre allows you to recruit Pheonixes .",
+					"name" : "Upg. Pyre"
+				},
+				"fort" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 5000,
+						"mercury" : 0,
+						"ore" : 20,
+						"sulfur" : 0,
+						"wood" : 20
+					},
+					"description" : "The Fort provides your town with defensive walls.",
+					"name" : "Fort"
+				},
+				"grail" : {
+					"description" : "The presence of the Aurora Borealias increases weekly creature generation by 50%, provides your kingdom with an additional 5000 gold each day, and places all spells in your mage guild.",
+					"name" : "Aurora Borealias"
+				},
+				"horde1" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "This structure increases weekly production of Pixies by 10 per week.",
+					"name" : "Garden of Life"
+				},
+				"horde1Upgr" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "This structure increases weekly production of Sprites 10 per week.",
+					"name" : "Garden of Life"
+				},
+				"horde2" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 0,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "",
+					"name" : ""
+				},
+				"horde2Upgr" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 0,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "",
+					"name" : ""
+				},
+				"mageGuild1" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 2000,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
+					"name" : "Mage Guild Level 1"
+				},
+				"mageGuild2" : {
+					"cost" : {
+						"crystal" : 4,
+						"gems" : 4,
+						"gold" : 1000,
+						"mercury" : 4,
+						"ore" : 5,
+						"sulfur" : 4,
+						"wood" : 5
+					},
+					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
+					"name" : "Mage Guild Level 2"
+				},
+				"mageGuild3" : {
+					"cost" : {
+						"crystal" : 6,
+						"gems" : 6,
+						"gold" : 1000,
+						"mercury" : 6,
+						"ore" : 5,
+						"sulfur" : 6,
+						"wood" : 5
+					},
+					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
+					"name" : "Mage Guild Level 3"
+				},
+				"mageGuild4" : {
+					"cost" : {
+						"crystal" : 8,
+						"gems" : 8,
+						"gold" : 1000,
+						"mercury" : 8,
+						"ore" : 5,
+						"sulfur" : 8,
+						"wood" : 5
+					},
+					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
+					"name" : "Mage Guild Level 4"
+				},
+				"mageGuild5" : {
+					"cost" : {
+						"crystal" : 10,
+						"gems" : 10,
+						"gold" : 1000,
+						"mercury" : 10,
+						"ore" : 5,
+						"sulfur" : 10,
+						"wood" : 5
+					},
+					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
+					"name" : "Mage Guild Level 5"
+				},
+				"marketplace" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 500,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "With the Marketplace, you can buy and sell resources (exchange rates increase with each Marketplace you own).",
+					"name" : "Marketplace"
+				},
+				"resourceSilo" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 5000,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Resource Silo provides you with an additional 1 Mercury each day.",
+					"name" : "Resource Silo"
+				},
+				"ship" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 0,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Shipyard allows you to purchase ships.",
+					"name" : "Shipyard"
+				},
+				"shipyard" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 2000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 20
+					},
+					"description" : "The Shipyard allows you to purchase ships.",
+					"name" : "Shipyard"
+				},
+				"special1" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 10000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "For a nominal fee, you can purchase artifacts from the Artifact Merchants.",
+					"name" : "Artifact Merchants"
+				},
+				"special2" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 5000,
+						"mercury" : 0,
+						"ore" : 10,
+						"sulfur" : 0,
+						"wood" : 10
+					},
+					"description" : "At the Magic University, you can pay to learn any, or all, of the four schools of magic.",
+					"name" : "Magic University"
+				},
+				"special3" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 0,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "",
+					"name" : ""
+				},
+				"special4" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 0,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "",
+					"name" : ""
+				},
+				"tavern" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 500,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "The Tavern increases morale for troops defending the city.",
+					"name" : "Tavern"
+				},
+				"townHall" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 2500,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Town Hall allows you to purchase town structures and earns your kingdom 1000 gold per day.",
+					"name" : "Town Hall"
+				},
+				"villageHall" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Village Hall allows you to purchase town structures and earns your kingdom 500 gold per day.",
+					"name" : "Village Hall"
+				}
+			}
+		}
+	}
+}

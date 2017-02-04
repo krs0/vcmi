@@ -1,0 +1,65 @@
+{
+	"ryland" :
+	{
+		"class" : "ranger",
+		"female" : false,
+
+		"index" : 19,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL019RN.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS019RN.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "centaur",
+				"max" : 24,
+				"min" : 12
+			},
+			{
+				"creature" : "dwarf",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "woodElf",
+				"max" : 6,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "diplomacy"
+			},
+			{
+				"level" : "basic",
+				"skill" : "leadership"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 22,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+
+		"texts" : {
+			"biography" : "Ryland was the first (and to date, the only) human ever fully accepted by the Circle of Elder Dendroids as a Ranger of AvLee.  Some joke that he was once an Elf, but that he was killed and accidentally reincarnated into a human's body.",
+			"name" : "Ryland",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Dendroid Guards or Soldiers for each level attained after 5th level.",
+				"name" : "Dendroids",
+				"tooltip" : "Creature Bonus: Dendroids"
+			}
+		}
+	}
+}
+

@@ -1,0 +1,68 @@
+{
+	"saurug" :
+	{
+		"class" : "battlemage",
+		"female" : false,
+
+		"index" : 111,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL111BM.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS111BM.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "goblin",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "goblinWolfRider",
+				"max" : 7,
+				"min" : 5
+			},
+			{
+				"creature" : "orc",
+				"max" : 6,
+				"min" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "resistance"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 1,
+				"subtype" : 11,
+				"type" : 2,
+				"val" : 5
+			}
+		],
+		"spellbook" : [
+			"bloodlust"
+		],
+		
+		"texts" : {
+			"biography" : "It is believed that Saurug once studied alchemy in an attempt to make himself wealthy.  Though unsuccessful, his magics have made him of great value to the armies of Krewlod.",
+			"name" : "Saurug",
+			"specialty" : {
+				"description" : "Increases kingdom's gem production by 1 per day.",
+				"name" : "+1 Gems",
+				"tooltip" : "+1 Gems each day."
+			}
+		}
+	}
+}
+

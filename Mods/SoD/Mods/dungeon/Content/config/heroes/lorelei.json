@@ -1,0 +1,65 @@
+{
+	"lorelei" :
+	{
+		"class" : "warlock",
+		"female" : true,
+
+		"index" : 80,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL080OV.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS080OV.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "harpy",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "harpy",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "harpy",
+				"max" : 6,
+				"min" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "scouting"
+			},
+			{
+				"level" : "basic",
+				"skill" : "leadership"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 72,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+
+		"texts" : {
+			"biography" : "When Lorelei was a child she wandered away from her home, disappearing into a network of caves.  She was found and raised by a harpy hag, and eventually volunteered to serve the Dungeon Overlords shortly before the invasion of Erathia.  She has no memories of her real parents.",
+			"name" : "Lorelei",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Harpies or Harpy Hags for each level attained after 2nd level.",
+				"name" : "Harpies",
+				"tooltip" : "Creature Bonus: Harpies"
+			}
+	}
+	}
+}
+

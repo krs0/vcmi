@@ -1,0 +1,82 @@
+{
+	"necromancer" :
+	{
+		"name" : "Necromancer",
+		"faction" : "necropolis",
+		"affinity" : "magic",
+		"defaultTavern" : 5,
+		"mapObject" : {
+			"templates" : {
+				"default" : {
+					"animation" : "sprites/heroClasses/AH09_.def",
+					"editorAnimation" : "sprites/heroClasses/AH09_E.def"
+				}
+			}
+		},
+		"animation" : {
+			"battle" : {
+				"female" : "sprites/heroClasses/CH09.DEF",
+				"male" : "sprites/heroClasses/CH08.DEF"
+			}
+		},
+		"primarySkills" : {
+			"attack" : 1,
+			"defence" : 0,
+			"knowledge" : 2,
+			"spellpower" : 2
+		},
+		"highLevelChance" : {
+		"attack" : 25,
+		"defence" : 25,
+		"knowledge" : 25,
+		"spellpower" : 25
+		},
+		"lowLevelChance" : {
+			"attack" : 15,
+			"defence" : 15,
+			"knowledge" : 35,
+			"spellpower" : 35
+		},
+		"secondarySkills" : {
+			"airMagic" : 3,
+			"archery" : 2,
+			"armorer" : 2,
+			"artillery" : 3,
+			"ballistics" : 5,
+			"diplomacy" : 4,
+			"eagleEye" : 7,
+			"earthMagic" : 8,
+			"estates" : 3,
+			"fireMagic" : 2,
+			"firstAid" : 0,
+			"intelligence" : 6,
+			"leadership" : 0,
+			"learning" : 4,
+			"logistics" : 4,
+			"luck" : 1,
+			"mysticism" : 6,
+			"navigation" : 5,
+			"necromancy" : 10,
+			"offence" : 3,
+			"pathfinding" : 6,
+			"resistance" : 1,
+			"scholar" : 6,
+			"scouting" : 2,
+			"sorcery" : 6,
+			"tactics" : 2,
+			"waterMagic" : 3,
+			"wisdom" : 8
+		},
+		"tavern" : {
+			"castle" : 5,
+			"conflux" : 6,
+			"dungeon" : 6,
+			"fortress" : 6,
+			"inferno" : 6,
+			"necropolis" : 6,
+			"rampart" : 5,
+			"stronghold" : 5,
+			"tower" : 5
+		}
+	}
+}

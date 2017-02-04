@@ -1,0 +1,65 @@
+{
+	"kyrre" :
+	{
+		"class" : "ranger",
+		"female" : true,
+
+		"index" : 23,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL023RN.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS023RN.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "centaur",
+				"max" : 24,
+				"min" : 12
+			},
+			{
+				"creature" : "dwarf",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "woodElf",
+				"max" : 6,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "archery"
+			},
+			{
+				"level" : "basic",
+				"skill" : "logistics"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 2,
+				"type" : 2,
+				"val" : 5
+			}
+		],
+
+		"texts" : {
+			"biography" : "Kyrre served as a scout during the initial defense of AvLee from the Kreegan attacks.  Her ability to navigate difficult terrain allowed her to excel in her duties.",
+			"name" : "Kyrre",
+			"specialty" : {
+				"description" : "Receives a 5% per level bonus to Logistics skill percentage.",
+				"name" : "Logistics",
+				"tooltip" : "Secondary Skill Bonus: Logistics"
+			}
+		}
+	}
+}
+

@@ -1,0 +1,59 @@
+{
+	"mightyGorgon": {
+		"name" : {
+			"plural" : "Mighty Gorgons",
+			"singular" : "Mighty Gorgon"
+		},
+		"faction" : "fortress",
+		"level" : 5,
+		"cost" : {
+			"gold" : 600
+		},
+		"speed" : 6,
+		"hitPoints" : 70,
+		"attack" : 11,
+		"defense" : 16,
+		"damage" : {
+			"max" : 16,
+			"min" : 12
+		},
+		"doubleWide" : true,
+		"growth" : 3,
+		"horde" : 0,
+		"aiValue" : 1028,
+		"fightValue" : 1028,
+		"advMapAmount" : {
+			"max" : 20,
+			"min" : 12
+		},
+		"abilities" : {
+			"deathStare" : {
+				"subtype" : 0,
+				"type" : "DEATH_STARE",
+				"val" : 10
+			}
+		},
+		"abilityText" : "Death stare.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CBGOG.def",
+			"map" : "sprites/creatures/adventureMap/AVWgorx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL105.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort105.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/BGORATTK.wav",
+			"defend" : "sounds/creatures/BGORDFND.wav",
+			"killed" : "sounds/creatures/BGORKILL.wav",
+			"move" : "sounds/creatures/BGORMOVE.wav",
+			"wince" : "sounds/creatures/BGORWNCE.wav"
+		}
+	}
+}

@@ -1,0 +1,68 @@
+{
+	"aenain" :
+	{
+		"class" : "elementalist",
+		"female" : false,
+
+		"index" : 141,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL005EL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS005EL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "pixies",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "airElementals",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "waterElementals",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "airMagic"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 47,
+				"type" : 8,
+				"val" : 0
+			}
+		],
+		"spellbook" : [
+			"disruptingRay"
+		],
+		
+		"texts" : {
+			"biography" : "Created by great power from mystical forces, Genies are creatures of magic.  Aenain was made imperfect.  For centuries he has worked hard to overcome the perception of his imperfection.  For his dilligence and dedication to Air Magic, Aenain was called to the Conflux.",
+			"name" : "Aenain",
+			"specialty" : {
+				"description" : "When cast, Disrupting Ray is increased +2.",
+				"name" : "Disrupting Ray",
+				"tooltip" : "Spell Bonus: Disrupting Ray"
+			}
+		}
+	}
+}
+

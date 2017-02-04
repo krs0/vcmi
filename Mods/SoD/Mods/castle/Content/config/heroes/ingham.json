@@ -1,0 +1,69 @@
+{
+	"ingham" :
+	{
+		"class" : "cleric",
+		"female" : false,
+
+		"index" : 12,
+		
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL012CL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS012CL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "pikeman",
+				"max" : 20,
+				"min" : 10
+			},
+			{
+				"creature" : "archer",
+				"max" : 7,
+				"min" : 4
+			},
+			{
+				"creature" : "griffin",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"spellbook" : [
+			"curse"
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "mysticism"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 8,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+
+		"texts" : {
+			"biography" : "Ingham maintained a modest monastery in the years before the Kreegan attack.  He and his monks were quickly pressed into the service of the Erathian crown.",
+			"name" : "Ingham",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Monks or Zealots for each level attained after 5th level.",
+				"name" : "Monks",
+				"tooltip" : "Creature Bonus: Monks"
+			}
+		}
+	}
+}
+

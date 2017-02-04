@@ -1,0 +1,71 @@
+{
+	"monere" :
+	{
+		"class" : "planeswalker",
+		"female" : false,
+
+		"index" : 132,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL004PL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS004PL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "pixies",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "airElementals",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "airElementals",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "logistics"
+			},
+			{
+				"level" : "basic",
+				"skill" : "offence"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 120,
+				"subtype" : 1,
+				"type" : 4,
+				"val" : 3
+			},
+			{
+				"info" : 120,
+				"subtype" : 2,
+				"type" : 4,
+				"val" : 3
+			}
+		],
+
+		"texts" : {
+			"biography" : "As a being of pure energy, Monere enjoyed the freedoms of his natural state.  However, his curiosity for beings of corporeal form drove him to the Conflux.",
+			"name" : "Monere",
+			"specialty" : {
+				"description" : "Psychic/Magic elementals receive +3 Att and +3 Def.",
+				"name" : "Psychic Ele.",
+				"tooltip" : "Creature Bonus: Psychic Elementals"
+			}
+		}
+	}
+}
+

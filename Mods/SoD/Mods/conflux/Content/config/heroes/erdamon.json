@@ -1,0 +1,77 @@
+{
+	"erdamon" :
+	{
+		"class" : "planeswalker",
+		"female" : false,
+
+		"index" : 133,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL005PL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS005PL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "pixies",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "airElementals",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "waterElementals",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "estates"
+			},
+			{
+				"level" : "basic",
+				"skill" : "tactics"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 113,
+				"subtype" : 1,
+				"type" : 4,
+				"val" : 2
+			},
+			{
+				"info" : 113,
+				"subtype" : 2,
+				"type" : 4,
+				"val" : 1
+			},
+			{
+				"info" : 113,
+				"subtype" : 4,
+				"type" : 4,
+				"val" : 5
+			}
+		],
+
+		"texts" : {
+			"biography" : "An ancient lord of magma, Erdamon has slept for centuries within the mountains bordering Eeofol.  Pulled from his slumber to aid the Conflux, Erdamon welcomes the battle to rid the world of the Kreegans.",
+			"name" : "Erdamon",
+			"specialty" : {
+				"description" : "Earth/Magma elementals receive +2 Att, +1 Def, and +5 Dmg.",
+				"name" : "Earth Ele.",
+				"tooltip" : "Creature Bonus: Earth Elementals"
+			}
+		}
+	}
+}
+

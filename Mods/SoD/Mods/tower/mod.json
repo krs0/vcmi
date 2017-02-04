@@ -1,0 +1,73 @@
+{
+	"name" : "Tower faction",
+	"description" : "Tower faction as Mod",
+
+	"version" : "0.99",
+	"author" : "Original SoD Faction - mod by VCMI Team",
+	"contact" : "http://forum.vcmi.eu/index.php",
+	"modType" : "Faction",
+
+	"factions" :
+	[
+		"config/factions/tower/faction.json",
+		"config/factions/tower/dwellings.json",
+		"config/factions/tower/puzzleMap.json",
+		"config/factions/tower/town/town.json",
+		"config/factions/tower/town/buildings.json",
+		"config/factions/tower/town/structures.json",
+		"config/factions/tower/town/guildSpells.json",
+		"config/factions/tower/town/siege.json"
+	],
+
+	"creatures" :
+	[
+		"config/creatures/gremlin.json",
+		"config/creatures/masterGremlin.json",
+
+		"config/creatures/stoneGargoyle.json",
+		"config/creatures/obsidianGargoyle.json",
+
+		"config/creatures/ironGolem.json",
+		"config/creatures/stoneGolem.json",
+
+		"config/creatures/mage.json",
+		"config/creatures/archMage.json",
+		
+		"config/creatures/genie.json",
+		"config/creatures/masterGenie.json",
+
+		"config/creatures/naga.json",
+		"config/creatures/nagaQueen.json",
+
+		"config/creatures/giant.json",
+		"config/creatures/titan.json"
+	],
+
+	"heroClasses" :
+	[
+		"config/heroClasses/alchemist.json",
+		"config/heroClasses/wizard.json"
+	],
+
+	"heroes" :
+	[
+		// alchemist
+		"config/heroes/piquedram.json",
+		"config/heroes/thane.json",
+		"config/heroes/josephine.json",
+		"config/heroes/neela.json",
+		"config/heroes/torosar.json",
+		"config/heroes/fafner.json",
+		"config/heroes/rissa.json",
+		"config/heroes/iona.json",
+		// wizard
+		"config/heroes/astral.json",
+		"config/heroes/halon.json",
+		"config/heroes/serena.json",
+		"config/heroes/daremyth.json",
+		"config/heroes/theodorus.json",
+		"config/heroes/solmyr.json",
+		"config/heroes/cyra.json",
+		"config/heroes/aine.json"
+	]
+}

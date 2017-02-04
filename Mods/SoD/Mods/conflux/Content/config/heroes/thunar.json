@@ -1,0 +1,77 @@
+{
+	"thunar" :
+	{
+		"class" : "planeswalker",
+		"female" : true,
+
+		"index" : 129,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL001PL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS001PL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "pixies",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "airElementals",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "waterElementals",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "estates"
+			},
+			{
+				"level" : "basic",
+				"skill" : "tactics"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 113,
+				"subtype" : 1,
+				"type" : 4,
+				"val" : 2
+			},
+			{
+				"info" : 113,
+				"subtype" : 2,
+				"type" : 4,
+				"val" : 1
+			},
+			{
+				"info" : 113,
+				"subtype" : 4,
+				"type" : 4,
+				"val" : 5
+			}
+		],
+
+		"texts" : {
+			"biography" : "Living around the Erathian Capitol for many years Thunar learned extensive Battle Tactics and Estates.  Her curiosity and respect of mortals gained her a place in the Conflux.",
+			"name" : "Thunar",
+			"specialty" : {
+				"description" : "Earth/Magma elementals receive +2 Att, +1 Def, and +5 Dmg.",
+				"name" : "Earth Ele.",
+				"tooltip" : "Creature Bonus: Earth Elementals"
+			}
+		}
+	}
+}
+

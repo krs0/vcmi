@@ -1,0 +1,65 @@
+{
+	"christian" :
+	{
+		"class" : "knight",
+		"female" : false,
+
+		"index" : 6,
+		
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL006KN.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS006KN.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "pikeman",
+				"max" : 20,
+				"min" : 10
+			},
+			{
+				"creature" : "ballista",
+				"max" : 1,
+				"min" : 1
+			},
+			{
+				"creature" : "griffin",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "leadership"
+			},
+			{
+				"level" : "basic",
+				"skill" : "artillery"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 146,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+
+		"texts" : {
+			"biography" : "Christian was always more of a frontiersman than a Knight, having set foot in nearly every part of Enroth before finally settling into military service in Erathia.  Though a wanderer and a bit of a dreamer, his battlefield tactics are feared throughout the world.",
+			"name" : "Christian",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skill of any Ballista for each level attained after 4th level.",
+				"name" : "Ballista",
+				"tooltip" : "Artillery Bonus: Ballista"
+			}
+		}
+	}
+}
+

@@ -1,0 +1,82 @@
+{
+	"planeswalker" :
+	{
+		"name" : "Planeswalker",
+		"faction" : "conflux",
+		"affinity" : "might",
+		"defaultTavern" : 5,
+		"mapObject" : {
+			"templates" : {
+				"default" : {
+					"animation" : "sprites/heroClasses/AH16_.def",
+					"editorAnimation" : "sprites/heroClasses/AH16_E.def"
+				}
+			}
+		},
+		"animation" : {
+			"battle" : {
+				"female" : "sprites/heroClasses/CH16.DEF",
+				"male" : "sprites/heroClasses/CH16.DEF"
+			}
+		},
+		"primarySkills" : {
+			"attack" : 3,
+			"defence" : 1,
+			"knowledge" : 1,
+			"spellpower" : 1
+		},
+		"highLevelChance" : {
+			"attack" : 30,
+			"defence" : 30,
+			"knowledge" : 20,
+			"spellpower" : 20
+		},
+		"lowLevelChance" : {
+			"attack" : 45,
+			"defence" : 25,
+			"knowledge" : 15,
+			"spellpower" : 15
+		},
+		"secondarySkills" : {
+			"airMagic" : 2,
+			"archery" : 8,
+			"armorer" : 5,
+			"artillery" : 8,
+			"ballistics" : 8,
+			"diplomacy" : 2,
+			"eagleEye" : 2,
+			"earthMagic" : 3,
+			"estates" : 3,
+			"fireMagic" : 3,
+			"firstAid" : 1,
+			"intelligence" : 1,
+			"leadership" : 3,
+			"learning" : 8,
+			"logistics" : 8,
+			"luck" : 2,
+			"mysticism" : 3,
+			"navigation" : 5,
+			"necromancy" : 0,
+			"offence" : 9,
+			"pathfinding" : 6,
+			"resistance" : 2,
+			"scholar" : 1,
+			"scouting" : 6,
+			"sorcery" : 1,
+			"tactics" : 8,
+			"waterMagic" : 2,
+			"wisdom" : 2
+		},
+		"tavern" : {
+			"castle" : 5,
+			"conflux" : 6,
+			"dungeon" : 5,
+			"fortress" : 5,
+			"inferno" : 5,
+			"necropolis" : 5,
+			"rampart" : 5,
+			"stronghold" : 5,
+			"tower" : 5
+		}
+	}
+}

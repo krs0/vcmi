@@ -1,0 +1,68 @@
+{
+	"uland" :
+	{
+		"class" : "druid",
+		"female" : false,
+
+		"index" : 25,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL025DR.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS025DR.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "centaur",
+				"max" : 24,
+				"min" : 12
+			},
+			{
+				"creature" : "dwarf",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "woodElf",
+				"max" : 6,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "advanced",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "ballistics"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 37,
+				"type" : 3,
+				"val" : 3
+			}
+		],
+		"spellbook" : [
+			"cure"
+		],
+
+		"texts" : {
+			"biography" : "Uland spent a great deal of his life as a battlefield healer before choosing to follow the path of a Druid, but the lessons he learned serving in the military have made him into an excellent leader today.",
+			"name" : "Uland",
+			"specialty" : {
+				"description" : "Casts Cure with increased effect, based on hero level compared to the level of the target unit (the bonus is greater when used on weaker units).",
+				"name" : "Cure",
+				"tooltip" : "Spell Bonus: Cure"
+			}
+		}
+	}
+}
+

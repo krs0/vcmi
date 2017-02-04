@@ -1,0 +1,71 @@
+{
+	"goldDragon": {
+		"name" : {
+			"plural" : "Gold Dragons",
+			"singular" : "Gold Dragon"
+		},
+		"faction" : "rampart",
+		"level" : 7,
+		"cost" : {
+			"crystal" : 2,
+			"gold" : 4000
+		},
+		"speed" : 16,
+		"hitPoints" : 250,
+		"attack" : 27,
+		"defense" : 27,
+		"damage" : {
+			"max" : 50,
+			"min" : 40
+		},
+		"doubleWide" : true,
+		"growth" : 1,
+		"horde" : 0,
+		"aiValue" : 8613,
+		"fightValue" : 6220,
+		"advMapAmount" : {
+			"max" : 8,
+			"min" : 3
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"KING_1" : {
+				"type" : "KING1"
+			},
+			"dragon" : {
+				"type" : "DRAGON_NATURE"
+			},
+			"fireBreath" : {
+				"type" : "TWO_HEX_ATTACK_BREATH"
+			},
+			"spellImmunity" : {
+				"type" : "LEVEL_SPELL_IMMUNITY",
+				"val" : 4
+			}
+		},
+		"abilityText" : "Immune to spell levels 1-4.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CDDRAG.def",
+			"map" : "sprites/creatures/adventureMap/AVWdrax0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL29.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort29.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.6
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/GODRATTK.wav",
+			"defend" : "sounds/creatures/GODRDFND.wav",
+			"killed" : "sounds/creatures/GODRKILL.wav",
+			"move" : "sounds/creatures/GODRMOVE.wav",
+			"wince" : "sounds/creatures/GODRWNCE.wav"
+		}
+	}
+}

@@ -1,0 +1,67 @@
+{
+	"psychicElemental": {
+		"name" : {
+			"plural" : "Psychic Elementals",
+			"singular" : "Psychic Elemental"
+		},
+		"faction" : "conflux",
+		"level" : 6,
+		"upgrades": ["magicElemental"],
+		"cost" : {
+			"gold" : 750
+		},
+		"speed" : 7,
+		"hitPoints" : 75,
+		"attack" : 15,
+		"defense" : 13,
+		"damage" : {
+			"max" : 20,
+			"min" : 10
+		},
+		"doubleWide" : false,
+		"growth" : 2,
+		"horde" : 0,
+		"aiValue" : 1669,
+		"fightValue" : 1431,
+		"advMapAmount" : {
+			"max" : 16,
+			"min" : 8
+		},
+		"abilities" : {
+			"IMMUNE_TO_MIND_SPELLS" : {
+				"type" : "MIND_IMMUNITY"
+			},
+			"MULTI_HEADED" : {
+				"type" : "ATTACKS_ALL_ADJACENT"
+			},
+			"const_free_attack" : {
+				"type" : "BLOCKS_RETALIATION"
+			},
+			"nonLiving" : {
+				"type" : "NON_LIVING"
+			}
+		},
+		"abilityText" : "Attacks all adjacent enemies w/o retaliation. Mind spell immunity.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CPSYEL.def",
+			"map" : "sprites/creatures/adventureMap/AVWpsye.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL122.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort122.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/PSYCATTK.wav",
+			"defend" : "sounds/creatures/PSYCDFND.wav",
+			"killed" : "sounds/creatures/PSYCKILL.wav",
+			"move" : "sounds/creatures/PSYCMOVE.wav",
+			"wince" : "sounds/creatures/PSYCWNCE.wav"
+		},
+	}
+}

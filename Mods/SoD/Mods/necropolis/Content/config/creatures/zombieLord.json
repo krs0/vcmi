@@ -1,0 +1,57 @@
+{
+	"zombieLord": {
+		"name" : {
+			"plural" : "Zombies",
+			"singular" : "Zombie"
+		},
+		"faction" : "necropolis",
+		"level" : 2,
+		"cost" : {
+			"gold" : 125
+		},
+		"speed" : 4,
+		"hitPoints" : 20,
+		"attack" : 5,
+		"defense" : 5,
+		"damage" : {
+			"max" : 3,
+			"min" : 2
+		},
+		"doubleWide" : false,
+		"growth" : 8,
+		"horde" : 0,
+		"aiValue" : 128,
+		"fightValue" : 160,
+		"advMapAmount" : {
+			"max" : 25,
+			"min" : 16
+		},
+		"abilities" : {
+			"IS_UNDEAD" : {
+				"type" : "UNDEAD"
+			}
+		},
+		"abilityText" : "Undead.\nDisease.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CZOMLO.def",
+			"map" : "sprites/creatures/adventureMap/AVWzomx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL60.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort60.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1.3
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/ZMBLATTK.wav",
+			"defend" : "sounds/creatures/ZMBLDFND.wav",
+			"killed" : "sounds/creatures/ZMBLKILL.wav",
+			"move" : "sounds/creatures/ZMBLMOVE.wav",
+			"wince" : "sounds/creatures/ZMBLWNCE.wav"
+		}
+	}
+}

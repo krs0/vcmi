@@ -1,0 +1,43 @@
+{
+	"necropolis" :
+	{
+		"dwellings" :
+		{
+			"cursedTemple" : 
+			{
+				"name" : "Cursed Temple",
+				"graphics" : "sprites/factions/necropolis/adventureMap/dwellings/AVGskel0.def"
+			},
+			"graveyard" : 
+			{
+				"name" : "Graveyard",
+				"graphics" : "sprites/factions/necropolis/adventureMap/dwellings/AVGzomb0.def"
+			},
+			"tombOfSouls" : 
+			{
+				"name" : "Tomb of Souls",
+				"graphics" : "sprites/factions/necropolis/adventureMap/dwellings/AVGwght0.def"
+			},
+			"estate" : 
+			{
+				"name" : "Estate",
+				"graphics" : "sprites/factions/necropolis/adventureMap/dwellings/AVGvamp0.def"
+			},
+			"mausoleum" : 
+			{
+				"name" : "Mausoleum",
+				"graphics" : "sprites/factions/necropolis/adventureMap/dwellings/AVGlich0.def"
+			},
+			"hallOfDarkness" : 
+			{
+				"name" : "Hall of Darkness",
+				"graphics" : "sprites/factions/necropolis/adventureMap/dwellings/AVGBKNI0.def"
+			},
+			"dragonVault" : 
+			{
+				"name" : "Dragon Vault",
+				"graphics" : "sprites/factions/necropolis/adventureMap/dwellings/AVGbone0.def"
+			}
+		}
+	}
+}

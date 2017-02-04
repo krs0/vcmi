@@ -1,0 +1,61 @@
+{
+	"lacus" :
+	{
+		"class" : "planeswalker",
+		"female" : true,
+
+		"index" : 131,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL003PL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS003PL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "pixies",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "waterElementals",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "waterElementals",
+				"max" : 2,
+				"min" : 1
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "advanced",
+				"skill" : "tactics"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 115,
+				"subtype" : 1,
+				"type" : 4,
+				"val" : 2
+			}
+		],
+
+		"texts" : {
+			"biography" : "Fierce competition of all Water Elementals took place to determine who would have the honor to serve the Conflux. Lacus earned her position through her advanced knowledge of Tactics.",
+			"name" : "Lacus",
+			"specialty" : {
+				"description" : "Water/Ice elementals receive +2 Att.",
+				"name" : "Water Ele.",
+				"tooltip" : "Creature Bonus: Water Elementals"
+			}
+		}
+	}
+}
+

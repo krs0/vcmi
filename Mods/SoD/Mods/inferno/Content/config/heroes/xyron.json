@@ -1,0 +1,68 @@
+{
+	"xyron" :
+	{
+		"class" : "heretic",
+		"female" : false,
+
+		"index" : 57,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL057DM.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS057DM.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "imp",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "gog",
+				"max" : 7,
+				"min" : 4
+			},
+			{
+				"creature" : "hellHound",
+				"max" : 4,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "scholar"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 22,
+				"type" : 3,
+				"val" : 3
+			}
+		],
+		"spellbook" : [
+			"inferno"
+		],
+			
+		"texts" : {
+			"biography" : "Xyron seems to like fire even more than anyone would expect of an Efreeti, but Xyron delights in just about anything having to do with fire or lava.",
+			"name" : "Xyron",
+			"specialty" : {
+				"description" : "Casts Inferno with increased effect, based on hero level compared to the level of the target unit (the bonus is greater when used on weaker units).",
+				"name" : "Inferno",
+				"tooltip" : "Spell Bonus: Inferno"
+			}
+		}
+	}
+}
+

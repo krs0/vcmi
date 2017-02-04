@@ -1,0 +1,82 @@
+{
+	"battlemage" :
+	{
+		"name" : "Battle Mage",
+		"faction" : "stronghold",
+		"affinity" : "magic",
+		"defaultTavern" : 5,
+		"animation" : {
+			"battle" : {
+				"female" : "sprites/heroClasses/CH012.DEF",
+				"male" : "sprites/heroClasses/CH013.DEF"
+			}
+		},
+		"mapObject" : {
+			"templates" : {
+				"default" : {
+					"animation" : "sprites/heroClasses/AH13_.def",
+					"editorAnimation" : "sprites/heroClasses/AH13_E.def"
+				}
+			}
+		},
+		"primarySkills" : {
+			"attack" : 2,
+			"defence" : 1,
+			"knowledge" : 1,
+			"spellpower" : 1
+		},
+		"highLevelChance" : {
+			"attack" : 25,
+			"defence" : 25,
+			"knowledge" : 25,
+			"spellpower" : 25
+		},
+		"lowLevelChance" : {
+			"attack" : 30,
+			"defence" : 20,
+			"knowledge" : 25,
+			"spellpower" : 25
+		},
+		"secondarySkills" : {
+			"airMagic" : 3,
+			"archery" : 4,
+			"armorer" : 4,
+			"artillery" : 4,
+			"ballistics" : 6,
+			"diplomacy" : 3,
+			"eagleEye" : 5,
+			"earthMagic" : 3,
+			"estates" : 1,
+			"fireMagic" : 3,
+			"firstAid" : 4,
+			"intelligence" : 5,
+			"leadership" : 4,
+			"learning" : 4,
+			"logistics" : 9,
+			"luck" : 2,
+			"mysticism" : 4,
+			"navigation" : 0,
+			"necromancy" : 0,
+			"offence" : 8,
+			"pathfinding" : 4,
+			"resistance" : 4,
+			"scholar" : 4,
+			"scouting" : 4,
+			"sorcery" : 6,
+			"tactics" : 5,
+			"waterMagic" : 3,
+			"wisdom" : 6
+		},
+		"tavern" : {
+			"castle" : 6,
+			"conflux" : 5,
+			"dungeon" : 6,
+			"fortress" : 6,
+			"inferno" : 6,
+			"necropolis" : 6,
+			"rampart" : 6,
+			"stronghold" : 6,
+			"tower" : 6
+		}
+	}
+}

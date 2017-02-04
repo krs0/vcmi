@@ -1,0 +1,77 @@
+{
+	"ignissa" :
+	{
+		"class" : "planeswalker",
+		"female" : true,
+
+		"index" : 130,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL002PL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS002PL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "pixies",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "airElementals",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "waterElementals",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "artillery"
+			},
+			{
+				"level" : "basic",
+				"skill" : "offence"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 114,
+				"subtype" : 1,
+				"type" : 4,
+				"val" : 1
+			},
+			{
+				"info" : 114,
+				"subtype" : 1,
+				"type" : 4,
+				"val" : 2
+			},
+			{
+				"info" : 114,
+				"subtype" : 3,
+				"type" : 4,
+				"val" : 2
+			}
+		],
+
+		"texts" : {
+			"biography" : "Four years ago a powerful Wizard summoned Ignissa to this plane.  Unable to return she wandered Antagarich until she felt called to the Conflux.",
+			"name" : "Ignissa",
+			"specialty" : {
+				"description" : "Fire/Energy elementals receive +1 Att, +2 Def, and +2 Dmg.",
+				"name" : "Fire Elementals",
+				"tooltip" : "Creature Bonus: Fire Elementals"
+			}
+		}
+	}
+}
+

@@ -1,0 +1,92 @@
+{
+	"powerLich": {
+		"name" : {
+			"plural" : "Power Liches",
+			"singular" : "Power Lich"
+		},
+		"faction" : "necropolis",
+		"level" : 5,
+		"cost" : {
+			"gold" : 600
+		},
+		"speed" : 7,
+		"hitPoints" : 40,
+		"attack" : 13,
+		"defense" : 10,
+		"damage" : {
+			"max" : 15,
+			"min" : 11
+		},
+		"shots" : 24,
+		"doubleWide" : false,
+		"growth" : 3,
+		"horde" : 0,
+		"aiValue" : 1079,
+		"fightValue" : 889,
+		"advMapAmount" : {
+			"max" : 12,
+			"min" : 8
+		},
+		"abilities" : {
+			"IS_UNDEAD" : {
+				"type" : "UNDEAD"
+			},
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			},
+			"deathCloud" : {
+				"subtype" : "spell.deathCloud",
+				"type" : "SPELL_LIKE_ATTACK"
+			}
+		},
+		"abilityText" : "Undead.  Death cloud attack.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CPLICH.def",
+			"map" : "sprites/creatures/adventureMap/AVWlicx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL67.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort67.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"missile" : {
+				"projectile" : "sprites/creatures/projectile/PLICH.DEF",
+				"attackClimaxFrame" : 8,
+				"frameAngles" : [
+					90,
+					72,
+					45,
+					27,
+					0,
+					-27,
+					-45,
+					-72,
+					-90,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 29,
+					"lowerY" : -14,
+					"middleX" : 58,
+					"middleY" : -79,
+					"upperX" : 41,
+					"upperY" : -92
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/PLCHATTK.wav",
+			"defend" : "sounds/creatures/PLCHDFND.wav",
+			"killed" : "sounds/creatures/PLCHKILL.wav",
+			"move" : "sounds/creatures/PLCHMOVE.wav",
+			"shoot" : "sounds/creatures/PLCHSHOT.wav",
+			"wince" : "sounds/creatures/PLCHWNCE.wav"
+		}
+	}
+}

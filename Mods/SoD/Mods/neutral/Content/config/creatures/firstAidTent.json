@@ -1,0 +1,57 @@
+{
+	"firstAidTent": {
+		"name" : {
+			"plural" : "First Aid Tents",
+			"singular" : "First Aid Tent"
+		},
+		"faction" : "neutral",
+		"level" : 0,
+		"cost" : {
+			"gold" : 750
+		},
+		"speed" : 0,
+		"hitPoints" : 75,
+		"attack" : 0,
+		"defense" : 0,
+		"damage" : {
+			"max" : 0,
+			"min" : 0
+		},
+		"doubleWide" : true,
+		"growth" : 0,
+		"horde" : 0,
+		"aiValue" : 300,
+		"fightValue" : 10,
+		"advMapAmount" : {
+			"max" : 0,
+			"min" : 0
+		},
+		"abilities" : {
+			"SIEGE_WEAPON" : {
+				"type" : "SIEGE_WEAPON"
+			},
+			"heals" : {
+				"type" : "HEALER"
+			}
+		},
+		"abilityText" : "Heals troops.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/SMTENT.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL149.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort149.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"killed" : "sounds/creatures/FAIDKILL.wav",
+			"wince" : "sounds/creatures/FAIDWNCE.wav"
+		},
+		"special" : true
+	}
+}

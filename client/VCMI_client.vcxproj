@@ -118,9 +118,10 @@
       <ShowProgress>NotSet</ShowProgress>
       <OptimizeReferences>
       </OptimizeReferences>
-      <Profile>true</Profile>
+      <Profile>false</Profile>
       <AdditionalLibraryDirectories>$(FFMPEGDIR)\lib;..\..\libs;$(SolutionDir)</AdditionalLibraryDirectories>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalOptions>/OPT:NOLBR %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Manifest>
       <AdditionalManifestFiles>$(ProjectDir)DPIaware.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>

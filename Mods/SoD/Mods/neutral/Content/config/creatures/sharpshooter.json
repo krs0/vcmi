@@ -1,0 +1,94 @@
+{
+	"sharpshooter": {
+		"name" : {
+			"plural" : "Sharpshooters",
+			"singular" : "Sharpshooter"
+		},
+		"extraNames" : [
+			"sharpshooters"
+		],
+		"faction" : "neutral",
+		"level" : 4,
+		"cost" : {
+			"gold" : 400
+		},
+		"speed" : 9,
+		"hitPoints" : 15,
+		"attack" : 12,
+		"defense" : 10,
+		"damage" : {
+			"max" : 10,
+			"min" : 8
+		},
+		"shots" : 32,
+		"doubleWide" : false,
+		"growth" : 4,
+		"horde" : 0,
+		"aiValue" : 585,
+		"fightValue" : 415,
+		"advMapAmount" : {
+			"max" : 12,
+			"min" : 5
+		},
+		"abilities" : {
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			},
+			"noDistancePenalty" : {
+				"type" : "NO_DISTANCE_PENALTY"
+			},
+			"noPenalty" : {
+				"type" : "NO_WALL_PENALTY"
+			}
+		},
+		"abilityText" : "No Range or Barrier penalties.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CSHARP.def",
+			"map" : "sprites/creatures/adventureMap/AVWsharp.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL139.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort139.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"walk" : 1.02
+			},
+			"missile" : {
+				"projectile" : "sprites/creatures/projectile/PELFX.DEF",
+				"attackClimaxFrame" : 11,
+				"frameAngles" : [
+					90,
+					72,
+					45,
+					27,
+					0,
+					-27,
+					-45,
+					-72,
+					-90,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 18,
+					"lowerY" : -55,
+					"middleX" : 40,
+					"middleY" : -61,
+					"upperX" : 32,
+					"upperY" : -77
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/HCRSATTK.wav",
+			"defend" : "sounds/creatures/HCRSDFND.wav",
+			"killed" : "sounds/creatures/HCRSKILL.wav",
+			"move" : "sounds/creatures/HCRSMOVE.wav",
+			"shoot" : "sounds/creatures/HCRSSHOT.wav",
+			"wince" : "sounds/creatures/HCRSWNCE.wav"
+		},
+		"special" : true
+	}
+}

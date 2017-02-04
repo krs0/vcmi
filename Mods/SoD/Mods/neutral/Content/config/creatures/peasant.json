@@ -1,0 +1,52 @@
+{
+	"peasant": {
+		"name" : {
+			"plural" : "Peasants",
+			"singular" : "Peasant"
+		},
+		"faction" : "neutral",
+		"level" : 1,
+		"cost" : {
+			"gold" : 10
+		},
+		"speed" : 3,
+		"hitPoints" : 1,
+		"attack" : 1,
+		"defense" : 1,
+		"damage" : {
+			"max" : 1,
+			"min" : 1
+		},
+		"doubleWide" : false,
+		"growth" : 25,
+		"horde" : 0,
+		"aiValue" : 15,
+		"fightValue" : 15,
+		"advMapAmount" : {
+			"max" : 50,
+			"min" : 20
+		},
+		"abilityText" : "",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CPEAS.def",
+			"map" : "sprites/creatures/adventureMap/AVWpeas.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL141.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort141.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/PSNTATTK.wav",
+			"defend" : "sounds/creatures/PSNTDFND.wav",
+			"killed" : "sounds/creatures/PSNTKILL.wav",
+			"move" : "sounds/creatures/PSNTMOVE.wav",
+			"wince" : "sounds/creatures/PSNTWNCE.wav"
+		}
+	}
+}

@@ -1,0 +1,65 @@
+{
+	"synca" :
+	{
+		"class" : "warlock",
+		"female" : true,
+
+		"index" : 86,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL086OV.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS086OV.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "troglodyte",
+				"max" : 40,
+				"min" : 30
+			},
+			{
+				"creature" : "harpy",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "beholder",
+				"max" : 4,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "leadership"
+			},
+			{
+				"level" : "basic",
+				"skill" : "scholar"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 80,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+
+		"texts" : {
+			"biography" : "Synca was originally an aboveworlder, and though she loyally serves the Dungeon Overlords she really prefers the great outdoors to the dank, cramped spaces of the caverns of Nighon.",
+			"name" : "Synca",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Manticores or Scorpicores for each level attained after 6th level.",
+				"name" : "Manticores",
+				"tooltip" : "Creature Bonus: Manticores"
+			}
+		}
+	}
+}
+

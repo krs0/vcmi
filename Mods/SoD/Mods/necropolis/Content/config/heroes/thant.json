@@ -1,0 +1,68 @@
+{
+	"thant" :
+	{
+		"class" : "necromancer",
+		"female" : false,
+		"index" : 76,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL076NC.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS076NC.bmp"
+		},
+
+
+		"army" : [
+			{
+				"creature" : "skeleton",
+				"max" : 30,
+				"min" : 20
+			},
+			{
+				"creature" : "zombie",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "wight",
+				"max" : 6,
+				"min" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "necromancy"
+			},
+			{
+				"level" : "basic",
+				"skill" : "mysticism"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 3,
+				"subtype" : 0,
+				"type" : 3,
+				"val" : 39
+			}
+		],
+		"spellbook" : [
+			"animateDead"
+		],
+			
+		"texts" : {
+			"biography" : "No one is really sure how long Thant has been alive.  Some say he fought for Erathia during the Timber Wars, but fell prey to a Vampire during an all-night march through Phynaxia.",
+			"name" : "Thant",
+			"specialty" : {
+				"description" : "Casts Animate Dead with increased effect, based on hero level compared to the level of the target unit (the bonus is greater when used on weaker units).",
+				"name" : "Animate Dead",
+				"tooltip" : "Spell Bonus: Animate Dead"
+			}
+		}
+	}
+}
+

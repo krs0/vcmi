@@ -1,0 +1,64 @@
+{
+	"scorpicore": {
+		"name" : {
+			"plural" : "Scorpicores",
+			"singular" : "Scorpicore"
+		},
+		"faction" : "dungeon",
+		"level" : 6,
+		"cost" : {
+			"gold" : 1050
+		},
+		"speed" : 11,
+		"hitPoints" : 80,
+		"attack" : 16,
+		"defense" : 14,
+		"damage" : {
+			"max" : 20,
+			"min" : 14
+		},
+		"doubleWide" : true,
+		"growth" : 2,
+		"horde" : 0,
+		"aiValue" : 1589,
+		"fightValue" : 1248,
+		"advMapAmount" : {
+			"max" : 10,
+			"min" : 5
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"paralize" : {
+				"subtype" : "spell.paralyze",
+				"type" : "SPELL_AFTER_ATTACK",
+				"val" : 20
+			}
+		},
+		"abilityText" : "Paralyzing venom.",
+		"hasDoubleWeek" : true,
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CCMCOR.def",
+			"map" : "sprites/creatures/adventureMap/AVWmanx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL83.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort83.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.8
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/SCRPATTK.wav",
+			"defend" : "sounds/creatures/SCRPDFND.wav",
+			"killed" : "sounds/creatures/SCRPKILL.wav",
+			"move" : "sounds/creatures/SCRPMOVE.wav",
+			"shoot" : "sounds/creatures/SCRPSHOT.wav",
+			"wince" : "sounds/creatures/SCRPWNCE.wav"
+		}
+	}
+}

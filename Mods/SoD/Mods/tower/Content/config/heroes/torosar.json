@@ -1,0 +1,68 @@
+{
+	"torosar" :
+	{
+		"class" : "alchemist",
+		"female" : false,
+
+		"index" : 36,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL036AL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS036AL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "apprenticeGremlin",
+				"max" : 40,
+				"min" : 30
+			},
+			{
+				"creature" : "ballista",
+				"max" : 1,
+				"min" : 1
+			},
+			{
+				"creature" : "ironGolem",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "mysticism"
+			},
+			{
+				"level" : "basic",
+				"skill" : "tactics"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 146,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+		"spellbook" : [
+			"magicArrow"
+		],
+		
+		"texts" : {
+			"biography" : "Though formally trained as an Alchemist, Torosar has always had an interest in battlefield and siege tactics, often studying texts on the subject of war more frequently than on the subject of alchemy.",
+			"name" : "Torosar ",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skill of any Ballista for each level attained after 4th level.",
+				"name" : "Ballista",
+				"tooltip" : "Artillery Bonus: Ballista"
+			}
+		}
+	}
+}
+

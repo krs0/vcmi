@@ -1,0 +1,69 @@
+{
+	"cuthbert" :
+	{
+		"class" : "cleric",
+		"female" : false,
+
+		"index" : 10,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL010CL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS010CL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "pikeman",
+				"max" : 20,
+				"min" : 10
+			},
+			{
+				"creature" : "archer",
+				"max" : 7,
+				"min" : 4
+			},
+			{
+				"creature" : "griffin",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"spellbook" : [
+			"weakness"
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "estates"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 45,
+				"type" : 8,
+				"val" : 0
+			}
+		],
+
+		"texts" : {
+			"biography" : "As a young man, Cuthbert toyed with the darker magics, but when his wife died because a spell that he cast had gone awry, he turned to good and has never looked back.  His insights to the workings of dark magic give him an edge possessed by no other.",
+			"name" : "Cuthbert",
+			"specialty" : {
+				"description" : "Casts Weakness with increased effect, based on hero level compared to the level of the target unit (the bonus is greater when used on weaker units).",
+				"name" : "Weakness",
+				"tooltip" : "Spell Bonus: Weakness"
+			}
+		}
+	}
+}
+

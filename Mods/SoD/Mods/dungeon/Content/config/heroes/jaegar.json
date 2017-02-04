@@ -1,0 +1,68 @@
+{
+	"jaegar" :
+	{
+		"class" : "overlord",
+		"female" : false,
+
+		"index" : 89,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL089WL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS089WL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "troglodyte",
+				"max" : 40,
+				"min" : 30
+			},
+			{
+				"creature" : "harpy",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "beholder",
+				"max" : 4,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "mysticism"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 1,
+				"subtype" : 8,
+				"type" : 2,
+				"val" : 5
+			}
+		],
+		"spellbook" : [
+			"shield"
+		],
+
+		"texts" : {
+			"biography" : "It is strange to see a troglodyte Overlord, and stranger still to see a troglodyte Warlock, yet Jaeger has proven to be a skilled magician.  He claims that daily meditation is the secret to his success.",
+			"name" : "Jaegar",
+			"specialty" : {
+				"description" : "Receives a 5% per level bonus to Mysticism skill.",
+				"name" : "Mysticism",
+				"tooltip" : "Secondary Skill Bonus: Mysticism"
+			}
+		}
+	}
+}
+

@@ -1,0 +1,86 @@
+{
+	"archer": {
+		"name" : {
+			"plural" : "Archers",
+			"singular" : "Archer"
+		},
+		"extraNames" : ["lightCrossbowman"],
+		"faction" : "castle",
+		"level" : 2,
+		"upgrades": ["marksman"],
+		"cost" : {
+			"gold" : 100
+		},
+		"speed" : 4,
+		"hitPoints" : 10,
+		"attack" : 6,
+		"defense" : 3,
+		"damage" : {
+			"max" : 3,
+			"min" : 2
+		},
+		"shots" : 12,
+		"doubleWide" : false,
+		"growth" : 9,
+		"horde" : 0,
+		"aiValue" : 126,
+		"fightValue" : 115,
+		"advMapAmount" : {
+			"max" : 30,
+			"min" : 16
+		},
+		"abilities" : {
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			}
+		},
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CLCBOW.def",
+			"map" : "sprites/creatures/adventureMap/AvWLCrs.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL4.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort4.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"missile" : {
+				"projectile" : "sprites/creatures/projectile/PLCBOWX.DEF",
+				"attackClimaxFrame" : 7,
+				"frameAngles" : [
+					90,
+					72,
+					45,
+					27,
+					0,
+					-27,
+					-45,
+					-72,
+					-90,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 21,
+					"lowerY" : -50,
+					"middleX" : 36,
+					"middleY" : -59,
+					"upperX" : 38,
+					"upperY" : -65
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/LCRSATTK.wav",
+			"defend" : "sounds/creatures/LCRSDFND.wav",
+			"killed" : "sounds/creatures/LCRSKILL.wav",
+			"move" : "sounds/creatures/LCRSMOVE.wav",
+			"shoot" : "sounds/creatures/LCRSSHOT.wav",
+			"wince" : "sounds/creatures/LCRSWNCE.wav"
+		},
+	}
+}

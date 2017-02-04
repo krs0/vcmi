@@ -1,0 +1,68 @@
+{
+	"gundula" :
+	{
+		"class" : "battlemage",
+		"female" : true,
+
+		"index" : 109,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL109BM.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS109BM.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "goblin",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "goblinWolfRider",
+				"max" : 7,
+				"min" : 5
+			},
+			{
+				"creature" : "orc",
+				"max" : 6,
+				"min" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "offence"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 44,
+				"type" : 8,
+				"val" : 0
+			}
+		],
+		"spellbook" : [
+			"slow"
+		],
+		
+		"texts" : {
+			"biography" : "Orphaned at birth, Gundula was raised as a daughter to Duke Boragus.  Upon learning that he was not her true father, she joined the military, hoping to die an honorable death in battle.  It hasn't happened, and she has become a feared leader in the military.",
+			"name" : "Gundula",
+			"specialty" : {
+				"description" : "Receives a 5% per level bonus to Offense skill percentage.",
+				"name" : "Offense",
+				"tooltip" : "Secondary Skill Bonus: Offense"
+			}
+		}
+	}
+}
+

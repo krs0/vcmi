@@ -1,0 +1,72 @@
+{
+	"vampireLord": {
+		"name" : {
+			"plural" : "Vampire Lords",
+			"singular" : "Vampire Lord"
+		},
+		"faction" : "necropolis",
+		"level" : 4,
+		"upgrades": ["vampireLord"],
+		"cost" : {
+			"gold" : 500
+		},
+		"speed" : 9,
+		"hitPoints" : 40,
+		"attack" : 10,
+		"defense" : 10,
+		"damage" : {
+			"max" : 8,
+			"min" : 5
+		},
+		"doubleWide" : false,
+		"growth" : 4,
+		"horde" : 0,
+		"aiValue" : 783,
+		"fightValue" : 652,
+		"advMapAmount" : {
+			"max" : 16,
+			"min" : 10
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"IS_UNDEAD" : {
+				"type" : "UNDEAD"
+			},
+			"drainsLife" : {
+				"type" : "LIFE_DRAIN",
+				"val" : 100
+			},
+			"noRetalitation" : {
+				"subtype" : 1,
+				"type" : "BLOCKS_RETALIATION"
+			}
+		},
+		"abilityText" : "Undead.  Drains life.\nNo enemy retaliation.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CNOSFE.def",
+			"map" : "sprites/creatures/adventureMap/AVWvamx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL65.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort65.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/NOSFATTK.wav",
+			"defend" : "sounds/creatures/NOSFDFND.wav",
+			"endMoving" : "sounds/creatures/NOSFEXT2.wav",
+			"killed" : "sounds/creatures/NOSFKILL.wav",
+			"move" : "sounds/creatures/NOSFMOVE.wav",
+			"shoot" : "sounds/creatures/NOSFSHOT.wav",
+			"startMoving" : "sounds/creatures/NOSFEXT1.wav",
+			"wince" : "sounds/creatures/NOSFWNCE.wav"
+		}
+	}
+}

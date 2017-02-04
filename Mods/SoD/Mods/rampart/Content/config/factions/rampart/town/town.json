@@ -1,0 +1,158 @@
+{
+	"rampart" : 
+	{
+		"town" :
+		{
+			"musicTheme" : "music/factions/Rampart.mp3",
+			"defaultTavern" : 5,
+
+			"townBackground": "sprites/factions/rampart/townScreen/TBRMBACK.bmp",
+			"guildBackground" : "sprites/factions/rampart/townScreen/TPMAGE.bmp",
+			"guildWindow": "sprites/factions/rampart/townScreen/TPMAGERM.bmp",
+			"hallBackground": "sprites/factions/rampart/TPTHBKRM.BMP",
+			"tavernVideo" : "video/SoD/TAVERN.BIK",
+			"hallSlots":
+			[
+				[ [ "villageHall", "townHall", "cityHall", "capitol" ], [ "fort", "citadel", "castle" ], [ "tavern" ], [ "blacksmith" ] ],
+				[ [ "marketplace", "resourceSilo" ], [ "mageGuild1", "mageGuild2", "mageGuild3", "mageGuild4", "mageGuild5" ], [ "special1", "special2" ] ],
+				[ [ "special3" ], [ "horde2", "horde2Upgr" ], [ "horde1", "horde1Upgr" ] ],
+				[ [ "dwellingLvl1", "dwellingUpLvl1" ], [ "dwellingLvl2", "dwellingUpLvl2" ], [ "dwellingLvl3", "dwellingUpLvl3" ], [ "dwellingLvl4", "dwellingUpLvl4" ] ],
+				[ [ "dwellingLvl5", "dwellingUpLvl5" ], [ "dwellingLvl6", "dwellingUpLvl6" ], [ "dwellingLvl7", "dwellingUpLvl7" ] ]
+			],
+			"buildings" :
+			{
+				"mageGuild1":     { "id" : 0 },
+				"mageGuild2":     { "id" : 1,  "upgrades" : "mageGuild1" },
+				"mageGuild3":     { "id" : 2,  "upgrades" : "mageGuild2" },
+				"mageGuild4":     { "id" : 3,  "upgrades" : "mageGuild3" },
+				"mageGuild5":     { "id" : 4,  "upgrades" : "mageGuild4" },
+				"tavern":         { "id" : 5 },
+				"fort":           { "id" : 7 },
+				"citadel":        { "id" : 8,  "upgrades" : "fort" },
+				"castle":         { "id" : 9,  "upgrades" : "citadel" },
+				"villageHall":    { "id" : 10, "mode" : "auto", "produce": { "gold": 500 } },
+				"townHall":       { "id" : 11, "upgrades" : "villageHall", "requires" : [ "tavern" ], "produce": { "gold": 1000 } },
+				"cityHall":       { "id" : 12, "upgrades" : "townHall", "requires" : [ "allOf", [ "mageGuild1" ], [ "marketplace" ], [ "blacksmith" ] ], "produce": { "gold": 2000 } },
+				"capitol":        { "id" : 13, "upgrades" : "cityHall", "requires" : [ "castle" ], "produce": { "gold": 4000 } },
+				"marketplace":    { "id" : 14 },
+				"resourceSilo":   { "id" : 15, "requires" : [ "marketplace" ], "produce": { "crystal": 1 } },
+				"blacksmith":     { "id" : 16 },
+
+				"special1":       { "id" : 17 },
+				"horde1":         { "id" : 18, "upgrades" : "dwellingLvl2" },
+				"horde1Upgr":     { "id" : 19, "upgrades" : "dwellingUpLvl2", "requires" : [ "horde1" ], "mode" : "auto" },
+				"special2":       { "id" : 21, "requires" : [ "special1" ] },
+				"special3":       { "id" : 22, "requires" : [ "horde1" ] },
+				"horde2":         { "id" : 24, "upgrades" : "dwellingLvl5" },
+				"horde2Upgr":     { "id" : 25, "upgrades" : "dwellingUpLvl5", "requires" : [ "horde2" ], "mode" : "auto" },
+				"grail":          { "id" : 26, "mode" : "grail", "produce": { "gold": 5000 }},
+				"extraTownHall":  { "id" : 27, "requires" : [ "townHall" ], "mode" : "auto" },
+				"extraCityHall":  { "id" : 28, "requires" : [ "cityHall" ], "mode" : "auto" },
+				"extraCapitol":   { "id" : 29, "requires" : [ "capitol" ], "mode" : "auto" },
+
+				"dwellingLvl1":   { "id" : 30, "requires" : [ "fort" ] },
+				"dwellingLvl2":   { "id" : 31, "requires" : [ "dwellingLvl1" ] },
+				"dwellingLvl3":   { "id" : 32, "requires" : [ "dwellingLvl1" ] },
+				"dwellingLvl4":   { "id" : 33, "requires" : [ "dwellingLvl3" ] },
+				"dwellingLvl5":   { "id" : 34, "requires" : [ "dwellingLvl3" ] },
+				"dwellingLvl6":   { "id" : 35, "requires" : [ "allOf", [ "dwellingLvl3" ], [ "dwellingLvl4" ] ] },
+				"dwellingLvl7":   { "id" : 36, "requires" : [ "allOf", [ "dwellingLvl6" ], [ "mageGuild2" ] ] },
+
+				"dwellingUpLvl1": { "id" : 37, "upgrades" : "dwellingLvl1" },
+				"dwellingUpLvl2": { "id" : 38, "upgrades" : "dwellingLvl2" },
+				"dwellingUpLvl3": { "id" : 39, "upgrades" : "dwellingLvl3" },
+				"dwellingUpLvl4": { "id" : 40, "upgrades" : "dwellingLvl4" },
+				"dwellingUpLvl5": { "id" : 41, "upgrades" : "dwellingLvl5" },
+				"dwellingUpLvl6": { "id" : 42, "upgrades" : "dwellingLvl6" },
+				"dwellingUpLvl7": { "id" : 43, "upgrades" : "dwellingLvl7", "requires" : [ "mageGuild3" ] },
+				
+				"ship" : null,
+				"shipyard" : null,
+				"special4" : null
+			},
+
+			"moatDamage" : 70,
+			"moatHexes" : [ 11, 28, 44, 61, 77, 111, 129, 146, 164, 181 ],
+			"horde" : [ 1, 4 ],
+			"mageGuild" : 5,
+			"primaryResource" : "crystal",
+			"warMachine" : "firstAidTent",
+			"buildingsIcons" : "sprites/factions/rampart/HALLRAMP.DEF",
+			"icons" :
+			{
+				"village" : {
+					"normal" : {
+						"small" : "sprites/factions/rampart/icons/small/itpa22.bmp",
+					 	"large" : "sprites/factions/rampart/icons/large/itpt20.bmp"
+					 },
+					"built"  : {
+						"small" : "sprites/factions/rampart/icons/small/itpa23.bmp",
+						"large" : "sprites/factions/rampart/icons/large/itpt21.bmp" 
+					}
+				},
+				"fort" : {
+					"normal" : {
+						"small" : "sprites/factions/rampart/icons/small/itpa4.bmp",
+					 	"large" : "sprites/factions/rampart/icons/large/itpt2.bmp" 
+					 },
+					"built"  : {
+						"small" : "sprites/factions/rampart/icons/small/itpa5.bmp",
+						 "large" : "sprites/factions/rampart/icons/large/itpt3.bmp"
+					}
+				}
+			},
+
+			"mapObject" :
+			{
+				"templates" : {
+					"castle" :  { "animation" : "sprites/factions/rampart/adventureMap/AVCramx0.def" },
+					"citadel" : { "animation" : "sprites/factions/rampart/adventureMap/AVCramx0.def" },
+					"fort"    : { "animation" : "sprites/factions/rampart/adventureMap/AVCramx0.def" },
+					"village" : { "animation" : "sprites/factions/rampart/adventureMap/AVCRAMP0.DEF" },
+					"capitol" : { "animation" : "sprites/factions/rampart/adventureMap/AVCRAMZ0.DEF" }
+				}
+			},
+	
+			"tavern" :
+			{
+				"knight"       : 6,
+				"cleric"       : 6,
+				"ranger"       : 6,
+				"druid"        : 6,
+				"alchemist"    : 6,
+				"wizard"       : 6,
+				"demoniac"     : 5,
+				"heretic"      : 5,
+				"deathknight"  : 5,
+				"necromancer"  : 5,
+				"overlord"     : 5,
+				"warlock"      : 5,
+				"barbarian"    : 6,
+				"battlemage"   : 6,
+				"beastmaster"  : 6,
+				"witch"        : 6,
+				"planeswalker" : 5,
+				"elementalist" : 5
+			},
+
+			"names" : [
+				"Wise Oak",
+				"Forest",
+				"Fortune Keep",
+				"Still Water",
+				"Elfwind",
+				"Serenity",
+				"Ceiliedgh",
+				"Gladeroot",
+				"Forest Glen",
+				"Rainhaven",
+				"Strongglen",
+				"Marishen",
+				"Bath'iere",
+				"Green Falls",
+				"Emerald Moor",
+				"Wild Willow"
+			]
+		}
+	}
+}

@@ -1,0 +1,65 @@
+{
+	"broghild" :
+	{
+		"class" : "beastmaster",
+		"female" : false,
+
+		"index" : 119,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL119BS.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS119BS.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "gnoll",
+				"max" : 20,
+				"min" : 10
+			},
+			{
+				"creature" : "lizardman",
+				"max" : 7,
+				"min" : 4
+			},
+			{
+				"creature" : "serpentFly",
+				"max" : 4,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "armorer"
+			},
+			{
+				"level" : "basic",
+				"skill" : "scouting"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 146,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+
+		"texts" : {
+			"biography" : "Broghild's grandfather first tamed wild Wyverns for use as flying scouts above the Tatalian Lowlands.  The secrets of handling these creatures was passed to Broghild's father, and eventually to him.",
+			"name" : "Broghild",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Wyverns or Wyvern Monarchs for each level attained after 6th level.",
+				"name" : "Wyverns",
+				"tooltip" : "Creature Bonus: Wyverns"
+			}
+		}
+	}
+}
+

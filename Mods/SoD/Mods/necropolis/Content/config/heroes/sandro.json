@@ -1,0 +1,68 @@
+{
+	"sandro" :
+	{
+		"class" : "necromancer",
+		"female" : false,
+		"index" : 74,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL074NC.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS074NC.bmp"
+		},
+
+
+		"army" : [
+			{
+				"creature" : "skeleton",
+				"max" : 30,
+				"min" : 20
+			},
+			{
+				"creature" : "zombie",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "wight",
+				"max" : 6,
+				"min" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "necromancy"
+			},
+			{
+				"level" : "basic",
+				"skill" : "sorcery"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 25,
+				"type" : 2,
+				"val" : 5
+			}
+		],
+		"spellbook" : [
+			"slow"
+		],
+			
+		"texts" : {
+			"biography" : "Sandro first studied Necromancy under the tutelage of the wizard, and later the lich, Ethric.  Sandro has seen nearly all of Enroth and Erathia, and now serves Finneas Vilmar, leader of the Necromancers of Deyja.",
+			"name" : "Sandro",
+			"specialty" : {
+				"description" : "Receives a 5% per level bonus to Sorcery skill percentage.",
+				"name" : "Sorcery",
+				"tooltip" : "Secondary Skill Bonus: Sorcery"
+			}
+		}
+	}
+}
+

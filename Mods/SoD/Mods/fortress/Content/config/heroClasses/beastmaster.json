@@ -1,0 +1,82 @@
+{
+	"beastmaster" :
+	{
+		"name" : "Beastmaster",
+		"faction" : "fortress",
+		"affinity" : "might",
+		"defaultTavern" : 5,
+		"mapObject" : {
+			"templates" : {
+				"default" : {
+					"animation" : "sprites/heroClasses/AH14_.def",
+					"editorAnimation" : "sprites/heroClasses/AH14_E.def"
+				}
+			}
+		},
+		"animation" : {
+			"battle" : {
+				"female" : "sprites/heroClasses/CH015.DEF",
+				"male" : "sprites/heroClasses/CH014.DEF"
+			}
+		},
+		"primarySkills" : {
+			"attack" : 0,
+			"defence" : 4,
+			"knowledge" : 1,
+			"spellpower" : 1
+		},
+		"highLevelChance" : {
+			"attack" : 30,
+			"defence" : 30,
+			"knowledge" : 20,
+			"spellpower" : 20
+		},
+		"lowLevelChance" : {
+			"attack" : 30,
+			"defence" : 50,
+			"knowledge" : 10,
+			"spellpower" : 10
+		},
+		"secondarySkills" : {
+			"airMagic" : 1,
+			"archery" : 7,
+			"armorer" : 10,
+			"artillery" : 8,
+			"ballistics" : 7,
+			"diplomacy" : 1,
+			"eagleEye" : 1,
+			"earthMagic" : 3,
+			"estates" : 1,
+			"fireMagic" : 0,
+			"firstAid" : 6,
+			"intelligence" : 1,
+			"leadership" : 5,
+			"learning" : 4,
+			"logistics" : 8,
+			"luck" : 2,
+			"mysticism" : 2,
+			"navigation" : 8,
+			"necromancy" : 0,
+			"offence" : 5,
+			"pathfinding" : 8,
+			"resistance" : 5,
+			"scholar" : 1,
+			"scouting" : 7,
+			"sorcery" : 1,
+			"tactics" : 6,
+			"waterMagic" : 2,
+			"wisdom" : 2
+		},
+		"tavern" : {
+			"castle" : 6,
+			"conflux" : 6,
+			"dungeon" : 6,
+			"fortress" : 6,
+			"inferno" : 6,
+			"necropolis" : 6,
+			"rampart" : 6,
+			"stronghold" : 6,
+			"tower" : 6
+		}
+	}
+}

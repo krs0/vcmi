@@ -1,0 +1,67 @@
+{
+	"serpentFly": {
+		"name" : {
+			"plural" : "Serpent Flies",
+			"singular" : "Serpent Fly"
+		},
+		"extraNames" : [
+			"dragonFly"
+		],
+		"faction" : "fortress",
+		"level" : 3,
+		"upgrades": ["fireDragonFly"],
+		"cost" : {
+			"gold" : 220
+		},
+		"speed" : 9,
+		"hitPoints" : 20,
+		"attack" : 7,
+		"defense" : 9,
+		"damage" : {
+			"max" : 5,
+			"min" : 2
+		},
+		"doubleWide" : false,
+		"growth" : 8,
+		"horde" : 0,
+		"aiValue" : 268,
+		"fightValue" : 215,
+		"advMapAmount" : {
+			"max" : 20,
+			"min" : 10
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"dispellHelpful" : {
+				"subtype" : "spell.dispelHelpful",
+				"type" : "SPELL_AFTER_ATTACK",
+				"val" : 100
+			}
+		},
+		"abilityText" : "Dispels beneficial spells.",
+		"hasDoubleWeek" : true,
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CDRFLY.def",
+			"map" : "sprites/creatures/adventureMap/AvWDfly.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL106.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort106.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.77
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/DFLYATTK.wav",
+			"defend" : "sounds/creatures/DFLYDFND.wav",
+			"killed" : "sounds/creatures/DFLYKILL.wav",
+			"move" : "sounds/creatures/DFLYMOVE.wav",
+			"wince" : "sounds/creatures/DFLYWNCE.wav"
+		},
+	}
+}

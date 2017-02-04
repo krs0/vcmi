@@ -1,0 +1,68 @@
+{
+	"sephinroth" :
+	{
+		"class" : "overlord",
+		"female" : true,
+
+		"index" : 94,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL094WL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS094WL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "troglodyte",
+				"max" : 40,
+				"min" : 30
+			},
+			{
+				"creature" : "harpy",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "beholder",
+				"max" : 4,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "intelligence"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 4,
+				"type" : 10,
+				"val" : 1
+			}
+		],
+		"spellbook" : [
+			"protectAir"
+		],
+
+		"texts" : {
+			"biography" : "Sephinroth claims to be the illegitimate child of King Gryphonheart.  His refusal to acknowledge her has served to fuel her hatred against the Throne of Erathia, which she one day hopes to claim for herself.  Having joined the ranks of the Warlocks, she is the only known female ever to bear that title.",
+			"name" : "Sephinroth",
+			"specialty" : {
+				"description" : "Increases kingdom's crystal production by 1 per day.",
+				"name" : "+1 Crystal",
+				"tooltip" : "+1 Crystal each day."
+			}
+		}
+	}
+}
+

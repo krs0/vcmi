@@ -1,0 +1,87 @@
+{
+	"gog": {
+		"name" : {
+			"plural" : "Gogs",
+			"singular" : "Gog"
+		},
+		"faction" : "inferno",
+		"level" : 2,
+		"upgrades": ["magog"],
+		"cost" : {
+			"gold" : 125
+		},
+		"speed" : 4,
+		"shots" : 12,
+		"hitPoints" : 4,
+		"attack" : 6,
+		"defense" : 4,
+		"damage" : {
+			"max" : 4,
+			"min" : 2
+		},
+		"doubleWide" : false,
+		"growth" : 8,
+		"hasDoubleWeek" : true,
+		"horde" : 0,
+		"aiValue" : 159,
+		"fightValue" : 145,
+		"advMapAmount" : {
+			"max" : 30,
+			"min" : 16
+		},
+		"abilities" : {
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			}
+		},
+		"abilityText" : "",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CGOG.def",
+			"map" : "sprites/creatures/adventureMap/AVWgog0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL46.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort46.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1.27
+			},
+			"missile" : {
+				"projectile" : "sprites/creatures/projectile/CPRGOGX.DEF",
+				"attackClimaxFrame" : 6,
+				"frameAngles" : [
+					90,
+					72,
+					45,
+					27,
+					0,
+					-27,
+					-45,
+					-72,
+					-90,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 14,
+					"lowerY" : -6,
+					"middleX" : 69,
+					"middleY" : -50,
+					"upperX" : 37,
+					"upperY" : -88
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/GOGGATTK.wav",
+			"defend" : "sounds/creatures/GOGGDFND.wav",
+			"killed" : "sounds/creatures/GOGGKILL.wav",
+			"move" : "sounds/creatures/GOGGMOVE.wav",
+			"shoot" : "sounds/creatures/GOGGSHOT.wav",
+			"wince" : "sounds/creatures/GOGGWNCE.wav"
+		}
+	}
+}

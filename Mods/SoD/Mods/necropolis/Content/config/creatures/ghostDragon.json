@@ -1,0 +1,77 @@
+{
+	"ghostDragon": {
+		"name" : {
+			"plural" : "Ghost Dragons",
+			"singular" : "Ghost Dragon"
+		},
+		"faction" : "necropolis",
+		"level" : 7,
+		"cost" : {
+			"gold" : 3000,
+			"mercury" : 1
+		},
+		"speed" : 14,
+		"hitPoints" : 200,
+		"attack" : 19,
+		"defense" : 17,
+		"damage" : {
+			"max" : 50,
+			"min" : 25
+		},
+		"doubleWide" : true,
+		"growth" : 1,
+		"horde" : 0,
+		"aiValue" : 4696,
+		"fightValue" : 3228,
+		"advMapAmount" : {
+			"max" : 8,
+			"min" : 3
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"IS_UNDEAD" : {
+				"type" : "UNDEAD"
+			},
+			"KING_1" : {
+				"type" : "KING1"
+			},
+			"age" : {
+				"subtype" : "spell.age",
+				"type" : "SPELL_AFTER_ATTACK",
+				"val" : 20
+			},
+			"const_lowers_morale" : {
+				"effectRange" : "ONLY_ENEMY_ARMY",
+				"type" : "MORALE",
+				"val" : -1
+			},
+			"dragon" : {
+				"type" : "DRAGON_NATURE"
+			}
+		},
+		"abilityText" : "Undead.  -1 to enemy morale.  Attack ages enemies.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CHDRGN.def",
+			"map" : "sprites/creatures/adventureMap/AVWbonx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL71.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort71.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.75
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/GHDRATTK.wav",
+			"defend" : "sounds/creatures/GHDRDFND.wav",
+			"killed" : "sounds/creatures/GHDRKILL.wav",
+			"move" : "sounds/creatures/GHDRMOVE.wav",
+			"wince" : "sounds/creatures/GHDRWNCE.wav"
+		}
+	}
+}

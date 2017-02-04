@@ -1,0 +1,65 @@
+{
+	"tyraxor" :
+	{
+		"class" : "barbarian",
+		"female" : false,
+
+		"index" : 103,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL103BR.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS103BR.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "goblinWolfRider",
+				"max" : 7,
+				"min" : 5
+			},
+			{
+				"creature" : "goblinWolfRider",
+				"max" : 7,
+				"min" : 5
+			},
+			{
+				"creature" : "goblinWolfRider",
+				"max" : 7,
+				"min" : 5
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "offence"
+			},
+			{
+				"level" : "basic",
+				"skill" : "tactics"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 22,
+				"type" : 2,
+				"val" : 5
+			}
+		],
+		
+		"texts" : {
+			"biography" : "Tyraxor himself was a wolf rider captain, having finally joined the ranks of Krewlod's heroes after sniffing out a Tatalian ambush during a long march along the border of the two nations.",
+			"name" : "Tyraxor",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Wolf Riders or Raiders for each level attained after 2nd level.",
+				"name" : "Wolf Riders",
+				"tooltip" : "Creature Bonus: Wolf Riders"
+			}
+		}
+	}
+}
+

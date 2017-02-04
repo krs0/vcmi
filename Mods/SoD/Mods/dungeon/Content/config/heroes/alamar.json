@@ -1,0 +1,68 @@
+{
+	"alamar" :
+	{
+		"class" : "overlord",
+		"female" : false,
+
+		"index" : 88,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL088WL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS088WL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "troglodyte",
+				"max" : 40,
+				"min" : 30
+			},
+			{
+				"creature" : "harpy",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "beholder",
+				"max" : 4,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "scholar"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 38,
+				"type" : 3,
+				"val" : 3
+			}
+		],
+		"spellbook" : [
+			"resurrection"
+		],
+
+		"texts" : {
+			"biography" : "Alamar served Archibald Ironfist during the succession wars, and was barely able to escape Enroth following Archibald's defeat.  He has since taken up residence in Nighon where he secretly serves the Dungeon Overlords.",
+			"name" : "Alamar",
+			"specialty" : {
+				"description" : "Casts Resurrection with increased effect, based on his level compared to the level of the target unit (the bonus is greater when used on weaker units).",
+				"name" : "Resurrection",
+				"tooltip" : "Spell Bonus: Resurrection"
+			}
+		}
+	}
+}
+

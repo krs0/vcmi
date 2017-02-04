@@ -1,0 +1,68 @@
+{
+	"aeris" :
+	{
+		"class" : "druid",
+		"female" : false,
+
+		"index" : 31,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL031DR.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS031DR.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "centaur",
+				"max" : 24,
+				"min" : 12
+			},
+			{
+				"creature" : "dwarf",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "woodElf",
+				"max" : 6,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "scouting"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 20,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+		"spellbook" : [
+			"protectAir"
+		],
+
+		"texts" : {
+			"biography" : "Aeris is one of the best animal handlers in all of AvLee.  He can sense ideal pairings between elves and pegasi which have made him one of the most sought out Druids in the land.",
+			"name" : "Aeris",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Pegasi or Silver Pegasi for each level attained after 4th level.",
+				"name" : "Pegasi",
+				"tooltip" : "Creature Bonus: Pegasi"
+			}
+		}
+	}
+}
+

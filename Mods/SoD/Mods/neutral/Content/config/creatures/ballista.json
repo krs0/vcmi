@@ -1,0 +1,85 @@
+{
+	"ballista": {
+		"name" : {
+			"plural" : "Ballistas",
+			"singular" : "Ballista"
+		},
+		"faction" : "neutral",
+		"level" : 0,
+		"cost" : {
+			"gold" : 1000
+		},
+		"speed" : 0,
+		"hitPoints" : 250,
+		"attack" : 10,
+		"defense" : 10,
+		"damage" : {
+			"max" : 0,
+			"min" : 0
+		},
+		"shots" : 24,
+		"doubleWide" : true,
+		"growth" : 0,
+		"horde" : 0,
+		"aiValue" : 600,
+		"fightValue" : 650,
+		"advMapAmount" : {
+			"max" : 0,
+			"min" : 0
+		},
+		"abilities" : {
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			},
+			"SIEGE_WEAPON" : {
+				"type" : "SIEGE_WEAPON"
+			}
+		},
+		"abilityText" : "",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/SMBAL.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL148.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort148.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"missile" : {
+				"projectile" : "sprites/creatures/projectile/SMBALX.DEF",
+				"attackClimaxFrame" : 5,
+				"frameAngles" : [
+					90,
+					72,
+					45,
+					27,
+					0,
+					-27,
+					-45,
+					-72,
+					-90,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 53,
+					"lowerY" : -36,
+					"middleX" : 101,
+					"middleY" : -75,
+					"upperX" : 57,
+					"upperY" : -104
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"killed" : "sounds/creatures/BALLKILL.wav",
+			"shoot" : "sounds/creatures/BALLSHOT.wav",
+			"wince" : "sounds/creatures/BALLWNCE.wav"
+		},
+		"special" : true
+	}
+}

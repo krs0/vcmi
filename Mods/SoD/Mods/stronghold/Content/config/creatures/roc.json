@@ -1,0 +1,58 @@
+{
+	"roc": {
+		"name" : {
+			"plural" : "Rocs",
+			"singular" : "Roc"
+		},
+		"faction" : "stronghold",
+		"level" : 5,
+		"upgrades": ["thunderbird"],
+		"cost" : {
+			"gold" : 600
+		},
+		"speed" : 7,
+		"hitPoints" : 60,
+		"attack" : 13,
+		"defense" : 11,
+		"damage" : {
+			"max" : 15,
+			"min" : 11
+		},
+		"doubleWide" : true,
+		"growth" : 3,
+		"horde" : 0,
+		"aiValue" : 1027,
+		"fightValue" : 790,
+		"advMapAmount" : {
+			"max" : 16,
+			"min" : 8
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			}
+		},
+		"abilityText" : "",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CROC.def",
+			"map" : "sprites/creatures/adventureMap/AVWroc0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL94.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort94.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/ROCCATTK.wav",
+			"defend" : "sounds/creatures/ROCCDFND.wav",
+			"killed" : "sounds/creatures/ROCCKILL.wav",
+			"move" : "sounds/creatures/ROCCMOVE.wav",
+			"wince" : "sounds/creatures/ROCCWNCE.wav"
+		}
+	}
+}

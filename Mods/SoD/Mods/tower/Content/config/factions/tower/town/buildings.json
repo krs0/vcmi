@@ -1,0 +1,535 @@
+{
+	"tower" :
+	{
+		"town" :
+		 {
+			"buildings" : 
+				{
+				"blacksmith" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "The Blacksmith provides your armies with Ammo Carts.",
+					"name" : "Blacksmith"
+				},
+				"capitol" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 10000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Capitol earns your kingdom 4000 gold per day.",
+					"name" : "Capitol"
+				},
+				"castle" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 5000,
+						"mercury" : 0,
+						"ore" : 10,
+						"sulfur" : 0,
+						"wood" : 10
+					},
+					"description" : "The Castle adds two arrow towers, fortifies your town's defenses, and doubles base creature growth.",
+					"name" : "Castle"
+				},
+				"citadel" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 2500,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "Including a 50% increase to base creature growth, the Citadel adds a keep, and other terrain obstacles, to a town's defenses.",
+					"name" : "Citadel"
+				},
+				"cityHall" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 5000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The City Hall allows you to purchase town structures and earns your kingdom 2000 gold per day.",
+					"name" : "City Hall"
+				},
+				"dwellingLvl1" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 300,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "The Workshop allows you to recruit Gremlins.",
+					"name" : "Workshop"
+				},
+				"dwellingLvl2" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1000,
+						"mercury" : 0,
+						"ore" : 10,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Parapet allows you to recruit Stone Gargoyles.",
+					"name" : "Parapet"
+				},
+				"dwellingLvl3" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 2000,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "The Golem Factory allows you to recruit Stone Golems.",
+					"name" : "Golem Factory"
+				},
+				"dwellingLvl4" : {
+					"cost" : {
+						"crystal" : 5,
+						"gems" : 5,
+						"gold" : 2500,
+						"mercury" : 5,
+						"ore" : 5,
+						"sulfur" : 5,
+						"wood" : 5
+					},
+					"description" : "The Mage Tower allows you to recruit Magi.",
+					"name" : "Mage Tower"
+				},
+				"dwellingLvl5" : {
+					"cost" : {
+						"crystal" : 6,
+						"gems" : 6,
+						"gold" : 3000,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "The Altar of Wishes allows you to recruit Genies.",
+					"name" : "Altar of Wishes"
+				},
+				"dwellingLvl6" : {
+					"cost" : {
+						"crystal" : 2,
+						"gems" : 2,
+						"gold" : 4000,
+						"mercury" : 2,
+						"ore" : 5,
+						"sulfur" : 2,
+						"wood" : 5
+					},
+					"description" : "The Golden Pavilion allows you to recruit Nagas.",
+					"name" : "Golden Pavilion"
+				},
+				"dwellingLvl7" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 10,
+						"gold" : 5000,
+						"mercury" : 0,
+						"ore" : 10,
+						"sulfur" : 0,
+						"wood" : 10
+					},
+					"description" : "The Cloud Temple allows you to recruit Giants.",
+					"name" : "Cloud Temple"
+				},
+				"dwellingUpLvl1" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Workshop allows you to recruit Master Gremlins.",
+					"name" : "Upg. Workshop"
+				},
+				"dwellingUpLvl2" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1500,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Parapet allows you to recruit Obsidian Gargoyles.",
+					"name" : "Upg. Parapet"
+				},
+				"dwellingUpLvl3" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 2000,
+						"mercury" : 5,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "The Golem Factory allows you to recruit Iron Golems.",
+					"name" : "Upg. Golem Factory"
+				},
+				"dwellingUpLvl4" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 2000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "The Mage Tower allows you to recruit Arch Magi.",
+					"name" : "Upg. Mage Tower"
+				},
+				"dwellingUpLvl5" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 2000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "The Altar of Wishes allows you to recruit Master Genies.",
+					"name" : "Upg. Altar of Wishes"
+				},
+				"dwellingUpLvl6" : {
+					"cost" : {
+						"crystal" : 3,
+						"gems" : 3,
+						"gold" : 3000,
+						"mercury" : 3,
+						"ore" : 0,
+						"sulfur" : 3,
+						"wood" : 0
+					},
+					"description" : "The Golden Pavilion allows you to recruit Naga Queens.",
+					"name" : "Upg. Golden Pavilion"
+				},
+				"dwellingUpLvl7" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 30,
+						"gold" : 25000,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "The Cloud Temple allows you to recruit Titans.",
+					"name" : "Upg. Cloud Temple"
+				},
+				"fort" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 5000,
+						"mercury" : 0,
+						"ore" : 20,
+						"sulfur" : 0,
+						"wood" : 20
+					},
+					"description" : "The Fort provides your town with defensive walls.",
+					"name" : "Fort"
+				},
+				"grail" : {
+					"description" : "The presence of the Skyship increases weekly creature generation by 50%, provides your kingdom with an additional 5000 gold each day, reveals the entire world map, and increases the knowledge of any defending hero by +15 (these spell points do not follow a hero who leaves the town).",
+					"name" : "Skyship"
+				},
+				"horde1" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Sculptor's Wings increase Stone Gargoyle production by 4 per week.",
+					"name" : "Sculptor's Wings"
+				},
+				"horde1Upgr" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Sculptor's Wings increase Obsidian Gargoyle production by 4 per week.",
+					"name" : "Sculptor's Wings"
+				},
+				"horde2" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 0,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "",
+					"name" : ""
+				},
+				"horde2Upgr" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 0,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "",
+					"name" : ""
+				},
+				"mageGuild1" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 2000,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
+					"name" : "Mage Guild Level 1"
+				},
+				"mageGuild2" : {
+					"cost" : {
+						"crystal" : 4,
+						"gems" : 4,
+						"gold" : 1000,
+						"mercury" : 4,
+						"ore" : 5,
+						"sulfur" : 4,
+						"wood" : 5
+					},
+					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
+					"name" : "Mage Guild Level 2"
+				},
+				"mageGuild3" : {
+					"cost" : {
+						"crystal" : 6,
+						"gems" : 6,
+						"gold" : 1000,
+						"mercury" : 6,
+						"ore" : 5,
+						"sulfur" : 6,
+						"wood" : 5
+					},
+					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
+					"name" : "Mage Guild Level 3"
+				},
+				"mageGuild4" : {
+					"cost" : {
+						"crystal" : 8,
+						"gems" : 8,
+						"gold" : 1000,
+						"mercury" : 8,
+						"ore" : 5,
+						"sulfur" : 8,
+						"wood" : 5
+					},
+					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
+					"name" : "Mage Guild Level 4"
+				},
+				"mageGuild5" : {
+					"cost" : {
+						"crystal" : 10,
+						"gems" : 10,
+						"gold" : 1000,
+						"mercury" : 10,
+						"ore" : 5,
+						"sulfur" : 10,
+						"wood" : 5
+					},
+					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
+					"name" : "Mage Guild Level 5"
+				},
+				"marketplace" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 500,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "With the Marketplace, you can buy and sell resources (exchange rates increase with each Marketplace you own).",
+					"name" : "Marketplace"
+				},
+				"resourceSilo" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 5000,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Resource Silo provides you with an additional +1 gems each day.",
+					"name" : "Resource Silo"
+				},
+				"ship" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 0,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "",
+					"name" : ""
+				},
+				"shipyard" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 2000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 20
+					},
+					"description" : "The Shipyard allows you to purchase ships.",
+					"name" : "Shipyard"
+				},
+				"special1" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 10000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "For a nominal fee, you can purchase artifacts from the Artifact Merchants.",
+					"name" : "Artifact Merchants"
+				},
+				"special2" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "The lookout tower extends the visible distance around your city.",
+					"name" : "Lookout Tower"
+				},
+				"special3" : {
+					"cost" : {
+						"crystal" : 5,
+						"gems" : 5,
+						"gold" : 1500,
+						"mercury" : 5,
+						"ore" : 5,
+						"sulfur" : 5,
+						"wood" : 5
+					},
+					"description" : "The library provides your mage guild with additional spells.",
+					"name" : "Library"
+				},
+				"special4" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1000,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Wall of Knowledge increases the Knowledge skill of any visiting hero by +1.",
+					"name" : "Wall of Knowledge"
+				},
+				"tavern" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 500,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "The Tavern increases morale for troops defending the city.",
+					"name" : "Tavern"
+				},
+				"townHall" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 2500,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Town Hall allows you to purchase town structures and earns your kingdom 1000 gold per day.",
+					"name" : "Town Hall"
+				},
+				"villageHall" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Village Hall allows you to purchase town structures and earns your kingdom 500 gold per day.",
+					"name" : "Village Hall"
+				}
+			}
+		}
+	}
+}

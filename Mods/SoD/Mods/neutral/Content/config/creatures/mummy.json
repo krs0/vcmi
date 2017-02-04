@@ -1,0 +1,57 @@
+{
+	"mummy": {
+		"name" : {
+			"plural" : "Mummies",
+			"singular" : "Mummy"
+		},
+		"faction" : "neutral",
+		"level" : 3,
+		"cost" : {
+			"gold" : 300
+		},
+		"speed" : 5,
+		"hitPoints" : 30,
+		"attack" : 7,
+		"defense" : 7,
+		"damage" : {
+			"max" : 5,
+			"min" : 3
+		},
+		"doubleWide" : false,
+		"growth" : 7,
+		"horde" : 0,
+		"aiValue" : 270,
+		"fightValue" : 270,
+		"advMapAmount" : {
+			"max" : 25,
+			"min" : 12
+		},
+		"abilities" : {
+			"undead" : {
+				"type" : "UNDEAD"
+			}
+		},
+		"abilityText" : "Curse.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CMUMMY.def",
+			"map" : "sprites/creatures/adventureMap/AVWmumy.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL143.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort143.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/MUMYATTK.wav",
+			"defend" : "sounds/creatures/MUMYDFND.wav",
+			"killed" : "sounds/creatures/MUMYKILL.wav",
+			"move" : "sounds/creatures/MUMYMOVE.wav",
+			"wince" : "sounds/creatures/MUMYWNCE.wav"
+		}
+	}
+}

@@ -1,0 +1,82 @@
+{
+	"deathKnight" :
+	{
+		"name" : "Death Knight",
+		"faction" : "necropolis",
+		"affinity" : "might",
+		"defaultTavern" : 5,
+		"mapObject" : {
+			"templates" : {
+				"default" : {
+					"animation" : "sprites/heroClasses/AH08_.def",
+					"editorAnimation" : "sprites/heroClasses/AH08_E.def"
+				}
+			}
+		},
+		"animation" : {
+			"battle" : {
+				"female" : "sprites/heroClasses/CH09.DEF",
+				"male" : "sprites/heroClasses/CH08.DEF"
+			}
+		},
+		"primarySkills" : {
+			"attack" : 1,
+			"defence" : 2,
+			"knowledge" : 1,
+			"spellpower" : 2
+		},
+		"highLevelChance" : {
+			"attack" : 25,
+			"defence" : 25,
+			"knowledge" : 25,
+			"spellpower" : 25
+		},
+		"lowLevelChance" : {
+			"attack" : 30,
+			"defence" : 25,
+			"knowledge" : 25,
+			"spellpower" : 20
+		},
+		"secondarySkills" : {
+			"airMagic" : 2,
+			"archery" : 5,
+			"armorer" : 5,
+			"artillery" : 5,
+			"ballistics" : 7,
+			"diplomacy" : 2,
+			"eagleEye" : 4,
+			"earthMagic" : 4,
+			"estates" : 0,
+			"fireMagic" : 1,
+			"firstAid" : 0,
+			"intelligence" : 5,
+			"leadership" : 0,
+			"learning" : 4,
+			"logistics" : 5,
+			"luck" : 1,
+			"mysticism" : 4,
+			"navigation" : 8,
+			"necromancy" : 10,
+			"offence" : 7,
+			"pathfinding" : 4,
+			"resistance" : 5,
+			"scholar" : 2,
+			"scouting" : 4,
+			"sorcery" : 4,
+			"tactics" : 5,
+			"waterMagic" : 3,
+			"wisdom" : 6
+		},
+		"tavern" : {
+			"castle" : 5,
+			"conflux" : 5,
+			"dungeon" : 6,
+			"fortress" : 5,
+			"inferno" : 6,
+			"necropolis" : 6,
+			"rampart" : 5,
+			"stronghold" : 6,
+			"tower" : 5
+		}
+	}
+}

@@ -1,0 +1,69 @@
+{
+	"sanya" :
+	{
+		"class" : "cleric",
+		"female" : true,
+
+		"index" : 13,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL013CL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS013CL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "pikeman",
+				"max" : 20,
+				"min" : 10
+			},
+			{
+				"creature" : "archer",
+				"max" : 7,
+				"min" : 4
+			},
+			{
+				"creature" : "griffin",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"spellbook" : [
+			"dispel"
+		],
+		
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "eagleEye"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 11,
+				"type" : 2,
+				"val" : 5
+			}
+		],
+
+		"texts" : {
+			"biography" : "Sanya has always been a fast learner, quickly outperforming first other students, then other acolytes once she had joined the church.  She seems to have a natural ability to learn spells, sometimes merely by watching someone else cast them.",
+			"name" : "Sanya",
+			"specialty" : {
+				"description" : "Receives a 5% per level bonus to Eagle Eye skill percentage.",
+				"name" : "Eagle Eye",
+				"tooltip" : "Secondary Skill Bonus: Eagle Eye"
+			}
+		}
+	}
+}
+

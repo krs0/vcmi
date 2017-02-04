@@ -1,0 +1,66 @@
+{
+	"orrin" :
+	{
+		"class" : "knight",
+		"female" : false,
+
+		"index" : 0,
+								
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL000KN.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS000KN.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "pikeman",
+				"max" : 20,
+				"min" : 10
+			},
+			{
+				"creature" : "archer",
+				"max" : 7,
+				"min" : 4
+			},
+			{
+				"creature" : "griffin",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "leadership"
+			},
+			{
+				"level" : "basic",
+				"skill" : "archery"
+			}
+		],
+		
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 1,
+				"type" : 2,
+				"val" : 5
+			}
+		],
+
+		"texts" : {
+			"biography" : "Orrin trained with one of Erathia's best siege tacticians during his early military service.  Any archers under his command learn quickly to shoot at targets behind obstacles.",
+			"name" : "Orrin",
+			"specialty" : {
+				"description" : "Receives a 5% per level bonus to Archery skill percentage.",
+				"name" : "Archery",
+				"tooltip" : "Secondary Skill Bonus: Archery"
+			}
+		}
+	}
+}
+

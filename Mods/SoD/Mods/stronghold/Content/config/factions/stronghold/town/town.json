@@ -1,0 +1,155 @@
+{
+	"stronghold" : 
+	{
+		"town" :
+		{
+			"musicTheme" : "music/factions/Stronghold.mp3",
+			"defaultTavern" : 5,
+
+			"townBackground": "sprites/factions/stronghold/townScreen/TBSTBACK.bmp",
+			"guildBackground" : "sprites/factions/stronghold/townScreen/TPMAGE.bmp",
+			"guildWindow": "sprites/factions/stronghold/townScreen/TPMAGEST.bmp",
+			"hallBackground": "sprites/factions/stronghold/TPTHBKTW.BMP",
+			"tavernVideo" : "video/SoD/TAVERN.BIK",
+			"hallSlots":
+			[
+				[ [ "villageHall", "townHall", "cityHall", "capitol" ], [ "fort", "citadel", "castle" ], [ "tavern" ], [ "blacksmith" ] ],
+				[ [ "marketplace", "resourceSilo" ], [ "mageGuild1", "mageGuild2", "mageGuild3" ], [ "special4" ], [ "special1" ] ],
+				[ [ "special2" ], [ "special3" ], [ "horde1", "horde1Upgr" ] ],
+				[ [ "dwellingLvl1", "dwellingUpLvl1" ], [ "dwellingLvl2", "dwellingUpLvl2" ], [ "dwellingLvl3", "dwellingUpLvl3" ], [ "dwellingLvl4", "dwellingUpLvl4" ] ],
+				[ [ "dwellingLvl5", "dwellingUpLvl5" ], [ "dwellingLvl6", "dwellingUpLvl6" ], [ "dwellingLvl7", "dwellingUpLvl7" ] ]
+			],
+			"buildings" :
+			{
+				"mageGuild1":     { "id" : 0 },
+				"mageGuild2":     { "id" : 1,  "upgrades" : "mageGuild1" },
+				"mageGuild3":     { "id" : 2,  "upgrades" : "mageGuild2" },
+				"tavern":         { "id" : 5 },
+				"fort":           { "id" : 7 },
+				"citadel":        { "id" : 8,  "upgrades" : "fort" },
+				"castle":         { "id" : 9,  "upgrades" : "citadel" },
+				"villageHall":    { "id" : 10, "mode" : "auto", "produce": { "gold": 500 } },
+				"townHall":       { "id" : 11, "upgrades" : "villageHall", "requires" : [ "tavern" ], "produce": { "gold": 1000 } },
+				"cityHall":       { "id" : 12, "upgrades" : "townHall", "requires" : [ "allOf", [ "mageGuild1" ], [ "marketplace" ], [ "blacksmith" ] ], "produce": { "gold": 2000 } },
+				"capitol":        { "id" : 13, "upgrades" : "cityHall", "requires" : [ "castle" ], "produce": { "gold": 4000 } },
+				"marketplace":    { "id" : 14 },
+				"resourceSilo":   { "id" : 15, "requires" : [ "marketplace" ], "produce": { "ore": 1, "wood": 1 } },
+				"blacksmith":     { "id" : 16 },
+
+				"special1":       { "id" : 17, "requires" : [ "fort" ] },
+				"horde1":         { "id" : 18, "upgrades" : "dwellingLvl1" },
+				"horde1Upgr":     { "id" : 19, "upgrades" : "dwellingUpLvl1", "requires" : [ "horde1" ], "mode" : "auto" },
+				"special2":       { "id" : 21, "requires" : [ "marketplace" ] },
+				"special3":       { "id" : 22, "requires" : [ "blacksmith" ] },
+				"special4":       { "id" : 23, "requires" : [ "fort" ] },
+				"grail":          { "id" : 26, "mode" : "grail", "produce": { "gold": 5000 }},
+
+				"dwellingLvl1":   { "id" : 30, "requires" : [ "fort" ] },
+				"dwellingLvl2":   { "id" : 31, "requires" : [ "dwellingLvl1" ] },
+				"dwellingLvl3":   { "id" : 32, "requires" : [ "dwellingLvl1" ] },
+				"dwellingLvl4":   { "id" : 33, "requires" : [ "dwellingLvl3" ] },
+				"dwellingLvl5":   { "id" : 34, "requires" : [ "dwellingLvl2" ] },
+				"dwellingLvl6":   { "id" : 35, "requires" : [ "dwellingLvl4" ] },
+				"dwellingLvl7":   { "id" : 36, "requires" : [ "dwellingLvl5" ] },
+
+				"dwellingUpLvl1": { "id" : 37, "upgrades" : "dwellingLvl1" },
+				"dwellingUpLvl2": { "id" : 38, "upgrades" : "dwellingLvl2", "requires" : [ "dwellingUpLvl1" ] },
+				"dwellingUpLvl3": { "id" : 39, "upgrades" : "dwellingLvl3", "requires" : [ "blacksmith" ] },
+				"dwellingUpLvl4": { "id" : 40, "upgrades" : "dwellingLvl4", "requires" : [ "mageGuild1" ] },
+				"dwellingUpLvl5": { "id" : 41, "upgrades" : "dwellingLvl5" },
+				"dwellingUpLvl6": { "id" : 42, "upgrades" : "dwellingLvl6" },
+				"dwellingUpLvl7": { "id" : 43, "upgrades" : "dwellingLvl7" },
+				
+				"horde2" : null,
+				"horde2Upgr" : null,
+				"mageGuild4" : null,
+				"mageGuild5" : null,
+				"ship" : null,
+				"shipyard" : null
+			},
+
+			"moatDamage" : 70,
+			"moatHexes" : [ 11, 28, 44, 61, 77, 111, 129, 146, 164, 181 ],
+			// primaryResource not specified so town get both Wood and Ore for resource bonus
+			"horde" : [ 0, -1 ],
+			"mageGuild" : 3,
+			"warMachine" : "ammoCart",
+			"buildingsIcons" : "sprites/factions/stronghold/HALLSTRN.DEF",
+			"icons" :
+			{
+				"village" : {
+					"normal" : {
+						"small" : "sprites/factions/stronghold/icons/small/itpa32.bmp",
+					 	"large" : "sprites/factions/stronghold/icons/large/itpt30.bmp"
+					 },
+					"built"  : {
+						"small" : "sprites/factions/stronghold/icons/small/itpa33.bmp",
+						"large" : "sprites/factions/stronghold/icons/large/itpt31.bmp" 
+					}
+				},
+				"fort" : {
+					"normal" : {
+						"small" : "sprites/factions/stronghold/icons/small/itpa14.bmp",
+					 	"large" : "sprites/factions/stronghold/icons/large/itpt12.bmp" 
+					 },
+					"built"  : {
+						"small" : "sprites/factions/stronghold/icons/small/itpa15.bmp",
+						 "large" : "sprites/factions/stronghold/icons/large/itpt13.bmp"
+					}
+				}
+			},
+
+			"mapObject" :
+			{
+				"templates" : {
+					"castle" :  { "animation" : "sprites/factions/stronghold/adventureMap/AVCstrx0.def" },
+					"citadel" : { "animation" : "sprites/factions/stronghold/adventureMap/AVCstrx0.def" },
+					"fort"    : { "animation" : "sprites/factions/stronghold/adventureMap/AVCstrx0.def" },
+					"village" : { "animation" : "sprites/factions/stronghold/adventureMap/AVCSTRO0.DEF" },
+					"capitol" : { "animation" : "sprites/factions/stronghold/adventureMap/AVCSTRZ0.DEF" }
+				}
+			},
+
+			"tavern" :
+			{
+				"knight"       : 6,
+				"cleric"       : 6,
+				"ranger"       : 6,
+				"druid"        : 5,
+				"alchemist"    : 6,
+				"wizard"       : 5,
+				"demoniac"     : 6,
+				"heretic"      : 5,
+				"deathknight"  : 6,
+				"necromancer"  : 5,
+				"overlord"     : 6,
+				"warlock"      : 5,
+				"barbarian"    : 6,
+				"battlemage"   : 6,
+				"beastmaster"  : 6,
+				"witch"        : 5,
+				"planeswalker" : 5,
+				"elementalist" : 5
+			},
+
+			"names" : [
+				"Kragg",
+				"Drago Breach",
+				"Hartgrim",
+				"Sandflash",
+				"Morganheim",
+				"Cragmoor",
+				"Dragonspire",
+				"Battlement",
+				"Bocc",
+				"Slau",
+				"Tormina",
+				"Dolere",
+				"Rockwarren",
+				"Strongglen",
+				"Kruber",
+				"Rovener"
+			]
+		}
+	}
+}

@@ -1,0 +1,62 @@
+{
+	"wyvernMonarch": {
+		"name" : {
+			"plural" : "Wyvern Monarchs",
+			"singular" : "Wyvern Monarch"
+		},
+		"faction" : "fortress",
+		"level" : 6,
+		"cost" : {
+			"gold" : 1100
+		},
+		"speed" : 11,
+		"hitPoints" : 70,
+		"attack" : 14,
+		"defense" : 14,
+		"damage" : {
+			"max" : 22,
+			"min" : 18
+		},
+		"doubleWide" : true,
+		"growth" : 2,
+		"horde" : 0,
+		"aiValue" : 1518,
+		"fightValue" : 1181,
+		"advMapAmount" : {
+			"max" : 10,
+			"min" : 5
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"petrify" : {
+				"subtype" : "spell.poison",
+				"type" : "SPELL_AFTER_ATTACK",
+				"val" : 50
+			}
+		},
+		"abilityText" : "Poisonous.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CWYVMN.def",
+			"map" : "sprites/creatures/adventureMap/AVWwyvx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL111.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort111.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.67
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/WYVMATTK.wav",
+			"defend" : "sounds/creatures/WYVMDFND.wav",
+			"killed" : "sounds/creatures/WYVMKILL.wav",
+			"move" : "sounds/creatures/WYVMMOVE.wav",
+			"wince" : "sounds/creatures/WYVMWNCE.wav"
+		}
+	}
+}

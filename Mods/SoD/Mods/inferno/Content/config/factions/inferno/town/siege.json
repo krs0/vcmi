@@ -1,0 +1,57 @@
+{
+	"inferno" :
+	{
+		"town" :
+		{
+			"siege" :
+			{
+				"shooter" : "gog",
+				"imagePrefix" : "SGIN",
+				"gate" :
+				{
+					"arch" : { "x" : 477, "y" : 221 },
+					"gate" : { "x" : 408, "y" : 254 }
+				},
+				"moat" :
+				{
+					"bank" : { "x" : 403, "y" : 68 },
+					"moat" : { "x" : 403, "y" : 68 }
+				},
+				"static" :
+				{
+					"background" : { "x" : 606, "y" : 52 },
+					"bottom" : { "x" : 522, "y" : 376 },
+					"top" : { "x" : 502, "y" : 92 }
+				},
+				"towers" :
+				{
+					"bottom" :
+					{
+						"battlement" : { "x" : 595, "y" : 514 },
+						"creature" : { "x" : 369, "y" : 298 },
+						"tower" : { "x" : 595, "y" : 514 }
+					},
+					"keep" :
+					{
+						"battlement" : { "x" : 730, "y" : 179 },
+						"creature" : { "x" : 511, "y" : -37 },
+						"tower" : { "x" : 730, "y" : 179 }
+					},
+					"top" :
+					{
+						"battlement" : { "x" : 569, "y" : 27 },
+						"creature" : { "x" : 341, "y" : -187 },
+						"tower" : { "x" : 569, "y" : 27 }
+					}
+				},
+				"walls" :
+				{
+					"bottom" : { "x" : 561, "y" : 451 },
+					"bottomMid" : { "x" : 485, "y" : 316 },
+					"upper" : { "x" : 532, "y" : 71 },
+					"upperMid" : { "x" : 480, "y" : 151 }
+				}
+			}
+		}
+	}
+}

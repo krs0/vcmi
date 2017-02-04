@@ -1,0 +1,100 @@
+{
+	"titan": {
+		"name" : {
+			"plural" : "Titans",
+			"singular" : "Titan"
+		},
+		"faction" : "tower",
+		"level" : 7,
+		"cost" : {
+			"gold" : 5000,
+			"gems" : 2,
+		},
+		"speed" : 11,
+		"hitPoints" : 300,
+		"attack" : 24,
+		"defense" : 24,
+		"damage" : {
+			"max" : 60,
+			"min" : 40
+		},
+		"shots" : 24,
+		"doubleWide" : false,
+		"growth" : 1,
+		"horde" : 0,
+		"aiValue" : 7500,
+		"fightValue" : 5000,
+		"advMapAmount" : {
+			"max" : 8,
+			"min" : 3
+		},
+		"abilities" : {
+			"KING_3" : {
+				"type" : "KING3"
+			},
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			},
+			"const_no_melee_penalty" : {
+				"type" : "NO_MELEE_PENALTY"
+			},
+			"hateArchAngels" : {
+				"subtype" : "creature.blackDragon",
+				"type" : "HATE",
+				"val" : 50
+			},
+			"immuneToMind" : {
+				"type" : "MIND_IMMUNITY"
+			}
+		},
+		"abilityText" : "No melee penalty. Mind spell immunity.  Hates Black Dragons.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CGTITA.def",
+			"map" : "sprites/creatures/adventureMap/AVWtitx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL43.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort43.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1.38
+			},
+			"missile" : {
+				"projectile" : "sprites/creatures/projectile/CPRGTIX.DEF",
+				"attackClimaxFrame" : 6,
+				"frameAngles" : [
+					90,
+					72,
+					45,
+					27,
+					0,
+					-27,
+					-45,
+					-72,
+					-90,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 19,
+					"lowerY" : -1,
+					"middleX" : 76,
+					"middleY" : -87,
+					"upperX" : 11,
+					"upperY" : -131
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/GTITATTK.wav",
+			"defend" : "sounds/creatures/GTITDFND.wav",
+			"killed" : "sounds/creatures/GTITKILL.wav",
+			"move" : "sounds/creatures/GTITMOVE.wav",
+			"shoot" : "sounds/creatures/GTITSHOT.wav",
+			"wince" : "sounds/creatures/GTITWNCE.wav"
+		}
+	}
+}

@@ -1,0 +1,156 @@
+{
+	"fortress" :
+	{
+		"town" :
+		{
+			"musicTheme" : "music/factions/FortressTown.mp3",
+			"defaultTavern" : 5,
+
+			"townBackground": "sprites/factions/fortress/townScreen/TBFRBACK.bmp",
+			"guildBackground" : "sprites/factions/fortress/townScreen/TPMAGE.bmp",
+			"guildWindow": "sprites/factions/fortress/townScreen/TPMAGEFR.bmp",
+			"hallBackground": "sprites/factions/fortress/TPTHBKFR.BMP",
+			"tavernVideo" : "video/SoD/TAVERN.BIK",
+			"hallSlots":
+			[
+				[ [ "villageHall", "townHall", "cityHall", "capitol" ], [ "fort", "citadel", "castle" ], [ "tavern" ], [ "blacksmith" ] ],
+				[ [ "marketplace", "resourceSilo" ], [ "mageGuild1", "mageGuild2", "mageGuild3" ], [ "shipyard" ] ],
+				[ [ "special1" ], [ "special2", "special3" ], [ "horde1", "horde1Upgr" ] ],
+				[ [ "dwellingLvl1", "dwellingUpLvl1" ], [ "dwellingLvl2", "dwellingUpLvl2" ], [ "dwellingLvl3", "dwellingUpLvl3" ], [ "dwellingLvl4", "dwellingUpLvl4" ] ],
+				[ [ "dwellingLvl5", "dwellingUpLvl5" ], [ "dwellingLvl6", "dwellingUpLvl6" ], [ "dwellingLvl7", "dwellingUpLvl7" ] ]
+			],
+			"buildings" :
+			{
+				"mageGuild1":     { "id" : 0 },
+				"mageGuild2":     { "id" : 1,  "upgrades" : "mageGuild1" },
+				"mageGuild3":     { "id" : 2,  "upgrades" : "mageGuild2" },
+				"tavern":         { "id" : 5 },
+				"shipyard":       { "id" : 6 },
+				"fort":           { "id" : 7 },
+				"citadel":        { "id" : 8,  "upgrades" : "fort" },
+				"castle":         { "id" : 9,  "upgrades" : "citadel" },
+				"villageHall":    { "id" : 10, "mode" : "auto", "produce": { "gold": 500 } },
+				"townHall":       { "id" : 11, "upgrades" : "villageHall", "requires" : [ "tavern" ], "produce": { "gold": 1000 } },
+				"cityHall":       { "id" : 12, "upgrades" : "townHall", "requires" : [ "allOf", [ "mageGuild1" ], [ "marketplace" ], [ "blacksmith" ] ], "produce": { "gold": 2000 } },
+				"capitol":        { "id" : 13, "upgrades" : "cityHall", "requires" : [ "castle" ], "produce": { "gold": 4000 } },
+				"marketplace":    { "id" : 14 },
+				"resourceSilo":   { "id" : 15, "requires" : [ "marketplace" ], "produce": { "wood": 1, "ore": 1 } },
+				"blacksmith":     { "id" : 16 },
+
+				"special1":       { "id" : 17, "requires" : [ "allOf", [ "townHall" ], [ "special2" ] ] },
+				"horde1":         { "id" : 18, "upgrades" : "dwellingLvl1" },
+				"horde1Upgr":     { "id" : 19, "upgrades" : "dwellingUpLvl1", "requires" : [ "horde1" ], "mode" : "auto" },
+				"ship":           { "id" : 20, "upgrades" : "shipyard" },
+				"special2":       { "id" : 21, "requires" : [ "fort" ] },
+				"special3":       { "id" : 22, "requires" : [ "special2" ] },
+				"grail":          { "id" : 26, "mode" : "grail", "produce": { "gold": 5000 }},
+				"extraCapitol":   { "id" : 29, "requires" : [ "capitol" ], "mode" : "auto" },
+
+				"dwellingLvl1":   { "id" : 30, "requires" : [ "fort" ] },
+				"dwellingLvl2":   { "id" : 31, "requires" : [ "dwellingLvl1" ] },
+				"dwellingLvl3":   { "id" : 32, "requires" : [ "dwellingLvl1" ] },
+				"dwellingLvl4":   { "id" : 33, "requires" : [ "dwellingLvl3" ] },
+				"dwellingLvl5":   { "id" : 34, "requires" : [ "allOf", [ "dwellingLvl2" ], [ "dwellingLvl3" ] ] },
+				"dwellingLvl6":   { "id" : 35, "requires" : [ "dwellingLvl2" ] },
+				"dwellingLvl7":   { "id" : 36, "requires" : [ "allOf", [ "dwellingLvl4" ], [ "dwellingLvl6" ] ] },
+
+				"dwellingUpLvl1": { "id" : 37, "upgrades" : "dwellingLvl1", "requires" : [ "tavern" ] },
+				"dwellingUpLvl2": { "id" : 38, "upgrades" : "dwellingLvl2" },
+				"dwellingUpLvl3": { "id" : 39, "upgrades" : "dwellingLvl3" },
+				"dwellingUpLvl4": { "id" : 40, "upgrades" : "dwellingLvl4" },
+				"dwellingUpLvl5": { "id" : 41, "upgrades" : "dwellingLvl5", "requires" : [ "resourceSilo" ] },
+				"dwellingUpLvl6": { "id" : 42, "upgrades" : "dwellingLvl6" },
+				"dwellingUpLvl7": { "id" : 43, "upgrades" : "dwellingLvl7" },
+
+				"horde2" : null,
+				"horde2Upgr" : null,
+				"mageGuild4" : null,
+				"mageGuild5" : null,
+				"special4" : null
+			},
+
+			"moatDamage" : 90,
+			"moatHexes" : [ 10, 11, 27, 28, 43, 44, 60, 61, 76, 77, 94, 110, 111, 128, 129, 145, 146, 163, 164, 180, 181 ],
+			// primaryResource not specified so town get both Wood and Ore for resource bonus
+			"horde" : [ 0, -1 ],
+			"mageGuild" : 3,
+			"warMachine" : "firstAidTent",
+			"buildingsIcons" : "sprites/factions/fortress/HALLFORT.DEF",
+			"icons" :
+			{
+				"village" : {
+					"normal" : {
+						"small" : "sprites/factions/fortress/icons/small/itpa34.bmp",
+					 	"large" : "sprites/factions/fortress/icons/large/itpt32.bmp"
+					 },
+					"built"  : {
+						"small" : "sprites/factions/fortress/icons/small/itpa35.bmp",
+						"large" : "sprites/factions/fortress/icons/large/itpt33.bmp" 
+					}
+				},
+				"fort" : {
+					"normal" : {
+						"small" : "sprites/factions/fortress/icons/small/itpa16.bmp",
+					 	"large" : "sprites/factions/fortress/icons/large/itpt14.bmp" 
+					 },
+					"built"  : {
+						"small" : "sprites/factions/fortress/icons/small/itpa17.bmp",
+						 "large" : "sprites/factions/fortress/icons/large/itpt15.bmp"
+					}
+				}
+			},
+
+			"mapObject" :
+			{
+				"templates" : {
+					"castle" :  { "animation" : "sprites/factions/fortress/adventureMap/AVCftrx0.def" },
+					"citadel" : { "animation" : "sprites/factions/fortress/adventureMap/AVCftrx0.def" },
+					"fort"    : { "animation" : "sprites/factions/fortress/adventureMap/AVCftrx0.def" },
+					"village" : { "animation" : "sprites/factions/fortress/adventureMap/AVCFTRT0.DEF" },
+					"capitol" : { "animation" : "sprites/factions/fortress/adventureMap/AVCFORZ0.DEF" }
+				}
+			},
+
+			"tavern" :
+			{
+				"knight"       : 6,
+				"cleric"       : 6,
+				"ranger"       : 5,
+				"druid"        : 6,
+				"alchemist"    : 5,
+				"wizard"       : 6,
+				"demoniac"     : 5,
+				"heretic"      : 6,
+				"deathknight"  : 5,
+				"necromancer"  : 6,
+				"overlord"     : 5,
+				"warlock"      : 6,
+				"barbarian"    : 5,
+				"battlemage"   : 6,
+				"beastmaster"  : 6,
+				"witch"        : 6,
+				"planeswalker" : 5,
+				"elementalist" : 5
+			},
+
+			"names" : [
+				"Marshank",
+				"Deadfall",
+				"Coolmire",
+				"Backwater",
+				"Marshchoke",
+				"Lostmoor",
+				"Silt",
+				"Deadwood",
+				"Edgewater",
+				"Stillbog",
+				"Drakenmoor",
+				"Hermit Cove",
+				"Mosswood",
+				"Marshwall",
+				"Mossden",
+				"Mudshire"
+			]
+		}
+	}
+}

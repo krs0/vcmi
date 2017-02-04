@@ -1,0 +1,57 @@
+{
+	"nagaQueen": {
+		"name" : {
+			"plural" : "Naga Queens",
+			"singular" : "Naga Queen"
+		},
+		"faction" : "tower",
+		"level" : 6,
+		"cost" : {
+			"gold" : 1600
+		},
+		"speed" : 7,
+		"hitPoints" : 110,
+		"attack" : 16,
+		"defense" : 13,
+		"damage" : {
+			"max" : 30,
+			"min" : 30
+		},
+		"doubleWide" : true,
+		"growth" : 2,
+		"horde" : 0,
+		"aiValue" : 2840,
+		"fightValue" : 2485,
+		"advMapAmount" : {
+			"max" : 10,
+			"min" : 5
+		},
+		"abilities" : {
+			"noRetaliation" : {
+				"type" : "BLOCKS_RETALIATION"
+			}
+		},
+		"abilityText" : "No enemy retaliation.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CNAGAG.def",
+			"map" : "sprites/creatures/adventureMap/AVWnagx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL41.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort41.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/NGRDATTK.wav",
+			"defend" : "sounds/creatures/NGRDDFND.wav",
+			"killed" : "sounds/creatures/NGRDKILL.wav",
+			"move" : "sounds/creatures/NGRDMOVE.wav",
+			"wince" : "sounds/creatures/NGRDWNCE.wav"
+		}
+	}
+}

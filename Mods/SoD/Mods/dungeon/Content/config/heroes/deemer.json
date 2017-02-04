@@ -1,0 +1,68 @@
+{
+	"deemer" :
+	{
+		"class" : "overlord",
+		"female" : false,
+
+		"index" : 93,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL093WL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS093WL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "troglodyte",
+				"max" : 40,
+				"min" : 30
+			},
+			{
+				"creature" : "harpy",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "beholder",
+				"max" : 4,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "advanced",
+				"skill" : "scouting"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 23,
+				"type" : 3,
+				"val" : 3
+			}
+		],
+		"spellbook" : [
+			"meteorShower"
+		],
+
+		"texts" : {
+			"biography" : "Deemer nearly had to be killed as a young adult, as his magical abilities were so out of control that he was a threat to himself and those around him.  He has since learned to control his powers, and is more than a formidable foe in combat.",
+			"name" : "Deemer",
+			"specialty" : {
+				"description" : "Casts Meteor Shower with increased effect, based on hero level compared to the level of the target unit (the bonus is greater when used on weaker units).",
+				"name" : "Meteor Shower",
+				"tooltip" : "Spell Bonus: Meteor Shower"
+			}
+		}
+	}
+}
+

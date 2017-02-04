@@ -1,0 +1,64 @@
+{
+	"harpy": {
+		"name" : {
+			"plural" : "Harpies",
+			"singular" : "Harpy"
+		},
+		"faction" : "dungeon",
+		"level" : 2,
+		"upgrades" : [
+			"harpyHag"
+		],
+		"cost" : {
+			"gold" : 130
+		},
+		"speed" : 6,
+		"hitPoints" : 14,
+		"attack" : 6,
+		"defense" : 5,
+		"damage" : {
+			"max" : 4,
+			"min" : 1
+		},
+		"doubleWide" : false,
+		"growth" : 8,
+		"horde" : 0,
+		"aiValue" : 154,
+		"fightValue" : 140,
+		"advMapAmount" : {
+			"max" : 30,
+			"min" : 16
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"strikeAndReturn" : {
+				"type" : "RETURN_AFTER_STRIKE"
+			}
+		},
+		"abilityText" : "Strike and return.",
+		"hasDoubleWeek" : true,
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CHARPY.def",
+			"map" : "sprites/creatures/adventureMap/AVWharp0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL74.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort74.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.85
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/HARPATTK.wav",
+			"defend" : "sounds/creatures/HARPDFND.wav",
+			"killed" : "sounds/creatures/HARPKILL.wav",
+			"move" : "sounds/creatures/HARPMOVE.wav",
+			"wince" : "sounds/creatures/HARPWNCE.wav"
+		}
+	}
+}

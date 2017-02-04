@@ -1,0 +1,69 @@
+{
+	"moandor" :
+	{
+		"class" : "deathKnight",
+		"female" : false,
+
+		"index" : 66,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL066DK.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS066DK.bmp"
+		},
+
+
+		"army" : [
+			{
+				"creature" : "skeleton",
+				"max" : 30,
+				"min" : 20
+			},
+			{
+				"creature" : "zombie",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "wight",
+				"max" : 6,
+				"min" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "necromancy"
+			},
+			{
+				"level" : "basic",
+				"skill" : "learning"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 64,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+		"spellbook" : [
+			"slow"
+		],
+			
+		"texts" : {
+			"biography" : "Moandor's charismatic style somehow stayed with him after he was transformed into a lich.  Strangely enough, this provides him with the ability to lead and recruit new liches more effectively than any other hero.",
+			"name" : "Moandor",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Liches or Power Liches for each level attained after 5th level.",
+				"name" : "Liches",
+				"tooltip" : "Creature Bonus: Liches"
+			}
+		}
+	}
+}
+

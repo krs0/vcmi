@@ -1,0 +1,64 @@
+{
+	"mirlanda" :
+	{
+		"class" : "witch",
+		"female" : true,
+
+		"index" : 120,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL120WH.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS120WH.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "gnoll",
+				"max" : 20,
+				"min" : 10
+			},
+			{
+				"creature" : "lizardman",
+				"max" : 7,
+				"min" : 4
+			},
+			{
+				"creature" : "serpentFly",
+				"max" : 4,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "advanced",
+				"skill" : "wisdom"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 108,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+		"spellbook" : [
+			"weakness"
+		],
+
+		"texts" : {
+			"biography" : "Mirlanda spent much of her younger days toying with the dark arts, before realizing that such a path usually leads to self destruction.  She has learned to walk a fine line between good and evil, always making sure that one does not grow more powerful than the other.",
+			"name" : "Mirlanda",
+			"specialty" : {
+				"description" : "Casts Weakness with increased effect, based on hero level compared to the level of the target unit (the bonus is greater when used on weaker units).",
+				"name" : "Weakness",
+				"tooltip" : "Spell Bonus: Weakness"
+			}
+		}
+	}
+}
+

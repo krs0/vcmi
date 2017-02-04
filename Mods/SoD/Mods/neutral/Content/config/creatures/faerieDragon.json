@@ -1,0 +1,128 @@
+{
+	"faerieDragon": {
+		"name" : {
+			"plural" : "Faerie Dragons",
+			"singular" : "Faerie Dragon"
+		},
+		"faction" : "neutral",
+		"level" : 8,
+		"cost" : {
+			"gems" : 8,
+			"gold" : 10000
+		},
+		"speed" : 15,
+		"hitPoints" : 500,
+		"attack" : 20,
+		"defense" : 20,
+		"damage" : {
+			"max" : 30,
+			"min" : 20
+		},
+		"spellPoints" : 5,
+		"doubleWide" : true,
+		"growth" : 1,
+		"horde" : 0,
+		"aiValue" : 19580,
+		"fightValue" : 16317,
+		"advMapAmount" : {
+			"max" : 3,
+			"min" : 1
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"KING_1" : {
+				"type" : "KING1"
+			},
+			"casts" : {
+				"type" : "CASTS",
+				"val" : 5
+			},
+			"castsChainLightning" : {
+				"addInfo" : 5,
+				"subtype" : "spell.chainLightning",
+				"type" : "SPELLCASTER",
+				"val" : 2
+			},
+			"castsFireball" : {
+				"addInfo" : 21,
+				"subtype" : "spell.fireball",
+				"type" : "SPELLCASTER",
+				"val" : 2
+			},
+			"castsFrostRing" : {
+				"addInfo" : 10,
+				"subtype" : "spell.frostRing",
+				"type" : "SPELLCASTER",
+				"val" : 2
+			},
+			"castsIceBolt" : {
+				"addInfo" : 22,
+				"subtype" : "spell.iceBolt",
+				"type" : "SPELLCASTER",
+				"val" : 2
+			},
+			"castsInferno" : {
+				"addInfo" : 5,
+				"subtype" : "spell.inferno",
+				"type" : "SPELLCASTER",
+				"val" : 2
+			},
+			"castsLightningBolt" : {
+				"addInfo" : 22,
+				"subtype" : "spell.lightningBolt",
+				"type" : "SPELLCASTER",
+				"val" : 2
+			},
+			"castsMagicArrow" : {
+				"addInfo" : 22,
+				"subtype" : "spell.magicArrow",
+				"type" : "SPELLCASTER",
+				"val" : 2
+			},
+			"castsMeteorShower" : {
+				"addInfo" : 5,
+				"subtype" : "spell.meteorShower",
+				"type" : "SPELLCASTER",
+				"val" : 2
+			},
+			"dragon" : {
+				"type" : "DRAGON_NATURE"
+			},
+			"mirror" : {
+				"type" : "MAGIC_MIRROR",
+				"val" : 20
+			},
+			"spellpower" : {
+				"type" : "CREATURE_SPELL_POWER",
+				"val" : 500
+			}
+		},
+		"abilityText" : "Offensive spell caster.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CFDRGN.def",
+			"map" : "sprites/creatures/adventureMap/AVWfdrg.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL136.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort136.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.6
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/FAERATTK.wav",
+			"defend" : "sounds/creatures/FAERDFND.wav",
+			"killed" : "sounds/creatures/FAERKILL.wav",
+			"move" : "sounds/creatures/FAERMOVE.wav",
+			"shoot" : "sounds/creatures/FAERSHOT.wav",
+			"wince" : "sounds/creatures/FAERWNCE.wav"
+		},
+
+		"special" : true
+	}
+}

@@ -1,0 +1,68 @@
+{
+	"rissa" :
+	{
+		"class" : "alchemist",
+		"female" : true,
+
+		"index" : 38,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL038AL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS038AL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "apprenticeGremlin",
+				"max" : 40,
+				"min" : 30
+			},
+			{
+				"creature" : "stoneGargoyle",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "ironGolem",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "mysticism"
+			},
+			{
+				"level" : "basic",
+				"skill" : "offence"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 1,
+				"type" : 10,
+				"val" : 1
+			}
+		],
+		"spellbook" : [
+			"magicArrow"
+		],
+		
+		"texts" : {
+			"biography" : "Rissa was the first Alchemist to perfect the art of converting useless soft metals into mercury.  Though now commanding her own army, she spends much of her idle time experimenting with other materials.",
+			"name" : "Rissa",
+			"specialty" : {
+				"description" : "Increases kingdom's mercury production by 1 per day.",
+				"name" : "+1 Mercury",
+				"tooltip" : "+1 Mercury each day."
+			}
+		}
+	}
+}
+

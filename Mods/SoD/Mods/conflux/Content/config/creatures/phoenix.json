@@ -1,0 +1,77 @@
+{
+	"phoenix": {
+		"name" : {
+			"plural" : "Phoenixes",
+			"singular" : "Phoenix"
+		},
+		"faction" : "conflux",
+		"level" : 7,
+		"cost" : {
+			"mercury" : 1,
+			"gold" : 2000
+		},
+		"speed" : 21,
+		"hitPoints" : 200,
+		"attack" : 21,
+		"defense" : 18,
+		"damage" : {
+			"max" : 40,
+			"min" : 30
+		},
+		"spellPoints" : 1,
+		"doubleWide" : true,
+		"growth" : 2,
+		"horde" : 0,
+		"aiValue" : 6721,
+		"fightValue" : 4929,
+		"advMapAmount" : {
+			"max" : 10,
+			"min" : 4
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"HAS_EXTENDED_ATTACK" : {
+				"type" : "TWO_HEX_ATTACK_BREATH"
+			},
+			"KING_1" : {
+				"type" : "KING1"
+			},
+			"immuneToFire" : {
+				"subtype" : 0,
+				"type" : "FIRE_IMMUNITY"
+			},
+			"rebirth" : {
+				"type" : "REBIRTH",
+				"val" : 20
+			},
+			"rebirthOnce" : {
+				"type" : "CASTS",
+				"val" : 1
+			}
+		},
+		"abilityText" : "Breath attack.  Fire spell immunity.  Rebirth.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CPHX.def",
+			"map" : "sprites/creatures/adventureMap/AVWphx.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL133.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort133.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/PHOEATTK.wav",
+			"defend" : "sounds/creatures/PHOEDFND.wav",
+			"killed" : "sounds/creatures/PHOEKILL.wav",
+			"move" : "sounds/creatures/PHOEMOVE.wav",
+			"wince" : "sounds/creatures/PHOEWNCE.wav"
+		}
+	}
+}

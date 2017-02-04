@@ -1,0 +1,69 @@
+{
+	"adela" :
+	{
+		"class" : "cleric",
+		"female" : true,
+
+		"index" : 9,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL009CL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS009CL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "pikeman",
+				"max" : 20,
+				"min" : 10
+			},
+			{
+				"creature" : "archer",
+				"max" : 7,
+				"min" : 4
+			},
+			{
+				"creature" : "griffin",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"spellbook" : [
+			"bless"
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "diplomacy"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 41,
+				"type" : 6,
+				"val" : 3
+			}
+		],
+
+		"texts" : {
+			"biography" : "Originally Adela only contributed her skills prior to battles.  If she could not convince her commander to avoid a fight, she would at least prepare a blessing for the troops as they entered combat.  She was given command of the Whitestone garrison.",
+			"name" : "Adela",
+			"specialty" : {
+				"description" : "Casts Bless with increased effect, based on hero level compared to the level of the target unit (the bonus is greater when used on weaker units).",
+				"name" : "Bless",
+				"tooltip" : "Spell Bonus: Bless"
+			}
+		}
+	}
+}
+

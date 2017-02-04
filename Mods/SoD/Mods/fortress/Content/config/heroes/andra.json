@@ -1,0 +1,69 @@
+{
+	"andra" :
+	{
+		"class" : "witch",
+		"female" : true,
+
+		"index" : 126,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL126WH.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS126WH.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "gnoll",
+				"max" : 20,
+				"min" : 10
+			},
+			{
+				"creature" : "lizardman",
+				"max" : 7,
+				"min" : 4
+			},
+			{
+				"creature" : "serpentFly",
+				"max" : 4,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "intelligence"
+			}
+		],
+		
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 24,
+				"type" : 2,
+				"val" : 5
+			}
+		],
+		"spellbook" : [
+			"dispel"
+		],
+
+		"texts" : {
+			"biography" : "Before King Tralossk would allow Andra, a mere human, to lead one of his armies, he subjected her to a series of trials that would test her knowledge.  She never missed a single question, and the King had no choice but to accept her.",
+			"name" : "Andra",
+			"specialty" : {
+				"description" : "Receives a 5% per level bonus to Intelligence skill percentage.",
+				"name" : "Intelligence",
+				"tooltip" : "Secondary Skill Bonus: Intelligence"
+			}
+		}
+	}
+}
+

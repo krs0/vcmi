@@ -1,0 +1,63 @@
+{
+	"blackKnight": {
+		"name" : {
+			"plural" : "Black Knights",
+			"singular" : "Black Knight"
+		},
+		"faction" : "necropolis",
+		"level" : 6,
+		"upgrades": ["dreadKnight"],
+		"cost" : {
+			"gold" : 1200
+		},
+		"speed" : 7,
+		"hitPoints" : 120,
+		"attack" : 16,
+		"defense" : 16,
+		"damage" : {
+			"max" : 30,
+			"min" : 15
+		},
+		"doubleWide" : true,
+		"growth" : 2,
+		"horde" : 0,
+		"aiValue" : 2087,
+		"fightValue" : 1753,
+		"advMapAmount" : {
+			"max" : 12,
+			"min" : 5
+		},
+		"abilities" : {
+			"IS_UNDEAD" : {
+				"type" : "UNDEAD"
+			},
+			"curses" : {
+				"subtype" : "spell.curse",
+				"type" : "SPELL_AFTER_ATTACK",
+				"val" : 20
+			}
+		},
+		"abilityText" : "Undead.  Curses enemies.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CBKNIG.def",
+			"map" : "sprites/creatures/adventureMap/AVWbkni0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL68.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort68.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/BKNTATTK.wav",
+			"defend" : "sounds/creatures/BKNTDFND.wav",
+			"killed" : "sounds/creatures/BKNTKILL.wav",
+			"move" : "sounds/creatures/BKNTMOVE.wav",
+			"wince" : "sounds/creatures/BKNTWNCE.wav"
+		}
+	}
+}

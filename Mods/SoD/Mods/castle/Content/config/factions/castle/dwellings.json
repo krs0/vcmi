@@ -1,0 +1,43 @@
+{
+	"castle" :
+	{
+		"dwellings" :
+		{
+			"guardhouse" : 
+			{
+				"name" : "Guardhouse",
+				"graphics" : "sprites/factions/castle/adventureMap/dwellings/AVGPIKE0.def"
+			},
+			"archersTower" : 
+			{
+				"name" : "Archers' Tower",
+				"graphics" : "sprites/factions/castle/adventureMap/dwellings/AVGCROS0.def"
+			},
+			"griffinTower" : 
+			{
+				"name" : "Griffin Tower",
+				"graphics" : "sprites/factions/castle/adventureMap/dwellings/AVGgrff0.def"
+			},
+			"barracks" : 
+			{
+				"name" : "Barracks",
+				"graphics" : "sprites/factions/castle/adventureMap/dwellings/AVGSWOR0.def"
+			},
+			"monastery" : 
+			{
+				"name" : "Monastery",
+				"graphics" : "sprites/factions/castle/adventureMap/dwellings/AVGmonk0.def"
+			},
+			"trainingGrounds" : 
+			{
+				"name" : "Training Grounds",
+				"graphics" : "sprites/factions/castle/adventureMap/dwellings/AVGcavl0.def"
+			},
+			"portalOfGlory" : 
+			{
+				"name" : "Portal of Glory",
+				"graphics" : "sprites/factions/castle/adventureMap/dwellings/AVGangl0.def"
+			}
+		}
+	}
+}

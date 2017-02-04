@@ -1,0 +1,57 @@
+{
+	"troll": {
+		"name" : {
+			"plural" : "Trolls",
+			"singular" : "Troll"
+		},
+		"faction" : "neutral",
+		"level" : 5,
+		"cost" : {
+			"gold" : 500
+		},
+		"speed" : 7,
+		"hitPoints" : 40,
+		"attack" : 14,
+		"defense" : 7,
+		"damage" : {
+			"max" : 15,
+			"min" : 10
+		},
+		"doubleWide" : false,
+		"growth" : 3,
+		"horde" : 0,
+		"aiValue" : 1024,
+		"fightValue" : 1024,
+		"advMapAmount" : {
+			"max" : 12,
+			"min" : 8
+		},
+		"abilities" : {
+			"regenerates" : {
+				"type" : "FULL_HP_REGENERATION"
+			}
+		},
+		"abilityText" : "Regenerating.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CTROLL.def",
+			"map" : "sprites/creatures/adventureMap/AVWtrll.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL146.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort146.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/TRLLATTK.wav",
+			"defend" : "sounds/creatures/TRLLDFND.wav",
+			"killed" : "sounds/creatures/TRLLKILL.wav",
+			"move" : "sounds/creatures/TRLLMOVE.wav",
+			"wince" : "sounds/creatures/TRLLWNCE.wav"
+		}
+	}
+}

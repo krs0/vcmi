@@ -1,0 +1,66 @@
+{
+	"dreadKnight": {
+		"name" : {
+			"plural" : "Dread Knights",
+			"singular" : "Dread Knight"
+		},
+		"faction" : "necropolis",
+		"level" : 6,
+		"cost" : {
+			"gold" : 1500
+		},
+		"speed" : 9,
+		"hitPoints" : 120,
+		"attack" : 18,
+		"defense" : 18,
+		"damage" : {
+			"max" : 30,
+			"min" : 15
+		},
+		"doubleWide" : true,
+		"growth" : 2,
+		"horde" : 0,
+		"aiValue" : 2382,
+		"fightValue" : 2029,
+		"advMapAmount" : {
+			"max" : 10,
+			"min" : 5
+		},
+		"abilities" : {
+			"IS_UNDEAD" : {
+				"type" : "UNDEAD"
+			},
+			"curses" : {
+				"subtype" : "spell.curse",
+				"type" : "SPELL_AFTER_ATTACK",
+				"val" : 20
+			},
+			"deathStrike" : {
+				"type" : "DOUBLE_DAMAGE_CHANCE",
+				"val" : 20
+			}
+		},
+		"abilityText" : "Undead.  Curses enemies.  \nDeath Blow attack.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CBLORD.def",
+			"map" : "sprites/creatures/adventureMap/AVWbknx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL69.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort69.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/BLRDATTK.wav",
+			"defend" : "sounds/creatures/BLRDDFND.wav",
+			"killed" : "sounds/creatures/BLRDKILL.wav",
+			"move" : "sounds/creatures/BLRDMOVE.wav",
+			"wince" : "sounds/creatures/BLRDWNCE.wav"
+		}
+	}
+}

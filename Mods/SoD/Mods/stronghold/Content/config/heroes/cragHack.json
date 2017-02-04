@@ -1,0 +1,61 @@
+{
+	"cragHack" :
+	{
+		"class" : "barbarian",
+		"female" : false,
+
+		"index" : 102,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL102BR.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS102BR.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "goblin",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "goblinWolfRider",
+				"max" : 7,
+				"min" : 5
+			},
+			{
+				"creature" : "orc",
+				"max" : 6,
+				"min" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "advanced",
+				"skill" : "offence"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 90,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+		
+		"texts" : {
+			"biography" : "A decorated hero in Enroth, Crag Hack became bored with his home, deciding to seek out a new life in Erathia.  He boldly set sail for this new frontier, and was delighted to find a land in turmoil where his skills could be best put to use.",
+			"name" : "Crag Hack",
+			"specialty" : {
+				"description" : "Receives a 5% per level bonus to Offense skill percentage.",
+				"name" : "Offense",
+				"tooltip" : "Secondary Skill Bonus: Offense"
+			}
+		}
+	}
+}
+

@@ -1,0 +1,65 @@
+{
+	"kalt" :
+	{
+		"class" : "planeswalker",
+		"female" : false,
+
+		"index" : 135,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL007PL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS007PL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "pixies",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "waterElementals",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "waterElementals",
+				"max" : 2,
+				"min" : 1
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "tactics"
+			},
+			{
+				"level" : "basic",
+				"skill" : "learning"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 115,
+				"subtype" : 1,
+				"type" : 4,
+				"val" : 2
+			}
+		],
+		
+		"texts" : {
+			"biography" : "Always the quick study, Kalt felt called to the Conflux where he could feed his voracious appitite for learning new and different things.",
+			"name" : "Kalt",
+			"specialty" : {
+				"description" : "Water/Ice elementals receive +2 Att.",
+				"name" : "Water Ele.",
+				"tooltip" : "Creature Bonus:"
+			}
+		}
+	}
+}
+

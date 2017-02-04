@@ -1,0 +1,59 @@
+{
+	"greaterBasilisk": {
+		"name" : {
+			"plural" : "Greater Basilisks",
+			"singular" : "Greater Basilisk"
+		},
+		"faction" : "fortress",
+		"level" : 4,
+		"cost" : {
+			"gold" : 400
+		},
+		"speed" : 7,
+		"hitPoints" : 40,
+		"attack" : 12,
+		"defense" : 12,
+		"damage" : {
+			"max" : 10,
+			"min" : 6
+		},
+		"doubleWide" : true,
+		"growth" : 4,
+		"horde" : 0,
+		"aiValue" : 714,
+		"fightValue" : 561,
+		"advMapAmount" : {
+			"max" : 12,
+			"min" : 8
+		},
+		"abilities" : {
+			"petrify" : {
+				"subtype" : "spell.stoneGaze",
+				"type" : "SPELL_AFTER_ATTACK",
+				"val" : 20
+			}
+		},
+		"abilityText" : "Petrifying attack.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CGBASI.def",
+			"map" : "sprites/creatures/adventureMap/AvWGBas.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL109.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort109.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/GBASATTK.wav",
+			"defend" : "sounds/creatures/GBASDFND.wav",
+			"killed" : "sounds/creatures/GBASKILL.wav",
+			"move" : "sounds/creatures/GBASMOVE.wav",
+			"wince" : "sounds/creatures/GBASWNCE.wav"
+		}
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"name" : "Neutral faction",
+	"description" : "Neutral faction as Mod",
+
+	"version" : "0.99",
+	"author" : "Original SoD Faction - mod by VCMI Team",
+	"contact" : "http://forum.vcmi.eu/index.php",
+	"modType" : "Faction",
+
+	"factions" :
+	[
+		"config/factions/neutral/faction.json",
+		"config/factions/neutral/dwellings.json"
+	],
+
+	"creatures" :
+	[
+		"config/creatures/goldGolem.json",
+		"config/creatures/diamondGolem.json",
+
+		"config/creatures/azureDragon.json",
+		"config/creatures/crystalDragon.json",
+		"config/creatures/faerieDragon.json",
+		"config/creatures/rustDragon.json",
+
+		"config/creatures/enchanter.json",
+		"config/creatures/sharpshooter.json",
+
+		"config/creatures/peasant.json",
+		"config/creatures/halfling.json",
+
+		"config/creatures/mummy.json",
+		"config/creatures/nomad.json",
+		"config/creatures/rogue.json",
+
+		"config/creatures/boar.json",
+		"config/creatures/troll.json",
+
+		"config/creatures/firstAidTent.json",
+		"config/creatures/ballista.json",
+		"config/creatures/ammoCart.json",
+		"config/creatures/catapult.json"
+	]
+}

@@ -1,0 +1,135 @@
+{
+	"enchanter": {
+		"name" : {
+			"plural" : "Enchanters",
+			"singular" : "Enchanter"
+		},
+		"extraNames" : [
+			"enchanters"
+		],
+		"faction" : "neutral",
+		"level" : 6,
+		"cost" : {
+			"gold" : 750
+		},
+		"speed" : 9,
+		"hitPoints" : 30,
+		"attack" : 17,
+		"defense" : 12,
+		"damage" : {
+			"max" : 14,
+			"min" : 14
+		},
+		"shots" : 32,
+		"doubleWide" : false,
+		"growth" : 2,
+		"horde" : 0,
+		"aiValue" : 1210,
+		"fightValue" : 805,
+		"advMapAmount" : {
+			"max" : 12,
+			"min" : 5
+		},
+		"abilities" : {
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			},
+			"casts" : {
+				"type" : "CASTS",
+				"val" : 5
+			},
+			"castsAirShield" : {
+				"addInfo" : 3,
+				"subtype" : "spell.airShield",
+				"type" : "ENCHANTER",
+				"val" : 3
+			},
+			"castsBless" : {
+				"addInfo" : 3,
+				"subtype" : "spell.bless",
+				"type" : "ENCHANTER",
+				"val" : 3
+			},
+			"castsHaste" : {
+				"addInfo" : 3,
+				"subtype" : "spell.haste",
+				"type" : "ENCHANTER",
+				"val" : 3
+			},
+			"castsSlow" : {
+				"addInfo" : 3,
+				"subtype" : "spell.slow",
+				"type" : "ENCHANTER",
+				"val" : 3
+			},
+			"castsStoneSkin" : {
+				"addInfo" : 3,
+				"subtype" : "spell.stoneSkin",
+				"type" : "ENCHANTER",
+				"val" : 3
+			},
+			"castsWeakness" : {
+				"addInfo" : 3,
+				"subtype" : "spell.weakness",
+				"type" : "ENCHANTER",
+				"val" : 3
+			},
+			"const_no_melee_penalty" : {
+				"type" : "NO_MELEE_PENALTY"
+			},
+			"noPenalty" : {
+				"type" : "NO_WALL_PENALTY"
+			}
+		},
+		"abilityText" : "No melee penalty.\nGroup spell casters.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/Cench.def",
+			"map" : "sprites/creatures/adventureMap/AVWench.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL138.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort138.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"missile" : {
+				"projectile" : "sprites/creatures/projectile/CPRZEAX.DEF",
+				"attackClimaxFrame" : 6,
+				"frameAngles" : [
+					90,
+					72,
+					45,
+					27,
+					0,
+					-27,
+					-45,
+					-72,
+					-90,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 28,
+					"lowerY" : 3,
+					"middleX" : 62,
+					"middleY" : -53,
+					"upperX" : 37,
+					"upperY" : -98
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/ENCHATTK.wav",
+			"defend" : "sounds/creatures/ENCHDFND.wav",
+			"killed" : "sounds/creatures/ENCHKILL.wav",
+			"move" : "sounds/creatures/ENCHMOVE.wav",
+			"shoot" : "sounds/creatures/ENCHSHOT.wav",
+			"wince" : "sounds/creatures/ENCHWNCE.wav"
+		},
+		"special" : true
+	}
+}

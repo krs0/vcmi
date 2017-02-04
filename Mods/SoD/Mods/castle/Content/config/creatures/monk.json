@@ -1,0 +1,86 @@
+{
+	"monk": {
+		"name" : {
+			"plural" : "Monks",
+			"singular" : "Monk"
+		},
+		"faction" : "castle",
+		"level" : 5,
+		"upgrades": ["zealot"],
+		"cost" : {
+			"gold" : 400
+		},
+		"speed" : 5,
+		"hitPoints" : 30,
+		"attack" : 12,
+		"defense" : 7,
+		"damage" : {
+			"max" : 12,
+			"min" : 10
+		},
+		"shots" : 12,
+		"doubleWide" : false,
+		"growth" : 3,
+		"horde" : 0,
+		"aiValue" : 485,
+		"fightValue" : 485,
+		"advMapAmount" : {
+			"max" : 16,
+			"min" : 8
+		},
+		"abilities" : {
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			}
+		},
+		"abilityText" : "",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CMONKK.def",
+			"map" : "sprites/creatures/adventureMap/AvWMonk.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL10.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort10.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"missile" : {
+				"projectile" : "sprites/creatures/projectile/CPRZEAX.DEF",
+				"attackClimaxFrame" : 8,
+				"frameAngles" : [
+					90,
+					72,
+					45,
+					27,
+					0,
+					-27,
+					-45,
+					-72,
+					-90,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 31,
+					"lowerY" : 11,
+					"middleX" : 61,
+					"middleY" : -49,
+					"upperX" : 38,
+					"upperY" : -95
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/MONKATTK.wav",
+			"defend" : "sounds/creatures/MONKDFND.wav",
+			"killed" : "sounds/creatures/MONKKILL.wav",
+			"move" : "sounds/creatures/MONKMOVE.wav",
+			"shoot" : "sounds/creatures/MONKSHOT.wav",
+			"wince" : "sounds/creatures/MONKWNCE.wav"
+		}
+	}
+}

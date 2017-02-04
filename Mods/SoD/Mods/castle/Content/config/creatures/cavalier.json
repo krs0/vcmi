@@ -1,0 +1,58 @@
+{
+	"cavalier": {
+		"name" : {
+			"plural" : "Cavaliers",
+			"singular" : "Cavalier"
+		},
+		"faction" : "castle",
+		"level" : 6,
+		"upgrades": ["champion"],
+		"cost" : {
+			"gold" : 1000
+		},
+		"speed" : 7,
+		"hitPoints" : 100,
+		"attack" : 15,
+		"defense" : 15,
+		"damage" : {
+			"max" : 25,
+			"min" : 15
+		},
+		"doubleWide" : true,
+		"growth" : 2,
+		"horde" : 0,
+		"aiValue" : 1946,
+		"fightValue" : 1668,
+		"advMapAmount" : {
+			"max" : 12,
+			"min" : 5
+		},
+		"abilities" : {
+			"const_jousting" : {
+				"type" : "JOUSTING"
+			}
+		},
+		"abilityText" : "Jousting bonus.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CCAVLR.def",
+			"map" : "sprites/creatures/adventureMap/AVWcvlr0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL12.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort12.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/CAVAATTK.wav",
+			"defend" : "sounds/creatures/CAVADFND.wav",
+			"killed" : "sounds/creatures/CAVAKILL.wav",
+			"move" : "sounds/creatures/CAVAMOVE.wav",
+			"wince" : "sounds/creatures/CAVAWNCE.wav"
+		}
+	}
+}

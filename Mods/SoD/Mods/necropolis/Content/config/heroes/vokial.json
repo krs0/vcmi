@@ -1,0 +1,69 @@
+{
+	"vokial" :
+	{
+		"class" : "deathKnight",
+		"female" : false,
+
+		"index" : 65,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL065DK.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS065DK.bmp"
+		},
+
+
+		"army" : [
+			{
+				"creature" : "skeleton",
+				"max" : 30,
+				"min" : 20
+			},
+			{
+				"creature" : "zombie",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "wight",
+				"max" : 6,
+				"min" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "necromancy"
+			},
+			{
+				"level" : "basic",
+				"skill" : "artillery"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 62,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+		"spellbook" : [
+			"stoneSkin"
+		],
+			
+		"texts" : {
+			"biography" : "Nearly four centuries ago Vokial ruled his own kingdom, but as time passed he grew increasingly bored with day-to-day responsibilities.  He eventually gave up everything to return to the life of adventuring he much preferred.  He is an elder even among other vampires.",
+			"name" : "Vokial",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Vampires or Vampire Lords for each level attained after 4th level.",
+				"name" : "Vampires",
+				"tooltip" : "Creature Bonus: Vampires"
+			}
+		}
+	}
+}
+

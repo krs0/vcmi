@@ -1,0 +1,65 @@
+{
+	"dace" :
+	{
+		"class" : "warlock",
+		"female" : false,
+
+		"index" : 82,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL082OV.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS082OV.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "troglodyte",
+				"max" : 40,
+				"min" : 30
+			},
+			{
+				"creature" : "harpy",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "beholder",
+				"max" : 4,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "tactics"
+			},
+			{
+				"level" : "basic",
+				"skill" : "offence"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 78,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+
+		"texts" : {
+			"biography" : "Dace was born into a warrior clan, learning to fight from masters who seemed older than time.  He provides Nighon with exceptional leadership, especially when commanding other minotaurs.",
+			"name" : "Dace",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Minotaurs or Minotaur Kings for each level attained after 5th level.",
+				"name" : "Minotaurs",
+				"tooltip" : "Creature Bonus: Minotaurs"
+			}
+		}
+	}
+}
+

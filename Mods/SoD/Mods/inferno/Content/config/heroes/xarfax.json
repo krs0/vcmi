@@ -1,0 +1,68 @@
+{
+	"xarfax" :
+	{
+		"class" : "heretic",
+		"female" : false,
+
+		"index" : 63,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL063DM.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS063DM.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "imp",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "gog",
+				"max" : 7,
+				"min" : 4
+			},
+			{
+				"creature" : "hellHound",
+				"max" : 4,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "leadership"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 21,
+				"type" : 3,
+				"val" : 3
+			}
+		],
+		"spellbook" : [
+			"fireball"
+		],
+
+		"texts" : {
+			"biography" : "Xarfax served in the Erathian Military until he was captured while fighting the Kreegans in 1162 A.S. (After the Silence).  The Kreegans, realizing the power within him, \"reconditioned\" Xarfax, turning him into a loyal and capable follower.",
+			"name" : "Xarfax",
+			"specialty" : {
+				"description" : "Casts Fireball with increased effect, based on hero level compared to the level of the target unit (the bonus is greater when used on weaker units).",
+				"name" : "Fireball",
+				"tooltip" : "Spell Bonus: Fireball"
+			}
+		}
+	}
+}
+

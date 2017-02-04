@@ -1,0 +1,68 @@
+{
+	"labetha" :
+	{
+		"class" : "elementalist",
+		"female" : true,
+
+		"index" : 139,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL003EL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS003EL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "pixies",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "airElementals",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "waterElementals",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "earthMagic"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 46,
+				"type" : 8,
+				"val" : 0
+			}
+		],
+		"spellbook" : [
+			"stoneSkin"
+		],
+		
+		"texts" : {
+			"biography" : "Born poor, Labetha's parents were slaughtered peasantry during the Restoration wars.  Taken by dendroids and brought into their service in AvLee, her power over the earth developed quickly.  When she felt the Conflux calling, she answered quickly.",
+			"name" : "Labetha",
+			"specialty" : {
+				"description" : "When cast, Stone Skin is increased +3.",
+				"name" : "Stone Skin",
+				"tooltip" : "Spell Bonus: Stone Skin"
+			}
+		}
+	}
+}
+

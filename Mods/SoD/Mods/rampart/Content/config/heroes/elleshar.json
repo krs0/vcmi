@@ -1,0 +1,68 @@
+{
+	"elleshar" :
+	{
+		"class" : "druid",
+		"female" : false,
+
+		"index" : 26,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL026DR.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS026DR.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "centaur",
+				"max" : 24,
+				"min" : 12
+			},
+			{
+				"creature" : "dwarf",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "woodElf",
+				"max" : 6,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "intelligence"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 24,
+				"type" : 2,
+				"val" : 5
+			}
+		],
+		"spellbook" : [
+			"curse"
+		],
+
+		"texts" : {
+			"biography" : "Elleshar is perhaps the brightest student of magic ever seen in AvLee.  If he maintains his abilities over the next several decades, he will likely be the youngest Druid ever to be accepted into the Circle of Elders.",
+			"name" : "Elleshar",
+			"specialty" : {
+				"description" : "Receives a 5% per level bonus to Intelligence skill percentage.",
+				"name" : "Intelligence",
+				"tooltip" : "Secondary Skill Bonus: Intelligence"
+			}
+		}
+	}
+}
+

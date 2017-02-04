@@ -1,0 +1,82 @@
+{
+	"ranger" :
+	{
+		"name" : "ranger",
+		"faction" : "rampart",
+		"affinity" : "might",
+		"defaultTavern" : 5,
+		"mapObject" : {
+			"templates" : {
+				"default" : {
+					"animation" : "sprites/heroClasses/AH02_.def",
+					"editorAnimation" : "sprites/heroClasses/AH02_E.def"
+				}
+			}
+		},
+		"animation" : {
+			"battle" : {
+				"female" : "sprites/heroClasses/CH03.DEF",
+				"male" : "sprites/heroClasses/CH02.DEF"
+			}
+		},
+		"primarySkills" : {
+			"attack" : 1,
+			"defence" : 3,
+			"knowledge" : 1,
+			"spellpower" : 1
+		},
+		"highLevelChance" : {
+			"attack" : 30,
+			"defence" : 30,
+			"knowledge" : 20,
+			"spellpower" : 20
+		},
+		"lowLevelChance" : {
+			"attack" : 35,
+			"defence" : 45,
+			"knowledge" : 10,
+			"spellpower" : 10
+		},
+		"secondarySkills" : {
+			"airMagic" : 1,
+			"archery" : 8,
+			"armorer" : 8,
+			"artillery" : 6,
+			"ballistics" : 4,
+			"diplomacy" : 4,
+			"eagleEye" : 2,
+			"earthMagic" : 3,
+			"estates" : 2,
+			"fireMagic" : 0,
+			"firstAid" : 3,
+			"intelligence" : 2,
+			"leadership" : 6,
+			"learning" : 4,
+			"logistics" : 5,
+			"luck" : 6,
+			"mysticism" : 3,
+			"navigation" : 3,
+			"necromancy" : 0,
+			"offence" : 5,
+			"pathfinding" : 7,
+			"resistance" : 9,
+			"scholar" : 1,
+			"scouting" : 7,
+			"sorcery" : 2,
+			"tactics" : 5,
+			"waterMagic" : 3,
+			"wisdom" : 3
+		},
+		"tavern" : {
+			"castle" : 6,
+			"conflux" : 5,
+			"dungeon" : 5,
+			"fortress" : 5,
+			"inferno" : 5,
+			"necropolis" : 5,
+			"rampart" : 6,
+			"stronghold" : 6,
+			"tower" : 6
+		}
+	}
+}

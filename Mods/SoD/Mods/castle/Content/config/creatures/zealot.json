@@ -1,0 +1,88 @@
+{
+	"zealot": {
+		"name" : {
+			"plural" : "Zealots",
+			"singular" : "Zealot"
+		},
+		"faction" : "castle",
+		"level" : 5,
+		"cost" : {
+			"gold" : 450
+		},
+		"speed" : 7,
+		"hitPoints" : 30,
+		"attack" : 12,
+		"defense" : 10,
+		"damage" : {
+			"max" : 12,
+			"min" : 10
+		},
+		"shots" : 24,
+		"doubleWide" : false,
+		"growth" : 3,
+		"horde" : 0,
+		"aiValue" : 750,
+		"fightValue" : 500,
+		"advMapAmount" : {
+			"max" : 12,
+			"min" : 8
+		},
+		"abilities" : {
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			},
+			"const_no_melee_penalty" : {
+				"type" : "NO_MELEE_PENALTY"
+			}
+		},
+		"abilityText" : "No melee penalty.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CZEALT.def",
+			"map" : "sprites/creatures/adventureMap/AVWmonx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL11.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort11.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"missile" : {
+				"projectile" : "sprites/creatures/projectile/CPRZEAX.DEF",
+				"attackClimaxFrame" : 6,
+				"frameAngles" : [
+					90,
+					72,
+					45,
+					27,
+					0,
+					-27,
+					-45,
+					-72,
+					-90,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 28,
+					"lowerY" : 3,
+					"middleX" : 62,
+					"middleY" : -53,
+					"upperX" : 37,
+					"upperY" : -98
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/ZELTATTK.wav",
+			"defend" : "sounds/creatures/ZELTDFND.wav",
+			"killed" : "sounds/creatures/ZELTKILL.wav",
+			"move" : "sounds/creatures/ZELTMOVE.wav",
+			"shoot" : "sounds/creatures/ZELTSHOT.wav",
+			"wince" : "sounds/creatures/ZELTWNCE.wav"
+		}
+	}
+}

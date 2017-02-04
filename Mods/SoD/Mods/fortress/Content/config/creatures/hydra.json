@@ -1,0 +1,64 @@
+{
+	"hydra": {
+		"name" : {
+			"plural" : "Hydras",
+			"singular" : "Hydra"
+		},
+		"faction" : "fortress",
+		"level" : 7,
+		"upgrades": ["chaosHydra"],
+		"cost" : {
+			"gold" : 2200
+		},
+		"speed" : 5,
+		"hitPoints" : 175,
+		"attack" : 16,
+		"defense" : 18,
+		"damage" : {
+			"max" : 45,
+			"min" : 25
+		},
+		"doubleWide" : true,
+		"growth" : 1,
+		"horde" : 0,
+		"aiValue" : 4120,
+		"fightValue" : 4120,
+		"advMapAmount" : {
+			"max" : 10,
+			"min" : 4
+		},
+		"abilities" : {
+			"KING_1" : {
+				"type" : "KING1"
+			},
+			"attackAll" : {
+				"type" : "ATTACKS_ALL_ADJACENT"
+			},
+			"noRetaliate" : {
+				"type" : "BLOCKS_RETALIATION"
+			}
+		},
+		"abilityText" : "Attacks all adjacent enemies.  Enemies cannot retaliate.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CHYDRA.def",
+			"map" : "sprites/creatures/adventureMap/AvWHydr.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL112.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort112.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/HYDRATTK.wav",
+			"defend" : "sounds/creatures/HYDRDFND.wav",
+			"killed" : "sounds/creatures/HYDRKILL.wav",
+			"move" : "sounds/creatures/HYDRMOVE.wav",
+			"wince" : "sounds/creatures/HYDRWNCE.wav"
+		}
+	}
+}

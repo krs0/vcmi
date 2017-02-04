@@ -1,0 +1,83 @@
+{
+	"blackDragon": {
+		"name" : {
+			"plural" : "Black Dragons",
+			"singular" : "Black Dragon"
+		},
+		"faction" : "dungeon",
+		"level" : 7,
+		"upgrades": ["blackDragon"],
+		"cost" : {
+			"sulfur" : 2,
+			"gold" : 4000
+		},
+		"speed" : 15,
+		"hitPoints" : 300,
+		"attack" : 25,
+		"defense" : 25,
+		"damage" : {
+			"max" : 50,
+			"min" : 40
+		},
+		"doubleWide" : true,
+		"growth" : 1,
+		"horde" : 0,
+		"aiValue" : 8721,
+		"fightValue" : 6783,
+		"advMapAmount" : {
+			"max" : 8,
+			"min" : 3
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"KING_1" : {
+				"type" : "KING1"
+			},
+			"dragon" : {
+				"type" : "DRAGON_NATURE"
+			},
+			"fireBreath" : {
+				"type" : "TWO_HEX_ATTACK_BREATH"
+			},
+			"hateGiants" : {
+				"subtype" : "creature.giant",
+				"type" : "HATE",
+				"val" : 50
+			},
+			"hateTitans" : {
+				"subtype" : "creature.titan",
+				"type" : "HATE",
+				"val" : 50
+			},
+			"spellImmunity" : {
+				"type" : "LEVEL_SPELL_IMMUNITY",
+				"val" : 5
+			}
+		},
+		"abilityText" : "Immune to all spells.",
+		"hasDoubleWeek" : true,
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CBDRGN.def",
+			"map" : "sprites/creatures/adventureMap/AVWddrx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL85.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort85.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.6
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/BKDRATTK.wav",
+			"defend" : "sounds/creatures/BKDRDFND.wav",
+			"killed" : "sounds/creatures/BKDRKILL.wav",
+			"move" : "sounds/creatures/BKDRMOVE.wav",
+			"wince" : "sounds/creatures/BKDRWNCE.wav"
+		}
+	}
+}

@@ -1,0 +1,68 @@
+{
+	"zubin" :
+	{
+		"class" : "battlemage",
+		"female" : false,
+
+		"index" : 108,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL108BM.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS108BM.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "goblin",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "goblinWolfRider",
+				"max" : 7,
+				"min" : 5
+			},
+			{
+				"creature" : "orc",
+				"max" : 6,
+				"min" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "artillery"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 53,
+				"type" : 8,
+				"val" : 0
+			}
+		],
+		"spellbook" : [
+			"precision"
+		],
+		
+		"texts" : {
+			"biography" : "Zubin was once chief of a tribe which fought against Duke Boragus.  When peace was finally attained, he was offered his own command within the armies of Krewlod.",
+			"name" : "Zubin",
+			"specialty" : {
+				"description" : "Casts Precision with increased effect, based on hero level compared to the level of the target unit (the bonus is greater when used on weaker units).",
+				"name" : "Precision",
+				"tooltip" : "Spell Bonus: Precision"
+			}
+		}
+	}
+}
+

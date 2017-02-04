@@ -1,0 +1,68 @@
+{
+	"genie": {
+		"name" : {
+			"plural" : "Genies",
+			"singular" : "Genie"
+		},
+		"faction" : "tower",
+		"level" : 5,
+		"upgrades": ["masterGenie"],
+		"cost" : {
+			"gold" : 550
+		},
+		"speed" : 7,
+		"hitPoints" : 40,
+		"attack" : 12,
+		"defense" : 12,
+		"damage" : {
+			"max" : 16,
+			"min" : 13
+		},
+		"doubleWide" : false,
+		"growth" : 3,
+		"horde" : 0,
+		"aiValue" : 884,
+		"fightValue" : 680,
+		"advMapAmount" : {
+			"max" : 16,
+			"min" : 8
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"hateAngels" : {
+				"subtype" : "creature.efreet",
+				"type" : "HATE",
+				"val" : 50
+			},
+			"hateArchAngels" : {
+				"subtype" : "creature.efreetSultan",
+				"type" : "HATE",
+				"val" : 50
+			}
+		},
+		"abilityText" : "Hates Efreet.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CGENIE.def",
+			"map" : "sprites/creatures/adventureMap/AVWgeni0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL38.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort38.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/GENIATTK.wav",
+			"defend" : "sounds/creatures/GENIDFND.wav",
+			"killed" : "sounds/creatures/GENIKILL.wav",
+			"move" : "sounds/creatures/GENIMOVE.wav",
+			"wince" : "sounds/creatures/GENIWNCE.wav"
+		},
+	}
+}

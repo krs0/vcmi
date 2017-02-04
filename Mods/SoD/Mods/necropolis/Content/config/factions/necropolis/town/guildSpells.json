@@ -1,0 +1,89 @@
+{
+	"necropolis" :
+	{
+		"town" :
+		{
+			"guildSpells" :
+			{
+				// Level 1
+				"bless" :					0,
+				"bloodlust" : 				5,
+				"cure" : 					0,
+				"curse" : 					10,
+				"dispel" : 					10,
+				"haste" : 					5,
+				"magicArrow" :				30,
+				"protectFire" :				3,
+				"protectWater" :			3,
+				"shield" :					10,
+				"slow" :					5,
+				"stoneSkin" :				10,
+				"summonBoat" :				3,
+				"viewAir" :					3,
+				"viewEarth" :				3,
+
+				// Level 2
+				"blind" :					4,
+				"deathRipple" :				50,
+				"disguise" :				2,
+				"disruptingRay" :			4,
+				"fireWall" :				4,
+				"fortune" :					2,
+				"iceBolt" :					6,
+				"lightningBolt" :			6,
+				"precision" :				2,
+				"quicksand" :				4,
+				"removeObstacle" :			4,
+				"scuttleBoat" :				4,
+				"visions" :					2,
+				"weakness" :				4,
+
+				// Level 3
+				"airShield" :				4,
+				"animateDead" :				16,
+				"antiMagic" :				8,
+				"destroyUndead" :			0,
+				"earthquake" :				4,
+				"fireball" :				12,
+				"forceField" :				8,
+				"forgetfulness" :			4,
+				"frostRing" :				12,
+				"hypnotize" :				0,
+				"landMine" :				8,
+				"mirth" :					4,
+				"misfortune" :				8,
+				"protectAir" :				2,
+				"protectEarth" :			4,
+				"teleport" :				8,
+
+				//Level 4
+				"armageddon" :				5,
+				"berserk" :					10,
+				"chainLightning" :			10,
+				"clone" :					5,
+				"counterstrike" :			5,
+				"fireShield" :				5,
+				"frenzy" :					5,
+				"inferno" :					5,
+				"meteorShower" :			10,
+				"prayer" :					0,
+				"resurrection" :			10,
+				"slayer" :					5,
+				"sorrow" :					5,
+				"townPortal" :				10,
+				"waterWalk" :				10,
+
+				//level 5
+				"dimensionDoor" :			16,
+				"fly" :						16,
+				"implosion" :				20,
+				"magicMirror" :				0,
+				"sacriffice" :				16,
+				"summonAirElemental" :		16,
+				"summonEarthElemental" :	16,
+				"summonFireElemental" :		0,
+				"summonWaterElemental" :	0,
+			}
+		}
+	}
+}

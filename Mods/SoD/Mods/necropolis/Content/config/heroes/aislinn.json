@@ -1,0 +1,68 @@
+{
+	"aislinn" :
+	{
+		"class" : "necromancer",
+		"female" : true,
+		"index" : 73,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL073NC.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS073NC.bmp"
+		},
+
+
+		"army" : [
+			{
+				"creature" : "skeleton",
+				"max" : 30,
+				"min" : 20
+			},
+			{
+				"creature" : "zombie",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "wight",
+				"max" : 6,
+				"min" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "necromancy"
+			},
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 23,
+				"type" : 3,
+				"val" : 3
+			}
+		],
+		"spellbook" : [
+			"meteorShower"
+		],
+			
+		"texts" : {
+			"biography" : "Aislinn has always preferred the feel of the earth over the sky, and many believe she can draw life from the ground merely by being in contact with it.  ",
+			"name" : "Aislinn",
+			"specialty" : {
+				"description" : "Casts Meteor Shower with increased effect, based on hero level compared to the level of the target unit (the bonus is greater when used on weaker units).",
+				"name" : "Meteor Shower",
+				"tooltip" : "Spell Bonus: Meteor Shower"
+			}
+		}
+	}
+}
+

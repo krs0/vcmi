@@ -1,0 +1,61 @@
+{
+	"jenova" :
+	{
+		"class" : "ranger",
+		"female" : true,
+
+		"index" : 18,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL018RN.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS018RN.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "centaur",
+				"max" : 24,
+				"min" : 12
+			},
+			{
+				"creature" : "dwarf",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "woodElf",
+				"max" : 6,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "advanced",
+				"skill" : "archery"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 6,
+				"type" : 10,
+				"val" : 350
+			}
+		],
+
+		"texts" : {
+			"biography" : "Jenova's kindhearted nature has made her well liked throughout much of Erathia.  Her beguiling charms have allowed her to raise money for whatever cause she chooses to follow.",
+			"name" : "Jenova",
+			"specialty" : {
+				"description" : "Increases kingdom's income by 350 gold per day.",
+				"name" : "+350 Gold",
+				"tooltip" : "+350 Gold each day"
+			}
+		}
+	}
+}
+

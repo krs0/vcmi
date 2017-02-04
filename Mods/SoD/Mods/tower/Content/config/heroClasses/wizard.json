@@ -1,0 +1,82 @@
+{
+	"wizard" :
+	{
+		"name" : "Wizard",
+		"faction" : "tower",
+		"affinity" : "magic",
+		"defaultTavern" : 5,
+		"mapObject" : {
+			"templates" : {
+				"default" : {
+					"animation" : "sprites/heroClasses/AH05_.def",
+					"editorAnimation" : "sprites/heroClasses/AH05_E.def"
+				}
+			}
+		},
+		"animation" : {
+			"battle" : {
+				"female" : "sprites/heroClasses/CH04.DEF",
+				"male" : "sprites/heroClasses/CH05.DEF"
+			}
+		},
+		"primarySkills" : {
+			"attack" : 0,
+			"defence" : 0,
+			"knowledge" : 3,
+			"spellpower" : 2
+		},
+		"highLevelChance" : {
+			"attack" : 30,
+			"defence" : 20,
+			"knowledge" : 30,
+			"spellpower" : 20
+		},
+		"lowLevelChance" : {
+			"attack" : 10,
+			"defence" : 10,
+			"knowledge" : 40,
+			"spellpower" : 40
+		},
+		"secondarySkills" : {
+			"airMagic" : 6,
+			"archery" : 2,
+			"armorer" : 1,
+			"artillery" : 1,
+			"ballistics" : 4,
+			"diplomacy" : 4,
+			"eagleEye" : 8,
+			"earthMagic" : 3,
+			"estates" : 5,
+			"fireMagic" : 2,
+			"firstAid" : 7,
+			"intelligence" : 10,
+			"leadership" : 4,
+			"learning" : 4,
+			"logistics" : 2,
+			"luck" : 4,
+			"mysticism" : 8,
+			"navigation" : 1,
+			"necromancy" : 0,
+			"offence" : 1,
+			"pathfinding" : 2,
+			"resistance" : 0,
+			"scholar" : 9,
+			"scouting" : 2,
+			"sorcery" : 8,
+			"tactics" : 1,
+			"waterMagic" : 3,
+			"wisdom" : 10
+		},
+		"tavern" : {
+			"castle" : 6,
+			"conflux" : 6,
+			"dungeon" : 5,
+			"fortress" : 6,
+			"inferno" : 5,
+			"necropolis" : 5,
+			"rampart" : 6,
+			"stronghold" : 5,
+			"tower" : 6
+		}
+	}
+}

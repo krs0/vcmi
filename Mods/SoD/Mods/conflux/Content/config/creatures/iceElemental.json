@@ -1,0 +1,109 @@
+{
+	"iceElemental": {
+		"name" : {
+			"plural" : "Ice Elementals",
+			"singular" : "Ice Elemental"
+		},
+		"faction" : "conflux",
+		"level" : 3,
+		"cost" : {
+			"gold" : 375
+		},
+		"speed" : 6,
+		"hitPoints" : 30,
+		"attack" : 8,
+		"defense" : 10,
+		"damage" : {
+			"max" : 7,
+			"min" : 3
+		},
+		"shots" : 24,
+		"spellPoints" : 3,
+		"doubleWide" : true,
+		"growth" : 6,
+		"horde" : 0,
+		"aiValue" : 380,
+		"fightValue" : 315,
+		"advMapAmount" : {
+			"max" : 20,
+			"min" : 12
+		},
+		"abilities" : {
+			"IMMUNE_TO_MIND_SPELLS" : {
+				"type" : "MIND_IMMUNITY"
+			},
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			},
+			"immuneToWater" : {
+				"subtype" : 2,
+				"type" : "WATER_IMMUNITY"
+			},
+			"nonLiving" : {
+				"type" : "NON_LIVING"
+			},
+			"spellPoints" : {
+				"type" : "CASTS",
+				"val" : 3
+			},
+			"spellPower" : {
+				"type" : "CREATURE_ENCHANT_POWER",
+				"val" : 6
+			},
+			"spellcaster" : {
+				"subtype" : "spell.protectWater",
+				"type" : "SPELLCASTER",
+				"val" : 2
+			}
+		},
+		"abilityText" : "Mind spell immunity. Ice immunity. Fire vulnerability.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CICEE.def",
+			"map" : "sprites/creatures/adventureMap/AVWicee.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL125.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort125.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 0,
+				"walk" : 1
+			},
+			"missile" : {
+				"projectile" : "sprites/creatures/projectile/PICEE.DEF",
+				"attackClimaxFrame" : 4,
+				"frameAngles" : [
+					90,
+					72,
+					45,
+					27,
+					0,
+					-27,
+					-45,
+					-72,
+					-90,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 18,
+					"lowerY" : -92,
+					"middleX" : 43,
+					"middleY" : -99,
+					"upperX" : 28,
+					"upperY" : -107
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/ICELATTK.wav",
+			"defend" : "sounds/creatures/ICELDFND.wav",
+			"killed" : "sounds/creatures/ICELKILL.wav",
+			"move" : "sounds/creatures/ICELMOVE.wav",
+			"shoot" : "sounds/creatures/ICELSHOT.wav",
+			"wince" : "sounds/creatures/ICELWNCE.wav"
+		}
+	}
+}

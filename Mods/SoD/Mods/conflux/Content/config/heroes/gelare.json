@@ -1,0 +1,68 @@
+{
+	"gelare" :
+	{
+		"class" : "elementalist",
+		"female" : false,
+
+		"index" : 142,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL006EL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS006EL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "pixies",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "airElementals",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "waterElementals",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "waterMagic"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 6,
+				"type" : 10,
+				"val" : 350
+			}
+		],
+		"spellbook" : [
+			"dispel"
+		],
+		
+		"texts" : {
+			"biography" : "Gelare was born with a wisdom beyond his years, even for an elf.  Always calm, reflective and serene on the outside, Gelare did not question his calling to the Conflux.",
+			"name" : "Gelare",
+			"specialty" : {
+				"description" : "Increases kingdom's income by 350 gold per day.",
+				"name" : "+350 Gold",
+				"tooltip" : "+350 Gold each day"
+			}
+		}
+	}
+}
+

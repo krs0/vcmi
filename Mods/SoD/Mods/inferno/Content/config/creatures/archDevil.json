@@ -1,0 +1,83 @@
+{
+	"archDevil": {
+		"name" : {
+			"plural" : "Arch Devils",
+			"singular" : "Arch Devil"
+		},
+		"faction" : "inferno",
+		"level" : 7,
+		"cost" : {
+			"gold" : 4500,
+			"mercury" : 2
+		},
+		"speed" : 17,
+		"hitPoints" : 200,
+		"attack" : 26,
+		"defense" : 28,
+		"damage" : {
+			"max" : 40,
+			"min" : 30
+		},
+		"doubleWide" : false,
+		"growth" : 1,
+		"horde" : 0,
+		"aiValue" : 7115,
+		"fightValue" : 5243,
+		"advMapAmount" : {
+			"max" : 8,
+			"min" : 3
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING",
+				"subtype" : 1
+			},
+			"KING_2" : {
+				"type" : "KING2"
+			},
+			"blockRetaliation" : {
+				"type" : "BLOCKS_RETALIATION"
+			},
+			"descreaseLuck" : {
+				"effectRange" : "ONLY_ENEMY_ARMY",
+				"type" : "LUCK",
+				"val" : -1
+			},
+			"hateAngels" : {
+				"subtype" : "creature.angel",
+				"type" : "HATE",
+				"val" : 50
+			},
+			"hateArchAngels" : {
+				"subtype" : "creature.angel",
+				"type" : "HATE",
+				"val" : 50
+			}
+		},
+		"abilityText" : "-1 enemy luck. No enemy retaliation. Hates Angels.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CADEVL.def",
+			"map" : "sprites/creatures/adventureMap/AVWdevx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL57.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort57.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"missile" : null,
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/ADVLATTK.wav",
+			"defend" : "sounds/creatures/ADVLDFND.wav",
+			"endMoving" : "sounds/creatures/ADVLEXT2.wav",
+			"killed" : "sounds/creatures/ADVLKILL.wav",
+			"move" : "sounds/creatures/ADVLMOVE.wav",
+			"startMoving" : "sounds/creatures/ADVLEXT1.wav",
+			"wince" : "sounds/creatures/ADVLWNCE.wav"
+		}
+	}
+}

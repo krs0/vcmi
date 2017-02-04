@@ -1,0 +1,52 @@
+{
+	"swordsman": {
+		"name" : {
+			"plural" : "Swordsmen",
+			"singular" : "Swordsman"
+		},
+		"faction" : "castle",
+		"level" : 4,
+		"upgrades" : ["crusader"],
+		"cost" : {
+			"gold" : 300
+		},
+		"speed" : 5,
+		"hitPoints" : 35,
+		"attack" : 10,
+		"defense" : 12,
+		"damage" : {
+			"max" : 9,
+			"min" : 6
+		},
+		"doubleWide" : false,
+		"growth" : 4,
+		"horde" : 0,
+		"aiValue" : 445,
+		"fightValue" : 445,
+		"advMapAmount" : {
+			"max" : 20,
+			"min" : 10
+		},
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CSWORD.def",
+			"map" : "sprites/creatures/adventureMap/AVWswrd0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL8.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort8.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.87
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/SWRDATTK.wav",
+			"defend" : "sounds/creatures/SWRDDFND.wav",
+			"killed" : "sounds/creatures/SWRDKILL.wav",
+			"move" : "sounds/creatures/SWRDMOVE.wav",
+			"wince" : "sounds/creatures/SWRDWNCE.wav"
+		}
+	}
+}

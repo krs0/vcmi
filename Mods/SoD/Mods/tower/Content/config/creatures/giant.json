@@ -1,0 +1,62 @@
+{
+	"giant": {
+		"name" : {
+			"plural" : "Giants",
+			"singular" : "Giant"
+		},
+		"faction" : "tower",
+		"level" : 7,
+		"upgrades": ["titan"],
+		"cost" : {
+			"gold" : 2000,
+			"gems" : 1,
+		},
+		"speed" : 7,
+		"hitPoints" : 150,
+		"attack" : 19,
+		"defense" : 16,
+		"damage" : {
+			"max" : 60,
+			"min" : 40
+		},
+		"doubleWide" : false,
+		"growth" : 1,
+		"horde" : 0,
+		"aiValue" : 3718,
+		"fightValue" : 3146,
+		"advMapAmount" : {
+			"max" : 10,
+			"min" : 4
+		},
+		"abilities" : {
+			"KING_3" : {
+				"type" : "KING3"
+			},
+			"immuneToMind" : {
+				"type" : "MIND_IMMUNITY"
+			}
+		},
+		"abilityText" : "Mind spell immunity",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CLTITA.def",
+			"map" : "sprites/creatures/adventureMap/AVWtitn0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL42.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort42.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1.38
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/LTITATTK.wav",
+			"defend" : "sounds/creatures/LTITDFND.wav",
+			"killed" : "sounds/creatures/LTITKILL.wav",
+			"move" : "sounds/creatures/LTITMOVE.wav",
+			"wince" : "sounds/creatures/LTITWNCE.wav"
+		}
+	}
+}

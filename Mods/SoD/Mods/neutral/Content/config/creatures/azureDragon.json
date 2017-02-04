@@ -1,0 +1,78 @@
+{
+	"azureDragon": {
+		"name" : {
+			"plural" : "Azure Dragons",
+			"singular" : "Azure Dragon"
+		},
+		"faction" : "neutral",
+		"level" : 10,
+		"cost" : {
+			"mercury" : 20,
+			"gold" : 30000
+		},
+		"speed" : 19,
+		"hitPoints" : 1000,
+		"attack" : 50,
+		"defense" : 50,
+		"damage" : {
+			"max" : 80,
+			"min" : 70
+		},
+		"doubleWide" : true,
+		"growth" : 1,
+		"horde" : 0,
+		"aiValue" : 78845,
+		"fightValue" : 56315,
+		"advMapAmount" : {
+			"max" : 3,
+			"min" : 1
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"KING_1" : {
+				"type" : "KING1"
+			},
+			"dragon" : {
+				"type" : "DRAGON_NATURE"
+			},
+			"fear" : {
+				"type" : "FEAR"
+			},
+			"fearless" : {
+				"type" : "FEARLESS"
+			},
+			"fireBreath" : {
+				"type" : "TWO_HEX_ATTACK_BREATH"
+			},
+			"spellImmunity" : {
+				"type" : "LEVEL_SPELL_IMMUNITY",
+				"val" : 3
+			}
+		},
+		"abilityText" : "Fear.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CADRGN.def",
+			"map" : "sprites/creatures/adventureMap/AVWazure.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL134.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort134.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.6
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/AZURATTK.wav",
+			"defend" : "sounds/creatures/AZURDFND.wav",
+			"killed" : "sounds/creatures/AZURKILL.wav",
+			"move" : "sounds/creatures/AZURMOVE.wav",
+			"wince" : "sounds/creatures/AZURWNCE.wav"
+		},
+		"special" : true
+	}
+}

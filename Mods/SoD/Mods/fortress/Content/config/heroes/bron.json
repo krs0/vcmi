@@ -1,0 +1,64 @@
+{
+	"bron" :
+	{
+		"class" : "beastmaster",
+		"female" : false,
+
+		"index" : 112,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL112BS.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS112BS.bmp"
+		},
+
+		"army" :
+		[
+			{
+				"creature" : "gnoll",
+				"min" : 10, "max" : 20
+
+			},
+			{
+				"creature" : "basilisk",
+				"min" : 4, "max" : 7
+			},
+			{
+				"creature" : "serpentFly",
+				"min" : 2, "max" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "armorer"
+			},
+			{
+				"level" : "basic",
+				"skill" : "resistance"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 5,
+				"type" : 10,
+				"val" : 1
+			}
+		],
+
+		"texts" : {
+			"biography" : "Bron, though human, possesses an uncanny resistance to the gaze of a Basilisk, which has allowed him to learn more about them than any other creature alive.",
+			"name" : "Bron",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Basilisks or Greater Basilisks for each level attained after 4th level.",
+				"name" : "Basilisks",
+				"tooltip" : "Creature Bonus: Basilisks"
+			}
+		}
+	}
+}
+

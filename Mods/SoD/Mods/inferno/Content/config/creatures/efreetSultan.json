@@ -1,0 +1,76 @@
+{
+	"efreetSultan": {
+		"name" : {
+			"plural" : "Efreet Sultans",
+			"singular" : "Efreet Sultan"
+		},
+		"faction" : "inferno",
+		"level" : 6,
+		"cost" : {
+			"gold" : 1100
+		},
+		"speed" : 13,
+		"hitPoints" : 90,
+		"attack" : 16,
+		"defense" : 14,
+		"damage" : {
+			"max" : 24,
+			"min" : 16
+		},
+		"doubleWide" : false,
+		"growth" : 2,
+		"horde" : 0,
+		"aiValue" : 1848,
+		"fightValue" : 1584,
+		"advMapAmount" : {
+			"max" : 10,
+			"min" : 5
+		},
+		"abilities" : {
+			"canFly" : {
+				"type" : "FLYING"
+			},
+			"fireShield" : {
+				"type" : "FIRE_SHIELD",
+				"val" : 30
+			},
+			"hateGenies" : {
+				"subtype" : "creature.genie",
+				"type" : "HATE",
+				"val" : 50
+			},
+			"hateMasterGenies" : {
+				"subtype" : "creature.masterGenie",
+				"type" : "HATE",
+				"val" : 50
+			},
+			"immuneToFire" : {
+				"subtype" : 0,
+				"type" : "FIRE_IMMUNITY"
+			}
+		},
+		"abilityText" : "Fire shield.  Immune to fire.  Hates Genies.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CEFRES.def",
+			"map" : "sprites/creatures/adventureMap/AVWefrx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL55.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort55.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/ESULATTK.wav",
+			"defend" : "sounds/creatures/ESULDFND.wav",
+			"killed" : "sounds/creatures/ESULKILL.wav",
+			"move" : "sounds/creatures/ESULMOVE.wav",
+			"shoot" : "sounds/creatures/ESULSHOT.wav",
+			"wince" : "sounds/creatures/ESULWNCE.wav"
+		}
+	}
+}

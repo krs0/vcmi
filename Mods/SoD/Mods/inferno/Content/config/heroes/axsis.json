@@ -1,0 +1,68 @@
+{
+	"axsis" :
+	{
+		"class" : "heretic",
+		"female" : false,
+
+		"index" : 58,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL058DM.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS058DM.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "imp",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "gog",
+				"max" : 7,
+				"min" : 4
+			},
+			{
+				"creature" : "hellHound",
+				"max" : 4,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "mysticism"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 1,
+				"subtype" : 8,
+				"type" : 2,
+				"val" : 5
+			}
+		],
+		"spellbook" : [
+			"protectAir"
+		],
+			
+		"texts" : {
+			"biography" : "Axsis showed a natural aptitude for magic at a young age, which makes things even more strange than normal, as demons rarely show a natural aptitude for anything that requires thought.",
+			"name" : "Axsis",
+			"specialty" : {
+				"description" : "Receives a 5% per level bonus to Mysticism skill.",
+				"name" : "Mysticism",
+				"tooltip" : "Secondary Skill Bonus: Mysticism"
+			}
+		}
+	}
+}
+

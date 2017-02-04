@@ -1,0 +1,53 @@
+{
+	"ogre": {
+		"name" : {
+			"plural" : "Ogres",
+			"singular" : "Ogre"
+		},
+		"faction" : "stronghold",
+		"level" : 4,
+		"upgrades": ["ogreMage"],
+		"cost" : {
+			"gold" : 300
+		},
+		"speed" : 4,
+		"hitPoints" : 40,
+		"attack" : 13,
+		"defense" : 7,
+		"damage" : {
+			"max" : 12,
+			"min" : 6
+		},
+		"doubleWide" : false,
+		"growth" : 4,
+		"horde" : 0,
+		"aiValue" : 416,
+		"fightValue" : 520,
+		"advMapAmount" : {
+			"max" : 20,
+			"min" : 10
+		},
+		"abilityText" : "",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/COGRE.def",
+			"map" : "sprites/creatures/adventureMap/AVWogre0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL92.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort92.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1.28
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/OGREATTK.wav",
+			"defend" : "sounds/creatures/OGREDFND.wav",
+			"killed" : "sounds/creatures/OGREKILL.wav",
+			"move" : "sounds/creatures/OGREMOVE.wav",
+			"wince" : "sounds/creatures/OGREWNCE.wav"
+		},
+	}
+}

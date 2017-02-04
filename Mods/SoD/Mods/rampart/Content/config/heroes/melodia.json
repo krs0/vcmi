@@ -1,0 +1,68 @@
+{
+	"melodia" :
+	{
+		"class" : "druid",
+		"female" : true,
+
+		"index" : 29,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL029DR.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS029DR.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "centaur",
+				"max" : 24,
+				"min" : 12
+			},
+			{
+				"creature" : "dwarf",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "woodElf",
+				"max" : 6,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "luck"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 51,
+				"type" : 7,
+				"val" : 0
+			}
+		],
+		"spellbook" : [
+			"fortune"
+		],
+
+		"texts" : {
+			"biography" : "Melodia may not be the most highly skilled Druid ever seen in AvLee, but she is certainly the luckiest.  Even in the face of insurmountable odds she has managed to achieve miraculous victories.  Troops gladly volunteer to serve in any army she leads.",
+			"name" : "Melodia",
+			"specialty" : {
+				"description" : "Casts Fortune with increased effect, based on hero level compared to the level of the target unit (the bonus is greater when used on weaker units).",
+				"name" : "Fortune",
+				"tooltip" : "Spell Bonus: Fortune"
+			}
+		}
+	}
+}
+

@@ -1,0 +1,1394 @@
+{
+	// Additional spell info, not included in original heroes III files
+	//   id: spell ID
+	//   effect: -1 -> spell is negative for influenced creatures,
+    //			  0 -> spell is indifferent for them
+    //			  1 -> spell is positive for them
+	//   anim: main effect animation (AC format), -1 - none
+    //   ranges: spell range description in SRSL ([no magic] [basic] [advanced] [expert])
+    //	 counters: array of ids of countering spells
+
+    // flags: string array of
+    //		damage - ATM used only in CBattleInfoCallback::calculateSpellDmg
+    //		offensive
+    //		rising
+    //		summoning //todo:
+
+    //effects: array of structure for bonuses for permanent effects
+    // {bonus format} - effect //todo
+    // + values: [4 int values] (OPTIONAL default from sptraits) values for levels
+    // + ainfos: [4 int values] (optional) additional infos for levels (atm only CURSE)
+
+    //
+    //immunity - name of bonus granting immunity to this spell
+    //
+    // 	immunity: array any of these bonus grants immunity
+    //  limit: array required bonus to be affected, all required
+
+    //graphics - OPTIONAL; object;
+    //  iconImmune - OPTIONAL; string; resourse path of icon for SPELL_IMMUNITY bonus (relative to DATA or SPRITES)
+
+	"spells":
+	{
+		"summonBoat"     :
+		{
+			"id": 0,
+			"name" : "Summon boat",
+			"soundfile" : "sound/SoD/SUMMBOAT.wav",
+			"effect": 0,
+			"anim": -1,
+			"ranges": [ "X", "X", "X", "X" ]
+		},
+		"scuttleBoat"    :
+		{
+			"id": 1,
+			"name" : "Scuttle boat",
+			"soundfile" : "sound/SoD/SCUTBOAT.wav",
+			"effect": 0,
+			"anim": -1,
+			"ranges": [ "X", "X", "X", "X" ]
+		},
+		"visions"        :
+		{
+			"id": 2,
+			"name" : "Visions",
+			"soundfile" : "sound/SoD/VISIONS.wav",
+			"effect": 0,
+			"anim": -1,
+			"ranges": [ "X", "X", "X", "X" ]
+		},
+		"viewEarth"      :
+		{
+			"id": 3,
+			"name" : "View Earth",
+			"soundfile" : "sound/SoD/VIEW.wav",
+			"effect": 0,
+			"anim": -1,
+			"ranges": [ "X", "X", "X", "X" ]
+		},
+		"disguise"       :
+		{
+			"id": 4,
+			"name" : "Disguise",
+			"soundfile" : "sound/SoD/DISGUISE.wav",
+			"effect": 0,
+			"anim": -1,
+			"ranges": [ "X", "X", "X", "X" ]
+		},
+		"viewAir"        :
+		{
+			"id": 5,
+			"name" : "View Air",
+			"soundfile" : "sound/SoD/VIEW.wav",
+			"effect": 0,
+			"anim": -1,
+			"ranges": [ "X", "X", "X", "X" ]
+		},
+		"fly"            :
+		{
+			"id": 6,
+			"name" : "Fly",
+			"soundfile" : "sound/SoD/FLYSPELL.wav",
+			"effect": 0,
+			"anim": -1,
+			"ranges": [ "X", "X", "X", "X" ]
+		},
+		"waterWalk"      :
+		{
+			"id": 7,
+			"name" : "Water walking",
+			"soundfile" : "sound/SoD/WATRWALK.wav",
+			"effect": 0,
+			"anim": -1,
+			"ranges": [ "X", "X", "X", "X" ]
+		},
+		"dimensionDoor"  :
+		{
+			"id": 8,
+			"name" : "Dimension doors",
+			"soundfile" : "sound/SoD/TELPTOUT.wav",
+			"effect": 0,
+			"anim": -1,
+			"ranges": [ "X", "X", "X", "X" ]
+		},
+		"townPortal"     :
+		{
+			"id": 9,
+			"name" : "Town Portal",
+			"soundfile" : "sound/SoD/TELPTOUT.wav",
+			"effect": 0,
+			"anim": -1,
+			"ranges": [ "X", "X", "X", "X" ]
+		},
+		"quicksand"      :
+		{
+			"id": 10,
+			"name" : "Quick sands",
+			"soundfile" : "sound/SoD/QUIKSAND.wav",
+			"effect": 0,
+			"anim": -1,
+			"ranges": [ "X", "X", "X", "X" ]
+		},
+		"landMine"       :
+		{
+			"id": 11,
+			"effect": 0,
+			"anim": -1,
+			"ranges": [ "X", "X", "X", "X" ],
+			"flags" : ["damage"],
+			"immunities" : ["DIRECT_DAMAGE_IMMUNITY"]
+
+		},
+		"forceField"     :
+		{
+			"id": 12,
+			"name" : "Force field",
+			"soundfile" : "sound/SoD/FORCEFLD.wav",
+			"effect": 0,
+			"anim": -1,
+			"ranges": [ "0", "0", "0", "0" ]
+		},
+		"fireWall"       :
+		{
+			"id": 13,
+			"name" : "Fire wall",
+			"soundfile" : "sound/SoD/FIREWALL.wav",
+			"effect": 0,
+			"anim": -1,
+			"ranges": [ "0", "0", "0", "0" ],
+			"flags" : ["damage"],
+			"immunities" : ["DIRECT_DAMAGE_IMMUNITY"]
+		},
+		"earthquake"     :
+		{
+			"id": 14,
+			"name" : "Earthquake",
+			"soundfile" : "sound/SoD/ERTHQUAK.wav",
+			"effect": 0,
+			"anim": -1,
+			"ranges": [ "X", "X", "X", "X" ]
+		},
+		"magicArrow"     :
+		{
+			"id": 15,
+			"name" :  "magic arrow",
+			"soundfile" :  "sound/SoD/MAGICBLT.wav",
+			"effect": -1,
+			"anim": 64,
+			"graphics" : {
+				"animation" : ["C20SPX.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"flags" : ["damage", "offensive"],
+			"immunities" : ["DIRECT_DAMAGE_IMMUNITY"]
+		},
+		"iceBolt"        :
+		{
+			"id": 16,
+			"name" :  "ice bolt",
+			"soundfile" :  "sound/SoD/ICERAY.wav",
+			"effect": -1,
+			"anim": 46,
+			"graphics" : {
+				"animation" : ["C08SPW5.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"flags" : ["damage", "offensive"],
+			"immunities" : ["DIRECT_DAMAGE_IMMUNITY"]
+		},
+		"lightningBolt"  :
+		{
+			"id": 17,
+			"name" :  "lightning bolt",
+			"soundfile" :  "sound/SoD/LIGHTBLT.wav",
+			"effect": -1,
+			"anim": 38,
+			"graphics" : {
+				"animation" : ["C11SPA1.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"flags" : ["damage", "offensive"],
+			"immunities" : ["DIRECT_DAMAGE_IMMUNITY"]
+		},
+		"implosion"      :
+		{
+			"id": 18,
+			"name" : "Implosion",
+			"soundfile" : "sound/SoD/DECAY.wav",
+			"effect": -1,
+			"anim": 10,
+			"graphics" : {
+				"animation" : ["C05SPE0.DEF"],
+				"iconImmune":"ZVS/LIB1.RES/E_SPIMP"
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"flags" : ["damage", "offensive"],
+			"immunities" : ["DIRECT_DAMAGE_IMMUNITY"]
+		},
+		"chainLightning" :
+		{
+			"id": 19,
+			"name" : "Chaon lighting",
+			"soundfile" : "sound/SoD/CHAINLTE.wav",
+			"effect": -1,
+			"anim": 38,
+			"graphics" : {
+				"animation" : ["C11SPA1.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"flags" : ["damage", "offensive"]
+		},
+		"frostRing"      :
+		{
+			"id": 20,
+			"name" : "frost ring",
+			"soundfile" : "sound/SoD/FROSTING.wav",
+			"effect": -1,
+			"anim": 45,
+			"graphics" : {
+				"animation" : [ "C07SPW.DEF", "C07SPW0.DEF" ]
+			},
+			"ranges": [ "1", "1", "1", "1" ],
+			"flags" : ["damage", "offensive"],
+			"immunities" : ["DIRECT_DAMAGE_IMMUNITY"]
+		},
+		"fireball"       :
+		{
+			"id": 21,
+			"name" :  "fireball",
+			"soundfile" :  "sound/SoD/FIREBALL.wav",
+			"effect": -1,
+			"anim": 53,
+			"graphics" : {
+				"animation" : [ "C13SPF.DEF", "C13SPF0.DEF" ]
+			},
+			"ranges": [ "0,1", "0,1", "0,1", "0,1" ],
+			"flags" : ["damage", "offensive"],
+			"immunities" : ["DIRECT_DAMAGE_IMMUNITY"]
+		},
+		"inferno"        :
+		{
+			"id": 22,
+			"name" : "Inferno",
+			"soundfile" : "sound/SoD/FIREBLST.wav",
+			"effect": -1,
+			"anim": 9,
+			"graphics" : {
+				"animation" : ["C04SPF0.DEF"]
+			},
+			"ranges": [ "0-2", "0-2", "0-2", "0-2" ],
+			"flags" : ["damage", "offensive"],
+			"immunities" : ["DIRECT_DAMAGE_IMMUNITY"]
+		},
+		"meteorShower"   :
+		{
+			"id": 23,
+			"name" :  "meteor shower",
+			"soundfile" :  "sound/SoD/METEOR.wav",
+			"effect": -1,
+			"anim": 16,
+			"graphics" : {
+				"animation" : ["C08SPE0.DEF"],
+				"iconImmune":"ZVS/LIB1.RES/E_SPMET"
+			},
+			"ranges": [ "0,1", "0,1", "0,1", "0,1" ],
+			"flags" : ["damage", "offensive"],
+			"immunities" : ["DIRECT_DAMAGE_IMMUNITY"]
+		},
+		"deathRipple"    :
+		{
+			"id": 24,
+			"name" :  "death ripple",
+			"soundfile" :  "sound/SoD/DEATHRIP.wav",
+			"effect": -1,
+			"anim": 8,
+			"graphics" : {
+				"animation" : ["C04SPE0.DEF"]
+			},
+			"ranges": [ "X", "X", "X", "X" ],
+			"flags" : ["damage", "offensive"],
+			"immunity":  ["SIEGE_WEAPON","UNDEAD"],
+			"immunities" : ["DIRECT_DAMAGE_IMMUNITY"]
+		},
+		"destroyUndead"  :
+		{
+			"id": 25,
+			"name" : "Destroy undead",
+			"soundfile" : "sound/SoD/COLDRING.wav",
+			"effect": -1,
+			"anim": 29,
+			"graphics" : {
+				"animation" : ["C04SPE0.DEF"]
+			},
+			"ranges": [ "X", "X", "X", "X" ],
+			"flags" : ["damage", "offensive"],
+			"limit":["UNDEAD"],
+			"immunities" : ["DIRECT_DAMAGE_IMMUNITY"]
+
+		},
+		"armageddon"     :
+		{
+			"id": 26,
+			"name" :  "armageddon",
+			"soundfile" :  "sound/SoD/ARMGEDN.wav",
+			"effect": -1,
+			"anim": 12,
+			"graphics" : {
+				"animation" : ["C06SPF0.DEF"],
+				"iconImmune":"ZVS/LIB1.RES/E_SPARM"
+			},
+			"ranges": [ "X", "X", "X", "X" ],
+			"flags" : ["damage", "offensive"],
+			"immunities" : ["DIRECT_DAMAGE_IMMUNITY"]
+		},
+		"shield"         :
+		{
+			"id": 27,
+			"name" :  "shield ",
+			"soundfile" :  "sound/SoD/SHIELD.wav",
+			"effect": 1,
+			"anim": 27,
+			"graphics" : {
+				"animation" : ["C13SPE0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "X" ],
+			"effects":
+			[
+
+				{
+					"type": 	"GENERAL_DAMAGE_REDUCTION",
+					"subtype":0,
+					"duration": "N_TURNS"
+				}
+			]
+		},
+		"airShield"      :
+		{
+			"id": 28,
+			"name" :  "air shield",
+			"soundfile" :  "sound/SoD/AIRSHELD.wav",
+			"effect": 1,
+			"anim": 2,
+			"graphics" : {
+				"animation" : ["C01SPA0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "X" ],
+			"effects":
+			[
+				{
+					"type": 	"GENERAL_DAMAGE_REDUCTION",
+					"subtype":1,
+					"duration": "N_TURNS"
+				}
+			]
+		},
+		"fireShield"     :
+		{
+			"id": 29,
+			"name" : "fireshield cast",
+			"soundfile" : "sound/SoD/FIRESHIE.wav",
+			"effect": 1,
+			"anim": 11,
+			"graphics" : {
+				"animation" : ["C05SPF0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "X" ],
+			"effects":
+			[
+				{
+					"type": 	"FIRE_SHIELD",
+					"duration": "N_TURNS"
+				}
+			]
+		},
+		"protectAir"     :
+		{
+			"id": 30,
+			"name" :  "protection from air",
+			"soundfile" :  "sound/SoD/PROTECTA.wav",
+			"effect": 1,
+			"anim": 22,
+			"graphics" : {
+				"animation" : ["C11SPE0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "X" ],
+			"effects":
+			[
+				{
+
+					"type": 	"SPELL_DAMAGE_REDUCTION",
+					"subtype":0,
+					"duration": "N_TURNS"
+
+				}
+			]
+
+		},
+		"protectFire"    :
+		{
+			"id": 31,
+			"name" :  "protection from fire",
+			"soundfile" :  "sound/SoD/PROTECTF.wav",
+			"effect": 1,
+			"anim": 24,
+			"graphics" : {
+				"animation" : ["C11SPW0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "X" ],
+			"effects":
+			[
+				{
+					"type": 	"SPELL_DAMAGE_REDUCTION",
+					"subtype":1,
+					"duration": "N_TURNS"
+				}
+			]
+		},
+		"protectWater"   :
+		{
+			"id": 32,
+			"name" :  "protection from water",
+			"soundfile" :  "sound/SoD/PROTECTW.wav",
+			"effect": 1,
+			"anim": 23,
+			"graphics" : {
+				"animation" : ["C11SPF0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "X" ],
+			"effects":
+			[
+				{
+					"type": 	"SPELL_DAMAGE_REDUCTION",
+					"subtype":2,
+					"duration": "N_TURNS"
+				}
+			]
+		},
+		"protectEarth"   :
+		{
+			"id": 33,
+			"name" :  "protection from earth",
+			"soundfile" :  "sound/SoD/PROTECTE.wav",
+			"effect": 1,
+			"anim": 26,
+			"graphics" : {
+				"animation" : ["C13SPA0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "X" ],
+			"effects":
+			[
+				{
+					"type": 	"SPELL_DAMAGE_REDUCTION",
+					"subtype":3,
+					"duration": "N_TURNS"
+				}
+			]
+		},
+		"antiMagic"      :
+		{
+			"id": 34,
+			"name" :  "Anti Magic",
+			"soundfile" :  "sound/SoD/ANTIMAGK.wav",
+			"effect": 1,
+			"anim": 5,
+			"graphics" : {
+				"animation" : ["C02SPE0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"effects":
+			[
+				{
+					"type": 	"LEVEL_SPELL_IMMUNITY",
+					"valType":"INDEPENDENT_MAX",
+					"duration": "N_TURNS",
+					"values":[3,3,4,5]
+				}
+			]
+		},
+		"dispel"         :
+		{
+			"id": 35,
+			"name" :  "dispell",
+			"soundfile" : "sound/SoD/DISPELL.wav",
+			"effect": 0,
+			"anim": 41,
+			"graphics" : {
+				"animation" : [ "C05SPW.DEF", "C05SPW0.DEF" ],
+				"iconImmune":"ZVS/LIB1.RES/E_SPDISP"
+			},
+			"ranges": [ "0", "0", "0", "X" ],
+		},
+		"magicMirror"    :
+		{
+			"id": 36,
+			"name" : "Magic mirror",
+			"soundfile" : "sound/SoD/BACKLASH.wav",
+			"effect": 1,
+			"anim": 3,
+			"graphics" : {
+				"animation" : ["C02SPA0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"effects":
+			[
+				{
+					"type": 	"MAGIC_MIRROR",
+					"valType":"INDEPENDENT_MAX",
+					"duration": "N_TURNS"
+				}
+			]
+		},
+		"cure"           :
+		{
+			"id": 37,
+			"name" : "Cure",
+			"soundfile" : "sound/SoD/CURE.wav",
+			"effect": 1,
+			"anim": 39,
+			"graphics" : {
+				"animation" : [ "C03SPW.DEF", "C03SPW0.DEF" ]
+			},
+			"ranges": [ "0", "0", "0", "0" ]
+		},
+		"resurrection"   :
+		{
+			"id": 38,
+			"name" : "Resurrect",
+			"soundfile" : "sound/SoD/RESURECT.wav",
+			"effect": 1,
+			"anim": 79,
+			"graphics" : {
+				"animation" : ["C01SPE0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"flags" : ["rising"],
+			"immunity":["UNDEAD", "NON_LIVING"]
+		},
+		"animateDead"    :
+		{
+			"id": 39,
+			"name" : "Animate Dead",
+			"soundfile" : "sound/SoD/ANIMDEAD.wav",
+			"effect": 1,
+			"anim": 79,
+			"graphics" : {
+				"animation" : ["C01SPE0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"flags" : ["rising"],
+			"limit":["UNDEAD"]
+		},
+		"sacrifice"      :
+		{
+			"id": 40,
+			"name" : "Sacrifice",
+			"soundfile" : "sound/SoD/SACRIF1.wav",
+			"effect": 1,
+			"anim": 79,
+			"graphics" : {
+				"animation" : ["C01SPE0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"flags" : ["rising"],
+			"immunity":["UNDEAD", "NON_LIVING"]
+		},
+		"bless"          :
+		{
+			"id": 41,
+			"name" :  "bless",
+			"soundfile" :  "sound/SoD/BLESS.wav",
+			"effect": 1,
+			"anim": 36,
+			"graphics" : {
+				"animation" : [ "C01SPW.DEF", "C01SPW0.DEF" ]
+			},
+			"ranges": [ "0", "0", "0", "X" ],
+			"counters" : [42],
+			"effects":
+			[
+				{
+					"type": 	"ALWAYS_MAXIMUM_DAMAGE",
+					"subtype": -1, //any attack
+					"valType":"INDEPENDENT_MAX",
+					"duration": "N_TURNS",
+					"values":[0, 0, 1, 1]
+				}
+			],
+			"immunity":["UNDEAD"]
+		},
+		"curse"          :
+		{
+			"id": 42,
+			"name" :  "curse",
+			"soundfile" :  "sound/SoD/CURSE.wav",
+			"effect": -1,
+			"anim": 40,
+			"graphics" : {
+				"animation" : [ "C04SPW.DEF", "C04SPW0.DEF" ]
+			},
+			"ranges": [ "0", "0", "0", "X" ], 
+			"counters" : [41],
+			"effects":
+			[
+				{
+					"type": 	"ALWAYS_MINIMUM_DAMAGE",
+					"subtype": -1, //any attack
+					"valType":	"INDEPENDENT_MAX",
+					"duration": "N_TURNS",
+					"values":[0, 0, 1, 1],
+					"ainfos":[0,0,20,20]
+				}
+			],
+			"immunity":["UNDEAD"]
+		},
+		"bloodlust"      :
+		{
+			"id": 43,
+			"name" :  "bloodlust",
+			"soundfile" :  "sound/SoD/BLOODLUS.wav",
+			"effect": 1,
+			"anim": 4,
+			"graphics" : {
+				"animation" : ["SP12_.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "X" ], 
+			"counters" : [45],
+			"effects":
+			[
+				{
+					"type": 	"PRIMARY_SKILL",
+					"subtype": "primSkill.attack",
+					"effectRange" : "ONLY_MELEE_FIGHT",
+					"duration": "N_TURNS",
+					"values":[3, 3, 6, 6]
+				}
+			]
+		},
+		"precision"      :
+		{
+			"id": 44,
+			"name" :  "precision",
+			"soundfile" :  "sound/SoD/PRECISON.wav",
+			"effect": 1,
+			"anim": 25,
+			"graphics" : {
+				"animation" : ["C12SPA0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "X" ],
+			"effects":
+			[
+				{
+					"type": 	"PRIMARY_SKILL",
+					"subtype": "primSkill.attack",
+					"effectRange" : "ONLY_DISTANCE_FIGHT",
+					"duration": "N_TURNS",
+					"values":[3, 3, 6, 6]
+				}
+			],
+			"limit":["SHOOTER"]
+		},
+		"weakness"       :
+		{
+			"id": 45,
+			"name" :  "weakness",
+			"soundfile" :  "sound/SoD/WEAKNESS.wav",
+			"effect": -1,
+			"anim": 56,
+			"graphics" : {
+				"animation" : ["C0ACID.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "X" ], 
+			"counters" : [43],
+			"effects":
+			[
+				{
+					"type": 	"PRIMARY_SKILL",
+					"subtype": "primSkill.attack",
+					"duration": "N_TURNS",
+					"values":[-3,-3,-6,-6]
+				}
+			]
+		},
+		"stoneSkin"      :
+		{
+			"id": 46,
+			"name" :  "stone skin",
+			"soundfile" :  "sound/SoD/TUFFSKIN.wav",
+			"effect": 1,
+			"anim": 54,
+			"graphics" : {
+				"animation" : [ "C16SPE.DEF", "C16SPE0.DEF" ]
+			},
+			"ranges": [ "0", "0", "0", "X" ],
+			"effects":
+			[
+				{
+					"type": 	"PRIMARY_SKILL",
+					"subtype": "primSkill.defence",
+					"duration": "N_TURNS",
+					"values":[3, 3, 6, 6]
+				}
+			]
+		},
+		"disruptingRay"  :
+		{
+			"id": 47,
+			"name" :  "disrupting ray",
+			"soundfile" :  "sound/SoD/DISRUPTR.wav",
+			"effect": -1,
+			"anim": 14,
+			"graphics" : {
+				"animation" : ["C07SPA1.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"effects":
+			[
+				{
+					"type": 	"PRIMARY_SKILL",
+					"subtype": "primSkill.defence",
+					"valueType": "ADDITIVE_VALUE",
+					"duration": "N_TURNS",
+					"values":[-3,-3,-4,-5]
+				}
+			]
+		},
+		"prayer"         :
+		{
+			"id": 48,
+			"name" :  "prayer",
+			"soundfile" :  "sound/SoD/PRAYER.wav",
+			"effect": 1,
+			"anim": 0,
+			"graphics" : {
+				"animation" : ["C10SPW.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "X" ],
+			"effects":
+			[
+				{
+					"type": 	"PRIMARY_SKILL",
+					"subtype": "primSkill.attack",
+					"duration": "N_TURNS",
+					"values":[2, 2, 4, 4]
+				},
+				{
+					"type": 	"PRIMARY_SKILL",
+					"subtype": "primSkill.defence",
+					"duration": "N_TURNS",
+					"values":[2, 2, 4, 4]
+				},
+				{
+					"type": 	"STACKS_SPEED",
+					"duration": "N_TURNS",
+					"values":[2, 2, 4, 4],
+					"ainfos":[0,0,0,0]
+				}
+			]
+		},
+		"mirth"          :
+		{
+			"id": 49,
+			"name" :  "mirth",
+			"soundfile" :  "sound/SoD/MIRTH.wav",
+			"effect": 1,
+			"anim": 20,
+			"graphics" : {
+				"animation" : ["C09SPW0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "X" ],
+			"counters" : [50],
+			"effects":
+			[
+				{
+					"type": 	"MORALE",
+					"duration": "N_TURNS",
+					"values":[1, 1, 2, 2]
+				}
+			]
+		},
+		"sorrow"         :
+		{
+			"id": 50,
+			"name" :  "sorrow",
+			"soundfile" :  "sound/SoD/SORROW.wav",
+			"effect": -1,
+			"anim": 30,
+			"graphics" : {
+				"animation" : ["C14SPE0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "X" ], 
+			"counters" : [49],
+			"effects":
+			[
+				{
+					"type": 	"MORALE",
+					"duration": "N_TURNS",
+					"values":[-1,-1,-2,-2]
+				}
+			],
+			"immunity":["MIND_IMMUNITY", "UNDEAD", "NON_LIVING"]
+		},
+		"fortune"        :
+		{
+			"id": 51,
+			"name" :  "fortune",
+			"soundfile" :  "sound/SoD/FORTUNE.wav",
+			"effect": 1,
+			"anim": 18,
+			"graphics" : {
+				"animation" : ["C09SPA0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "X" ],
+			"counters" : [52],
+			"effects":
+			[
+				{
+					"type": 	"LUCK",
+					"duration": "N_TURNS",
+					"values":[1, 1, 2, 2]
+				}
+			]
+		},
+		"misfortune"     :
+		{
+			"id": 52,
+			"name" :  "misfortune",
+			"soundfile" :  "sound/SoD/MISFORT.wav",
+			"effect": -1,
+			"anim": 48,
+			"graphics" : {
+				"animation" : ["C10SPF0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "X" ],
+			"counters" : [51],
+			"effects":
+			[
+				{
+					"type": 	"LUCK",
+					"duration": "N_TURNS",
+					"values":[-1,-1,-2,-2]
+				}
+			]
+		},
+		"haste"          :
+		{
+			"id": 53,
+			"name" :  "haste",
+			"soundfile" :  "sound/SoD/HASTE.wav",
+			"effect": 1,
+			"anim": 31,
+			"graphics" : {
+				"animation" : ["C15SPA0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "X" ],
+			"counters" : [54],
+			"effects":
+			[
+				{
+					"type": 	"STACKS_SPEED",
+					"duration": "N_TURNS",
+					"values":[3, 3, 5, 5],
+					"ainfos":[0,0,0,0]
+				}
+			],
+			"immunity":["SIEGE_WEAPON"]
+		},
+		"slow"           :
+		{
+			"id": 54,
+			"name" :  "slow",
+			"soundfile" :  "sound/SoD/MUCKMIRE.wav",
+			"effect": -1,
+			"anim": 19,
+			"graphics" : {
+				"animation" : ["C09SPE0.DEF"],
+				"iconImmune":"ZVS/LIB1.RES/E_SPSLOW"
+			},
+			"ranges": [ "0", "0", "0", "X" ],
+			"counters" : [53],
+			"effects":
+			[
+				{
+					"type": 	"STACKS_SPEED",
+					"valueType": "PERCENT_TO_ALL",
+					"duration": "N_TURNS",
+					"values":[-25,-25,-50,-50],
+					"ainfos":[0,0,0,0]
+				}
+			],
+			"immunity":["SIEGE_WEAPON"]
+		},
+		"slayer"         :
+		{
+			"id": 55,
+			"name" :  "slayer",
+			"soundfile" :  "sound/SoD/SLAYER.wav",
+			"effect": 1,
+			"anim": 28,
+			"graphics" : {
+				"animation" : ["C13SPW0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"effects":
+			[
+				{
+					"type": 	"SLAYER",
+					"duration": "N_TURNS",
+					"values":[0,1,2,3]
+				}
+			]
+		},
+		"frenzy"         :
+		{
+			"id": 56,
+			"name" :  "frenzy",
+			"soundfile" :  "sound/SoD/FRENZY.wav",
+			"effect": 1,
+			"anim": 17,
+			"graphics" : {
+				"animation" : ["C08SPF0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"effects":
+			[
+				{
+					"type": 	"IN_FRENZY",
+					"duration": "STACK_GETS_TURN",
+					"values":[100, 100, 150, 200]
+				}
+			]
+		},
+		"titanBolt"      :
+		{
+			"id": 57,
+			"name" : "Titan Bolt",
+			"soundfile" : "sound/SoD/LIGHTBLT.wav",
+			"effect": -1,
+			"anim": 38,
+			"graphics" : {
+				"animation" : ["C11SPA1.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"flags" : ["damage", "offensive"]
+		},
+		"counterstrike"  :
+		{
+			"id": 58,
+			"name" : "Counterstrike",
+			"soundfile" : "sound/SoD/CNTRSTRK.wav",
+			"effect": 1,
+			"anim": 7,
+			"graphics" : {
+				"animation" : ["C04SPA0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "X" ],
+			"effects":
+			[
+				{
+					"type": 	"ADDITIONAL_RETALIATION",
+					"duration": "N_TURNS",
+					"values":[1, 1, 2, 2]
+				}
+			]
+		},
+		"berserk"        :
+		{
+			"id": 59,
+			"name" : "Berserk",
+			"soundfile" : "sound/SoD/BERSERK.wav",
+			"effect": -1,
+			"anim": 35,
+			"graphics" : {
+				"animation" : [ "C01SPF.DEF", "C01SPF0.DEF" ],
+				"iconImmune":"ZVS/LIB1.RES/E_SPBERS"
+			},
+			"ranges": [ "0", "0", "0-1", "0-2" ],
+			"effects":
+			[
+				{
+					"type": 	"ATTACKS_NEAREST_CREATURE",
+					"duration": "N_TURNS",
+					"values":[0,1,2,3]
+				}
+			],
+			"immunity":["MIND_IMMUNITY", "UNDEAD", "NON_LIVING"]
+		},
+		"hypnotize"      :
+		{
+			"id": 60,
+			"name" :  "Hypnotize",
+			"soundfile" :  "sound/SoD/HYPNOTIZ.wav",
+			"effect": -1,
+			"anim": 21,
+			"graphics" : {
+				"animation" : ["C10SPA0.DEF"],
+				"iconImmune":"ZVS/LIB1.RES/E_SPHYPN"
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"effects":
+			[
+				{
+					"type": 	"HYPNOTIZED",
+					"duration": "N_TURNS",
+					"values":[0,1,2,3]
+				}
+			],
+			"immunity":["MIND_IMMUNITY", "UNDEAD", "NON_LIVING"]
+		},
+		"forgetfulness"  :
+		{
+			"id": 61,
+			"name" :  "forgetfulness",
+			"soundfile" :  "sound/SoD/FORGET.wav",
+			"effect": -1,
+			"anim": 42,
+			"graphics" : {
+				"animation" : [ "C06SPW.DEF", "C06SPW0.DEF" ]
+			},
+			"ranges": [ "0", "0", "0", "X" ],
+			"effects":
+			[
+				{
+					"type": 	"FORGETFULL",
+					"duration": "N_TURNS",
+					"values":[0,1,2,3]
+				}
+			],
+			"limit":["SHOOTER"],
+			"immunity":["MIND_IMMUNITY", "UNDEAD", "NON_LIVING"]
+		},
+		"blind"          :
+		{
+			"id": 62,
+			"name" :  "Blind",
+			"soundfile" :  "sound/SoD/BLIND.wav",
+			"effect": -1,
+			"anim": 6,
+			"graphics" : {
+				"animation" : ["C02SPF0.DEF"],
+				"iconImmune":"ZVS/LIB1.RES/E_SPBLIND"
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"effects":
+			[
+				{
+					"type": 	"NOT_ACTIVE",
+					"subtype": 	62,
+					"duration":	["UNITL_BEING_ATTACKED","N_TURNS"],
+					"values":[0,0,0,0]
+				},
+				{
+					"type": 	"GENERAL_ATTACK_REDUCTION",
+					"duration":	["UNITL_BEING_ATTACKED","N_TURNS"]
+				},
+				{
+					"type": 	"NO_RETALIATION",
+					"duration":	"UNITL_BEING_ATTACKED",
+					"values":[0,0,0,0]
+				}
+			],
+			"immunity":["MIND_IMMUNITY", "UNDEAD", "NON_LIVING"]
+		},
+		"teleport"       :
+		{
+			"id": 63,
+			"name" : "Teleport",
+			"soundfile" : "sound/SoD/TELPTOUT.wav",
+			"effect": 1,
+			"anim": -1,
+			"ranges": [ "0", "0", "0", "0" ],
+			"immunity":["SIEGE_WEAPON"]
+		},
+		"removeObstacle" :
+		{
+			"id": 64,
+			"name" : "Remove obstacle",
+			"soundfile" : "sound/SoD/REMOVEOB.wav",
+			"effect": 0,
+			"anim": -1,
+			"ranges": [ "X", "X", "X", "X" ]
+		},
+		"clone"          :
+		{
+			"id": 65,
+			"name" : "Clone",
+			"soundfile" : "sound/SoD/CLONE.wav",
+			"effect": 1,
+			"anim": -1,
+			"ranges": [ "0", "0", "0", "0" ],
+			"immunity":["SIEGE_WEAPON"]
+		},
+		"fireElemental"  :
+		{
+			"id": 66,
+			"name" : "Summon elementals",
+			"soundfile" : "sound/SoD/SUMNELM.wav",
+			"effect": 0,
+			"anim": -1,
+			"ranges": [ "X", "X", "X", "X" ]
+		},
+		"earthElemental" :
+		{
+			"id": 67,
+			"name" : "Summon elementals",
+			"soundfile" : "sound/SoD/SUMNELM.wav",
+			"effect": 0,
+			"anim": -1,
+			"ranges": [ "X", "X", "X", "X" ]
+		},
+		"waterElemental" :
+		{
+			"id": 68,
+			"name" : "Summon elementals",
+			"soundfile" : "sound/SoD/SUMNELM.wav",
+			"effect": 0,
+			"anim": -1,
+			"ranges": [ "X", "X", "X", "X" ]
+		},
+		"airElemental"   :
+		{
+			"id": 69,
+			"name" : "Summon elementals",
+			"soundfile" : "sound/SoD/SUMNELM.wav",
+			"effect": 0,
+			"anim": -1,
+			"ranges": [ "X", "X", "X", "X" ]
+		},
+		"stoneGaze"      :
+		{
+			"id": 70,
+			"name" :  "stone gaze and paralyze",
+			"soundfile" :  "sound/SoD/PARALYZE.wav",
+			"effect": 0,
+			"anim": -1, // TODO: crashes the game if -1.
+			"ranges": [ "0", "0", "0", "0" ],
+			"effects":
+			[
+				{
+					"type": 	"NOT_ACTIVE",
+					"subtype": 	62,
+					"duration":	["UNITL_BEING_ATTACKED","N_TURNS"],
+					"values":[0,0,0,0]
+				},
+				{
+					"type": 	"NO_RETALIATION",
+					"duration":	"UNITL_BEING_ATTACKED",
+					"values":[0,0,0,0]
+				}
+			]
+		},
+		"poison"         :
+		{
+			"id": 71,
+			"name" :  "poison",
+			"soundfile" :  "sound/SoD/POISON.wav",
+			"effect": -1,
+			"anim": 67,
+			"graphics" : {
+				"animation" : ["SP11_.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"effects":
+			[
+				{
+					"type": 	"POISON",
+					"valueType": 	"INDEPENDENT_MAX",
+					"duration": "N_TURNS",
+					"values":[30,30,30,30]
+				},
+				{
+					"type": 	"STACK_HEALTH",
+					"val" : 	-10,
+					"valueType": 	"PERCENT_TO_ALL",
+					"duration": "N_TURNS",
+					"values":[-10,-10,-10,-10]
+				}
+			],
+			"immunity":["UNDEAD", "NON_LIVING"]
+		},
+		"bind"           :
+		{
+			"id": 72,
+			"name" :  " bind",
+			"soundfile" :  "sound/SoD/BIND.wav",
+			"effect": 0,
+			"anim": 68,
+			"graphics" : {
+				"animation" : ["SP02_.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"effects":
+			[
+				{
+					"type": 	"BIND_EFFECT",
+					"duration" : 	"PERMANENT",
+					"addInfo" : 	-1,
+					"values":[0,0,0,0]
+				}
+			]
+		},
+		"disease"        :
+		{
+			"id": 73,
+			"name" :  "",
+			"soundfile" :  "sound/SoD/DISEASE.wav",
+			"effect": -1,
+			"anim": 69,
+			"graphics" : {
+				"animation" : ["SP05_.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"effects":
+			[
+				{
+					"type": 	"PRIMARY_SKILL",
+					"subtype": 	"primSkill.attack",
+					"duration": "N_TURNS",
+					"values":[-2,-2,-2,-2]
+				},
+				{
+					"type": 	"PRIMARY_SKILL",
+					"subtype": 	"primSkill.defence",
+					"duration": "N_TURNS",
+					"values":[-2,-2,-2,-2]
+				}
+			],
+			"immunity":["UNDEAD", "NON_LIVING"]
+		},
+		"paralyze"       :
+		{
+			"id": 74,
+			"name" :  "",
+			"soundfile" :  "sound/SoD/PARALYZE.wav",
+			"effect": -1,
+			"anim": 70,
+			"graphics" : {
+				"animation" : ["SP10_.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"effects":
+			[
+				{
+					"type": 	"NOT_ACTIVE",
+					"subtype": 	74,
+					"duration":	["UNITL_BEING_ATTACKED","N_TURNS"],
+					"values":[0,0,0,0]
+				},
+				{
+					"type": 	"NO_RETALIATION",
+					"duration":	"UNITL_BEING_ATTACKED",
+					"values":[0,0,0,0]
+				}
+			]
+		},
+		"age"            :
+		{
+			"id": 75,
+			"name" :  "aging",
+			"soundfile" :  "sound/SoD/AGE.wav",
+			"effect": -1,
+			"anim": 71,
+			"graphics" : {
+				"animation" : ["SP01_.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"effects":
+			[
+				{
+					"type": 	"STACK_HEALTH",
+					"valueType": 	"PERCENT_TO_ALL",
+					"duration": "N_TURNS",
+					"values":[-50,-50,-50,-50]
+				}
+			],
+			"immunity":["UNDEAD", "NON_LIVING"]
+		},
+		"deathCloud"     :
+		{
+			"id": 76,
+			"name" :  "death cloud",
+			"soundfile" :  "sound/SoD/DEATHCLD.wav",
+			"effect": 0,
+			"anim": 72,
+			"graphics" : {
+				"animation" : ["SP04_.DEF"]
+			},
+			"ranges": [ "0-1", "0-1", "0-1", "0-1" ],
+			"immunity":["UNDEAD", "NON_LIVING"]
+		},
+		"thunderbolt"    :
+		{
+			"id": 77,
+			"name" :  "thunder",
+			"soundfile" :  "sound/SoD/LIGHTBLT.wav",
+			"effect": -1,
+			"anim": 38,
+			"graphics" : {
+				"animation" : ["C11SPA1.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"flags" : ["damage", "offensive"]
+		},
+		"dispelHelpful"  :
+		{
+			"id": 78,
+			"name" :  "dispell helpful spells",
+			"soundfile" :  "sound/SoD/DISPELL.wav",
+			"effect": -1,
+			"anim": 41,
+			"graphics" : {
+				"animation" : [ "C05SPW.DEF", "C05SPW0.DEF" ],
+				"iconImmune":"ZVS/LIB1.RES/E_SPDISB"
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+		},
+		"deathStare"     :
+		{
+			"id": 79,
+			"name" :  "Death Stare",
+			"soundfile" :  "sound/SoD/DEATHSTR.wav",
+			"effect": 0,
+			"anim": 80,
+			"graphics" : {
+				"animation" : ["C07SPE0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"immunity":["UNDEAD", "NON_LIVING"]
+		},
+		"acidBreath"     :
+		{
+			"id": 80,
+			"name" :  " Acid breath / defence piercing",
+			"soundfile" :  "sound/SoD/ACID.wav",
+			"effect": 0,
+			"anim": 81,
+			"graphics" : {
+				"animation" : ["C17SPW0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"effects":
+			[
+				{
+					"type": 	"PRIMARY_SKILL",
+					"subtype": 	"primSkill.attack",
+					"duration" : 	"PERMANENT",
+					"valueType": 	"ADDITIVE_VALUE",
+					"values":[-3,-3,-3,-3]
+				}
+			]
+		},
+		"acidBreathDamage"     :
+		{
+			"id": 81,
+			"effect": 0,
+			"anim": 81,
+			"graphics" : {
+				"animation" : ["C17SPW0.DEF"]
+			},
+			"ranges": [ "0", "0", "0", "0" ],
+			"flags" : ["damage"],
+			"immunities" : ["DIRECT_DAMAGE_IMMUNITY"]
+
+		}
+	}
+}

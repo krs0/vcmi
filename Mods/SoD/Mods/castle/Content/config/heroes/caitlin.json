@@ -1,0 +1,69 @@
+{
+	"caitlin" :
+	{
+		"class" : "cleric",
+		"female" : true,
+
+		"index" : 15,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL015CL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS015CL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "pikeman",
+				"max" : 20,
+				"min" : 10
+			},
+			{
+				"creature" : "archer",
+				"max" : 7,
+				"min" : 4
+			},
+			{
+				"creature" : "griffin",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"spellbook" : [
+			"cure"
+		],
+		
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "intelligence"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 6,
+				"type" : 10,
+				"val" : 350
+			}
+		],
+
+		"texts" : {
+			"biography" : "Before she was granted command, Caitlin was considered by some to be possessed by evil spirits.  Despite these claims, donations to her church were unsurpassed when she was still in the church's ranks.",
+			"name" : "Caitlin",
+			"specialty" : {
+				"description" : "Increases kingdom's income by 350 gold per day.",
+				"name" : "+350 Gold",
+				"tooltip" : "+350 Gold each day"
+			}
+		}
+	}
+}
+

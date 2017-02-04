@@ -1,0 +1,68 @@
+{
+	"lordHaart" :
+	{
+		"class" : "knight",
+		"female" : false,
+
+		"index" : 4,
+				
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL004KN.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS004KN.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "pikeman",
+				"max" : 20,
+				"min" : 10
+			},
+			{
+				"creature" : "archer",
+				"max" : 7,
+				"min" : 4
+			},
+			{
+				"creature" : "griffin",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "leadership"
+			},
+			{
+				"level" : "basic",
+				"skill" : "estates"
+			}
+		],
+
+		"special" : true,
+		
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 13,
+				"type" : 2,
+				"val" : 5
+			}
+		],
+
+		"texts" : {
+			"biography" : "Some have said that Lord Haart's departure from Enroth was due to ties with a Necromantic cult, but his service to the crown of Erathia has been as spotless as it was to Roland Ironfist before the Succession Wars.",
+			"name" : "Lord Haart",
+			"specialty" : {
+				"description" : "Receives a 5% per level bonus to Estates skill.",
+				"name" : "Estates",
+				"tooltip" : "Secondary Skill Bonus: Estates"
+			}
+		}
+	}
+}
+

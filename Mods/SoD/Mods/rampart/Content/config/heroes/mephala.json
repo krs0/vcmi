@@ -1,0 +1,65 @@
+{
+	"mephala" :
+	{
+		"class" : "ranger",
+		"female" : true,
+
+		"index" : 16,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL016RN.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS016RN.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "centaur",
+				"max" : 24,
+				"min" : 12
+			},
+			{
+				"creature" : "dwarf",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "woodElf",
+				"max" : 6,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "leadership"
+			},
+			{
+				"level" : "basic",
+				"skill" : "armorer"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 23,
+				"type" : 2,
+				"val" : 5
+			}
+		],
+
+		"texts" : {
+			"biography" : "Trained in the ranks of the Erathian Military, Mephala was a genius when it came to using terrain to her advantage in battle.  She resigned her commission several years ago, preferring the quiet serenity of AvLee to the bustle of the cities of Erathia.",
+			"name" : "Mephala",
+			"specialty" : {
+				"description" : "Receives a 5% per level bonus to Armorer skill percentage.",
+				"name" : "Armorer",
+				"tooltip" : "Secondary Skill Bonus: Armorer"
+			}
+		}
+	}
+}
+

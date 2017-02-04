@@ -1,0 +1,93 @@
+{
+	"mage": {
+		"name" : {
+			"plural" : "Magi",
+			"singular" : "Mage"
+		},
+		"faction" : "tower",
+		"level" : 4,
+		"upgrades": ["archMage"],
+		"cost" : {
+			"gold" : 350
+		},
+		"speed" : 5,
+		"hitPoints" : 25,
+		"attack" : 11,
+		"defense" : 8,
+		"damage" : {
+			"max" : 9,
+			"min" : 7
+		},
+		"shots" : 24,
+		"doubleWide" : false,
+		"growth" : 4,
+		"horde" : 0,
+		"aiValue" : 570,
+		"fightValue" : 418,
+		"advMapAmount" : {
+			"max" : 20,
+			"min" : 10
+		},
+		"abilities" : {
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			},
+			"const_no_melee_penalty" : {
+				"type" : "NO_MELEE_PENALTY"
+			},
+			"reduceSpellCost" : {
+				"type" : "CHANGES_SPELL_COST_FOR_ALLY",
+				"val" : 2
+			}
+		},
+		"abilityText" : "No melee penalty.\nHero spells cost less.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CMAGE.def",
+			"map" : "sprites/creatures/adventureMap/AVWmage0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL36.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort36.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"missile" : {
+				"projectile" : "sprites/creatures/projectile/PMAGEX.DEF",
+				"attackClimaxFrame" : 9,
+				"frameAngles" : [
+					90,
+					72,
+					45,
+					27,
+					0,
+					-27,
+					-45,
+					-72,
+					-90,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 16,
+					"lowerY" : -92,
+					"middleX" : 38,
+					"middleY" : -98,
+					"upperX" : 25,
+					"upperY" : -105
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/MAGEATTK.wav",
+			"defend" : "sounds/creatures/MAGEDFND.wav",
+			"killed" : "sounds/creatures/MAGEKILL.wav",
+			"move" : "sounds/creatures/MAGEMOVE.wav",
+			"shoot" : "sounds/creatures/MAGESHOT.wav",
+			"wince" : "sounds/creatures/MAGEWNCE.wav"
+		}
+	}
+}

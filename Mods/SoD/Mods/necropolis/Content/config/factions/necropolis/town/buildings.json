@@ -1,0 +1,535 @@
+{
+	"necropolis" :
+	{
+		"town" :
+		 {
+			"buildings" : 
+			{
+				"blacksmith" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "The Blacksmith provides your armies with First Aid Tents.",
+					"name" : "Blacksmith"
+				},
+				"capitol" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 10000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Capitol earns your kingdom 4000 gold per day.",
+					"name" : "Capitol"
+				},
+				"castle" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 5000,
+						"mercury" : 0,
+						"ore" : 10,
+						"sulfur" : 0,
+						"wood" : 10
+					},
+					"description" : "The Castle adds two arrow towers, fortifies your town's defenses, and doubles base creature growth.",
+					"name" : "Castle"
+				},
+				"citadel" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 2500,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "Including a 50% increase to base creature growth, the Citadel adds a keep, and other terrain obstacles, to a town's defenses.",
+					"name" : "Citadel"
+				},
+				"cityHall" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 5000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The City Hall allows you to purchase town structures and earns your kingdom 2000 gold per day.",
+					"name" : "City Hall"
+				},
+				"dwellingLvl1" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 400,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "The Cursed Temple allows you to recruit Skeletons.",
+					"name" : "Cursed Temple"
+				},
+				"dwellingLvl2" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1000,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Graveyard allows you to recruit Walking Dead.",
+					"name" : "Graveyard"
+				},
+				"dwellingLvl3" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1500,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "The Tomb of Souls allows you to recruit Wights.",
+					"name" : "Tomb of Souls"
+				},
+				"dwellingLvl4" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 2000,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "The Estate allows you to recruit Vampires.",
+					"name" : "Estate"
+				},
+				"dwellingLvl5" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 2000,
+						"mercury" : 0,
+						"ore" : 10,
+						"sulfur" : 10,
+						"wood" : 0
+					},
+					"description" : "The Mausoleum allows you to recruit Liches.",
+					"name" : "Mausoleum"
+				},
+				"dwellingLvl6" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 6000,
+						"mercury" : 0,
+						"ore" : 10,
+						"sulfur" : 0,
+						"wood" : 10
+					},
+					"description" : "The Hall of Darkness allows you to recruit Black Knights.",
+					"name" : "Hall of Darkness"
+				},
+				"dwellingLvl7" : {
+					"cost" : {
+						"crystal" : 5,
+						"gems" : 5,
+						"gold" : 10000,
+						"mercury" : 5,
+						"ore" : 5,
+						"sulfur" : 5,
+						"wood" : 5
+					},
+					"description" : "The Dragon Vault allows you to recruit Bone Dragons.",
+					"name" : "Dragon Vault"
+				},
+				"dwellingUpLvl1" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1000,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "The Cursed Temple allows you to recruit Skeleton Warriors.",
+					"name" : "Upg. Cursed Temple"
+				},
+				"dwellingUpLvl2" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1000,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "The Graveyard allows you to recruit Zombies.",
+					"name" : "Upg. Graveyard"
+				},
+				"dwellingUpLvl3" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1500,
+						"mercury" : 5,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Tomb of Souls allows you to recruit Wraiths.",
+					"name" : "Upg. Tomb of Souls"
+				},
+				"dwellingUpLvl4" : {
+					"cost" : {
+						"crystal" : 10,
+						"gems" : 10,
+						"gold" : 2000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "The Estate allows you to recruit Vampire Lords.",
+					"name" : "Upg. Estate"
+				},
+				"dwellingUpLvl5" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 2000,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 5,
+						"wood" : 0
+					},
+					"description" : "The Mausoleum allows you to recruit Power Liches.",
+					"name" : "Upg. Mausoleum"
+				},
+				"dwellingUpLvl6" : {
+					"cost" : {
+						"crystal" : 2,
+						"gems" : 2,
+						"gold" : 3000,
+						"mercury" : 2,
+						"ore" : 5,
+						"sulfur" : 2,
+						"wood" : 5
+					},
+					"description" : "The Hall of Darkness allows you to recruit Dread Knights.",
+					"name" : "Upg. Hall of Darkness"
+				},
+				"dwellingUpLvl7" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 15000,
+						"mercury" : 20,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "The Dragon Vault allows you to recruit Ghost Dragons.",
+					"name" : "Upg. Dragon Vault"
+				},
+				"fort" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 5000,
+						"mercury" : 0,
+						"ore" : 20,
+						"sulfur" : 0,
+						"wood" : 20
+					},
+					"description" : "The Fort provides your town with defensive walls.",
+					"name" : "Fort"
+				},
+				"grail" : {
+					"description" : "The presence of the Soul Prison increases weekly creature generation by 50%, provides your empire with an additional 5000 gold each day, and boosts the Necromancy skill of all allied heroes (who possess the skill) by 20%.",
+					"name" : "Soul Prison"
+				},
+				"horde1" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Unearthed Graves increase Skeleton production by 6 per week.",
+					"name" : "Unearthed Graves"
+				},
+				"horde1Upgr" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Unearthed Graves increase Skeleton Warrior production by 6 per week.",
+					"name" : "Unearthed Graves"
+				},
+				"horde2" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 0,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "",
+					"name" : ""
+				},
+				"horde2Upgr" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 0,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "",
+					"name" : ""
+				},
+				"mageGuild1" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 2000,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
+					"name" : "Mage Guild Level 1"
+				},
+				"mageGuild2" : {
+					"cost" : {
+						"crystal" : 4,
+						"gems" : 4,
+						"gold" : 1000,
+						"mercury" : 4,
+						"ore" : 5,
+						"sulfur" : 4,
+						"wood" : 5
+					},
+					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
+					"name" : "Mage Guild Level 2"
+				},
+				"mageGuild3" : {
+					"cost" : {
+						"crystal" : 6,
+						"gems" : 6,
+						"gold" : 1000,
+						"mercury" : 6,
+						"ore" : 5,
+						"sulfur" : 6,
+						"wood" : 5
+					},
+					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
+					"name" : "Mage Guild Level 3"
+				},
+				"mageGuild4" : {
+					"cost" : {
+						"crystal" : 8,
+						"gems" : 8,
+						"gold" : 1000,
+						"mercury" : 8,
+						"ore" : 5,
+						"sulfur" : 8,
+						"wood" : 5
+					},
+					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
+					"name" : "Mage Guild Level 4"
+				},
+				"mageGuild5" : {
+					"cost" : {
+						"crystal" : 10,
+						"gems" : 10,
+						"gold" : 1000,
+						"mercury" : 10,
+						"ore" : 5,
+						"sulfur" : 10,
+						"wood" : 5
+					},
+					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
+					"name" : "Mage Guild Level 5"
+				},
+				"marketplace" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 500,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "With the Marketplace, you can buy and sell resources (exchange rates increase with each Marketplace you own).",
+					"name" : "Marketplace"
+				},
+				"resourceSilo" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 5000,
+						"mercury" : 0,
+						"ore" : 5,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Resource Silo provides you with an additional +1 wood and +1 ore each day.",
+					"name" : "Resource Silo"
+				},
+				"ship" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 0,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Shipyard allows you to purchase ships.",
+					"name" : "Shipyard"
+				},
+				"shipyard" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 2000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 20
+					},
+					"description" : "The Shipyard allows you to purchase ships.",
+					"name" : "Shipyard"
+				},
+				"special1" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Cover of Darkness covers your city with a permanent shroud to all other players.",
+					"name" : "Cover of Darkness"
+				},
+				"special2" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Necromancy Amplifier increases the Necromancy skill of all heroes you control (with the Necromancy skill) by 10%.",
+					"name" : "Necromancy Amplifier"
+				},
+				"special3" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1000,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Skeleton Transformer allows you to convert any creature into a skeleton.",
+					"name" : "Skeleton Transformer"
+				},
+				"special4" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 0,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "",
+					"name" : ""
+				},
+				"tavern" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 500,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 5
+					},
+					"description" : "The Tavern increases morale for troops defending the city.",
+					"name" : "Tavern"
+				},
+				"townHall" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 2500,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Town Hall allows you to purchase town structures and earns your kingdom 1000 gold per day.",
+					"name" : "Town Hall"
+				},
+				"villageHall" : {
+					"cost" : {
+						"crystal" : 0,
+						"gems" : 0,
+						"gold" : 1,
+						"mercury" : 0,
+						"ore" : 0,
+						"sulfur" : 0,
+						"wood" : 0
+					},
+					"description" : "The Village Hall allows you to purchase town structures and earns your kingdom 500 gold per day.",
+					"name" : "Village Hall"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,84 @@
+{
+	"masterGremlin": {
+		"name" : {
+			"plural" : "Master Gremlins",
+			"singular" : "Master Gremlin"
+		},
+		"faction" : "tower",
+		"level" : 1,
+		"cost" : {
+			"gold" : 40
+		},
+		"speed" : 5,
+		"hitPoints" : 4,
+		"attack" : 4,
+		"defense" : 4,
+		"damage" : {
+			"max" : 2,
+			"min" : 1
+		},
+		"shots" : 8,
+		"doubleWide" : false,
+		"growth" : 16,
+		"horde" : 0,
+		"aiValue" : 66,
+		"fightValue" : 55,
+		"advMapAmount" : {
+			"max" : 30,
+			"min" : 20
+		},
+		"abilities" : {
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			}
+		},
+		"abilityText" : "Ranged attacker.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CGREMM.def",
+			"map" : "sprites/creatures/adventureMap/AVWgrex0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL31.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort31.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.75
+			},
+			"missile" : {
+				"attackClimaxFrame" : 11,
+				"frameAngles" : [
+					90,
+					72,
+					45,
+					27,
+					0,
+					-27,
+					-45,
+					-72,
+					-90,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 9,
+					"lowerY" : 9,
+					"middleX" : 46,
+					"middleY" : -17,
+					"upperX" : 55,
+					"upperY" : -52
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/MGRMATTK.wav",
+			"defend" : "sounds/creatures/MGRMDFND.wav",
+			"killed" : "sounds/creatures/MGRMKILL.wav",
+			"move" : "sounds/creatures/MGRMMOVE.wav",
+			"shoot" : "sounds/creatures/MGRMSHOT.wav",
+			"wince" : "sounds/creatures/MGRMWNCE.wav"
+		}
+	}
+}

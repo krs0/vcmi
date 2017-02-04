@@ -1,0 +1,68 @@
+{
+	"xsi" :
+	{
+		"class" : "necromancer",
+		"female" : true,
+		"index" : 77,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL077NC.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS077NC.bmp"
+		},
+
+
+		"army" : [
+			{
+				"creature" : "skeleton",
+				"max" : 30,
+				"min" : 20
+			},
+			{
+				"creature" : "zombie",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "wight",
+				"max" : 6,
+				"min" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "necromancy"
+			},
+			{
+				"level" : "basic",
+				"skill" : "learning"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 46,
+				"type" : 8,
+				"val" : 0
+			}
+		],
+		"spellbook" : [
+			"stoneSkin"
+		],
+			
+		"texts" : {
+			"biography" : "Xsi was one of but a handful of females deemed worthy to make the transformation into full lich.  Xsi was selected because she possessed a unique ability to resist physical damage - a trick that has saved her more than once.",
+			"name" : "Xsi",
+			"specialty" : {
+				"description" : "Casts Stone Skin with increased effect, based on hero level compared to the level of the target unit (the bonus is greater when used on weaker units).",
+				"name" : "Stone Skin",
+				"tooltip" : "Spell Bonus: Stone Skin"
+			}
+		}
+	}
+}
+

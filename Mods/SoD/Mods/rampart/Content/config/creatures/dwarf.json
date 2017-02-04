@@ -1,0 +1,59 @@
+{
+	"dwarf": {
+		"name" : {
+			"plural" : "Dwarves",
+			"singular" : "Dwarf"
+		},
+		"faction" : "rampart",
+		"level" : 2,
+		"upgrades": ["battleDwarf"],
+		"cost" : {
+			"gold" : 120
+		},
+		"speed" : 3,
+		"hitPoints" : 20,
+		"attack" : 6,
+		"defense" : 7,
+		"damage" : {
+			"max" : 4,
+			"min" : 2
+		},
+		"doubleWide" : false,
+		"growth" : 8,
+		"horde" : 4,
+		"aiValue" : 138,
+		"fightValue" : 194,
+		"advMapAmount" : {
+			"max" : 30,
+			"min" : 16
+		},
+		"abilities" : {
+			"magicResistance" : {
+				"type" : "MAGIC_RESISTANCE",
+				"val" : 20
+			}
+		},
+		"abilityText" : "20% magic resistance.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CDWARF.def",
+			"map" : "sprites/creatures/adventureMap/AVWdwrf0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL18.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort18.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.98
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/DWRFATTK.wav",
+			"defend" : "sounds/creatures/DWRFDFND.wav",
+			"killed" : "sounds/creatures/DWRFKILL.wav",
+			"move" : "sounds/creatures/DWRFMOVE.wav",
+			"wince" : "sounds/creatures/DWRFWNCE.wav"
+		}
+	}
+}

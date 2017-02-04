@@ -1,0 +1,57 @@
+{
+	"skeletonWarrior": {
+		"name" : {
+			"plural" : "Skeleton Warriors",
+			"singular" : "Skeleton Warrior"
+		},
+		"faction" : "necropolis",
+		"level" : 1,
+		"cost" : {
+			"gold" : 70
+		},
+		"speed" : 5,
+		"hitPoints" : 6,
+		"attack" : 6,
+		"defense" : 6,
+		"damage" : {
+			"max" : 3,
+			"min" : 1
+		},
+		"doubleWide" : false,
+		"growth" : 12,
+		"horde" : 6,
+		"aiValue" : 85,
+		"fightValue" : 85,
+		"advMapAmount" : {
+			"max" : 30,
+			"min" : 20
+		},
+		"abilities" : {
+			"IS_UNDEAD" : {
+				"type" : "UNDEAD"
+			}
+		},
+		"abilityText" : "Undead.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CWSKEL.def",
+			"map" : "sprites/creatures/adventureMap/AVWskex0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL59.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort59.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/SKLWATTK.wav",
+			"defend" : "sounds/creatures/SKLWDFND.wav",
+			"killed" : "sounds/creatures/SKLWKILL.wav",
+			"move" : "sounds/creatures/SKLWMOVE.wav",
+			"wince" : "sounds/creatures/SKLWWNCE.wav"
+		}
+	}
+}

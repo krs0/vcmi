@@ -1,0 +1,56 @@
+{
+	"hobgoblin": {
+		"name" : {
+			"plural" : "Hobgoblins",
+			"singular" : "Hobgoblin"
+		},
+		"extraNames" : [
+			"goblins"
+		],
+		"faction" : "stronghold",
+		"level" : 1,
+		"cost" : {
+			"gold" : 50
+		},
+		"speed" : 7,
+		"hitPoints" : 5,
+		"attack" : 5,
+		"defense" : 3,
+		"damage" : {
+			"max" : 2,
+			"min" : 1
+		},
+		"doubleWide" : false,
+		"growth" : 15,
+		"horde" : 8,
+		"hasDoubleWeek" : true,
+		"aiValue" : 78,
+		"fightValue" : 65,
+		"advMapAmount" : {
+			"max" : 30,
+			"min" : 20
+		},
+		"abilityText" : "",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CHGOBL.def",
+			"map" : "sprites/creatures/adventureMap/AVWgobx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL87.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort87.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1.24
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/HGOBATTK.wav",
+			"defend" : "sounds/creatures/HGOBDFND.wav",
+			"killed" : "sounds/creatures/HGOBKILL.wav",
+			"move" : "sounds/creatures/HGOBMOVE.wav",
+			"wince" : "sounds/creatures/HGOBWNCE.wav"
+		}
+	}
+}

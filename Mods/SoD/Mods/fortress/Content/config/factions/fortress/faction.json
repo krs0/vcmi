@@ -1,0 +1,29 @@
+{
+	"fortress" :
+	{
+		"town" : "fortress",
+		"alignment" : "neutral",
+		"nativeTerrain" : "swamp",
+		"heroClases" : [ "beastmaster" , "witch" ],
+		"creatures" :
+		[
+			["gnoll", "gnollMarauder"],
+			["lizardman", "lizardWarrior"],
+			["serpentFly", "fireDragonFly"],
+			["basilisk", "greaterBasilisk"],
+			["gorgon", "mightyGorgon"],
+			["wyvern", "wyvernMonarch"],
+			["hydra", "chaosHydra"]
+		],
+		"dwellings" :
+		[
+			"gnollHut", "lizardDen", "serpentFlyHive", "basiliskPit",
+			"gorgonLair", "wyvernNest", "hydraPond"
+		],
+		"creatureBackground" :
+		{
+			"120px" : "sprites/factions/fortress/TPCASFOR.bmp",
+			"130px" : "sprites/factions/fortress/CRBKGFOR.bmp"
+		},
+	}
+}

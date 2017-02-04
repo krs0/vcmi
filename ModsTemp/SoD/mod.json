@@ -1,0 +1,61 @@
+// list of mods inside
+{
+	"name" : "SoD",
+	"description" : "Original SoD contents as mod",
+	"modIdentifier" : "SoD",
+
+	"modList" :
+	[
+		"factions/castle/faction/mod.json",
+		"factions/castle/creatures/mod.json",
+		"factions/castle/heroes/mod.json",
+		"factions/castle/town/mod.json",
+
+		"factions/conflux/faction/mod.json",
+		"factions/conflux/creatures/mod.json",
+		"factions/conflux/heroes/mod.json",
+		"factions/conflux/town/mod.json",
+
+		"factions/dungeon/faction/mod.json",
+		"factions/dungeon/creatures/mod.json",
+		"factions/dungeon/heroes/mod.json",
+		"factions/dungeon/town/mod.json",
+
+		"factions/fortress/faction/mod.json",
+		"factions/fortress/creatures/mod.json",
+		"factions/fortress/heroes/mod.json",
+		"factions/fortress/town/mod.json",
+
+		"factions/inferno/faction/mod.json",
+		"factions/inferno/creatures/mod.json",
+		"factions/inferno/heroes/mod.json",
+		"factions/inferno/town/mod.json",
+
+		"factions/necropolis/faction/mod.json",
+		"factions/necropolis/creatures/mod.json",
+		"factions/necropolis/heroes/mod.json",
+		"factions/necropolis/town/mod.json",
+
+		"factions/rampart/faction/mod.json",
+		"factions/rampart/creatures/mod.json",
+		"factions/rampart/heroes/mod.json",
+		"factions/rampart/town/mod.json",
+
+		"factions/stronghold/faction/mod.json",
+		"factions/stronghold/creatures/mod.json",
+		"factions/stronghold/heroes/mod.json",
+		"factions/stronghold/town/mod.json",
+
+		"factions/tower/faction/mod.json",
+		"factions/tower/creatures/mod.json",
+		"factions/tower/heroes/mod.json",
+		"factions/tower/town/mod.json",
+
+		"factions/neutral/faction/mod.json",
+		"factions/neutral/creatures/mod.json"
+
+		//"artifacts/mod.json", 
+		//"spells/mod.json", 
+		//"creatureBanks/mod.json"
+	]
+}

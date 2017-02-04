@@ -1,0 +1,43 @@
+{
+	"conflux" :
+	{
+		"dwellings" :
+		{
+			"magicLantern" : 
+			{
+				"name" : "Magic Lantern",
+				"graphics" : "sprites/factions/conflux/adventureMap/dwellings/AVGpixie.def"
+			},
+			"altarOfAir" : 
+			{
+				"name" : "Altar of Air",
+				"graphics" : "sprites/factions/conflux/adventureMap/dwellings/AVGair0.def"
+			},
+			"altarOfWater" : 
+			{
+				"name" : "Altar of Water",
+				"graphics" : "sprites/factions/conflux/adventureMap/dwellings/AVGwatr0.def"
+			},
+			"altarOfFire" : 
+			{
+				"name" : "Altar of Fire",
+				"graphics" : "sprites/factions/conflux/adventureMap/dwellings/AVGfire0.def"
+			},
+			"altarOfEarth" : 
+			{
+				"name" : "Altar of Earth",
+				"graphics" : "sprites/factions/conflux/adventureMap/dwellings/AVGerth0.def"
+			},
+			"altarOfThought" : 
+			{
+				"name" : "Altar of Thought",
+				"graphics" : "sprites/factions/conflux/adventureMap/dwellings/AVGelp.def"
+			},
+			"pyre" : 
+			{
+				"name" : "Pyre",
+				"graphics" : "sprites/factions/conflux/adventureMap/dwellings/AVGfbrd.def"
+			}
+		}
+	}
+}

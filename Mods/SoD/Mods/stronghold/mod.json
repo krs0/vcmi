@@ -1,0 +1,73 @@
+{
+	"name" : "Stronghold faction",
+	"description" : "Stronghold faction as Mod",
+
+	"version" : "0.99",
+	"author" : "Original SoD Faction - mod by VCMI Team",
+	"contact" : "http://forum.vcmi.eu/index.php",
+	"modType" : "Faction",
+
+	"factions" :
+	[
+		"config/factions/stronghold/faction.json",
+		"config/factions/stronghold/dwellings.json",
+		"config/factions/stronghold/puzzleMap.json",
+		"config/factions/stronghold/town/town.json",
+		"config/factions/stronghold/town/buildings.json",
+		"config/factions/stronghold/town/structures.json",
+		"config/factions/stronghold/town/guildSpells.json",
+		"config/factions/stronghold/town/siege.json"
+	],
+
+	"creatures" :
+	[
+		"config/creatures/goblin.json",
+		"config/creatures/hobgoblin.json",
+
+		"config/creatures/goblinWolfRider.json",
+		"config/creatures/hobgoblinWolfRider.json",
+
+		"config/creatures/orc.json",
+		"config/creatures/orcChieftain.json",
+
+		"config/creatures/ogre.json",
+		"config/creatures/ogreMage.json",
+
+		"config/creatures/roc.json",
+		"config/creatures/thunderbird.json",
+
+		"config/creatures/cyclop.json",
+		"config/creatures/cyclopKing.json",
+
+		"config/creatures/behemoth.json",
+		"config/creatures/ancientBehemoth.json"
+	],
+
+	"heroClasses" :
+	[
+		"config/heroClasses/barbarian.json",
+		"config/heroClasses/battlemage.json"
+	],
+
+	"heroes" :
+	[
+		// barbarian
+		"config/heroes/yog.json",
+		"config/heroes/gurnisson.json",
+		"config/heroes/jabarkas.json",
+		"config/heroes/shiva.json",
+		"config/heroes/gretchin.json",
+		"config/heroes/krellion.json",
+		"config/heroes/cragHack.json",
+		"config/heroes/tyraxor.json",
+		// battlemage
+		"config/heroes/gird.json",
+		"config/heroes/vey.json",
+		"config/heroes/dessa.json",
+		"config/heroes/terek.json",
+		"config/heroes/zubin.json",
+		"config/heroes/gundula.json",
+		"config/heroes/oris.json",
+		"config/heroes/saurug.json"
+	]
+}

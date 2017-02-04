@@ -1,0 +1,58 @@
+{
+	"pikeman": {
+		"name" : {
+			"plural" : "Pikemen",
+			"singular" : "Pikeman"
+		},
+		"faction" : "castle",
+		"level" : 1,
+		"upgrades": ["halberdier"],
+		"cost" : {
+			"gold" : 60
+		},
+		"speed" : 4,
+		"hitPoints" : 10,
+		"attack" : 4,
+		"defense" : 5,
+		"damage" : {
+			"min" : 1,
+			"max" : 3
+		},
+		"doubleWide" : false,
+		"growth" : 14,
+		"horde" : 0,
+		"aiValue" : 80,
+		"fightValue" : 100,
+		"advMapAmount" : {
+			"max" : 50,
+			"min" : 20
+		},
+		"abilities": {
+			"cavalryChargeImmunity" : {
+				"type" : "CHARGE_IMMUNITY"
+			}
+		},
+		"abilityText" : "",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CPKMAN.def",
+			"map" : "sprites/creatures/adventureMap/AvWPike.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL2.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort2.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1.15
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/PIKEATTK.wav",
+			"defend" : "sounds/creatures/PIKEDFND.wav",
+			"killed" : "sounds/creatures/PIKEKILL.wav",
+			"move" : "sounds/creatures/PIKEMOVE.wav",
+			"wince" : "sounds/creatures/PIKEWNCE.wav"
+		}
+	}
+}

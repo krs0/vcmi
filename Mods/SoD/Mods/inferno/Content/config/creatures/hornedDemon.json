@@ -1,0 +1,52 @@
+{
+	"hornedDemon": {
+		"name" : {
+			"plural" : "Horned Demons",
+			"singular" : "Horned Demon"
+		},
+		"faction" : "inferno",
+		"level" : 4,
+		"cost" : {
+			"gold" : 270
+		},
+		"speed" : 6,
+		"hitPoints" : 40,
+		"attack" : 10,
+		"defense" : 10,
+		"damage" : {
+			"max" : 9,
+			"min" : 7
+		},
+		"doubleWide" : false,
+		"growth" : 4,
+		"horde" : 0,
+		"aiValue" : 480,
+		"fightValue" : 480,
+		"advMapAmount" : {
+			"max" : 16,
+			"min" : 10
+		},
+		"abilityText" : "",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CTHDEM.def",
+			"map" : "sprites/creatures/adventureMap/AVWdemx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL51.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort51.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.93
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/DHDMATTK.wav",
+			"defend" : "sounds/creatures/DHDMDFND.wav",
+			"killed" : "sounds/creatures/DHDMKILL.wav",
+			"move" : "sounds/creatures/DHDMMOVE.wav",
+			"wince" : "sounds/creatures/DHDMWNCE.wav"
+		}
+	}
+}

@@ -1,0 +1,369 @@
+{
+	"castle" :
+	{
+		"town" :
+		 {
+			"buildings" : 
+			{
+				"blacksmith" : {
+					"cost" : {
+						"gold" : 1000,
+						"wood" : 5
+					},
+					"description" : "The Blacksmith provides your armies with Ballistas.",
+					"name" : "Blacksmith"
+				},
+				"capitol" : {
+					"cost" : {
+						"gold" : 10000
+					},
+					"description" : "The Capitol earns your kingdom 4000 gold per day.",
+					"name" : "Capitol"
+				},
+				"castle" : {
+					"cost" : {
+						"gold" : 5000,
+						"ore" : 10,
+						"wood" : 10
+					},
+					"description" : "The Castle adds two arrow towers, fortifies your town's defenses, and doubles base creature growth.",
+					"name" : "Castle"
+				},
+				"citadel" : {
+					"cost" : {
+						"gold" : 2500,
+						"ore" : 5
+					},
+					"description" : "Including a 50% increase to base creature growth, the Citadel adds a keep, and other terrain obstacles, to a town's defenses.",
+					"name" : "Citadel"
+				},
+				"cityHall" : {
+					"cost" : {
+						"gold" : 5000
+					},
+					"description" : "The City Hall allows you to purchase town structures and earns your kingdom 2000 gold per day.",
+					"name" : "City Hall"
+				},
+				"dwellingLvl1" : {
+					"cost" : {
+						"gold" : 500,
+						"ore" : 10
+					},
+					"description" : "The Guardhouse allows you to recruit Pikemen.",
+					"name" : "Guardhouse"
+				},
+				"dwellingLvl2" : {
+					"cost" : {
+						"gold" : 1000,
+						"ore" : 5,
+						"wood" : 5
+					},
+					"description" : "The Archers' Tower allows you to recruit Archers.",
+					"name" : "Archers' Tower"
+				},
+				"dwellingLvl3" : {
+					"cost" : {
+						"gold" : 1000,
+						"ore" : 5
+
+					},
+					"description" : "The Griffin Tower allows you to recruit Griffins.",
+					"name" : "Griffin Tower"
+				},
+				"dwellingLvl4" : {
+					"cost" : {
+						"gold" : 2000,
+						"ore" : 5
+
+					},
+					"description" : "The Barracks allow you to recruit Swordsmen.",
+					"name" : "Barracks"
+				},
+				"dwellingLvl5" : {
+					"cost" : {
+						"crystal" : 2,
+						"gems" : 2,
+						"gold" : 3000,
+						"mercury" : 2,
+						"ore" : 5,
+						"sulfur" : 2,
+						"wood" : 5
+					},
+					"description" : "The Monastery allows you to recruit Monks.",
+					"name" : "Monastery"
+				},
+				"dwellingLvl6" : {
+					"cost" : {
+						"gold" : 5000,
+						"wood" : 20
+					},
+					"description" : "The Training Grounds allow you to recruit Cavaliers.",
+					"name" : "Training Grounds"
+				},
+				"dwellingLvl7" : {
+					"cost" : {
+						"crystal" : 10,
+						"gems" : 10,
+						"gold" : 20000,
+						"mercury" : 10,
+						"sulfur" : 10
+					},
+					"description" : "The Portal of Glory allows you to recruit Angels.",
+					"name" : "Portal of Glory"
+				},
+				"dwellingUpLvl1" : {
+					"cost" : {
+						"gold" : 1000,
+						"ore" : 5
+					},
+					"description" : "The Guardhouse allows you to recruit Halberdiers.",
+					"name" : "Upg. Guardhouse"
+				},
+				"dwellingUpLvl2" : {
+					"cost" : {
+						"gold" : 1000,
+						"ore" : 5,
+						"wood" : 5
+					},
+					"description" : "The Archers' Tower allows you to recruit Marksmen.",
+					"name" : "Upg. Archers' Tower"
+				},
+				"dwellingUpLvl3" : {
+					"cost" : {
+						"gold" : 1000,
+						"ore" : 5
+					},
+					"description" : "The Griffin Tower allows you to recruit Royal Griffins.",
+					"name" : "Upg. Griffin Tower"
+				},
+				"dwellingUpLvl4" : {
+					"cost" : {
+						"crystal" : 5,
+						"gold" : 2000,
+						"ore" : 5
+					},
+					"description" : "The Barracks allow you to recruit Crusaders.",
+					"name" : "Upg. Barracks"
+				},
+				"dwellingUpLvl5" : {
+					"cost" : {
+						"crystal" : 2,
+						"gems" : 2,
+						"gold" : 1000,
+						"mercury" : 2,
+						"ore" : 2,
+						"sulfur" : 2,
+						"wood" : 2
+					},
+					"description" : "The Monastery allows you to recruit Zealots.",
+					"name" : "Upg. Monastery"
+				},
+				"dwellingUpLvl6" : {
+					"cost" : {
+						"gold" : 3000,
+						"wood" : 10
+					},
+					"description" : "The Training Grounds allow you to recruit Champions.",
+					"name" : "Upg. Training Grounds"
+				},
+				"dwellingUpLvl7" : {
+					"cost" : {
+						"crystal" : 10,
+						"gems" : 10,
+						"gold" : 20000,
+						"mercury" : 10,
+						"sulfur" : 10
+					},
+					"description" : "The Portal of Glory allows you to recruit Arch Angels.",
+					"name" : "Upg. Portal of Glory"
+				},
+				"fort" : {
+					"cost" : {
+						"gold" : 5000,
+						"ore" : 20,
+						"wood" : 20
+					},
+					"description" : "The Fort provides your town with defensive walls.",
+					"name" : "Fort"
+				},
+				"grail" : {
+					"description" : "The presence of the Colossus increases weekly creature generation by 50%, provides your kingdom with an additional 5000 gold each day, and increases the morale of all allied heroes by +2.",
+					"name" : "Colossus"
+				},
+				"horde1" : {
+					"cost" : {
+						"gold" : 1000
+					},
+					"description" : "The Griffin Bastion increases Griffin production by 3 per week.",
+					"name" : "Griffin Bastion"
+				},
+				"horde1Upgr" : {
+					"cost" : {
+						"gold" : 1000
+					},
+					"description" : "The Griffin Bastion increases Royal Griffin production by 3 per week.",
+					"name" : "Griffin Bastion"
+				},
+				"horde2" : {
+					"cost" : {
+						"gold" : 0
+					},
+					"description" : "",
+					"name" : ""
+				},
+				"horde2Upgr" : {
+					"cost" : {
+						"gold" : 0
+					},
+					"description" : "",
+					"name" : ""
+				},
+				"mageGuild1" : {
+					"cost" : {
+						"gold" : 2000,
+						"ore" : 5,
+						"wood" : 5
+					},
+					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
+					"name" : "Mage Guild Level 1"
+				},
+				"mageGuild2" : {
+					"cost" : {
+						"crystal" : 4,
+						"gems" : 4,
+						"gold" : 1000,
+						"mercury" : 4,
+						"ore" : 5,
+						"sulfur" : 4,
+						"wood" : 5
+					},
+					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
+					"name" : "Mage Guild Level 2"
+				},
+				"mageGuild3" : {
+					"cost" : {
+						"crystal" : 6,
+						"gems" : 6,
+						"gold" : 1000,
+						"mercury" : 6,
+						"ore" : 5,
+						"sulfur" : 6,
+						"wood" : 5
+					},
+					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
+					"name" : "Mage Guild Level 3"
+				},
+				"mageGuild4" : {
+					"cost" : {
+						"crystal" : 8,
+						"gems" : 8,
+						"gold" : 1000,
+						"mercury" : 8,
+						"ore" : 5,
+						"sulfur" : 8,
+						"wood" : 5
+					},
+					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
+					"name" : "Mage Guild Level 4"
+				},
+				"mageGuild5" : {
+					"cost" : {
+						"crystal" : 10,
+						"gems" : 10,
+						"gold" : 1000,
+						"mercury" : 10,
+						"ore" : 5,
+						"sulfur" : 10,
+						"wood" : 5
+					},
+					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
+					"name" : "Mage Guild Level 5"
+				},
+				"marketplace" : {
+					"cost" : {
+						"gold" : 500,
+						"wood" : 5
+					},
+					"description" : "With the Marketplace, you can buy and sell resources (exchange rates increase with each Marketplace you own).",
+					"name" : "Marketplace"
+				},
+				"resourceSilo" : {
+					"cost" : {
+						"gold" : 5000,
+						"ore" : 5
+					},
+					"description" : "The Resource Silo provides you with an additional +1 wood and +1 ore each day.",
+					"name" : "Resource Silo"
+				},
+				"ship" : {
+					"cost" : {
+						"gold" : 0
+					},
+					"description" : "The Shipyard allows you to purchase ships.",
+					"name" : "Shipyard"
+				},
+				"shipyard" : {
+					"cost" : {
+						"gold" : 2000,
+						"wood" : 20
+					},
+					"description" : "The Shipyard allows you to purchase ships.",
+					"name" : "Shipyard"
+				},
+				"special1" : {
+					"cost" : {
+						"gold" : 2000,
+						"ore" : 10
+					},
+					"description" : "The lighthouse grants additional mobility to any ships you control.",
+					"name" : "Lighthouse"
+				},
+				"special2" : {
+					"cost" : {
+						"gold" : 2000,
+						"wood" : 10
+					},
+					"description" : "The Stables increase the land movement rate of any visiting hero.",
+					"name" : "Stables"
+				},
+				"special3" : {
+					"cost" : {
+						"gold" : 500,
+						"wood" : 5
+					},
+					"description" : "During a siege, the Brotherhood of the Sword increases troop morale by +2.",
+					"name" : "Brotherhood of the Sword"
+				},
+				"special4" : {
+					"cost" : {
+						"gold" : 0
+					},
+					"description" : "",
+					"name" : ""
+				},
+				"tavern" : {
+					"cost" : {
+						"gold" : 500,
+						"wood" : 5
+					},
+					"description" : "The Tavern increases morale for troops defending the city.",
+					"name" : "Tavern"
+				},
+				"townHall" : {
+					"cost" : {
+						"gold" : 2500
+					},
+					"description" : "The Town Hall allows you to purchase town structures and earns your kingdom 1000 gold per day.",
+					"name" : "Town Hall"
+				},
+				"villageHall" : {
+					"cost" : {
+						"gold" : 1 // double check
+					},
+					"description" : "The Village Hall allows you to purchase town structures and earns your kingdom 500 gold per day.",
+					"name" : "Village Hall"
+				}
+			}
+		}
+	}
+}

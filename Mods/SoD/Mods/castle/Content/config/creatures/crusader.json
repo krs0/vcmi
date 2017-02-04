@@ -1,0 +1,58 @@
+{
+	"crusader": {
+		"name" : {
+			"plural" : "Crusaders",
+			"singular" : "Crusader"
+		},
+		"faction" : "castle",
+		"level" : 4,
+		"cost" : {
+			"gold" : 400
+		},
+		"speed" : 6,
+		"hitPoints" : 35,
+		"attack" : 12,
+		"defense" : 12,
+		"damage" : {
+			"max" : 10,
+			"min" : 7
+		},
+		"doubleWide" : false,
+		"growth" : 4,
+		"horde" : 0,
+		"aiValue" : 588,
+		"fightValue" : 588,
+		"advMapAmount" : {
+			"max" : 16,
+			"min" : 10
+		},
+		"abilities" : {
+			"extraAttack" : {
+				"type" : "ADDITIONAL_ATTACK",
+				"val" : 1
+			}
+		},
+		"abilityText" : "Strikes twice.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CCRUSD.def",
+			"map" : "sprites/creatures/adventureMap/AVWswrx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL9.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort9.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.95
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/CRUSATTK.wav",
+			"defend" : "sounds/creatures/CRUSDFND.wav",
+			"killed" : "sounds/creatures/CRUSKILL.wav",
+			"move" : "sounds/creatures/CRUSMOVE.wav",
+			"wince" : "sounds/creatures/CRUSWNCE.wav"
+		}
+	}
+}

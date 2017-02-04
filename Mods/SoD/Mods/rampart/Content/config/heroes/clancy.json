@@ -1,0 +1,65 @@
+{
+	"clancy" :
+	{
+		"class" : "ranger",
+		"female" : false,
+
+		"index" : 22,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL022RN.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS022RN.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "centaur",
+				"max" : 24,
+				"min" : 12
+			},
+			{
+				"creature" : "dwarf",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "woodElf",
+				"max" : 6,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "pathfinding"
+			},
+			{
+				"level" : "basic",
+				"skill" : "resistance"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 24,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+
+		"texts" : {
+			"biography" : "It was by pure accident that Clancy discovered he could communicate with Unicorns, but this unique ability has served him well as he worked his way through the ranks of AvLee's Military Elite.",
+			"name" : "Clancy",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Unicorns or War Unicorns for each level attained after 6th level.",
+				"name" : "Unicorns",
+				"tooltip" : "Creature Bonus: Unicorns"
+			}
+		}
+	}
+}
+

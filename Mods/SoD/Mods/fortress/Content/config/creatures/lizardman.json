@@ -1,0 +1,88 @@
+{
+	"lizardman": {
+		"name" : {
+			"plural" : "Lizardmen",
+			"singular" : "Lizardman"
+		},
+		"extraNames" : ["primitiveLizardman"],
+		"faction" : "fortress",
+		"level" : 2,
+		"upgrades": ["lizardWarrior"],
+		"cost" : {
+			"gold" : 110
+		},
+		"speed" : 4,
+		"hitPoints" : 14,
+		"attack" : 5,
+		"defense" : 6,
+		"damage" : {
+			"max" : 3,
+			"min" : 2
+		},
+		"shots" : 12,
+		"doubleWide" : false,
+		"growth" : 9,
+		"horde" : 0,
+		"aiValue" : 126,
+		"fightValue" : 115,
+		"advMapAmount" : {
+			"max" : 30,
+			"min" : 16
+		},
+		"abilities" : {
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			}
+		},
+		"abilityText" : "",
+		"hasDoubleWeek" : true,
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CPLIZA.def",
+			"map" : "sprites/creatures/adventureMap/AvWLizr.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL102.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort102.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.9
+			},
+			"missile" : {
+				"projectile" : "sprites/creatures/projectile/PPLIZAX.DEF",
+				"attackClimaxFrame" : 9,
+				"frameAngles" : [
+					90,
+					72,
+					45,
+					27,
+					0,
+					-27,
+					-45,
+					-72,
+					-90,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 26,
+					"lowerY" : -55,
+					"middleX" : 47,
+					"middleY" : -65,
+					"upperX" : 34,
+					"upperY" : -76
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/PLIZATTK.wav",
+			"defend" : "sounds/creatures/PLIZDFND.wav",
+			"killed" : "sounds/creatures/PLIZKILL.wav",
+			"move" : "sounds/creatures/PLIZMOVE.wav",
+			"shoot" : "sounds/creatures/PLIZSHOT.wav",
+			"wince" : "sounds/creatures/PLIZWNCE.wav"
+		},
+	}
+}

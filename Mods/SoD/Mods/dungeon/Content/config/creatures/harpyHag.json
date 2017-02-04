@@ -1,0 +1,65 @@
+{
+	"harpyHag": {
+		"name" : {
+			"plural" : "Harpy Hags",
+			"singular" : "Harpy Hag"
+		},
+		"faction" : "dungeon",
+		"level" : 2,
+		"cost" : {
+			"gold" : 170
+		},
+		"speed" : 9,
+		"hitPoints" : 14,
+		"attack" : 6,
+		"defense" : 6,
+		"damage" : {
+			"max" : 4,
+			"min" : 1
+		},
+		"doubleWide" : false,
+		"growth" : 8,
+		"horde" : 0,
+		"aiValue" : 238,
+		"fightValue" : 196,
+		"advMapAmount" : {
+			"max" : 25,
+			"min" : 16
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"noRetaliation" : {
+				"type" : "BLOCKS_RETALIATION"
+			},
+			"strikeAndReturn" : {
+				"type" : "RETURN_AFTER_STRIKE"
+			}
+		},
+		"abilityText" : "Strike and return.\nNo enemy retaliation.",
+		"hasDoubleWeek" : true,
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CHARPH.def",
+			"map" : "sprites/creatures/adventureMap/AVWharx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL75.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort75.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.85
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/HHAGATTK.wav",
+			"defend" : "sounds/creatures/HHAGDFND.wav",
+			"killed" : "sounds/creatures/HHAGKILL.wav",
+			"move" : "sounds/creatures/HHAGMOVE.wav",
+			"shoot" : "sounds/creatures/HHAGSHOT.wav",
+			"wince" : "sounds/creatures/HHAGWNCE.wav"
+		}
+	}
+}

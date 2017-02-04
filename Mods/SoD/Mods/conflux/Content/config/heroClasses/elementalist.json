@@ -1,0 +1,82 @@
+{
+	"elementalist" :
+	{
+		"name" : "Elementalist",
+		"faction" : "conflux",
+		"affinity" : "magic",
+		"defaultTavern" : 5,
+		"mapObject" : {
+			"templates" : {
+				"default" : {
+				 "animation" : "sprites/heroClasses/AH17_.def",
+				 "editorAnimation": "sprites/heroClasses/AH17_E.def"
+				}
+			}
+		},
+		"animation" : {
+			"battle" : { 
+				"male" : "sprites/heroClasses/CH17.DEF",
+				"female" : "sprites/heroClasses/CH17.DEF"
+			}
+		},
+		"primarySkills" : {
+			"attack" : 0,
+			"defence" : 0,
+			"knowledge" : 3,
+			"spellpower" : 3
+		},
+		"highLevelChance" : {
+			"attack" : 25,
+			"defence" : 25,
+			"knowledge" : 25,
+			"spellpower" : 25
+		},
+		"lowLevelChance" : {
+			"attack" : 15,
+			"defence" : 15,
+			"knowledge" : 35,
+			"spellpower" : 35
+		},
+		"secondarySkills" : {
+			"airMagic" : 6,
+			"archery" : 2,
+			"armorer" : 1,
+			"artillery" : 1,
+			"ballistics" : 4,
+			"diplomacy" : 4,
+			"eagleEye" : 8,
+			"earthMagic" : 6,
+			"estates" : 3,
+			"fireMagic" : 6,
+			"firstAid" : 4,
+			"intelligence" : 8,
+			"leadership" : 3,
+			"learning" : 4,
+			"logistics" : 2,
+			"luck" : 2,
+			"mysticism" : 8,
+			"navigation" : 4,
+			"necromancy" : 0,
+			"offence" : 1,
+			"pathfinding" : 2,
+			"resistance" : 0,
+			"scholar" : 8,
+			"scouting" : 2,
+			"sorcery" : 8,
+			"tactics" : 1,
+			"waterMagic" : 6,
+			"wisdom" : 8
+		},
+		"tavern" : {
+			"castle" : 5,
+			"conflux" : 6,
+			"dungeon" : 5,
+			"fortress" : 5,
+			"inferno" : 5,
+			"necropolis" : 5,
+			"rampart" : 5,
+			"stronghold" : 5,
+			"tower" : 5
+		}
+	}
+}

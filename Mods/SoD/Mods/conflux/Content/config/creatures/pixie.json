@@ -1,0 +1,61 @@
+{
+	"pixie": {
+		"name" : {
+			"plural" : "Pixies",
+			"singular" : "Pixie"
+		},
+		"extraNames" : [
+			"pixies"
+		],
+		"faction" : "conflux",
+		"level" : 1,
+		"upgrades": ["sprite"],
+		"cost" : {
+			"gold" : 25
+		},
+		"speed" : 7,
+		"hitPoints" : 3,
+		"attack" : 2,
+		"defense" : 2,
+		"damage" : {
+			"max" : 2,
+			"min" : 1
+		},
+		"doubleWide" : false,
+		"growth" : 20,
+		"horde" : 10,
+		"aiValue" : 55,
+		"fightValue" : 40,
+		"advMapAmount" : {
+			"max" : 50,
+			"min" : 20
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			}
+		},
+		"abilityText" : "",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CPIXIE.def",
+			"map" : "sprites/creatures/adventureMap/AVWpixie.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL121.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort121.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/PIXIATTK.wav",
+			"defend" : "sounds/creatures/PIXIDFND.wav",
+			"killed" : "sounds/creatures/PIXIKILL.wav",
+			"move" : "sounds/creatures/PIXIMOVE.wav",
+			"wince" : "sounds/creatures/PIXIWNCE.wav"
+		}
+	}
+}

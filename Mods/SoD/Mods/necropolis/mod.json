@@ -1,0 +1,73 @@
+{
+	"name" : "Necropolis faction",
+	"description" : "Necropolis faction as Mod",
+
+	"version" : "0.99",
+	"author" : "Original SoD Faction - mod by VCMI Team",
+	"contact" : "http://forum.vcmi.eu/index.php",
+	"modType" : "Faction",
+
+	"factions" :
+	[
+		"config/factions/necropolis/faction.json",
+		"config/factions/necropolis/dwellings.json",
+		"config/factions/necropolis/puzzleMap.json",
+		"config/factions/necropolis/town/town.json",
+		"config/factions/necropolis/town/buildings.json",
+		"config/factions/necropolis/town/structures.json",
+		"config/factions/necropolis/town/guildSpells.json",
+		"config/factions/necropolis/town/siege.json"
+	],
+
+	"creatures" :
+	[
+		"config/creatures/skeleton.json",
+		"config/creatures/skeletonWarrior.json",
+
+		"config/creatures/walkingDead.json",
+		"config/creatures/zombieLord.json",
+
+		"config/creatures/wight.json",
+		"config/creatures/wraith.json",
+
+		"config/creatures/vampire.json",
+		"config/creatures/vampireLord.json",
+		
+		"config/creatures/lich.json",
+		"config/creatures/powerLich.json",
+
+		"config/creatures/blackKnight.json",
+		"config/creatures/dreadKnight.json",
+
+		"config/creatures/boneDragon.json",
+		"config/creatures/ghostDragon.json"
+	],
+
+	"heroClasses" :
+	[
+		"config/heroClasses/deathKnight.json",
+		"config/heroClasses/necromancer.json"
+	],
+
+	"heroes" :
+	[
+		// deathknight
+		"config/heroes/straker.json",
+		"config/heroes/vokial.json",
+		"config/heroes/moandor.json",
+		"config/heroes/charna.json",
+		"config/heroes/tamika.json",
+		"config/heroes/isra.json",
+		"config/heroes/clavius.json",
+		"config/heroes/galthran.json",
+		// necromancer
+		"config/heroes/septienna.json",
+		"config/heroes/aislinn.json",
+		"config/heroes/sandro.json",
+		"config/heroes/nimbus.json",
+		"config/heroes/thant.json",
+		"config/heroes/xsi.json",
+		"config/heroes/vidomina.json",
+		"config/heroes/nagash.json"
+	]
+}

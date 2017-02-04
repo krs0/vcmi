@@ -1,0 +1,69 @@
+{
+	"tamika" :
+	{
+		"class" : "deathKnight",
+		"female" : true,
+
+		"index" : 68,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL068DK.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS068DK.bmp"
+		},
+
+
+		"army" : [
+			{
+				"creature" : "skeleton",
+				"max" : 30,
+				"min" : 20
+			},
+			{
+				"creature" : "zombie",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "wight",
+				"max" : 6,
+				"min" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "necromancy"
+			},
+			{
+				"level" : "basic",
+				"skill" : "offence"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 66,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+		"spellbook" : [
+			"magicArrow"
+		],
+			
+		"texts" : {
+			"biography" : "Tamika's superior combat skills have put her in a position of power within the military forces of Deyja.  Besides merely leading troops, she is also responsible for training Black Knights and Dread Knights.",
+			"name" : "Tamika",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Black Knights or Dread Knights for each level attained after 6th level.",
+				"name" : "Black Knights",
+				"tooltip" : "Creature Bonus: Black Knights"
+			}
+		}
+	}
+}
+

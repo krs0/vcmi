@@ -1,0 +1,77 @@
+{
+	"angel": {
+		"name" : {
+			"plural" : "Angels",
+			"singular" : "Angel"
+		},
+		"faction" : "castle",
+		"level" : 7,
+		"upgrades": ["archangel"],
+		"cost" : {
+			"gems" : 1,
+			"gold" : 3000
+		},
+		"speed" : 12,
+		"hitPoints" : 200,
+		"attack" : 20,
+		"defense" : 20,
+		"damage" : {
+			"max" : 50,
+			"min" : 50
+		},
+		"doubleWide" : true,
+		"growth" : 1,
+		"horde" : 0,
+		"aiValue" : 5019,
+		"fightValue" : 3585,
+		"advMapAmount" : {
+			"max" : 10,
+			"min" : 4
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"KING_2" : {
+				"type" : "KING2"
+			},
+			"const_raises_morale" : {
+				"propagator" : "HERO",
+				"type" : "MORALE",
+				"val" : 1
+			},
+			"hateArchDevils" : {
+				"subtype" : "creature.archDevil",
+				"type" : "HATE",
+				"val" : 50
+			},
+			"hateDevils" : {
+				"subtype" : "creature.devil",
+				"type" : "HATE",
+				"val" : 50
+			}
+		},
+		"abilityText" : "Hates Devils.",
+		"graphics" : {
+			"animation" : "sprites//creatures//battle//CANGEL.def",
+			"map" : "sprites//creatures//adventureMap//AvWAngl.def",
+			"iconSmall" : "sprites//creatures//icons//small//CPRSMALL14.bmp",
+			"iconLarge" : "sprites//creatures//icons//large//TwCrPort14.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.82
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds//creatures//ANGLATTK.wav",
+			"defend" : "sounds//creatures//ANGLDFND.wav",
+			"killed" : "sounds/creatures//ANGLKILL.wav",
+			"move" : "sounds//creatures//ANGLMOVE.wav",
+			"wince" : "sounds//creatures//ANGLWNCE.wav"
+		}
+	}
+}

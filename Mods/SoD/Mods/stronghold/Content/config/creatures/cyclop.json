@@ -1,0 +1,89 @@
+{
+	"cyclop": {
+		"name" : {
+			"plural" : "Cyclopes",
+			"singular" : "Cyclops"
+		},
+		"faction" : "stronghold",
+		"level" : 6,
+		"upgrades": ["cyclopKing"],
+		"cost" : {
+			"gold" : 750
+		},
+		"speed" : 6,
+		"hitPoints" : 70,
+		"attack" : 15,
+		"defense" : 12,
+		"damage" : {
+			"max" : 20,
+			"min" : 16
+		},
+		"shots" : 16,
+		"doubleWide" : false,
+		"growth" : 2,
+		"horde" : 0,
+		"aiValue" : 1266,
+		"fightValue" : 1055,
+		"advMapAmount" : {
+			"max" : 12,
+			"min" : 5
+		},
+		"abilities" : {
+			"CATAPULT" : {
+				"type" : "CATAPULT"
+			},
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			}
+		},
+		"abilityText" : "Attacks siege walls.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CCYCLR.def",
+			"map" : "sprites/creatures/adventureMap/AVWcycl0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL96.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort96.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"missile" : {
+				"projectile" : "sprites/creatures/projectile/PCYCLBX.DEF",
+				"attackClimaxFrame" : 7,
+				"frameAngles" : [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 40,
+					"lowerY" : -59,
+					"middleX" : 53,
+					"middleY" : -84,
+					"upperX" : 55,
+					"upperY" : -115
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/CCYCATTK.wav",
+			"defend" : "sounds/creatures/CCYCDFND.wav",
+			"killed" : "sounds/creatures/CCYCKILL.wav",
+			"move" : "sounds/creatures/CCYCMOVE.wav",
+			"shoot" : "sounds/creatures/CCYCSHOT.wav",
+			"wince" : "sounds/creatures/CCYCWNCE.wav"
+		}
+	}
+}

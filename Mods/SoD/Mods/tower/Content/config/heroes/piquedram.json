@@ -1,0 +1,68 @@
+{
+	"piquedram" :
+	{
+		"class" : "alchemist",
+		"female" : false,
+
+		"index" : 32,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL032AL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS032AL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "stoneGargoyle",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "stoneGargoyle",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "stoneGargoyle",
+				"max" : 5,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "scouting"
+			},
+			{
+				"level" : "basic",
+				"skill" : "mysticism"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 30,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+		"spellbook" : [
+			"shield"
+		],
+
+		"texts" : {
+			"biography" : "Piquedram spent much of his schooling in Alchemy dealing with various types of non-valuable rock.  It is no surprise, then, that in the service of Bracada he was able to improve upon the basic design of the Gargoyle.",
+			"name" : "Piquedram",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Stone or Obsidian Gargoyles for each level attained after 2nd level.",
+				"name" : "Gargoyles",
+				"tooltip" : "Creature Bonus: Gargoyles"
+			}
+		}
+	}
+}
+

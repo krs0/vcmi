@@ -1,0 +1,78 @@
+{
+	"airElemental": {
+		"name" : {
+			"plural" : "Air Elementals",
+			"singular" : "Air Elemental"
+		},
+		"extraNames" : [
+			"airElementals"
+		],
+		"faction" : "conflux",
+		"level" : 2,
+		"upgrades": ["stormElemental"],
+		"cost" : {
+			"gold" : 250
+		},
+		"speed" : 7,
+		"hitPoints" : 25,
+		"attack" : 9,
+		"defense" : 9,
+		"damage" : {
+			"max" : 8,
+			"min" : 2
+		},
+		"doubleWide" : false,
+		"growth" : 6,
+		"horde" : 0,
+		"aiValue" : 356,
+		"fightValue" : 324,
+		"advMapAmount" : {
+			"max" : 12,
+			"min" : 8
+		},
+		"abilities" : {
+			"chainLightingVulnerablity" : {
+				"subtype" : "spell.chainLightning",
+				"type" : "MORE_DAMAGE_FROM_SPELL",
+				"val" : 100
+			},
+			"immuneToMind" : {
+				"type" : "MIND_IMMUNITY"
+			},
+			"lightingVulnerablity" : {
+				"subtype" : "spell.lightningBolt",
+				"type" : "MORE_DAMAGE_FROM_SPELL",
+				"val" : 100
+			},
+			"meteorShowerImmunity" : {
+				"subtype" : "spell.meteorShower",
+				"type" : "SPELL_IMMUNITY"
+			},
+			"nonLiving" : {
+				"type" : "NON_LIVING"
+			}
+		},
+		"abilityText" : "Lightning and firestorm vulnerability.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CAELEM.def",
+			"map" : "sprites/creatures/adventureMap/AVWelma0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL114.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort114.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 0,
+				"walk" : 0.5
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/AELMATTK.wav",
+			"defend" : "sounds/creatures/AELMDFND.wav",
+			"killed" : "sounds/creatures/AELMKILL.wav",
+			"move" : "sounds/creatures/AELMMOVE.wav",
+			"wince" : "sounds/creatures/AELMWNCE.wav"
+		}
+	}
+}

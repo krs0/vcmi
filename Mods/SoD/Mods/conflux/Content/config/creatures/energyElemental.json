@@ -1,0 +1,81 @@
+{
+	"energyElemental": {
+		"name" : {
+			"plural" : "Energy Elementals",
+			"singular" : "Energy Elemental"
+		},
+		"faction" : "conflux",
+		"level" : 4,
+		"cost" : {
+			"gold" : 400
+		},
+		"speed" : 8,
+		"hitPoints" : 35,
+		"attack" : 12,
+		"defense" : 8,
+		"damage" : {
+			"max" : 6,
+			"min" : 4
+		},
+		"spellPoints" : 3,
+		"doubleWide" : false,
+		"growth" : 5,
+		"horde" : 0,
+		"aiValue" : 470,
+		"fightValue" : 360,
+		"advMapAmount" : {
+			"max" : 25,
+			"min" : 12
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"IMMUNE_TO_MIND_SPELLS" : {
+				"type" : "MIND_IMMUNITY"
+			},
+			"immuneToFire" : {
+				"subtype" : 0,
+				"type" : "FIRE_IMMUNITY"
+			},
+			"nonLiving" : {
+				"type" : "NON_LIVING"
+			},
+			"spellPoints" : {
+				"type" : "CASTS",
+				"val" : 3
+			},
+			"spellPower" : {
+				"type" : "CREATURE_ENCHANT_POWER",
+				"val" : 6
+			},
+			"spellcaster" : {
+				"subtype" : "spell.protectFire",
+				"type" : "SPELLCASTER",
+				"val" : 2
+			}
+		},
+		"abilityText" : "Casts Protect from Fire. Mind & fire immunity, cold vulnerability.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CNRG.def",
+			"map" : "sprites/creatures/adventureMap/AVWnrg.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL131.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort131.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 0,
+				"walk" : 0.67
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/ENERATTK.wav",
+			"defend" : "sounds/creatures/ENERDFND.wav",
+			"killed" : "sounds/creatures/ENERKILL.wav",
+			"move" : "sounds/creatures/ENERMOVE.wav",
+			"wince" : "sounds/creatures/ENERWNCE.wav"
+		}
+	}
+}

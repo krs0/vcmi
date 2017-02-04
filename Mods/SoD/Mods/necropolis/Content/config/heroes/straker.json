@@ -1,0 +1,69 @@
+{
+	"straker" :
+	{
+		"class" : "deathKnight",
+		"female" : false,
+
+		"index" : 64,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL064DK.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS064DK.bmp"
+		},
+
+
+		"army" : [
+			{
+				"creature" : "zombie",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "zombie",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "zombie",
+				"max" : 6,
+				"min" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "necromancy"
+			},
+			{
+				"level" : "basic",
+				"skill" : "resistance"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 58,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+		"spellbook" : [
+			"haste"
+		],
+			
+		"texts" : {
+			"biography" : "Straker chose the dark path of Necromancy, but it was soon discovered that his fighting skills by far outclassed his magical abilities.  He serves now in the undead armies of Deyja, hoping to one day join the ranks of true Necromancers.",
+			"name" : "Straker",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Walking Dead or Zombies for each level attained after 2nd level.",
+				"name" : "Walking Dead",
+				"tooltip" : "Creature Bonus: Walking Dead"
+			}
+		}
+	}
+}
+

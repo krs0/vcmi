@@ -1,0 +1,82 @@
+{
+	"overlord" :
+	{
+		"name" : "Overlord",
+		"faction" : "dungeon",
+		"affinity" : "might",
+		"defaultTavern" : 5,
+		"mapObject" : {
+			"templates" : {
+				"default" : {
+					"animation" : "sprites/heroClasses/AH10_.def",
+					"editorAnimation" : "sprites/heroClasses/AH10_E.def"
+				}
+			}
+		},
+		"animation" : {
+			"battle" : {
+				"female" : "sprites/heroClasses/CH11.DEF",
+				"male" : "sprites/heroClasses/CH010.DEF"
+			}
+		},
+		"primarySkills" : {
+			"attack" : 2,
+			"defence" : 2,
+			"knowledge" : 1,
+			"spellpower" : 1
+		},
+		"highLevelChance" : {
+			"attack" : 30,
+			"defence" : 30,
+			"knowledge" : 20,
+			"spellpower" : 20
+		},
+		"lowLevelChance" : {
+			"attack" : 35,
+			"defence" : 35,
+			"knowledge" : 15,
+			"spellpower" : 15
+		},
+		"secondarySkills" : {
+			"airMagic" : 1,
+			"archery" : 6,
+			"armorer" : 6,
+			"artillery" : 8,
+			"ballistics" : 7,
+			"diplomacy" : 3,
+			"eagleEye" : 2,
+			"earthMagic" : 3,
+			"estates" : 4,
+			"fireMagic" : 2,
+			"firstAid" : 1,
+			"intelligence" : 1,
+			"leadership" : 8,
+			"learning" : 4,
+			"logistics" : 8,
+			"luck" : 1,
+			"mysticism" : 3,
+			"navigation" : 4,
+			"necromancy" : 0,
+			"offence" : 8,
+			"pathfinding" : 5,
+			"resistance" : 6,
+			"scholar" : 1,
+			"scouting" : 5,
+			"sorcery" : 2,
+			"tactics" : 10,
+			"waterMagic" : 0,
+			"wisdom" : 3
+		},
+		"tavern" : {
+			"castle" : 5,
+			"conflux" : 5,
+			"dungeon" : 6,
+			"fortress" : 5,
+			"inferno" : 6,
+			"necropolis" : 6,
+			"rampart" : 5,
+			"stronghold" : 6,
+			"tower" : 5
+		}
+	}
+}

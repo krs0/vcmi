@@ -1,0 +1,85 @@
+{
+	"orcChieftain": {
+		"name" : {
+			"plural" : "Orc Chieftains",
+			"singular" : "Orc Chieftain"
+		},
+		"faction" : "stronghold",
+		"level" : 3,
+		"cost" : {
+			"gold" : 165
+		},
+		"speed" : 5,
+		"hitPoints" : 20,
+		"attack" : 8,
+		"defense" : 4,
+		"damage" : {
+			"max" : 5,
+			"min" : 2
+		},
+		"shots" : 24,
+		"doubleWide" : false,
+		"growth" : 7,
+		"horde" : 0,
+		"aiValue" : 240,
+		"fightValue" : 200,
+		"advMapAmount" : {
+			"max" : 20,
+			"min" : 12
+		},
+		"abilities" : {
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			}
+		},
+		"abilityText" : "",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CORCCH.def",
+			"map" : "sprites/creatures/adventureMap/AVWorcx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL91.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort91.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"missile" : {
+				"projectile" : "sprites/creatures/projectile/PORCHX.DEF",
+				"attackClimaxFrame" : 4,
+				"frameAngles" : [
+					90,
+					72,
+					45,
+					27,
+					0,
+					-27,
+					-45,
+					-72,
+					-90,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 32,
+					"lowerY" : -28,
+					"middleX" : 37,
+					"middleY" : -66,
+					"upperX" : 34,
+					"upperY" : -88
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/ORCCATTK.wav",
+			"defend" : "sounds/creatures/ORCCDFND.wav",
+			"killed" : "sounds/creatures/ORCCKILL.wav",
+			"move" : "sounds/creatures/ORCCMOVE.wav",
+			"shoot" : "sounds/creatures/ORCCSHOT.wav",
+			"wince" : "sounds/creatures/ORCCWNCE.wav"
+		}
+	}
+}

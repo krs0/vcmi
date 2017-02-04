@@ -1,0 +1,65 @@
+{
+	"shakti" :
+	{
+		"class" : "warlock",
+		"female" : false,
+
+		"index" : 87,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL087OV.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS087OV.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "troglodyte",
+				"max" : 40,
+				"min" : 30
+			},
+			{
+				"creature" : "troglodyte",
+				"max" : 40,
+				"min" : 30
+			},
+			{
+				"creature" : "troglodyte",
+				"max" : 40,
+				"min" : 30
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "tactics"
+			},
+			{
+				"level" : "basic",
+				"skill" : "offence"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 70,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+
+		"texts" : {
+			"biography" : "Though eyeless, Shakti has amazing vision when it comes to battlefield tactics.  His Troglodyte hordes are feared the world over, especially in the dark tunnels of Nighon.",
+			"name" : "Shakti",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Troglodytes or Infernal Troglodytes for each level attained after 1st level.",
+				"name" : "Troglodytes",
+				"tooltip" : "Creature Bonus: Troglodytes"
+			}
+		}
+	}
+}
+

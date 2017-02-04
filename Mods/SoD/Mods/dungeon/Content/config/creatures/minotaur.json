@@ -1,0 +1,59 @@
+{
+	"minotaur": {
+		"name" : {
+			"plural" : "Minotaurs",
+			"singular" : "Minotaur"
+		},
+		"faction" : "dungeon",
+		"level" : 5,
+		"upgrades": ["minotaurKing"],
+		"cost" : {
+			"gold" : 500
+		},
+		"speed" : 6,
+		"hitPoints" : 50,
+		"attack" : 14,
+		"defense" : 12,
+		"damage" : {
+			"max" : 20,
+			"min" : 12
+		},
+		"doubleWide" : false,
+		"growth" : 3,
+		"horde" : 0,
+		"aiValue" : 835,
+		"fightValue" : 835,
+		"advMapAmount" : {
+			"max" : 16,
+			"min" : 8
+		},
+		"abilities" : {
+			"fearless" : {
+				"type" : "SELF_MORALE"
+			}
+		},
+		"abilityText" : "Good morale.",
+		"hasDoubleWeek" : true,
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CMINOT.def",
+			"map" : "sprites/creatures/adventureMap/AvWMino.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL80.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort80.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1.05
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/MINOATTK.wav",
+			"defend" : "sounds/creatures/MINODFND.wav",
+			"killed" : "sounds/creatures/MINOKILL.wav",
+			"move" : "sounds/creatures/MINOMOVE.wav",
+			"wince" : "sounds/creatures/MINOWNCE.wav"
+		}
+	}
+}

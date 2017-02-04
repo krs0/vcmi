@@ -1,0 +1,68 @@
+{
+	"alagar" :
+	{
+		"class" : "druid",
+		"female" : false,
+
+		"index" : 30,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL030DR.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS030DR.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "centaur",
+				"max" : 24,
+				"min" : 12
+			},
+			{
+				"creature" : "dwarf",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "woodElf",
+				"max" : 6,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "sorcery"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 16,
+				"type" : 3,
+				"val" : 3
+			}
+		],
+		"spellbook" : [
+			"iceBolt"
+		],
+
+		"texts" : {
+			"biography" : "Rumored to have once lived among the Vori Snow Elves, Alagar's command of the element of Water, especially ice, is unsurpassed.  He has served AvLee since before the Kreegan invasion.",
+			"name" : "Alagar",
+			"specialty" : {
+				"description" : "Casts Ice Bolt with increased effect, based on hero level compared to the level of the target unit (the bonus is greater when used on weaker units).",
+				"name" : "Ice Bolt",
+				"tooltip" : "Spell Bonus: Ice Bolt"
+			}
+		}
+	}
+}
+

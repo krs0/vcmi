@@ -1,0 +1,96 @@
+{
+	"medusaQueen": {
+		"name" : {
+			"plural" : "Medusa Queens",
+			"singular" : "Medusa Queen"
+		},
+		"faction" : "dungeon",
+		"level" : 4,
+		"cost" : {
+			"gold" : 330
+		},
+		"speed" : 6,
+		"hitPoints" : 30,
+		"attack" : 10,
+		"defense" : 10,
+		"damage" : {
+			"max" : 8,
+			"min" : 6
+		},
+		"shots" : 8,
+		"doubleWide" : true,
+		"growth" : 4,
+		"horde" : 0,
+		"aiValue" : 577,
+		"fightValue" : 423,
+		"advMapAmount" : {
+			"max" : 16,
+			"min" : 10
+		},
+		"abilities" : {
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			},
+			"const_no_melee_penalty" : {
+				"type" : "NO_MELEE_PENALTY"
+			},
+			"petrification" : {
+				"addInfo" : 2000,
+				"subtype" : "spell.stoneGaze",
+				"type" : "SPELL_AFTER_ATTACK",
+				"val" : 20
+			}
+		},
+		"abilityText" : "No melee penalty.\nStone gaze.",
+		"hasDoubleWeek" : true,
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CMEDUQ.def",
+			"map" : "sprites/creatures/adventureMap/AVWmedx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL79.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort79.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"missile" :
+			{
+				"projectile" : "sprites/creatures/projectile/PMEDUSX.DEF",
+				"attackClimaxFrame" : 9,
+				"frameAngles" : [
+					90,
+					72,
+					45,
+					27,
+					0,
+					-27,
+					-45,
+					-72,
+					-90,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 70,
+					"lowerY" : -45,
+					"middleX" : 75,
+					"middleY" : -50,
+					"upperX" : 75,
+					"upperY" : -65
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/MEDQATTK.wav",
+			"defend" : "sounds/creatures/MEDQDFND.wav",
+			"killed" : "sounds/creatures/MEDQKILL.wav",
+			"move" : "sounds/creatures/MEDQMOVE.wav",
+			"shoot" : "sounds/creatures/MEDQSHOT.wav",
+			"wince" : "sounds/creatures/MEDQWNCE.wav"
+		}
+	}
+}

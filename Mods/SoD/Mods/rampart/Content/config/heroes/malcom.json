@@ -1,0 +1,68 @@
+{
+	"malcom" :
+	{
+		"class" : "druid",
+		"female" : false,
+
+		"index" : 28,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL028DR.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS028DR.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "centaur",
+				"max" : 24,
+				"min" : 12
+			},
+			{
+				"creature" : "dwarf",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "woodElf",
+				"max" : 6,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "eagleEye"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 11,
+				"type" : 2,
+				"val" : 5
+			}
+		],
+		"spellbook" : [
+			"magicArrow"
+		],
+
+		"texts" : {
+			"biography" : "Malcom is one of the few Dwarves to show a natural aptitude for magic.  Often he can learn new spells merely by watching someone else cast them just once.  He was quickly pressed into service defending AvLee from the Devils of Eeofol.",
+			"name" : "Malcom",
+			"specialty" : {
+				"description" : "Receives a 5% per level bonus to Eagle Eye skill percentage.",
+				"name" : "Eagle Eye",
+				"tooltip" : "Secondary Skill Bonus: Eagle Eye"
+			}
+		}
+	}
+}
+

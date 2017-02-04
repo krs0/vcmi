@@ -1,0 +1,68 @@
+{
+	"daremyth" :
+	{
+		"class" : "wizard",
+		"female" : true,
+
+		"index" : 43,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL043WZ.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS043WZ.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "apprenticeGremlin",
+				"max" : 40,
+				"min" : 30
+			},
+			{
+				"creature" : "stoneGargoyle",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "ironGolem",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "intelligence"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 51,
+				"type" : 7,
+				"val" : 0
+			}
+		],
+		"spellbook" : [
+			"fortune"
+		],
+		
+		"texts" : {
+			"biography" : "Daremyth should have been dead a long time ago.  Her go-anywhere-do-anything attitude has put her in situations that she should have never survived, but somehow she comes through unscathed.",
+			"name" : "Daremyth",
+			"specialty" : {
+				"description" : "Casts Fortune with increased effect, based on hero level compared to the level of the target unit (the bonus is greater when used on weaker units).",
+				"name" : "Fortune",
+				"tooltip" : "Spell Bonus: Fortune"
+			}
+		}
+	}
+}
+

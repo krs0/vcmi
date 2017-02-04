@@ -1,0 +1,56 @@
+{
+	"centaur": {
+		"name" : {
+			"plural" : "Centaurs",
+			"singular" : "Centaur"
+		},
+		"faction" : "rampart",
+		"level" : 1,
+		"upgrades": ["centaurCaptain"],
+		"cost" : {
+			"gold" : 70
+		},
+		"speed" : 6,
+		"hitPoints" : 8,
+		"attack" : 5,
+		"defense" : 3,
+		"damage" : {
+			"max" : 3,
+			"min" : 2
+		},
+		"doubleWide" : true,
+		"growth" : 14,
+		"horde" : 0,
+		"aiValue" : 100,
+		"fightValue" : 100,
+		"advMapAmount" : {
+			"max" : 50,
+			"min" : 20
+		},
+		"abilityText" : "",
+		"hasDoubleWeek" : true,
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CCENTR.def",
+			"map" : "sprites/creatures/adventureMap/AVWcent0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL16.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort16.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.5
+			},
+			"missile" : null,
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/CNTRATTK.wav",
+			"defend" : "sounds/creatures/CNTRDFND.wav",
+			"killed" : "sounds/creatures/CNTRKILL.wav",
+			"move" : "sounds/creatures/CNTRMOVE.wav",
+			"shoot" : "sounds/creatures/CNTRSHOT.wav",
+			"wince" : "sounds/creatures/CNTRWNCE.wav"
+		}
+	}
+}

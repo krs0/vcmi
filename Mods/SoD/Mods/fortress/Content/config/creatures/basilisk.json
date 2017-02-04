@@ -1,0 +1,60 @@
+{
+	"basilisk": {
+		"name" : {
+			"plural" : "Basilisks",
+			"singular" : "Basilisk"
+		},
+		"faction" : "fortress",
+		"level" : 4,
+		"upgrades": ["greaterBasilisk"],
+		"cost" : {
+			"gold" : 325
+		},
+		"speed" : 5,
+		"hitPoints" : 35,
+		"attack" : 11,
+		"defense" : 11,
+		"damage" : {
+			"max" : 10,
+			"min" : 6
+		},
+		"doubleWide" : true,
+		"growth" : 4,
+		"horde" : 0,
+		"aiValue" : 552,
+		"fightValue" : 506,
+		"advMapAmount" : {
+			"max" : 16,
+			"min" : 8
+		},
+		"abilities" : {
+			"petrify" : {
+				"subtype" : "spell.stoneGaze",
+				"type" : "SPELL_AFTER_ATTACK",
+				"val" : 20
+			}
+		},
+		"abilityText" : "Petrifying attack.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CBASIL.def",
+			"map" : "sprites/creatures/adventureMap/AvWBasl.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL108.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort108.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/BASLATTK.wav",
+			"defend" : "sounds/creatures/BASLDFND.wav",
+			"killed" : "sounds/creatures/BASLKILL.wav",
+			"move" : "sounds/creatures/BASLMOVE.wav",
+			"wince" : "sounds/creatures/BASLWNCE.wav"
+		}
+	}
+}

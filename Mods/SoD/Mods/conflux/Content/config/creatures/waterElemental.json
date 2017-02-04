@@ -1,0 +1,88 @@
+{
+	"waterElemental": {
+		"name" : {
+			"plural" : "Water Elementals",
+			"singular" : "Water Elemental"
+		},
+		"extraNames" : [
+			"waterElementals"
+		],
+		"faction" : "conflux",
+		"level" : 3,
+		"upgrades": ["iceElemental"],
+		"cost" : {
+			"gold" : 300
+		},
+		"speed" : 5,
+		"hitPoints" : 30,
+		"attack" : 8,
+		"defense" : 10,
+		"damage" : {
+			"max" : 7,
+			"min" : 3
+		},
+		"doubleWide" : true,
+		"growth" : 6,
+		"horde" : 0,
+		"aiValue" : 315,
+		"fightValue" : 315,
+		"advMapAmount" : {
+			"max" : 25,
+			"min" : 12
+		},
+		"abilities" : {
+			"fireShieldVulnerablity" : {
+				"subtype" : "spell.fireShield",
+				"type" : "MORE_DAMAGE_FROM_SPELL",
+				"val" : 100
+			},
+			"fireWallVulnerablity" : {
+				"subtype" : "spell.fireWall",
+				"type" : "MORE_DAMAGE_FROM_SPELL",
+				"val" : 100
+			},
+			"fireballVulnerablity" : {
+				"subtype" : "spell.fireball",
+				"type" : "MORE_DAMAGE_FROM_SPELL",
+				"val" : 100
+			},
+			"immuneToMind" : {
+				"type" : "MIND_IMMUNITY"
+			},
+			"immuneToWater" : {
+				"subtype" : 2,
+				"type" : "WATER_IMMUNITY"
+			},
+			"infernoVulnerablity" : {
+				"subtype" : "spell.inferno",
+				"type" : "MORE_DAMAGE_FROM_SPELL",
+				"val" : 100
+			},
+			"nonLiving" : {
+				"type" : "NON_LIVING"
+			}
+		},
+		"abilityText" : "Immune to ice.\nVulnerable to fire.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CWELEM.def",
+			"map" : "sprites/creatures/adventureMap/AVWelmw0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL117.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort117.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 0,
+				"walk" : 0.87
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/WELMATTK.wav",
+			"defend" : "sounds/creatures/WELMDFND.wav",
+			"killed" : "sounds/creatures/WELMKILL.wav",
+			"move" : "sounds/creatures/WELMMOVE.wav",
+			"wince" : "sounds/creatures/WELMWNCE.wav"
+		}
+	}
+}

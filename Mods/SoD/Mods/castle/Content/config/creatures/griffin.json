@@ -1,0 +1,63 @@
+{
+	"griffin": {
+		"name" : {
+			"plural" : "Griffins",
+			"singular" : "Griffin"
+		},
+		"faction" : "castle",
+		"level" : 3,
+		"upgrades" : ["royalGriffin"],
+		"cost" : {
+			"gold" : 200
+		},
+		"speed" : 6,
+		"hitPoints" : 25,
+		"attack" : 8,
+		"defense" : 8,
+		"damage" : {
+			"max" : 6,
+			"min" : 3
+		},
+		"doubleWide" : true,
+		"growth" : 7,
+		"horde" : 3,
+		"aiValue" : 351,
+		"fightValue" : 324,
+		"advMapAmount" : {
+			"max" : 25,
+			"min" : 12
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"extraRetaliation" : {
+				"type" : "ADDITIONAL_RETALIATION",
+				"val" : 1
+			}
+		},
+		"abilityText" : "Retaliates twice.",
+		"hasDoubleWeek" : true,
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CGRIFF.def",
+			"map" : "sprites/creatures/adventureMap/AvWGrif.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL6.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort6.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/GRIFATTK.wav",
+			"defend" : "sounds/creatures/GRIFDFND.wav",
+			"killed" : "sounds/creatures/GRIFKILL.wav",
+			"move" : "sounds/creatures/GRIFMOVE.wav",
+			"wince" : "sounds/creatures/GRIFWNCE.wav"
+		}
+	}
+}

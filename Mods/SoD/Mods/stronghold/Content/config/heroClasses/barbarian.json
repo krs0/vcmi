@@ -1,0 +1,82 @@
+{
+	"barbarian" :
+	{
+		"name" : "Barbarian",
+		"faction" : "stronghold",
+		"affinity" : "might",
+		"defaultTavern" : 5,
+		"mapObject" : {
+			"templates" : {
+				"default" : {
+					"animation" : "sprites/heroClasses/AH12_.def",
+					"editorAnimation" : "sprites/heroClasses/AH12_E.def"
+				}
+			}
+		},
+		"animation" : {
+			"battle" : {
+				"female" : "sprites/heroClasses/CH012.DEF",
+				"male" : "sprites/heroClasses/CH013.DEF"
+			}
+		},
+		"primarySkills" : {
+			"attack" : 4,
+			"defence" : 0,
+			"knowledge" : 1,
+			"spellpower" : 1
+		},
+		"highLevelChance" : {
+			"attack" : 30,
+			"defence" : 30,
+			"knowledge" : 20,
+			"spellpower" : 20
+		},
+		"lowLevelChance" : {
+			"attack" : 55,
+			"defence" : 35,
+			"knowledge" : 5,
+			"spellpower" : 5
+		},
+		"secondarySkills" : {
+			"airMagic" : 3,
+			"archery" : 7,
+			"armorer" : 6,
+			"artillery" : 8,
+			"ballistics" : 8,
+			"diplomacy" : 1,
+			"eagleEye" : 2,
+			"earthMagic" : 3,
+			"estates" : 2,
+			"fireMagic" : 2,
+			"firstAid" : 1,
+			"intelligence" : 1,
+			"leadership" : 5,
+			"learning" : 4,
+			"logistics" : 7,
+			"luck" : 3,
+			"mysticism" : 3,
+			"navigation" : 2,
+			"necromancy" : 0,
+			"offence" : 10,
+			"pathfinding" : 8,
+			"resistance" : 6,
+			"scholar" : 1,
+			"scouting" : 8,
+			"sorcery" : 1,
+			"tactics" : 8,
+			"waterMagic" : 0,
+			"wisdom" : 2
+		},
+		"tavern" : {
+			"castle" : 6,
+			"conflux" : 6,
+			"dungeon" : 6,
+			"fortress" : 5,
+			"inferno" : 6,
+			"necropolis" : 6,
+			"rampart" : 6,
+			"stronghold" : 6,
+			"tower" : 6
+		}
+	}
+}

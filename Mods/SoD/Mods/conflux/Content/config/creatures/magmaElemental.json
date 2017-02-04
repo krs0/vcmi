@@ -1,0 +1,92 @@
+{
+	"magmaElemental": {
+		"name" : {
+			"plural" : "Magma Elementals",
+			"singular" : "Magma Elemental"
+		},
+		"faction" : "conflux",
+		"level" : 5,
+		"cost" : {
+			"gold" : 500
+		},
+		"speed" : 6,
+		"hitPoints" : 40,
+		"attack" : 11,
+		"defense" : 11,
+		"damage" : {
+			"max" : 10,
+			"min" : 6
+		},
+		"spellPoints" : 3,
+		"doubleWide" : false,
+		"growth" : 4,
+		"horde" : 0,
+		"aiValue" : 490,
+		"fightValue" : 490,
+		"advMapAmount" : {
+			"max" : 25,
+			"min" : 16
+		},
+		"abilities" : {
+			"IMMUNE_TO_MIND_SPELLS" : {
+				"type" : "MIND_IMMUNITY"
+			},
+			"armageddonImmunity" : {
+				"subtype" : "spell.armageddon",
+				"type" : "SPELL_IMMUNITY"
+			},
+			"chainLightingImmunity" : {
+				"subtype" : "spell.chainLightning",
+				"type" : "SPELL_IMMUNITY"
+			},
+			"lightingImmunity" : {
+				"subtype" : "spell.lightningBolt",
+				"type" : "SPELL_IMMUNITY"
+			},
+			"meteorShowerVulnerability" :
+			{
+				"type" : "MORE_DAMAGE_FROM_SPELL",
+				"subtype" : "spell.meteorShower",
+				"val" : 100
+			},
+			"nonLiving" : {
+				"type" : "NON_LIVING"
+			},
+			"spellPoints" : {
+				"type" : "CASTS",
+				"val" : 3
+			},
+			"spellPower" : {
+				"type" : "CREATURE_ENCHANT_POWER",
+				"val" : 6
+			},
+			"spellcaster" : {
+				"subtype" : "spell.protectEarth",
+				"type" : "SPELLCASTER",
+				"val" : 2
+			}
+		},
+		"abilityText" : "Mind spell immunity.  Casts protection from Earth.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CSTONE.def",
+			"map" : "sprites/creatures/adventureMap/AVWstone.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL127.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort127.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 0,
+				"walk" : 0.77
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/MAGMATTK.wav",
+			"defend" : "sounds/creatures/MAGMDFND.wav",
+			"killed" : "sounds/creatures/MAGMKILL.wav",
+			"move" : "sounds/creatures/MAGMMOVE.wav",
+			"wince" : "sounds/creatures/MAGMWNCE.wav"
+		}
+	}
+}

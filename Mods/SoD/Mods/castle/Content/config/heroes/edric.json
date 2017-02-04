@@ -1,0 +1,109 @@
+{
+	"edric" :
+	{
+		"class" : "knight",
+		"female" : false,
+
+		"index" : 2,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL002KN.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS002KN.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "pikeman",
+				"max" : 20,
+				"min" : 10
+			},
+			{
+				"creature" : "griffin",
+				"max" : 3,
+				"min" : 2
+			},
+			{
+				"creature" : "griffin",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "leadership"
+			},
+			{
+				"level" : "basic",
+				"skill" : "armorer"
+			}
+		],
+		
+		"specialty": // Increases the Attack and Defense skills of any Archers or Marksmen for each level attained after 2nd level.
+		[
+			{
+				"growsWithLevel" : true,
+				"bonuses":
+				[
+					{
+						"type": "PRIMARY_SKILL",
+						"subtype": 0,
+						"limiters":
+						[
+							{
+								"type": "CREATURE_TYPE_LIMITER",
+								"parameters" : ["griffin", true]
+							}
+						]
+					},
+					{
+						"type": "PRIMARY_SKILL",
+						"subtype": 1,
+						"limiters":
+						[
+							{
+								"type": "CREATURE_TYPE_LIMITER",
+								"parameters" : ["griffin", true]
+							}
+						]
+					},
+					{
+						"type": "STACKS_SPEED",
+						"val": 1,
+						"limiters":
+						[
+							{
+								"type": "CREATURE_TYPE_LIMITER",
+								"parameters" : ["griffin", true]
+							}
+						]
+					}
+				]
+			}
+
+		],
+		"specialties" : [
+			{
+				"info" : 4,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+
+		"texts" : {
+			"biography" : "Edric's great grandfather was the first man in Erathia to domesticate and train a wild Griffin.  Now, Edric's family maintains Erathia's largest Griffin breeding grounds for use in the King's armies.",
+			"name" : "Edric",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Griffins or Royal Griffins or each level attained after 3rd level.",
+				"name" : "Griffins",
+				"tooltip" : "Creature Bonus: Griffins"
+			}
+		}
+	}
+}
+

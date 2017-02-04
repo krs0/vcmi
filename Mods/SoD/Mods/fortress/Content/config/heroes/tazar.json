@@ -1,0 +1,61 @@
+{
+	"tazar" :
+	{
+		"class" : "beastmaster",
+		"female" : false,
+
+		"index" : 115,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL115BS.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS115BS.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "gnoll",
+				"max" : 20,
+				"min" : 10
+			},
+			{
+				"creature" : "lizardman",
+				"max" : 7,
+				"min" : 4
+			},
+			{
+				"creature" : "serpentFly",
+				"max" : 4,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "advanced",
+				"skill" : "armorer"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 100,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+
+		"texts" : {
+			"biography" : "During a six month border war with Krewlod, a small force led by Tazar was able to make a stand at a Tatalian outpost, holding off a Krewlod force nearly five times their size for more than eight days until reinforcements arrived.",
+			"name" : "Tazar",
+			"specialty" : {
+				"description" : "Tazar receives a 5% per level bonus to his Armorer skill percentage.",
+				"name" : "Armorer",
+				"tooltip" : "Secondary Skill Bonus: Armorer"
+			}
+		}
+	}
+}
+

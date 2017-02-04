@@ -1,0 +1,73 @@
+{
+	"name" : "Rampart faction",
+	"description" : "Rampart faction as Mod",
+
+	"version" : "0.99",
+	"author" : "Original SoD Faction - mod by VCMI Team",
+	"contact" : "http://forum.vcmi.eu/index.php",
+	"modType" : "Faction",
+
+	"factions" :
+	[
+		"config/factions/rampart/faction.json",
+		"config/factions/rampart/dwellings.json",
+		"config/factions/rampart/puzzleMap.json",
+		"config/factions/rampart/town/town.json",
+		"config/factions/rampart/town/buildings.json",
+		"config/factions/rampart/town/structures.json",
+		"config/factions/rampart/town/guildSpells.json",
+		"config/factions/rampart/town/siege.json"
+	],
+
+	"creatures" :
+	[
+		"config/creatures/centaur.json",
+		"config/creatures/centaurCaptain.json",
+
+		"config/creatures/dwarf.json",
+		"config/creatures/battleDwarf.json",
+
+		"config/creatures/woodElf.json",
+		"config/creatures/grandElf.json",
+
+		"config/creatures/pegasus.json",
+		"config/creatures/silverPegasus.json",
+		
+		"config/creatures/dendroidGuard.json",
+		"config/creatures/dendroidSoldier.json",
+
+		"config/creatures/unicorn.json",
+		"config/creatures/warUnicorn.json",
+
+		"config/creatures/greenDragon.json",
+		"config/creatures/goldDragon.json"
+	],
+
+	"heroClasses" :
+	[
+		"config/heroClasses/ranger.json",
+		"config/heroClasses/druid.json"
+	],
+
+	"heroes" :
+	[
+		// ranger
+		"config/heroes/mephala.json",
+		"config/heroes/ufretin.json",
+		"config/heroes/jenova.json",
+		"config/heroes/ryland.json",
+		"config/heroes/thorgrim.json",
+		"config/heroes/ivor.json",
+		"config/heroes/clancy.json",
+		"config/heroes/kyrre.json",
+		// druid
+		"config/heroes/coronius.json",
+		"config/heroes/uland.json",
+		"config/heroes/elleshar.json",
+		"config/heroes/gem.json",
+		"config/heroes/malcom.json",
+		"config/heroes/melodia.json",
+		"config/heroes/alagar.json",
+		"config/heroes/aeris.json"
+	]
+}

@@ -1,0 +1,69 @@
+{
+	"ogreMage": {
+		"name" : {
+			"plural" : "Ogre Magi",
+			"singular" : "Ogre Mage"
+		},
+		"faction" : "stronghold",
+		"level" : 4,
+		"cost" : {
+			"gold" : 400
+		},
+		"speed" : 5,
+		"hitPoints" : 60,
+		"attack" : 13,
+		"defense" : 7,
+		"damage" : {
+			"max" : 12,
+			"min" : 6
+		},
+		"spellPoints" : 3,
+		"doubleWide" : false,
+		"growth" : 4,
+		"horde" : 0,
+		"aiValue" : 672,
+		"fightValue" : 672,
+		"advMapAmount" : {
+			"max" : 16,
+			"min" : 10
+		},
+		"abilities" : {
+			"castLength" : {
+				"type" : "CREATURE_ENCHANT_POWER",
+				"val" : 3
+			},
+			"castsBloodlust" : {
+				"subtype" : "spell.bloodlust",
+				"type" : "SPELLCASTER",
+				"val" : 2
+			},
+			"castsCount" : {
+				"type" : "CASTS",
+				"val" : 3
+			}
+		},
+		"abilityText" : "Spellcaster: Bloodlust.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/COGMAG.def",
+			"map" : "sprites/creatures/adventureMap/AVWogrx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL93.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort93.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1.28
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/OGRMATTK.wav",
+			"defend" : "sounds/creatures/OGRMDFND.wav",
+			"killed" : "sounds/creatures/OGRMKILL.wav",
+			"move" : "sounds/creatures/OGRMMOVE.wav",
+			"shoot" : "sounds/creatures/OGRMSHOT.wav",
+			"wince" : "sounds/creatures/OGRMWNCE.wav"
+		}
+	}
+}

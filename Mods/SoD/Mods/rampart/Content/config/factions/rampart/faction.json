@@ -1,0 +1,29 @@
+{
+	"rampart" :
+	{
+		"town" : "rampart",
+		"alignment" : "good",
+		"nativeTerrain" : "grass",
+		"heroClases" : [ "ranger" , "druid" ],
+		"creatures" :
+		[
+			["centaur", "centaurCaptain"],
+			["dwarf", "battleDwarf"],
+			["woodElf", "grandElf"],
+			["pegasus", "silverPegasus"],
+			["dendroidGuard", "dendroidSoldier"],
+			["unicorn", "warUnicorn"],
+			["greenDragon", "goldDragon"]
+		],
+		"dwellings" :
+		[
+			"centaurStables", "dwarfCottage", "homestead", "enchantedSpring",
+			"dendroidArches", "unicornGlade", "dragonCliffs"
+		],
+		"creatureBackground" :
+		{
+			"120px" : "sprites/factions/rampart/TPCASRAM.bmp",
+			"130px" : "sprites/factions/rampart/CRBKGRAM.bmp"
+		},
+	}
+}

@@ -1,0 +1,68 @@
+{
+	"merist" :
+	{
+		"class" : "witch",
+		"female" : true,
+
+		"index" : 124,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL124WH.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS124WH.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "gnoll",
+				"max" : 20,
+				"min" : 10
+			},
+			{
+				"creature" : "lizardman",
+				"max" : 7,
+				"min" : 4
+			},
+			{
+				"creature" : "serpentFly",
+				"max" : 4,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "learning"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 46,
+				"type" : 8,
+				"val" : 0
+			}
+		],
+		"spellbook" : [
+			"stoneSkin"
+		],
+
+		"texts" : {
+			"biography" : "Merist was supposed to have been the healer of her village, but when it was discovered that her magical powers were far greater than what would be required as a village healer, she was quickly pressed into the service of Tatalia.",
+			"name" : "Merist",
+			"specialty" : {
+				"description" : "Casts Stone Skin with increased effect, based on her level compared to the level of the target unit (the bonus is greater when used on weaker units).",
+				"name" : "Stone Skin",
+				"tooltip" : "Spell Bonus: Stone Skin"
+			}
+		}
+	}
+}
+

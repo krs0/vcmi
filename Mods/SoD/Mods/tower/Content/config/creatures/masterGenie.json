@@ -1,0 +1,81 @@
+{
+	"masterGenie": {
+		"name" : {
+			"plural" : "Master Genies",
+			"singular" : "Master Genie"
+		},
+		"faction" : "tower",
+		"level" : 5,
+		"cost" : {
+			"gold" : 600
+		},
+		"speed" : 11,
+		"hitPoints" : 40,
+		"attack" : 12,
+		"defense" : 12,
+		"damage" : {
+			"max" : 16,
+			"min" : 13
+		},
+		"spellPoints" : 3,
+		"doubleWide" : false,
+		"growth" : 3,
+		"horde" : 0,
+		"aiValue" : 942,
+		"fightValue" : 748,
+		"advMapAmount" : {
+			"max" : 12,
+			"min" : 8
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"casts" : {
+				"type" : "CASTS",
+				"val" : 3
+			},
+			"hateAngels" : {
+				"subtype" : "creature.efreet",
+				"type" : "HATE",
+				"val" : 50
+			},
+			"hateArchAngels" : {
+				"subtype" : "creature.efreetSultan",
+				"type" : "HATE",
+				"val" : 50
+			},
+			"randomSpellcaster" : {
+				"type" : "RANDOM_SPELLCASTER",
+				"val" : 2
+			},
+			"spellsLength" : {
+				"type" : "CREATURE_ENCHANT_POWER",
+				"val" : 5
+			}
+		},
+		"abilityText" : "Spellcaster: Random benefit.\nHates Efreet.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CSULTA.def",
+			"map" : "sprites/creatures/adventureMap/AVWgenx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL39.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort39.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/CALFATTK.wav",
+			"defend" : "sounds/creatures/CALFDFND.wav",
+			"killed" : "sounds/creatures/CALFKILL.wav",
+			"move" : "sounds/creatures/CALFMOVE.wav",
+			"shoot" : "sounds/creatures/CALFSHOT.wav",
+			"wince" : "sounds/creatures/CALFWNCE.wav"
+		}
+	}
+}

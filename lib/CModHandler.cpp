@@ -375,6 +375,9 @@ bool CContentHandler::ContentTypeHandler::loadMod(std::string modName, bool vali
 				performValidate(originalData[index],name);
 				handler->loadObject(modName, name, originalData[index], index);
 
+				// At this point complete configuration is available in originalData
+				// logGlobal->traceStream() << "\n" << name << "\n" << originalData[index];
+
 				originalData[index].clear(); // do not use same data twice (same ID)
 
 				continue;

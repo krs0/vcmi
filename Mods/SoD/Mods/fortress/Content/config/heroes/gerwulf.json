@@ -1,0 +1,65 @@
+{
+	"gerwulf" :
+	{
+		"class" : "beastmaster",
+		"female" : false,
+
+		"index" : 118,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL118BS.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS118BS.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "gnoll",
+				"max" : 20,
+				"min" : 10
+			},
+			{
+				"creature" : "ballista",
+				"max" : 1,
+				"min" : 1
+			},
+			{
+				"creature" : "serpentFly",
+				"max" : 4,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "armorer"
+			},
+			{
+				"level" : "basic",
+				"skill" : "artillery"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 104,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+
+		"texts" : {
+			"biography" : "Gerwulf brought the first Ballista to Tatalia, having captured it in a siege against a barbarian stronghold on the border of Krewlod.  He has become Tatalia's leading expert in its deployment across the northwest coast.",
+			"name" : "Gerwulf",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skill of any Ballista for each level attained after 4th level.",
+				"name" : "Ballista",
+				"tooltip" : "Artillery Bonus: Ballista"
+			}
+		}
+	}
+}
+

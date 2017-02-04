@@ -1,0 +1,72 @@
+{
+	"boneDragon": {
+		"name" : {
+			"plural" : "Bone Dragons",
+			"singular" : "Bone Dragon"
+		},
+		"faction" : "necropolis",
+		"level" : 7,
+		"upgrades": ["ghostDragon"],
+		"cost" : {
+			"gold" : 1800
+		},
+		"speed" : 9,
+		"hitPoints" : 150,
+		"attack" : 17,
+		"defense" : 15,
+		"damage" : {
+			"max" : 50,
+			"min" : 25
+		},
+		"doubleWide" : true,
+		"growth" : 1,
+		"horde" : 0,
+		"aiValue" : 3388,
+		"fightValue" : 2420,
+		"advMapAmount" : {
+			"max" : 10,
+			"min" : 4
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"IS_UNDEAD" : {
+				"type" : "UNDEAD"
+			},
+			"KING_1" : {
+				"type" : "KING1"
+			},
+			"const_lowers_morale" : {
+				"effectRange" : "ONLY_ENEMY_ARMY",
+				"type" : "MORALE",
+				"val" : -1
+			},
+			"dragon" : {
+				"type" : "DRAGON_NATURE"
+			}
+		},
+		"abilityText" : "Undead.  -1 to enemy morale.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CNDRGN.def",
+			"map" : "sprites/creatures/adventureMap/AVWbone0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL70.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort70.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.75
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/BODRATTK.wav",
+			"defend" : "sounds/creatures/BODRDFND.wav",
+			"killed" : "sounds/creatures/BODRKILL.wav",
+			"move" : "sounds/creatures/BODRMOVE.wav",
+			"wince" : "sounds/creatures/BODRWNCE.wav"
+		}
+	}
+}

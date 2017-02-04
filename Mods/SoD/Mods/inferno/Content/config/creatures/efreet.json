@@ -1,0 +1,72 @@
+{
+	"efreet": {
+		"name" : {
+			"plural" : "Efreet",
+			"singular" : "Efreeti"
+		},
+		"faction" : "inferno",
+		"level" : 6,
+		"upgrades": ["efreetSultan"],
+		"cost" : {
+			"gold" : 900
+		},
+		"speed" : 9,
+		"hitPoints" : 90,
+		"attack" : 16,
+		"defense" : 12,
+		"damage" : {
+			"max" : 24,
+			"min" : 16
+		},
+		"doubleWide" : false,
+		"growth" : 2,
+		"horde" : 0,
+		"aiValue" : 1670,
+		"fightValue" : 1413,
+		"advMapAmount" : {
+			"max" : 12,
+			"min" : 5
+		},
+		"abilities" : {
+			"canFly" : {
+				"type" : "FLYING"
+			},
+			"hateGenies" : {
+				"subtype" : "creature.genie",
+				"type" : "HATE",
+				"val" : 50
+			},
+			"hateMasterGenies" : {
+				"subtype" : "creature.masterGenie",
+				"type" : "HATE",
+				"val" : 50
+			},
+			"immuneToFire" : {
+				"subtype" : 0,
+				"type" : "FIRE_IMMUNITY"
+			}
+		},
+		"abilityText" : "Immune to fire.  Hates Genies.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CEFREE.def",
+			"map" : "sprites/creatures/adventureMap/AVWefre0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL54.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort54.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/EFRTATTK.wav",
+			"defend" : "sounds/creatures/EFRTDFND.wav",
+			"killed" : "sounds/creatures/EFRTKILL.wav",
+			"move" : "sounds/creatures/EFRTMOVE.wav",
+			"wince" : "sounds/creatures/EFRTWNCE.wav"
+		}
+	}
+}

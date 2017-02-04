@@ -1,0 +1,57 @@
+{
+	"ammoCart": {
+		"name" : {
+			"plural" : "Ammo Carts",
+			"singular" : "Ammo Cart"
+		},
+		"faction" : "neutral",
+		"level" : 0,
+		"cost" : {
+			"gold" : 1000
+		},
+		"speed" : 0,
+		"hitPoints" : 100,
+		"attack" : 0,
+		"defense" : 5,
+		"damage" : {
+			"max" : 0,
+			"min" : 0
+		},
+		"doubleWide" : false,
+		"growth" : 0,
+		"horde" : 0,
+		"aiValue" : 400,
+		"fightValue" : 5,
+		"advMapAmount" : {
+			"max" : 0,
+			"min" : 0
+		},
+		"abilities" : {
+			"SIEGE_WEAPON" : {
+				"type" : "SIEGE_WEAPON"
+			},
+			"inactive" : {
+				"type" : "NOT_ACTIVE"
+			}
+		},
+		"abilityText" : "Unlimited ammunition.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/SMCART.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL150.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort150.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"killed" : "sounds/creatures/CARTKILL.wav",
+			"wince" : "sounds/creatures/CARTWNCE.wav"
+		},
+		"special" : true
+	}
+}

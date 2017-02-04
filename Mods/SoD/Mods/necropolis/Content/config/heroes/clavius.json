@@ -1,0 +1,68 @@
+{
+	"clavius" :
+	{
+		"class" : "deathKnight",
+		"female" : false,
+		"index" : 70,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL070DK.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS070DK.bmp"
+		},
+
+
+		"army" : [
+			{
+				"creature" : "skeleton",
+				"max" : 30,
+				"min" : 20
+			},
+			{
+				"creature" : "zombie",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "wight",
+				"max" : 6,
+				"min" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "necromancy"
+			},
+			{
+				"level" : "basic",
+				"skill" : "offence"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 6,
+				"type" : 10,
+				"val" : 350
+			}
+		],
+		"spellbook" : [
+			"magicArrow"
+		],
+			
+		"texts" : {
+			"biography" : "Clavius's family was always prominent at the court of Deyja, holding a great deal of land and political power.  Being the eldest son, Clavius was sent to serve in the military, just as each of the eldest sons in his family had done for generations.  He serves willingly and well.",
+			"name" : "Clavius",
+			"specialty" : {
+				"description" : "Increases kingdom's income by 350 gold per day.",
+				"name" : "+350 Gold",
+				"tooltip" : "+350 Gold each day"
+			}
+		}
+	}
+}
+

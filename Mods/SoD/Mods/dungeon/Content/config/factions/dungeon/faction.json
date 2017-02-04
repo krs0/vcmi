@@ -1,0 +1,29 @@
+{
+	"dungeon" :
+	{
+		"town" : "dungeon",
+		"alignment" : "evil",
+		"nativeTerrain" : "subterra",
+		"heroClases" : [ "warlock" , "overlord" ],
+		"creatures" :
+		[
+			["troglodyte", "infernalTroglodyte"],
+			["harpy", "harpyHag"],
+			["beholder", "evilEye"],
+			["medusa", "medusaQueen"],
+			["minotaur", "minotaurKing"],
+			["manticore", "scorpicore"],
+			["redDragon", "blackDragon"]
+		],
+		"dwellings" :
+		[
+			"warren", "harpyLoft", "pillarOfEyes", "chappelOfStilledVoices",
+			"labyrinth", "manticoreLair", "dragonCave"
+		],
+		"creatureBackground" :
+		{
+			"120px" : "sprites/factions/dungeon/TPCASDUN.bmp",
+			"130px" : "sprites/factions/dungeon/CRBKGDUN.bmp"
+		},
+	}
+}

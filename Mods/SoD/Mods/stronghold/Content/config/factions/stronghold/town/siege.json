@@ -1,0 +1,57 @@
+{
+	"stronghold" :
+	{
+		"town" :
+		{
+			"siege" :
+			{
+				"shooter" : "orc",
+				"imagePrefix" : "SGST",
+				"gate" :
+				{
+					"arch" : { "x" : 478, "y" : 235 },
+					"gate" : { "x" : 407, "y" : 266 }
+				},
+				"moat" :
+				{
+					"bank" : { "x" : 410, "y" : 91 },
+					"moat" : { "x" : 410, "y" : 90 }
+				},
+				"static" :
+				{
+					"background" : { "x" : 617, "y" : 62 },
+					"bottom" : { "x" : 511, "y" : 380 },
+					"top" : { "x" : 499, "y" : 107}
+				},
+				"towers" :
+				{
+					"bottom" :
+					{
+						"battlement" : { "x" : 586, "y" : 508 },
+						"creature" : { "x" : 361, "y" : 290 },
+						"tower" : { "x" : 586, "y" : 508 }
+					},
+					"keep" :
+					{
+						"battlement" : { "x" : 731, "y" : 168 },
+						"creature" : { "x" : 531, "y" : -45 },
+						"tower" : { "x" : 731, "y" : 168 }
+					},
+					"top" :
+					{
+						"battlement" : { "x" : 568, "y" : 30 },
+						"creature" : { "x" : 342, "y" : -187 },
+						"tower" : { "x" : 568, "y" : 30 }
+					}
+				},
+				"walls" :
+				{
+					"bottom" : { "x" : 553, "y" : 440 },
+					"bottomMid" : { "x" : 483, "y" : 304 },
+					"upper" : { "x" : 534, "y" : 69 },
+					"upperMid" : { "x" : 476, "y" : 189 }
+				}
+			}
+		}
+	}
+}

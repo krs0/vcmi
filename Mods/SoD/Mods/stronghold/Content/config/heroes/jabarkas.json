@@ -1,0 +1,65 @@
+{
+	"jabarkas" :
+	{
+		"class" : "barbarian",
+		"female" : false,
+
+		"index" : 98,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL098BR.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS098BR.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "goblin",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "orc",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "orc",
+				"max" : 6,
+				"min" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "offence"
+			},
+			{
+				"level" : "basic",
+				"skill" : "archery"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 88,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+
+		"texts" : {
+			"biography" : "Being the eldest son of Duke Boragus, Jabarkas knows that he will one day rule the lands of Krewlod.  Like his father, he has learned that the best way to achieve his goals is through conquest.",
+			"name" : "Jabarkas",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Orcs or Orc Chieftains for each level attained after 3rd level.",
+				"name" : "Orcs",
+				"tooltip" : "Creature Bonus: Orcs"
+			}
+		}
+	}
+}
+

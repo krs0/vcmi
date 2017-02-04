@@ -1,0 +1,61 @@
+{
+	"nymus" :
+	{
+		"class" : "demoniac",
+		"female" : true,
+
+		"index" : 55,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL055HR.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS055HR.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "imp",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "gog",
+				"max" : 7,
+				"min" : 4
+			},
+			{
+				"creature" : "hellHound",
+				"max" : 4,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "advanced",
+				"skill" : "offence"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 50,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+			
+		"texts" : {
+			"biography" : "Nymus was responsible for training Pit Fiends and Pit Lords for the attack on Erathia.  Her combat skills nearly led Eeofol to complete victory, but the deal between the Kreegans and Dungeon Overlords brought the initial campaign to an early end.",
+			"name" : "Nymus",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Pit Fiends or Lords for each level attained after 5th level.",
+				"name" : "Pit Fiends",
+				"tooltip" : "Creature Bonus: Pit Fiends"
+			}
+		}
+	}
+}
+

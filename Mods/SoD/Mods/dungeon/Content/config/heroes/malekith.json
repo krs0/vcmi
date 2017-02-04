@@ -1,0 +1,68 @@
+{
+	"malekith" :
+	{
+		"class" : "overlord",
+		"female" : false,
+
+		"index" : 90,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL090WL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS090WL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "troglodyte",
+				"max" : 40,
+				"min" : 30
+			},
+			{
+				"creature" : "harpy",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "beholder",
+				"max" : 4,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "sorcery"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 25,
+				"type" : 2,
+				"val" : 5
+			}
+		],
+		"spellbook" : [
+			"bloodlust"
+		],
+
+		"texts" : {
+			"biography" : "One would expect a minotaur to be a fierce warrior, but Malekith wields magic with a fury that rivals the strength of the land's best mages.",
+			"name" : "Malekith",
+			"specialty" : {
+				"description" : "Receives a 5% per level bonus to Sorcery skill percentage.",
+				"name" : "Sorcery",
+				"tooltip" : "Secondary Skill Bonus: Sorcery"
+			}
+		}
+	}
+}
+

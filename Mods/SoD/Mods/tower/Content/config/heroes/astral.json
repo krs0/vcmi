@@ -1,0 +1,64 @@
+{
+	"astral" :
+	{
+		"class" : "wizard",
+		"female" : false,
+
+		"index" : 40,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL040WZ.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS040WZ.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "apprenticeGremlin",
+				"max" : 40,
+				"min" : 30
+			},
+			{
+				"creature" : "stoneGargoyle",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "ironGolem",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "advanced",
+				"skill" : "wisdom"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 60,
+				"type" : 3,
+				"val" : 3
+			}
+		],
+		"spellbook" : [
+			"hypnotize"
+		],
+		
+		"texts" : {
+			"biography" : "Astral arrived in Erathia nearly ten years ago, and was quickly accepted into the Wizards' Guild in Bracada.  His rise to power within the Guild ranks made some people joke that only magic could have brought him so much success so soon.",
+			"name" : "Astral",
+			"specialty" : {
+				"description" : "Casts Hypnotize with increased effect, based on hero level compared to the level of the target unit (the bonus is greater when used on weaker units).",
+				"name" : "Hypnotize",
+				"tooltip" : "Spell Bonus: Hypnotize"
+			}
+		}
+	}
+}
+

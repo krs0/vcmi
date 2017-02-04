@@ -1,0 +1,85 @@
+{
+	"halfling": {
+		"name" : {
+			"plural" : "Halflings",
+			"singular" : "Halfling"
+		},
+		"faction" : "neutral",
+		"level" : 1,
+		"cost" : {
+			"gold" : 40
+		},
+		"speed" : 5,
+		"hitPoints" : 4,
+		"attack" : 4,
+		"defense" : 2,
+		"damage" : {
+			"max" : 3,
+			"min" : 1
+		},
+		"shots" : 24,
+		"doubleWide" : false,
+		"growth" : 15,
+		"horde" : 0,
+		"aiValue" : 75,
+		"fightValue" : 60,
+		"advMapAmount" : {
+			"max" : 50,
+			"min" : 20
+		},
+		"abilities" : {
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			}
+		},
+		"abilityText" : "Positive luck.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CHALF.def",
+			"map" : "sprites/creatures/adventureMap/AVWhalf.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL140.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort140.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"missile" : {
+				"projectile" : "sprites/creatures/projectile/PHALF.DEF",
+				"attackClimaxFrame" : 10,
+				"frameAngles" : [
+					90,
+					72,
+					45,
+					27,
+					0,
+					-27,
+					-45,
+					-72,
+					-90,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 18,
+					"lowerY" : -55,
+					"middleX" : 40,
+					"middleY" : -61,
+					"upperX" : 32,
+					"upperY" : -77
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/HALFATTK.wav",
+			"defend" : "sounds/creatures/HALFDFND.wav",
+			"killed" : "sounds/creatures/HALFKILL.wav",
+			"move" : "sounds/creatures/HALFMOVE.wav",
+			"shoot" : "sounds/creatures/HALFSHOT.wav",
+			"wince" : "sounds/creatures/HALFWNCE.wav"
+		}
+	}
+}

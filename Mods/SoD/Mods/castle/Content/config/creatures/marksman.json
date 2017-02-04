@@ -1,0 +1,90 @@
+{
+	"marksman": {
+		"name" : {
+			"plural" : "Marksmen",
+			"singular" : "Marksman"
+		},
+		"faction" : "castle",
+		"level" : 2,
+		"cost" : {
+			"gold" : 150
+		},
+		"speed" : 6,
+		"hitPoints" : 10,
+		"attack" : 6,
+		"defense" : 3,
+		"damage" : {
+			"max" : 3,
+			"min" : 2
+		},
+		"shots" : 24,
+		"doubleWide" : false,
+		"growth" : 9,
+		"horde" : 0,
+		"aiValue" : 184,
+		"fightValue" : 115,
+		"advMapAmount" : {
+			"max" : 25,
+			"min" : 16
+		},
+		"abilities" : {
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			},
+			"extraAttack" : {
+				"effectRange" : "ONLY_DISTANCE_FIGHT",
+				"type" : "ADDITIONAL_ATTACK",
+				"val" : 1
+			}
+		},
+		"abilityText" : "Shoots twice.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CHCBOW.def",
+			"map" : "sprites/creatures/adventureMap/AvWHcrs.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL5.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort5.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"missile" : {
+				"projectile" : "sprites/creatures/projectile/PLCBOWX.DEF",
+				"attackClimaxFrame" : 7,
+				"frameAngles" : [
+					90,
+					72,
+					45,
+					27,
+					0,
+					-27,
+					-45,
+					-72,
+					-90,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 17,
+					"lowerY" : -53,
+					"middleX" : 38,
+					"middleY" : -61,
+					"upperX" : 34,
+					"upperY" : -71
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/HCRSATTK.wav",
+			"defend" : "sounds/creatures/HCRSDFND.wav",
+			"killed" : "sounds/creatures/HCRSKILL.wav",
+			"move" : "sounds/creatures/HCRSMOVE.wav",
+			"shoot" : "sounds/creatures/HCRSSHOT.wav",
+			"wince" : "sounds/creatures/HCRSWNCE.wav"
+		}
+	}
+}

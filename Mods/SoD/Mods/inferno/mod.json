@@ -1,0 +1,73 @@
+{
+	"name" : "Inferno faction",
+	"description" : "Inferno faction as Mod",
+
+	"version" : "0.99",
+	"author" : "Original SoD Faction - mod by VCMI Team",
+	"contact" : "http://forum.vcmi.eu/index.php",
+	"modType" : "Faction",
+
+	"factions" :
+	[
+		"config/factions/inferno/faction.json",
+		"config/factions/inferno/dwellings.json",
+		"config/factions/inferno/puzzleMap.json",
+		"config/factions/inferno/town/town.json",
+		"config/factions/inferno/town/buildings.json",
+		"config/factions/inferno/town/structures.json",
+		"config/factions/inferno/town/guildSpells.json",
+		"config/factions/inferno/town/siege.json"
+	],
+
+	"creatures" :
+	[
+		"config/creatures/imp.json",
+		"config/creatures/familiar.json",
+
+		"config/creatures/gog.json",
+		"config/creatures/magog.json",
+
+		"config/creatures/hellHound.json",
+		"config/creatures/cerberus.json",
+
+		"config/creatures/demon.json",
+		"config/creatures/hornedDemon.json",
+		
+		"config/creatures/pitFiend.json",
+		"config/creatures/pitLord.json",
+
+		"config/creatures/efreet.json",
+		"config/creatures/efreetSultan.json",
+
+		"config/creatures/devil.json",
+		"config/creatures/archDevil.json"
+	],
+
+	"heroClasses" :
+	[
+		"config/heroClasses/demoniac.json",
+		"config/heroClasses/heretic.json"
+	],
+
+	"heroes" :
+	[
+		// demoniac
+		"config/heroes/fiona.json",
+		"config/heroes/rashka.json",
+		"config/heroes/marius.json",
+		"config/heroes/ignatius.json",
+		"config/heroes/octavia.json",
+		"config/heroes/calh.json",
+		"config/heroes/pyre.json",
+		"config/heroes/nymus.json",
+		// heretic
+		"config/heroes/ayden.json",
+		"config/heroes/xyron.json",
+		"config/heroes/axsis.json",
+		"config/heroes/olema.json",
+		"config/heroes/calid.json",
+		"config/heroes/ash.json",
+		"config/heroes/zydar.json",
+		"config/heroes/xarfax.json"
+	]
+}

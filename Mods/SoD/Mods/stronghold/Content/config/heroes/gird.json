@@ -1,0 +1,68 @@
+{
+	"gird" :
+	{
+		"class" : "battlemage",
+		"female" : true,
+
+		"index" : 104,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL104BM.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS104BM.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "goblin",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "goblinWolfRider",
+				"max" : 7,
+				"min" : 5
+			},
+			{
+				"creature" : "orc",
+				"max" : 6,
+				"min" : 4
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "sorcery"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 86,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+		"spellbook" : [
+			"bloodlust"
+		],
+		
+		"texts" : {
+			"biography" : "Gird learned most of what she knows from the Shaman of her home town.  It is assumed she would have taken his place, but she was taken from her villiage when the Magi of Krewlod conducted a search for children who could wield magic.",
+			"name" : "Gird",
+			"specialty" : {
+				"description" : "Receives a 5% per level bonus to Sorcery skill percentage.",
+				"name" : "Sorcery",
+				"tooltip" : "Secondary Skill Bonus: Sorcery"
+			}
+		}
+	}
+}
+

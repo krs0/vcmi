@@ -1,0 +1,68 @@
+{
+	"iona" :
+	{
+		"class" : "alchemist",
+		"female" : true,
+
+		"index" : 39,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL039AL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS039AL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "apprenticeGremlin",
+				"max" : 40,
+				"min" : 30
+			},
+			{
+				"creature" : "stoneGargoyle",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "ironGolem",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "scholar"
+			},
+			{
+				"level" : "basic",
+				"skill" : "intelligence"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 36,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+		"spellbook" : [
+			"magicArrow"
+		],
+		
+		"texts" : {
+			"biography" : "Iona proved long ago that she was more powerful than most of her kind, but her charming personality prevents those who serve her from being intimidated by her strength.",
+			"name" : "Iona",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Genies or Master Genies for each level attained after 5th level.",
+				"name" : "Genies",
+				"tooltip" : "Creature Bonus: Genies"
+			}
+		}
+	}
+}
+

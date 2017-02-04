@@ -1,0 +1,58 @@
+{
+	"gremlin": {
+		"name" : {
+			"plural" : "Gremlins",
+			"singular" : "Gremlin"
+		},
+		"extraNames" : [
+			"apprenticeGremlin"
+		],
+		"faction" : "tower",
+		"level" : 1,
+		"upgrades": ["masterGremlin"],
+		"cost" : {
+			"gold" : 30
+		},
+		"speed" : 4,
+		"hitPoints" : 4,
+		"attack" : 3,
+		"defense" : 3,
+		"damage" : {
+			"max" : 2,
+			"min" : 1
+		},
+		"doubleWide" : false,
+		"growth" : 16,
+		"horde" : 0,
+		"hasDoubleWeek" : true,
+		"aiValue" : 44,
+		"fightValue" : 55,
+		"advMapAmount" : {
+			"max" : 50,
+			"min" : 20
+		},
+		"abilityText" : "",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CGREMA.def",
+			"map" : "sprites/creatures/adventureMap/AVWgnll0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL30.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort30.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/AGRMATTK.wav",
+			"defend" : "sounds/creatures/AGRMDFND.wav",
+			"killed" : "sounds/creatures/AGRMKILL.wav",
+			"move" : "sounds/creatures/AGRMMOVE.wav",
+			"shoot" : "sounds/creatures/AGRMSHOT.wav",
+			"wince" : "sounds/creatures/AGRMWNCE.wav"
+		}
+	}
+}

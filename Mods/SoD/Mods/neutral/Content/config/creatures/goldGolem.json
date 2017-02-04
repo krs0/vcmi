@@ -1,0 +1,62 @@
+{
+	"goldGolem": {
+		"name" : {
+			"plural" : "Gold Golems",
+			"singular" : "Gold Golem"
+		},
+		"faction" : "neutral",
+		"level" : 4,
+		"cost" : {
+			"gold" : 500
+		},
+		"speed" : 5,
+		"hitPoints" : 50,
+		"attack" : 11,
+		"defense" : 12,
+		"damage" : {
+			"max" : 10,
+			"min" : 8
+		},
+		"doubleWide" : false,
+		"growth" : 3,
+		"horde" : 0,
+		"aiValue" : 600,
+		"fightValue" : 600,
+		"advMapAmount" : {
+			"max" : 16,
+			"min" : 10
+		},
+		"abilities" : {
+			"magicResistance" : {
+				"subtype" : -1,
+				"type" : "SPELL_DAMAGE_REDUCTION",
+				"val" : 85
+			},
+			"nonliving" : {
+				"type" : "NON_LIVING"
+			}
+		},
+		"abilityText" : "Damage from spells reduced 85%.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CGGOLE.def",
+			"map" : "sprites/creatures/adventureMap/AVWglmg0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL118.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort118.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1.2
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/GGLMATTK.wav",
+			"defend" : "sounds/creatures/GGLMDFND.wav",
+			"killed" : "sounds/creatures/GGLMKILL.wav",
+			"move" : "sounds/creatures/GGLMMOVE.wav",
+			"wince" : "sounds/creatures/GGLMWNCE.wav"
+		}
+	}
+}

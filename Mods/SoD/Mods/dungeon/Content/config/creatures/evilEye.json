@@ -1,0 +1,90 @@
+{
+	"evilEye": {
+		"name" : {
+			"plural" : "Evil Eyes",
+			"singular" : "Evil Eye"
+		},
+		"faction" : "dungeon",
+		"level" : 3,
+		"cost" : {
+			"gold" : 280
+		},
+		"speed" : 7,
+		"hitPoints" : 22,
+		"attack" : 10,
+		"defense" : 8,
+		"damage" : {
+			"max" : 5,
+			"min" : 3
+		},
+		"shots" : 24,
+		"doubleWide" : false,
+		"growth" : 7,
+		"horde" : 0,
+		"aiValue" : 367,
+		"fightValue" : 245,
+		"advMapAmount" : {
+			"max" : 20,
+			"min" : 12
+		},
+		"abilities" : {
+			"SHOOTING_ARMY" : {
+				"type" : "SHOOTER"
+			},
+			"const_no_melee_penalty" : {
+				"type" : "NO_MELEE_PENALTY"
+			}
+		},
+		"abilityText" : "No melee penalty.",
+		"hasDoubleWeek" : true,
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CEVEYE.def",
+			"map" : "sprites/creatures/adventureMap/AVWbehx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL77.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort77.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1
+			},
+			"missile" :
+			{
+				"projectile" : "sprites/creatures/projectile/SMBALX.DEF",
+				"attackClimaxFrame" : 5,
+				"frameAngles" : [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"offset" : {
+					"lowerX" : 7,
+					"lowerY" : -60,
+					"middleX" : 13,
+					"middleY" : -69,
+					"upperX" : 13,
+					"upperY" : -72
+				},
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/EVLIATTK.wav",
+			"defend" : "sounds/creatures/EVLIDFND.wav",
+			"killed" : "sounds/creatures/EVLIKILL.wav",
+			"move" : "sounds/creatures/EVLIMOVE.wav",
+			"shoot" : "sounds/creatures/EVLISHOT.wav",
+			"wince" : "sounds/creatures/EVLIWNCE.wav"
+		}
+	}
+}

@@ -1,0 +1,68 @@
+{
+	"geon" :
+	{
+		"class" : "overlord",
+		"female" : false,
+
+		"index" : 92,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL092WL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS092WL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "troglodyte",
+				"max" : 40,
+				"min" : 30
+			},
+			{
+				"creature" : "harpy",
+				"max" : 6,
+				"min" : 4
+			},
+			{
+				"creature" : "beholder",
+				"max" : 4,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "eagleEye"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 1,
+				"subtype" : 11,
+				"type" : 2,
+				"val" : 5
+			}
+		],
+		"spellbook" : [
+			"slow"
+		],
+
+		"texts" : {
+			"biography" : "Much of Geon's magical skills come from his ability to see into the minds of other spellcasters, reading their thoughts as they invoke their powers, and in many cases learning to cast the spell himself.",
+			"name" : "Geon",
+			"specialty" : {
+				"description" : "Receives a 5% per level bonus to Eagle Eye skill percentage.",
+				"name" : "Eagle Eye",
+				"tooltip" : "Secondary Skill Bonus: Eagle Eye"
+			}
+		}
+	}
+}
+

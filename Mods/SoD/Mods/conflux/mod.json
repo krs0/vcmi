@@ -1,0 +1,73 @@
+{
+	"name" : "Conflux faction",
+	"description" : "Conflux faction as Mod",
+
+	"version" : "0.99",
+	"author" : "Original SoD Faction - mod by VCMI Team",
+	"contact" : "http://forum.vcmi.eu/index.php",
+	"modType" : "Faction",
+
+	"factions" :
+	[
+		"config/factions/conflux/faction.json",
+		"config/factions/conflux/dwellings.json",
+		"config/factions/conflux/puzzleMap.json",
+		"config/factions/conflux/town/town.json",
+		"config/factions/conflux/town/buildings.json",
+		"config/factions/conflux/town/structures.json",
+		"config/factions/conflux/town/guildSpells.json",
+		"config/factions/conflux/town/siege.json"
+	],
+
+	"creatures" :
+	[
+		"config/creatures/pixie.json",
+		"config/creatures/sprite.json",
+
+		"config/creatures/airElemental.json",
+		"config/creatures/stormElemental.json",
+
+		"config/creatures/waterElemental.json",
+		"config/creatures/iceElemental.json",
+
+		"config/creatures/fireElemental.json",
+		"config/creatures/energyElemental.json",
+		
+		"config/creatures/earthElemental.json",
+		"config/creatures/magmaElemental.json",
+
+		"config/creatures/psychicElemental.json",
+		"config/creatures/magicElemental.json",
+
+		"config/creatures/firebird.json",
+		"config/creatures/phoenix.json"
+	],
+
+	"heroClasses" :
+	[
+		"config/heroClasses/planeswalker.json",
+		"config/heroClasses/elementalist.json"
+	],
+
+	"heroes" :
+	[
+		// planeswalker
+		"config/heroes/pasis.json",
+		"config/heroes/thunar.json",
+		"config/heroes/ignissa.json",
+		"config/heroes/lacus.json",
+		"config/heroes/monere.json",
+		"config/heroes/erdamon.json",
+		"config/heroes/fiur.json",
+		"config/heroes/kalt.json",
+		// elementalist
+		"config/heroes/luna.json",
+		"config/heroes/brissa.json",
+		"config/heroes/ciele.json",
+		"config/heroes/labetha.json",
+		"config/heroes/inteus.json",
+		"config/heroes/aenain.json",
+		"config/heroes/gelare.json",
+		"config/heroes/grindan.json"
+	]
+}

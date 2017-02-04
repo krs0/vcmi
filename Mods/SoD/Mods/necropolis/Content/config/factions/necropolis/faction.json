@@ -1,0 +1,29 @@
+{
+	"necropolis" :
+	{
+		"town" : "necropolis",
+		"alignment" : "evil",
+		"nativeTerrain" : "dirt",
+		"heroClases" : [ "deathKnight" , "necromancer" ],
+		"creatures" :
+		[
+			["skeleton", "skeletonWarrior"],
+			["walkingDead", "zombieLord"],
+			["wight", "wraith"],
+			["vampire", "vampireLord"],
+			["lich", "powerLich"],
+			["blackKnight", "dreadKnight"],
+			["boneDragon", "ghostDragon"]
+		],
+		"dwellings" :
+		[
+			"cursedTemple", "graveyard", "tombOfSouls", "estate",
+			"mausoleum", "hallOfDarkness", "dragonVault"
+		],
+		"creatureBackground" :
+		{
+			"120px" : "sprites/factions/necropolis/TPCASNEC.bmp",
+			"130px" : "sprites/factions/necropolis/CRBKGNEC.bmp"
+		},
+	}
+}

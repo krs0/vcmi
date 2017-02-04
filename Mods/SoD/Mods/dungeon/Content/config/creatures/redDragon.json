@@ -1,0 +1,73 @@
+{
+	"redDragon": {
+		"name" : {
+			"plural" : "Red Dragons",
+			"singular" : "Red Dragon"
+		},
+		"faction" : "dungeon",
+		"level" : 7,
+		"upgrades": ["blackDragon"],
+		"cost" : {
+			"sulfur" : 1,
+			"gold" : 2500
+		},
+		"speed" : 11,
+		"hitPoints" : 180,
+		"attack" : 19,
+		"defense" : 19,
+		"damage" : {
+			"max" : 50,
+			"min" : 40
+		},
+		"doubleWide" : true,
+		"growth" : 1,
+		"horde" : 0,
+		"aiValue" : 4702,
+		"fightValue" : 3762,
+		"advMapAmount" : {
+			"max" : 10,
+			"min" : 4
+		},
+		"abilities" : {
+			"FLYING_ARMY" : {
+				"type" : "FLYING"
+			},
+			"KING_1" : {
+				"type" : "KING1"
+			},
+			"dragon" : {
+				"type" : "DRAGON_NATURE"
+			},
+			"fireBreath" : {
+				"type" : "TWO_HEX_ATTACK_BREATH"
+			},
+			"spellImmunity" : {
+				"type" : "LEVEL_SPELL_IMMUNITY",
+				"val" : 3
+			}
+		},
+		"abilityText" : "Immune to spell levels 1-3.",
+		"hasDoubleWeek" : true,
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CRDRGN.def",
+			"map" : "sprites/creatures/adventureMap/AvWRDrg.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL84.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort84.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 0.6
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/RDDRATTK.wav",
+			"defend" : "sounds/creatures/RDDRDFND.wav",
+			"killed" : "sounds/creatures/RDDRKILL.wav",
+			"move" : "sounds/creatures/RDDRMOVE.wav",
+			"wince" : "sounds/creatures/RDDRWNCE.wav"
+		}
+	}
+}

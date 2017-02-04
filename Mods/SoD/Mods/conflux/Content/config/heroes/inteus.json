@@ -1,0 +1,68 @@
+{
+	"inteus" :
+	{
+		"class" : "elementalist",
+		"female" : false,
+
+		"index" : 140,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL004EL.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS004EL.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "pixies",
+				"max" : 25,
+				"min" : 15
+			},
+			{
+				"creature" : "airElementals",
+				"max" : 5,
+				"min" : 3
+			},
+			{
+				"creature" : "waterElementals",
+				"max" : 3,
+				"min" : 2
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "wisdom"
+			},
+			{
+				"level" : "basic",
+				"skill" : "fireMagic"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 0,
+				"subtype" : 43,
+				"type" : 8,
+				"val" : 0
+			}
+		],
+		"spellbook" : [
+			"bloodlust"
+		],
+		
+		"texts" : {
+			"biography" : "At an early age, Inteus' mastery of fire earned him a spot with a troupe of entertainers.  Some believed he wad the son of a Fire Elemental.  One night, he felt a calling and left his profession.  Now he serves the Conflux.",
+			"name" : "Inteus",
+			"specialty" : {
+				"description" : "Casts Bloodlust with increased effect, based on hero level compared to the level of the target unit (the bonus is greater when used on weaker units).",
+				"name" : "Bloodlust",
+				"tooltip" : "Spell Bonus: Bloodlust"
+			}
+		}
+	}
+}
+

@@ -1,0 +1,58 @@
+{
+	"familiar": {
+		"name" : {
+			"plural" : "Familiars",
+			"singular" : "Familiar"
+		},
+		"faction" : "inferno",
+		"level" : 1,
+		"cost" : {
+			"gold" : 60
+		},
+		"speed" : 7,
+		"hitPoints" : 4,
+		"attack" : 4,
+		"defense" : 4,
+		"damage" : {
+			"max" : 2,
+			"min" : 1
+		},
+		"doubleWide" : false,
+		"growth" : 15,
+		"horde" : 8,
+		"aiValue" : 60,
+		"fightValue" : 60,
+		"advMapAmount" : {
+			"max" : 30,
+			"min" : 20
+		},
+		"abilities" : {
+			"manaChannel" : {
+				"type" : "MANA_CHANNELING",
+				"val" : 20
+			}
+		},
+		"abilityText" : "Magic channel.",
+		"graphics" : {
+			"animation" : "sprites/creatures/battle/CFAMIL.def",
+			"map" : "sprites/creatures/adventureMap/AVWimpx0.def",
+			"iconSmall" : "sprites/creatures/icons/small/CPRSMALL45.bmp",
+			"iconLarge" : "sprites/creatures/icons/large/TwCrPort45.bmp",
+			"animationTime" : {
+				"attack" : 1,
+				"flight" : 1,
+				"idle" : 10,
+				"walk" : 1.3
+			},
+			"timeBetweenFidgets" : 1,
+			"troopCountLocationOffset" : 0
+		},
+		"sound" : {
+			"attack" : "sounds/creatures/FMLRATTK.wav",
+			"defend" : "sounds/creatures/FMLRDFND.wav",
+			"killed" : "sounds/creatures/FMLRKILL.wav",
+			"move" : "sounds/creatures/FMLRMOVE.wav",
+			"wince" : "sounds/creatures/FMLRWNCE.wav"
+		}
+	}
+}

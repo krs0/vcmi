@@ -1,0 +1,65 @@
+{
+	"ajit" :
+	{
+		"class" : "warlock",
+		"female" : false,
+
+		"index" : 83,
+
+		"images" :
+		{
+			"specialtySmall" : "", // index is used in UN32.def
+			"specialtyLarge" : "", // index is used in UN44.def
+			"large" : "sprites/heroes/icons/portrait/large/HPL083OV.bmp",
+			"small" : "sprites/heroes/icons/portrait/small/HPS083OV.bmp"
+		},
+
+		"army" : [
+			{
+				"creature" : "troglodyte",
+				"max" : 40,
+				"min" : 30
+			},
+			{
+				"creature" : "beholder",
+				"max" : 4,
+				"min" : 3
+			},
+			{
+				"creature" : "beholder",
+				"max" : 4,
+				"min" : 3
+			}
+		],
+
+		"skills" : [
+			{
+				"level" : "basic",
+				"skill" : "leadership"
+			},
+			{
+				"level" : "basic",
+				"skill" : "resistance"
+			}
+		],
+		"specialties" : [
+			{
+				"info" : 74,
+				"subtype" : 0,
+				"type" : 1,
+				"val" : 0
+			}
+		],
+
+		"texts" : {
+			"biography" : "Ajit studied carefully the works of Agar, the foolish wizard/scientist of Enroth who accidentally created the beholders and evil eyes which he now commands, training a 'better breed' to be used in combat.",
+			"name" : "Ajit",
+			"specialty" : {
+				"description" : "Increases the Attack and Defense skills of any Beholders or Evil Eyes for each level attained after 2nd level.",
+				"name" : "Beholders",
+				"tooltip" : "Creature Bonus: Beholders"
+			}
+		}
+	}
+}
+
