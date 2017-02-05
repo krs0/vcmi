@@ -5,6 +5,9 @@
 		"faction" : "stronghold",
 		"affinity" : "might",
 		"defaultTavern" : 5,
+
+		"commander" : "orcChieftain",
+		
 		"mapObject" : {
 			"templates" : {
 				"default" : {

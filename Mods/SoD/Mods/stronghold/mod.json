@@ -10,13 +10,17 @@
 	"factions" :
 	[
 		"config/factions/stronghold/faction.json",
-		"config/factions/stronghold/dwellings.json",
 		"config/factions/stronghold/puzzleMap.json",
 		"config/factions/stronghold/town/town.json",
 		"config/factions/stronghold/town/buildings.json",
 		"config/factions/stronghold/town/structures.json",
 		"config/factions/stronghold/town/guildSpells.json",
 		"config/factions/stronghold/town/siege.json"
+	],
+
+	"objects" : 
+	[
+		"config/mapObjects/dwellings"
 	],
 
 	"creatures" :

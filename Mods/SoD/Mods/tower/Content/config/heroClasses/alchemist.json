@@ -5,6 +5,9 @@
 		"faction" : "tower",
 		"affinity" : "might",
 		"defaultTavern" : 5,
+
+		"commander" : "archMage",
+		
 		"mapObject" : {
 			"templates" : {
 				"default" : {

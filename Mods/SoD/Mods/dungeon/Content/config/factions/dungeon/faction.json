@@ -4,12 +4,6 @@
 		"town" : "dungeon",
 		"alignment" : "evil",
 		"nativeTerrain" : "subterra",
-		"heroClasses" : [ "warlock" , "overlord" ],
-		"dwellings" :
-		[
-			"warren", "harpyLoft", "pillarOfEyes", "chappelOfStilledVoices",
-			"labyrinth", "manticoreLair", "dragonCave"
-		],
 		"creatureBackground" :
 		{
 			"120px" : "factions/dungeon/TPCASDUN.bmp",

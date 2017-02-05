@@ -4,12 +4,6 @@
 		"town" : "stronghold",
 		"alignment" : "neutral",
 		"nativeTerrain" : "rough",
-		"heroClasses" : [ "barbarian" , "battlemage" ],
-		"dwellings" :
-		[
-			"goblinBarracks", "wolfPen", "orcTower", "ogreFort",
-			"cliffNest", "cyclopsCave", "behemothLair"
-		],
 		"creatureBackground" :
 		{
 			"120px" : "factions/stronghold/TPCASSTR.bmp",

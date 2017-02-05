@@ -5,6 +5,9 @@
 		"faction" : "inferno",
 		"affinity" : "magic",
 		"defaultTavern" : 5,
+
+		"commander" : "magog",
+		
 		"mapObject" : {
 			"templates" : {
 				"default" : {

@@ -10,13 +10,17 @@
 	"factions" :
 	[
 		"config/factions/rampart/faction.json",
-		"config/factions/rampart/dwellings.json",
 		"config/factions/rampart/puzzleMap.json",
 		"config/factions/rampart/town/town.json",
 		"config/factions/rampart/town/buildings.json",
 		"config/factions/rampart/town/structures.json",
 		"config/factions/rampart/town/guildSpells.json",
 		"config/factions/rampart/town/siege.json"
+	],
+
+	"objects" : 
+	[
+		"config/mapObjects/dwellings"
 	],
 
 	"creatures" :

@@ -10,13 +10,17 @@
 	"factions" :
 	[
 		"config/factions/inferno/faction.json",
-		"config/factions/inferno/dwellings.json",
 		"config/factions/inferno/puzzleMap.json",
 		"config/factions/inferno/town/town.json",
 		"config/factions/inferno/town/buildings.json",
 		"config/factions/inferno/town/structures.json",
 		"config/factions/inferno/town/guildSpells.json",
 		"config/factions/inferno/town/siege.json"
+	],
+
+	"objects" : 
+	[
+		"config/mapObjects/dwellings"
 	],
 
 	"creatures" :

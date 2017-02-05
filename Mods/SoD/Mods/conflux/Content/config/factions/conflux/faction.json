@@ -4,12 +4,6 @@
 		"town" : "conflux",
 		"alignment" : "neutral",
 		"nativeTerrain" : "grass",
-		"heroClasses" : [ "elementalist" , "planeswalker" ],
-		"dwellings" :
-		[
-			"magicLantern", "altarOfAir", "altarOfWater", "altarOfFire",
-			"altarOfEarth", "altarOfThought", "pyre"
-		],
 		"creatureBackground" :
 		{
 			"120px" : "factions/conflux/TPCASELE.bmp",

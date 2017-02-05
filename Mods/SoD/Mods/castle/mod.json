@@ -10,7 +10,6 @@
 	"factions" :
 	[
 		"config/factions/castle/faction",
-		"config/factions/castle/dwellings",
 		"config/factions/castle/puzzleMap",
 		"config/factions/castle/town/town",
 		"config/factions/castle/town/buildings",

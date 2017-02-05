@@ -4,12 +4,6 @@
 		"town" : "inferno",
 		"alignment" : "evil",
 		"nativeTerrain" : "lava",
-		"heroClasses" : [ "beastmaster" , "witch" ],
-		"dwellings" :
-		[
-			"impCrucible", "hallOfSins", "kennels", "demonGate",
-			"hellHole", "fireLake", "forsakenPalace"
-		],
 		"creatureBackground" :
 		{
 			"120px" : "factions/inferno/TPCASINF.bmp",

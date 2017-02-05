@@ -10,13 +10,17 @@
 	"factions" :
 	[
 		"config/factions/conflux/faction.json",
-		"config/factions/conflux/dwellings.json",
 		"config/factions/conflux/puzzleMap.json",
 		"config/factions/conflux/town/town.json",
 		"config/factions/conflux/town/buildings.json",
 		"config/factions/conflux/town/structures.json",
 		"config/factions/conflux/town/guildSpells.json",
 		"config/factions/conflux/town/siege.json"
+	],
+
+	"objects" : 
+	[
+		"config/mapObjects/dwellings"
 	],
 
 	"creatures" :

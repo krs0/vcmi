@@ -5,6 +5,9 @@
 		"faction" : "castle",
 		"affinity" : "might",
 		"defaultTavern" : 5,
+
+		"commander" : "powerLich",
+		
 		"animation" : {
 			"battle" : {
 				"female" : "heroClasses/CH01.DEF",

@@ -5,6 +5,9 @@
 		"faction" : "castle",
 		"affinity" : "magic",
 		"defaultTavern" : 5,
+
+		"commander" : "zealot",
+		
 		"animation" : {
 			"battle" : {
 				"female" : "heroClasses/CH01.DEF",

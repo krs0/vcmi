@@ -4,12 +4,6 @@
 		"town" : "necropolis",
 		"alignment" : "evil",
 		"nativeTerrain" : "dirt",
-		"heroClasses" : [ "deathKnight" , "necromancer" ],
-		"dwellings" :
-		[
-			"cursedTemple", "graveyard", "tombOfSouls", "estate",
-			"mausoleum", "hallOfDarkness", "dragonVault"
-		],
 		"creatureBackground" :
 		{
 			"120px" : "factions/necropolis/TPCASNEC.bmp",

@@ -5,6 +5,9 @@
 		"faction" : "stronghold",
 		"affinity" : "magic",
 		"defaultTavern" : 5,
+
+		"commander" : "orcChieftain",
+		
 		"animation" : {
 			"battle" : {
 				"female" : "heroClasses/CH012.DEF",

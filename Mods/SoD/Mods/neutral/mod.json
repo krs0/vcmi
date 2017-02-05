@@ -9,8 +9,12 @@
 
 	"factions" :
 	[
-		"config/factions/neutral/faction.json",
-		"config/factions/neutral/dwellings.json"
+		"config/factions/neutral/faction.json"
+	],
+
+	"objects" : 
+	[
+		"config/mapObjects/dwellings"
 	],
 
 	"creatures" :

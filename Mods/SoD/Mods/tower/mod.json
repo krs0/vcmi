@@ -10,13 +10,17 @@
 	"factions" :
 	[
 		"config/factions/tower/faction.json",
-		"config/factions/tower/dwellings.json",
 		"config/factions/tower/puzzleMap.json",
 		"config/factions/tower/town/town.json",
 		"config/factions/tower/town/buildings.json",
 		"config/factions/tower/town/structures.json",
 		"config/factions/tower/town/guildSpells.json",
 		"config/factions/tower/town/siege.json"
+	],
+
+	"objects" : 
+	[
+		"config/mapObjects/dwellings"
 	],
 
 	"creatures" :

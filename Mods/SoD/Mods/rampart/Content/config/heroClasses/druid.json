@@ -5,6 +5,9 @@
 		"faction" : "rampart",
 		"affinity" : "magic",
 		"defaultTavern" : 5,
+
+		"commander" : "grandElf",
+		
 		"mapObject" : {
 			"templates" : {
 				"default" : {

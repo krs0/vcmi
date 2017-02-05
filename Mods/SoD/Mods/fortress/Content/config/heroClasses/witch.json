@@ -5,6 +5,9 @@
 		"faction" : "fortress",
 		"affinity" : "magic",
 		"defaultTavern" : 5,
+
+		"commander" : "lizardWarrior",
+		
 		"mapObject" : {
 			"templates" : {
 				"default" : {

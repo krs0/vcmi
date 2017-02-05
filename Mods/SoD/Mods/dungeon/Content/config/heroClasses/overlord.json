@@ -5,6 +5,9 @@
 		"faction" : "dungeon",
 		"affinity" : "might",
 		"defaultTavern" : 5,
+
+		"commander" : "medusaQueen",
+		
 		"mapObject" : {
 			"templates" : {
 				"default" : {

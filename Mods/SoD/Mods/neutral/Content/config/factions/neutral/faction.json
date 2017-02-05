@@ -2,24 +2,6 @@
 	"neutral" :
 	{
 		"alignment" : "neutral",
-		"creatures" :
-		[
-			["goldGolem"], ["diamondGolem"],
-			["azureDragon"], ["crystalDragon"],
-			["fairieDragon"], ["rustDragon"],
-			["enchanter"], ["sharpshooter"],
-			["halfling"], ["peasant"],
-			["boar"], ["mummy"],
-			["nomad"], ["rogue"], ["troll"],
-			["firstAidTent"], ["ballista"], ["ammoCart"], ["catapult"]
-		],
-		"dwellings" :
-		[
-			"frozenCliffs", "crystalCavern", "magicForest", "sulfurousLair", 
-			"enchantersHollow", "treetopTower", "thatchedHut", "hovel",
-			"boarGlen", "tombOfCurses", "nomadTent", "rogueCavern",
-			"trollBridge", "warMachineFactory", "elementalConflux"
-		],
 		"creatureBackground" :
 		{
 			"120px" : "factions/neutral/TPCASNEU.bmp",

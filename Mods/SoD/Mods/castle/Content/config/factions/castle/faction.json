@@ -1,15 +1,9 @@
 {
 	"castle" :
 	{
-		"town" : "castle",
+		"name" : "castle",
 		"alignment" : "good",
 		"nativeTerrain" : "grass",
-		"heroClasses" : [ "cleric" , "knight" ],
-		"dwellings" :
-		[
-			"guardhouse", "archersTower", "griffinTower", "barracks",
-			"monastery", "trainingGrounds", "portalOfGlory"
-		],
 		"creatureBackground" :
 		{
 			"120px" : "factions/castle/TPCASCAS.bmp",

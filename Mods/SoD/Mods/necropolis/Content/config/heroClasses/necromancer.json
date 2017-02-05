@@ -5,6 +5,9 @@
 		"faction" : "necropolis",
 		"affinity" : "magic",
 		"defaultTavern" : 5,
+
+		"commander" : "powerLich",
+		
 		"mapObject" : {
 			"templates" : {
 				"default" : {

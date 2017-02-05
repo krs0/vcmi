@@ -4,12 +4,6 @@
 		"town" : "rampart",
 		"alignment" : "good",
 		"nativeTerrain" : "grass",
-		"heroClasses" : [ "ranger" , "druid" ],
-		"dwellings" :
-		[
-			"centaurStables", "dwarfCottage", "homestead", "enchantedSpring",
-			"dendroidArches", "unicornGlade", "dragonCliffs"
-		],
 		"creatureBackground" :
 		{
 			"120px" : "factions/rampart/TPCASRAM.bmp",

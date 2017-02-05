@@ -10,13 +10,17 @@
 	"factions" :
 	[
 		"config/factions/fortress/faction.json",
-		"config/factions/fortress/dwellings.json",
 		"config/factions/fortress/puzzleMap.json",
 		"config/factions/fortress/town/town.json",
 		"config/factions/fortress/town/buildings.json",
 		"config/factions/fortress/town/structures.json",
 		"config/factions/fortress/town/guildSpells.json",
 		"config/factions/fortress/town/siege.json"
+	],
+
+	"objects" : 
+	[
+		"config/mapObjects/dwellings"
 	],
 
 	"creatures" :

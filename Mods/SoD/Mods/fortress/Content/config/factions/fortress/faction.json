@@ -4,12 +4,6 @@
 		"town" : "fortress",
 		"alignment" : "neutral",
 		"nativeTerrain" : "swamp",
-		"heroClasses" : [ "beastmaster" , "witch" ],
-		"dwellings" :
-		[
-			"gnollHut", "lizardDen", "serpentFlyHive", "basiliskPit",
-			"gorgonLair", "wyvernNest", "hydraPond"
-		],
 		"creatureBackground" :
 		{
 			"120px" : "factions/fortress/TPCASFOR.bmp",

@@ -5,6 +5,9 @@
 		"faction" : "conflux",
 		"affinity" : "magic",
 		"defaultTavern" : 5,
+
+		"commander" : "iceElemental",
+		
 		"mapObject" : {
 			"templates" : {
 				"default" : {

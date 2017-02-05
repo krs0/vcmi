@@ -10,13 +10,17 @@
 	"factions" :
 	[
 		"config/factions/necropolis/faction.json",
-		"config/factions/necropolis/dwellings.json",
 		"config/factions/necropolis/puzzleMap.json",
 		"config/factions/necropolis/town/town.json",
 		"config/factions/necropolis/town/buildings.json",
 		"config/factions/necropolis/town/structures.json",
 		"config/factions/necropolis/town/guildSpells.json",
 		"config/factions/necropolis/town/siege.json"
+	],
+
+	"objects" : 
+	[
+		"config/mapObjects/dwellings"
 	],
 
 	"creatures" :

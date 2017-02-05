@@ -4,12 +4,6 @@
 		"town" : "tower",
 		"alignment" : "good",
 		"nativeTerrain" : "snow",
-		"heroClasses" : [ "alchemist" , "wizard" ],
-		"dwellings" :
-		[
-			"workshop", "parapet", "golemFactory", "mageTower",
-			"altarOfWishes", "goldenPavilion", "cloudTemple"
-		],
 		"creatureBackground" :
 		{
 			"120px" : "factions/tower/TPCASTOW.bmp",

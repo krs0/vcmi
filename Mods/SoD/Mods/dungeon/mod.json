@@ -10,13 +10,17 @@
 	"factions" :
 	[
 		"config/factions/dungeon/faction.json",
-		"config/factions/dungeon/dwellings.json",
 		"config/factions/dungeon/puzzleMap.json",
 		"config/factions/dungeon/town/town.json",
 		"config/factions/dungeon/town/buildings.json",
 		"config/factions/dungeon/town/structures.json",
 		"config/factions/dungeon/town/guildSpells.json",
 		"config/factions/dungeon/town/siege.json"
+	],
+
+	"objects" : 
+	[
+		"config/mapObjects/dwellings"
 	],
 
 	"creatures" :
