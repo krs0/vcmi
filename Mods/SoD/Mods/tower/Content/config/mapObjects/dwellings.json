@@ -6,37 +6,133 @@
 			"workshop" : 
 			{
 				"name" : "Workshop",
-				"graphics" : "factions/tower/adventureMap/dwellings/AVGGREM0.def"
+				"creatures" : [
+					[
+						"gremlin"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/tower/adventureMap/dwellings/AVGGREM0.def",
+					}
+				}
 			},
 			"parapet" : 
 			{
 				"name" : "Parapet",
-				"graphics" : "factions/tower/adventureMap/dwellings/AVGGARG0.def"
+				"creatures" : [
+					[
+						"stoneGargoyle"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/tower/adventureMap/dwellings/AVGGARG0.def",
+					}
+				}
 			},
 			"golemFactory" : 
 			{
 				"name" : "Golem Factory",
-				"graphics" : "factions/tower/adventureMap/dwellings/AVGgolm0.def"
+				"creatures" : [
+					[
+						"ironGolem"
+					],
+					[
+						"stoneGolem"
+					],
+					[
+						"goldGolem"
+					],
+					[
+						"diamondGolem"
+					]
+				],
+				"guards" : [
+					{
+						"amount" : 9,
+						"type" : "goldGolem"
+					},
+					{
+						"amount" : 6,
+						"type" : "diamondGolem"
+					}
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/tower/adventureMap/dwellings/AVGgolm0.def",
+					}
+				}
 			},
 			"mageTower" : 
 			{
 				"name" : "Mage Tower",
-				"graphics" : "factions/tower/adventureMap/dwellings/AVGmage0.def"
+				"creatures" : [
+					[
+						"mage"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/tower/adventureMap/dwellings/AVGmage0.def",
+					}
+				}
 			},
 			"altarOfWishes" : 
 			{
 				"name" : "Altar of Wishes",
-				"graphics" : "factions/tower/adventureMap/dwellings/AVGgeni0.def"
+				"creatures" : [
+					[
+						"genie"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/tower/adventureMap/dwellings/AVGgeni0.def",
+					}
+				}
 			},
 			"goldenPavilion" : 
 			{
 				"name" : "Golden Pavilion",
-				"graphics" : "factions/tower/adventureMap/dwellings/AVGnaga0.def"
+				"creatures" : [
+					[
+						"naga"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/tower/adventureMap/dwellings/AVGnaga0.def",
+					}
+				}
 			},
 			"cloudTemple" : 
 			{
 				"name" : "Cloud Temple",
-				"graphics" : "factions/tower/adventureMap/dwellings/AVGtitn0.def"
+				"creatures" : [
+					[
+						"giant"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/tower/adventureMap/dwellings/AVGtitn0.def",
+					}
+				}
 			}
 		}
 	}

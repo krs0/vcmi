@@ -6,37 +6,114 @@
 			"goblinBarracks" : 
 			{
 				"name" : "Goblin Barracks",
-				"graphics" : "factions/stronghold/adventureMap/dwellings/AVGgobl0.def"
+				"creatures" : [
+					[
+						"goblin"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/stronghold/adventureMap/dwellings/AVGgobl0.def",
+					}
+				}
 			},
 			"wolfPen" : 
 			{
 				"name" : "Wolf Pen",
-				"graphics" : "factions/stronghold/adventureMap/dwellings/AVGWOLF0.def"
+				"creatures" : [
+					[
+						"goblinWolfRider"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/stronghold/adventureMap/dwellings/AVGWOLF0.def",
+					}
+				}
 			},
 			"orcTower" : 
 			{
 				"name" : "Orc Tower",
-				"graphics" : "factions/stronghold/adventureMap/dwellings/AVGorcg0.def"
+				"creatures" : [
+					[
+						"orc"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/stronghold/adventureMap/dwellings/AVGorcg0.def",
+					}
+				}
 			},
 			"ogreFort" : 
 			{
 				"name" : "Ogre Fort",
-				"graphics" : "factions/stronghold/adventureMap/dwellings/AVGogre0.def"
+				"creatures" : [
+					[
+						"ogre"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/stronghold/adventureMap/dwellings/AVGogre0.def",
+					}
+				}
 			},
 			"cliffNest" : 
 			{
 				"name" : "Cliff Nest",
-				"graphics" : "factions/stronghold/adventureMap/dwellings/AVGrocs0.def"
+				"creatures" : [
+					[
+						"roc"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/stronghold/adventureMap/dwellings/AVGrocs0.def",
+					}
+				}
 			},
 			"cyclopsCave" : 
 			{
 				"name" : "Cyclops Cave",
-				"graphics" : "factions/stronghold/adventureMap/dwellings/AVGcycl0.def"
+				"creatures" : [
+					[
+						"cyclop"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/stronghold/adventureMap/dwellings/AVGcycl0.def",
+					}
+				}
 			},
 			"behemothLair" : 
 			{
 				"name" : "Behemoth Lair",
-				"graphics" : "factions/stronghold/adventureMap/dwellings/AVGbhmt0.def"
+				"creatures" : [
+					[
+						"behemoth"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/stronghold/adventureMap/dwellings/AVGbhmt0.def",
+					}
+				}
 			}
 		}
 	}

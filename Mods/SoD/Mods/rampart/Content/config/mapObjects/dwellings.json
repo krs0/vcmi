@@ -6,37 +6,114 @@
 			"centaurStables" : 
 			{
 				"name" : "Centaur Stables",
-				"graphics" : "factions/rampart/adventureMap/dwellings/AVGCENT0.def"
+				"creatures" : [
+					[
+						"centaur"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/rampart/adventureMap/dwellings/AVGCENT0.def",
+					}
+				}
 			},
 			"dwarfCottage" : 
 			{
 				"name" : "Dwarf Cottage",
-				"graphics" : "factions/rampart/adventureMap/dwellings/AVGdwrf0.def"
+				"creatures" : [
+					[
+						"dwarf"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/rampart/adventureMap/dwellings/AVGdwrf0.def",
+					}
+				}
 			},
 			"homestead" : 
 			{
 				"name" : "Homestead",
-				"graphics" : "factions/rampart/adventureMap/dwellings/AVGelf0.def"
+				"creatures" : [
+					[
+						"woodElf"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/rampart/adventureMap/dwellings/AVGelf0.def",
+					}
+				}
 			},
 			"enchantedSpring" : 
 			{
 				"name" : "Enchanted Spring",
-				"graphics" : "factions/rampart/adventureMap/dwellings/AVGpega0.def"
+				"creatures" : [
+					[
+						"pegasus"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/rampart/adventureMap/dwellings/AVGpega0.def",
+					}
+				}
 			},
 			"dendroidArches" : 
 			{
 				"name" : "Dendroid Arches",
-				"graphics" : "factions/rampart/adventureMap/dwellings/AVGtree0.def"
+				"creatures" : [
+					[
+						"dendroidGuard"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/rampart/adventureMap/dwellings/AVGtree0.def",
+					}
+				}
 			},
 			"unicornGlade" : 
 			{
 				"name" : "Unicorn Glade",
-				"graphics" : "factions/rampart/adventureMap/dwellings/AVGUNIC0.def"
+				"creatures" : [
+					[
+						"unicorn"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/rampart/adventureMap/dwellings/AVGUNIC0.def",
+					}
+				}
 			},
 			"dragonCliffs" : 
 			{
 				"name" : "Dragon Cliffs",
-				"graphics" : "factions/rampart/adventureMap/dwellings/AVGgdrg0.def"
+				"creatures" : [
+					[
+						"greenDragon"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/rampart/adventureMap/dwellings/AVGgdrg0.def",
+					}
+				}
 			}
 		}
 	}

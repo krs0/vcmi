@@ -6,37 +6,114 @@
 			"cursedTemple" : 
 			{
 				"name" : "Cursed Temple",
-				"graphics" : "factions/necropolis/adventureMap/dwellings/AVGskel0.def"
+				"creatures" : [
+					[
+						"skeleton"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/necropolis/adventureMap/dwellings/AVGskel0.def",
+					}
+				}
 			},
 			"graveyard" : 
 			{
 				"name" : "Graveyard",
-				"graphics" : "factions/necropolis/adventureMap/dwellings/AVGzomb0.def"
+				"creatures" : [
+					[
+						"walkingDead"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/necropolis/adventureMap/dwellings/AVGzomb0.def",
+					}
+				}
 			},
 			"tombOfSouls" : 
 			{
 				"name" : "Tomb of Souls",
-				"graphics" : "factions/necropolis/adventureMap/dwellings/AVGwght0.def"
+				"creatures" : [
+					[
+						"wight"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/necropolis/adventureMap/dwellings/AVGwght0.def",
+					}
+				}
 			},
 			"estate" : 
 			{
 				"name" : "Estate",
-				"graphics" : "factions/necropolis/adventureMap/dwellings/AVGvamp0.def"
+				"creatures" : [
+					[
+						"vampire"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/necropolis/adventureMap/dwellings/AVGvamp0.def",
+					}
+				}
 			},
 			"mausoleum" : 
 			{
 				"name" : "Mausoleum",
-				"graphics" : "factions/necropolis/adventureMap/dwellings/AVGlich0.def"
+				"creatures" : [
+					[
+						"lich"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/necropolis/adventureMap/dwellings/AVGlich0.def",
+					}
+				}
 			},
 			"hallOfDarkness" : 
 			{
 				"name" : "Hall of Darkness",
-				"graphics" : "factions/necropolis/adventureMap/dwellings/AVGBKNI0.def"
+				"creatures" : [
+					[
+						"blackKnight"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/necropolis/adventureMap/dwellings/AVGBKNI0.def",
+					}
+				}
 			},
 			"dragonVault" : 
 			{
 				"name" : "Dragon Vault",
-				"graphics" : "factions/necropolis/adventureMap/dwellings/AVGbone0.def"
+				"creatures" : [
+					[
+						"boneDragon"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/necropolis/adventureMap/dwellings/AVGbone0.def",
+					}
+				}
 			}
 		}
 	}

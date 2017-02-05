@@ -6,37 +6,114 @@
 			"gnollHut" : 
 			{
 				"name" : "Gnoll Hut",
-				"graphics" : "factions/fortress/adventureMap/dwellings/AVGGNLL0.def"
+				"creatures" : [
+					[
+						"gnoll"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/fortress/adventureMap/dwellings/AVGGNLL0.def",
+					}
+				}
 			},
 			"lizardDen" : 
 			{
 				"name" : "Lizard Den",
-				"graphics" : "factions/fortress/adventureMap/dwellings/AVGlzrd0.def"
+				"creatures" : [
+					[
+						"lizardman"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/fortress/adventureMap/dwellings/AVGlzrd0.def",
+					}
+				}
 			},
 			"serpentFlyHive" : 
 			{
 				"name" : "Serpent Fly Hive",
-				"graphics" : "factions/fortress/adventureMap/dwellings/AVGdfly0.def"
+				"creatures" : [
+					[
+						"serpentFly"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/fortress/adventureMap/dwellings/AVGdfly0.def",
+					}
+				}
 			},
 			"basiliskPit" : 
 			{
 				"name" : "Basilisk Pit",
-				"graphics" : "factions/fortress/adventureMap/dwellings/AVGbasl0.def"
+				"creatures" : [
+					[
+						"basilisk"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/fortress/adventureMap/dwellings/AVGbasl0.def",
+					}
+				}
 			},
 			"gorgonLair" : 
 			{
 				"name" : "Gorgon Lair",
-				"graphics" : "factions/fortress/adventureMap/dwellings/AVGgorg0.def"
+				"creatures" : [
+					[
+						"gorgon"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/fortress/adventureMap/dwellings/AVGgorg0.def",
+					}
+				}
 			},
 			"wyvernNest" : 
 			{
 				"name" : "Wyvern Nest",
-				"graphics" : "factions/fortress/adventureMap/dwellings/AVGwyvn0.def"
+				"creatures" : [
+					[
+						"wyvern"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/fortress/adventureMap/dwellings/AVGwyvn0.def",
+					}
+				}
 			},
 			"hydraPond" : 
 			{
 				"name" : "Hydra Pond",
-				"graphics" : "factions/fortress/adventureMap/dwellings/AVGhydr0.def"
+				"creatures" : [
+					[
+						"hydra"
+					]
+				],
+				"templates" : 
+				{
+					"default" : 
+					{
+						"animation" : "factions/fortress/adventureMap/dwellings/AVGhydr0.def",
+					}
+				}
 			}
 		}
 	}
