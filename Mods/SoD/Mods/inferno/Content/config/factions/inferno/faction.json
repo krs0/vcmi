@@ -4,7 +4,7 @@
 		"town" : "inferno",
 		"alignment" : "evil",
 		"nativeTerrain" : "lava",
-		"heroClases" : [ "beastmaster" , "witch" ],
+		"heroClasses" : [ "beastmaster" , "witch" ],
 		"dwellings" :
 		[
 			"impCrucible", "hallOfSins", "kennels", "demonGate",

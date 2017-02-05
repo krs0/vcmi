@@ -4,7 +4,7 @@
 		"town" : "fortress",
 		"alignment" : "neutral",
 		"nativeTerrain" : "swamp",
-		"heroClases" : [ "beastmaster" , "witch" ],
+		"heroClasses" : [ "beastmaster" , "witch" ],
 		"dwellings" :
 		[
 			"gnollHut", "lizardDen", "serpentFlyHive", "basiliskPit",

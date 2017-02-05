@@ -4,7 +4,7 @@
 		"town" : "necropolis",
 		"alignment" : "evil",
 		"nativeTerrain" : "dirt",
-		"heroClases" : [ "deathKnight" , "necromancer" ],
+		"heroClasses" : [ "deathKnight" , "necromancer" ],
 		"dwellings" :
 		[
 			"cursedTemple", "graveyard", "tombOfSouls", "estate",

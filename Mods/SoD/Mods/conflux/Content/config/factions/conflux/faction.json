@@ -4,7 +4,7 @@
 		"town" : "conflux",
 		"alignment" : "neutral",
 		"nativeTerrain" : "grass",
-		"heroClases" : [ "elementalist" , "planeswalker" ],
+		"heroClasses" : [ "elementalist" , "planeswalker" ],
 		"dwellings" :
 		[
 			"magicLantern", "altarOfAir", "altarOfWater", "altarOfFire",

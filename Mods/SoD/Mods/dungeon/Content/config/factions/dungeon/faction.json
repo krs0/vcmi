@@ -4,7 +4,7 @@
 		"town" : "dungeon",
 		"alignment" : "evil",
 		"nativeTerrain" : "subterra",
-		"heroClases" : [ "warlock" , "overlord" ],
+		"heroClasses" : [ "warlock" , "overlord" ],
 		"dwellings" :
 		[
 			"warren", "harpyLoft", "pillarOfEyes", "chappelOfStilledVoices",

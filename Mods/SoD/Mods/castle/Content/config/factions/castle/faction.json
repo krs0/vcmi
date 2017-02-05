@@ -4,7 +4,7 @@
 		"town" : "castle",
 		"alignment" : "good",
 		"nativeTerrain" : "grass",
-		"heroClases" : [ "cleric" , "knight" ],
+		"heroClasses" : [ "cleric" , "knight" ],
 		"dwellings" :
 		[
 			"guardhouse", "archersTower", "griffinTower", "barracks",

@@ -4,7 +4,7 @@
 		"town" : "stronghold",
 		"alignment" : "neutral",
 		"nativeTerrain" : "rough",
-		"heroClases" : [ "barbarian" , "battlemage" ],
+		"heroClasses" : [ "barbarian" , "battlemage" ],
 		"dwellings" :
 		[
 			"goblinBarracks", "wolfPen", "orcTower", "ogreFort",

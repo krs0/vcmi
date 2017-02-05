@@ -4,7 +4,7 @@
 		"town" : "tower",
 		"alignment" : "good",
 		"nativeTerrain" : "snow",
-		"heroClases" : [ "alchemist" , "wizard" ],
+		"heroClasses" : [ "alchemist" , "wizard" ],
 		"dwellings" :
 		[
 			"workshop", "parapet", "golemFactory", "mageTower",
