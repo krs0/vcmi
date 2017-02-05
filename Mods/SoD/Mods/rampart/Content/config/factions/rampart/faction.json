@@ -5,16 +5,6 @@
 		"alignment" : "good",
 		"nativeTerrain" : "grass",
 		"heroClases" : [ "ranger" , "druid" ],
-		"creatures" :
-		[
-			["centaur", "centaurCaptain"],
-			["dwarf", "battleDwarf"],
-			["woodElf", "grandElf"],
-			["pegasus", "silverPegasus"],
-			["dendroidGuard", "dendroidSoldier"],
-			["unicorn", "warUnicorn"],
-			["greenDragon", "goldDragon"]
-		],
 		"dwellings" :
 		[
 			"centaurStables", "dwarfCottage", "homestead", "enchantedSpring",

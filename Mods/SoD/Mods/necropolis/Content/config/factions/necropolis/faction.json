@@ -5,16 +5,6 @@
 		"alignment" : "evil",
 		"nativeTerrain" : "dirt",
 		"heroClases" : [ "deathKnight" , "necromancer" ],
-		"creatures" :
-		[
-			["skeleton", "skeletonWarrior"],
-			["walkingDead", "zombieLord"],
-			["wight", "wraith"],
-			["vampire", "vampireLord"],
-			["lich", "powerLich"],
-			["blackKnight", "dreadKnight"],
-			["boneDragon", "ghostDragon"]
-		],
 		"dwellings" :
 		[
 			"cursedTemple", "graveyard", "tombOfSouls", "estate",

@@ -5,16 +5,6 @@
 		"alignment" : "neutral",
 		"nativeTerrain" : "rough",
 		"heroClases" : [ "barbarian" , "battlemage" ],
-		"creatures" :
-		[
-			["goblin", "hobgoblin"],
-			["goblinWolfRider", "hobgoblinWolfRider"],
-			["orc", "orcChieftain"],
-			["ogre", "ogreMage"],
-			["roc", "thunderbird"],
-			["cyclop", "cyclopKing"],
-			["behemoth", "ancientBehemoth"]
-		],
 		"dwellings" :
 		[
 			"goblinBarracks", "wolfPen", "orcTower", "ogreFort",

@@ -5,16 +5,6 @@
 		"alignment" : "good",
 		"nativeTerrain" : "grass",
 		"heroClases" : [ "cleric" , "knight" ],
-		"creatures" :
-		[
-			[ "pikeman", "halberdier" ],
-			[ "archer", "marksman" ],
-			[ "griffin", "royalGriffin" ],
-			[ "swordsman", "crusader" ],
-			[ "monk", "zealot" ],
-			[ "cavalier", "champion" ],
-			[ "angel", "archangel" ]
-		],
 		"dwellings" :
 		[
 			"guardhouse", "archersTower", "griffinTower", "barracks",

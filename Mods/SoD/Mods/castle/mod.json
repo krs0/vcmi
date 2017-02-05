@@ -9,65 +9,65 @@
 
 	"factions" :
 	[
-		"config/factions/castle/faction.json",
-		"config/factions/castle/dwellings.json",
-		"config/factions/castle/puzzleMap.json",
-		"config/factions/castle/town/town.json",
-		"config/factions/castle/town/buildings.json",
-		"config/factions/castle/town/structures.json",
-		"config/factions/castle/town/guildSpells.json",
-		"config/factions/castle/town/siege.json"
+		"config/factions/castle/faction",
+		"config/factions/castle/dwellings",
+		"config/factions/castle/puzzleMap",
+		"config/factions/castle/town/town",
+		"config/factions/castle/town/buildings",
+		"config/factions/castle/town/structures",
+		"config/factions/castle/town/guildSpells",
+		"config/factions/castle/town/siege"
 	],
 
 	"creatures" :
 	[
-		"config/creatures/pikeman.json",
-		"config/creatures/halberdier.json",
+		"config/creatures/pikeman",
+		"config/creatures/halberdier",
 
-		"config/creatures/archer.json",
-		"config/creatures/marksman.json",
+		"config/creatures/archer",
+		"config/creatures/marksman",
 
-		"config/creatures/griffin.json",
-		"config/creatures/royalGriffin.json",
+		"config/creatures/griffin",
+		"config/creatures/royalGriffin",
 
-		"config/creatures/swordsman.json",
-		"config/creatures/crusader.json",
+		"config/creatures/swordsman",
+		"config/creatures/crusader",
 
-		"config/creatures/monk.json",
-		"config/creatures/zealot.json",
+		"config/creatures/monk",
+		"config/creatures/zealot",
 
-		"config/creatures/cavalier.json",
-		"config/creatures/champion.json",
+		"config/creatures/cavalier",
+		"config/creatures/champion",
 
-		"config/creatures/angel.json",
-		"config/creatures/archangel.json",
+		"config/creatures/angel",
+		"config/creatures/archangel",
 	],
 
 	"heroClasses" :
 	[
-		"config/heroClasses/knight.json",
-		"config/heroClasses/cleric.json",
+		"config/heroClasses/knight",
+		"config/heroClasses/cleric",
 	],
 
 	"heroes" :
 	[
 		// clerics
-		"config/heroes/adela.json",
-		"config/heroes/adelaide.json",
-		"config/heroes/caitlin.json",
-		"config/heroes/cuthbert.json",
-		"config/heroes/ingham.json",
-		"config/heroes/loynis.json",
-		"config/heroes/rion.json",
-		"config/heroes/sanya.json",
+		"config/heroes/adela",
+		"config/heroes/adelaide",
+		"config/heroes/caitlin",
+		"config/heroes/cuthbert",
+		"config/heroes/ingham",
+		"config/heroes/loynis",
+		"config/heroes/rion",
+		"config/heroes/sanya",
 		// knights
-		"config/heroes/edric.json",
-		"config/heroes/lordHaart.json",
-		"config/heroes/orrin.json",
-		"config/heroes/christian.json",
-		"config/heroes/sorsha.json",
-		"config/heroes/sylvia.json",
-		"config/heroes/tyris.json",
-		"config/heroes/valeska.json"
+		"config/heroes/edric",
+		"config/heroes/lordHaart",
+		"config/heroes/orrin",
+		"config/heroes/christian",
+		"config/heroes/sorsha",
+		"config/heroes/sylvia",
+		"config/heroes/tyris",
+		"config/heroes/valeska"
 	]
 }

@@ -5,16 +5,6 @@
 		"alignment" : "neutral",
 		"nativeTerrain" : "swamp",
 		"heroClases" : [ "beastmaster" , "witch" ],
-		"creatures" :
-		[
-			["gnoll", "gnollMarauder"],
-			["lizardman", "lizardWarrior"],
-			["serpentFly", "fireDragonFly"],
-			["basilisk", "greaterBasilisk"],
-			["gorgon", "mightyGorgon"],
-			["wyvern", "wyvernMonarch"],
-			["hydra", "chaosHydra"]
-		],
 		"dwellings" :
 		[
 			"gnollHut", "lizardDen", "serpentFlyHive", "basiliskPit",

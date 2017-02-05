@@ -5,16 +5,6 @@
 		"alignment" : "neutral",
 		"nativeTerrain" : "grass",
 		"heroClases" : [ "elementalist" , "planeswalker" ],
-		"creatures" :
-		[
-			["pixie", "sprite"],
-			["airElemental", "stormElemental"],
-			["waterElemental", "iceElemental"],
-			["fireElemental", "energyElemental"],
-			["earthElemental", "magmaElemental"],
-			["psychicElemental", "magicElemental"],
-			["firebird", "phoenix"]
-		],
 		"dwellings" :
 		[
 			"magicLantern", "altarOfAir", "altarOfWater", "altarOfFire",
