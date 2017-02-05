@@ -19,6 +19,11 @@
 		"config/factions/castle/town/siege"
 	],
 
+	"objects" : 
+	[
+		"config/mapObjects/dwellings"
+	],
+
 	"creatures" :
 	[
 		"config/creatures/pikeman",

@@ -6,7 +6,24 @@
 			"guardhouse" : 
 			{
 				"name" : "Guardhouse",
-				"graphics" : "factions/castle/adventureMap/dwellings/AVGPIKE0.def"
+				"base" : {
+					"animation" : "factions/castle/adventureMap/dwellings/AVGPIKE0.def",
+					"mask" : [
+						"VVV",
+						"VBB",
+						"VAA"
+					],
+					"visitableFrom" : [
+						"---",
+						"+++",
+						"+++"
+					]
+				},
+				"creatures" : [
+					[
+						"pikeman"
+					]
+				]
 			},
 			"archersTower" : 
 			{
