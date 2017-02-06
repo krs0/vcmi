@@ -1,4 +1,4 @@
-{
+18{
 	"jenova" :
 	{
 		"class" : "ranger",
@@ -8,8 +8,8 @@
 
 		"images" :
 		{
-			"specialtySmall" : "", // index is used in UN32.def
-			"specialtyLarge" : "", // index is used in UN44.def
+			"specialtySmall" : "heroes/icons/speciality/small/Un3218.bmp",
+			"specialtyLarge" : "heroes/icons/speciality/large/Un4418.bmp",
 			"large" : "heroes/icons/portrait/large/HPL018RN.bmp",
 			"small" : "heroes/icons/portrait/small/HPS018RN.bmp"
 		},

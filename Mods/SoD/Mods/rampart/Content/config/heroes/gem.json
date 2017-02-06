@@ -1,4 +1,4 @@
-{
+27{
 	"gem" :
 	{
 		"class" : "druid",
@@ -8,8 +8,8 @@
 
 		"images" :
 		{
-			"specialtySmall" : "", // index is used in UN32.def
-			"specialtyLarge" : "", // index is used in UN44.def
+			"specialtySmall" : "heroes/icons/speciality/small/Un3227.bmp",
+			"specialtyLarge" : "heroes/icons/speciality/large/Un4427.bmp",
 			"large" : "heroes/icons/portrait/large/HPL027DR.bmp",
 			"small" : "heroes/icons/portrait/small/HPS027DR.bmp"
 		},

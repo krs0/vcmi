@@ -8,8 +8,8 @@
 
 		"images" :
 		{
-			"specialtySmall" : "", // index is used in UN32.def
-			"specialtyLarge" : "", // index is used in UN44.def
+			"specialtySmall" : "heroes/icons/speciality/small/Un3290.bmp",
+			"specialtyLarge" : "heroes/icons/speciality/large/Un4490.bmp",
 			"large" : "heroes/icons/portrait/large/HPL090WL.bmp",
 			"small" : "heroes/icons/portrait/small/HPS090WL.bmp"
 		},

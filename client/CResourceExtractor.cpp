@@ -187,6 +187,8 @@ void parseOriginalDataFilesAndMoveToMods()
 	splitDefFile("FlagPort.def", spritesPath);	// adventure map dwellings
 	splitDefFile("ITPA.def", spritesPath);		// small town icons
 	splitDefFile("ITPt.def", spritesPath);		// big town icons
+	splitDefFile("Un32.def", spritesPath);		// big town icons
+	splitDefFile("Un44.def", spritesPath);		// big town icons
 
 	boost::locale::generator gen;				// Create locale generator 
 	std::locale::global(gen(""));				// "" - the system default locale, set it globally
@@ -349,6 +351,8 @@ void parseOriginalDataFilesAndMoveToMods()
 
 			moveFileFromConfig(configHeroes, heroName, "images", "large", imagesPath, destinationPath);
 			moveFileFromConfig(configHeroes, heroName, "images", "small", imagesPath, destinationPath);
+			moveFileFromConfig(configHeroes, heroName, "images", "specialtyLarge", imagesPath, destinationPath);
+			moveFileFromConfig(configHeroes, heroName, "images", "specialtySmall", imagesPath, destinationPath);
 		}
 
 
