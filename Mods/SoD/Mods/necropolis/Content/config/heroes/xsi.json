@@ -3,7 +3,7 @@
 	{
 		"class" : "necromancer",
 		"female" : true,
-		"index" : 77,
+		//"index" : 77,
 
 		"images" :
 		{

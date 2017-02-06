@@ -3,7 +3,7 @@
 	{
 		"class" : "deathKnight",
 		"female" : false,
-		"index" : 70,
+		//"index" : 70,
 
 		"images" :
 		{
