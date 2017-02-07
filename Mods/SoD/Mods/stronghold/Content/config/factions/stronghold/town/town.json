@@ -73,12 +73,12 @@
 				"dwellingUpLvl6": { "id" : 42, "upgrades" : "dwellingLvl6" },
 				"dwellingUpLvl7": { "id" : 43, "upgrades" : "dwellingLvl7" },
 				
-				"horde2" : null,
-				"horde2Upgr" : null,
-				"mageGuild4" : null,
-				"mageGuild5" : null,
-				"ship" : null,
-				"shipyard" : null
+				//"horde2" : null,
+				//"horde2Upgr" : null,
+				//"mageGuild4" : null,
+				//"mageGuild5" : null,
+				//"ship" : null,
+				//"shipyard" : null
 			},
 
 			"moatDamage" : 70,

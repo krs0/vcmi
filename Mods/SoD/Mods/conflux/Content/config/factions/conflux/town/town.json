@@ -78,10 +78,10 @@
 				"dwellingUpLvl6": { "id" : 42, "upgrades" : "dwellingLvl6", "requires" : [ "mageGuild2" ] },
 				"dwellingUpLvl7": { "id" : 43, "upgrades" : "dwellingLvl7" },
 
-				"horde2" : null,
-				"horde2Upgr" : null,
-				"special3" : null,
-				"special4" : null
+				//"horde2" : null,
+				//"horde2Upgr" : null,
+				//"special3" : null,
+				//"special4" : null
 			},
 
 			"moatDamage" : 70,

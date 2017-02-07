@@ -76,9 +76,9 @@
 				"dwellingUpLvl6": { "id" : 42, "upgrades" : "dwellingLvl6" },
 				"dwellingUpLvl7": { "id" : 43, "upgrades" : "dwellingLvl7" },
 
-				"ship" : null,
-				"shipyard" : null,
-				"special1" : null
+				//"ship" : null,
+				//"shipyard" : null,
+				//"special1" : null
 			},
 
 

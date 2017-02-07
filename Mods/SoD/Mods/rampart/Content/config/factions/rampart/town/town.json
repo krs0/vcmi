@@ -79,9 +79,9 @@
 				"dwellingUpLvl6": { "id" : 42, "upgrades" : "dwellingLvl6" },
 				"dwellingUpLvl7": { "id" : 43, "upgrades" : "dwellingLvl7", "requires" : [ "mageGuild3" ] },
 				
-				"ship" : null,
-				"shipyard" : null,
-				"special4" : null
+				//"ship" : null,
+				//"shipyard" : null,
+				//"special4" : null
 			},
 
 			"moatDamage" : 70,
