@@ -206,20 +206,6 @@
 					"description" : "The Mushroom Rings increase Infernal Troglodyte production by 7 per week.",
 					"name" : "Mushroom Rings"
 				},
-				"horde2" : {
-					"cost" : {
-						"gold" : 0
-					},
-					"description" : "",
-					"name" : ""
-				},
-				"horde2Upgr" : {
-					"cost" : {
-						"gold" : 0
-					},
-					"description" : "",
-					"name" : ""
-				},
 				"mageGuild1" : {
 					"cost" : {
 						"gold" : 2000,
@@ -296,21 +282,6 @@
 					},
 					"description" : "The Resource Silo provides you with an additional +1 sulfur each day.",
 					"name" : "Resource Silo"
-				},
-				"ship" : {
-					"cost" : {
-						"gold" : 0
-					},
-					"description" : "",
-					"name" : ""
-				},
-				"shipyard" : {
-					"cost" : {
-						"gold" : 2000,
-						"wood" : 20
-					},
-					"description" : "The Shipyard allows you to purchase ships.",
-					"name" : "Shipyard"
 				},
 				"special1" : {
 					"cost" : {

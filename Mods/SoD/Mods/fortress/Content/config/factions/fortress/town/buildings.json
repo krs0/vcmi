@@ -295,32 +295,6 @@
 					"description" : "The Captain's Quarters increase Gnoll Marauder production by 6 per week.",
 					"name" : "Captain's Quarters"
 				},
-				"horde2" : {
-					"cost" : {
-						"crystal" : 0,
-						"gems" : 0,
-						"gold" : 0,
-						"mercury" : 0,
-						"ore" : 0,
-						"sulfur" : 0,
-						"wood" : 0
-					},
-					"description" : "",
-					"name" : ""
-				},
-				"horde2Upgr" : {
-					"cost" : {
-						"crystal" : 0,
-						"gems" : 0,
-						"gold" : 0,
-						"mercury" : 0,
-						"ore" : 0,
-						"sulfur" : 0,
-						"wood" : 0
-					},
-					"description" : "",
-					"name" : ""
-				},
 				"mageGuild1" : {
 					"cost" : {
 						"crystal" : 0,
@@ -359,32 +333,6 @@
 					},
 					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
 					"name" : "Mage Guild Level 3"
-				},
-				"mageGuild4" : {
-					"cost" : {
-						"crystal" : 8,
-						"gems" : 8,
-						"gold" : 1000,
-						"mercury" : 8,
-						"ore" : 5,
-						"sulfur" : 8,
-						"wood" : 5
-					},
-					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
-					"name" : "Mage Guild Level 4"
-				},
-				"mageGuild5" : {
-					"cost" : {
-						"crystal" : 10,
-						"gems" : 10,
-						"gold" : 1000,
-						"mercury" : 10,
-						"ore" : 5,
-						"sulfur" : 10,
-						"wood" : 5
-					},
-					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
-					"name" : "Mage Guild Level 5"
 				},
 				"marketplace" : {
 					"cost" : {
@@ -476,19 +424,6 @@
 					},
 					"description" : "The presence of a Blood Obelisk adds +2 to a garrison hero's attack skill when defending against a siege.",
 					"name" : "Blood Obelisk"
-				},
-				"special4" : {
-					"cost" : {
-						"crystal" : 0,
-						"gems" : 0,
-						"gold" : 0,
-						"mercury" : 0,
-						"ore" : 0,
-						"sulfur" : 0,
-						"wood" : 0
-					},
-					"description" : "",
-					"name" : ""
 				},
 				"tavern" : {
 					"cost" : {

@@ -412,32 +412,6 @@
 					"description" : "The Resource Silo provides you with an additional +1 crystal each day.",
 					"name" : "Resource Silo"
 				},
-				"ship" : {
-					"cost" : {
-						"crystal" : 0,
-						"gems" : 0,
-						"gold" : 0,
-						"mercury" : 0,
-						"ore" : 0,
-						"sulfur" : 0,
-						"wood" : 0
-					},
-					"description" : "",
-					"name" : ""
-				},
-				"shipyard" : {
-					"cost" : {
-						"crystal" : 0,
-						"gems" : 0,
-						"gold" : 2000,
-						"mercury" : 0,
-						"ore" : 0,
-						"sulfur" : 0,
-						"wood" : 20
-					},
-					"description" : "The Shipyard allows you to purchase ships.",
-					"name" : "Shipyard"
-				},
 				"special1" : {
 					"cost" : {
 						"crystal" : 2,
@@ -476,19 +450,6 @@
 					},
 					"description" : "The Treasury earns you 10% interest on any gold you have at the start of each week.",
 					"name" : "Treasury"
-				},
-				"special4" : {
-					"cost" : {
-						"crystal" : 0,
-						"gems" : 0,
-						"gold" : 0,
-						"mercury" : 0,
-						"ore" : 0,
-						"sulfur" : 0,
-						"wood" : 0
-					},
-					"description" : "",
-					"name" : ""
 				},
 				"tavern" : {
 					"cost" : {

@@ -295,32 +295,6 @@
 					"description" : "The Mess Hall increases Hobgoblin production by 8 per week.",
 					"name" : "Mess Hall"
 				},
-				"horde2" : {
-					"cost" : {
-						"crystal" : 0,
-						"gems" : 0,
-						"gold" : 0,
-						"mercury" : 0,
-						"ore" : 0,
-						"sulfur" : 0,
-						"wood" : 0
-					},
-					"description" : "",
-					"name" : ""
-				},
-				"horde2Upgr" : {
-					"cost" : {
-						"crystal" : 0,
-						"gems" : 0,
-						"gold" : 0,
-						"mercury" : 0,
-						"ore" : 0,
-						"sulfur" : 0,
-						"wood" : 0
-					},
-					"description" : "",
-					"name" : ""
-				},
 				"mageGuild1" : {
 					"cost" : {
 						"crystal" : 0,
@@ -360,32 +334,6 @@
 					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
 					"name" : "Mage Guild Level 3"
 				},
-				"mageGuild4" : {
-					"cost" : {
-						"crystal" : 8,
-						"gems" : 8,
-						"gold" : 1000,
-						"mercury" : 8,
-						"ore" : 5,
-						"sulfur" : 8,
-						"wood" : 5
-					},
-					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
-					"name" : "Mage Guild Level 4"
-				},
-				"mageGuild5" : {
-					"cost" : {
-						"crystal" : 10,
-						"gems" : 10,
-						"gold" : 1000,
-						"mercury" : 10,
-						"ore" : 5,
-						"sulfur" : 10,
-						"wood" : 5
-					},
-					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
-					"name" : "Mage Guild Level 5"
-				},
 				"marketplace" : {
 					"cost" : {
 						"crystal" : 0,
@@ -411,32 +359,6 @@
 					},
 					"description" : "The Resource Silo provides you with an additional +1 wood and +1 ore each day.",
 					"name" : "Resource Silo"
-				},
-				"ship" : {
-					"cost" : {
-						"crystal" : 0,
-						"gems" : 0,
-						"gold" : 0,
-						"mercury" : 0,
-						"ore" : 0,
-						"sulfur" : 0,
-						"wood" : 0
-					},
-					"description" : "",
-					"name" : ""
-				},
-				"shipyard" : {
-					"cost" : {
-						"crystal" : 0,
-						"gems" : 0,
-						"gold" : 2000,
-						"mercury" : 0,
-						"ore" : 0,
-						"sulfur" : 0,
-						"wood" : 20
-					},
-					"description" : "The Shipyard allows you to purchase ships.",
-					"name" : "Shipyard"
 				},
 				"special1" : {
 					"cost" : {

@@ -295,32 +295,6 @@
 					"description" : "This structure increases weekly production of Sprites 10 per week.",
 					"name" : "Garden of Life"
 				},
-				"horde2" : {
-					"cost" : {
-						"crystal" : 0,
-						"gems" : 0,
-						"gold" : 0,
-						"mercury" : 0,
-						"ore" : 0,
-						"sulfur" : 0,
-						"wood" : 0
-					},
-					"description" : "",
-					"name" : ""
-				},
-				"horde2Upgr" : {
-					"cost" : {
-						"crystal" : 0,
-						"gems" : 0,
-						"gold" : 0,
-						"mercury" : 0,
-						"ore" : 0,
-						"sulfur" : 0,
-						"wood" : 0
-					},
-					"description" : "",
-					"name" : ""
-				},
 				"mageGuild1" : {
 					"cost" : {
 						"crystal" : 0,
@@ -463,32 +437,6 @@
 					},
 					"description" : "At the Magic University, you can pay to learn any, or all, of the four schools of magic.",
 					"name" : "Magic University"
-				},
-				"special3" : {
-					"cost" : {
-						"crystal" : 0,
-						"gems" : 0,
-						"gold" : 0,
-						"mercury" : 0,
-						"ore" : 0,
-						"sulfur" : 0,
-						"wood" : 0
-					},
-					"description" : "",
-					"name" : ""
-				},
-				"special4" : {
-					"cost" : {
-						"crystal" : 0,
-						"gems" : 0,
-						"gold" : 0,
-						"mercury" : 0,
-						"ore" : 0,
-						"sulfur" : 0,
-						"wood" : 0
-					},
-					"description" : "",
-					"name" : ""
 				},
 				"tavern" : {
 					"cost" : {

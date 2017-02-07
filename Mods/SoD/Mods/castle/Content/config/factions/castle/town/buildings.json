@@ -204,20 +204,6 @@
 					"description" : "The Griffin Bastion increases Royal Griffin production by 3 per week.",
 					"name" : "Griffin Bastion"
 				},
-				"horde2" : {
-					"cost" : {
-						"gold" : 0
-					},
-					"description" : "",
-					"name" : ""
-				},
-				"horde2Upgr" : {
-					"cost" : {
-						"gold" : 0
-					},
-					"description" : "",
-					"name" : ""
-				},
 				"mageGuild1" : {
 					"cost" : {
 						"gold" : 2000,
@@ -265,19 +251,6 @@
 					},
 					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
 					"name" : "Mage Guild Level 4"
-				},
-				"mageGuild5" : {
-					"cost" : {
-						"crystal" : 10,
-						"gems" : 10,
-						"gold" : 1000,
-						"mercury" : 10,
-						"ore" : 5,
-						"sulfur" : 10,
-						"wood" : 5
-					},
-					"description" : "Entering the Mage Guild will allow a visiting hero to learn the spells kept within.",
-					"name" : "Mage Guild Level 5"
 				},
 				"marketplace" : {
 					"cost" : {
@@ -333,13 +306,6 @@
 					},
 					"description" : "During a siege, the Brotherhood of the Sword increases troop morale by +2.",
 					"name" : "Brotherhood of the Sword"
-				},
-				"special4" : {
-					"cost" : {
-						"gold" : 0
-					},
-					"description" : "",
-					"name" : ""
 				},
 				"tavern" : {
 					"cost" : {

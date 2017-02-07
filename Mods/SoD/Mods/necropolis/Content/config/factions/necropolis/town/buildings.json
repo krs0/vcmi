@@ -295,32 +295,6 @@
 					"description" : "The Unearthed Graves increase Skeleton Warrior production by 6 per week.",
 					"name" : "Unearthed Graves"
 				},
-				"horde2" : {
-					"cost" : {
-						"crystal" : 0,
-						"gems" : 0,
-						"gold" : 0,
-						"mercury" : 0,
-						"ore" : 0,
-						"sulfur" : 0,
-						"wood" : 0
-					},
-					"description" : "",
-					"name" : ""
-				},
-				"horde2Upgr" : {
-					"cost" : {
-						"crystal" : 0,
-						"gems" : 0,
-						"gold" : 0,
-						"mercury" : 0,
-						"ore" : 0,
-						"sulfur" : 0,
-						"wood" : 0
-					},
-					"description" : "",
-					"name" : ""
-				},
 				"mageGuild1" : {
 					"cost" : {
 						"crystal" : 0,
@@ -476,19 +450,6 @@
 					},
 					"description" : "The Skeleton Transformer allows you to convert any creature into a skeleton.",
 					"name" : "Skeleton Transformer"
-				},
-				"special4" : {
-					"cost" : {
-						"crystal" : 0,
-						"gems" : 0,
-						"gold" : 0,
-						"mercury" : 0,
-						"ore" : 0,
-						"sulfur" : 0,
-						"wood" : 0
-					},
-					"description" : "",
-					"name" : ""
 				},
 				"tavern" : {
 					"cost" : {

@@ -295,32 +295,6 @@
 					"description" : "The Sculptor's Wings increase Obsidian Gargoyle production by 4 per week.",
 					"name" : "Sculptor's Wings"
 				},
-				"horde2" : {
-					"cost" : {
-						"crystal" : 0,
-						"gems" : 0,
-						"gold" : 0,
-						"mercury" : 0,
-						"ore" : 0,
-						"sulfur" : 0,
-						"wood" : 0
-					},
-					"description" : "",
-					"name" : ""
-				},
-				"horde2Upgr" : {
-					"cost" : {
-						"crystal" : 0,
-						"gems" : 0,
-						"gold" : 0,
-						"mercury" : 0,
-						"ore" : 0,
-						"sulfur" : 0,
-						"wood" : 0
-					},
-					"description" : "",
-					"name" : ""
-				},
 				"mageGuild1" : {
 					"cost" : {
 						"crystal" : 0,
@@ -411,32 +385,6 @@
 					},
 					"description" : "The Resource Silo provides you with an additional +1 gems each day.",
 					"name" : "Resource Silo"
-				},
-				"ship" : {
-					"cost" : {
-						"crystal" : 0,
-						"gems" : 0,
-						"gold" : 0,
-						"mercury" : 0,
-						"ore" : 0,
-						"sulfur" : 0,
-						"wood" : 0
-					},
-					"description" : "",
-					"name" : ""
-				},
-				"shipyard" : {
-					"cost" : {
-						"crystal" : 0,
-						"gems" : 0,
-						"gold" : 2000,
-						"mercury" : 0,
-						"ore" : 0,
-						"sulfur" : 0,
-						"wood" : 20
-					},
-					"description" : "The Shipyard allows you to purchase ships.",
-					"name" : "Shipyard"
 				},
 				"special1" : {
 					"cost" : {
