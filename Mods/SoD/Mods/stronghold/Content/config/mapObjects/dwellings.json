@@ -1,118 +1,115 @@
 {
-	"stronghold" :
+	"creatureGeneratorCommon" :
 	{
-		"dwellings" :
+		"goblinBarracks" : 
 		{
-			"goblinBarracks" : 
+			"name" : "Goblin Barracks",
+			"creatures" : [
+				[
+					"goblin"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Goblin Barracks",
-				"creatures" : [
-					[
-						"goblin"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/stronghold/adventureMap/dwellings/AVGgobl0.def",
-					}
+					"animation" : "factions/stronghold/adventureMap/dwellings/AVGgobl0.def",
 				}
-			},
-			"wolfPen" : 
+			}
+		},
+		"wolfPen" : 
+		{
+			"name" : "Wolf Pen",
+			"creatures" : [
+				[
+					"goblinWolfRider"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Wolf Pen",
-				"creatures" : [
-					[
-						"goblinWolfRider"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/stronghold/adventureMap/dwellings/AVGWOLF0.def",
-					}
+					"animation" : "factions/stronghold/adventureMap/dwellings/AVGWOLF0.def",
 				}
-			},
-			"orcTower" : 
+			}
+		},
+		"orcTower" : 
+		{
+			"name" : "Orc Tower",
+			"creatures" : [
+				[
+					"orc"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Orc Tower",
-				"creatures" : [
-					[
-						"orc"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/stronghold/adventureMap/dwellings/AVGorcg0.def",
-					}
+					"animation" : "factions/stronghold/adventureMap/dwellings/AVGorcg0.def",
 				}
-			},
-			"ogreFort" : 
+			}
+		},
+		"ogreFort" : 
+		{
+			"name" : "Ogre Fort",
+			"creatures" : [
+				[
+					"ogre"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Ogre Fort",
-				"creatures" : [
-					[
-						"ogre"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/stronghold/adventureMap/dwellings/AVGogre0.def",
-					}
+					"animation" : "factions/stronghold/adventureMap/dwellings/AVGogre0.def",
 				}
-			},
-			"cliffNest" : 
+			}
+		},
+		"cliffNest" : 
+		{
+			"name" : "Cliff Nest",
+			"creatures" : [
+				[
+					"roc"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Cliff Nest",
-				"creatures" : [
-					[
-						"roc"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/stronghold/adventureMap/dwellings/AVGrocs0.def",
-					}
+					"animation" : "factions/stronghold/adventureMap/dwellings/AVGrocs0.def",
 				}
-			},
-			"cyclopsCave" : 
+			}
+		},
+		"cyclopsCave" : 
+		{
+			"name" : "Cyclops Cave",
+			"creatures" : [
+				[
+					"cyclop"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Cyclops Cave",
-				"creatures" : [
-					[
-						"cyclop"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/stronghold/adventureMap/dwellings/AVGcycl0.def",
-					}
+					"animation" : "factions/stronghold/adventureMap/dwellings/AVGcycl0.def",
 				}
-			},
-			"behemothLair" : 
+			}
+		},
+		"behemothLair" : 
+		{
+			"name" : "Behemoth Lair",
+			"creatures" : [
+				[
+					"behemoth"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Behemoth Lair",
-				"creatures" : [
-					[
-						"behemoth"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/stronghold/adventureMap/dwellings/AVGbhmt0.def",
-					}
+					"animation" : "factions/stronghold/adventureMap/dwellings/AVGbhmt0.def",
 				}
 			}
 		}

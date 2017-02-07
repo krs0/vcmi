@@ -1,7 +1,7 @@
 {
 	"rampart" :
 	{
-		"town" : "rampart",
+		"name" : "rampart",
 		"alignment" : "good",
 		"nativeTerrain" : "grass",
 		"creatureBackground" :

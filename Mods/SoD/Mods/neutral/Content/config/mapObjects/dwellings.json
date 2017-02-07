@@ -1,267 +1,264 @@
 {
-	"neutral" :
+	"creatureGeneratorCommon" :
 	{
-		"dwellings" :
+		"frozenCliffs" : 
 		{
-			"frozenCliffs" : 
+			"name" : "Frozen Cliffs",
+			"creatures" : [
+				[
+					"azureDragon"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Frozen Cliffs",
-				"creatures" : [
-					[
-						"azureDragon"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/neutral/adventureMap/dwellings/AVGazur.def",
-					}
+					"animation" : "factions/neutral/adventureMap/dwellings/AVGazur.def",
 				}
-			},
-			"crystalCavern" : 
+			}
+		},
+		"crystalCavern" : 
+		{
+			"name" : "Crystal Cavern",
+			"creatures" : [
+				[
+					"crystalDragon"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Crystal Cavern",
-				"creatures" : [
-					[
-						"crystalDragon"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/neutral/adventureMap/dwellings/AVGcdrg.def",
-					}
+					"animation" : "factions/neutral/adventureMap/dwellings/AVGcdrg.def",
 				}
-			},
-			"magicForest" : 
+			}
+		},
+		"magicForest" : 
+		{
+			"name" : "Magic Forest",
+			"creatures" : [
+				[
+					"fairieDragon"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Magic Forest",
-				"creatures" : [
-					[
-						"fairieDragon"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/neutral/adventureMap/dwellings/AVGfdrg.def",
-					}
+					"animation" : "factions/neutral/adventureMap/dwellings/AVGfdrg.def",
 				}
-			},
-			"sulfurousLair" : 
+			}
+		},
+		"sulfurousLair" : 
+		{
+			"name" : "Sulfurous Lair",
+			"creatures" : [
+				[
+					"rustDragon"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Sulfurous Lair",
-				"creatures" : [
-					[
-						"rustDragon"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/neutral/adventureMap/dwellings/AVGrust.def",
-					}
+					"animation" : "factions/neutral/adventureMap/dwellings/AVGrust.def",
 				}
-			},
-			"enchantersHollow" : 
+			}
+		},
+		"enchantersHollow" : 
+		{
+			"name" : "Enchanter's Hollow",
+			"creatures" : [
+				[
+					"enchanter"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Enchanter's Hollow",
-				"creatures" : [
-					[
-						"enchanter"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/neutral/adventureMap/dwellings/AVGench.def",
-					}
+					"animation" : "factions/neutral/adventureMap/dwellings/AVGench.def",
 				}
-			},
-			"treetopTower" : 
+			}
+		},
+		"treetopTower" : 
+		{
+			"name" : "Treetop Tower",
+			"creatures" : [
+				[
+					"sharpshooter"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Treetop Tower",
-				"creatures" : [
-					[
-						"sharpshooter"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/neutral/adventureMap/dwellings/AVGshrp.def",
-					}
+					"animation" : "factions/neutral/adventureMap/dwellings/AVGshrp.def",
 				}
-			},
-			"thatchedHut" : 
+			}
+		},
+		"thatchedHut" : 
+		{
+			"name" : "Thatched Hut",
+			"creatures" : [
+				[
+					"halfling"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Thatched Hut",
-				"creatures" : [
-					[
-						"halfling"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/neutral/adventureMap/dwellings/AVGhalf.def",
-					}
+					"animation" : "factions/neutral/adventureMap/dwellings/AVGhalf.def",
 				}
-			},
-			"hovel" : 
+			}
+		},
+		"hovel" : 
+		{
+			"name" : "Hovel",
+			"creatures" : [
+				[
+					"peasant"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Hovel",
-				"creatures" : [
-					[
-						"peasant"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/neutral/adventureMap/dwellings/AVGpeas.def",
-					}
+					"animation" : "factions/neutral/adventureMap/dwellings/AVGpeas.def",
 				}
-			},
-			"boarGlen" : 
+			}
+		},
+		"boarGlen" : 
+		{
+			"name" : "Boar Glen",
+			"creatures" : [
+				[
+					"boar"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Boar Glen",
-				"creatures" : [
-					[
-						"boar"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/neutral/adventureMap/dwellings/AVGboar.def",
-					}
+					"animation" : "factions/neutral/adventureMap/dwellings/AVGboar.def",
 				}
-			},
-			"tombOfCurses" : 
+			}
+		},
+		"tombOfCurses" : 
+		{
+			"name" : "Tomb of Curses",
+			"creatures" : [
+				[
+					"mummy"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Tomb of Curses",
-				"creatures" : [
-					[
-						"mummy"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/neutral/adventureMap/dwellings/AVGmumy.def",
-					}
+					"animation" : "factions/neutral/adventureMap/dwellings/AVGmumy.def",
 				}
-			},
-			"nomadTent" : 
+			}
+		},
+		"nomadTent" : 
+		{
+			"name" : "Nomad Tent",
+			"creatures" : [
+				[
+					"nomad"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Nomad Tent",
-				"creatures" : [
-					[
-						"nomad"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/neutral/adventureMap/dwellings/AVGnomd.def",
-					}
+					"animation" : "factions/neutral/adventureMap/dwellings/AVGnomd.def",
 				}
-			},
-			"rogueCavern" : 
+			}
+		},
+		"rogueCavern" : 
+		{
+			"name" : "Rogue Cavern",
+			"creatures" : [
+				[
+					"rogue"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Rogue Cavern",
-				"creatures" : [
-					[
-						"rogue"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/neutral/adventureMap/dwellings/AVGrog.def",
-					}
+					"animation" : "factions/neutral/adventureMap/dwellings/AVGrog.def",
 				}
-			},
-			"trollBridge" : 
+			}
+		},
+		"trollBridge" : 
+		{
+			"name" : "Troll Bridge",
+			"creatures" : [
+				[
+					"troll"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Troll Bridge",
-				"creatures" : [
-					[
-						"troll"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/neutral/adventureMap/dwellings/AVGtrll.def",
-					}
+					"animation" : "factions/neutral/adventureMap/dwellings/AVGtrll.def",
 				}
-			},
-			"warMachineFactory" : 
-			{
-				"name" : "War Machine Factory",
-				"creatures" : [
-					[
-						"ballista"
-					],
-					[
-						"firstAidTent"
-					],
-					[
-						"ammoCart"
-					],
+			}
+		},
+		"warMachineFactory" : 
+		{
+			"name" : "War Machine Factory",
+			"creatures" : [
+				[
+					"ballista"
 				],
-				"templates" : 
+				[
+					"firstAidTent"
+				],
+				[
+					"ammoCart"
+				],
+			],
+			"templates" : 
+			{
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/neutral/adventureMap/dwellings/AVGsieg0.def",
-					}
+					"animation" : "factions/neutral/adventureMap/dwellings/AVGsieg0.def",
 				}
-			},
-			"elementalConflux" : 
-			{
-				"name" : "Elemental Conflux",
-				"creatures" : [
-					[
-						"airElemental"
-					],
-					[
-						"waterElemental"
-					],
-					[
-						"fireElemental"
-					],
-					[
-						"earthElemental"
-					]
+			}
+		},
+		"elementalConflux" : 
+		{
+			"name" : "Elemental Conflux",
+			"creatures" : [
+				[
+					"airElemental"
 				],
-				"guards" : [
-					{
-						"amount" : 12,
-						"type" : "earthElemental"
-					}
+				[
+					"waterElemental"
 				],
-				"templates" : 
+				[
+					"fireElemental"
+				],
+				[
+					"earthElemental"
+				]
+			],
+			"guards" : [
 				{
-					"default" : 
-					{
-						"animation" : "factions/neutral/adventureMap/dwellings/AVGelem0.def",
-					}
+					"amount" : 12,
+					"type" : "earthElemental"
+				}
+			],
+			"templates" : 
+			{
+				"default" : 
+				{
+					"animation" : "factions/neutral/adventureMap/dwellings/AVGelem0.def",
 				}
 			}
 		}

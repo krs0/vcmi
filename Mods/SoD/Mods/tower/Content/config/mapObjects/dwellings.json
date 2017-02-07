@@ -1,137 +1,134 @@
 {
-	"tower" :
+	"creatureGeneratorCommon" :
 	{
-		"dwellings" :
+		"workshop" : 
 		{
-			"workshop" : 
+			"name" : "Workshop",
+			"creatures" : [
+				[
+					"gremlin"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Workshop",
-				"creatures" : [
-					[
-						"gremlin"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/tower/adventureMap/dwellings/AVGGREM0.def",
-					}
+					"animation" : "factions/tower/adventureMap/dwellings/AVGGREM0.def",
 				}
-			},
-			"parapet" : 
+			}
+		},
+		"parapet" : 
+		{
+			"name" : "Parapet",
+			"creatures" : [
+				[
+					"stoneGargoyle"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Parapet",
-				"creatures" : [
-					[
-						"stoneGargoyle"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/tower/adventureMap/dwellings/AVGGARG0.def",
-					}
+					"animation" : "factions/tower/adventureMap/dwellings/AVGGARG0.def",
 				}
-			},
-			"golemFactory" : 
-			{
-				"name" : "Golem Factory",
-				"creatures" : [
-					[
-						"ironGolem"
-					],
-					[
-						"stoneGolem"
-					],
-					[
-						"goldGolem"
-					],
-					[
-						"diamondGolem"
-					]
+			}
+		},
+		"golemFactory" : 
+		{
+			"name" : "Golem Factory",
+			"creatures" : [
+				[
+					"ironGolem"
 				],
-				"guards" : [
-					{
-						"amount" : 9,
-						"type" : "goldGolem"
-					},
-					{
-						"amount" : 6,
-						"type" : "diamondGolem"
-					}
+				[
+					"stoneGolem"
 				],
-				"templates" : 
+				[
+					"goldGolem"
+				],
+				[
+					"diamondGolem"
+				]
+			],
+			"guards" : [
 				{
-					"default" : 
-					{
-						"animation" : "factions/tower/adventureMap/dwellings/AVGgolm0.def",
-					}
+					"amount" : 9,
+					"type" : "goldGolem"
+				},
+				{
+					"amount" : 6,
+					"type" : "diamondGolem"
 				}
-			},
-			"mageTower" : 
+			],
+			"templates" : 
 			{
-				"name" : "Mage Tower",
-				"creatures" : [
-					[
-						"mage"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/tower/adventureMap/dwellings/AVGmage0.def",
-					}
+					"animation" : "factions/tower/adventureMap/dwellings/AVGgolm0.def",
 				}
-			},
-			"altarOfWishes" : 
+			}
+		},
+		"mageTower" : 
+		{
+			"name" : "Mage Tower",
+			"creatures" : [
+				[
+					"mage"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Altar of Wishes",
-				"creatures" : [
-					[
-						"genie"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/tower/adventureMap/dwellings/AVGgeni0.def",
-					}
+					"animation" : "factions/tower/adventureMap/dwellings/AVGmage0.def",
 				}
-			},
-			"goldenPavilion" : 
+			}
+		},
+		"altarOfWishes" : 
+		{
+			"name" : "Altar of Wishes",
+			"creatures" : [
+				[
+					"genie"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Golden Pavilion",
-				"creatures" : [
-					[
-						"naga"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/tower/adventureMap/dwellings/AVGnaga0.def",
-					}
+					"animation" : "factions/tower/adventureMap/dwellings/AVGgeni0.def",
 				}
-			},
-			"cloudTemple" : 
+			}
+		},
+		"goldenPavilion" : 
+		{
+			"name" : "Golden Pavilion",
+			"creatures" : [
+				[
+					"naga"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Cloud Temple",
-				"creatures" : [
-					[
-						"giant"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/tower/adventureMap/dwellings/AVGtitn0.def",
-					}
+					"animation" : "factions/tower/adventureMap/dwellings/AVGnaga0.def",
+				}
+			}
+		},
+		"cloudTemple" : 
+		{
+			"name" : "Cloud Temple",
+			"creatures" : [
+				[
+					"giant"
+				]
+			],
+			"templates" : 
+			{
+				"default" : 
+				{
+					"animation" : "factions/tower/adventureMap/dwellings/AVGtitn0.def",
 				}
 			}
 		}

@@ -1,7 +1,7 @@
 {
 	"dungeon" :
 	{
-		"town" : "dungeon",
+		"name" : "dungeon",
 		"alignment" : "evil",
 		"nativeTerrain" : "subterra",
 		"creatureBackground" :

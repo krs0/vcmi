@@ -1,118 +1,115 @@
 {
-	"conflux" :
+	"creatureGeneratorCommon" :
 	{
-		"dwellings" :
+		"magicLantern" : 
 		{
-			"magicLantern" : 
+			"name" : "Magic Lantern",
+			"creatures" : [
+				[
+					"pixie"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Magic Lantern",
-				"creatures" : [
-					[
-						"pixie"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/conflux/adventureMap/dwellings/AVGpixie.def",
-					}
+					"animation" : "factions/conflux/adventureMap/dwellings/AVGpixie.def",
 				}
-			},
-			"altarOfAir" : 
+			}
+		},
+		"altarOfAir" : 
+		{
+			"name" : "Altar of Air",
+			"creatures" : [
+				[
+					"airElemental"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Altar of Air",
-				"creatures" : [
-					[
-						"airElemental"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/conflux/adventureMap/dwellings/AVGair0.def",
-					}
+					"animation" : "factions/conflux/adventureMap/dwellings/AVGair0.def",
 				}
-			},
-			"altarOfWater" : 
+			}
+		},
+		"altarOfWater" : 
+		{
+			"name" : "Altar of Water",
+			"creatures" : [
+				[
+					"waterElemental"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Altar of Water",
-				"creatures" : [
-					[
-						"waterElemental"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/conflux/adventureMap/dwellings/AVGwatr0.def",
-					}
+					"animation" : "factions/conflux/adventureMap/dwellings/AVGwatr0.def",
 				}
-			},
-			"altarOfFire" : 
+			}
+		},
+		"altarOfFire" : 
+		{
+			"name" : "Altar of Fire",
+			"creatures" : [
+				[
+					"fireElemental"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Altar of Fire",
-				"creatures" : [
-					[
-						"fireElemental"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/conflux/adventureMap/dwellings/AVGfire0.def",
-					}
+					"animation" : "factions/conflux/adventureMap/dwellings/AVGfire0.def",
 				}
-			},
-			"altarOfEarth" : 
+			}
+		},
+		"altarOfEarth" : 
+		{
+			"name" : "Altar of Earth",
+			"creatures" : [
+				[
+					"earthElemental"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Altar of Earth",
-				"creatures" : [
-					[
-						"earthElemental"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/conflux/adventureMap/dwellings/AVGerth0.def",
-					}
+					"animation" : "factions/conflux/adventureMap/dwellings/AVGerth0.def",
 				}
-			},
-			"altarOfThought" : 
+			}
+		},
+		"altarOfThought" : 
+		{
+			"name" : "Altar of Thought",
+			"creatures" : [
+				[
+					"psychicElemental"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Altar of Thought",
-				"creatures" : [
-					[
-						"psychicElemental"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/conflux/adventureMap/dwellings/AVGelp.def",
-					}
+					"animation" : "factions/conflux/adventureMap/dwellings/AVGelp.def",
 				}
-			},
-			"pyre" : 
+			}
+		},
+		"pyre" : 
+		{
+			"name" : "Pyre",
+			"creatures" : [
+				[
+					"firebird"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Pyre",
-				"creatures" : [
-					[
-						"firebird"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/conflux/adventureMap/dwellings/AVGfbrd.def",
-					}
+					"animation" : "factions/conflux/adventureMap/dwellings/AVGfbrd.def",
 				}
 			}
 		}

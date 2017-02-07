@@ -1,118 +1,115 @@
 {
-	"dungeon" :
+	"creatureGeneratorCommon" :
 	{
-		"dwellings" :
+		"warren" : 
 		{
-			"warren" : 
+			"name" : "Warren",
+			"creatures" : [
+				[
+					"troglodyte"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Warren",
-				"creatures" : [
-					[
-						"troglodyte"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/dungeon/adventureMap/dwellings/AVGtrog0.def",
-					}
+					"animation" : "factions/dungeon/adventureMap/dwellings/AVGtrog0.def",
 				}
-			},
-			"harpyLoft" : 
+			}
+		},
+		"harpyLoft" : 
+		{
+			"name" : "Harpy Loft",
+			"creatures" : [
+				[
+					"harpy"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Harpy Loft",
-				"creatures" : [
-					[
-						"harpy"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/dungeon/adventureMap/dwellings/AVGharp0.def",
-					}
+					"animation" : "factions/dungeon/adventureMap/dwellings/AVGharp0.def",
 				}
-			},
-			"pillarOfEyes" : 
+			}
+		},
+		"pillarOfEyes" : 
+		{
+			"name" : "Pillar of Eyes",
+			"creatures" : [
+				[
+					"beholder"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Pillar of Eyes",
-				"creatures" : [
-					[
-						"beholder"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/dungeon/adventureMap/dwellings/AVGbhld0.def",
-					}
+					"animation" : "factions/dungeon/adventureMap/dwellings/AVGbhld0.def",
 				}
-			},
-			"chappelOfStilledVoices" : 
+			}
+		},
+		"chappelOfStilledVoices" : 
+		{
+			"name" : "Chapel of Stilled Voices",
+			"creatures" : [
+				[
+					"medusa"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Chapel of Stilled Voices",
-				"creatures" : [
-					[
-						"medusa"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/dungeon/adventureMap/dwellings/AVGmdsa0.def",
-					}
+					"animation" : "factions/dungeon/adventureMap/dwellings/AVGmdsa0.def",
 				}
-			},
-			"labyrinth" : 
+			}
+		},
+		"labyrinth" : 
+		{
+			"name" : "Labyrinth",
+			"creatures" : [
+				[
+					"minotaur"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Labyrinth",
-				"creatures" : [
-					[
-						"minotaur"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/dungeon/adventureMap/dwellings/AVGmino0.def",
-					}
+					"animation" : "factions/dungeon/adventureMap/dwellings/AVGmino0.def",
 				}
-			},
-			"manticoreLair" : 
+			}
+		},
+		"manticoreLair" : 
+		{
+			"name" : "Manticore Lair",
+			"creatures" : [
+				[
+					"manticore"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Manticore Lair",
-				"creatures" : [
-					[
-						"manticore"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/dungeon/adventureMap/dwellings/AVGmant0.def",
-					}
+					"animation" : "factions/dungeon/adventureMap/dwellings/AVGmant0.def",
 				}
-			},
-			"dragonCave" : 
+			}
+		},
+		"dragonCave" : 
+		{
+			"name" : "Dragon Cave",
+			"creatures" : [
+				[
+					"redDragon"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Dragon Cave",
-				"creatures" : [
-					[
-						"redDragon"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/dungeon/adventureMap/dwellings/AVGrdrg0.def",
-					}
+					"animation" : "factions/dungeon/adventureMap/dwellings/AVGrdrg0.def",
 				}
 			}
 		}

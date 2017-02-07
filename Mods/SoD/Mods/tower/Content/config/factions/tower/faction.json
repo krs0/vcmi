@@ -1,7 +1,7 @@
 {
 	"tower" :
 	{
-		"town" : "tower",
+		"name" : "tower",
 		"alignment" : "good",
 		"nativeTerrain" : "snow",
 		"creatureBackground" :

@@ -1,6 +1,7 @@
 {
 	"neutral" :
 	{
+		"name" : "neutral",
 		"alignment" : "neutral",
 		"creatureBackground" :
 		{

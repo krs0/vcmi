@@ -1,118 +1,115 @@
 {
-	"necropolis" :
+	"creatureGeneratorCommon" :
 	{
-		"dwellings" :
+		"cursedTemple" : 
 		{
-			"cursedTemple" : 
+			"name" : "Cursed Temple",
+			"creatures" : [
+				[
+					"skeleton"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Cursed Temple",
-				"creatures" : [
-					[
-						"skeleton"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/necropolis/adventureMap/dwellings/AVGskel0.def",
-					}
+					"animation" : "factions/necropolis/adventureMap/dwellings/AVGskel0.def",
 				}
-			},
-			"graveyard" : 
+			}
+		},
+		"graveyard" : 
+		{
+			"name" : "Graveyard",
+			"creatures" : [
+				[
+					"walkingDead"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Graveyard",
-				"creatures" : [
-					[
-						"walkingDead"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/necropolis/adventureMap/dwellings/AVGzomb0.def",
-					}
+					"animation" : "factions/necropolis/adventureMap/dwellings/AVGzomb0.def",
 				}
-			},
-			"tombOfSouls" : 
+			}
+		},
+		"tombOfSouls" : 
+		{
+			"name" : "Tomb of Souls",
+			"creatures" : [
+				[
+					"wight"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Tomb of Souls",
-				"creatures" : [
-					[
-						"wight"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/necropolis/adventureMap/dwellings/AVGwght0.def",
-					}
+					"animation" : "factions/necropolis/adventureMap/dwellings/AVGwght0.def",
 				}
-			},
-			"estate" : 
+			}
+		},
+		"estate" : 
+		{
+			"name" : "Estate",
+			"creatures" : [
+				[
+					"vampire"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Estate",
-				"creatures" : [
-					[
-						"vampire"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/necropolis/adventureMap/dwellings/AVGvamp0.def",
-					}
+					"animation" : "factions/necropolis/adventureMap/dwellings/AVGvamp0.def",
 				}
-			},
-			"mausoleum" : 
+			}
+		},
+		"mausoleum" : 
+		{
+			"name" : "Mausoleum",
+			"creatures" : [
+				[
+					"lich"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Mausoleum",
-				"creatures" : [
-					[
-						"lich"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/necropolis/adventureMap/dwellings/AVGlich0.def",
-					}
+					"animation" : "factions/necropolis/adventureMap/dwellings/AVGlich0.def",
 				}
-			},
-			"hallOfDarkness" : 
+			}
+		},
+		"hallOfDarkness" : 
+		{
+			"name" : "Hall of Darkness",
+			"creatures" : [
+				[
+					"blackKnight"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Hall of Darkness",
-				"creatures" : [
-					[
-						"blackKnight"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/necropolis/adventureMap/dwellings/AVGBKNI0.def",
-					}
+					"animation" : "factions/necropolis/adventureMap/dwellings/AVGBKNI0.def",
 				}
-			},
-			"dragonVault" : 
+			}
+		},
+		"dragonVault" : 
+		{
+			"name" : "Dragon Vault",
+			"creatures" : [
+				[
+					"boneDragon"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Dragon Vault",
-				"creatures" : [
-					[
-						"boneDragon"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/necropolis/adventureMap/dwellings/AVGbone0.def",
-					}
+					"animation" : "factions/necropolis/adventureMap/dwellings/AVGbone0.def",
 				}
 			}
 		}

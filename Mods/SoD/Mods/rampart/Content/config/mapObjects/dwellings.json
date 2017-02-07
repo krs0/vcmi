@@ -1,118 +1,115 @@
 {
-	"rampart" :
+	"creatureGeneratorCommon" :
 	{
-		"dwellings" :
+		"centaurStables" : 
 		{
-			"centaurStables" : 
+			"name" : "Centaur Stables",
+			"creatures" : [
+				[
+					"centaur"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Centaur Stables",
-				"creatures" : [
-					[
-						"centaur"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/rampart/adventureMap/dwellings/AVGCENT0.def",
-					}
+					"animation" : "factions/rampart/adventureMap/dwellings/AVGCENT0.def",
 				}
-			},
-			"dwarfCottage" : 
+			}
+		},
+		"dwarfCottage" : 
+		{
+			"name" : "Dwarf Cottage",
+			"creatures" : [
+				[
+					"dwarf"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Dwarf Cottage",
-				"creatures" : [
-					[
-						"dwarf"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/rampart/adventureMap/dwellings/AVGdwrf0.def",
-					}
+					"animation" : "factions/rampart/adventureMap/dwellings/AVGdwrf0.def",
 				}
-			},
-			"homestead" : 
+			}
+		},
+		"homestead" : 
+		{
+			"name" : "Homestead",
+			"creatures" : [
+				[
+					"woodElf"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Homestead",
-				"creatures" : [
-					[
-						"woodElf"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/rampart/adventureMap/dwellings/AVGelf0.def",
-					}
+					"animation" : "factions/rampart/adventureMap/dwellings/AVGelf0.def",
 				}
-			},
-			"enchantedSpring" : 
+			}
+		},
+		"enchantedSpring" : 
+		{
+			"name" : "Enchanted Spring",
+			"creatures" : [
+				[
+					"pegasus"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Enchanted Spring",
-				"creatures" : [
-					[
-						"pegasus"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/rampart/adventureMap/dwellings/AVGpega0.def",
-					}
+					"animation" : "factions/rampart/adventureMap/dwellings/AVGpega0.def",
 				}
-			},
-			"dendroidArches" : 
+			}
+		},
+		"dendroidArches" : 
+		{
+			"name" : "Dendroid Arches",
+			"creatures" : [
+				[
+					"dendroidGuard"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Dendroid Arches",
-				"creatures" : [
-					[
-						"dendroidGuard"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/rampart/adventureMap/dwellings/AVGtree0.def",
-					}
+					"animation" : "factions/rampart/adventureMap/dwellings/AVGtree0.def",
 				}
-			},
-			"unicornGlade" : 
+			}
+		},
+		"unicornGlade" : 
+		{
+			"name" : "Unicorn Glade",
+			"creatures" : [
+				[
+					"unicorn"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Unicorn Glade",
-				"creatures" : [
-					[
-						"unicorn"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/rampart/adventureMap/dwellings/AVGUNIC0.def",
-					}
+					"animation" : "factions/rampart/adventureMap/dwellings/AVGUNIC0.def",
 				}
-			},
-			"dragonCliffs" : 
+			}
+		},
+		"dragonCliffs" : 
+		{
+			"name" : "Dragon Cliffs",
+			"creatures" : [
+				[
+					"greenDragon"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Dragon Cliffs",
-				"creatures" : [
-					[
-						"greenDragon"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/rampart/adventureMap/dwellings/AVGgdrg0.def",
-					}
+					"animation" : "factions/rampart/adventureMap/dwellings/AVGgdrg0.def",
 				}
 			}
 		}

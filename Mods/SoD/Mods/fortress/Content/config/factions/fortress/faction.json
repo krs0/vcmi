@@ -1,7 +1,7 @@
 {
 	"fortress" :
 	{
-		"town" : "fortress",
+		"name" : "fortress",
 		"alignment" : "neutral",
 		"nativeTerrain" : "swamp",
 		"creatureBackground" :

@@ -1,7 +1,7 @@
 {
 	"stronghold" :
 	{
-		"town" : "stronghold",
+		"name" : "stronghold",
 		"alignment" : "neutral",
 		"nativeTerrain" : "rough",
 		"creatureBackground" :

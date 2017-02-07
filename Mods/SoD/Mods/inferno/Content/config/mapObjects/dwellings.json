@@ -1,118 +1,115 @@
 {
-	"inferno" :
+	"creatureGeneratorCommon" :
 	{
-		"dwellings" :
+		"impCrucible" : 
 		{
-			"impCrucible" : 
+			"name" : "Imp Crucible",
+			"creatures" : [
+				[
+					"imp"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Imp Crucible",
-				"creatures" : [
-					[
-						"imp"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/inferno/adventureMap/dwellings/AVGimp0.def",
-					}
+					"animation" : "factions/inferno/adventureMap/dwellings/AVGimp0.def",
 				}
-			},
-			"hallOfSins" : 
+			}
+		},
+		"hallOfSins" : 
+		{
+			"name" : "Hall of Sins",
+			"creatures" : [
+				[
+					"gog"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Hall of Sins",
-				"creatures" : [
-					[
-						"gog"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/inferno/adventureMap/dwellings/AVGgogs0.def",
-					}
+					"animation" : "factions/inferno/adventureMap/dwellings/AVGgogs0.def",
 				}
-			},
-			"kennels" : 
+			}
+		},
+		"kennels" : 
+		{
+			"name" : "Kennels",
+			"creatures" : [
+				[
+					"hellHound"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Kennels",
-				"creatures" : [
-					[
-						"hellHound"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/inferno/adventureMap/dwellings/AVGhell0.def",
-					}
+					"animation" : "factions/inferno/adventureMap/dwellings/AVGhell0.def",
 				}
-			},
-			"demonGate" : 
+			}
+		},
+		"demonGate" : 
+		{
+			"name" : "Demon Gate",
+			"creatures" : [
+				[
+					"demon"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Demon Gate",
-				"creatures" : [
-					[
-						"demon"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/inferno/adventureMap/dwellings/AVGDEMN0.def",
-					}
+					"animation" : "factions/inferno/adventureMap/dwellings/AVGDEMN0.def",
 				}
-			},
-			"hellHole" : 
+			}
+		},
+		"hellHole" : 
+		{
+			"name" : "Hell Hole",
+			"creatures" : [
+				[
+					"pitFiend"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Hell Hole",
-				"creatures" : [
-					[
-						"pitFiend"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/inferno/adventureMap/dwellings/AVGpit0.def",
-					}
+					"animation" : "factions/inferno/adventureMap/dwellings/AVGpit0.def",
 				}
-			},
-			"fireLake" : 
+			}
+		},
+		"fireLake" : 
+		{
+			"name" : "Fire Lake",
+			"creatures" : [
+				[
+					"efreet"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Fire Lake",
-				"creatures" : [
-					[
-						"efreet"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/inferno/adventureMap/dwellings/AVGefre0.def",
-					}
+					"animation" : "factions/inferno/adventureMap/dwellings/AVGefre0.def",
 				}
-			},
-			"forsakenPalace" : 
+			}
+		},
+		"forsakenPalace" : 
+		{
+			"name" : "Forsaken Palace",
+			"creatures" : [
+				[
+					"devil"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Forsaken Palace",
-				"creatures" : [
-					[
-						"devil"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/inferno/adventureMap/dwellings/AVGdevl0.def",
-					}
+					"animation" : "factions/inferno/adventureMap/dwellings/AVGdevl0.def",
 				}
 			}
 		}

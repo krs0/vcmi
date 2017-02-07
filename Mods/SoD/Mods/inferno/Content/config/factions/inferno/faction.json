@@ -1,7 +1,7 @@
 {
 	"inferno" :
 	{
-		"town" : "inferno",
+		"name" : "inferno",
 		"alignment" : "evil",
 		"nativeTerrain" : "lava",
 		"creatureBackground" :

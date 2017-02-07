@@ -1,118 +1,115 @@
 {
-	"fortress" :
+	"creatureGeneratorCommon" :
 	{
-		"dwellings" :
+		"gnollHut" : 
 		{
-			"gnollHut" : 
+			"name" : "Gnoll Hut",
+			"creatures" : [
+				[
+					"gnoll"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Gnoll Hut",
-				"creatures" : [
-					[
-						"gnoll"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/fortress/adventureMap/dwellings/AVGGNLL0.def",
-					}
+					"animation" : "factions/fortress/adventureMap/dwellings/AVGGNLL0.def",
 				}
-			},
-			"lizardDen" : 
+			}
+		},
+		"lizardDen" : 
+		{
+			"name" : "Lizard Den",
+			"creatures" : [
+				[
+					"lizardman"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Lizard Den",
-				"creatures" : [
-					[
-						"lizardman"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/fortress/adventureMap/dwellings/AVGlzrd0.def",
-					}
+					"animation" : "factions/fortress/adventureMap/dwellings/AVGlzrd0.def",
 				}
-			},
-			"serpentFlyHive" : 
+			}
+		},
+		"serpentFlyHive" : 
+		{
+			"name" : "Serpent Fly Hive",
+			"creatures" : [
+				[
+					"serpentFly"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Serpent Fly Hive",
-				"creatures" : [
-					[
-						"serpentFly"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/fortress/adventureMap/dwellings/AVGdfly0.def",
-					}
+					"animation" : "factions/fortress/adventureMap/dwellings/AVGdfly0.def",
 				}
-			},
-			"basiliskPit" : 
+			}
+		},
+		"basiliskPit" : 
+		{
+			"name" : "Basilisk Pit",
+			"creatures" : [
+				[
+					"basilisk"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Basilisk Pit",
-				"creatures" : [
-					[
-						"basilisk"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/fortress/adventureMap/dwellings/AVGbasl0.def",
-					}
+					"animation" : "factions/fortress/adventureMap/dwellings/AVGbasl0.def",
 				}
-			},
-			"gorgonLair" : 
+			}
+		},
+		"gorgonLair" : 
+		{
+			"name" : "Gorgon Lair",
+			"creatures" : [
+				[
+					"gorgon"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Gorgon Lair",
-				"creatures" : [
-					[
-						"gorgon"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/fortress/adventureMap/dwellings/AVGgorg0.def",
-					}
+					"animation" : "factions/fortress/adventureMap/dwellings/AVGgorg0.def",
 				}
-			},
-			"wyvernNest" : 
+			}
+		},
+		"wyvernNest" : 
+		{
+			"name" : "Wyvern Nest",
+			"creatures" : [
+				[
+					"wyvern"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Wyvern Nest",
-				"creatures" : [
-					[
-						"wyvern"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/fortress/adventureMap/dwellings/AVGwyvn0.def",
-					}
+					"animation" : "factions/fortress/adventureMap/dwellings/AVGwyvn0.def",
 				}
-			},
-			"hydraPond" : 
+			}
+		},
+		"hydraPond" : 
+		{
+			"name" : "Hydra Pond",
+			"creatures" : [
+				[
+					"hydra"
+				]
+			],
+			"templates" : 
 			{
-				"name" : "Hydra Pond",
-				"creatures" : [
-					[
-						"hydra"
-					]
-				],
-				"templates" : 
+				"default" : 
 				{
-					"default" : 
-					{
-						"animation" : "factions/fortress/adventureMap/dwellings/AVGhydr0.def",
-					}
+					"animation" : "factions/fortress/adventureMap/dwellings/AVGhydr0.def",
 				}
 			}
 		}
