@@ -11,15 +11,15 @@
 		"mapObject" : {
 			"templates" : {
 				"default" : {
-					"animation" : "heroClasses/AH09_.def",
-					"editorAnimation" : "heroClasses/AH09_E.def"
+					"animation" : "heroClasses/necromancer/AH09_.def",
+					"editorAnimation" : "heroClasses/necromancer/AH09_E.def"
 				}
 			}
 		},
 		"animation" : {
 			"battle" : {
-				"female" : "heroClasses/CH09.DEF",
-				"male" : "heroClasses/CH08.DEF"
+				"female" : "heroClasses/necromancer/CH09.DEF",
+				"male" : "heroClasses/necromancer/CH08.DEF"
 			}
 		},
 		"primarySkills" : {

@@ -11,15 +11,15 @@
 		"mapObject" : {
 			"templates" : {
 				"default" : {
-					"animation" : "heroClasses/AH03_.def",
-					"editorAnimation" : "heroClasses/AH03_E.def"
+					"animation" : "heroClasses/druid/AH03_.def",
+					"editorAnimation" : "heroClasses/druid/AH03_E.def"
 				}
 			}
 		},
 		"animation" : {
 			"battle" : {
-				"female" : "heroClasses/CH03.DEF",
-				"male" : "heroClasses/CH02.DEF"
+				"female" : "heroClasses/druid/CH03.DEF",
+				"male" : "heroClasses/druid/CH02.DEF"
 			}
 		},
 		"primarySkills" : {

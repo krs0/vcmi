@@ -10,15 +10,15 @@
 		
 		"animation" : {
 			"battle" : {
-				"female" : "heroClasses/CH012.DEF",
-				"male" : "heroClasses/CH013.DEF"
+				"female" : "heroClasses/battlemage/CH012.DEF",
+				"male" : "heroClasses/battlemage/CH013.DEF"
 			}
 		},
 		"mapObject" : {
 			"templates" : {
 				"default" : {
-					"animation" : "heroClasses/AH13_.def",
-					"editorAnimation" : "heroClasses/AH13_E.def"
+					"animation" : "heroClasses/battlemage/AH13_.def",
+					"editorAnimation" : "heroClasses/battlemage/AH13_E.def"
 				}
 			}
 		},

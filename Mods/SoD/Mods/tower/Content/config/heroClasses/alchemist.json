@@ -11,15 +11,15 @@
 		"mapObject" : {
 			"templates" : {
 				"default" : {
-					"animation" : "heroClasses/AH04_.def",
-					"editorAnimation" : "heroClasses/AH04_E.def"
+					"animation" : "heroClasses/alchemist/AH04_.def",
+					"editorAnimation" : "heroClasses/alchemist/AH04_E.def"
 				}
 			}
 		},
 		"animation" : {
 			"battle" : {
-				"female" : "heroClasses/CH04.DEF",
-				"male" : "heroClasses/CH05.DEF"
+				"female" : "heroClasses/alchemist/CH04.DEF",
+				"male" : "heroClasses/alchemist/CH05.DEF"
 			}
 		},
 		"primarySkills" : {

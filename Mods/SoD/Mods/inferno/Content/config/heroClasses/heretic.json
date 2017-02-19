@@ -11,15 +11,15 @@
 		"mapObject" : {
 			"templates" : {
 				"default" : {
-					"animation" : "heroClasses/AH07_.def",
-					"editorAnimation" : "heroClasses/AH07_E.def"
+					"animation" : "heroClasses/heretic/AH07_.def",
+					"editorAnimation" : "heroClasses/heretic/AH07_E.def"
 				}
 			}
 		},
 		"animation" : {
 			"battle" : {
-				"female" : "heroClasses/CH07.DEF",
-				"male" : "heroClasses/CH06.DEF"
+				"female" : "heroClasses/heretic/CH07.DEF",
+				"male" : "heroClasses/heretic/CH06.DEF"
 			}
 		},
 		"primarySkills" : {

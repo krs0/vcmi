@@ -11,15 +11,15 @@
 		"mapObject" : {
 			"templates" : {
 				"default" : {
-					"animation" : "heroClasses/AH10_.def",
-					"editorAnimation" : "heroClasses/AH10_E.def"
+					"animation" : "heroClasses/overlord/AH10_.def",
+					"editorAnimation" : "heroClasses/overlord/AH10_E.def"
 				}
 			}
 		},
 		"animation" : {
 			"battle" : {
-				"female" : "heroClasses/CH11.DEF",
-				"male" : "heroClasses/CH010.DEF"
+				"female" : "heroClasses/overlord/CH11.DEF",
+				"male" : "heroClasses/overlord/CH010.DEF"
 			}
 		},
 		"primarySkills" : {

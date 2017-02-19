@@ -11,15 +11,15 @@
 		"mapObject" : {
 			"templates" : {
 				"default" : {
-					"animation" : "heroClasses/AH14_.def",
-					"editorAnimation" : "heroClasses/AH14_E.def"
+					"animation" : "heroClasses/beastmaster/AH14_.def",
+					"editorAnimation" : "heroClasses/beastmaster/AH14_E.def"
 				}
 			}
 		},
 		"animation" : {
 			"battle" : {
-				"female" : "heroClasses/CH015.DEF",
-				"male" : "heroClasses/CH014.DEF"
+				"female" : "heroClasses/beastmaster/CH015.DEF",
+				"male" : "heroClasses/beastmaster/CH014.DEF"
 			}
 		},
 		"primarySkills" : {

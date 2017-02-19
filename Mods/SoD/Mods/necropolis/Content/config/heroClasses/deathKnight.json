@@ -11,15 +11,15 @@
 		"mapObject" : {
 			"templates" : {
 				"default" : {
-					"animation" : "heroClasses/AH08_.def",
-					"editorAnimation" : "heroClasses/AH08_E.def"
+					"animation" : "heroClasses/deathKnight/AH08_.def",
+					"editorAnimation" : "heroClasses/deathKnight/AH08_E.def"
 				}
 			}
 		},
 		"animation" : {
 			"battle" : {
-				"female" : "heroClasses/CH09.DEF",
-				"male" : "heroClasses/CH08.DEF"
+				"female" : "heroClasses/deathKnight/CH09.DEF",
+				"male" : "heroClasses/deathKnight/CH08.DEF"
 			}
 		},
 		"primarySkills" : {
