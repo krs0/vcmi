@@ -39,10 +39,10 @@
 		"abilityText" : "Retaliates twice.",
 		"hasDoubleWeek" : true,
 		"graphics" : {
-			"animation" : "creatures/battle/CGRIFF.def",
-			"map" : "creatures/adventureMap/AvWGrif.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL6.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort6.bmp",
+			"animation" : "creatures/griffin/battle/CGRIFF.def",
+			"map" : "creatures/griffin/adventureMap/AvWGrif.def",
+			"iconSmall" : "creatures/griffin/icons/CPRSMALL6.bmp",
+			"iconLarge" : "creatures/griffin/icons/TwCrPort6.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -53,11 +53,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/GRIFATTK.wav",
-			"defend" : "creatures/GRIFDFND.wav",
-			"killed" : "creatures/GRIFKILL.wav",
-			"move" : "creatures/GRIFMOVE.wav",
-			"wince" : "creatures/GRIFWNCE.wav"
+			"attack" : "creatures/griffin/GRIFATTK.wav",
+			"defend" : "creatures/griffin/GRIFDFND.wav",
+			"killed" : "creatures/griffin/GRIFKILL.wav",
+			"move" : "creatures/griffin/GRIFMOVE.wav",
+			"wince" : "creatures/griffin/GRIFWNCE.wav"
 		}
 	}
 }

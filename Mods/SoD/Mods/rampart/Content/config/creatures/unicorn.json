@@ -40,10 +40,10 @@
 		},
 		"abilityText" : "Aura of magic resistance.  Blinding attack.",
 		"graphics" : {
-			"animation" : "creatures/battle/CUNICO.def",
-			"map" : "creatures/adventureMap/AVWunic0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL26.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort26.bmp",
+			"animation" : "creatures/unicorn/battle/CUNICO.def",
+			"map" : "creatures/unicorn/adventureMap/AVWunic0.def",
+			"iconSmall" : "creatures/unicorn/icons/CPRSMALL26.bmp",
+			"iconLarge" : "creatures/unicorn/icons/TwCrPort26.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -54,11 +54,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/UNICATTK.wav",
-			"defend" : "creatures/UNICDFND.wav",
-			"killed" : "creatures/UNICKILL.wav",
-			"move" : "creatures/UNICMOVE.wav",
-			"wince" : "creatures/UNICWNCE.wav"
+			"attack" : "creatures/unicorn/UNICATTK.wav",
+			"defend" : "creatures/unicorn/UNICDFND.wav",
+			"killed" : "creatures/unicorn/UNICKILL.wav",
+			"move" : "creatures/unicorn/UNICMOVE.wav",
+			"wince" : "creatures/unicorn/UNICWNCE.wav"
 		},
 	}
 }

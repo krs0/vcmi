@@ -34,10 +34,10 @@
 		},
 		"abilityText" : "No enemy retaliation.",
 		"graphics" : {
-			"animation" : "creatures/battle/CNAGA.def",
-			"map" : "creatures/adventureMap/AVWnaga0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL40.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort40.bmp",
+			"animation" : "creatures/naga/battle/CNAGA.def",
+			"map" : "creatures/naga/adventureMap/AVWnaga0.def",
+			"iconSmall" : "creatures/naga/icons/CPRSMALL40.bmp",
+			"iconLarge" : "creatures/naga/icons/TwCrPort40.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -48,11 +48,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/NSENATTK.wav",
-			"defend" : "creatures/NSENDFND.wav",
-			"killed" : "creatures/NSENKILL.wav",
-			"move" : "creatures/NSENMOVE.wav",
-			"wince" : "creatures/NSENWNCE.wav"
+			"attack" : "creatures/naga/NSENATTK.wav",
+			"defend" : "creatures/naga/NSENDFND.wav",
+			"killed" : "creatures/naga/NSENKILL.wav",
+			"move" : "creatures/naga/NSENMOVE.wav",
+			"wince" : "creatures/naga/NSENWNCE.wav"
 		}
 	}
 }

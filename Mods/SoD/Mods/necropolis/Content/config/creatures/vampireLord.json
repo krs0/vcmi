@@ -45,10 +45,10 @@
 		},
 		"abilityText" : "Undead.  Drains life.\nNo enemy retaliation.",
 		"graphics" : {
-			"animation" : "creatures/battle/CNOSFE.def",
-			"map" : "creatures/adventureMap/AVWvamx0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL65.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort65.bmp",
+			"animation" : "creatures/vampireLord/battle/CNOSFE.def",
+			"map" : "creatures/vampireLord/adventureMap/AVWvamx0.def",
+			"iconSmall" : "creatures/vampireLord/icons/CPRSMALL65.bmp",
+			"iconLarge" : "creatures/vampireLord/icons/TwCrPort65.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -59,14 +59,14 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/NOSFATTK.wav",
-			"defend" : "creatures/NOSFDFND.wav",
-			"endMoving" : "creatures/NOSFEXT2.wav",
-			"killed" : "creatures/NOSFKILL.wav",
-			"move" : "creatures/NOSFMOVE.wav",
-			"shoot" : "creatures/NOSFSHOT.wav",
-			"startMoving" : "creatures/NOSFEXT1.wav",
-			"wince" : "creatures/NOSFWNCE.wav"
+			"attack" : "creatures/vampireLord/NOSFATTK.wav",
+			"defend" : "creatures/vampireLord/NOSFDFND.wav",
+			"endMoving" : "creatures/vampireLord/NOSFEXT2.wav",
+			"killed" : "creatures/vampireLord/NOSFKILL.wav",
+			"move" : "creatures/vampireLord/NOSFMOVE.wav",
+			"shoot" : "creatures/vampireLord/NOSFSHOT.wav",
+			"startMoving" : "creatures/vampireLord/NOSFEXT1.wav",
+			"wince" : "creatures/vampireLord/NOSFWNCE.wav"
 		}
 	}
 }

@@ -48,10 +48,10 @@
 		},
 		"abilityText" : "Immune to fire.  Hates Genies.",
 		"graphics" : {
-			"animation" : "creatures/battle/CEFREE.def",
-			"map" : "creatures/adventureMap/AVWefre0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL54.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort54.bmp",
+			"animation" : "creatures/efreet/battle/CEFREE.def",
+			"map" : "creatures/efreet/adventureMap/AVWefre0.def",
+			"iconSmall" : "creatures/efreet/icons/CPRSMALL54.bmp",
+			"iconLarge" : "creatures/efreet/icons/TwCrPort54.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -62,11 +62,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/EFRTATTK.wav",
-			"defend" : "creatures/EFRTDFND.wav",
-			"killed" : "creatures/EFRTKILL.wav",
-			"move" : "creatures/EFRTMOVE.wav",
-			"wince" : "creatures/EFRTWNCE.wav"
+			"attack" : "creatures/efreet/EFRTATTK.wav",
+			"defend" : "creatures/efreet/EFRTDFND.wav",
+			"killed" : "creatures/efreet/EFRTKILL.wav",
+			"move" : "creatures/efreet/EFRTMOVE.wav",
+			"wince" : "creatures/efreet/EFRTWNCE.wav"
 		}
 	}
 }

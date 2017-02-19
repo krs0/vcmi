@@ -44,10 +44,10 @@
 		},
 		"abilityText" : "Hates Efreet.",
 		"graphics" : {
-			"animation" : "creatures/battle/CGENIE.def",
-			"map" : "creatures/adventureMap/AVWgeni0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL38.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort38.bmp",
+			"animation" : "creatures/genie/battle/CGENIE.def",
+			"map" : "creatures/genie/adventureMap/AVWgeni0.def",
+			"iconSmall" : "creatures/genie/icons/CPRSMALL38.bmp",
+			"iconLarge" : "creatures/genie/icons/TwCrPort38.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -58,11 +58,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/GENIATTK.wav",
-			"defend" : "creatures/GENIDFND.wav",
-			"killed" : "creatures/GENIKILL.wav",
-			"move" : "creatures/GENIMOVE.wav",
-			"wince" : "creatures/GENIWNCE.wav"
+			"attack" : "creatures/genie/GENIATTK.wav",
+			"defend" : "creatures/genie/GENIDFND.wav",
+			"killed" : "creatures/genie/GENIKILL.wav",
+			"move" : "creatures/genie/GENIMOVE.wav",
+			"wince" : "creatures/genie/GENIWNCE.wav"
 		},
 	}
 }

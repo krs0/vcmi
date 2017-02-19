@@ -68,10 +68,10 @@
 		},
 		"abilityText" : "Mind spell immunity.  Casts protection from Earth.",
 		"graphics" : {
-			"animation" : "creatures/battle/CSTONE.def",
-			"map" : "creatures/adventureMap/AVWstone.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL127.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort127.bmp",
+			"animation" : "creatures/magmaElemental/battle/CSTONE.def",
+			"map" : "creatures/magmaElemental/adventureMap/AVWstone.def",
+			"iconSmall" : "creatures/magmaElemental/icons/CPRSMALL127.bmp",
+			"iconLarge" : "creatures/magmaElemental/icons/TwCrPort127.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -82,11 +82,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/MAGMATTK.wav",
-			"defend" : "creatures/MAGMDFND.wav",
-			"killed" : "creatures/MAGMKILL.wav",
-			"move" : "creatures/MAGMMOVE.wav",
-			"wince" : "creatures/MAGMWNCE.wav"
+			"attack" : "creatures/magmaElemental/MAGMATTK.wav",
+			"defend" : "creatures/magmaElemental/MAGMDFND.wav",
+			"killed" : "creatures/magmaElemental/MAGMKILL.wav",
+			"move" : "creatures/magmaElemental/MAGMMOVE.wav",
+			"wince" : "creatures/magmaElemental/MAGMWNCE.wav"
 		}
 	}
 }

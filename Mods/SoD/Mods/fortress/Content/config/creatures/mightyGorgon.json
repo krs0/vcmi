@@ -35,10 +35,10 @@
 		},
 		"abilityText" : "Death stare.",
 		"graphics" : {
-			"animation" : "creatures/battle/CBGOG.def",
-			"map" : "creatures/adventureMap/AVWgorx0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL105.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort105.bmp",
+			"animation" : "creatures/mightyGorgon/battle/CBGOG.def",
+			"map" : "creatures/mightyGorgon/adventureMap/AVWgorx0.def",
+			"iconSmall" : "creatures/mightyGorgon/icons/CPRSMALL105.bmp",
+			"iconLarge" : "creatures/mightyGorgon/icons/TwCrPort105.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -49,11 +49,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/BGORATTK.wav",
-			"defend" : "creatures/BGORDFND.wav",
-			"killed" : "creatures/BGORKILL.wav",
-			"move" : "creatures/BGORMOVE.wav",
-			"wince" : "creatures/BGORWNCE.wav"
+			"attack" : "creatures/mightyGorgon/BGORATTK.wav",
+			"defend" : "creatures/mightyGorgon/BGORDFND.wav",
+			"killed" : "creatures/mightyGorgon/BGORKILL.wav",
+			"move" : "creatures/mightyGorgon/BGORMOVE.wav",
+			"wince" : "creatures/mightyGorgon/BGORWNCE.wav"
 		}
 	}
 }

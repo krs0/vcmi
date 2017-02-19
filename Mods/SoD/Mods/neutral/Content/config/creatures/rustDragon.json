@@ -50,10 +50,10 @@
 		},
 		"abilityText" : "Spits acid.",
 		"graphics" : {
-			"animation" : "creatures/battle/CRSDGN.def",
-			"map" : "creatures/adventureMap/AVWrust.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL137.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort137.bmp",
+			"animation" : "creatures/rustDragon/battle/CRSDGN.def",
+			"map" : "creatures/rustDragon/adventureMap/AVWrust.def",
+			"iconSmall" : "creatures/rustDragon/icons/CPRSMALL137.bmp",
+			"iconLarge" : "creatures/rustDragon/icons/TwCrPort137.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -64,11 +64,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/RUSTATTK.wav",
-			"defend" : "creatures/RUSTDFND.wav",
-			"killed" : "creatures/RUSTKILL.wav",
-			"move" : "creatures/RUSTMOVE.wav",
-			"wince" : "creatures/RUSTWNCE.wav"
+			"attack" : "creatures/rustDragon/RUSTATTK.wav",
+			"defend" : "creatures/rustDragon/RUSTDFND.wav",
+			"killed" : "creatures/rustDragon/RUSTKILL.wav",
+			"move" : "creatures/rustDragon/RUSTMOVE.wav",
+			"wince" : "creatures/rustDragon/RUSTWNCE.wav"
 		},
 		"special" : true
 	}

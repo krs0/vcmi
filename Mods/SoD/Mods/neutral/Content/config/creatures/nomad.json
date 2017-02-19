@@ -35,10 +35,10 @@
 		},
 		"abilityText" : "Sandwalkers.",
 		"graphics" : {
-			"animation" : "creatures/battle/CNOMAD.def",
-			"map" : "creatures/adventureMap/AVWnomd.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL144.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort144.bmp",
+			"animation" : "creatures/nomad/battle/CNOMAD.def",
+			"map" : "creatures/nomad/adventureMap/AVWnomd.def",
+			"iconSmall" : "creatures/nomad/icons/CPRSMALL144.bmp",
+			"iconLarge" : "creatures/nomad/icons/TwCrPort144.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -49,11 +49,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/NMADATTK.wav",
-			"defend" : "creatures/NMADDFND.wav",
-			"killed" : "creatures/NMADKILL.wav",
-			"move" : "creatures/NMADMOVE.wav",
-			"wince" : "creatures/NMADWNCE.wav"
+			"attack" : "creatures/nomad/NMADATTK.wav",
+			"defend" : "creatures/nomad/NMADDFND.wav",
+			"killed" : "creatures/nomad/NMADKILL.wav",
+			"move" : "creatures/nomad/NMADMOVE.wav",
+			"wince" : "creatures/nomad/NMADWNCE.wav"
 		}
 	}
 }

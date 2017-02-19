@@ -39,10 +39,10 @@
 		"abilityText" : "No melee penalty.",
 		//"hasDoubleWeek" : true,
 		"graphics" : {
-			"animation" : "creatures/battle/CBEHOL.def",
-			"map" : "creatures/adventureMap/AVWbehl0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL76.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort76.bmp",
+			"animation" : "creatures/beholder/battle/CBEHOL.def",
+			"map" : "creatures/beholder/adventureMap/AVWbehl0.def",
+			"iconSmall" : "creatures/beholder/icons/CPRSMALL76.bmp",
+			"iconLarge" : "creatures/beholder/icons/TwCrPort76.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -51,7 +51,7 @@
 			},
 			"missile" :
 			{
-				"projectile" : "creatures/projectile/SMBALX.DEF",
+				"projectile" : "creatures/beholder/projectile/SMBALX.DEF",
 				"attackClimaxFrame" : 5,
 				"frameAngles" : [
 					0,
@@ -81,12 +81,12 @@
 		},
 		"sound" :
 		{
-			"attack": "creatures/BHDRATTK.wav",
-			"defend": "creatures/BHDRDFND.wav",
-			"killed": "creatures/BHDRKILL.wav",
-			"move": "creatures/BHDRMOVE.wav",
-			"shoot": "creatures/BHDRSHOT.wav",
-			"wince": "creatures/BHDRWNCE.wav"
+			"attack": "creatures/beholder/BHDRATTK.wav",
+			"defend": "creatures/beholder/BHDRDFND.wav",
+			"killed": "creatures/beholder/BHDRKILL.wav",
+			"move": "creatures/beholder/BHDRMOVE.wav",
+			"shoot": "creatures/beholder/BHDRSHOT.wav",
+			"wince": "creatures/beholder/BHDRWNCE.wav"
 		}
 	}
 }

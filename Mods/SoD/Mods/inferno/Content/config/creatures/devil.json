@@ -58,10 +58,10 @@
 		},
 		"abilityText" : "-1 enemy luck. No enemy retaliation. Hates Angels.",
 		"graphics" : {
-			"animation" : "creatures/battle/CDEVIL.def",
-			"map" : "creatures/adventureMap/AVWdevl0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL56.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort56.bmp",
+			"animation" : "creatures/devil/battle/CDEVIL.def",
+			"map" : "creatures/devil/adventureMap/AVWdevl0.def",
+			"iconSmall" : "creatures/devil/icons/CPRSMALL56.bmp",
+			"iconLarge" : "creatures/devil/icons/TwCrPort56.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -72,13 +72,13 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/DEVLATTK.wav",
-			"defend" : "creatures/DEVLDFND.wav",
-			"endMoving" : "creatures/DEVLEXT2.wav",
-			"killed" : "creatures/DEVLKILL.wav",
-			"move" : "creatures/DEVLMOVE.wav",
-			"startMoving" : "creatures/DEVLEXT1.wav",
-			"wince" : "creatures/DEVLWNCE.wav"
+			"attack" : "creatures/devil/DEVLATTK.wav",
+			"defend" : "creatures/devil/DEVLDFND.wav",
+			"endMoving" : "creatures/devil/DEVLEXT2.wav",
+			"killed" : "creatures/devil/DEVLKILL.wav",
+			"move" : "creatures/devil/DEVLMOVE.wav",
+			"startMoving" : "creatures/devil/DEVLEXT1.wav",
+			"wince" : "creatures/devil/DEVLWNCE.wav"
 		}
 	}
 }

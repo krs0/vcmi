@@ -33,10 +33,10 @@
 		},
 		"abilityText" : "Jousting bonus.",
 		"graphics" : {
-			"animation" : "creatures/battle/CCHAMP.def",
-			"map" : "creatures/adventureMap/AVWcvlx0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL13.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort13.bmp",
+			"animation" : "creatures/champion/battle/CCHAMP.def",
+			"map" : "creatures/champion/adventureMap/AVWcvlx0.def",
+			"iconSmall" : "creatures/champion/icons/CPRSMALL13.bmp",
+			"iconLarge" : "creatures/champion/icons/TwCrPort13.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -47,11 +47,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/CHMPATTK.wav",
-			"defend" : "creatures/CHMPDFND.wav",
-			"killed" : "creatures/CHMPKILL.wav",
-			"move" : "creatures/CHMPMOVE.wav",
-			"wince" : "creatures/CHMPWNCE.wav"
+			"attack" : "creatures/champion/CHMPATTK.wav",
+			"defend" : "creatures/champion/CHMPDFND.wav",
+			"killed" : "creatures/champion/CHMPKILL.wav",
+			"move" : "creatures/champion/CHMPMOVE.wav",
+			"wince" : "creatures/champion/CHMPWNCE.wav"
 		}
 	}
 }

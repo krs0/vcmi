@@ -40,10 +40,10 @@
 		"abilityText" : "Strike and return.",
 		"hasDoubleWeek" : true,
 		"graphics" : {
-			"animation" : "creatures/battle/CHARPY.def",
-			"map" : "creatures/adventureMap/AVWharp0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL74.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort74.bmp",
+			"animation" : "creatures/harpy/battle/CHARPY.def",
+			"map" : "creatures/harpy/adventureMap/AVWharp0.def",
+			"iconSmall" : "creatures/harpy/icons/CPRSMALL74.bmp",
+			"iconLarge" : "creatures/harpy/icons/TwCrPort74.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -54,11 +54,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/HARPATTK.wav",
-			"defend" : "creatures/HARPDFND.wav",
-			"killed" : "creatures/HARPKILL.wav",
-			"move" : "creatures/HARPMOVE.wav",
-			"wince" : "creatures/HARPWNCE.wav"
+			"attack" : "creatures/harpy/HARPATTK.wav",
+			"defend" : "creatures/harpy/HARPDFND.wav",
+			"killed" : "creatures/harpy/HARPKILL.wav",
+			"move" : "creatures/harpy/HARPMOVE.wav",
+			"wince" : "creatures/harpy/HARPWNCE.wav"
 		}
 	}
 }

@@ -34,10 +34,10 @@
 		},
 		"abilityText" : "",
 		"graphics" : {
-			"animation" : "creatures/battle/CHALBD.def",
-			"map" : "creatures/adventureMap/AVWpikx0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL3.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort3.bmp",
+			"animation" : "creatures/halberdier/battle/CHALBD.def",
+			"map" : "creatures/halberdier/adventureMap/AVWpikx0.def",
+			"iconSmall" : "creatures/halberdier/icons/CPRSMALL3.bmp",
+			"iconLarge" : "creatures/halberdier/icons/TwCrPort3.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -48,11 +48,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/HALBATTK.wav",
-			"defend" : "creatures/HALBDFND.wav",
-			"killed" : "creatures/HALBKILL.wav",
-			"move" : "creatures/HALBMOVE.wav",
-			"wince" : "creatures/HALBWNCE.wav"
+			"attack" : "creatures/halberdier/HALBATTK.wav",
+			"defend" : "creatures/halberdier/HALBDFND.wav",
+			"killed" : "creatures/halberdier/HALBKILL.wav",
+			"move" : "creatures/halberdier/HALBMOVE.wav",
+			"wince" : "creatures/halberdier/HALBWNCE.wav"
 		}
 	}
 }

@@ -38,10 +38,10 @@
 		},
 		"abilityText" : "Magic damper.",
 		"graphics" : {
-			"animation" : "creatures/battle/CAPEGS.def",
-			"map" : "creatures/adventureMap/AVWpegx0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL23.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort23.bmp",
+			"animation" : "creatures/silverPegasus/battle/CAPEGS.def",
+			"map" : "creatures/silverPegasus/adventureMap/AVWpegx0.def",
+			"iconSmall" : "creatures/silverPegasus/icons/CPRSMALL23.bmp",
+			"iconLarge" : "creatures/silverPegasus/icons/TwCrPort23.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -52,11 +52,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/APEGATTK.wav",
-			"defend" : "creatures/APEGDFND.wav",
-			"killed" : "creatures/APEGKILL.wav",
-			"move" : "creatures/APEGMOVE.wav",
-			"wince" : "creatures/APEGWNCE.wav"
+			"attack" : "creatures/silverPegasus/APEGATTK.wav",
+			"defend" : "creatures/silverPegasus/APEGDFND.wav",
+			"killed" : "creatures/silverPegasus/APEGKILL.wav",
+			"move" : "creatures/silverPegasus/APEGMOVE.wav",
+			"wince" : "creatures/silverPegasus/APEGWNCE.wav"
 		}
 	}
 }

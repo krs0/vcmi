@@ -37,10 +37,10 @@
 		},
 		"abilityText" : "Target enemy's defense is reduced 80%.",
 		"graphics" : {
-			"animation" : "creatures/battle/CABEHE.def",
-			"map" : "creatures/adventureMap/AVWbhmx0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL99.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort99.bmp",
+			"animation" : "creatures/ancientBehemoth/battle/CABEHE.def",
+			"map" : "creatures/ancientBehemoth/adventureMap/AVWbhmx0.def",
+			"iconSmall" : "creatures/ancientBehemoth/icons/CPRSMALL99.bmp",
+			"iconLarge" : "creatures/ancientBehemoth/icons/TwCrPort99.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -51,11 +51,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/BMTHATTK.wav",
-			"defend" : "creatures/BMTHDFND.wav",
-			"killed" : "creatures/BMTHKILL.wav",
-			"move" : "creatures/BMTHMOVE.wav",
-			"wince" : "creatures/BMTHWNCE.wav"
+			"attack" : "creatures/ancientBehemoth/BMTHATTK.wav",
+			"defend" : "creatures/ancientBehemoth/BMTHDFND.wav",
+			"killed" : "creatures/ancientBehemoth/BMTHKILL.wav",
+			"move" : "creatures/ancientBehemoth/BMTHMOVE.wav",
+			"wince" : "creatures/ancientBehemoth/BMTHWNCE.wav"
 		}
 	}
 }

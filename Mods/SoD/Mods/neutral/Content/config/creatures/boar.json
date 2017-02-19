@@ -28,10 +28,10 @@
 		},
 		"abilityText" : "",
 		"graphics" : {
-			"animation" : "creatures/battle/CBOAR.def",
-			"map" : "creatures/adventureMap/AVWboar.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL142.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort142.bmp",
+			"animation" : "creatures/boar/battle/CBOAR.def",
+			"map" : "creatures/boar/adventureMap/AVWboar.def",
+			"iconSmall" : "creatures/boar/icons/CPRSMALL142.bmp",
+			"iconLarge" : "creatures/boar/icons/TwCrPort142.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -42,11 +42,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/BOARATTK.wav",
-			"defend" : "creatures/BOARDFND.wav",
-			"killed" : "creatures/BOARKILL.wav",
-			"move" : "creatures/BOARMOVE.wav",
-			"wince" : "creatures/BOARWNCE.wav"
+			"attack" : "creatures/boar/BOARATTK.wav",
+			"defend" : "creatures/boar/BOARDFND.wav",
+			"killed" : "creatures/boar/BOARKILL.wav",
+			"move" : "creatures/boar/BOARMOVE.wav",
+			"wince" : "creatures/boar/BOARWNCE.wav"
 		}
 	}
 }

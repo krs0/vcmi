@@ -37,10 +37,10 @@
 		},
 		"abilityText" : "3-headed attack.\nEnemies cannot retaliate.",
 		"graphics" : {
-			"animation" : "creatures/battle/CCERBU.def",
-			"map" : "creatures/adventureMap/AVWhoux0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL48.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort48.bmp",
+			"animation" : "creatures/cerberus/battle/CCERBU.def",
+			"map" : "creatures/cerberus/adventureMap/AVWhoux0.def",
+			"iconSmall" : "creatures/cerberus/icons/CPRSMALL48.bmp",
+			"iconLarge" : "creatures/cerberus/icons/TwCrPort48.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -51,11 +51,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/CERBATTK.wav",
-			"defend" : "creatures/CERBDFND.wav",
-			"killed" : "creatures/CERBKILL.wav",
-			"move" : "creatures/CERBMOVE.wav",
-			"wince" : "creatures/CERBWNCE.wav"
+			"attack" : "creatures/cerberus/CERBATTK.wav",
+			"defend" : "creatures/cerberus/CERBDFND.wav",
+			"killed" : "creatures/cerberus/CERBKILL.wav",
+			"move" : "creatures/cerberus/CERBMOVE.wav",
+			"wince" : "creatures/cerberus/CERBWNCE.wav"
 		}
 	}
 }

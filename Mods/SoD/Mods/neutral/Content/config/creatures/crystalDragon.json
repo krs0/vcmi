@@ -44,10 +44,10 @@
 		},
 		"abilityText" : "Crystal generation.",
 		"graphics" : {
-			"animation" : "creatures/battle/CCDRGN.def",
-			"map" : "creatures/adventureMap/AVWcdrg.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL135.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort135.bmp",
+			"animation" : "creatures/crystalDragon/battle/CCDRGN.def",
+			"map" : "creatures/crystalDragon/adventureMap/AVWcdrg.def",
+			"iconSmall" : "creatures/crystalDragon/icons/CPRSMALL135.bmp",
+			"iconLarge" : "creatures/crystalDragon/icons/TwCrPort135.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -58,11 +58,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/CRYSATTK.wav",
-			"defend" : "creatures/CRYSDFND.wav",
-			"killed" : "creatures/CRYSKILL.wav",
-			"move" : "creatures/CRYSMOVE.wav",
-			"wince" : "creatures/CRYSWNCE.wav"
+			"attack" : "creatures/crystalDragon/CRYSATTK.wav",
+			"defend" : "creatures/crystalDragon/CRYSDFND.wav",
+			"killed" : "creatures/crystalDragon/CRYSKILL.wav",
+			"move" : "creatures/crystalDragon/CRYSMOVE.wav",
+			"wince" : "creatures/crystalDragon/CRYSWNCE.wav"
 		},
 
 		"special" : true

@@ -39,10 +39,10 @@
 		},
 		"abilityText" : "Shoots twice.",
 		"graphics" : {
-			"animation" : "creatures/battle/CHCBOW.def",
-			"map" : "creatures/adventureMap/AvWHcrs.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL5.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort5.bmp",
+			"animation" : "creatures/marksman/battle/CHCBOW.def",
+			"map" : "creatures/marksman/adventureMap/AvWHcrs.def",
+			"iconSmall" : "creatures/marksman/icons/CPRSMALL5.bmp",
+			"iconLarge" : "creatures/marksman/icons/TwCrPort5.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -50,7 +50,7 @@
 				"walk" : 1
 			},
 			"missile" : {
-				"projectile" : "creatures/projectile/PLCBOWX.DEF",
+				"projectile" : "creatures/marksman/projectile/PLCBOWX.DEF",
 				"attackClimaxFrame" : 7,
 				"frameAngles" : [
 					90,
@@ -79,12 +79,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/HCRSATTK.wav",
-			"defend" : "creatures/HCRSDFND.wav",
-			"killed" : "creatures/HCRSKILL.wav",
-			"move" : "creatures/HCRSMOVE.wav",
-			"shoot" : "creatures/HCRSSHOT.wav",
-			"wince" : "creatures/HCRSWNCE.wav"
+			"attack" : "creatures/marksman/HCRSATTK.wav",
+			"defend" : "creatures/marksman/HCRSDFND.wav",
+			"killed" : "creatures/marksman/HCRSKILL.wav",
+			"move" : "creatures/marksman/HCRSMOVE.wav",
+			"shoot" : "creatures/marksman/HCRSSHOT.wav",
+			"wince" : "creatures/marksman/HCRSWNCE.wav"
 		}
 	}
 }

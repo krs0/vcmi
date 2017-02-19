@@ -43,10 +43,10 @@
 		},
 		"abilityText" : "Attacks all adjacent enemies w/o retaliation. Mind spell immunity.",
 		"graphics" : {
-			"animation" : "creatures/battle/CPSYEL.def",
-			"map" : "creatures/adventureMap/AVWpsye.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL122.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort122.bmp",
+			"animation" : "creatures/psychicElemental/battle/CPSYEL.def",
+			"map" : "creatures/psychicElemental/adventureMap/AVWpsye.def",
+			"iconSmall" : "creatures/psychicElemental/icons/CPRSMALL122.bmp",
+			"iconLarge" : "creatures/psychicElemental/icons/TwCrPort122.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -57,11 +57,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/PSYCATTK.wav",
-			"defend" : "creatures/PSYCDFND.wav",
-			"killed" : "creatures/PSYCKILL.wav",
-			"move" : "creatures/PSYCMOVE.wav",
-			"wince" : "creatures/PSYCWNCE.wav"
+			"attack" : "creatures/psychicElemental/PSYCATTK.wav",
+			"defend" : "creatures/psychicElemental/PSYCDFND.wav",
+			"killed" : "creatures/psychicElemental/PSYCKILL.wav",
+			"move" : "creatures/psychicElemental/PSYCMOVE.wav",
+			"wince" : "creatures/psychicElemental/PSYCWNCE.wav"
 		},
 	}
 }

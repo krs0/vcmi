@@ -101,10 +101,10 @@
 		},
 		"abilityText" : "Offensive spell caster.",
 		"graphics" : {
-			"animation" : "creatures/battle/CFDRGN.def",
-			"map" : "creatures/adventureMap/AVWfdrg.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL136.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort136.bmp",
+			"animation" : "creatures/faerieDragon/battle/CFDRGN.def",
+			"map" : "creatures/faerieDragon/adventureMap/AVWfdrg.def",
+			"iconSmall" : "creatures/faerieDragon/icons/CPRSMALL136.bmp",
+			"iconLarge" : "creatures/faerieDragon/icons/TwCrPort136.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -115,12 +115,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/FAERATTK.wav",
-			"defend" : "creatures/FAERDFND.wav",
-			"killed" : "creatures/FAERKILL.wav",
-			"move" : "creatures/FAERMOVE.wav",
-			"shoot" : "creatures/FAERSHOT.wav",
-			"wince" : "creatures/FAERWNCE.wav"
+			"attack" : "creatures/faerieDragon/FAERATTK.wav",
+			"defend" : "creatures/faerieDragon/FAERDFND.wav",
+			"killed" : "creatures/faerieDragon/FAERKILL.wav",
+			"move" : "creatures/faerieDragon/FAERMOVE.wav",
+			"shoot" : "creatures/faerieDragon/FAERSHOT.wav",
+			"wince" : "creatures/faerieDragon/FAERWNCE.wav"
 		},
 
 		"special" : true

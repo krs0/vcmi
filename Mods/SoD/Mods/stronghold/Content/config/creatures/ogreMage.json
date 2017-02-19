@@ -44,10 +44,10 @@
 		},
 		"abilityText" : "Spellcaster: Bloodlust.",
 		"graphics" : {
-			"animation" : "creatures/battle/COGMAG.def",
-			"map" : "creatures/adventureMap/AVWogrx0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL93.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort93.bmp",
+			"animation" : "creatures/ogreMage/battle/COGMAG.def",
+			"map" : "creatures/ogreMage/adventureMap/AVWogrx0.def",
+			"iconSmall" : "creatures/ogreMage/icons/CPRSMALL93.bmp",
+			"iconLarge" : "creatures/ogreMage/icons/TwCrPort93.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -58,12 +58,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/OGRMATTK.wav",
-			"defend" : "creatures/OGRMDFND.wav",
-			"killed" : "creatures/OGRMKILL.wav",
-			"move" : "creatures/OGRMMOVE.wav",
-			"shoot" : "creatures/OGRMSHOT.wav",
-			"wince" : "creatures/OGRMWNCE.wav"
+			"attack" : "creatures/ogreMage/OGRMATTK.wav",
+			"defend" : "creatures/ogreMage/OGRMDFND.wav",
+			"killed" : "creatures/ogreMage/OGRMKILL.wav",
+			"move" : "creatures/ogreMage/OGRMMOVE.wav",
+			"shoot" : "creatures/ogreMage/OGRMSHOT.wav",
+			"wince" : "creatures/ogreMage/OGRMWNCE.wav"
 		}
 	}
 }

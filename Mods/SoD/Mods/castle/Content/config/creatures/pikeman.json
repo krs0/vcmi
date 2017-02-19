@@ -1,4 +1,4 @@
-{
+pikeman/{
 	"pikeman": {
 		"name" : {
 			"plural" : "Pikemen",
@@ -34,10 +34,10 @@
 		},
 		"abilityText" : "",
 		"graphics" : {
-			"animation" : "creatures/battle/CPKMAN.def",
-			"map" : "creatures/adventureMap/AvWPike.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL2.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort2.bmp",
+			"animation" : "creatures/pikeman/battle/CPKMAN.def",
+			"map" : "creatures/pikeman/adventureMap/AvWPike.def",
+			"iconSmall" : "creatures/pikeman/icons/CPRSMALL2.bmp",
+			"iconLarge" : "creatures/pikeman/icons/TwCrPort2.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -48,11 +48,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/PIKEATTK.wav",
-			"defend" : "creatures/PIKEDFND.wav",
-			"killed" : "creatures/PIKEKILL.wav",
-			"move" : "creatures/PIKEMOVE.wav",
-			"wince" : "creatures/PIKEWNCE.wav"
+			"attack" : "creatures/pikeman/PIKEATTK.wav",
+			"defend" : "creatures/pikeman/PIKEDFND.wav",
+			"killed" : "creatures/pikeman/PIKEKILL.wav",
+			"move" : "creatures/pikeman/PIKEMOVE.wav",
+			"wince" : "creatures/pikeman/PIKEWNCE.wav"
 		}
 	}
 }

@@ -33,10 +33,10 @@
 		},
 		"abilityText" : "Undead.\nDisease.",
 		"graphics" : {
-			"animation" : "creatures/battle/CZOMLO.def",
-			"map" : "creatures/adventureMap/AVWzomx0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL60.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort60.bmp",
+			"animation" : "creatures/zombieLord/battle/CZOMLO.def",
+			"map" : "creatures/zombieLord/adventureMap/AVWzomx0.def",
+			"iconSmall" : "creatures/zombieLord/icons/CPRSMALL60.bmp",
+			"iconLarge" : "creatures/zombieLord/icons/TwCrPort60.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -47,11 +47,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/ZMBLATTK.wav",
-			"defend" : "creatures/ZMBLDFND.wav",
-			"killed" : "creatures/ZMBLKILL.wav",
-			"move" : "creatures/ZMBLMOVE.wav",
-			"wince" : "creatures/ZMBLWNCE.wav"
+			"attack" : "creatures/zombieLord/ZMBLATTK.wav",
+			"defend" : "creatures/zombieLord/ZMBLDFND.wav",
+			"killed" : "creatures/zombieLord/ZMBLKILL.wav",
+			"move" : "creatures/zombieLord/ZMBLMOVE.wav",
+			"wince" : "creatures/zombieLord/ZMBLWNCE.wav"
 		}
 	}
 }

@@ -39,10 +39,10 @@
 		"abilityText" : "Paralyzing venom.",
 		"hasDoubleWeek" : true,
 		"graphics" : {
-			"animation" : "creatures/battle/CCMCOR.def",
-			"map" : "creatures/adventureMap/AVWmanx0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL83.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort83.bmp",
+			"animation" : "creatures/scorpicore/battle/CCMCOR.def",
+			"map" : "creatures/scorpicore/adventureMap/AVWmanx0.def",
+			"iconSmall" : "creatures/scorpicore/icons/CPRSMALL83.bmp",
+			"iconLarge" : "creatures/scorpicore/icons/TwCrPort83.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -53,12 +53,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/SCRPATTK.wav",
-			"defend" : "creatures/SCRPDFND.wav",
-			"killed" : "creatures/SCRPKILL.wav",
-			"move" : "creatures/SCRPMOVE.wav",
-			"shoot" : "creatures/SCRPSHOT.wav",
-			"wince" : "creatures/SCRPWNCE.wav"
+			"attack" : "creatures/scorpicore/SCRPATTK.wav",
+			"defend" : "creatures/scorpicore/SCRPDFND.wav",
+			"killed" : "creatures/scorpicore/SCRPKILL.wav",
+			"move" : "creatures/scorpicore/SCRPMOVE.wav",
+			"shoot" : "creatures/scorpicore/SCRPSHOT.wav",
+			"wince" : "creatures/scorpicore/SCRPWNCE.wav"
 		}
 	}
 }

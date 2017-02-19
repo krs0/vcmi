@@ -46,10 +46,10 @@
 		},
 		"abilityText" : "Attacks all adjacent enemies w/o retaliation. Spell immunity.",
 		"graphics" : {
-			"animation" : "creatures/battle/CMAGEL.def",
-			"map" : "creatures/adventureMap/AVWmagel.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL123.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort123.bmp",
+			"animation" : "creatures/magicElemental/battle/CMAGEL.def",
+			"map" : "creatures/magicElemental/adventureMap/AVWmagel.def",
+			"iconSmall" : "creatures/magicElemental/icons/CPRSMALL123.bmp",
+			"iconLarge" : "creatures/magicElemental/icons/TwCrPort123.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -60,11 +60,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/MGELATTK.wav",
-			"defend" : "creatures/MGELDFND.wav",
-			"killed" : "creatures/MGELKILL.wav",
-			"move" : "creatures/MGELMOVE.wav",
-			"wince" : "creatures/MGELWNCE.wav"
+			"attack" : "creatures/magicElemental/MGELATTK.wav",
+			"defend" : "creatures/magicElemental/MGELDFND.wav",
+			"killed" : "creatures/magicElemental/MGELKILL.wav",
+			"move" : "creatures/magicElemental/MGELMOVE.wav",
+			"wince" : "creatures/magicElemental/MGELWNCE.wav"
 		}
 	}
 }

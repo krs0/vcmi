@@ -67,10 +67,10 @@
 		},
 		"abilityText" : "+1 morale.  Hates Devils.\nResurrects allies.",
 		"graphics" : {
-			"animation" : "creatures/battle/CRANGL.def",
-			"map" : "creatures/adventureMap/AvWArch.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL15.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort15.bmp",
+			"animation" : "creatures/archangel/battle/CRANGL.def",
+			"map" : "creatures/archangel/adventureMap/AvWArch.def",
+			"iconSmall" : "creatures/archangel/icons/CPRSMALL15.bmp",
+			"iconLarge" : "creatures/archangel/icons/TwCrPort15.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -81,11 +81,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/AAGLATTK.wav",
-			"defend" : "creatures/AAGLDFND.wav",
-			"killed" : "creatures/AAGLKILL.wav",
-			"move" : "creatures/AAGLMOVE.wav",
-			"wince" : "creatures/AAGLWNCE.wav"
+			"attack" : "creatures/archangel/AAGLATTK.wav",
+			"defend" : "creatures/archangel/AAGLDFND.wav",
+			"killed" : "creatures/archangel/AAGLKILL.wav",
+			"move" : "creatures/archangel/AAGLMOVE.wav",
+			"wince" : "creatures/archangel/AAGLWNCE.wav"
 		}
 	}
 }

@@ -33,10 +33,10 @@
 		},
 		"abilityText" : "Undead.",
 		"graphics" : {
-			"animation" : "creatures/battle/CWSKEL.def",
-			"map" : "creatures/adventureMap/AVWskex0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL59.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort59.bmp",
+			"animation" : "creatures/skeletonWarrior/battle/CWSKEL.def",
+			"map" : "creatures/skeletonWarrior/adventureMap/AVWskex0.def",
+			"iconSmall" : "creatures/skeletonWarrior/icons/CPRSMALL59.bmp",
+			"iconLarge" : "creatures/skeletonWarrior/icons/TwCrPort59.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -47,11 +47,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/SKLWATTK.wav",
-			"defend" : "creatures/SKLWDFND.wav",
-			"killed" : "creatures/SKLWKILL.wav",
-			"move" : "creatures/SKLWMOVE.wav",
-			"wince" : "creatures/SKLWWNCE.wav"
+			"attack" : "creatures/skeletonWarrior/SKLWATTK.wav",
+			"defend" : "creatures/skeletonWarrior/SKLWDFND.wav",
+			"killed" : "creatures/skeletonWarrior/SKLWKILL.wav",
+			"move" : "creatures/skeletonWarrior/SKLWMOVE.wav",
+			"wince" : "creatures/skeletonWarrior/SKLWWNCE.wav"
 		}
 	}
 }

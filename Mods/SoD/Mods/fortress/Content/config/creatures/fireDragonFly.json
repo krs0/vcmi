@@ -43,10 +43,10 @@
 		},
 		"abilityText" : "Dispels beneficial spells.  Weakens enemies.",
 		"graphics" : {
-			"animation" : "creatures/battle/CDRFIR.def",
-			"map" : "creatures/adventureMap/AvWDfir.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL107.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort107.bmp",
+			"animation" : "creatures/fireDragonFly/battle/CDRFIR.def",
+			"map" : "creatures/fireDragonFly/adventureMap/AvWDfir.def",
+			"iconSmall" : "creatures/fireDragonFly/icons/CPRSMALL107.bmp",
+			"iconLarge" : "creatures/fireDragonFly/icons/TwCrPort107.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -57,12 +57,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/FDFLATTK.wav",
-			"defend" : "creatures/FDFLDFND.wav",
-			"killed" : "creatures/FDFLKILL.wav",
-			"move" : "creatures/FDFLMOVE.wav",
-			"shoot" : "creatures/FDFLSHOT.wav",
-			"wince" : "creatures/FDFLWNCE.wav"
+			"attack" : "creatures/fireDragonFly/FDFLATTK.wav",
+			"defend" : "creatures/fireDragonFly/FDFLDFND.wav",
+			"killed" : "creatures/fireDragonFly/FDFLKILL.wav",
+			"move" : "creatures/fireDragonFly/FDFLMOVE.wav",
+			"shoot" : "creatures/fireDragonFly/FDFLSHOT.wav",
+			"wince" : "creatures/fireDragonFly/FDFLWNCE.wav"
 		}
 	}
 }

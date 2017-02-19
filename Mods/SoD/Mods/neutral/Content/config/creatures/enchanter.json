@@ -83,10 +83,10 @@
 		},
 		"abilityText" : "No melee penalty.\nGroup spell casters.",
 		"graphics" : {
-			"animation" : "creatures/battle/Cench.def",
-			"map" : "creatures/adventureMap/AVWench.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL138.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort138.bmp",
+			"animation" : "creatures/enchanter/battle/Cench.def",
+			"map" : "creatures/enchanter/adventureMap/AVWench.def",
+			"iconSmall" : "creatures/enchanter/icons/CPRSMALL138.bmp",
+			"iconLarge" : "creatures/enchanter/icons/TwCrPort138.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -94,7 +94,7 @@
 				"walk" : 1
 			},
 			"missile" : {
-				"projectile" : "creatures/projectile/CPRZEAX.DEF",
+				"projectile" : "creatures/enchanter/projectile/CPRZEAX.DEF",
 				"attackClimaxFrame" : 6,
 				"frameAngles" : [
 					90,
@@ -123,12 +123,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/ENCHATTK.wav",
-			"defend" : "creatures/ENCHDFND.wav",
-			"killed" : "creatures/ENCHKILL.wav",
-			"move" : "creatures/ENCHMOVE.wav",
-			"shoot" : "creatures/ENCHSHOT.wav",
-			"wince" : "creatures/ENCHWNCE.wav"
+			"attack" : "creatures/enchanter/ENCHATTK.wav",
+			"defend" : "creatures/enchanter/ENCHDFND.wav",
+			"killed" : "creatures/enchanter/ENCHKILL.wav",
+			"move" : "creatures/enchanter/ENCHMOVE.wav",
+			"shoot" : "creatures/enchanter/ENCHSHOT.wav",
+			"wince" : "creatures/enchanter/ENCHWNCE.wav"
 		},
 		"special" : true
 	}

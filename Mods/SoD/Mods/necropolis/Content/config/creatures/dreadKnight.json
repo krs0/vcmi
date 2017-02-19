@@ -42,10 +42,10 @@
 		},
 		"abilityText" : "Undead.  Curses enemies.  \nDeath Blow attack.",
 		"graphics" : {
-			"animation" : "creatures/battle/CBLORD.def",
-			"map" : "creatures/adventureMap/AVWbknx0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL69.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort69.bmp",
+			"animation" : "creatures/dreadKnight/battle/CBLORD.def",
+			"map" : "creatures/dreadKnight/adventureMap/AVWbknx0.def",
+			"iconSmall" : "creatures/dreadKnight/icons/CPRSMALL69.bmp",
+			"iconLarge" : "creatures/dreadKnight/icons/TwCrPort69.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -56,11 +56,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/BLRDATTK.wav",
-			"defend" : "creatures/BLRDDFND.wav",
-			"killed" : "creatures/BLRDKILL.wav",
-			"move" : "creatures/BLRDMOVE.wav",
-			"wince" : "creatures/BLRDWNCE.wav"
+			"attack" : "creatures/dreadKnight/BLRDATTK.wav",
+			"defend" : "creatures/dreadKnight/BLRDDFND.wav",
+			"killed" : "creatures/dreadKnight/BLRDKILL.wav",
+			"move" : "creatures/dreadKnight/BLRDMOVE.wav",
+			"wince" : "creatures/dreadKnight/BLRDWNCE.wav"
 		}
 	}
 }

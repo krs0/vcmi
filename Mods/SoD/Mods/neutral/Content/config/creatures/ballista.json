@@ -37,9 +37,9 @@
 		},
 		"abilityText" : "",
 		"graphics" : {
-			"animation" : "creatures/battle/SMBAL.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL148.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort148.bmp",
+			"animation" : "creatures/ballista/battle/SMBAL.def",
+			"iconSmall" : "creatures/ballista/icons/CPRSMALL148.bmp",
+			"iconLarge" : "creatures/ballista/icons/TwCrPort148.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -47,7 +47,7 @@
 				"walk" : 1
 			},
 			"missile" : {
-				"projectile" : "creatures/projectile/SMBALX.DEF",
+				"projectile" : "creatures/ballista/projectile/SMBALX.DEF",
 				"attackClimaxFrame" : 5,
 				"frameAngles" : [
 					90,
@@ -76,9 +76,9 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"killed" : "creatures/BALLKILL.wav",
-			"shoot" : "creatures/BALLSHOT.wav",
-			"wince" : "creatures/BALLWNCE.wav"
+			"killed" : "creatures/ballista/BALLKILL.wav",
+			"shoot" : "creatures/ballista/BALLSHOT.wav",
+			"wince" : "creatures/ballista/BALLWNCE.wav"
 		},
 		"special" : true
 	}

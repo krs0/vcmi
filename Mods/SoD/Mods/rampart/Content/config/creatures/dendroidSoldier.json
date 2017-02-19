@@ -35,10 +35,10 @@
 		},
 		"abilityText" : "Binds enemies in place.",
 		"graphics" : {
-			"animation" : "creatures/battle/CBTREE.def",
-			"map" : "creatures/adventureMap/AVWtree0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL25.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort25.bmp",
+			"animation" : "creatures/dendroidSoldier/battle/CBTREE.def",
+			"map" : "creatures/dendroidSoldier/adventureMap/AVWtree0.def",
+			"iconSmall" : "creatures/dendroidSoldier/icons/CPRSMALL25.bmp",
+			"iconLarge" : "creatures/dendroidSoldier/icons/TwCrPort25.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -49,11 +49,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/BTREATTK.wav",
-			"defend" : "creatures/BTREDFND.wav",
-			"killed" : "creatures/BTREKILL.wav",
-			"move" : "creatures/BTREMOVE.wav",
-			"wince" : "creatures/BTREWNCE.wav"
+			"attack" : "creatures/dendroidSoldier/BTREATTK.wav",
+			"defend" : "creatures/dendroidSoldier/BTREDFND.wav",
+			"killed" : "creatures/dendroidSoldier/BTREKILL.wav",
+			"move" : "creatures/dendroidSoldier/BTREMOVE.wav",
+			"wince" : "creatures/dendroidSoldier/BTREWNCE.wav"
 		}
 	}
 }

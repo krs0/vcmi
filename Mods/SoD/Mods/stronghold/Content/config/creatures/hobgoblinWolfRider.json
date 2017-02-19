@@ -34,10 +34,10 @@
 		},
 		"abilityText" : "Strikes twice",
 		"graphics" : {
-			"animation" : "creatures/battle/CUWLFR.def",
-			"map" : "creatures/adventureMap/AVWwolx0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL89.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort89.bmp",
+			"animation" : "creatures/hobgoblinWolfRider/battle/CUWLFR.def",
+			"map" : "creatures/hobgoblinWolfRider/adventureMap/AVWwolx0.def",
+			"iconSmall" : "creatures/hobgoblinWolfRider/icons/CPRSMALL89.bmp",
+			"iconLarge" : "creatures/hobgoblinWolfRider/icons/TwCrPort89.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -48,11 +48,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/HGWRATTK.wav",
-			"defend" : "creatures/HGWRDFND.wav",
-			"killed" : "creatures/HGWRKILL.wav",
-			"move" : "creatures/HGWRMOVE.wav",
-			"wince" : "creatures/HGWRWNCE.wav"
+			"attack" : "creatures/hobgoblinWolfRider/HGWRATTK.wav",
+			"defend" : "creatures/hobgoblinWolfRider/HGWRDFND.wav",
+			"killed" : "creatures/hobgoblinWolfRider/HGWRKILL.wav",
+			"move" : "creatures/hobgoblinWolfRider/HGWRMOVE.wav",
+			"wince" : "creatures/hobgoblinWolfRider/HGWRWNCE.wav"
 		}
 	}
 }

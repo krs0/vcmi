@@ -44,10 +44,10 @@
 		},
 		"abilityText" : "Breath attack.  Fire spell immunity.",
 		"graphics" : {
-			"animation" : "creatures/battle/CFBIRD.def",
-			"map" : "creatures/adventureMap/AVWfbird.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL132.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort132.bmp",
+			"animation" : "creatures/firebird/battle/CFBIRD.def",
+			"map" : "creatures/firebird/adventureMap/AVWfbird.def",
+			"iconSmall" : "creatures/firebird/icons/CPRSMALL132.bmp",
+			"iconLarge" : "creatures/firebird/icons/TwCrPort132.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -58,11 +58,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/FIRBATTK.wav",
-			"defend" : "creatures/FIRBDFND.wav",
-			"killed" : "creatures/FIRBKILL.wav",
-			"move" : "creatures/FIRBMOVE.wav",
-			"wince" : "creatures/FIRBWNCE.wav"
+			"attack" : "creatures/firebird/FIRBATTK.wav",
+			"defend" : "creatures/firebird/FIRBDFND.wav",
+			"killed" : "creatures/firebird/FIRBKILL.wav",
+			"move" : "creatures/firebird/FIRBMOVE.wav",
+			"wince" : "creatures/firebird/FIRBWNCE.wav"
 		},
 	}
 }

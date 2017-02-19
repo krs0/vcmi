@@ -40,10 +40,10 @@
 		},
 		"abilityText" : "Summon demons from\na dead ally.",
 		"graphics" : {
-			"animation" : "creatures/battle/CPFOE.def",
-			"map" : "creatures/adventureMap/AVWpitx0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL53.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort53.bmp",
+			"animation" : "creatures/pitLord/battle/CPFOE.def",
+			"map" : "creatures/pitLord/adventureMap/AVWpitx0.def",
+			"iconSmall" : "creatures/pitLord/icons/CPRSMALL53.bmp",
+			"iconLarge" : "creatures/pitLord/icons/TwCrPort53.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -54,11 +54,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/PFOEATTK.wav",
-			"defend" : "creatures/PFOEDFND.wav",
-			"killed" : "creatures/PFOEKILL.wav",
-			"move" : "creatures/PFOEMOVE.wav",
-			"wince" : "creatures/PFOEWNCE.wav"
+			"attack" : "creatures/pitLord/PFOEATTK.wav",
+			"defend" : "creatures/pitLord/PFOEDFND.wav",
+			"killed" : "creatures/pitLord/PFOEKILL.wav",
+			"move" : "creatures/pitLord/PFOEMOVE.wav",
+			"wince" : "creatures/pitLord/PFOEWNCE.wav"
 		}
 	}
 }

@@ -34,10 +34,10 @@
 		},
 		"abilityText" : "",
 		"graphics" : {
-			"animation" : "creatures/battle/CROC.def",
-			"map" : "creatures/adventureMap/AVWroc0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL94.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort94.bmp",
+			"animation" : "creatures/roc/battle/CROC.def",
+			"map" : "creatures/roc/adventureMap/AVWroc0.def",
+			"iconSmall" : "creatures/roc/icons/CPRSMALL94.bmp",
+			"iconLarge" : "creatures/roc/icons/TwCrPort94.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -48,11 +48,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/ROCCATTK.wav",
-			"defend" : "creatures/ROCCDFND.wav",
-			"killed" : "creatures/ROCCKILL.wav",
-			"move" : "creatures/ROCCMOVE.wav",
-			"wince" : "creatures/ROCCWNCE.wav"
+			"attack" : "creatures/roc/ROCCATTK.wav",
+			"defend" : "creatures/roc/ROCCDFND.wav",
+			"killed" : "creatures/roc/ROCCKILL.wav",
+			"move" : "creatures/roc/ROCCMOVE.wav",
+			"wince" : "creatures/roc/ROCCWNCE.wav"
 		}
 	}
 }

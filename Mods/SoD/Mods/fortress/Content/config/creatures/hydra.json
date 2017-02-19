@@ -40,10 +40,10 @@
 		},
 		"abilityText" : "Attacks all adjacent enemies.  Enemies cannot retaliate.",
 		"graphics" : {
-			"animation" : "creatures/battle/CHYDRA.def",
-			"map" : "creatures/adventureMap/AvWHydr.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL112.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort112.bmp",
+			"animation" : "creatures/hydra/battle/CHYDRA.def",
+			"map" : "creatures/hydra/adventureMap/AvWHydr.def",
+			"iconSmall" : "creatures/hydra/icons/CPRSMALL112.bmp",
+			"iconLarge" : "creatures/hydra/icons/TwCrPort112.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -54,11 +54,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/HYDRATTK.wav",
-			"defend" : "creatures/HYDRDFND.wav",
-			"killed" : "creatures/HYDRKILL.wav",
-			"move" : "creatures/HYDRMOVE.wav",
-			"wince" : "creatures/HYDRWNCE.wav"
+			"attack" : "creatures/hydra/HYDRATTK.wav",
+			"defend" : "creatures/hydra/HYDRDFND.wav",
+			"killed" : "creatures/hydra/HYDRKILL.wav",
+			"move" : "creatures/hydra/HYDRMOVE.wav",
+			"wince" : "creatures/hydra/HYDRWNCE.wav"
 		}
 	}
 }

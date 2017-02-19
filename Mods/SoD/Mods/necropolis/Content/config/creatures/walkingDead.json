@@ -37,10 +37,10 @@
 		},
 		"abilityText" : "Undead.",
 		"graphics" : {
-			"animation" : "creatures/battle/CZOMBI.def",
-			"map" : "creatures/adventureMap/AVWzomb0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL61.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort61.bmp",
+			"animation" : "creatures/walkingDead/battle/CZOMBI.def",
+			"map" : "creatures/walkingDead/adventureMap/AVWzomb0.def",
+			"iconSmall" : "creatures/walkingDead/icons/CPRSMALL61.bmp",
+			"iconLarge" : "creatures/walkingDead/icons/TwCrPort61.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -51,11 +51,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/ZOMBATTK.wav",
-			"defend" : "creatures/ZOMBDFND.wav",
-			"killed" : "creatures/ZOMBKILL.wav",
-			"move" : "creatures/ZOMBMOVE.wav",
-			"wince" : "creatures/ZOMBWNCE.wav"
+			"attack" : "creatures/walkingDead/ZOMBATTK.wav",
+			"defend" : "creatures/walkingDead/ZOMBDFND.wav",
+			"killed" : "creatures/walkingDead/ZOMBKILL.wav",
+			"move" : "creatures/walkingDead/ZOMBMOVE.wav",
+			"wince" : "creatures/walkingDead/ZOMBWNCE.wav"
 		}
 	}
 }

@@ -37,10 +37,10 @@
 		"abilityText" : "",
 		"hasDoubleWeek" : true,
 		"graphics" : {
-			"animation" : "creatures/battle/CPLIZA.def",
-			"map" : "creatures/adventureMap/AvWLizr.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL102.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort102.bmp",
+			"animation" : "creatures/lizardman/battle/CPLIZA.def",
+			"map" : "creatures/lizardman/adventureMap/AvWLizr.def",
+			"iconSmall" : "creatures/lizardman/icons/CPRSMALL102.bmp",
+			"iconLarge" : "creatures/lizardman/icons/TwCrPort102.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -48,7 +48,7 @@
 				"walk" : 0.9
 			},
 			"missile" : {
-				"projectile" : "creatures/projectile/PPLIZAX.DEF",
+				"projectile" : "creatures/lizardman/projectile/PPLIZAX.DEF",
 				"attackClimaxFrame" : 9,
 				"frameAngles" : [
 					90,
@@ -77,12 +77,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/PLIZATTK.wav",
-			"defend" : "creatures/PLIZDFND.wav",
-			"killed" : "creatures/PLIZKILL.wav",
-			"move" : "creatures/PLIZMOVE.wav",
-			"shoot" : "creatures/PLIZSHOT.wav",
-			"wince" : "creatures/PLIZWNCE.wav"
+			"attack" : "creatures/lizardman/PLIZATTK.wav",
+			"defend" : "creatures/lizardman/PLIZDFND.wav",
+			"killed" : "creatures/lizardman/PLIZKILL.wav",
+			"move" : "creatures/lizardman/PLIZMOVE.wav",
+			"shoot" : "creatures/lizardman/PLIZSHOT.wav",
+			"wince" : "creatures/lizardman/PLIZWNCE.wav"
 		},
 	}
 }

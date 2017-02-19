@@ -40,9 +40,9 @@
 		},
 		"abilityText" : "Attacks siege walls.",
 		"graphics" : {
-			"animation" : "creatures/battle/SMCATA.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL147.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort147.bmp",
+			"animation" : "creatures/catapult/battle/SMCATA.def",
+			"iconSmall" : "creatures/catapult/icons/CPRSMALL147.bmp",
+			"iconLarge" : "creatures/catapult/icons/TwCrPort147.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -50,7 +50,7 @@
 				"walk" : 1
 			},
 			"missile" : {
-				"projectile" : "creatures/projectile/SMCATX.DEF",
+				"projectile" : "creatures/catapult/projectile/SMCATX.DEF",
 				"attackClimaxFrame" : 4,
 				"frameAngles" : [
 					0,
@@ -79,9 +79,9 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"killed" : "creatures/CATAKILL.wav",
-			"shoot" : "creatures/CATASHOT.wav",
-			"wince" : "creatures/CATAWNCE.wav"
+			"killed" : "creatures/catapult/CATAKILL.wav",
+			"shoot" : "creatures/catapult/CATASHOT.wav",
+			"wince" : "creatures/catapult/CATAWNCE.wav"
 		},
 		"special" : true
 	}

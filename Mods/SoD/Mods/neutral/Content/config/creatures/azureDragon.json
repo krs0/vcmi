@@ -53,10 +53,10 @@
 		},
 		"abilityText" : "Fear.",
 		"graphics" : {
-			"animation" : "creatures/battle/CADRGN.def",
-			"map" : "creatures/adventureMap/AVWazure.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL134.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort134.bmp",
+			"animation" : "creatures/azureDragon/battle/CADRGN.def",
+			"map" : "creatures/azureDragon/adventureMap/AVWazure.def",
+			"iconSmall" : "creatures/azureDragon/icons/CPRSMALL134.bmp",
+			"iconLarge" : "creatures/azureDragon/icons/TwCrPort134.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -67,11 +67,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/AZURATTK.wav",
-			"defend" : "creatures/AZURDFND.wav",
-			"killed" : "creatures/AZURKILL.wav",
-			"move" : "creatures/AZURMOVE.wav",
-			"wince" : "creatures/AZURWNCE.wav"
+			"attack" : "creatures/azureDragon/AZURATTK.wav",
+			"defend" : "creatures/azureDragon/AZURDFND.wav",
+			"killed" : "creatures/azureDragon/AZURKILL.wav",
+			"move" : "creatures/azureDragon/AZURMOVE.wav",
+			"wince" : "creatures/azureDragon/AZURWNCE.wav"
 		},
 		"special" : true
 	}

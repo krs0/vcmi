@@ -38,10 +38,10 @@
 		},
 		"abilityText" : "Damage from spells reduced 75%.",
 		"graphics" : {
-			"animation" : "creatures/battle/CIGOLE.def",
-			"map" : "creatures/adventureMap/AVWgolx0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL35.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort35.bmp",
+			"animation" : "creatures/stoneGolem/battle/CIGOLE.def",
+			"map" : "creatures/stoneGolem/adventureMap/AVWgolx0.def",
+			"iconSmall" : "creatures/stoneGolem/icons/CPRSMALL35.bmp",
+			"iconLarge" : "creatures/stoneGolem/icons/TwCrPort35.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -52,11 +52,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/IGLMATTK.wav",
-			"defend" : "creatures/IGLMDFND.wav",
-			"killed" : "creatures/IGLMKILL.wav",
-			"move" : "creatures/IGLMMOVE.wav",
-			"wince" : "creatures/IGLMWNCE.wav"
+			"attack" : "creatures/stoneGolem/IGLMATTK.wav",
+			"defend" : "creatures/stoneGolem/IGLMDFND.wav",
+			"killed" : "creatures/stoneGolem/IGLMKILL.wav",
+			"move" : "creatures/stoneGolem/IGLMMOVE.wav",
+			"wince" : "creatures/stoneGolem/IGLMWNCE.wav"
 		}
 	}
 }

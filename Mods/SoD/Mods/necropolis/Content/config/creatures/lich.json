@@ -42,10 +42,10 @@
 		},
 		"abilityText" : "Undead.  Death cloud attack.",
 		"graphics" : {
-			"animation" : "creatures/battle/CLICH.def",
-			"map" : "creatures/adventureMap/AVWlich0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL66.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort66.bmp",
+			"animation" : "creatures/lich/battle/CLICH.def",
+			"map" : "creatures/lich/adventureMap/AVWlich0.def",
+			"iconSmall" : "creatures/lich/icons/CPRSMALL66.bmp",
+			"iconLarge" : "creatures/lich/icons/TwCrPort66.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -53,7 +53,7 @@
 				"walk" : 1
 			},
 			"missile" : {
-				"projectile" : "creatures/projectile/PLICH.DEF",
+				"projectile" : "creatures/lich/projectile/PLICH.DEF",
 				"attackClimaxFrame" : 8,
 				"frameAngles" : [
 					90,
@@ -82,12 +82,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/LICHATTK.wav",
-			"defend" : "creatures/LICHDFND.wav",
-			"killed" : "creatures/LICHKILL.wav",
-			"move" : "creatures/LICHMOVE.wav",
-			"shoot" : "creatures/LICHSHOT.wav",
-			"wince" : "creatures/LICHWNCE.wav"
+			"attack" : "creatures/lich/LICHATTK.wav",
+			"defend" : "creatures/lich/LICHDFND.wav",
+			"killed" : "creatures/lich/LICHKILL.wav",
+			"move" : "creatures/lich/LICHMOVE.wav",
+			"shoot" : "creatures/lich/LICHSHOT.wav",
+			"wince" : "creatures/lich/LICHWNCE.wav"
 		}
 	}
 }

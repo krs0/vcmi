@@ -49,10 +49,10 @@
 		"abilityText" : "Immune to spell levels 1-3.",
 		"hasDoubleWeek" : true,
 		"graphics" : {
-			"animation" : "creatures/battle/CRDRGN.def",
-			"map" : "creatures/adventureMap/AvWRDrg.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL84.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort84.bmp",
+			"animation" : "creatures/redDragon/battle/CRDRGN.def",
+			"map" : "creatures/redDragon/adventureMap/AvWRDrg.def",
+			"iconSmall" : "creatures/redDragon/icons/CPRSMALL84.bmp",
+			"iconLarge" : "creatures/redDragon/icons/TwCrPort84.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -63,11 +63,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/RDDRATTK.wav",
-			"defend" : "creatures/RDDRDFND.wav",
-			"killed" : "creatures/RDDRKILL.wav",
-			"move" : "creatures/RDDRMOVE.wav",
-			"wince" : "creatures/RDDRWNCE.wav"
+			"attack" : "creatures/redDragon/RDDRATTK.wav",
+			"defend" : "creatures/redDragon/RDDRDFND.wav",
+			"killed" : "creatures/redDragon/RDDRKILL.wav",
+			"move" : "creatures/redDragon/RDDRMOVE.wav",
+			"wince" : "creatures/redDragon/RDDRWNCE.wav"
 		}
 	}
 }

@@ -40,10 +40,10 @@
 		"abilityText" : "Strike and return.\nNo enemy retaliation.",
 		"hasDoubleWeek" : true,
 		"graphics" : {
-			"animation" : "creatures/battle/CHARPH.def",
-			"map" : "creatures/adventureMap/AVWharx0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL75.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort75.bmp",
+			"animation" : "creatures/harpyHag/battle/CHARPH.def",
+			"map" : "creatures/harpyHag/adventureMap/AVWharx0.def",
+			"iconSmall" : "creatures/harpyHag/icons/CPRSMALL75.bmp",
+			"iconLarge" : "creatures/harpyHag/icons/TwCrPort75.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -54,12 +54,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/HHAGATTK.wav",
-			"defend" : "creatures/HHAGDFND.wav",
-			"killed" : "creatures/HHAGKILL.wav",
-			"move" : "creatures/HHAGMOVE.wav",
-			"shoot" : "creatures/HHAGSHOT.wav",
-			"wince" : "creatures/HHAGWNCE.wav"
+			"attack" : "creatures/harpyHag/HHAGATTK.wav",
+			"defend" : "creatures/harpyHag/HHAGDFND.wav",
+			"killed" : "creatures/harpyHag/HHAGKILL.wav",
+			"move" : "creatures/harpyHag/HHAGMOVE.wav",
+			"shoot" : "creatures/harpyHag/HHAGSHOT.wav",
+			"wince" : "creatures/harpyHag/HHAGWNCE.wav"
 		}
 	}
 }

@@ -39,10 +39,10 @@
 		},
 		"abilityText" : "Undead.  Curses enemies.",
 		"graphics" : {
-			"animation" : "creatures/battle/CBKNIG.def",
-			"map" : "creatures/adventureMap/AVWbkni0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL68.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort68.bmp",
+			"animation" : "creatures/blackKnight/battle/CBKNIG.def",
+			"map" : "creatures/blackKnight/adventureMap/AVWbkni0.def",
+			"iconSmall" : "creatures/blackKnight/icons/CPRSMALL68.bmp",
+			"iconLarge" : "creatures/blackKnight/icons/TwCrPort68.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -53,11 +53,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/BKNTATTK.wav",
-			"defend" : "creatures/BKNTDFND.wav",
-			"killed" : "creatures/BKNTKILL.wav",
-			"move" : "creatures/BKNTMOVE.wav",
-			"wince" : "creatures/BKNTWNCE.wav"
+			"attack" : "creatures/blackKnight/BKNTATTK.wav",
+			"defend" : "creatures/blackKnight/BKNTDFND.wav",
+			"killed" : "creatures/blackKnight/BKNTKILL.wav",
+			"move" : "creatures/blackKnight/BKNTMOVE.wav",
+			"wince" : "creatures/blackKnight/BKNTWNCE.wav"
 		}
 	}
 }

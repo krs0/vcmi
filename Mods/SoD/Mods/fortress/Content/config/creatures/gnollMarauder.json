@@ -29,10 +29,10 @@
 		"abilityText" : "",
 		"hasDoubleWeek" : true,
 		"graphics" : {
-			"animation" : "creatures/battle/CGNOLM.def",
-			"map" : "creatures/adventureMap/AVWgnlx0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL101.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort101.bmp",
+			"animation" : "creatures/gnollMarauder/battle/CGNOLM.def",
+			"map" : "creatures/gnollMarauder/adventureMap/AVWgnlx0.def",
+			"iconSmall" : "creatures/gnollMarauder/icons/CPRSMALL101.bmp",
+			"iconLarge" : "creatures/gnollMarauder/icons/TwCrPort101.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -43,11 +43,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/GNLMATTK.wav",
-			"defend" : "creatures/GNLMDFND.wav",
-			"killed" : "creatures/GNLMKILL.wav",
-			"move" : "creatures/GNLMMOVE.wav",
-			"wince" : "creatures/GNLMWNCE.wav"
+			"attack" : "creatures/gnollMarauder/GNLMATTK.wav",
+			"defend" : "creatures/gnollMarauder/GNLMDFND.wav",
+			"killed" : "creatures/gnollMarauder/GNLMKILL.wav",
+			"move" : "creatures/gnollMarauder/GNLMMOVE.wav",
+			"wince" : "creatures/gnollMarauder/GNLMWNCE.wav"
 		}
 	}
 }

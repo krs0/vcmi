@@ -29,10 +29,10 @@
 		},
 		"abilityText" : "",
 		"graphics" : {
-			"animation" : "creatures/battle/COGRE.def",
-			"map" : "creatures/adventureMap/AVWogre0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL92.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort92.bmp",
+			"animation" : "creatures/ogre/battle/COGRE.def",
+			"map" : "creatures/ogre/adventureMap/AVWogre0.def",
+			"iconSmall" : "creatures/ogre/icons/CPRSMALL92.bmp",
+			"iconLarge" : "creatures/ogre/icons/TwCrPort92.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -43,11 +43,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/OGREATTK.wav",
-			"defend" : "creatures/OGREDFND.wav",
-			"killed" : "creatures/OGREKILL.wav",
-			"move" : "creatures/OGREMOVE.wav",
-			"wince" : "creatures/OGREWNCE.wav"
+			"attack" : "creatures/ogre/OGREATTK.wav",
+			"defend" : "creatures/ogre/OGREDFND.wav",
+			"killed" : "creatures/ogre/OGREKILL.wav",
+			"move" : "creatures/ogre/OGREMOVE.wav",
+			"wince" : "creatures/ogre/OGREWNCE.wav"
 		},
 	}
 }

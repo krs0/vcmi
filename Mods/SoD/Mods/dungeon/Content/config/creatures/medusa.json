@@ -45,10 +45,10 @@
 		"abilityText" : "No melee penalty.\nStone gaze.",
 		"hasDoubleWeek" : true,
 		"graphics" : {
-			"animation" : "creatures/battle/CMEDUS.def",
-			"map" : "creatures/adventureMap/AvWMeds.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL78.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort78.bmp",
+			"animation" : "creatures/medusa/battle/CMEDUS.def",
+			"map" : "creatures/medusa/adventureMap/AvWMeds.def",
+			"iconSmall" : "creatures/medusa/icons/CPRSMALL78.bmp",
+			"iconLarge" : "creatures/medusa/icons/TwCrPort78.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -57,7 +57,7 @@
 			},
 			"missile" :
 			{
-				"projectile" : "creatures/projectile/PMEDUSX.DEF",
+				"projectile" : "creatures/medusa/projectile/PMEDUSX.DEF",
 				"attackClimaxFrame" : 9,
 				"frameAngles" : [
 					90,
@@ -86,12 +86,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/MEDUATTK.wav",
-			"defend" : "creatures/MEDUDFND.wav",
-			"killed" : "creatures/MEDUKILL.wav",
-			"move" : "creatures/MEDUMOVE.wav",
-			"shoot" : "creatures/MEDUSHOT.wav",
-			"wince" : "creatures/MEDUWNCE.wav"
+			"attack" : "creatures/medusa/MEDUATTK.wav",
+			"defend" : "creatures/medusa/MEDUDFND.wav",
+			"killed" : "creatures/medusa/MEDUKILL.wav",
+			"move" : "creatures/medusa/MEDUMOVE.wav",
+			"shoot" : "creatures/medusa/MEDUSHOT.wav",
+			"wince" : "creatures/medusa/MEDUWNCE.wav"
 		}
 	}
 }

@@ -33,10 +33,10 @@
 		},
 		"abilityText" : "",
 		"graphics" : {
-			"animation" : "creatures/battle/CGREMA.def",
-			"map" : "creatures/adventureMap/AVWgnll0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL30.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort30.bmp",
+			"animation" : "creatures/gremlin/battle/CGREMA.def",
+			"map" : "creatures/gremlin/adventureMap/AVWgnll0.def",
+			"iconSmall" : "creatures/gremlin/icons/CPRSMALL30.bmp",
+			"iconLarge" : "creatures/gremlin/icons/TwCrPort30.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -47,12 +47,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/AGRMATTK.wav",
-			"defend" : "creatures/AGRMDFND.wav",
-			"killed" : "creatures/AGRMKILL.wav",
-			"move" : "creatures/AGRMMOVE.wav",
-			"shoot" : "creatures/AGRMSHOT.wav",
-			"wince" : "creatures/AGRMWNCE.wav"
+			"attack" : "creatures/gremlin/AGRMATTK.wav",
+			"defend" : "creatures/gremlin/AGRMDFND.wav",
+			"killed" : "creatures/gremlin/AGRMKILL.wav",
+			"move" : "creatures/gremlin/AGRMMOVE.wav",
+			"shoot" : "creatures/gremlin/AGRMSHOT.wav",
+			"wince" : "creatures/gremlin/AGRMWNCE.wav"
 		}
 	}
 }

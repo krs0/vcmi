@@ -28,10 +28,10 @@
 			"min" : 10
 		},
 		"graphics" : {
-			"animation" : "creatures/battle/CSWORD.def",
-			"map" : "creatures/adventureMap/AVWswrd0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL8.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort8.bmp",
+			"animation" : "creatures/swordsman/battle/CSWORD.def",
+			"map" : "creatures/swordsman/adventureMap/AVWswrd0.def",
+			"iconSmall" : "creatures/swordsman/icons/CPRSMALL8.bmp",
+			"iconLarge" : "creatures/swordsman/icons/TwCrPort8.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -42,11 +42,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/SWRDATTK.wav",
-			"defend" : "creatures/SWRDDFND.wav",
-			"killed" : "creatures/SWRDKILL.wav",
-			"move" : "creatures/SWRDMOVE.wav",
-			"wince" : "creatures/SWRDWNCE.wav"
+			"attack" : "creatures/swordsman/SWRDATTK.wav",
+			"defend" : "creatures/swordsman/SWRDDFND.wav",
+			"killed" : "creatures/swordsman/SWRDKILL.wav",
+			"move" : "creatures/swordsman/SWRDMOVE.wav",
+			"wince" : "creatures/swordsman/SWRDWNCE.wav"
 		}
 	}
 }

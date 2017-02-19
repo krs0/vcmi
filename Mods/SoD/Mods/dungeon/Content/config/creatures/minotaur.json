@@ -35,10 +35,10 @@
 		"abilityText" : "Good morale.",
 		"hasDoubleWeek" : true,
 		"graphics" : {
-			"animation" : "creatures/battle/CMINOT.def",
-			"map" : "creatures/adventureMap/AvWMino.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL80.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort80.bmp",
+			"animation" : "creatures/minotaur/battle/CMINOT.def",
+			"map" : "creatures/minotaur/adventureMap/AvWMino.def",
+			"iconSmall" : "creatures/minotaur/icons/CPRSMALL80.bmp",
+			"iconLarge" : "creatures/minotaur/icons/TwCrPort80.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -49,11 +49,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/MINOATTK.wav",
-			"defend" : "creatures/MINODFND.wav",
-			"killed" : "creatures/MINOKILL.wav",
-			"move" : "creatures/MINOMOVE.wav",
-			"wince" : "creatures/MINOWNCE.wav"
+			"attack" : "creatures/minotaur/MINOATTK.wav",
+			"defend" : "creatures/minotaur/MINODFND.wav",
+			"killed" : "creatures/minotaur/MINOKILL.wav",
+			"move" : "creatures/minotaur/MINOMOVE.wav",
+			"wince" : "creatures/minotaur/MINOWNCE.wav"
 		}
 	}
 }

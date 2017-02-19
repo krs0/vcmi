@@ -36,10 +36,10 @@
 		},
 		"abilityText" : "Binds enemies in place.",
 		"graphics" : {
-			"animation" : "creatures/battle/CTREE.def",
-			"map" : "creatures/adventureMap/AVWtrex0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL24.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort24.bmp",
+			"animation" : "creatures/dendroidGuard/battle/CTREE.def",
+			"map" : "creatures/dendroidGuard/adventureMap/AVWtrex0.def",
+			"iconSmall" : "creatures/dendroidGuard/icons/CPRSMALL24.bmp",
+			"iconLarge" : "creatures/dendroidGuard/icons/TwCrPort24.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -50,11 +50,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/TREEATTK.wav",
-			"defend" : "creatures/TREEDFND.wav",
-			"killed" : "creatures/TREEKILL.wav",
-			"move" : "creatures/TREEMOVE.wav",
-			"wince" : "creatures/TREEWNCE.wav"
+			"attack" : "creatures/dendroidGuard/TREEATTK.wav",
+			"defend" : "creatures/dendroidGuard/TREEDFND.wav",
+			"killed" : "creatures/dendroidGuard/TREEKILL.wav",
+			"move" : "creatures/dendroidGuard/TREEMOVE.wav",
+			"wince" : "creatures/dendroidGuard/TREEWNCE.wav"
 		}
 	}
 }

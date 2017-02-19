@@ -51,10 +51,10 @@
 		},
 		"abilityText" : "Immune to fire.\nVulnerable to ice.",
 		"graphics" : {
-			"animation" : "creatures/battle/CFELEM.def",
-			"map" : "creatures/adventureMap/AVWelmf0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL116.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort116.bmp",
+			"animation" : "creatures/fireElemental/battle/CFELEM.def",
+			"map" : "creatures/fireElemental/adventureMap/AVWelmf0.def",
+			"iconSmall" : "creatures/fireElemental/icons/CPRSMALL116.bmp",
+			"iconLarge" : "creatures/fireElemental/icons/TwCrPort116.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -65,11 +65,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/FELMATTK.wav",
-			"defend" : "creatures/FELMDFND.wav",
-			"killed" : "creatures/FELMKILL.wav",
-			"move" : "creatures/FELMMOVE.wav",
-			"wince" : "creatures/FELMWNCE.wav"
+			"attack" : "creatures/fireElemental/FELMATTK.wav",
+			"defend" : "creatures/fireElemental/FELMDFND.wav",
+			"killed" : "creatures/fireElemental/FELMKILL.wav",
+			"move" : "creatures/fireElemental/FELMMOVE.wav",
+			"wince" : "creatures/fireElemental/FELMWNCE.wav"
 		}
 	}
 }

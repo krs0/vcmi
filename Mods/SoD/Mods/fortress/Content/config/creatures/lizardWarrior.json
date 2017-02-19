@@ -35,10 +35,10 @@
 		"abilityText" : "",
 		"hasDoubleWeek" : true,
 		"graphics" : {
-			"animation" : "creatures/battle/CALIZA.def",
-			"map" : "creatures/adventureMap/AVWlizx0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL103.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort103.bmp",
+			"animation" : "creatures/lizardWarrior/battle/CALIZA.def",
+			"map" : "creatures/lizardWarrior/adventureMap/AVWlizx0.def",
+			"iconSmall" : "creatures/lizardWarrior/icons/CPRSMALL103.bmp",
+			"iconLarge" : "creatures/lizardWarrior/icons/TwCrPort103.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -46,7 +46,7 @@
 				"walk" : 0.9
 			},
 			"missile" : {
-				"projectile" : "creatures/projectile/PPLIZAX.DEF",
+				"projectile" : "creatures/lizardWarrior/projectile/PPLIZAX.DEF",
 				"attackClimaxFrame" : 9,
 				"frameAngles" : [
 					90,
@@ -75,12 +75,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/ALIZATTK.wav",
-			"defend" : "creatures/ALIZDFND.wav",
-			"killed" : "creatures/ALIZKILL.wav",
-			"move" : "creatures/ALIZMOVE.wav",
-			"shoot" : "creatures/ALIZSHOT.wav",
-			"wince" : "creatures/ALIZWNCE.wav"
+			"attack" : "creatures/lizardWarrior/ALIZATTK.wav",
+			"defend" : "creatures/lizardWarrior/ALIZDFND.wav",
+			"killed" : "creatures/lizardWarrior/ALIZKILL.wav",
+			"move" : "creatures/lizardWarrior/ALIZMOVE.wav",
+			"shoot" : "creatures/lizardWarrior/ALIZSHOT.wav",
+			"wince" : "creatures/lizardWarrior/ALIZWNCE.wav"
 		}
 	}
 }

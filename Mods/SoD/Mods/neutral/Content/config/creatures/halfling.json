@@ -34,10 +34,10 @@
 		},
 		"abilityText" : "Positive luck.",
 		"graphics" : {
-			"animation" : "creatures/battle/CHALF.def",
-			"map" : "creatures/adventureMap/AVWhalf.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL140.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort140.bmp",
+			"animation" : "creatures/halfling/battle/CHALF.def",
+			"map" : "creatures/halfling/adventureMap/AVWhalf.def",
+			"iconSmall" : "creatures/halfling/icons/CPRSMALL140.bmp",
+			"iconLarge" : "creatures/halfling/icons/TwCrPort140.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -45,7 +45,7 @@
 				"walk" : 1
 			},
 			"missile" : {
-				"projectile" : "creatures/projectile/PHALF.DEF",
+				"projectile" : "creatures/halfling/projectile/PHALF.DEF",
 				"attackClimaxFrame" : 10,
 				"frameAngles" : [
 					90,
@@ -74,12 +74,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/HALFATTK.wav",
-			"defend" : "creatures/HALFDFND.wav",
-			"killed" : "creatures/HALFKILL.wav",
-			"move" : "creatures/HALFMOVE.wav",
-			"shoot" : "creatures/HALFSHOT.wav",
-			"wince" : "creatures/HALFWNCE.wav"
+			"attack" : "creatures/halfling/HALFATTK.wav",
+			"defend" : "creatures/halfling/HALFDFND.wav",
+			"killed" : "creatures/halfling/HALFKILL.wav",
+			"move" : "creatures/halfling/HALFMOVE.wav",
+			"shoot" : "creatures/halfling/HALFSHOT.wav",
+			"wince" : "creatures/halfling/HALFWNCE.wav"
 		}
 	}
 }

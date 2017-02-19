@@ -36,10 +36,10 @@
 		},
 		"abilityText" : "",
 		"graphics" : {
-			"animation" : "creatures/battle/CGOG.def",
-			"map" : "creatures/adventureMap/AVWgog0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL46.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort46.bmp",
+			"animation" : "creatures/gog/battle/CGOG.def",
+			"map" : "creatures/gog/adventureMap/AVWgog0.def",
+			"iconSmall" : "creatures/gog/icons/CPRSMALL46.bmp",
+			"iconLarge" : "creatures/gog/icons/TwCrPort46.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -47,7 +47,7 @@
 				"walk" : 1.27
 			},
 			"missile" : {
-				"projectile" : "creatures/projectile/CPRGOGX.DEF",
+				"projectile" : "creatures/gog/projectile/CPRGOGX.DEF",
 				"attackClimaxFrame" : 6,
 				"frameAngles" : [
 					90,
@@ -76,12 +76,12 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/GOGGATTK.wav",
-			"defend" : "creatures/GOGGDFND.wav",
-			"killed" : "creatures/GOGGKILL.wav",
-			"move" : "creatures/GOGGMOVE.wav",
-			"shoot" : "creatures/GOGGSHOT.wav",
-			"wince" : "creatures/GOGGWNCE.wav"
+			"attack" : "creatures/gog/GOGGATTK.wav",
+			"defend" : "creatures/gog/GOGGDFND.wav",
+			"killed" : "creatures/gog/GOGGKILL.wav",
+			"move" : "creatures/gog/GOGGMOVE.wav",
+			"shoot" : "creatures/gog/GOGGSHOT.wav",
+			"wince" : "creatures/gog/GOGGWNCE.wav"
 		}
 	}
 }

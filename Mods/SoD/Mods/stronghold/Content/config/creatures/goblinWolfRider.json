@@ -30,10 +30,10 @@
 		},
 		"abilityText" : "",
 		"graphics" : {
-			"animation" : "creatures/battle/CBWLFR.def",
-			"map" : "creatures/adventureMap/AVWwolf0.def",
-			"iconSmall" : "creatures/icons/small/CPRSMALL88.bmp",
-			"iconLarge" : "creatures/icons/large/TwCrPort88.bmp",
+			"animation" : "creatures/goblinWolfRider/battle/CBWLFR.def",
+			"map" : "creatures/goblinWolfRider/adventureMap/AVWwolf0.def",
+			"iconSmall" : "creatures/goblinWolfRider/icons/CPRSMALL88.bmp",
+			"iconLarge" : "creatures/goblinWolfRider/icons/TwCrPort88.bmp",
 			"animationTime" : {
 				"attack" : 1,
 				"flight" : 1,
@@ -44,11 +44,11 @@
 			"troopCountLocationOffset" : 0
 		},
 		"sound" : {
-			"attack" : "creatures/GWRDATTK.wav",
-			"defend" : "creatures/GWRDDFND.wav",
-			"killed" : "creatures/GWRDKILL.wav",
-			"move" : "creatures/GWRDMOVE.wav",
-			"wince" : "creatures/GWRDWNCE.wav"
+			"attack" : "creatures/goblinWolfRider/GWRDATTK.wav",
+			"defend" : "creatures/goblinWolfRider/GWRDDFND.wav",
+			"killed" : "creatures/goblinWolfRider/GWRDKILL.wav",
+			"move" : "creatures/goblinWolfRider/GWRDMOVE.wav",
+			"wince" : "creatures/goblinWolfRider/GWRDWNCE.wav"
 		}
 	}
 }
