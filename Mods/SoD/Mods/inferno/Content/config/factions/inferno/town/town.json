@@ -3,14 +3,14 @@
 	{
 		"town" :
 		{
-			"musicTheme" : "factions/InfernoTown.mp3",
+			"musicTheme" : "factions/inferno/InfernoTown.mp3",
 			"defaultTavern" : 5,
 
 			"townBackground": "factions/inferno/townScreen/TBINBACK.bmp",
 			"guildBackground" : "factions/inferno/townScreen/TPMAGE.bmp",
 			"guildWindow": "factions/inferno/townScreen/TPMAGEIN.bmp",
-			"hallBackground": "factions/inferno/TPTHBKIN.BMP",
-			"tavernVideo" : "SoD/TAVERN.BIK",
+			"hallBackground": "factions/inferno/townScreen/TPTHBKIN.BMP",
+			"tavernVideo" : "TAVERN.BIK",
 
 			"creatures" :
 			[
@@ -93,22 +93,22 @@
 			{
 				"village" : {
 					"normal" : {
-						"small" : "factions/inferno/icons/small/itpa26.bmp",
-					 	"large" : "factions/inferno/icons/large/itpt24.bmp"
+						"small" : "factions/inferno/icons/itpa26.bmp",
+					 	"large" : "factions/inferno/icons/itpt24.bmp"
 					 },
 					"built"  : {
-						"small" : "factions/inferno/icons/small/itpa27.bmp",
-						"large" : "factions/inferno/icons/large/itpt25.bmp" 
+						"small" : "factions/inferno/icons/itpa27.bmp",
+						"large" : "factions/inferno/icons/itpt25.bmp" 
 					}
 				},
 				"fort" : {
 					"normal" : {
-						"small" : "factions/inferno/icons/small/itpa8.bmp",
-					 	"large" : "factions/inferno/icons/large/itpt6.bmp" 
+						"small" : "factions/inferno/icons/itpa8.bmp",
+					 	"large" : "factions/inferno/icons/itpt6.bmp" 
 					 },
 					"built"  : {
-						"small" : "factions/inferno/icons/small/itpa9.bmp",
-						 "large" : "factions/inferno/icons/large/itpt7.bmp"
+						"small" : "factions/inferno/icons/itpa9.bmp",
+						 "large" : "factions/inferno/icons/itpt7.bmp"
 					}
 				}
 			},
@@ -116,11 +116,11 @@
 			"mapObject" :
 			{
 				"templates" : {
-					"castle" :  { "animation" : "factions/inferno/adventureMap/AVCinfx0.def" },
-					"citadel" : { "animation" : "factions/inferno/adventureMap/AVCinfx0.def" },
-					"fort"    : { "animation" : "factions/inferno/adventureMap/AVCinfx0.def" },
-					"village" : { "animation" : "factions/inferno/adventureMap/AVCINFT0.DEF" },
-					"capitol" : { "animation" : "factions/inferno/adventureMap/AVCINFZ0.DEF" }
+					"castle" :  { "animation" : "factions/inferno/adventureMap/town/AVCinfx0.def" },
+					"citadel" : { "animation" : "factions/inferno/adventureMap/town/AVCinfx0.def" },
+					"fort"    : { "animation" : "factions/inferno/adventureMap/town/AVCinfx0.def" },
+					"village" : { "animation" : "factions/inferno/adventureMap/town/AVCINFT0.DEF" },
+					"capitol" : { "animation" : "factions/inferno/adventureMap/town/AVCINFZ0.DEF" }
 				}
 			},
 

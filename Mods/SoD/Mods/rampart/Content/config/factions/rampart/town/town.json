@@ -3,14 +3,14 @@
 	{
 		"town" :
 		{
-			"musicTheme" : "factions/Rampart.mp3",
+			"musicTheme" : "factions/rampart/Rampart.mp3",
 			"defaultTavern" : 5,
 
 			"townBackground": "factions/rampart/townScreen/TBRMBACK.bmp",
 			"guildBackground" : "factions/rampart/townScreen/TPMAGE.bmp",
 			"guildWindow": "factions/rampart/townScreen/TPMAGERM.bmp",
-			"hallBackground": "factions/rampart/TPTHBKRM.BMP",
-			"tavernVideo" : "SoD/TAVERN.BIK",
+			"hallBackground": "factions/rampart/townScreen/TPTHBKRM.BMP",
+			"tavernVideo" : "TAVERN.BIK",
 
 			"creatures" :
 			[
@@ -95,22 +95,22 @@
 			{
 				"village" : {
 					"normal" : {
-						"small" : "factions/rampart/icons/small/itpa22.bmp",
-					 	"large" : "factions/rampart/icons/large/itpt20.bmp"
+						"small" : "factions/rampart/icons/itpa22.bmp",
+					 	"large" : "factions/rampart/icons/itpt20.bmp"
 					 },
 					"built"  : {
-						"small" : "factions/rampart/icons/small/itpa23.bmp",
-						"large" : "factions/rampart/icons/large/itpt21.bmp" 
+						"small" : "factions/rampart/icons/itpa23.bmp",
+						"large" : "factions/rampart/icons/itpt21.bmp" 
 					}
 				},
 				"fort" : {
 					"normal" : {
-						"small" : "factions/rampart/icons/small/itpa4.bmp",
-					 	"large" : "factions/rampart/icons/large/itpt2.bmp" 
+						"small" : "factions/rampart/icons/itpa4.bmp",
+					 	"large" : "factions/rampart/icons/itpt2.bmp" 
 					 },
 					"built"  : {
-						"small" : "factions/rampart/icons/small/itpa5.bmp",
-						 "large" : "factions/rampart/icons/large/itpt3.bmp"
+						"small" : "factions/rampart/icons/itpa5.bmp",
+						 "large" : "factions/rampart/icons/itpt3.bmp"
 					}
 				}
 			},
@@ -118,11 +118,11 @@
 			"mapObject" :
 			{
 				"templates" : {
-					"castle" :  { "animation" : "factions/rampart/adventureMap/AVCramx0.def" },
-					"citadel" : { "animation" : "factions/rampart/adventureMap/AVCramx0.def" },
-					"fort"    : { "animation" : "factions/rampart/adventureMap/AVCramx0.def" },
-					"village" : { "animation" : "factions/rampart/adventureMap/AVCRAMP0.DEF" },
-					"capitol" : { "animation" : "factions/rampart/adventureMap/AVCRAMZ0.DEF" }
+					"castle" :  { "animation" : "factions/rampart/adventureMap/town/AVCramx0.def" },
+					"citadel" : { "animation" : "factions/rampart/adventureMap/town/AVCramx0.def" },
+					"fort"    : { "animation" : "factions/rampart/adventureMap/town/AVCramx0.def" },
+					"village" : { "animation" : "factions/rampart/adventureMap/town/AVCRAMP0.DEF" },
+					"capitol" : { "animation" : "factions/rampart/adventureMap/town/AVCRAMZ0.DEF" }
 				}
 			},
 	

@@ -3,14 +3,14 @@
 	{
 		"town" :
 		{
-			"musicTheme" : "factions/sprites/factions/Dungeon.mp3",
+			"musicTheme" : "factions/dungeon/Dungeon.mp3",
 			"defaultTavern" : 5,
 
 			"townBackground": "factions/dungeon/townScreen/TBDNBACK.bmp",
 			"guildBackground" : "factions/dungeon/townScreen/TPMAGE.bmp",
 			"guildWindow": "factions/dungeon/townScreen/TPMAGEDN.bmp",
-			"hallBackground": "factions/dungeon/TPTHBKDG.BMP",
-			"tavernVideo" : "SoD/TAVERN.BIK",
+			"hallBackground": "factions/dungeon/townScreen/TPTHBKDG.BMP",
+			"tavernVideo" : "TAVERN.BIK",
 
 			"creatures" :
 			[
@@ -92,22 +92,22 @@
 			{
 				"village" : {
 					"normal" : {
-						"small" : "factions/dungeon/icons/small/itpa30.bmp",
-					 	"large" : "factions/dungeon/icons/largeitpt10.bmp"
+						"small" : "factions/dungeon/icons/itpa30.bmp",
+					 	"large" : "factions/dungeon/icons/itpt10.bmp"
 					 },
 					"built"  : {
-						"small" : "factions/dungeon/icons/small/itpa31.bmp",
-						"large" : "factions/dungeon/icons/largeitpt11.bmp" 
+						"small" : "factions/dungeon/icons/itpa31.bmp",
+						"large" : "factions/dungeon/icons/itpt11.bmp" 
 					}
 				},
 				"fort" : {
 					"normal" : {
-						"small" : "factions/dungeon/icons/small/itpa12.bmp",
-					 	"large" : "factions/dungeon/icons/largeitpt28.bmp" 
+						"small" : "factions/dungeon/icons/itpa12.bmp",
+					 	"large" : "factions/dungeon/icons/itpt28.bmp" 
 					 },
 					"built"  : {
-						"small" : "factions/dungeon/icons/small/itpa13.bmp",
-						 "large" : "factions/dungeon/icons/largeitpt29.bmp"
+						"small" : "factions/dungeon/icons/itpa13.bmp",
+						 "large" : "factions/dungeon/icons/itpt29.bmp"
 					}
 				}
 			},
@@ -115,11 +115,11 @@
 			"mapObject" :
 			{
 				"templates" : {
-					"castle" :  { "animation" : "factions/dungeon/adventureMap/AVCdunx0.def" },
-					"citadel" : { "animation" : "factions/dungeon/adventureMap/AVCdunx0.def" },
-					"fort"    : { "animation" : "factions/dungeon/adventureMap/AVCdunx0.def" },
-					"village" : { "animation" : "factions/dungeon/adventureMap/AVCDUNG0.DEF" },
-					"capitol" : { "animation" : "factions/dungeon/adventureMap/AVCDUNZ0.DEF" }
+					"castle" :  { "animation" : "factions/dungeon/adventureMap/town/AVCdunx0.def" },
+					"citadel" : { "animation" : "factions/dungeon/adventureMap/town/AVCdunx0.def" },
+					"fort"    : { "animation" : "factions/dungeon/adventureMap/town/AVCdunx0.def" },
+					"village" : { "animation" : "factions/dungeon/adventureMap/town/AVCDUNG0.DEF" },
+					"capitol" : { "animation" : "factions/dungeon/adventureMap/town/AVCDUNZ0.DEF" }
 				}
 			},
 

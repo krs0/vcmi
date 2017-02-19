@@ -3,14 +3,14 @@
 	{
 		"town" :
 		{
-			"musicTheme" : "factions/ElemTown.mp3",
+			"musicTheme" : "factions/conflux/ElemTown.mp3",
 			"defaultTavern" : 5,
 
 			"townBackground": "factions/conflux/townScreen/TBELBACK.bmp",
 			"guildBackground" : "factions/conflux/townScreen/TPMAGE.bmp",
 			"guildWindow": "factions/conflux/townScreen/TPMAGEEL.bmp",
-			"hallBackground": "factions/conflux/TPTHBKFR.BMP",
-			"tavernVideo" : "SoD/TAVERN.BIK",
+			"hallBackground": "factions/conflux/townScreen/TPTHBKFR.BMP",
+			"tavernVideo" : "TAVERN.BIK",
 
 			"creatures" :
 			[
@@ -95,22 +95,22 @@
 			{
 				"village" : {
 					"normal" : {
-						"small" : "factions/conflux/icons/small/itpa36.bmp",
-					 	"large" : "factions/conflux/icons/large/itpt34.bmp"
+						"small" : "factions/conflux/icons/itpa36.bmp",
+					 	"large" : "factions/conflux/icons/itpt34.bmp"
 					 },
 					"built"  : {
-						"small" : "factions/conflux/icons/small/itpa37.bmp",
-						"large" : "factions/conflux/icons/large/itpt35.bmp" 
+						"small" : "factions/conflux/icons/itpa37.bmp",
+						"large" : "factions/conflux/icons/itpt35.bmp" 
 					}
 				},
 				"fort" : {
 					"normal" : {
-						"small" : "factions/conflux/icons/small/itpa18.bmp",
-					 	"large" : "factions/conflux/icons/large/itpt16.bmp" 
+						"small" : "factions/conflux/icons/itpa18.bmp",
+					 	"large" : "factions/conflux/icons/itpt16.bmp" 
 					 },
 					"built"  : {
-						"small" : "factions/conflux/icons/small/itpa19.bmp",
-						 "large" : "factions/conflux/icons/large/itpt17.bmp"
+						"small" : "factions/conflux/icons/itpa19.bmp",
+						 "large" : "factions/conflux/icons/itpt17.bmp"
 					}
 				}
 			},
@@ -118,11 +118,11 @@
 			"mapObject" :
 			{
 				"templates" : {
-					"castle" :  { "animation" : "factions/conflux/adventureMap/avchforx.def" },
-					"citadel" : { "animation" : "factions/conflux/adventureMap/avchforx.def" },
-					"fort"    : { "animation" : "factions/conflux/adventureMap/avchforx.def" },
-					"village" : { "animation" : "factions/conflux/adventureMap/AVCHFOR0.DEF" },
-					"capitol" : { "animation" : "factions/conflux/adventureMap/AVCHFORZ.DEF" }
+					"castle" :  { "animation" : "factions/conflux/adventureMap/town/avchforx.def" },
+					"citadel" : { "animation" : "factions/conflux/adventureMap/town/avchforx.def" },
+					"fort"    : { "animation" : "factions/conflux/adventureMap/town/avchforx.def" },
+					"village" : { "animation" : "factions/conflux/adventureMap/town/AVCHFOR0.DEF" },
+					"capitol" : { "animation" : "factions/conflux/adventureMap/town/AVCHFORZ.DEF" }
 				}
 			},
 

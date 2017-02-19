@@ -3,14 +3,14 @@
 	{
 		"town" :
 		{
-			"musicTheme" : "factions/Stronghold.mp3",
+			"musicTheme" : "factions/stronghold/Stronghold.mp3",
 			"defaultTavern" : 5,
 
 			"townBackground": "factions/stronghold/townScreen/TBSTBACK.bmp",
 			"guildBackground" : "factions/stronghold/townScreen/TPMAGE.bmp",
 			"guildWindow": "factions/stronghold/townScreen/TPMAGEST.bmp",
-			"hallBackground": "factions/stronghold/TPTHBKTW.BMP",
-			"tavernVideo" : "SoD/TAVERN.BIK",
+			"hallBackground": "factions/stronghold/townScreen/TPTHBKTW.BMP",
+			"tavernVideo" : "TAVERN.BIK",
 
 			"creatures" :
 			[
@@ -92,22 +92,22 @@
 			{
 				"village" : {
 					"normal" : {
-						"small" : "factions/stronghold/icons/small/itpa32.bmp",
-					 	"large" : "factions/stronghold/icons/large/itpt30.bmp"
+						"small" : "factions/stronghold/icons/itpa32.bmp",
+					 	"large" : "factions/stronghold/icons/itpt30.bmp"
 					 },
 					"built"  : {
-						"small" : "factions/stronghold/icons/small/itpa33.bmp",
-						"large" : "factions/stronghold/icons/large/itpt31.bmp" 
+						"small" : "factions/stronghold/icons/itpa33.bmp",
+						"large" : "factions/stronghold/icons/itpt31.bmp" 
 					}
 				},
 				"fort" : {
 					"normal" : {
-						"small" : "factions/stronghold/icons/small/itpa14.bmp",
-					 	"large" : "factions/stronghold/icons/large/itpt12.bmp" 
+						"small" : "factions/stronghold/icons/itpa14.bmp",
+					 	"large" : "factions/stronghold/icons/itpt12.bmp" 
 					 },
 					"built"  : {
-						"small" : "factions/stronghold/icons/small/itpa15.bmp",
-						 "large" : "factions/stronghold/icons/large/itpt13.bmp"
+						"small" : "factions/stronghold/icons/itpa15.bmp",
+						 "large" : "factions/stronghold/icons/itpt13.bmp"
 					}
 				}
 			},
@@ -115,11 +115,11 @@
 			"mapObject" :
 			{
 				"templates" : {
-					"castle" :  { "animation" : "factions/stronghold/adventureMap/AVCstrx0.def" },
-					"citadel" : { "animation" : "factions/stronghold/adventureMap/AVCstrx0.def" },
-					"fort"    : { "animation" : "factions/stronghold/adventureMap/AVCstrx0.def" },
-					"village" : { "animation" : "factions/stronghold/adventureMap/AVCSTRO0.DEF" },
-					"capitol" : { "animation" : "factions/stronghold/adventureMap/AVCSTRZ0.DEF" }
+					"castle" :  { "animation" : "factions/stronghold/adventureMap/town/AVCstrx0.def" },
+					"citadel" : { "animation" : "factions/stronghold/adventureMap/town/AVCstrx0.def" },
+					"fort"    : { "animation" : "factions/stronghold/adventureMap/town/AVCstrx0.def" },
+					"village" : { "animation" : "factions/stronghold/adventureMap/town/AVCSTRO0.DEF" },
+					"capitol" : { "animation" : "factions/stronghold/adventureMap/town/AVCSTRZ0.DEF" }
 				}
 			},
 

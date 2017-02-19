@@ -3,13 +3,13 @@
 	{
 		"town" :
 		{
-			"musicTheme" : "factions/CstleTown.mp3", //don't fix its not a typo!!!
+			"musicTheme" : "factions/castle/CstleTown.mp3", //don't fix its not a typo!!!
 			"defaultTavern" : 5,
 			
 			"townBackground": "factions/castle/townScreen/TBCSBACK.bmp",
-			"guildBackground" : "TPMAGE.bmp",
+			"guildBackground" : "factions/castle/townScreen/TPMAGE.bmp",
 			"guildWindow": "factions/castle/townScreen/TPMAGECS.bmp",
-			"hallBackground": "factions/castle/TPTHBKCS.BMP",
+			"hallBackground": "factions/castle/townScreen/TPTHBKCS.BMP",
 			"tavernVideo" : "SoD/TAVERN.BIK",
 
 			"creatures" :
@@ -92,22 +92,22 @@
 			{
 				"village" : {
 					"normal" : {
-						"small" : "factions/castle/icons/small/itpa20.bmp",
-					 	"large" : "factions/castle/icons/large/itpt18.bmp"
+						"small" : "factions/castle/town/icons/itpa20.bmp",
+					 	"large" : "factions/castle/town/icons/itpt18.bmp"
 					 },
 					"built"  : {
-						"small" : "factions/castle/icons/small/itpa21.bmp",
-						"large" : "factions/castle/icons/large/itpt19.bmp" 
+						"small" : "factions/castle/town/icons/itpa21.bmp",
+						"large" : "factions/castle/town/icons/itpt19.bmp" 
 					}
 				},
 				"fort" : {
 					"normal" : {
-						"small" : "factions/castle/icons/small/itpa2.bmp",
-					 	"large" : "factions/castle/icons/large/itpt0.bmp" 
+						"small" : "factions/castle/town/icons/itpa2.bmp",
+					 	"large" : "factions/castle/town/icons/itpt0.bmp" 
 					 },
 					"built"  : {
-						"small" : "factions/castle/icons/small/itpa3.bmp",
-						 "large" : "factions/castle/icons/large/itpt1.bmp"
+						"small" : "factions/castle/town/icons/itpa3.bmp",
+						 "large" : "factions/castle/town/icons/itpt1.bmp"
 					}
 				}
 			},
@@ -115,11 +115,11 @@
 			"mapObject" :
 			{
 				"templates" : {
-					"castle" :  { "animation" : "factions/castle/adventureMap/AVCcasx0.def" },
-					"citadel" : { "animation" : "factions/castle/adventureMap/AVCcasx0.def" },
-					"fort"    : { "animation" : "factions/castle/adventureMap/AVCcasx0.def" },
-					"village" : { "animation" : "factions/castle/adventureMap/AVCCAST0.DEF" },
-					"capitol" : { "animation" : "factions/castle/adventureMap/AVCCASZ0.DEF" }
+					"castle" :  { "animation" : "factions/castle/adventureMap/town/AVCcasx0.def" },
+					"citadel" : { "animation" : "factions/castle/adventureMap/town/AVCcasx0.def" },
+					"fort"    : { "animation" : "factions/castle/adventureMap/town/AVCcasx0.def" },
+					"village" : { "animation" : "factions/castle/adventureMap/town/AVCCAST0.DEF" },
+					"capitol" : { "animation" : "factions/castle/adventureMap/town/AVCCASZ0.DEF" }
 				}
 			},
 
