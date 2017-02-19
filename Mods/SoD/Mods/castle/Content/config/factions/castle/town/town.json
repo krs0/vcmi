@@ -7,7 +7,7 @@
 			"defaultTavern" : 5,
 			
 			"townBackground": "factions/castle/townScreen/TBCSBACK.bmp",
-			"guildBackground" : "factions/castle/townScreen/TPMAGE.bmp",
+			"guildBackground" : "SoD/TPMAGE.bmp",
 			"guildWindow": "factions/castle/townScreen/TPMAGECS.bmp",
 			"hallBackground": "factions/castle/townScreen/TPTHBKCS.BMP",
 			"tavernVideo" : "SoD/TAVERN.BIK",

@@ -7,10 +7,10 @@
 			"defaultTavern" : 5,
 
 			"townBackground": "factions/dungeon/townScreen/TBDNBACK.bmp",
-			"guildBackground" : "factions/dungeon/townScreen/TPMAGE.bmp",
+			"guildBackground" : "SoD/TPMAGE.bmp",
 			"guildWindow": "factions/dungeon/townScreen/TPMAGEDN.bmp",
 			"hallBackground": "factions/dungeon/townScreen/TPTHBKDG.BMP",
-			"tavernVideo" : "TAVERN.BIK",
+			"tavernVideo" : "SoD/TAVERN.BIK",
 
 			"creatures" :
 			[

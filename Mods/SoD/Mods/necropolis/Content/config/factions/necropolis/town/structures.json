@@ -6,8 +6,7 @@
 		{
 			"structures" :
 			{
-				"extraAni
-				ation": 
+				"extraAnimation": 
 				{
 					"animation" : "factions/necropolis/townScreen/animation/TBNCEXT2.def",
 					"x" : 25, "y" : 279

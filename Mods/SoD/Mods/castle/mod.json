@@ -9,7 +9,7 @@
 
 	"factions" :
 	[
-		"config/factions/castle/faction.json.json",
+		"config/factions/castle/faction.json",
 		"config/factions/castle/puzzleMap.json",
 		"config/factions/castle/town/town.json",
 		"config/factions/castle/town/buildings.json",

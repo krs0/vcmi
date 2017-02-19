@@ -150,8 +150,8 @@
 				{
 					"animation" : "factions/stronghold/townScreen/animation/TBSTEXT2.def",
 					"x" : 313, "y" : 13, "z" : -1,
-					"border" : "factions/stronghold/townScreen/border/TOSVAH.bmp", "
-					area" : "TZSVAH.bmp"
+					"border" : "factions/stronghold/townScreen/border/TOSVAH.bmp",
+					"area" : "TZSVAH.bmp"
 				},
 				"grail": 
 				{

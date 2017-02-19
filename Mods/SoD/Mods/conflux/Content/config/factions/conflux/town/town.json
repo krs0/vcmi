@@ -7,10 +7,10 @@
 			"defaultTavern" : 5,
 
 			"townBackground": "factions/conflux/townScreen/TBELBACK.bmp",
-			"guildBackground" : "factions/conflux/townScreen/TPMAGE.bmp",
+			"guildBackground" : "SoD/TPMAGE.bmp",
 			"guildWindow": "factions/conflux/townScreen/TPMAGEEL.bmp",
 			"hallBackground": "factions/conflux/townScreen/TPTHBKFR.BMP",
-			"tavernVideo" : "TAVERN.BIK",
+			"tavernVideo" : "SoD/TAVERN.BIK",
 
 			"creatures" :
 			[

@@ -7,10 +7,10 @@
 			"defaultTavern" : 5,
 
 			"townBackground": "factions/stronghold/townScreen/TBSTBACK.bmp",
-			"guildBackground" : "factions/stronghold/townScreen/TPMAGE.bmp",
+			"guildBackground" : "SoD/TPMAGE.bmp",
 			"guildWindow": "factions/stronghold/townScreen/TPMAGEST.bmp",
 			"hallBackground": "factions/stronghold/townScreen/TPTHBKTW.BMP",
-			"tavernVideo" : "TAVERN.BIK",
+			"tavernVideo" : "SoD/TAVERN.BIK",
 
 			"creatures" :
 			[

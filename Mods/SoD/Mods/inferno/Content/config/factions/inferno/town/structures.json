@@ -275,7 +275,7 @@
 					"animation" : "factions/inferno/townScreen/animation/TBINUP_6.def",
 					"x" : 420, "y" : 105, "z" : -1,
 					"border" : "factions/inferno/townScreen/border/TOIDVL2.bmp", 
-					"area" : "TZIDVL2.bmp
+					"area" : "TZIDVL2.bmp"
 					 }
 			}
 		}

@@ -489,7 +489,7 @@ void parseOriginalDataFilesAndMoveToMods()
 		}
 		
 		// move town music theme
-		moveFileFromConfig(configTown, "town", "musicTheme", mp3Path, destinationMusicPath);
+		moveFileFromConfig(configTown, faction, "town", "musicTheme", mp3Path, destinationMusicPath);
 
 	}
 

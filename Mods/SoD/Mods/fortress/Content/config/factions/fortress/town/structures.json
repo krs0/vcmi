@@ -1,12 +1,12 @@
 
 {
+	"fortress" :
 	{
 		"town" :
 		{
 			"structures" :
 			{
-				"extraAni
-				ation": 
+				"extraAnimation": 
 				{
 					"animation" : "factions/fortress/townScreen/animation/TBFREXT2.def",
 					"x" : 372, "y" : 227 },
@@ -269,7 +269,7 @@
 					"animation" : "factions/fortress/townScreen/animation/TBFRUP_6.def",
 					"x" : 587, "y" : 263, "z" : 5, 
 					"border" : "factions/fortress/townScreen/border/TOFHYD2A.bmp",
-					"area" : "factions/fortress/townScreen/area/TZFHYD2A.bmp
+					"area" : "factions/fortress/townScreen/area/TZFHYD2A.bmp"
 				}
 			}
 		}

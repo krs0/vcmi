@@ -7,10 +7,10 @@
 			"defaultTavern" : 5,
 
 			"townBackground": "factions/inferno/townScreen/TBINBACK.bmp",
-			"guildBackground" : "factions/inferno/townScreen/TPMAGE.bmp",
+			"guildBackground" : "SoD/TPMAGE.bmp",
 			"guildWindow": "factions/inferno/townScreen/TPMAGEIN.bmp",
 			"hallBackground": "factions/inferno/townScreen/TPTHBKIN.BMP",
-			"tavernVideo" : "TAVERN.BIK",
+			"tavernVideo" : "SoD/TAVERN.BIK",
 
 			"creatures" :
 			[
