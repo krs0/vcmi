@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3231.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4431.bmp",
-			"large" : "heroes/icons/portrait/large/HPL031DR.bmp",
-			"small" : "heroes/icons/portrait/small/HPS031DR.bmp"
+			"specialtySmall" : "heroes/aeris/icons/speciality/Un3231.bmp",
+			"specialtyLarge" : "heroes/aeris/icons/speciality/Un4431.bmp",
+			"large" : "heroes/aeris/icons/portrait/HPL031DR.bmp",
+			"small" : "heroes/aeris/icons/portrait/HPS031DR.bmp"
 		},
 
 		"army" : [

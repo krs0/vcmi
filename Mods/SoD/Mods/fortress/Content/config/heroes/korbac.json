@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un32117.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un44117.bmp",
-			"large" : "heroes/icons/portrait/large/HPL117BS.bmp",
-			"small" : "heroes/icons/portrait/small/HPS117BS.bmp"
+			"specialtySmall" : "heroes/korbac/icons/speciality/Un32117.bmp",
+			"specialtyLarge" : "heroes/korbac/icons/speciality/Un44117.bmp",
+			"large" : "heroes/korbac/icons/portrait/HPL117BS.bmp",
+			"small" : "heroes/korbac/icons/portrait/HPS117BS.bmp"
 		},
 
 		"army" : [

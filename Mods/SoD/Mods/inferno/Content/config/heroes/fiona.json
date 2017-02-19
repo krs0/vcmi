@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3248.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4448.bmp",
-			"large" : "heroes/icons/portrait/large/HPL048HR.bmp",
-			"small" : "heroes/icons/portrait/small/HPS048HR.bmp"
+			"specialtySmall" : "heroes/fiona/icons/speciality/Un3248.bmp",
+			"specialtyLarge" : "heroes/fiona/icons/speciality/Un4448.bmp",
+			"large" : "heroes/fiona/icons/portrait/HPL048HR.bmp",
+			"small" : "heroes/fiona/icons/portrait/HPS048HR.bmp"
 		},
 
 		"army" : [

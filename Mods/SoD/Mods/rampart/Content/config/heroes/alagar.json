@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3230.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4430.bmp",
-			"large" : "heroes/icons/portrait/large/HPL030DR.bmp",
-			"small" : "heroes/icons/portrait/small/HPS030DR.bmp"
+			"specialtySmall" : "heroes/alagar/icons/speciality/Un3230.bmp",
+			"specialtyLarge" : "heroes/alagar/icons/speciality/Un4430.bmp",
+			"large" : "heroes/alagar/icons/portrait/HPL030DR.bmp",
+			"small" : "heroes/alagar/icons/portrait/HPS030DR.bmp"
 		},
 
 		"army" : [

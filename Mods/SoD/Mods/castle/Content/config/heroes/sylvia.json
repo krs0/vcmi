@@ -8,10 +8,10 @@
 				
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un323.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un443.bmp",
-			"large" : "heroes/icons/portrait/large/HPL003KN.bmp",
-			"small" : "heroes/icons/portrait/small/HPS003KN.bmp"
+			"specialtySmall" : "heroes/sylvia/icons/speciality/Un323.bmp",
+			"specialtyLarge" : "heroes/sylvia/icons/speciality/Un443.bmp",
+			"large" : "heroes/sylvia/icons/portrait/HPL003KN.bmp",
+			"small" : "heroes/sylvia/icons/portrait/HPS003KN.bmp"
 		},
 
 		"army" : [

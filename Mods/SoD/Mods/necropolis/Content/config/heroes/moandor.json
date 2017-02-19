@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3266.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4466.bmp",
-			"large" : "heroes/icons/portrait/large/HPL066DK.bmp",
-			"small" : "heroes/icons/portrait/small/HPS066DK.bmp"
+			"specialtySmall" : "heroes/moandor/icons/speciality/Un3266.bmp",
+			"specialtyLarge" : "heroes/moandor/icons/speciality/Un4466.bmp",
+			"large" : "heroes/moandor/icons/portrait/HPL066DK.bmp",
+			"small" : "heroes/moandor/icons/portrait/HPS066DK.bmp"
 		},
 
 

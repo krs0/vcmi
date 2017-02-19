@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un32133.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un44133.bmp",
-			"large" : "heroes/icons/portrait/large/HPL005PL.bmp",
-			"small" : "heroes/icons/portrait/small/HPS005PL.bmp"
+			"specialtySmall" : "heroes/erdamon/icons/speciality/Un32133.bmp",
+			"specialtyLarge" : "heroes/erdamon/icons/speciality/Un44133.bmp",
+			"large" : "heroes/erdamon/icons/portrait/HPL005PL.bmp",
+			"small" : "heroes/erdamon/icons/portrait/HPS005PL.bmp"
 		},
 
 		"army" : [

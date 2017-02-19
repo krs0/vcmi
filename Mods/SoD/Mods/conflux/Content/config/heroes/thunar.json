@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un32129.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un44129.bmp",
-			"large" : "heroes/icons/portrait/large/HPL001PL.bmp",
-			"small" : "heroes/icons/portrait/small/HPS001PL.bmp"
+			"specialtySmall" : "heroes/thunar/icons/speciality/Un32129.bmp",
+			"specialtyLarge" : "heroes/thunar/icons/speciality/Un44129.bmp",
+			"large" : "heroes/thunar/icons/portrait/HPL001PL.bmp",
+			"small" : "heroes/thunar/icons/portrait/HPS001PL.bmp"
 		},
 
 		"army" : [

@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3243.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4443.bmp",
-			"large" : "heroes/icons/portrait/large/HPL043WZ.bmp",
-			"small" : "heroes/icons/portrait/small/HPS043WZ.bmp"
+			"specialtySmall" : "heroes/daremyth/icons/speciality/Un3243.bmp",
+			"specialtyLarge" : "heroes/daremyth/icons/speciality/Un4443.bmp",
+			"large" : "heroes/daremyth/icons/portrait/HPL043WZ.bmp",
+			"small" : "heroes/daremyth/icons/portrait/HPS043WZ.bmp"
 		},
 
 		"army" : [

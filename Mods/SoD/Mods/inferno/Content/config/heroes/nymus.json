@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3255.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4455.bmp",
-			"large" : "heroes/icons/portrait/large/HPL055HR.bmp",
-			"small" : "heroes/icons/portrait/small/HPS055HR.bmp"
+			"specialtySmall" : "heroes/nymus/icons/speciality/Un3255.bmp",
+			"specialtyLarge" : "heroes/nymus/icons/speciality/Un4455.bmp",
+			"large" : "heroes/nymus/icons/portrait/HPL055HR.bmp",
+			"small" : "heroes/nymus/icons/portrait/HPS055HR.bmp"
 		},
 
 		"army" : [

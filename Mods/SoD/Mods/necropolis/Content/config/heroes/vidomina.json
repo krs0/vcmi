@@ -7,10 +7,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3278.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4478.bmp",
-			"large" : "heroes/icons/portrait/large/HPL078NC.bmp",
-			"small" : "heroes/icons/portrait/small/HPS078NC.bmp"
+			"specialtySmall" : "heroes/vidomina/icons/speciality/Un3278.bmp",
+			"specialtyLarge" : "heroes/vidomina/icons/speciality/Un4478.bmp",
+			"large" : "heroes/vidomina/icons/portrait/HPL078NC.bmp",
+			"small" : "heroes/vidomina/icons/portrait/HPS078NC.bmp"
 		},
 
 

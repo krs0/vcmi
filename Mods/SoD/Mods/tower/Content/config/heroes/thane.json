@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3233.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4433.bmp",
-			"large" : "heroes/icons/portrait/large/HPL033AL.bmp",
-			"small" : "heroes/icons/portrait/small/HPS033AL.bmp"
+			"specialtySmall" : "heroes/thane/icons/speciality/Un3233.bmp",
+			"specialtyLarge" : "heroes/thane/icons/speciality/Un4433.bmp",
+			"large" : "heroes/thane/icons/portrait/HPL033AL.bmp",
+			"small" : "heroes/thane/icons/portrait/HPS033AL.bmp"
 		},
 
 		"army" : [

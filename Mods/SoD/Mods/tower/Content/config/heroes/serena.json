@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3242.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4442.bmp",
-			"large" : "heroes/icons/portrait/large/HPL042WZ.bmp",
-			"small" : "heroes/icons/portrait/small/HPS042WZ.bmp"
+			"specialtySmall" : "heroes/serena/icons/speciality/Un3242.bmp",
+			"specialtyLarge" : "heroes/serena/icons/speciality/Un4442.bmp",
+			"large" : "heroes/serena/icons/portrait/HPL042WZ.bmp",
+			"small" : "heroes/serena/icons/portrait/HPS042WZ.bmp"
 		},
 
 		"army" : [

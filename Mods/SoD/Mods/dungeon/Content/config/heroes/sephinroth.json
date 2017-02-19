@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3294.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4494.bmp",
-			"large" : "heroes/icons/portrait/large/HPL094WL.bmp",
-			"small" : "heroes/icons/portrait/small/HPS094WL.bmp"
+			"specialtySmall" : "heroes/sephinroth/icons/speciality/Un3294.bmp",
+			"specialtyLarge" : "heroes/sephinroth/icons/speciality/Un4494.bmp",
+			"large" : "heroes/sephinroth/icons/portrait/HPL094WL.bmp",
+			"small" : "heroes/sephinroth/icons/portrait/HPS094WL.bmp"
 		},
 
 		"army" : [

@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3236.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4436.bmp",
-			"large" : "heroes/icons/portrait/large/HPL036AL.bmp",
-			"small" : "heroes/icons/portrait/small/HPS036AL.bmp"
+			"specialtySmall" : "heroes/torosar/icons/speciality/Un3236.bmp",
+			"specialtyLarge" : "heroes/torosar/icons/speciality/Un4436.bmp",
+			"large" : "heroes/torosar/icons/portrait/HPL036AL.bmp",
+			"small" : "heroes/torosar/icons/portrait/HPS036AL.bmp"
 		},
 
 		"army" : [

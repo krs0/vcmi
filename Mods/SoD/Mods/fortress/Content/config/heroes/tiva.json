@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un32127.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un44127.bmp",
-			"large" : "heroes/icons/portrait/large/HPL127WH.bmp",
-			"small" : "heroes/icons/portrait/small/HPS127WH.bmp"
+			"specialtySmall" : "heroes/tiva/icons/speciality/Un32127.bmp",
+			"specialtyLarge" : "heroes/tiva/icons/speciality/Un44127.bmp",
+			"large" : "heroes/tiva/icons/portrait/HPL127WH.bmp",
+			"small" : "heroes/tiva/icons/portrait/HPS127WH.bmp"
 		},
 
 		"army" : [

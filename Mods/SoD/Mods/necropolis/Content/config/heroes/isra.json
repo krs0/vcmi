@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3269.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4469.bmp",
-			"large" : "heroes/icons/portrait/large/HPL069DK.bmp",
-			"small" : "heroes/icons/portrait/small/HPS069DK.bmp"
+			"specialtySmall" : "heroes/isra/icons/speciality/Un3269.bmp",
+			"specialtyLarge" : "heroes/isra/icons/speciality/Un4469.bmp",
+			"large" : "heroes/isra/icons/portrait/HPL069DK.bmp",
+			"small" : "heroes/isra/icons/portrait/HPS069DK.bmp"
 		},
 
 

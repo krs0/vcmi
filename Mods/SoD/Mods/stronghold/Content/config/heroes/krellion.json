@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un32101.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un44101.bmp",
-			"large" : "heroes/icons/portrait/large/HPL101BR.bmp",
-			"small" : "heroes/icons/portrait/small/HPS101BR.bmp"
+			"specialtySmall" : "heroes/krellion/icons/speciality/Un32101.bmp",
+			"specialtyLarge" : "heroes/krellion/icons/speciality/Un44101.bmp",
+			"large" : "heroes/krellion/icons/portrait/HPL101BR.bmp",
+			"small" : "heroes/krellion/icons/portrait/HPS101BR.bmp"
 		},
 
 		"army" : [

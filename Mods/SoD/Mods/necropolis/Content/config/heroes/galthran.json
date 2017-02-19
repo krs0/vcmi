@@ -7,10 +7,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3271.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4471.bmp",
-			"large" : "heroes/icons/portrait/large/HPL071DK.bmp",
-			"small" : "heroes/icons/portrait/small/HPS071DK.bmp"
+			"specialtySmall" : "heroes/galthran/icons/speciality/Un3271.bmp",
+			"specialtyLarge" : "heroes/galthran/icons/speciality/Un4471.bmp",
+			"large" : "heroes/galthran/icons/portrait/HPL071DK.bmp",
+			"small" : "heroes/galthran/icons/portrait/HPS071DK.bmp"
 		},
 
 

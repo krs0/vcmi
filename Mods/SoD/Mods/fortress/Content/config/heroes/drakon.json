@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un32113.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un44113.bmp",
-			"large" : "heroes/icons/portrait/large/HPL113BS.bmp",
-			"small" : "heroes/icons/portrait/small/HPS113BS.bmp"
+			"specialtySmall" : "heroes/drakon/icons/speciality/Un32113.bmp",
+			"specialtyLarge" : "heroes/drakon/icons/speciality/Un44113.bmp",
+			"large" : "heroes/drakon/icons/portrait/HPL113BS.bmp",
+			"small" : "heroes/drakon/icons/portrait/HPS113BS.bmp"
 		},
 
 		"army" : [

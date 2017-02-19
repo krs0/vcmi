@@ -7,10 +7,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3270.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4470.bmp",
-			"large" : "heroes/icons/portrait/large/HPL070DK.bmp",
-			"small" : "heroes/icons/portrait/small/HPS070DK.bmp"
+			"specialtySmall" : "heroes/clavius/icons/speciality/Un3270.bmp",
+			"specialtyLarge" : "heroes/clavius/icons/speciality/Un4470.bmp",
+			"large" : "heroes/clavius/icons/portrait/HPL070DK.bmp",
+			"small" : "heroes/clavius/icons/portrait/HPS070DK.bmp"
 		},
 
 

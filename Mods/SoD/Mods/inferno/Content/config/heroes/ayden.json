@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3256.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4456.bmp",
-			"large" : "heroes/icons/portrait/large/HPL056DM.bmp",
-			"small" : "heroes/icons/portrait/small/HPS056DM.bmp"
+			"specialtySmall" : "heroes/ayden/icons/speciality/Un3256.bmp",
+			"specialtyLarge" : "heroes/ayden/icons/speciality/Un4456.bmp",
+			"large" : "heroes/ayden/icons/portrait/HPL056DM.bmp",
+			"small" : "heroes/ayden/icons/portrait/HPS056DM.bmp"
 		},
 
 		"army" : [

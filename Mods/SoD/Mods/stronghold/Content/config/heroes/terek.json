@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un32107.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un44107.bmp",
-			"large" : "heroes/icons/portrait/large/HPL107BM.bmp",
-			"small" : "heroes/icons/portrait/small/HPS107BM.bmp"
+			"specialtySmall" : "heroes/terek/icons/speciality/Un32107.bmp",
+			"specialtyLarge" : "heroes/terek/icons/speciality/Un44107.bmp",
+			"large" : "heroes/terek/icons/portrait/HPL107BM.bmp",
+			"small" : "heroes/terek/icons/portrait/HPS107BM.bmp"
 		},
 
 		"army" : [

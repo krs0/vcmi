@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3285.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4485.bmp",
-			"large" : "heroes/icons/portrait/large/HPL085OV.bmp",
-			"small" : "heroes/icons/portrait/small/HPS085OV.bmp"
+			"specialtySmall" : "heroes/gunnar/icons/speciality/Un3285.bmp",
+			"specialtyLarge" : "heroes/gunnar/icons/speciality/Un4485.bmp",
+			"large" : "heroes/gunnar/icons/portrait/HPL085OV.bmp",
+			"small" : "heroes/gunnar/icons/portrait/HPS085OV.bmp"
 		},
 
 		"army" : [

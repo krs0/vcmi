@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un32112.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un44112.bmp",
-			"large" : "heroes/icons/portrait/large/HPL112BS.bmp",
-			"small" : "heroes/icons/portrait/small/HPS112BS.bmp"
+			"specialtySmall" : "heroes/bron/icons/speciality/Un32112.bmp",
+			"specialtyLarge" : "heroes/bron/icons/speciality/Un44112.bmp",
+			"large" : "heroes/bron/icons/portrait/HPL112BS.bmp",
+			"small" : "heroes/bron/icons/portrait/HPS112BS.bmp"
 		},
 
 		"army" :

@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un32115.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un44115.bmp",
-			"large" : "heroes/icons/portrait/large/HPL115BS.bmp",
-			"small" : "heroes/icons/portrait/small/HPS115BS.bmp"
+			"specialtySmall" : "heroes/tazar/icons/speciality/Un32115.bmp",
+			"specialtyLarge" : "heroes/tazar/icons/speciality/Un44115.bmp",
+			"large" : "heroes/tazar/icons/portrait/HPL115BS.bmp",
+			"small" : "heroes/tazar/icons/portrait/HPS115BS.bmp"
 		},
 
 		"army" : [

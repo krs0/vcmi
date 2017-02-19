@@ -8,10 +8,10 @@
 		
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un325.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un445.bmp",
-			"large" : "heroes/icons/portrait/large/HPL005KN.bmp",
-			"small" : "heroes/icons/portrait/small/HPS005KN.bmp"
+			"specialtySmall" : "heroes/sorsha/icons/speciality/Un325.bmp",
+			"specialtyLarge" : "heroes/sorsha/icons/speciality/Un445.bmp",
+			"large" : "heroes/sorsha/icons/portrait/HPL005KN.bmp",
+			"small" : "heroes/sorsha/icons/portrait/HPS005KN.bmp"
 		},
 
 		"army" : [

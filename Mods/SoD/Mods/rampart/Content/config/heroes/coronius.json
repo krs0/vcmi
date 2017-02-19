@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3224.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4424.bmp",
-			"large" : "heroes/icons/portrait/large/HPL024DR.bmp",
-			"small" : "heroes/icons/portrait/small/HPS024DR.bmp"
+			"specialtySmall" : "heroes/coronius/icons/speciality/Un3224.bmp",
+			"specialtyLarge" : "heroes/coronius/icons/speciality/Un4424.bmp",
+			"large" : "heroes/coronius/icons/portrait/HPL024DR.bmp",
+			"small" : "heroes/coronius/icons/portrait/HPS024DR.bmp"
 		},
 
 		"army" : [

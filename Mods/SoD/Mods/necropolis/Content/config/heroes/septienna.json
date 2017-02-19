@@ -7,10 +7,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3272.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4472.bmp",
-			"large" : "heroes/icons/portrait/large/HPL072NC.bmp",
-			"small" : "heroes/icons/portrait/small/HPS072NC.bmp"
+			"specialtySmall" : "heroes/septienna/icons/speciality/Un3272.bmp",
+			"specialtyLarge" : "heroes/septienna/icons/speciality/Un4472.bmp",
+			"large" : "heroes/septienna/icons/portrait/HPL072NC.bmp",
+			"small" : "heroes/septienna/icons/portrait/HPS072NC.bmp"
 		},
 
 

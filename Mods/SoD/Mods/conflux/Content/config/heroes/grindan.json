@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un32143.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un44143.bmp",
-			"large" : "heroes/icons/portrait/large/HPL007EL.bmp",
-			"small" : "heroes/icons/portrait/small/HPS007EL.bmp"
+			"specialtySmall" : "heroes/grindan/icons/speciality/Un32143.bmp",
+			"specialtyLarge" : "heroes/grindan/icons/speciality/Un44143.bmp",
+			"large" : "heroes/grindan/icons/portrait/HPL007EL.bmp",
+			"small" : "heroes/grindan/icons/portrait/HPS007EL.bmp"
 		},
 
 		"army" : [

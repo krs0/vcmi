@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3228.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4428.bmp",
-			"large" : "heroes/icons/portrait/large/HPL028DR.bmp",
-			"small" : "heroes/icons/portrait/small/HPS028DR.bmp"
+			"specialtySmall" : "heroes/malcom/icons/speciality/Un3228.bmp",
+			"specialtyLarge" : "heroes/malcom/icons/speciality/Un4428.bmp",
+			"large" : "heroes/malcom/icons/portrait/HPL028DR.bmp",
+			"small" : "heroes/malcom/icons/portrait/HPS028DR.bmp"
 		},
 
 		"army" : [

@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un32130.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un44130.bmp",
-			"large" : "heroes/icons/portrait/large/HPL002PL.bmp",
-			"small" : "heroes/icons/portrait/small/HPS002PL.bmp"
+			"specialtySmall" : "heroes/ignissa/icons/speciality/Un32130.bmp",
+			"specialtyLarge" : "heroes/ignissa/icons/speciality/Un44130.bmp",
+			"large" : "heroes/ignissa/icons/portrait/HPL002PL.bmp",
+			"small" : "heroes/ignissa/icons/portrait/HPS002PL.bmp"
 		},
 
 		"army" : [

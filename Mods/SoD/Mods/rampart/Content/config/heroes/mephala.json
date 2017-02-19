@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3216.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4416.bmp",
-			"large" : "heroes/icons/portrait/large/HPL016RN.bmp",
-			"small" : "heroes/icons/portrait/small/HPS016RN.bmp"
+			"specialtySmall" : "heroes/mephala/icons/speciality/Un3216.bmp",
+			"specialtyLarge" : "heroes/mephala/icons/speciality/Un4416.bmp",
+			"large" : "heroes/mephala/icons/portrait/HPL016RN.bmp",
+			"small" : "heroes/mephala/icons/portrait/HPS016RN.bmp"
 		},
 
 		"army" : [

@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un32111.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un44111.bmp",
-			"large" : "heroes/icons/portrait/large/HPL111BM.bmp",
-			"small" : "heroes/icons/portrait/small/HPS111BM.bmp"
+			"specialtySmall" : "heroes/saurug/icons/speciality/Un32111.bmp",
+			"specialtyLarge" : "heroes/saurug/icons/speciality/Un44111.bmp",
+			"large" : "heroes/saurug/icons/portrait/HPL111BM.bmp",
+			"small" : "heroes/saurug/icons/portrait/HPS111BM.bmp"
 		},
 
 		"army" : [

@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3259.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4459.bmp",
-			"large" : "heroes/icons/portrait/large/HPL059DM.bmp",
-			"small" : "heroes/icons/portrait/small/HPS059DM.bmp"
+			"specialtySmall" : "heroes/olema/icons/speciality/Un3259.bmp",
+			"specialtyLarge" : "heroes/olema/icons/speciality/Un4459.bmp",
+			"large" : "heroes/olema/icons/portrait/HPL059DM.bmp",
+			"small" : "heroes/olema/icons/portrait/HPS059DM.bmp"
 		},
 
 		"army" : [

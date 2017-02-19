@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un32100.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un44100.bmp",
-			"large" : "heroes/icons/portrait/large/HPL100BR.bmp",
-			"small" : "heroes/icons/portrait/small/HPS100BR.bmp"
+			"specialtySmall" : "heroes/gretchin/icons/speciality/Un32100.bmp",
+			"specialtyLarge" : "heroes/gretchin/icons/speciality/Un44100.bmp",
+			"large" : "heroes/gretchin/icons/portrait/HPL100BR.bmp",
+			"small" : "heroes/gretchin/icons/portrait/HPS100BR.bmp"
 		},
 
 		"army" : [

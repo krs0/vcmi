@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3268.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4468.bmp",
-			"large" : "heroes/icons/portrait/large/HPL068DK.bmp",
-			"small" : "heroes/icons/portrait/small/HPS068DK.bmp"
+			"specialtySmall" : "heroes/tamika/icons/speciality/Un3268.bmp",
+			"specialtyLarge" : "heroes/tamika/icons/speciality/Un4468.bmp",
+			"large" : "heroes/tamika/icons/portrait/HPL068DK.bmp",
+			"small" : "heroes/tamika/icons/portrait/HPS068DK.bmp"
 		},
 
 

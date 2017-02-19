@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3290.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4490.bmp",
-			"large" : "heroes/icons/portrait/large/HPL090WL.bmp",
-			"small" : "heroes/icons/portrait/small/HPS090WL.bmp"
+			"specialtySmall" : "heroes/malekith/icons/speciality/Un3290.bmp",
+			"specialtyLarge" : "heroes/malekith/icons/speciality/Un4490.bmp",
+			"large" : "heroes/malekith/icons/portrait/HPL090WL.bmp",
+			"small" : "heroes/malekith/icons/portrait/HPS090WL.bmp"
 		},
 
 		"army" : [

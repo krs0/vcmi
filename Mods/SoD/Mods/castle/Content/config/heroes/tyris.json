@@ -8,10 +8,10 @@
 						
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un327.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un447.bmp",
-			"large" : "heroes/icons/portrait/large/HPL007KN.bmp",
-			"small" : "heroes/icons/portrait/small/HPS007KN.bmp"
+			"specialtySmall" : "heroes/tyris/icons/speciality/Un327.bmp",
+			"specialtyLarge" : "heroes/tyris/icons/speciality/Un447.bmp",
+			"large" : "heroes/tyris/icons/portrait/HPL007KN.bmp",
+			"small" : "heroes/tyris/icons/portrait/HPS007KN.bmp"
 		},
 
 		"army" : [

@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un32103.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un44103.bmp",
-			"large" : "heroes/icons/portrait/large/HPL103BR.bmp",
-			"small" : "heroes/icons/portrait/small/HPS103BR.bmp"
+			"specialtySmall" : "heroes/tyraxor/icons/speciality/Un32103.bmp",
+			"specialtyLarge" : "heroes/tyraxor/icons/speciality/Un44103.bmp",
+			"large" : "heroes/tyraxor/icons/portrait/HPL103BR.bmp",
+			"small" : "heroes/tyraxor/icons/portrait/HPS103BR.bmp"
 		},
 
 		"army" : [

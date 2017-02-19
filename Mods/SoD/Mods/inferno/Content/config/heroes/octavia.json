@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3252.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4452.bmp",
-			"large" : "heroes/icons/portrait/large/HPL052HR.bmp",
-			"small" : "heroes/icons/portrait/small/HPS052HR.bmp"
+			"specialtySmall" : "heroes/octavia/icons/speciality/Un3252.bmp",
+			"specialtyLarge" : "heroes/octavia/icons/speciality/Un4452.bmp",
+			"large" : "heroes/octavia/icons/portrait/HPL052HR.bmp",
+			"small" : "heroes/octavia/icons/portrait/HPS052HR.bmp"
 		},
 
 		"army" : [

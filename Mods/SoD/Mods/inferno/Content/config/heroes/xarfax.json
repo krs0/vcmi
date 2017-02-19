@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3263.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4463.bmp",
-			"large" : "heroes/icons/portrait/large/HPL063DM.bmp",
-			"small" : "heroes/icons/portrait/small/HPS063DM.bmp"
+			"specialtySmall" : "heroes/xarfax/icons/speciality/Un3263.bmp",
+			"specialtyLarge" : "heroes/xarfax/icons/speciality/Un4463.bmp",
+			"large" : "heroes/xarfax/icons/portrait/HPL063DM.bmp",
+			"small" : "heroes/xarfax/icons/portrait/HPS063DM.bmp"
 		},
 
 		"army" : [

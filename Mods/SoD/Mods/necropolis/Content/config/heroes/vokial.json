@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3265.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4465.bmp",
-			"large" : "heroes/icons/portrait/large/HPL065DK.bmp",
-			"small" : "heroes/icons/portrait/small/HPS065DK.bmp"
+			"specialtySmall" : "heroes/vokial/icons/speciality/Un3265.bmp",
+			"specialtyLarge" : "heroes/vokial/icons/speciality/Un4465.bmp",
+			"large" : "heroes/vokial/icons/portrait/HPL065DK.bmp",
+			"small" : "heroes/vokial/icons/portrait/HPS065DK.bmp"
 		},
 
 

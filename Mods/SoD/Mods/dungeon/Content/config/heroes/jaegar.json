@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3289.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4489.bmp",
-			"large" : "heroes/icons/portrait/large/HPL089WL.bmp",
-			"small" : "heroes/icons/portrait/small/HPS089WL.bmp"
+			"specialtySmall" : "heroes/jaegar/icons/speciality/Un3289.bmp",
+			"specialtyLarge" : "heroes/jaegar/icons/speciality/Un4489.bmp",
+			"large" : "heroes/jaegar/icons/portrait/HPL089WL.bmp",
+			"small" : "heroes/jaegar/icons/portrait/HPS089WL.bmp"
 		},
 
 		"army" : [

@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un32136.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un44136.bmp",
-			"large" : "heroes/icons/portrait/large/HPL000EL.bmp",
-			"small" : "heroes/icons/portrait/small/HPS000EL.bmp"
+			"specialtySmall" : "heroes/luna/icons/speciality/Un32136.bmp",
+			"specialtyLarge" : "heroes/luna/icons/speciality/Un44136.bmp",
+			"large" : "heroes/luna/icons/portrait/HPL000EL.bmp",
+			"small" : "heroes/luna/icons/portrait/HPS000EL.bmp"
 		},
 
 		"army" : [

@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3244.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4444.bmp",
-			"large" : "heroes/icons/portrait/large/HPL044WZ.bmp",
-			"small" : "heroes/icons/portrait/small/HPS044WZ.bmp"
+			"specialtySmall" : "heroes/theodorus/icons/speciality/Un3244.bmp",
+			"specialtyLarge" : "heroes/theodorus/icons/speciality/Un4444.bmp",
+			"large" : "heroes/theodorus/icons/portrait/HPL044WZ.bmp",
+			"small" : "heroes/theodorus/icons/portrait/HPS044WZ.bmp"
 		},
 
 		"army" : [

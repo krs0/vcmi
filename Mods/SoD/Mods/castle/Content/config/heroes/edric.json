@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un322.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un442.bmp",
-			"large" : "heroes/icons/portrait/large/HPL002KN.bmp",
-			"small" : "heroes/icons/portrait/small/HPS002KN.bmp"
+			"specialtySmall" : "heroes/edric/icons/speciality/Un322.bmp",
+			"specialtyLarge" : "heroes/edric/icons/speciality/Un442.bmp",
+			"large" : "heroes/edric/icons/portrait/HPL002KN.bmp",
+			"small" : "heroes/edric/icons/portrait/HPS002KN.bmp"
 		},
 
 		"army" : [

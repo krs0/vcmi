@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3287.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4487.bmp",
-			"large" : "heroes/icons/portrait/large/HPL087OV.bmp",
-			"small" : "heroes/icons/portrait/small/HPS087OV.bmp"
+			"specialtySmall" : "heroes/shakti/icons/speciality/Un3287.bmp",
+			"specialtyLarge" : "heroes/shakti/icons/speciality/Un4487.bmp",
+			"large" : "heroes/shakti/icons/portrait/HPL087OV.bmp",
+			"small" : "heroes/shakti/icons/portrait/HPS087OV.bmp"
 		},
 
 		"army" : [

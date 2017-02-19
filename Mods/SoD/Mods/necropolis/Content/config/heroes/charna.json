@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3267.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4467.bmp",
-			"large" : "heroes/icons/portrait/large/HPL067DK.bmp",
-			"small" : "heroes/icons/portrait/small/HPS067DK.bmp"
+			"specialtySmall" : "heroes/charna/icons/speciality/Un3267.bmp",
+			"specialtyLarge" : "heroes/charna/icons/speciality/Un4467.bmp",
+			"large" : "heroes/charna/icons/portrait/HPL067DK.bmp",
+			"small" : "heroes/charna/icons/portrait/HPS067DK.bmp"
 		},
 
 

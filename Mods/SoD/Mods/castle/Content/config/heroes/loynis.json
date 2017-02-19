@@ -8,10 +8,10 @@
 						
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3214.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4414.bmp",
-			"large" : "heroes/icons/portrait/large/HPL014CL.bmp",
-			"small" : "heroes/icons/portrait/small/HPS014CL.bmp"
+			"specialtySmall" : "heroes/loynis/icons/speciality/Un3214.bmp",
+			"specialtyLarge" : "heroes/loynis/icons/speciality/Un4414.bmp",
+			"large" : "heroes/loynis/icons/portrait/HPL014CL.bmp",
+			"small" : "heroes/loynis/icons/portrait/HPS014CL.bmp"
 		},
 
 		"army" : [

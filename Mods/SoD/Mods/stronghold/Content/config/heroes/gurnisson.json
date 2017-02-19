@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3297.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4497.bmp",
-			"large" : "heroes/icons/portrait/large/HPL097BR.bmp",
-			"small" : "heroes/icons/portrait/small/HPS097BR.bmp"
+			"specialtySmall" : "heroes/gurnisson/icons/speciality/Un3297.bmp",
+			"specialtyLarge" : "heroes/gurnisson/icons/speciality/Un4497.bmp",
+			"large" : "heroes/gurnisson/icons/portrait/HPL097BR.bmp",
+			"small" : "heroes/gurnisson/icons/portrait/HPS097BR.bmp"
 		},
 
 		"army" : [

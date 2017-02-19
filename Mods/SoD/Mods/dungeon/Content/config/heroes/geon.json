@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3292.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4492.bmp",
-			"large" : "heroes/icons/portrait/large/HPL092WL.bmp",
-			"small" : "heroes/icons/portrait/small/HPS092WL.bmp"
+			"specialtySmall" : "heroes/geon/icons/speciality/Un3292.bmp",
+			"specialtyLarge" : "heroes/geon/icons/speciality/Un4492.bmp",
+			"large" : "heroes/geon/icons/portrait/HPL092WL.bmp",
+			"small" : "heroes/geon/icons/portrait/HPS092WL.bmp"
 		},
 
 		"army" : [

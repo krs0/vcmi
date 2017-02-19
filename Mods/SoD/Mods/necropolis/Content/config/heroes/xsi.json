@@ -7,10 +7,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3277.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4477.bmp",
-			"large" : "heroes/icons/portrait/large/HPL077NC.bmp",
-			"small" : "heroes/icons/portrait/small/HPS077NC.bmp"
+			"specialtySmall" : "heroes/xsi/icons/speciality/Un3277.bmp",
+			"specialtyLarge" : "heroes/xsi/icons/speciality/Un4477.bmp",
+			"large" : "heroes/xsi/icons/portrait/HPL077NC.bmp",
+			"small" : "heroes/xsi/icons/portrait/HPS077NC.bmp"
 		},
 
 

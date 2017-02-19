@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3234.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4434.bmp",
-			"large" : "heroes/icons/portrait/large/HPL034AL.bmp",
-			"small" : "heroes/icons/portrait/small/HPS034AL.bmp"
+			"specialtySmall" : "heroes/josephine/icons/speciality/Un3234.bmp",
+			"specialtyLarge" : "heroes/josephine/icons/speciality/Un4434.bmp",
+			"large" : "heroes/josephine/icons/portrait/HPL034AL.bmp",
+			"small" : "heroes/josephine/icons/portrait/HPS034AL.bmp"
 		},
 
 		"army" : [

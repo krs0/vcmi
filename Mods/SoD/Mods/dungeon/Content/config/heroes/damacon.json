@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3284.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4484.bmp",
-			"large" : "heroes/icons/portrait/large/HPL084OV.bmp",
-			"small" : "heroes/icons/portrait/small/HPS084OV.bmp"
+			"specialtySmall" : "heroes/damacon/icons/speciality/Un3284.bmp",
+			"specialtyLarge" : "heroes/damacon/icons/speciality/Un4484.bmp",
+			"large" : "heroes/damacon/icons/portrait/HPL084OV.bmp",
+			"small" : "heroes/damacon/icons/portrait/HPS084OV.bmp"
 		},
 
 		"army" : [

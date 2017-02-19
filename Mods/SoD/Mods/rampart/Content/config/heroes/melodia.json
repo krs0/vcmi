@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3229.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4429.bmp",
-			"large" : "heroes/icons/portrait/large/HPL029DR.bmp",
-			"small" : "heroes/icons/portrait/small/HPS029DR.bmp"
+			"specialtySmall" : "heroes/melodia/icons/speciality/Un3229.bmp",
+			"specialtyLarge" : "heroes/melodia/icons/speciality/Un4429.bmp",
+			"large" : "heroes/melodia/icons/portrait/HPL029DR.bmp",
+			"small" : "heroes/melodia/icons/portrait/HPS029DR.bmp"
 		},
 
 		"army" : [

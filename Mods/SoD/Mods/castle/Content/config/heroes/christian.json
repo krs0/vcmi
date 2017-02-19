@@ -8,10 +8,10 @@
 		
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un326.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un446.bmp",
-			"large" : "heroes/icons/portrait/large/HPL006KN.bmp",
-			"small" : "heroes/icons/portrait/small/HPS006KN.bmp"
+			"specialtySmall" : "heroes/christian/icons/speciality/Un326.bmp",
+			"specialtyLarge" : "heroes/christian/icons/speciality/Un446.bmp",
+			"large" : "heroes/christian/icons/portrait/HPL006KN.bmp",
+			"small" : "heroes/christian/icons/portrait/HPS006KN.bmp"
 		},
 
 		"army" : [

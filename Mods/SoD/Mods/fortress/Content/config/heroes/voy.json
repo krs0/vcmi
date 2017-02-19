@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un32122.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un44122.bmp",
-			"large" : "heroes/icons/portrait/large/HPL122WH.bmp",
-			"small" : "heroes/icons/portrait/small/HPS122WH.bmp"
+			"specialtySmall" : "heroes/voy/icons/speciality/Un32122.bmp",
+			"specialtyLarge" : "heroes/voy/icons/speciality/Un44122.bmp",
+			"large" : "heroes/voy/icons/portrait/HPL122WH.bmp",
+			"small" : "heroes/voy/icons/portrait/HPS122WH.bmp"
 		},
 
 		"army" : [

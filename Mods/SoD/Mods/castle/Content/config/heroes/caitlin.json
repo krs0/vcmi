@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3215.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4415.bmp",
-			"large" : "heroes/icons/portrait/large/HPL015CL.bmp",
-			"small" : "heroes/icons/portrait/small/HPS015CL.bmp"
+			"specialtySmall" : "heroes/caitlin/icons/speciality/Un3215.bmp",
+			"specialtyLarge" : "heroes/caitlin/icons/speciality/Un4415.bmp",
+			"large" : "heroes/caitlin/icons/portrait/HPL015CL.bmp",
+			"small" : "heroes/caitlin/icons/portrait/HPS015CL.bmp"
 		},
 
 		"army" : [

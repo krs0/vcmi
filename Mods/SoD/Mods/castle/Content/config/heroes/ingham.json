@@ -8,10 +8,10 @@
 		
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3212.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4412.bmp",
-			"large" : "heroes/icons/portrait/large/HPL012CL.bmp",
-			"small" : "heroes/icons/portrait/small/HPS012CL.bmp"
+			"specialtySmall" : "heroes/ingham/icons/speciality/Un3212.bmp",
+			"specialtyLarge" : "heroes/ingham/icons/speciality/Un4412.bmp",
+			"large" : "heroes/ingham/icons/portrait/HPL012CL.bmp",
+			"small" : "heroes/ingham/icons/portrait/HPS012CL.bmp"
 		},
 
 		"army" : [

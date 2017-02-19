@@ -7,10 +7,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3273.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4473.bmp",
-			"large" : "heroes/icons/portrait/large/HPL073NC.bmp",
-			"small" : "heroes/icons/portrait/small/HPS073NC.bmp"
+			"specialtySmall" : "heroes/aislinn/icons/speciality/Un3273.bmp",
+			"specialtyLarge" : "heroes/aislinn/icons/speciality/Un4473.bmp",
+			"large" : "heroes/aislinn/icons/portrait/HPL073NC.bmp",
+			"small" : "heroes/aislinn/icons/portrait/HPS073NC.bmp"
 		},
 
 

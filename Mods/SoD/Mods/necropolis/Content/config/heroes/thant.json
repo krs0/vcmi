@@ -7,10 +7,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3276.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4476.bmp",
-			"large" : "heroes/icons/portrait/large/HPL076NC.bmp",
-			"small" : "heroes/icons/portrait/small/HPS076NC.bmp"
+			"specialtySmall" : "heroes/thant/icons/speciality/Un3276.bmp",
+			"specialtyLarge" : "heroes/thant/icons/speciality/Un4476.bmp",
+			"large" : "heroes/thant/icons/portrait/HPL076NC.bmp",
+			"small" : "heroes/thant/icons/portrait/HPS076NC.bmp"
 		},
 
 

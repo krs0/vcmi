@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un32109.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un44109.bmp",
-			"large" : "heroes/icons/portrait/large/HPL109BM.bmp",
-			"small" : "heroes/icons/portrait/small/HPS109BM.bmp"
+			"specialtySmall" : "heroes/gundula/icons/speciality/Un32109.bmp",
+			"specialtyLarge" : "heroes/gundula/icons/speciality/Un44109.bmp",
+			"large" : "heroes/gundula/icons/portrait/HPL109BM.bmp",
+			"small" : "heroes/gundula/icons/portrait/HPS109BM.bmp"
 		},
 
 		"army" : [

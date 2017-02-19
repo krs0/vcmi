@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3220.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4420.bmp",
-			"large" : "heroes/icons/portrait/large/HPL020RN.bmp",
-			"small" : "heroes/icons/portrait/small/HPS020RN.bmp"
+			"specialtySmall" : "heroes/thorgrim/icons/speciality/Un3220.bmp",
+			"specialtyLarge" : "heroes/thorgrim/icons/speciality/Un4420.bmp",
+			"large" : "heroes/thorgrim/icons/portrait/HPL020RN.bmp",
+			"small" : "heroes/thorgrim/icons/portrait/HPS020RN.bmp"
 		},
 
 		"army" : [

@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3291.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4491.bmp",
-			"large" : "heroes/icons/portrait/large/HPL091WL.bmp",
-			"small" : "heroes/icons/portrait/small/HPS091WL.bmp"
+			"specialtySmall" : "heroes/jeddite/icons/speciality/Un3291.bmp",
+			"specialtyLarge" : "heroes/jeddite/icons/speciality/Un4491.bmp",
+			"large" : "heroes/jeddite/icons/portrait/HPL091WL.bmp",
+			"small" : "heroes/jeddite/icons/portrait/HPS091WL.bmp"
 		},
 
 		"army" : [

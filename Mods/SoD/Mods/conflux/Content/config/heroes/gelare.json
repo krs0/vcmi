@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un32142.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un44142.bmp",
-			"large" : "heroes/icons/portrait/large/HPL006EL.bmp",
-			"small" : "heroes/icons/portrait/small/HPS006EL.bmp"
+			"specialtySmall" : "heroes/gelare/icons/speciality/Un32142.bmp",
+			"specialtyLarge" : "heroes/gelare/icons/speciality/Un44142.bmp",
+			"large" : "heroes/gelare/icons/portrait/HPL006EL.bmp",
+			"small" : "heroes/gelare/icons/portrait/HPS006EL.bmp"
 		},
 
 		"army" : [

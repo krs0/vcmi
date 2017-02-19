@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3262.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4462.bmp",
-			"large" : "heroes/icons/portrait/large/HPL062DM.bmp",
-			"small" : "heroes/icons/portrait/small/HPS062DM.bmp"
+			"specialtySmall" : "heroes/zydar/icons/speciality/Un3262.bmp",
+			"specialtyLarge" : "heroes/zydar/icons/speciality/Un4462.bmp",
+			"large" : "heroes/zydar/icons/portrait/HPL062DM.bmp",
+			"small" : "heroes/zydar/icons/portrait/HPS062DM.bmp"
 		},
 
 		"army" : [

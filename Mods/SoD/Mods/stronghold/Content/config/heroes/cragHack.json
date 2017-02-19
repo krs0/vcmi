@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un32102.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un44102.bmp",
-			"large" : "heroes/icons/portrait/large/HPL102BR.bmp",
-			"small" : "heroes/icons/portrait/small/HPS102BR.bmp"
+			"specialtySmall" : "heroes/cragHack/icons/speciality/Un32102.bmp",
+			"specialtyLarge" : "heroes/cragHack/icons/speciality/Un44102.bmp",
+			"large" : "heroes/cragHack/icons/portrait/HPL102BR.bmp",
+			"small" : "heroes/cragHack/icons/portrait/HPS102BR.bmp"
 		},
 
 		"army" : [

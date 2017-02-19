@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3219.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4419.bmp",
-			"large" : "heroes/icons/portrait/large/HPL019RN.bmp",
-			"small" : "heroes/icons/portrait/small/HPS019RN.bmp"
+			"specialtySmall" : "heroes/ryland/icons/speciality/Un3219.bmp",
+			"specialtyLarge" : "heroes/ryland/icons/speciality/Un4419.bmp",
+			"large" : "heroes/ryland/icons/portrait/HPL019RN.bmp",
+			"small" : "heroes/ryland/icons/portrait/HPS019RN.bmp"
 		},
 
 		"army" : [

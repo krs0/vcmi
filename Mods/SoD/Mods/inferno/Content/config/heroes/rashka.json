@@ -8,10 +8,10 @@
 
 		"images" :
 		{
-			"specialtySmall" : "heroes/icons/speciality/small/Un3249.bmp",
-			"specialtyLarge" : "heroes/icons/speciality/large/Un4449.bmp",
-			"large" : "heroes/icons/portrait/large/HPL049HR.bmp",
-			"small" : "heroes/icons/portrait/small/HPS049HR.bmp"
+			"specialtySmall" : "heroes/rashka/icons/speciality/Un3249.bmp",
+			"specialtyLarge" : "heroes/rashka/icons/speciality/Un4449.bmp",
+			"large" : "heroes/rashka/icons/portrait/HPL049HR.bmp",
+			"small" : "heroes/rashka/icons/portrait/HPS049HR.bmp"
 		},
 
 		"army" : [
