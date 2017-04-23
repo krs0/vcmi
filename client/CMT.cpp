@@ -42,7 +42,6 @@
 #include "../lib/GameConstants.h"
 #include "gui/CGuiHandler.h"
 #include "../lib/logging/CBasicLogConfigurator.h"
-#include "../lib/CondSh.h"
 #include "../lib/StringConstants.h"
 #include "../lib/CPlayerState.h"
 #include "gui/CAnimation.h"
@@ -91,6 +90,7 @@ std::queue<SDL_Event> events;
 boost::mutex eventsM;
 
 bool gNoGUI = false;
+CondSh<bool> serverAlive(false);
 static po::variables_map vm;
 
 //static bool setResolution = false; //set by event handling thread after resolution is adjusted
@@ -177,7 +177,7 @@ static void prog_version(void)
 static void prog_help(const po::options_description &opts)
 {
 	printf("%s - A Heroes of Might and Magic 3 clone\n", GameConstants::VCMI_VERSION.c_str());
-	printf("Copyright (C) 2007-2016 VCMI dev team - see AUTHORS file\n");
+	printf("Copyright (C) 2007-2017 VCMI dev team - see AUTHORS file\n");
 	printf("This is free software; see the source for copying conditions. There is NO\n");
 	printf("warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n");
 	printf("\n");
@@ -1175,13 +1175,14 @@ static void handleEvent(SDL_Event & ev)
 		case RETURN_TO_MAIN_MENU:
 			{
 				endGame();
-				GH.curInt = CGPreGame::create();;
+				GH.curInt = CGPreGame::create();
 				GH.defActionsDef = 63;
 			}
 			break;
 		case RESTART_GAME:
 			{
 				StartInfo si = *client->getStartInfo(true);
+				si.seedToBeUsed = 0; //server gives new random generator seed if 0
 				endGame();
 				startGame(&si);
 			}
@@ -1252,6 +1253,9 @@ static void mainLoop()
 
 void startGame(StartInfo * options, CConnection *serv/* = nullptr*/)
 {
+	serverAlive.waitWhileTrue();
+	serverAlive.setn(true);
+
 	if(vm.count("onlyAI"))
 	{
 		auto ais = vm.count("ai") ? vm["ai"].as<std::vector<std::string>>() : std::vector<std::string>();

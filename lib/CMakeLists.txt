@@ -78,7 +78,10 @@ set(lib_SRCS
 
 		BattleAction.cpp
 		BattleHex.cpp
-		BattleState.cpp
+                BattleInfo.cpp
+                SiegeInfo.cpp
+                SideInBattle.cpp
+                CStack.cpp
 		CArtHandler.cpp
 		CBattleCallback.cpp
 		CBonusTypeHandler.cpp
@@ -131,6 +134,14 @@ set(lib_HEADERS
 
 		filesystem/CInputStream.h
 		filesystem/ISimpleResourceLoader.h
+		filesystem/CStream.h
+		filesystem/COutputStream.h
+		filesystem/CInputOutputStream.h
+
+		rmg/float3.h
+
+		spells/Magic.h
+		spells/SpellMechanics.h
 
 		mapObjects/MapObjects.h
 		mapping/CMapDefines.h
@@ -144,6 +155,7 @@ set(lib_HEADERS
 		CStopWatch.h
 		FunctionList.h
 		GameConstants.h
+		IBonusTypeHandler.h
 		StringConstants.h
 		IGameEventsReceiver.h
 		int3.h
@@ -152,6 +164,7 @@ set(lib_HEADERS
 		Interprocess.h
 		NetPacks.h
 		NetPacksBase.h
+		ScopeGuard.h
 		StartInfo.h
 		UnlockGuard.h
 		VCMIDirs.h
