@@ -10,127 +10,332 @@
 
 #pragma once
 
-#include "CSpellHandler.h"
-#include "../BattleHex.h"
+#include "Magic.h"
+#include "../battle/Destination.h"
+#include "../int3.h"
+#include "../GameConstants.h"
+#include "../HeroBonus.h"
 
+struct Query;
+class IBattleState;
+class CRandomGenerator;
+class CMap;
+class CGameInfoCallback;
+class CBattleInfoCallback;
+class JsonNode;
+class CStack;
+class CGObjectInstance;
+class CGHeroInstance;
+
+namespace vstd
+{
+	class RNG;
+}
 
 ///callback to be provided by server
-class DLL_LINKAGE SpellCastEnvironment
+class DLL_LINKAGE SpellCastEnvironment : public spells::PacketSender
 {
 public:
 	virtual ~SpellCastEnvironment(){};
-	virtual void sendAndApply(CPackForClient * info) const = 0;
 
 	virtual CRandomGenerator & getRandomGenerator() const = 0;
-	virtual void complain(const std::string & problem) const = 0;
 
 	virtual const CMap * getMap() const = 0;
 	virtual const CGameInfoCallback * getCb() const = 0;
 
-	virtual bool moveHero(ObjectInstanceID hid, int3 dst, ui8 teleporting, PlayerColor asker = PlayerColor::NEUTRAL) const =0;	//TODO: remove
+	virtual bool moveHero(ObjectInstanceID hid, int3 dst, bool teleporting) const = 0;	//TODO: remove
+
+	virtual void genericQuery(Query * request, PlayerColor color, std::function<void(const JsonNode &)> callback) const = 0;//TODO: type safety on query, use generic query packet when implemented
+};
+
+namespace spells
+{
+
+class DLL_LINKAGE BattleStateProxy
+{
+public:
+	const bool describe;
+
+	BattleStateProxy(const PacketSender * server_);
+	BattleStateProxy(IBattleState * battleState_);
+
+	template<typename P>
+	void apply(P * pack)
+	{
+		if(server)
+			server->sendAndApply(pack);
+		else
+			pack->applyBattle(battleState);
+	}
+
+	void complain(const std::string & problem) const;
+private:
+	const PacketSender * server;
+	IBattleState * battleState;
+};
+
+class DLL_LINKAGE IBattleCast
+{
+public:
+	using Value = int32_t;
+	using Value64 = int64_t;
+
+	using OptionalValue = boost::optional<Value>;
+	using OptionalValue64 = boost::optional<Value64>;
+
+	virtual const CSpell * getSpell() const = 0;
+	virtual Mode getMode() const = 0;
+	virtual const Caster * getCaster() const = 0;
+	virtual const CBattleInfoCallback * getBattle() const = 0;
+
+	virtual OptionalValue getSpellLevel() const = 0;
+
+	virtual OptionalValue getEffectPower() const = 0;
+	virtual OptionalValue getEffectDuration() const = 0;
+
+	virtual OptionalValue64 getEffectValue() const = 0;
+
+	virtual boost::logic::tribool isSmart() const = 0;
+	virtual boost::logic::tribool isMassive() const = 0;
 };
 
 ///all parameters of particular cast event
-struct DLL_LINKAGE BattleSpellCastParameters
+class DLL_LINKAGE BattleCast : public IBattleCast
 {
 public:
-	///Single spell destination.
-	/// (assumes that anything but battle stack can share same hex)
-	struct DLL_LINKAGE Destination
-	{
-		explicit Destination(const CStack * destination);
-		explicit Destination(const BattleHex & destination);
+	Target target;
 
-		const CStack * stackValue;
-		const BattleHex hexValue;
-	};
+	boost::logic::tribool smart;
+	boost::logic::tribool massive;
 
 	//normal constructor
-	BattleSpellCastParameters(const BattleInfo * cb, const ISpellCaster * caster, const CSpell * spell_);
+	BattleCast(const CBattleInfoCallback * cb, const Caster * caster_, const Mode mode_, const CSpell * spell_);
 
 	//magic mirror constructor
-	BattleSpellCastParameters(const BattleSpellCastParameters & orig, const ISpellCaster * caster);
+	BattleCast(const BattleCast & orig, const Caster * caster_);
+
+	virtual ~BattleCast();
+
+	///IBattleCast
+	const CSpell * getSpell() const override;
+	Mode getMode() const override;
+	const Caster * getCaster() const override;
+	const CBattleInfoCallback * getBattle() const override;
+
+	OptionalValue getSpellLevel() const override;
+
+	OptionalValue getEffectPower() const override;
+	OptionalValue getEffectDuration() const override;
+
+	OptionalValue64 getEffectValue() const override;
+
+	boost::logic::tribool isSmart() const override;
+	boost::logic::tribool isMassive() const override;
+
+	void setSpellLevel(Value value);
+
+	void setEffectPower(Value value);
+	void setEffectDuration(Value value);
+
+	void setEffectValue(Value64 value);
 
 	void aimToHex(const BattleHex & destination);
-	void aimToStack(const CStack * destination);
+	void aimToUnit(const battle::Unit * destination);
 
+	///only apply effects to specified targets
+	void applyEffects(const SpellCastEnvironment * env, bool indirect = false, bool ignoreImmunity = false) const;
+
+	///normal cast
 	void cast(const SpellCastEnvironment * env);
 
+	///cast evaluation
+	void cast(IBattleState * battleState, vstd::RNG & rng);
+
 	///cast with silent check for permitted cast
-	void castIfPossible(const SpellCastEnvironment * env);
+	bool castIfPossible(const SpellCastEnvironment * env);
 
-	BattleHex getFirstDestinationHex() const;
-
-	int getEffectValue() const;
-
-	const CSpell * spell;
-	const BattleInfo * cb;
-	const ISpellCaster * caster;
-	const PlayerColor casterColor;
-	const ui8 casterSide;
-
-	std::vector<Destination> destinations;
-
-	const CGHeroInstance * casterHero; //deprecated
-	ECastingMode::ECastingMode mode;
-	const CStack * casterStack; //deprecated
-
-	///spell school level
-	int spellLvl;
-	///spell school level to use for effects
-	int effectLevel;
-	///actual spell-power affecting effect values
-	int effectPower;
-	///actual spell-power affecting effect duration
-	int enchantPower;
+	std::vector<Target> findPotentialTargets() const;
 
 private:
+	///spell school level
+	OptionalValue magicSkillLevel;
+
+	///actual spell-power affecting effect values
+	OptionalValue effectPower;
+	///actual spell-power affecting effect duration
+	OptionalValue effectDuration;
+
 	///for Archangel-like casting
-	int effectValue;
+	OptionalValue64 effectValue;
+
+	Mode mode;
+	const CSpell * spell;
+	const CBattleInfoCallback * cb;
+	const Caster * caster;
 };
 
-struct DLL_LINKAGE SpellTargetingContext
-{
-	CSpell::TargetInfo ti;
-	ECastingMode::ECastingMode mode;
-	BattleHex destination;
-	const ISpellCaster * caster;
-	int schoolLvl;
-
-	SpellTargetingContext(const CSpell * s, ECastingMode::ECastingMode mode_, const ISpellCaster * caster_, int schoolLvl_, BattleHex destination_)
-		: ti(s,schoolLvl_, mode_), mode(mode_), destination(destination_), caster(caster_), schoolLvl(schoolLvl_)
-	{};
-
-};
-
-class DLL_LINKAGE ISpellMechanics
+class DLL_LINKAGE ISpellMechanicsFactory
 {
 public:
-	ISpellMechanics(CSpell * s);
-	virtual ~ISpellMechanics(){};
+	virtual ~ISpellMechanicsFactory();
 
-	virtual std::vector<BattleHex> rangeInHexes(BattleHex centralHex, ui8 schoolLvl, ui8 side, bool * outDroppedHexes = nullptr) const = 0;
-	virtual std::vector<const CStack *> getAffectedStacks(const CBattleInfoCallback * cb, const SpellTargetingContext & ctx) const = 0;
+	virtual std::unique_ptr<Mechanics> create(const IBattleCast * event) const = 0;
 
-	virtual ESpellCastProblem::ESpellCastProblem canBeCast(const CBattleInfoCallback * cb, const ECastingMode::ECastingMode mode, const ISpellCaster * caster) const = 0;
+	static std::unique_ptr<ISpellMechanicsFactory> get(const CSpell * s);
 
-	virtual ESpellCastProblem::ESpellCastProblem canBeCast(const CBattleInfoCallback * cb, const SpellTargetingContext & ctx) const = 0;
-
-	virtual ESpellCastProblem::ESpellCastProblem isImmuneByStack(const ISpellCaster * caster, const CStack * obj) const = 0;
-
-	virtual void applyBattle(BattleInfo * battle, const BattleSpellCast * packet) const = 0;
-	virtual void battleCast(const SpellCastEnvironment * env, const BattleSpellCastParameters & parameters) const = 0;
-
-	//if true use generic algorithm for target existence check, see CSpell::canBeCast
-	virtual bool requiresCreatureTarget() const = 0;
-
-	static std::unique_ptr<ISpellMechanics> createMechanics(CSpell * s);
 protected:
-	CSpell * owner;
+	const CSpell * spell;
+
+	ISpellMechanicsFactory(const CSpell * s);
 };
 
-struct DLL_LINKAGE AdventureSpellCastParameters
+class DLL_LINKAGE Mechanics
 {
+public:
+	Mechanics();
+	virtual ~Mechanics();
+
+	virtual bool adaptProblem(ESpellCastProblem::ESpellCastProblem source, Problem & target) const = 0;
+	virtual bool adaptGenericProblem(Problem & target) const = 0;
+
+	virtual std::vector<BattleHex> rangeInHexes(BattleHex centralHex, bool * outDroppedHexes = nullptr) const = 0;
+	virtual std::vector<const CStack *> getAffectedStacks(const Target & target) const = 0;
+
+	virtual bool canBeCast(Problem & problem) const = 0;
+	virtual bool canBeCastAt(const Target & target) const = 0;
+
+	virtual void applyEffects(BattleStateProxy * battleState, vstd::RNG & rng, const Target & targets, bool indirect, bool ignoreImmunity) const = 0;
+
+	virtual void cast(const PacketSender * server, vstd::RNG & rng, const Target & target) = 0;
+
+	virtual void cast(IBattleState * battleState, vstd::RNG & rng, const Target & target) = 0;
+
+	virtual bool isReceptive(const battle::Unit * target) const = 0;
+
+    virtual std::vector<AimType> getTargetTypes() const = 0;
+
+    virtual std::vector<Destination> getPossibleDestinations(size_t index, AimType aimType, const Target & current) const = 0;
+
+	//Cast event facade
+
+	virtual IBattleCast::Value getEffectLevel() const = 0;
+	virtual IBattleCast::Value getRangeLevel() const = 0;
+
+	virtual IBattleCast::Value getEffectPower() const = 0;
+	virtual IBattleCast::Value getEffectDuration() const = 0;
+
+	virtual IBattleCast::Value64 getEffectValue() const = 0;
+
+	virtual PlayerColor getCasterColor() const = 0;
+
+	//Spell facade
+	virtual int32_t getSpellIndex() const = 0;
+	virtual SpellID getSpellId() const = 0;
+	virtual std::string getSpellName() const = 0;
+	virtual int32_t getSpellLevel() const = 0;
+
+	virtual bool isSmart() const = 0;
+	virtual bool isMassive() const = 0;
+	virtual bool alwaysHitFirstTarget() const = 0;
+	virtual bool requiresClearTiles() const = 0;
+
+	virtual bool isNegativeSpell() const = 0;
+	virtual bool isPositiveSpell() const = 0;
+
+	virtual int64_t adjustEffectValue(const battle::Unit * target) const = 0;
+	virtual int64_t applySpellBonus(int64_t value, const battle::Unit * target) const = 0;
+	virtual int64_t applySpecificSpellBonus(int64_t value) const = 0;
+	virtual int64_t calculateRawEffectValue(int32_t basePowerMultiplier, int32_t levelPowerMultiplier) const = 0;
+
+	virtual std::vector<Bonus::BonusType> getElementalImmunity() const = 0;
+
+	//Battle facade
+	virtual bool ownerMatches(const battle::Unit * unit) const = 0;
+	virtual bool ownerMatches(const battle::Unit * unit, const boost::logic::tribool positivness) const = 0;
+
+	const CBattleInfoCallback * cb;
+	const Caster * caster;
+
+	ui8 casterSide;
+};
+
+class DLL_LINKAGE BaseMechanics : public Mechanics
+{
+public:
+	BaseMechanics(const IBattleCast * event);
+	virtual ~BaseMechanics();
+
+	bool adaptProblem(ESpellCastProblem::ESpellCastProblem source, Problem & target) const override;
+	bool adaptGenericProblem(Problem & target) const override;
+
+	int32_t getSpellIndex() const override;
+	SpellID getSpellId() const override;
+	std::string getSpellName() const override;
+	int32_t getSpellLevel() const override;
+
+	IBattleCast::Value getEffectLevel() const override;
+	IBattleCast::Value getRangeLevel() const override;
+
+	IBattleCast::Value getEffectPower() const override;
+	IBattleCast::Value getEffectDuration() const override;
+
+	IBattleCast::Value64 getEffectValue() const override;
+
+	PlayerColor getCasterColor() const override;
+
+	bool isSmart() const override;
+	bool isMassive() const override;
+	bool requiresClearTiles() const override;
+	bool alwaysHitFirstTarget() const override;
+
+	bool isNegativeSpell() const override;
+	bool isPositiveSpell() const override;
+
+	int64_t adjustEffectValue(const battle::Unit * target) const override;
+	int64_t applySpellBonus(int64_t value, const battle::Unit * target) const override;
+	int64_t applySpecificSpellBonus(int64_t value) const override;
+	int64_t calculateRawEffectValue(int32_t basePowerMultiplier, int32_t levelPowerMultiplier) const override;
+
+	std::vector<Bonus::BonusType> getElementalImmunity() const override;
+
+	bool ownerMatches(const battle::Unit * unit) const override;
+	bool ownerMatches(const battle::Unit * unit, const boost::logic::tribool positivness) const override;
+
+	std::vector<AimType> getTargetTypes() const override;
+
+protected:
+	const CSpell * owner;
+	Mode mode;
+
+private:
+    IBattleCast::Value rangeLevel;
+	IBattleCast::Value effectLevel;
+
+	///actual spell-power affecting effect values
+	IBattleCast::Value effectPower;
+	///actual spell-power affecting effect duration
+	IBattleCast::Value effectDuration;
+
+	///raw damage/heal amount
+	IBattleCast::Value64 effectValue;
+
+	boost::logic::tribool smart;
+	boost::logic::tribool massive;
+};
+
+class DLL_LINKAGE IReceptiveCheck
+{
+public:
+	virtual ~IReceptiveCheck() = default;
+
+	virtual bool isReceptive(const Mechanics * m, const battle::Unit * target) const = 0;
+};
+
+}// namespace spells
+
+class DLL_LINKAGE AdventureSpellCastParameters
+{
+public:
 	const CGHeroInstance * caster;
 	int3 pos;
 };
@@ -138,12 +343,12 @@ struct DLL_LINKAGE AdventureSpellCastParameters
 class DLL_LINKAGE IAdventureSpellMechanics
 {
 public:
-	IAdventureSpellMechanics(CSpell * s);
+	IAdventureSpellMechanics(const CSpell * s);
 	virtual ~IAdventureSpellMechanics() = default;
 
-	virtual bool adventureCast(const SpellCastEnvironment * env, AdventureSpellCastParameters & parameters) const = 0;
+	virtual bool adventureCast(const SpellCastEnvironment * env, const AdventureSpellCastParameters & parameters) const = 0;
 
-	static std::unique_ptr<IAdventureSpellMechanics> createMechanics(CSpell * s);
+	static std::unique_ptr<IAdventureSpellMechanics> createMechanics(const CSpell * s);
 protected:
-	CSpell * owner;
+	const CSpell * owner;
 };

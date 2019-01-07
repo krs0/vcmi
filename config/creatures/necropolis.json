@@ -72,6 +72,15 @@
 			"killed": "ZMBLKILL.wav",
 			"move": "ZMBLMOVE.wav",
 			"wince": "ZMBLWNCE.wav"
+		},
+		"abilities":
+		{
+			"castDisease" : 
+			{
+				"type" : "SPELL_AFTER_ATTACK",
+				"subtype" : "spell.disease",
+				"val" : 20
+			}
 		}
 	},
 	"wight" :
@@ -329,6 +338,10 @@
 			"dragon" :
 			{
 				"type" : "DRAGON_NATURE"
+			},
+			"const_lowers_morale" :
+			{
+				"stacking" : "Undead Dragons"
 			}
 		},
 		"upgrades": ["ghostDragon"],
@@ -355,6 +368,10 @@
 			"dragon" :
 			{
 				"type" : "DRAGON_NATURE"
+			},
+			"const_lowers_morale" :
+			{
+				"stacking" : "Undead Dragons"
 			},
 			"age" :
 			{

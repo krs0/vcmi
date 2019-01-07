@@ -1,3 +1,12 @@
+/*
+ * CCallback.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "CCallback.h"
 
@@ -18,17 +27,7 @@
 #include "lib/GameConstants.h"
 #include "lib/CPlayerState.h"
 #include "lib/UnlockGuard.h"
-#include "lib/BattleInfo.h"
-
-/*
- * CCallback.cpp, part of VCMI engine
- *
- * Authors: listed in file AUTHORS in main folder
- *
- * License: GNU General Public License v2.0 or later
- * Full text of license available in license.txt file, in main folder
- *
- */
+#include "lib/battle/BattleInfo.h"
 
 bool CCallback::teleportHero(const CGHeroInstance *who, const CGTownInstance *where)
 {
@@ -46,19 +45,26 @@ bool CCallback::moveHero(const CGHeroInstance *h, int3 dst, bool transit)
 
 int CCallback::selectionMade(int selection, QueryID queryID)
 {
+	JsonNode reply(JsonNode::JsonType::DATA_INTEGER);
+	reply.Integer() = selection;
+	return sendQueryReply(reply, queryID);
+}
+
+int CCallback::sendQueryReply(const JsonNode & reply, QueryID queryID)
+{
 	ASSERT_IF_CALLED_WITH_PLAYER
 	if(queryID == QueryID(-1))
 	{
-		logGlobal->errorStream() << "Cannot answer the query -1!";
-		return false;
+		logGlobal->error("Cannot answer the query -1!");
+		return -1;
 	}
 
-	QueryReply pack(queryID,selection);
+	QueryReply pack(queryID, reply);
 	pack.player = *player;
 	return sendRequest(&pack);
 }
 
-void CCallback::recruitCreatures(const CGDwelling *obj, const CArmedInstance * dst, CreatureID ID, ui32 amount, si32 level/*=-1*/)
+void CCallback::recruitCreatures(const CGDwelling * obj, const CArmedInstance * dst, CreatureID ID, ui32 amount, si32 level)
 {
 	// TODO exception for neutral dwellings shouldn't be hardcoded
 	if(player != obj->tempOwner && obj->ID != Obj::WAR_MACHINE_FACTORY && obj->ID != Obj::REFUGEE_CAMP)
@@ -87,9 +93,9 @@ bool CCallback::upgradeCreature(const CArmedInstance *obj, SlotID stackPos, Crea
 
 void CCallback::endTurn()
 {
-	logGlobal->traceStream() << "Player " << *player << " ended his turn.";
+	logGlobal->trace("Player %d ended his turn.", player.get().getNum());
 	EndTurn pack;
-	sendRequest(&pack); //report that we ended turn
+	sendRequest(&pack);
 }
 int CCallback::swapCreatures(const CArmedInstance *s1, const CArmedInstance *s2, SlotID p1, SlotID p2)
 {
@@ -119,12 +125,6 @@ bool CCallback::dismissHero(const CGHeroInstance *hero)
 	sendRequest(&pack);
 	return true;
 }
-
-// int CCallback::getMySerial() const
-// {
-// 	boost::shared_lock<boost::shared_mutex> lock(*gs->mx);
-// 	return gs->players[player].serial;
-// }
 
 bool CCallback::swapArtifacts(const ArtifactLocation &l1, const ArtifactLocation &l2)
 {
@@ -166,22 +166,22 @@ bool CCallback::buildBuilding(const CGTownInstance *town, BuildingID buildingID)
 	return true;
 }
 
-int CBattleCallback::battleMakeAction(BattleAction* action)
+int CBattleCallback::battleMakeAction(const BattleAction * action)
 {
-	assert(action->actionType == Battle::HERO_SPELL);
+	assert(action->actionType == EActionType::HERO_SPELL);
 	MakeCustomAction mca(*action);
 	sendRequest(&mca);
 	return 0;
 }
 
-int CBattleCallback::sendRequest(const CPack *request)
+int CBattleCallback::sendRequest(const CPackForServer * request)
 {
 	int requestID = cl->sendRequest(request, *player);
 	if(waitTillRealize)
 	{
-		logGlobal->traceStream() << boost::format("We'll wait till request %d is answered.\n") % requestID;
-		auto gsUnlocker = vstd::makeUnlockSharedGuardIf(getGsMutex(), unlockGsWhenWaiting);
-		cl->waitingRequest.waitWhileContains(requestID);
+		logGlobal->trace("We'll wait till request %d is answered.\n", requestID);
+		auto gsUnlocker = vstd::makeUnlockSharedGuardIf(CGameState::mutex, unlockGsWhenWaiting);
+		CClient::waitingRequest.waitWhileContains(requestID);
 	}
 
 	boost::this_thread::interruption_point();
@@ -206,11 +206,16 @@ void CCallback::buyArtifact(const CGHeroInstance *hero, ArtifactID aid)
 	sendRequest(&pack);
 }
 
-void CCallback::trade(const CGObjectInstance *market, EMarketMode::EMarketMode mode, int id1, int id2, int val1, const CGHeroInstance *hero/* = nullptr*/)
+void CCallback::trade(const CGObjectInstance * market, EMarketMode::EMarketMode mode, ui32 id1, ui32 id2, ui32 val1, const CGHeroInstance * hero)
+{
+	trade(market, mode, std::vector<ui32>(1, id1), std::vector<ui32>(1, id2), std::vector<ui32>(1, val1), hero);
+}
+
+void CCallback::trade(const CGObjectInstance * market, EMarketMode::EMarketMode mode, const std::vector<ui32> & id1, const std::vector<ui32> & id2, const std::vector<ui32> & val1, const CGHeroInstance * hero)
 {
 	TradeOnMarketplace pack;
-	pack.market = market;
-	pack.hero = hero;
+	pack.marketId = market->id;
+	pack.heroId = hero ? hero->id : ObjectInstanceID();
 	pack.mode = mode;
 	pack.r1 = id1;
 	pack.r2 = id2;
@@ -250,8 +255,8 @@ void CCallback::save( const std::string &fname )
 void CCallback::sendMessage(const std::string &mess, const CGObjectInstance * currentObject)
 {
 	ASSERT_IF_CALLED_WITH_PLAYER
-	PlayerMessage pm(*player, mess, currentObject? currentObject->id : ObjectInstanceID(-1));
-	sendRequest(&(CPackForClient&)pm);
+	PlayerMessage pm(mess, currentObject? currentObject->id : ObjectInstanceID(-1));
+	sendRequest(&pm);
 }
 
 void CCallback::buildBoat( const IShipyard *obj )
@@ -261,9 +266,11 @@ void CCallback::buildBoat( const IShipyard *obj )
 	sendRequest(&bb);
 }
 
-CCallback::CCallback( CGameState * GS, boost::optional<PlayerColor> Player, CClient *C )
-	:CBattleCallback(GS, Player, C)
+CCallback::CCallback(CGameState * GS, boost::optional<PlayerColor> Player, CClient * C)
+	: CBattleCallback(Player, C)
 {
+	gs = GS;
+
 	waitTillRealize = false;
 	unlockGsWhenWaiting = false;
 }
@@ -313,14 +320,6 @@ void CCallback::castSpell(const CGHeroInstance *hero, SpellID spellID, const int
 	sendRequest(&cas);
 }
 
-void CCallback::unregisterAllInterfaces()
-{
-	for (auto& pi : cl->playerint)
-		pi.second->finish();
-	cl->playerint.clear();
-	cl->battleints.clear();
-}
-
 int CCallback::mergeOrSwapStacks(const CArmedInstance *s1, const CArmedInstance *s2, SlotID p1, SlotID p2)
 {
 	if(s1->getCreature(p1) == s2->getCreature(p2))
@@ -349,9 +348,8 @@ void CCallback::unregisterBattleInterface(std::shared_ptr<IBattleEventsReceiver>
 	cl->additionalBattleInts[*player] -= battleEvents;
 }
 
-CBattleCallback::CBattleCallback(CGameState *GS, boost::optional<PlayerColor> Player, CClient *C )
+CBattleCallback::CBattleCallback(boost::optional<PlayerColor> Player, CClient *C )
 {
-	gs = GS;
 	player = Player;
 	cl = C;
 }

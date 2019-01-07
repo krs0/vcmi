@@ -1,13 +1,3 @@
-#pragma once
-
-#include "ConstTransitivePtr.h"
-#include "ResourceSet.h"
-#include "int3.h"
-#include "GameConstants.h"
-#include "IHandlerBase.h"
-#include "LogicalExpression.h"
-#include "BattleHex.h"
-
 /*
  * CTownHandler.h, part of VCMI engine
  *
@@ -17,6 +7,15 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "ConstTransitivePtr.h"
+#include "ResourceSet.h"
+#include "int3.h"
+#include "GameConstants.h"
+#include "IHandlerBase.h"
+#include "LogicalExpression.h"
+#include "battle/BattleHex.h"
 
 class CLegacyConfigParser;
 class JsonNode;
@@ -69,10 +68,25 @@ public:
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & identifier & town & bid & resources & produce & name & description & requirements & upgrade & mode;
+		h & identifier;
+		h & town;
+		h & bid;
+		h & resources;
+		h & produce;
+		h & name;
+		h & description;
+		h & requirements;
+		h & upgrade;
+		h & mode;
+		if(!h.saving)
+			deserializeFix();
 	}
 
 	friend class CTownHandler;
+
+private:
+
+	void deserializeFix();
 };
 
 /// This is structure used only by client
@@ -89,7 +103,14 @@ struct DLL_LINKAGE CStructure
 	bool hiddenUpgrade; // used only if "building" is upgrade, if true - structure on town screen will behave exactly like parent (mouse clicks, hover texts, etc)
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & pos & defName & borderName & areaName & identifier & building & buildable & hiddenUpgrade;
+		h & pos;
+		h & defName;
+		h & borderName;
+		h & areaName;
+		h & identifier;
+		h & building;
+		h & buildable;
+		h & hiddenUpgrade;
 	}
 };
 
@@ -102,7 +123,11 @@ struct DLL_LINKAGE SPuzzleInfo
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & number & x & y & whenUncovered & filename;
+		h & number;
+		h & x;
+		h & y;
+		h & whenUncovered;
+		h & filename;
 	}
 };
 
@@ -131,7 +156,15 @@ public:
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & name & identifier & index & nativeTerrain & alignment & town & creatureBg120 & creatureBg130 & puzzleMap;
+		h & name;
+		h & identifier;
+		h & index;
+		h & nativeTerrain;
+		h & alignment;
+		h & town;
+		h & creatureBg120;
+		h & creatureBg130;
+		h & puzzleMap;
 	}
 };
 
@@ -142,6 +175,10 @@ public:
 	~CTown();
 	// TODO: remove once save and mod compatability not needed
 	static std::vector<BattleHex> defaultMoatHexes();
+
+	std::string getFactionName() const;
+	std::string getBuildingScope() const;
+	std::set<si32> getAllBuildings() const;
 
 	CFaction * faction;
 
@@ -176,7 +213,10 @@ public:
 			si32 y;
 
 			template <typename Handler> void serialize(Handler &h, const int version)
-			{ h & x & y; }
+			{
+				h & x;
+				h & y;
+			}
 		};
 
 		//icons [fort is present?][build limit reached?] -> index of icon in def files
@@ -203,16 +243,38 @@ public:
 
 		template <typename Handler> void serialize(Handler &h, const int version)
 		{
-			h & icons & iconSmall & iconLarge & tavernVideo & musicTheme & townBackground & guildBackground & guildWindow & buildingsIcons & hallBackground;
-			h & hallSlots & structures;
-			h & siegePrefix & siegePositions & siegeShooter;
+			h & icons;
+			h & iconSmall;
+			h & iconLarge;
+			h & tavernVideo;
+			h & musicTheme;
+			h & townBackground;
+			h & guildBackground;
+			h & guildWindow;
+			h & buildingsIcons;
+			h & hallBackground;
+			h & hallSlots;
+			h & structures;
+			h & siegePrefix;
+			h & siegePositions;
+			h & siegeShooter;
 		}
 	} clientInfo;
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & names & faction & creatures & dwellings & dwellingNames & buildings & hordeLvl & mageLevel
-			& primaryRes & warMachine & clientInfo & moatDamage;
+		h & names;
+		h & faction;
+		h & creatures;
+		h & dwellings;
+		h & dwellingNames;
+		h & buildings;
+		h & hordeLvl;
+		h & mageLevel;
+		h & primaryRes;
+		h & warMachine;
+		h & clientInfo;
+		h & moatDamage;
 		if(version >= 758)
 		{
 			h & moatHexes;
@@ -222,16 +284,6 @@ public:
 			moatHexes = defaultMoatHexes();
 		}
 		h & defaultTavernChance;
-
-		auto findNull = [](const std::pair<BuildingID, ConstTransitivePtr<CBuilding>> &building)
-		{ return building.second == nullptr; };
-
-		//Fix #1444 corrupted save
-		while(auto badElem = vstd::tryFindIf(buildings, findNull))
-		{
-			logGlobal->errorStream() << "#1444-like bug encountered in CTown::serialize, fixing buildings list by removing bogus entry " << badElem->first << " from " << faction->name;
-			buildings.erase(badElem->first);
-		}
 	}
 };
 
@@ -241,16 +293,18 @@ class DLL_LINKAGE CTownHandler : public IHandlerBase
 	{
 		JsonNode json;
 		CBuilding * building;
-		CFaction * faction;
+		CTown * town;
 	};
 
+	std::map<CTown *, JsonNode> warMachinesToLoad;
 	std::vector<BuildingRequirementsHelper> requirementsToLoad;
 	void initializeRequirements();
+	void initializeWarMachines();
 
 	/// loads CBuilding's into town
-	void loadBuildingRequirements(CTown &town, CBuilding & building, const JsonNode & source);
-	void loadBuilding(CTown &town, const std::string & stringID, const JsonNode & source);
-	void loadBuildings(CTown &town, const JsonNode & source);
+	void loadBuildingRequirements(CBuilding * building, const JsonNode & source);
+	void loadBuilding(CTown * town, const std::string & stringID, const JsonNode & source);
+	void loadBuildings(CTown * town, const JsonNode & source);
 
 	/// loads CStructure's into town
 	void loadStructure(CTown &town, const std::string & stringID, const JsonNode & source);
@@ -262,14 +316,17 @@ class DLL_LINKAGE CTownHandler : public IHandlerBase
 
 	void loadClientData(CTown &town, const JsonNode & source);
 
-	void loadTown(CTown &town, const JsonNode & source);
+	void loadTown(CTown * town, const JsonNode & source);
 
 	void loadPuzzle(CFaction & faction, const JsonNode & source);
 
 	CFaction * loadFromJson(const JsonNode & data, const std::string & identifier);
 
+	void loadRandomFaction();
 public:
 	std::vector<ConstTransitivePtr<CFaction> > factions;
+
+	CTown * randomTown;
 
 	CTownHandler(); //c-tor, set pointer in VLC to this
 	~CTownHandler();
@@ -279,6 +336,7 @@ public:
 	void loadObject(std::string scope, std::string name, const JsonNode & data) override;
 	void loadObject(std::string scope, std::string name, const JsonNode & data, size_t index) override;
 
+	void loadCustom() override;
 	void afterLoadFinalization() override;
 
 	std::vector<bool> getDefaultAllowed() const override;
@@ -293,5 +351,14 @@ public:
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
 		h & factions;
+
+		if(version >= 770)
+		{
+			h & randomTown;
+		}
+		else if(!h.saving)
+		{
+			loadRandomFaction();
+		}
 	}
 };

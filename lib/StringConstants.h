@@ -1,7 +1,3 @@
-#pragma once
-
-#include "GameConstants.h"
-
 /*
  * StringConstants.h, part of VCMI engine
  *
@@ -11,7 +7,9 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
 
+#include "GameConstants.h"
 
 ///
 /// String ID which are pointless to move to config file - these types are mostly hardcoded
@@ -53,7 +51,7 @@ namespace NSecondarySkill
 		"sorcery",      "resistance",   "firstAid"
 	};
 
-	const std::string levels [4] =
+	const std::vector<std::string> levels =
 	{
 	    "none", "basic", "advanced", "expert"
 	};
@@ -87,7 +85,7 @@ namespace ETownType
 
 namespace NArtifactPosition
 {
-	const std::string names [19] =
+	const std::string namesHero [19] =
 	{
 		"head", "shoulders", "neck", "rightHand", "leftHand", "torso", //5
 		"rightRing", "leftRing", "feet", //8
@@ -96,5 +94,27 @@ namespace NArtifactPosition
 		"spellbook", "misc5" //18
 	};
 
+	const std::string namesCreature[1] =
+	{
+		"creature1"
+	};
+
+	const std::string namesCommander[6] =
+	{
+		"commander1", "commander2", "commander3", "commander4", "commander5", "commander6",
+	};
+
+
 	const std::string backpack = "backpack";
+}
+
+namespace NMetaclass
+{
+    const std::string names [16] =
+    {
+		"",
+		"artifact", "creature", "faction", "experience", "hero",
+		"heroClass", "luck", "mana", "morale", "movement",
+		"object", "primarySkill", "secondarySkill", "spell", "resource"
+    };
 }

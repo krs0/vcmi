@@ -1,3 +1,12 @@
+/*
+ * CMapEditManager.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "CMapEditManager.h"
 
@@ -229,12 +238,12 @@ CMap * CMapEditManager::getMap()
 	return map;
 }
 
-void CMapEditManager::clearTerrain(CRandomGenerator * gen/* = nullptr*/)
+void CMapEditManager::clearTerrain(CRandomGenerator * gen)
 {
 	execute(make_unique<CClearTerrainOperation>(map, gen ? gen : &(this->gen)));
 }
 
-void CMapEditManager::drawTerrain(ETerrainType terType, CRandomGenerator * gen/* = nullptr*/)
+void CMapEditManager::drawTerrain(ETerrainType terType, CRandomGenerator * gen)
 {
 	execute(make_unique<CDrawTerrainOperation>(map, terrainSel, terType, gen ? gen : &(this->gen)));
 	terrainSel.clearSelection();
@@ -247,9 +256,9 @@ void CMapEditManager::drawRoad(ERoadType::ERoadType roadType, CRandomGenerator* 
 }
 
 
-void CMapEditManager::insertObject(CGObjectInstance * obj, const int3 & pos)
+void CMapEditManager::insertObject(CGObjectInstance * obj)
 {
-	execute(make_unique<CInsertObjectOperation>(map, obj, pos));
+	execute(make_unique<CInsertObjectOperation>(map, obj));
 }
 
 void CMapEditManager::execute(std::unique_ptr<CMapOperation> && operation)
@@ -422,7 +431,7 @@ CTerrainViewPatternConfig::CTerrainViewPatternConfig()
 						flipPattern(terGroupPattern, i); //FIXME: we flip in place - doesn't make much sense now, but used to work
 						terrainViewPatternFlips.push_back(terGroupPattern);
 					}
-					terrainViewPatterns[terGroup].push_back(terrainViewPatternFlips);	
+					terrainViewPatterns[terGroup].push_back(terrainViewPatternFlips);
 				}
 			}
 			else if(i == 1)
@@ -566,14 +575,14 @@ void CDrawTerrainOperation::updateTerrainTypes()
 	{
 		const auto & centerPos = *(positions.begin());
 		auto centerTile = map->getTile(centerPos);
-		//logGlobal->debugStream() << boost::format("Set terrain tile at pos '%s' to type '%s'") % centerPos % centerTile.terType;
+		//logGlobal->debug("Set terrain tile at pos '%s' to type '%s'", centerPos, centerTile.terType);
 		auto tiles = getInvalidTiles(centerPos);
 		auto updateTerrainType = [&](const int3 & pos)
 		{
 			map->getTile(pos).terType = centerTile.terType;
 			positions.insert(pos);
 			invalidateTerrainViews(pos);
-			//logGlobal->debugStream() << boost::format("Set additional terrain tile at pos '%s' to type '%s'") % pos % centerTile.terType;
+			//logGlobal->debug("Set additional terrain tile at pos '%s' to type '%s'", pos, centerTile.terType);
 		};
 
 		// Fill foreign invalid tiles
@@ -639,7 +648,7 @@ void CDrawTerrainOperation::updateTerrainTypes()
 					{
 						//if(!suitableTiles.empty())
 						//{
-						//	logGlobal->debugStream() << "Clear suitables tiles.";
+						//	logGlobal->debug("Clear suitables tiles.");
 						//}
 
 						invalidNativeTilesCnt = nativeTilesCntNorm;
@@ -651,9 +660,6 @@ void CDrawTerrainOperation::updateTerrainTypes()
 					if (addToSuitableTiles)
 					{
 						suitableTiles.insert(posToTest);
-						//logGlobal->debugStream() << boost::format(std::string("Found suitable tile '%s' for main tile '%s': ") +
-						//		"Invalid native tiles '%i', invalid foreign tiles '%i', centerPosValid '%i'") % posToTest % centerPos % testTile.nativeTiles.size() %
-						//		testTile.foreignTiles.size() % testTile.centerPosValid;
 					}
 
 					terrainTile.terType = formerTerType;
@@ -711,8 +717,6 @@ void CDrawTerrainOperation::updateTerrainViews()
 			valRslt = validateTerrainView(pos, &pattern);
 			if(valRslt.result)
 			{
-				/*logGlobal->debugStream() << boost::format("Pattern detected at pos '%s': Pattern '%s', Flip '%i', Repl. '%s'.") %
-											pos % pattern.id % valRslt.flip % valRslt.transitionReplacement;*/
 				bestPattern = k;
 				break;
 			}
@@ -721,7 +725,7 @@ void CDrawTerrainOperation::updateTerrainViews()
 		if(bestPattern == -1)
 		{
 			// This shouldn't be the case
-			logGlobal->warnStream() << boost::format("No pattern detected at pos '%s'.") % pos;
+			logGlobal->warn("No pattern detected at pos '%s'.", pos.toString());
 			CTerrainViewPatternUtils::printDebuggingInfoAboutTile(map, pos);
 			continue;
 		}
@@ -773,7 +777,7 @@ ETerrainGroup::ETerrainGroup CDrawTerrainOperation::getTerrainGroup(ETerrainType
 	}
 }
 
-CDrawTerrainOperation::ValidationResult CDrawTerrainOperation::validateTerrainView(const int3 & pos, const std::vector<TerrainViewPattern> * pattern, int recDepth /*= 0*/) const
+CDrawTerrainOperation::ValidationResult CDrawTerrainOperation::validateTerrainView(const int3 & pos, const std::vector<TerrainViewPattern> * pattern, int recDepth) const
 {
 	for(int flip = 0; flip < 4; ++flip)
 	{
@@ -787,7 +791,7 @@ CDrawTerrainOperation::ValidationResult CDrawTerrainOperation::validateTerrainVi
 	return ValidationResult(false);
 }
 
-CDrawTerrainOperation::ValidationResult CDrawTerrainOperation::validateTerrainViewInner(const int3 & pos, const TerrainViewPattern & pattern, int recDepth /*= 0*/) const
+CDrawTerrainOperation::ValidationResult CDrawTerrainOperation::validateTerrainViewInner(const int3 & pos, const TerrainViewPattern & pattern, int recDepth) const
 {
 	auto centerTerType = map->getTile(pos).terType;
 	auto centerTerGroup = getTerrainGroup(centerTerType);
@@ -1016,7 +1020,7 @@ CDrawTerrainOperation::InvalidTiles CDrawTerrainOperation::getInvalidTiles(const
 	return tiles;
 }
 
-CDrawTerrainOperation::ValidationResult::ValidationResult(bool result, const std::string & transitionReplacement /*= ""*/)
+CDrawTerrainOperation::ValidationResult::ValidationResult(bool result, const std::string & transitionReplacement)
 	: result(result), transitionReplacement(transitionReplacement), flip(0)
 {
 
@@ -1024,7 +1028,7 @@ CDrawTerrainOperation::ValidationResult::ValidationResult(bool result, const std
 
 void CTerrainViewPatternUtils::printDebuggingInfoAboutTile(const CMap * map, int3 pos)
 {
-	logGlobal->debugStream() << "Printing detailed info about nearby map tiles of pos '" << pos << "'";
+	logGlobal->debug("Printing detailed info about nearby map tiles of pos '%s'", pos.toString());
 	for(int y = pos.y - 2; y <= pos.y + 2; ++y)
 	{
 		std::string line;
@@ -1047,7 +1051,7 @@ void CTerrainViewPatternUtils::printDebuggingInfoAboutTile(const CMap * map, int
 			}
 		}
 
-		logGlobal->debugStream() << line;
+		logGlobal->debug(line);
 	}
 }
 
@@ -1069,15 +1073,14 @@ std::string CClearTerrainOperation::getLabel() const
 	return "Clear Terrain";
 }
 
-CInsertObjectOperation::CInsertObjectOperation(CMap * map, CGObjectInstance * obj, const int3 & pos)
-	: CMapOperation(map), pos(pos), obj(obj)
+CInsertObjectOperation::CInsertObjectOperation(CMap * map, CGObjectInstance * obj)
+	: CMapOperation(map), obj(obj)
 {
 
 }
 
 void CInsertObjectOperation::execute()
 {
-	obj->pos = pos;
 	obj->id = ObjectInstanceID(map->objects.size());
 
 	boost::format fmt("%s_%d");

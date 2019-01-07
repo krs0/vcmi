@@ -7,64 +7,108 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
-
-
 #include "StdInc.h"
 #include "JsonSerializeFormat.h"
 
 #include "../JsonNode.h"
 
+//JsonSerializeHelper
+JsonSerializeHelper::JsonSerializeHelper(JsonSerializeHelper && other):
+	owner(other.owner),
+	restoreState(false)
+{
+	std::swap(restoreState, other.restoreState);
+}
+
+JsonSerializeHelper::~JsonSerializeHelper()
+{
+	if(restoreState)
+		owner->pop();
+}
+
+JsonSerializeFormat * JsonSerializeHelper::operator->()
+{
+	return owner;
+}
+
+JsonSerializeHelper::JsonSerializeHelper(JsonSerializeFormat * owner_)
+	: owner(owner_),
+	restoreState(true)
+{
+}
 
 //JsonStructSerializer
-JsonStructSerializer::JsonStructSerializer(JsonStructSerializer&& other):
-	restoreState(false),
-	owner(other.owner),
-	parentNode(other.parentNode),
-	thisNode(other.thisNode)
+JsonStructSerializer::JsonStructSerializer(JsonStructSerializer && other)
+	: JsonSerializeHelper(std::move(static_cast<JsonSerializeHelper &>(other)))
 {
 
+}
+
+JsonStructSerializer::JsonStructSerializer(JsonSerializeFormat * owner_)
+	: JsonSerializeHelper(owner_)
+{
 }
 
 JsonStructSerializer::~JsonStructSerializer()
 {
-	if(restoreState)
-		owner.current = parentNode;
 }
 
-JsonStructSerializer::JsonStructSerializer(JsonSerializeFormat& owner_, const std::string& fieldName):
-	restoreState(true),
-	owner(owner_),
-	parentNode(owner.current),
-	thisNode(&(parentNode->operator[](fieldName)))
+//JsonArraySerializer
+JsonArraySerializer::JsonArraySerializer(JsonArraySerializer && other)
+	: JsonSerializeHelper(std::move(static_cast<JsonSerializeHelper &>(other)))
 {
-	owner.current = thisNode;
+
 }
 
-JsonStructSerializer::JsonStructSerializer(JsonStructSerializer & parent, const std::string & fieldName):
-	restoreState(true),
-	owner(parent.owner),
-	parentNode(parent.thisNode),
-	thisNode(&(parentNode->operator[](fieldName)))
+JsonArraySerializer::JsonArraySerializer(JsonSerializeFormat * owner_):
+	JsonSerializeHelper(owner_)
 {
-	owner.current = thisNode;
+	thisNode = &owner->getCurrent();
 }
 
-JsonStructSerializer JsonStructSerializer::enterStruct(const std::string & fieldName)
+JsonStructSerializer JsonArraySerializer::enterStruct(const size_t index)
 {
-	return JsonStructSerializer(*this, fieldName);
+	owner->pushArrayElement(index);
+	return JsonStructSerializer(owner);
 }
 
-JsonNode& JsonStructSerializer::get()
+JsonArraySerializer JsonArraySerializer::enterArray(const size_t index)
 {
-	return *thisNode;
+	owner->pushArrayElement(index);
+	return JsonArraySerializer(owner);
 }
 
-JsonSerializeFormat * JsonStructSerializer::operator->()
+void JsonArraySerializer::serializeString(const size_t index, std::string & value)
 {
-	return &owner;
+	owner->pushArrayElement(index);
+	owner->serializeInternal(value);
+	owner->pop();
 }
 
-JsonSerializeFormat::LIC::LIC(const std::vector<bool> & Standard, const TDecoder & Decoder, const TEncoder & Encoder):
+void JsonArraySerializer::serializeInt64(const size_t index, int64_t & value)
+{
+	owner->pushArrayElement(index);
+	owner->serializeInternal(value);
+	owner->pop();
+}
+
+void JsonArraySerializer::resize(const size_t newSize)
+{
+	resize(newSize, JsonNode::JsonType::DATA_NULL);
+}
+
+void JsonArraySerializer::resize(const size_t newSize, JsonNode::JsonType type)
+{
+	owner->resizeCurrent(newSize, type);
+}
+
+size_t JsonArraySerializer::size() const
+{
+    return thisNode->Vector().size();
+}
+
+//JsonSerializeFormat::LIC
+JsonSerializeFormat::LIC::LIC(const std::vector<bool> & Standard, const TDecoder Decoder, const TEncoder Encoder):
 	standard(Standard), decoder(Decoder), encoder(Encoder)
 {
 	any.resize(standard.size(), false);
@@ -72,19 +116,37 @@ JsonSerializeFormat::LIC::LIC(const std::vector<bool> & Standard, const TDecoder
 	none.resize(standard.size(), false);
 }
 
-
-//JsonSerializeFormat
-JsonSerializeFormat::JsonSerializeFormat(JsonNode & root_, const bool saving_):
-	saving(saving_),
-	root(&root_),
-	current(root)
+JsonSerializeFormat::LICSet::LICSet(const std::set<si32>& Standard, const TDecoder Decoder, const TEncoder Encoder):
+	standard(Standard), decoder(Decoder), encoder(Encoder)
 {
 
 }
 
+//JsonSerializeFormat
+JsonSerializeFormat::JsonSerializeFormat(const IInstanceResolver * instanceResolver_, const bool saving_):
+	saving(saving_),
+	instanceResolver(instanceResolver_)
+{
+}
+
 JsonStructSerializer JsonSerializeFormat::enterStruct(const std::string & fieldName)
 {
-	JsonStructSerializer res(*this, fieldName);
+	pushStruct(fieldName);
+	return JsonStructSerializer(this);
+}
 
-	return res;
+JsonArraySerializer JsonSerializeFormat::enterArray(const std::string & fieldName)
+{
+	pushArray(fieldName);
+	return JsonArraySerializer(this);
+}
+
+void JsonSerializeFormat::serializeBool(const std::string & fieldName, bool & value)
+{
+	serializeBool<bool>(fieldName, value, true, false, false);
+}
+
+void JsonSerializeFormat::serializeBool(const std::string & fieldName, bool & value, const bool defaultValue)
+{
+	serializeBool<bool>(fieldName, value, true, false, defaultValue);
 }

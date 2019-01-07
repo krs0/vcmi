@@ -1,4 +1,3 @@
-
 /*
  * CZonePlacer.cpp, part of VCMI engine
  *
@@ -18,11 +17,6 @@
 #include "CZoneGraphGenerator.h"
 
 class CRandomGenerator;
-
-CPlacedZone::CPlacedZone(const CRmgTemplateZone * zone)
-{
-
-}
 
 CZonePlacer::CZonePlacer(CMapGenerator * Gen)
 	: width(0), height(0), scaleX(0), scaleY(0), mapSize(0), gravityConstant(0), stiffnessConstant(0),
@@ -48,7 +42,7 @@ float CZonePlacer::getDistance (float distance) const
 
 void CZonePlacer::placeZones(const CMapGenOptions * mapGenOptions, CRandomGenerator * rand)
 {
-	logGlobal->infoStream() << "Starting zone placement";
+	logGlobal->info("Starting zone placement");
 
 	width = mapGenOptions->getWidth();
 	height = mapGenOptions->getHeight();
@@ -79,7 +73,7 @@ void CZonePlacer::placeZones(const CMapGenOptions * mapGenOptions, CRandomGenera
 	float bestTotalDistance = 1e10;
 	float bestTotalOverlap = 1e10;
 
-	std::map<CRmgTemplateZone *, float3> bestSolution;
+	std::map<std::shared_ptr<CRmgTemplateZone>, float3> bestSolution;
 
 	TForceVector forces;
 	TForceVector totalForces; //  both attraction and pushback, overcomplicated?
@@ -130,10 +124,12 @@ void CZonePlacer::placeZones(const CMapGenOptions * mapGenOptions, CRandomGenera
 				improvement = true;
 		}
 		else
+		{
 			if (totalDistance + totalOverlap < bestTotalDistance + bestTotalOverlap)
 				improvement = true;
+		}
 
-		logGlobal->traceStream() << boost::format("Total distance between zones after this iteration: %2.4f, Total overlap: %2.4f, Improved: %s") % totalDistance % totalOverlap % improvement;
+		logGlobal->trace("Total distance between zones after this iteration: %2.4f, Total overlap: %2.4f, Improved: %s", totalDistance, totalOverlap , improvement);
 
 		//save best solution
 		if (improvement)
@@ -146,11 +142,11 @@ void CZonePlacer::placeZones(const CMapGenOptions * mapGenOptions, CRandomGenera
 		}
 	}
 
-	logGlobal->traceStream() << boost::format("Best fitness reached: total distance %2.4f, total overlap %2.4f") % bestTotalDistance % bestTotalOverlap;
+	logGlobal->trace("Best fitness reached: total distance %2.4f, total overlap %2.4f", bestTotalDistance, bestTotalOverlap);
 	for (auto zone : zones) //finalize zone positions
 	{
 		zone.second->setPos (cords (bestSolution[zone.second]));
-		logGlobal->traceStream() << boost::format ("Placed zone %d at relative position %s and coordinates %s") % zone.first % zone.second->getCenter() % zone.second->getPos();
+		logGlobal->trace("Placed zone %d at relative position %s and coordinates %s", zone.first, zone.second->getCenter().toString(), zone.second->getPos().toString());
 	}
 }
 
@@ -183,7 +179,7 @@ void CZonePlacer::prepareZones(TZoneMap &zones, TZoneVector &zonesVector, const 
 				if (vstd::contains(playerSettings, player))
 					faction = playerSettings[player].getStartingTown();
 				else
-					logGlobal->errorStream() << boost::format("Can't find info for player %d (starting zone)") % player.getNum();
+					logGlobal->error("Can't find info for player %d (starting zone)", player.getNum());
 
 				if (faction == CMapGenOptions::CPlayerSettings::RANDOM_TOWN) //TODO: check this after a town has already been randomized
 					zonesToPlace.push_back(zone);
@@ -286,7 +282,7 @@ void CZonePlacer::attractConnectedZones(TZoneMap &zones, TForceVector &forces, T
 			{
 				//WARNING: compiler used to 'optimize' that line so it never actually worked
 				float overlapMultiplier = (pos.z == otherZoneCenter.z) ? (minDistance / distance) : 1.0f;
-				forceVector += (((otherZoneCenter - pos)* overlapMultiplier / getDistance(distance))) * gravityConstant; //positive value
+				forceVector += ((otherZoneCenter - pos)* overlapMultiplier / getDistance(distance)) * gravityConstant; //positive value
 				totalDistance += (distance - minDistance);
 			}
 		}
@@ -358,7 +354,7 @@ void CZonePlacer::moveOneZone(TZoneMap &zones, TForceVector &totalForces, TDista
 {
 	float maxRatio = 0;
 	const int maxDistanceMovementRatio = zones.size() * zones.size(); //experimental - the more zones, the greater total distance expected
-	CRmgTemplateZone * misplacedZone = nullptr;
+	std::shared_ptr<CRmgTemplateZone> misplacedZone;
 
 	float totalDistance = 0;
 	float totalOverlap = 0;
@@ -374,11 +370,11 @@ void CZonePlacer::moveOneZone(TZoneMap &zones, TForceVector &totalForces, TDista
 			misplacedZone = zone.first;
 		}
 	}
-	logGlobal->traceStream() << boost::format("Worst misplacement/movement ratio: %3.2f") % maxRatio;
+	logGlobal->trace("Worst misplacement/movement ratio: %3.2f", maxRatio);
 
 	if (maxRatio > maxDistanceMovementRatio && misplacedZone)
 	{
-		CRmgTemplateZone * targetZone = nullptr;
+		std::shared_ptr<CRmgTemplateZone> targetZone;
 		float3 ourCenter = misplacedZone->getCenter();
 
 		if (totalDistance > totalOverlap)
@@ -395,14 +391,16 @@ void CZonePlacer::moveOneZone(TZoneMap &zones, TForceVector &totalForces, TDista
 					targetZone = otherZone;
 				}
 			}
-			float3 vec = targetZone->getCenter() - ourCenter;
-			float newDistanceBetweenZones = (std::max(misplacedZone->getSize(), targetZone->getSize())) / mapSize;
-			logGlobal->traceStream() << boost::format("Trying to move zone %d %s towards %d %s. Old distance %f") %
-				misplacedZone->getId() % ourCenter() % targetZone->getId() % targetZone->getCenter()() % maxDistance;
-			logGlobal->traceStream() << boost::format("direction is %s") % vec();
+			if (targetZone) //TODO: consider refactoring duplicated code
+			{
+				float3 vec = targetZone->getCenter() - ourCenter;
+				float newDistanceBetweenZones = (std::max(misplacedZone->getSize(), targetZone->getSize())) / mapSize;
+				logGlobal->trace("Trying to move zone %d %s towards %d %s. Old distance %f", misplacedZone->getId(), ourCenter.toString(), targetZone->getId(), targetZone->getCenter().toString(), maxDistance);
+				logGlobal->trace("direction is %s", vec.toString());
 
-			misplacedZone->setCenter(targetZone->getCenter() - vec.unitVector() * newDistanceBetweenZones); //zones should now overlap by half size
-			logGlobal->traceStream() << boost::format("New distance %f") % targetZone->getCenter().dist2d(misplacedZone->getCenter());
+				misplacedZone->setCenter(targetZone->getCenter() - vec.unitVector() * newDistanceBetweenZones); //zones should now overlap by half size
+				logGlobal->trace("New distance %f", targetZone->getCenter().dist2d(misplacedZone->getCenter()));
+			}
 		}
 		else
 		{
@@ -425,12 +423,11 @@ void CZonePlacer::moveOneZone(TZoneMap &zones, TForceVector &totalForces, TDista
 			{
 				float3 vec = ourCenter - targetZone->getCenter();
 				float newDistanceBetweenZones = (misplacedZone->getSize() + targetZone->getSize()) / mapSize;
-				logGlobal->traceStream() << boost::format("Trying to move zone %d %s away from %d %s. Old distance %f") %
-					misplacedZone->getId() % ourCenter() % targetZone->getId() % targetZone->getCenter()() % maxOverlap;
-				logGlobal->traceStream() << boost::format("direction is %s") % vec();
+				logGlobal->trace("Trying to move zone %d %s away from %d %s. Old distance %f", misplacedZone->getId(), ourCenter.toString(), targetZone->getId(), targetZone->getCenter().toString(), maxOverlap);
+				logGlobal->trace("direction is %s", vec.toString());
 
 				misplacedZone->setCenter(targetZone->getCenter() + vec.unitVector() * newDistanceBetweenZones); //zones should now be just separated
-				logGlobal->traceStream() << boost::format("New distance %f") % targetZone->getCenter().dist2d(misplacedZone->getCenter());
+				logGlobal->trace("New distance %f", targetZone->getCenter().dist2d(misplacedZone->getCenter()));
 			}
 		}
 	}
@@ -458,7 +455,7 @@ d = 0.01 * dx^3 - 0.1618 * dx^2 + 1 * dx + ...
 
 void CZonePlacer::assignZones(const CMapGenOptions * mapGenOptions)
 {
-	logGlobal->infoStream() << "Starting zone colouring";
+	logGlobal->info("Starting zone colouring");
 
 	auto width = mapGenOptions->getWidth();
 	auto height = mapGenOptions->getHeight();
@@ -469,7 +466,7 @@ void CZonePlacer::assignZones(const CMapGenOptions * mapGenOptions)
 
 	auto zones = gen->getZones();
 
-	typedef std::pair<CRmgTemplateZone *, float> Dpair;
+	typedef std::pair<std::shared_ptr<CRmgTemplateZone>, float> Dpair;
 	std::vector <Dpair> distances;
 	distances.reserve(zones.size());
 
@@ -481,7 +478,7 @@ void CZonePlacer::assignZones(const CMapGenOptions * mapGenOptions)
 		return lhs.second / lhs.first->getSize() < rhs.second / rhs.first->getSize();
 	};
 
-	auto moveZoneToCenterOfMass = [](CRmgTemplateZone * zone) -> void
+	auto moveZoneToCenterOfMass = [](std::shared_ptr<CRmgTemplateZone> zone) -> void
 	{
 		int3 total(0, 0, 0);
 		auto tiles = zone->getTileInfo();
@@ -560,12 +557,12 @@ void CZonePlacer::assignZones(const CMapGenOptions * mapGenOptions)
 		if (zone.second->getPos().z)
 		{
 			if (!CREATE_FULL_UNDERGROUND)
-				zone.second->discardDistantTiles(gen, zone.second->getSize() + 1);
+				zone.second->discardDistantTiles(zone.second->getSize() + 1);
 
 			//make sure that terrain inside zone is not a rock
 			//FIXME: reorder actions?
-			zone.second->paintZoneTerrain (gen, ETerrainType::SUBTERRANEAN);
+			zone.second->paintZoneTerrain (ETerrainType::SUBTERRANEAN);
 		}
 	}
-	logGlobal->infoStream() << "Finished zone colouring";
+	logGlobal->info("Finished zone colouring");
 }

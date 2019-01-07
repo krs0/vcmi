@@ -1,4 +1,3 @@
-
 /*
  * BinarySerializer.h, part of VCMI engine
  *
@@ -8,11 +7,12 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
-
 #pragma once
 
 #include "CTypeList.h"
 #include "../mapObjects/CArmedInstance.h"
+
+class FileStream;
 
 class DLL_LINKAGE CSaverBase
 {
@@ -360,7 +360,7 @@ public:
 
 	void openNextFile(const boost::filesystem::path &fname); //throws!
 	void clear();
-	void reportState(CLogger * out) override;
+	void reportState(vstd::CLoggerBase * out) override;
 
 	void putMagicBytes(const std::string &text);
 

@@ -1,4 +1,3 @@
-
 /*
  * CMap.h, part of VCMI engine
  *
@@ -44,7 +43,8 @@ struct DLL_LINKAGE SHeroName
 	template <typename Handler>
 	void serialize(Handler & h, const int version)
 	{
-		h & heroId & heroName;
+		h & heroId;
+		h & heroName;
 	}
 };
 
@@ -68,16 +68,22 @@ struct DLL_LINKAGE PlayerInfo
 	std::set<TFaction> allowedFactions;
 	bool isFactionRandom;
 
-	si32 mainCustomHeroPortrait; /// The default value is -1.
+	///main hero instance (VCMI maps only)
+	std::string mainHeroInstance;
+	/// Player has a random main hero
+	bool hasRandomHero;
+	/// The default value is -1.
+	si32 mainCustomHeroPortrait;
 	std::string mainCustomHeroName;
-	si32 mainCustomHeroId; /// ID of custom hero (only if portrait and hero name are set, otherwise unpredicted value), -1 if none (not always -1)
+	/// ID of custom hero (only if portrait and hero name are set, otherwise unpredicted value), -1 if none (not always -1)
+	si32 mainCustomHeroId;
 
 	std::vector<SHeroName> heroesNames; /// list of placed heroes on the map
 	bool hasMainTown; /// The default value is false.
 	bool generateHeroAtMainTown; /// The default value is false.
 	int3 posOfMainTown;
 	TeamID team; /// The default value NO_TEAM
-	bool hasRandomHero; /// Player has a random hero
+
 
 	bool generateHero; /// Unused.
 	si32 p7; /// Unknown and unused.
@@ -88,9 +94,27 @@ struct DLL_LINKAGE PlayerInfo
 	template <typename Handler>
 	void serialize(Handler & h, const int version)
 	{
-		h & p7 & hasRandomHero & mainCustomHeroId & canHumanPlay & canComputerPlay & aiTactic & allowedFactions & isFactionRandom &
-				mainCustomHeroPortrait & mainCustomHeroName & heroesNames & hasMainTown & generateHeroAtMainTown &
-				posOfMainTown & team & generateHero;
+		h & p7;
+		h & hasRandomHero;
+		h & mainCustomHeroId;
+		h & canHumanPlay;
+		h & canComputerPlay;
+		h & aiTactic;
+		h & allowedFactions;
+		h & isFactionRandom;
+		h & mainCustomHeroPortrait;
+		h & mainCustomHeroName;
+		h & heroesNames;
+		h & hasMainTown;
+		h & generateHeroAtMainTown;
+		h & posOfMainTown;
+		h & team;
+		h & generateHero;
+
+		if(version >= 770)
+		{
+			h & mainHeroInstance;
+		}
 	}
 };
 
@@ -124,6 +148,7 @@ struct DLL_LINKAGE EventCondition
 	EventCondition(EWinLoseType condition, si32 value, si32 objectType, int3 position = int3(-1, -1, -1));
 
 	const CGObjectInstance * object; // object that was at specified position or with instance name on start
+	EMetaclass metaType;
 	si32 value;
 	si32 objectType;
 	si32 objectSubtype;
@@ -139,10 +164,15 @@ struct DLL_LINKAGE EventCondition
 		h & objectType;
 		h & position;
 		h & condition;
+		//(!!!) should be `version >= 759` here, but do not try to "fix" it
 		if(version > 759)
 		{
 			h & objectSubtype;
 			h & objectInstanceName;
+		}
+		if(version >= 770)
+		{
+			h & metaType;
 		}
 	}
 };
@@ -166,7 +196,8 @@ struct DLL_LINKAGE EventEffect
 	template <typename Handler>
 	void serialize(Handler & h, const int version)
 	{
-		h & type & toOtherMessage;
+		h & type;
+		h & toOtherMessage;
 	}
 };
 
@@ -193,7 +224,8 @@ struct DLL_LINKAGE TriggeredEvent
 		h & identifier;
 		h & trigger;
 		h & description;
-		h & onFulfill & effect;
+		h & onFulfill;
+		h & effect;
 	}
 };
 
@@ -203,11 +235,17 @@ struct DLL_LINKAGE Rumor
 	std::string name;
 	std::string text;
 
+	Rumor() = default;
+	~Rumor() = default;
+
 	template <typename Handler>
 	void serialize(Handler & h, const int version)
 	{
-		h & name & text;
+		h & name;
+		h & text;
 	}
+
+	void serializeJson(JsonSerializeFormat & handler);
 };
 
 /// The disposed hero struct describes which hero can be hired from which player.
@@ -223,7 +261,10 @@ struct DLL_LINKAGE DisposedHero
 	template <typename Handler>
 	void serialize(Handler & h, const int version)
 	{
-		h & heroId & portrait & name & players;
+		h & heroId;
+		h & portrait;
+		h & name;
+		h & players;
 	}
 };
 
@@ -247,10 +288,11 @@ class DLL_LINKAGE CMapHeader
 {
 	void setupEvents();
 public:
-	static const int MAP_SIZE_SMALL;
-	static const int MAP_SIZE_MIDDLE;
-	static const int MAP_SIZE_LARGE;
-	static const int MAP_SIZE_XLARGE;
+
+	static const int MAP_SIZE_SMALL = 36;
+	static const int MAP_SIZE_MIDDLE = 72;
+	static const int MAP_SIZE_LARGE = 108;
+	static const int MAP_SIZE_XLARGE = 144;
 
 	CMapHeader();
 	virtual ~CMapHeader();
@@ -283,9 +325,23 @@ public:
 	template <typename Handler>
 	void serialize(Handler & h, const int Version)
 	{
-		h & version & name & description & width & height & twoLevel & difficulty & levelLimit & areAnyPlayers;
-		h & players & howManyTeams & allowedHeroes & triggeredEvents;
-		h & victoryMessage & victoryIconIndex & defeatMessage & defeatIconIndex;
+		h & version;
+		h & name;
+		h & description;
+		h & width;
+		h & height;
+		h & twoLevel;
+		h & difficulty;
+		h & levelLimit;
+		h & areAnyPlayers;
+		h & players;
+		h & howManyTeams;
+		h & allowedHeroes;
+		h & triggeredEvents;
+		h & victoryMessage;
+		h & victoryIconIndex;
+		h & defeatMessage;
+		h & defeatIconIndex;
 	}
 };
 
@@ -315,6 +371,9 @@ public:
 	void addNewArtifactInstance(CArtifactInstance * art);
 	void eraseArtifactInstance(CArtifactInstance * art);
 
+	void addNewQuestInstance(CQuest * quest);
+
+	///Use only this method when creating new map object instances
 	void addNewObject(CGObjectInstance * obj);
 
 	/// Gets object of specified type on requested position
@@ -323,6 +382,8 @@ public:
 
 	/// Sets the victory/loss condition objectives ??
 	void checkForObjectives();
+
+	void resetStaticData();
 
 	ui32 checksum;
 	std::vector<Rumor> rumors;
@@ -364,8 +425,15 @@ public:
 	void serialize(Handler &h, const int formatVersion)
 	{
 		h & static_cast<CMapHeader&>(*this);
-		h & rumors & allowedSpell & allowedAbilities & allowedArtifact & events & grailPos;
-		h & artInstances & quests & allHeroes;
+		h & rumors;
+		h & allowedSpell;
+		h & allowedAbilities;
+		h & allowedArtifact;
+		h & events;
+		h & grailPos;
+		h & artInstances;
+		h & quests;
+		h & allHeroes;
 		h & questIdentifierToId;
 
 		//TODO: viccondetails
@@ -414,12 +482,16 @@ public:
 		}
 
 		h & objects;
-		h & heroesOnMap & teleportChannels & towns & artInstances;
+		h & heroesOnMap;
+		h & teleportChannels;
+		h & towns;
+		h & artInstances;
 
 		// static members
 		h & CGKeys::playerKeyMap;
 		h & CGMagi::eyelist;
-		h & CGObelisk::obeliskCount & CGObelisk::visited;
+		h & CGObelisk::obeliskCount;
+		h & CGObelisk::visited;
 		h & CGTownInstance::merchantArtifacts;
 		h & CGTownInstance::universitySkills;
 

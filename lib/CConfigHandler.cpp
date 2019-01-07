@@ -1,13 +1,3 @@
-#include "StdInc.h"
-#include "CConfigHandler.h"
-
-#include "../lib/filesystem/Filesystem.h"
-#include "../lib/filesystem/FileStream.h"
-#include "../lib/GameConstants.h"
-#include "../lib/VCMIDirs.h"
-
-using namespace config;
-
 /*
  * CConfigHandler.cpp, part of VCMI engine
  *
@@ -17,6 +7,15 @@ using namespace config;
  * Full text of license available in license.txt file, in main folder
  *
  */
+#include "StdInc.h"
+#include "CConfigHandler.h"
+
+#include "../lib/filesystem/Filesystem.h"
+#include "../lib/filesystem/FileStream.h"
+#include "../lib/GameConstants.h"
+#include "../lib/VCMIDirs.h"
+
+using namespace config;
 
 SettingsStorage settings;
 CConfigHandler conf;
@@ -43,7 +42,7 @@ SettingsStorage::NodeAccessor<Accessor>::operator Accessor() const
 }
 
 template<typename Accessor>
-SettingsStorage::NodeAccessor<Accessor> SettingsStorage::NodeAccessor<Accessor>::operator () (std::vector<std::string> _path)
+SettingsStorage::NodeAccessor<Accessor> SettingsStorage::NodeAccessor<Accessor>::operator () (std::vector<std::string> _path) const
 {
 	std::vector<std::string> newPath = path;
 	newPath.insert( newPath.end(), _path.begin(), _path.end());
@@ -76,13 +75,11 @@ void SettingsStorage::invalidateNode(const std::vector<std::string> &changedPath
 		listener->nodeInvalidated(changedPath);
 
 	JsonNode savedConf = config;
-	JsonNode schema(ResourceID("config/schemas/settings.json"));
-
 	savedConf.Struct().erase("session");
 	JsonUtils::minimize(savedConf, "vcmi:settings");
 
 	FileStream file(*CResourceHandler::get()->getResourceName(ResourceID("config/settings.json")), std::ofstream::out | std::ofstream::trunc);
-	file << savedConf;
+	file << savedConf.toJson();
 }
 
 JsonNode & SettingsStorage::getNode(std::vector<std::string> path)
@@ -99,9 +96,14 @@ Settings SettingsStorage::get(std::vector<std::string> path)
 	return Settings(*this, path);
 }
 
-const JsonNode& SettingsStorage::operator [](std::string value)
+const JsonNode & SettingsStorage::operator [](std::string value) const
 {
 	return config[value];
+}
+
+const JsonNode & SettingsStorage::toJsonNode() const
+{
+	return config;
 }
 
 SettingsListener::SettingsListener(SettingsStorage &_parent, const std::vector<std::string> &_path):
@@ -201,11 +203,12 @@ static void setGem(AdventureMapConfig &ac, const int gem, const JsonNode &g)
 	ac.gemG.push_back(g["graphic"].String());
 }
 
-CConfigHandler::CConfigHandler(void): current(nullptr)
+CConfigHandler::CConfigHandler()
+	: current(nullptr)
 {
 }
 
-CConfigHandler::~CConfigHandler(void)
+CConfigHandler::~CConfigHandler()
 {
 }
 

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C0300513-E845-43B4-9A4F-E8817EAEF57C}</ProjectGuid>
     <RootNamespace>BattleAI</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -41,7 +41,7 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v140_xp</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RD|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -81,7 +81,7 @@
     <OutDir>$(VCMI_Out)\AI\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RD|Win32'">
-    <OutDir>$(VCMI_Out)</OutDir>
+    <OutDir>$(VCMI_Out)/AI</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RD|x64'">
     <OutDir>$(VCMI_Out)\AI\</OutDir>
@@ -113,11 +113,11 @@
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdInc.h</PrecompiledHeaderFile>
-      <AdditionalOptions>/Zm159 %(AdditionalOptions)</AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <AdditionalDependencies>VCMI_lib.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\libs;..\..</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(VCMI_Out)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RD|x64'">
@@ -135,6 +135,7 @@
     <ClCompile Include="common.cpp" />
     <ClCompile Include="EnemyInfo.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PossibleSpellcast.cpp" />
     <ClCompile Include="PotentialTargets.cpp" />
     <ClCompile Include="StackWithBonuses.cpp" />
     <ClCompile Include="StdInc.cpp">
@@ -152,6 +153,7 @@
     <ClInclude Include="AttackPossibility.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="EnemyInfo.h" />
+    <ClInclude Include="PossibleSpellcast.h" />
     <ClInclude Include="PotentialTargets.h" />
     <ClInclude Include="StackWithBonuses.h" />
     <ClInclude Include="StdInc.h" />

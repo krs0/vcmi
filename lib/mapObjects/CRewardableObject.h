@@ -1,11 +1,3 @@
-#pragma once
-
-#include "CObjectHandler.h"
-#include "CArmedInstance.h"
-
-#include "../NetPacksBase.h"
-#include "../ResourceSet.h"
-
 /*
  * CRewardableObject.h, part of VCMI engine
  *
@@ -15,6 +7,13 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "CObjectHandler.h"
+#include "CArmedInstance.h"
+
+#include "../NetPacksBase.h"
+#include "../ResourceSet.h"
 
 class CRandomRewardObjectInfo;
 
@@ -58,8 +57,14 @@ public:
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & numOfGrants & dayOfWeek & minLevel & resources;
-		h & primary & secondary & artifacts & creatures;
+		h & numOfGrants;
+		h & dayOfWeek;
+		h & minLevel;
+		h & resources;
+		h & primary;
+		h & secondary;
+		h & artifacts;
+		h & creatures;
 	}
 };
 
@@ -122,11 +127,21 @@ public:
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & resources & extraComponents & removeObject;
-		h & manaPercentage & movePercentage;
-		h & gainedExp & gainedLevels & manaDiff & movePoints;
-		h & primary & secondary & bonuses;
-		h & artifacts & spells & creatures;
+		h & resources;
+		h & extraComponents;
+		h & removeObject;
+		h & manaPercentage;
+		h & movePercentage;
+		h & gainedExp;
+		h & gainedLevels;
+		h & manaDiff;
+		h & movePoints;
+		h & primary;
+		h & secondary;
+		h & bonuses;
+		h & artifacts;
+		h & spells;
+		h & creatures;
 	}
 };
 
@@ -152,7 +167,11 @@ public:
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & limiter & reward & message & selectChance & numOfGrants;
+		h & limiter;
+		h & reward;
+		h & message;
+		h & selectChance;
+		h & numOfGrants;
 	}
 };
 
@@ -201,8 +220,6 @@ protected:
 	MetaString onVisited;
 	MetaString onEmpty;
 
-	/// sound that will be played alongside with *any* message
-	ui16 soundID;
 	/// how reward will be selected, uses ESelectMode enum
 	ui8 selectMode;
 	/// contols who can visit an object, uses EVisitMode enum
@@ -245,9 +262,20 @@ public:
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
 		h & static_cast<CArmedInstance&>(*this);
-		h & info & canRefuse & resetDuration;
-		h & onSelect & onVisited & onEmpty & visitMode;
-		h & soundID & selectMode & selectedReward;
+		h & info;
+		h & canRefuse;
+		h & resetDuration;
+		h & onSelect;
+		h & onVisited;
+		h & onEmpty;
+		h & visitMode;
+		if(version < 778)
+		{
+			ui16 soundID = 0;
+			h & soundID;
+		}
+		h & selectMode;
+		h & selectedReward;
 	}
 
 	// for configuration/object setup

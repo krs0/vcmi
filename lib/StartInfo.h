@@ -1,7 +1,3 @@
-#pragma once
-
-#include "GameConstants.h"
-
 /*
  * StartInfo.h, part of VCMI engine
  *
@@ -11,12 +7,19 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "GameConstants.h"
 
 class CMapGenOptions;
 class CCampaignState;
+class CMapInfo;
+struct PlayerInfo;
+class PlayerColor;
+class SharedMemory;
 
 /// Struct which describes the name, the color, the starting bonus of a player
-struct PlayerSettings
+struct DLL_LINKAGE PlayerSettings
 {
 	enum { PLAYER_AI = 0 }; // for use in playerID
 
@@ -34,13 +37,13 @@ struct PlayerSettings
 		 heroPortrait; //-1 if default, else ID
 
 	std::string heroName;
-	PlayerColor color; //from 0 - 
+	PlayerColor color; //from 0 -
 	enum EHandicap {NO_HANDICAP, MILD, SEVERE};
 	EHandicap handicap;//0-no, 1-mild, 2-severe
 	TeamID team;
 
 	std::string name;
-	ui8 playerID; //0 - AI, non-0 serves as player id
+	std::set<ui8> connectedPlayerIDs; //Empty - AI, or connectrd player ids
 	bool compOnly; //true if this player is a computer only player; required for RMG
 	template <typename Handler>
 	void serialize(Handler &h, const int version)
@@ -53,22 +56,32 @@ struct PlayerSettings
 		h & color;
 		h & handicap;
 		h & name;
-		h & playerID;
+		if(version < 787)
+		{
+			ui8 oldConnectedId = 0;
+			h & oldConnectedId;
+			if(oldConnectedId)
+			{
+				connectedPlayerIDs.insert(oldConnectedId);
+			}
+		}
+		else
+		{
+			h & connectedPlayerIDs;
+		}
 		h & team;
 		h & compOnly;
 	}
 
-	PlayerSettings() : bonus(RANDOM), castle(NONE), hero(RANDOM), heroPortrait(RANDOM),
-		color(0), handicap(NO_HANDICAP), team(0), playerID(PLAYER_AI), compOnly(false)
-	{
-		
-	}
+	PlayerSettings();
+	bool isControlledByAI() const;
+	bool isControlledByHuman() const;
 };
 
 /// Struct which describes the difficulty, the turn time,.. of a heroes match.
-struct StartInfo
+struct DLL_LINKAGE StartInfo
 {
-	enum EMode {NEW_GAME, LOAD_GAME, CAMPAIGN, DUEL, INVALID = 255};
+	enum EMode {NEW_GAME, LOAD_GAME, CAMPAIGN, INVALID = 255};
 
 	EMode mode;
 	ui8 difficulty; //0=easy; 4=impossible
@@ -86,26 +99,12 @@ struct StartInfo
 
 	std::shared_ptr<CCampaignState> campState;
 
-	PlayerSettings & getIthPlayersSettings(PlayerColor no)
-	{
-		if(playerInfos.find(no) != playerInfos.end())
-			return playerInfos[no];
-		logGlobal->errorStream() << "Cannot find info about player " << no <<". Throwing...";
-		throw std::runtime_error("Cannot find info about player");
-	}
-	const PlayerSettings & getIthPlayersSettings(PlayerColor no) const
-	{
-		return const_cast<StartInfo&>(*this).getIthPlayersSettings(no);
-	}
+	PlayerSettings & getIthPlayersSettings(PlayerColor no);
+	const PlayerSettings & getIthPlayersSettings(PlayerColor no) const;
+	PlayerSettings * getPlayersSettings(const ui8 connectedPlayerId);
 
-	PlayerSettings *getPlayersSettings(const ui8 nameID)
-	{
-		for(auto it=playerInfos.begin(); it != playerInfos.end(); ++it)
-			if(it->second.playerID == nameID)
-				return &it->second;
-
-		return nullptr;
-	}
+	// TODO: Must be client-side
+	std::string getCampaignName() const;
 
 	template <typename Handler>
 	void serialize(Handler &h, const int version)
@@ -113,7 +112,8 @@ struct StartInfo
 		h & mode;
 		h & difficulty;
 		h & playerInfos;
-		h & seedToBeUsed & seedPostInit;
+		h & seedToBeUsed;
+		h & seedPostInit;
 		h & mapfileChecksum;
 		h & turnTime;
 		h & mapname;
@@ -127,3 +127,66 @@ struct StartInfo
 
 	}
 };
+
+struct ClientPlayer
+{
+	int connection;
+	std::string name;
+
+	template <typename Handler> void serialize(Handler &h, const int version)
+	{
+		h & connection;
+		h & name;
+	}
+};
+
+struct LobbyState
+{
+	std::shared_ptr<StartInfo> si;
+	std::shared_ptr<CMapInfo> mi;
+	std::map<ui8, ClientPlayer> playerNames; // id of player <-> player name; 0 is reserved as ID of AI "players"
+	int hostClientId;
+	// TODO: Campaign-only and we don't really need either of them.
+	// Before start both go into CCampaignState that is part of StartInfo
+	int campaignMap;
+	int campaignBonus;
+
+	LobbyState() : si(new StartInfo()), hostClientId(-1), campaignMap(-1), campaignBonus(-1) {}
+
+	template <typename Handler> void serialize(Handler &h, const int version)
+	{
+		h & si;
+		h & mi;
+		h & playerNames;
+		h & hostClientId;
+		h & campaignMap;
+		h & campaignBonus;
+	}
+};
+
+struct DLL_LINKAGE LobbyInfo : public LobbyState
+{
+	boost::mutex stateMutex;
+	std::string uuid;
+	std::shared_ptr<SharedMemory> shm;
+
+	LobbyInfo() {}
+
+	void verifyStateBeforeStart(bool ignoreNoHuman = false) const;
+
+	bool isClientHost(int clientId) const;
+	std::set<PlayerColor> getAllClientPlayers(int clientId);
+	std::vector<ui8> getConnectedPlayerIdsForClient(int clientId) const;
+
+	// Helpers for lobby state access
+	std::set<PlayerColor> clientHumanColors(int clientId);
+	PlayerColor clientFirstColor(int clientId) const;
+	bool isClientColor(int clientId, PlayerColor color) const;
+	ui8 clientFirstId(int clientId) const; // Used by chat only!
+	PlayerInfo & getPlayerInfo(int color);
+	TeamID getPlayerTeamId(PlayerColor color);
+};
+
+class ExceptionMapMissing : public std::exception {};
+class ExceptionNoHuman : public std::exception {};
+class ExceptionNoTemplate : public std::exception {};

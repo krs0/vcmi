@@ -1,4 +1,3 @@
-
 /*
  * CMapGenOptions.cpp, part of VCMI engine
  *
@@ -18,7 +17,8 @@
 #include "../VCMI_Lib.h"
 #include "../CTownHandler.h"
 
-CMapGenOptions::CMapGenOptions() : width(CMapHeader::MAP_SIZE_MIDDLE), height(CMapHeader::MAP_SIZE_MIDDLE), hasTwoLevels(false),
+CMapGenOptions::CMapGenOptions()
+	: width(CMapHeader::MAP_SIZE_MIDDLE), height(CMapHeader::MAP_SIZE_MIDDLE), hasTwoLevels(true),
 	playerCount(RANDOM_SIZE), teamCount(RANDOM_SIZE), compOnlyPlayerCount(RANDOM_SIZE), compOnlyTeamCount(RANDOM_SIZE), humanPlayersCount(0),
 	waterContent(EWaterContent::RANDOM), monsterStrength(EMonsterStrength::RANDOM), mapTemplate(nullptr)
 {
@@ -71,8 +71,13 @@ void CMapGenOptions::setPlayerCount(si8 value)
 	if (compOnlyPlayerCount > possibleCompPlayersCount)
 		setCompOnlyPlayerCount(possibleCompPlayersCount);
 
-	if (getPlayerCount() != RANDOM_SIZE && getCompOnlyPlayerCount() != RANDOM_SIZE)
-		humanPlayersCount = getPlayerCount() - getCompOnlyPlayerCount();
+	if (getPlayerCount() != RANDOM_SIZE)
+	{
+		if (getCompOnlyPlayerCount() != RANDOM_SIZE)
+			humanPlayersCount = getPlayerCount() - getCompOnlyPlayerCount();
+		else
+			humanPlayersCount = getPlayerCount();
+	}
 
 	resetPlayersMap();
 }
@@ -137,7 +142,7 @@ EMonsterStrength::EMonsterStrength CMapGenOptions::getMonsterStrength() const
 
 void CMapGenOptions::setMonsterStrength(EMonsterStrength::EMonsterStrength value)
 {
-	monsterStrength = value;
+ 	monsterStrength = value;
 }
 
 void CMapGenOptions::resetPlayersMap()
@@ -167,7 +172,11 @@ void CMapGenOptions::resetPlayersMap()
 		auto pc = PlayerColor(color);
 		player.setColor(pc);
 		auto playerType = EPlayerType::AI;
-		if ((getPlayerCount() != RANDOM_SIZE && color >= realPlayersCnt)
+		if (getPlayerCount() != RANDOM_SIZE && color < realPlayersCnt)
+		{
+			playerType = EPlayerType::HUMAN;
+		}
+		else if((getPlayerCount() != RANDOM_SIZE && color >= realPlayersCnt)
 		   || (compOnlyPlayerCount != RANDOM_SIZE && color >= (PlayerColor::PLAYER_LIMIT_I-compOnlyPlayerCount)))
 		{
 			playerType = EPlayerType::COMP_ONLY;
@@ -219,8 +228,9 @@ const std::map<std::string, CRmgTemplate *> & CMapGenOptions::getAvailableTempla
 
 void CMapGenOptions::finalize(CRandomGenerator & rand)
 {
-	logGlobal->infoStream() << boost::format ("RMG settings: players %d, teams %d, computer players %d, computer teams %d, water %d, monsters %d")
-											% (int)getPlayerCount() % (int)getTeamCount() % (int)getCompOnlyPlayerCount() % (int)getCompOnlyTeamCount() % (int)getWaterContent() % (int)getMonsterStrength();
+	logGlobal->info("RMG settings: players %d, teams %d, computer players %d, computer teams %d, water %d, monsters %d",
+		static_cast<int>(getPlayerCount()), static_cast<int>(getTeamCount()), static_cast<int>(getCompOnlyPlayerCount()),
+		static_cast<int>(getCompOnlyTeamCount()), static_cast<int>(getWaterContent()), static_cast<int>(getMonsterStrength()));
 
 	if(!mapTemplate)
 	{
@@ -271,7 +281,7 @@ void CMapGenOptions::finalize(CRandomGenerator & rand)
 	//setHeight(20);
 	//setWidth(50);
 
-	logGlobal->traceStream() << "Player config:";
+	logGlobal->trace("Player config:");
 	int humanPlayers = 0, cpuOnlyPlayers = 0, AIplayers = 0;
 	for (auto player : players)
 	{
@@ -293,10 +303,10 @@ void CMapGenOptions::finalize(CRandomGenerator & rand)
 			default:
 				assert(false);
 		}
-		logGlobal->traceStream() << boost::format("Player %d: %s") % player.second.getColor() % playerType;
+		logGlobal->trace("Player %d: %s", player.second.getColor(), playerType);
 	}
 	setCompOnlyPlayerCount(cpuOnlyPlayers); //human players are set automaticlaly (?)
-	logGlobal->infoStream() << boost::format("Final player config: %d total, %d cpu-only") % players.size() % (int)getCompOnlyPlayerCount();
+	logGlobal->info("Final player config: %d total, %d cpu-only", players.size(), (int)getCompOnlyPlayerCount());
 }
 
 void CMapGenOptions::updatePlayers()
@@ -341,7 +351,7 @@ void CMapGenOptions::updateCompOnlyPlayers()
 
 	if (compOnlyPlayersToAdd < 0)
 	{
-		logGlobal->errorStream() << boost::format("Incorrect number of players to add. Requested players %d, current players %d") % playerCount % players.size();
+		logGlobal->error("Incorrect number of players to add. Requested players %d, current players %d", playerCount, players.size());
 		assert (compOnlyPlayersToAdd < 0);
 	}
 	for(int i = 0; i < compOnlyPlayersToAdd; ++i)
@@ -379,7 +389,7 @@ PlayerColor CMapGenOptions::getNextPlayerColor() const
 			return i;
 		}
 	}
-	logGlobal->errorStream() << "Failed to get next player color";
+	logGlobal->error("Failed to get next player color");
 	assert(false);
 	return PlayerColor(0);
 }
@@ -406,8 +416,8 @@ const CRmgTemplate * CMapGenOptions::getPossibleTemplate(CRandomGenerator & rand
 	for(const auto & tplPair : tpls)
 	{
 		const auto & tpl = tplPair.second;
-		CRmgTemplate::CSize tplSize(width, height, hasTwoLevels);
-		if(tplSize >= tpl->getMinSize() && tplSize <= tpl->getMaxSize())
+		int3 tplSize(width, height, (hasTwoLevels ? 2 : 1));
+		if(tpl->matchesSize(tplSize))
 		{
 			bool isPlayerCountValid = false;
 			if (getPlayerCount() != RANDOM_SIZE)

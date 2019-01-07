@@ -1,12 +1,3 @@
-#pragma once
-
-#include "../../lib/ConstTransitivePtr.h" //may be reundant
-#include "../../lib/GameConstants.h"
-
-#include "CBattleAnimations.h"
-
-#include "../../lib/spells/CSpellHandler.h" //CSpell::TAnimation
-
 /*
  * CBattleInterface.h, part of VCMI engine
  *
@@ -16,11 +7,18 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "../../lib/ConstTransitivePtr.h" //may be reundant
+#include "../../lib/GameConstants.h"
+
+#include "CBattleAnimations.h"
+
+#include "../../lib/spells/CSpellHandler.h" //CSpell::TAnimation
 
 class CLabel;
 class CCreatureSet;
 class CGHeroInstance;
-class CDefHandler;
 class CStack;
 class CCallback;
 class CButton;
@@ -31,7 +29,7 @@ struct BattleSpellCast;
 struct CObstacleInstance;
 template <typename T> struct CondSh;
 struct SetStackEffect;
-struct BattleAction;
+class BattleAction;
 class CGTownInstance;
 struct CatapultAttack;
 struct CatapultProjectileInfo;
@@ -47,14 +45,16 @@ struct ProjectileInfo;
 class CClickableHex;
 struct BattleHex;
 struct InfoAboutHero;
-struct BattleAction;
 class CBattleGameInterface;
+struct CustomEffectInfo;
+class CAnimation;
+class IImage;
 
 /// Small struct which contains information about the id of the attacked stack, the damage dealt,...
 struct StackAttackedInfo
 {
 	const CStack *defender; //attacked stack
-	unsigned int dmg; //damage dealt
+	int64_t dmg; //damage dealt
 	unsigned int amountKilled; //how many creatures in stack has been killed
 	const CStack *attacker; //attacking stack
 	bool indirectAttack; //if true, stack was attacked indirectly - spell or ranged attack
@@ -68,8 +68,7 @@ struct BattleEffect
 {
 	int x, y; //position on the screen
 	float currentFrame;
-	int maxFrame;
-	CDefHandler *anim; //animation to display
+	std::shared_ptr<CAnimation> animation;
 	int effectID; //uniqueID equal ot ID of appropriate CSpellEffectAnim
 	BattleHex position; //Indicates if effect which hex the effect is drawn on
 };
@@ -107,7 +106,7 @@ struct CatapultProjectileInfo
 
 /// Big class which handles the overall battle interface actions and it is also responsible for
 /// drawing everything correctly.
-class CBattleInterface : public CIntObject
+class CBattleInterface : public WindowBase
 {
 	enum PossibleActions // actions performed at l-click
 	{
@@ -121,24 +120,32 @@ class CBattleInterface : public CIntObject
 	};
 private:
 	SDL_Surface *background, *menu, *amountNormal, *amountNegative, *amountPositive, *amountEffNeutral, *cellBorders, *backgroundWithHexes;
-	CButton *bOptions, *bSurrender, *bFlee, *bAutofight, *bSpell,
-		* bWait, *bDefence, *bConsoleUp, *bConsoleDown, *btactNext, *btactEnd;
-	CBattleConsole *console;
-	CBattleHero *attackingHero, *defendingHero; //fighting heroes
-	CStackQueue *queue;
+
+	std::shared_ptr<CButton> bOptions;
+	std::shared_ptr<CButton> bSurrender;
+	std::shared_ptr<CButton> bFlee;
+	std::shared_ptr<CButton> bAutofight;
+	std::shared_ptr<CButton> bSpell;
+	std::shared_ptr<CButton> bWait;
+	std::shared_ptr<CButton> bDefence;
+	std::shared_ptr<CButton> bConsoleUp;
+	std::shared_ptr<CButton> bConsoleDown;
+	std::shared_ptr<CButton> btactNext;
+	std::shared_ptr<CButton> btactEnd;
+
+	std::shared_ptr<CBattleConsole> console;
+	std::shared_ptr<CBattleHero> attackingHero;
+	std::shared_ptr<CBattleHero> defendingHero;
+	std::shared_ptr<CStackQueue> queue;
+
 	const CCreatureSet *army1, *army2; //copy of initial armies (for result window)
 	const CGHeroInstance *attackingHeroInstance, *defendingHeroInstance;
-	std::map<int, CCreatureAnimation *> creAnims; //animations of creatures from fighting armies (order by BattleInfo's stacks' ID)
-	std::map<int, CDefHandler *> idToProjectile; //projectiles of creatures (creatureID, defhandler)
-	std::map<int, CDefHandler *> idToObstacle; //obstacles located on the battlefield
-	std::map<int, SDL_Surface *> idToAbsoluteObstacle; //obstacles located on the battlefield
+	std::map<int32_t, std::shared_ptr<CCreatureAnimation>> creAnims; //animations of creatures from fighting armies (order by BattleInfo's stacks' ID)
 
-	//TODO these should be loaded only when needed (and freed then) but I believe it's rather work for resource manager,
-	//so I didn't implement that (having ongoing RM development)
-	CDefHandler *landMine;
-	CDefHandler *quicksand;
-	CDefHandler *fireWall;
-	CDefHandler *smallForceField[2], *bigForceField[2]; // [side]
+	std::map<int, std::shared_ptr<CAnimation>> idToProjectile;
+
+	std::map<std::string, std::shared_ptr<CAnimation>> animationsCache;
+	std::map<si32, std::shared_ptr<CAnimation>> obstacleAnimations;
 
 	std::map<int, bool> creDir; // <creatureID, if false reverse creature's animation> //TODO: move it to battle callback
 	ui8 animCount;
@@ -159,7 +166,7 @@ private:
 	bool stackCanCastSpell; //if true, active stack could possibly cast some target spell
 	bool creatureCasting; //if true, stack currently aims to cats a spell
 	bool spellDestSelectMode; //if true, player is choosing destination for his spell - only for GUI / console
-	BattleAction *spellToCast; //spell for which player is choosing destination
+	std::shared_ptr<BattleAction> spellToCast; //spell for which player is choosing destination
 	const CSpell *sp; //spell pointer for convenience
 	si32 creatureSpellToCast;
 	std::vector<PossibleActions> possibleActions; //all actions possible to call at the moment by player
@@ -183,7 +190,9 @@ private:
 	void printConsoleAttacked(const CStack *defender, int dmg, int killed, const CStack *attacker, bool Multiple);
 
 	std::list<ProjectileInfo> projectiles; //projectiles flying on battlefield
-	void giveCommand(Battle::ActionType action, BattleHex tile, ui32 stackID, si32 additional=-1, si32 selectedStack = -1);
+	void giveCommand(EActionType action, BattleHex tile = BattleHex(), si32 additional = -1);
+	void sendCommand(BattleAction *& command, const CStack * actor = nullptr);
+
 	bool isTileAttackable(const BattleHex & number) const; //returns true if tile 'number' is neighboring any tile from active stack's range or is one of these tiles
 	bool isCatapultAttackable(BattleHex hex) const; //returns true if given tile can be attacked by catapult
 
@@ -198,8 +207,8 @@ private:
 	public:
 		const CGTownInstance *town; //besieged town
 
-		SiegeHelper(const CGTownInstance *siegeTown, const CBattleInterface *_owner); //c-tor
-		~SiegeHelper(); //d-tor
+		SiegeHelper(const CGTownInstance *siegeTown, const CBattleInterface *_owner);
+		~SiegeHelper();
 
 		std::string getSiegeName(ui16 what) const;
 		std::string getSiegeName(ui16 what, int state) const; // state uses EWallState enum
@@ -241,7 +250,7 @@ private:
 	void showBackgroundImage(SDL_Surface *to);
 	void showAbsoluteObstacles(SDL_Surface *to);
 	void showHighlightedHexes(SDL_Surface *to);
-	void showHighlightedHex(SDL_Surface *to, BattleHex hex);
+	void showHighlightedHex(SDL_Surface *to, BattleHex hex, bool darkBorder = false);
 	void showInterface(SDL_Surface *to);
 
 	void showBattlefieldObjects(SDL_Surface *to);
@@ -257,20 +266,27 @@ private:
 	BattleObjectsByHex sortObjectsByHex();
 	void updateBattleAnimations();
 
-	SDL_Surface *getObstacleImage(const CObstacleInstance &oi);
-	Point getObstaclePosition(SDL_Surface *image, const CObstacleInstance &obstacle);
+	std::shared_ptr<IImage> getObstacleImage(const CObstacleInstance & oi);
+
+	Point getObstaclePosition(std::shared_ptr<IImage> image, const CObstacleInstance & obstacle);
+
 	void redrawBackgroundWithHexes(const CStack *activeStack);
 	/** End of battle screen blitting methods */
 
-	PossibleActions getCasterAction(const CSpell *spell, const ISpellCaster *caster, ECastingMode::ECastingMode mode) const;
+	PossibleActions getCasterAction(const CSpell *spell, const spells::Caster *caster, spells::Mode mode) const;
+
+	void setHeroAnimation(ui8 side, int phase);
 public:
+	static CondSh<bool> animsAreDisplayed; //for waiting with the end of battle for end of anims
+	static CondSh<BattleAction *> givenCommand; //data != nullptr if we have i.e. moved current unit
+
 	std::list<std::pair<CBattleAnimation *, bool>> pendingAnims; //currently displayed animations <anim, initialized>
 	void addNewAnim(CBattleAnimation *anim); //adds new anim to pendingAnims
 	ui32 animIDhelper; //for giving IDs for animations
-	static CondSh<bool> animsAreDisplayed; //for waiting with the end of battle for end of anims
 
-	CBattleInterface(const CCreatureSet *army1, const CCreatureSet *army2, const CGHeroInstance *hero1, const CGHeroInstance *hero2, const SDL_Rect & myRect, std::shared_ptr<CPlayerInterface> att, std::shared_ptr<CPlayerInterface> defen); //c-tor
-	virtual ~CBattleInterface(); //d-tor
+
+	CBattleInterface(const CCreatureSet *army1, const CCreatureSet *army2, const CGHeroInstance *hero1, const CGHeroInstance *hero2, const SDL_Rect & myRect, std::shared_ptr<CPlayerInterface> att, std::shared_ptr<CPlayerInterface> defen, std::shared_ptr<CPlayerInterface> spectatorInt = nullptr);
+	virtual ~CBattleInterface();
 
 	//std::vector<TimeInterested*> timeinterested; //animation handling
 	void setPrintCellBorders(bool set); //if true, cell borders will be printed
@@ -280,11 +296,10 @@ public:
 	int getAnimSpeed() const; //speed of animation; range 1..100
 	CPlayerInterface *getCurrentPlayerInterface() const;
 
-	std::vector<CClickableHex*> bfield; //11 lines, 17 hexes on each
+	std::vector<std::shared_ptr<CClickableHex>> bfield; //11 lines, 17 hexes on each
 	SDL_Surface *cellBorder, *cellShade;
-	CondSh<BattleAction *> *givenCommand; //data != nullptr if we have i.e. moved current unit
+
 	bool myTurn; //if true, interface is active (commands can be ordered)
-	CBattleResultWindow *resWindow; //window of end of battle
 
 	bool moveStarted; //if true, the creature that is already moving is going to make its first step
 	int moveSoundHander; // sound handler used when moving a unit
@@ -322,12 +337,12 @@ public:
 
 	//call-ins
 	void startAction(const BattleAction* action);
-	void newStack(const CStack *stack); //new stack appeared on battlefield
-	void stackRemoved(int stackID); //stack disappeared from batlefiled
+	void unitAdded(const CStack * stack); //new stack appeared on battlefield
+	void stackRemoved(uint32_t stackID); //stack disappeared from batlefiled
 	void stackActivated(const CStack *stack); //active stack has been changed
 	void stackMoved(const CStack *stack, std::vector<BattleHex> destHex, int distance); //stack with id number moved to destHex
 	void waitForAnims();
-	void stacksAreAttacked(std::vector<StackAttackedInfo> attackedInfos); //called when a certain amount of stacks has been attacked
+	void stacksAreAttacked(std::vector<StackAttackedInfo> attackedInfos, const std::vector<MetaString> & battleLog); //called when a certain amount of stacks has been attacked
 	void stackAttacking(const CStack *attacker, BattleHex dest, const CStack *attacked, bool shooting); //called when stack with id ID is attacking something on hex dest
 	void newRoundFirst( int round );
 	void newRound(int number); //caled when round is ended; number is the number of round
@@ -338,7 +353,11 @@ public:
 	void spellCast(const BattleSpellCast *sc); //called when a hero casts a spell
 	void battleStacksEffectsSet(const SetStackEffect & sse); //called when a specific effect is set to stacks
 	void castThisSpell(SpellID spellID); //called when player has chosen a spell from spellbook
-	void displayEffect(ui32 effect, int destTile); //displays custom effect on the battlefield
+
+	void displayBattleLog(const std::vector<MetaString> & battleLog);
+	void displayCustomEffects(const std::vector<CustomEffectInfo> & customEffects);
+
+	void displayEffect(ui32 effect, BattleHex destTile); //displays custom effect on the battlefield
 
 	void displaySpellCast(SpellID spellID, BattleHex destinationTile); //displays spell`s cast animation
 	void displaySpellEffect(SpellID spellID, BattleHex destinationTile); //displays spell`s affected animation
@@ -363,7 +382,7 @@ public:
 
 	void gateStateChanged(const EGateState state);
 
-	void initStackProjectile(const CStack *stack);
+	void initStackProjectile(const CStack * stack);
 
 	const CGHeroInstance *currentHero() const;
 	InfoAboutHero enemyHero() const;
@@ -374,7 +393,7 @@ public:
 
 	friend class CBattleResultWindow;
 	friend class CBattleHero;
-	friend class CSpellEffectAnimation;
+	friend class CEffectAnimation;
 	friend class CBattleStackAnimation;
 	friend class CReverseAnimation;
 	friend class CDefenceAnimation;
@@ -383,5 +402,6 @@ public:
 	friend class CAttackAnimation;
 	friend class CMeleeAttackAnimation;
 	friend class CShootingAnimation;
+	friend class CCastAnimation;
 	friend class CClickableHex;
 };

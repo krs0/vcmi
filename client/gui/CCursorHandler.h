@@ -1,10 +1,5 @@
-#pragma once
-
-class CAnimImage;
-struct SDL_Surface;
-
 /*
- * CCursorhandler.h, part of VCMI engine
+ * CCursorHandler.h, part of VCMI engine
  *
  * Authors: listed in file AUTHORS in main folder
  *
@@ -12,33 +7,44 @@ struct SDL_Surface;
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+class CIntObject;
+class CAnimImage;
+struct SDL_Surface;
+struct SDL_Texture;
 
 namespace ECursor
 {
 	enum ECursorTypes { ADVENTURE, COMBAT, DEFAULT, SPELLBOOK };
 
 	enum EBattleCursors { COMBAT_BLOCKED, COMBAT_MOVE, COMBAT_FLY, COMBAT_SHOOT,
-						COMBAT_HERO, COMBAT_QUERY, COMBAT_POINTER, 
+						COMBAT_HERO, COMBAT_QUERY, COMBAT_POINTER,
 						//various attack frames
 						COMBAT_SHOOT_PENALTY = 15, COMBAT_SHOOT_CATAPULT, COMBAT_HEAL,
 						COMBAT_SACRIFICE, COMBAT_TELEPORT};
 }
 
 /// handles mouse cursor
-class CCursorHandler 
+class CCursorHandler final
 {
-	SDL_Surface * help;
+	bool needUpdate;
+	SDL_Texture * cursorLayer;
+
+	SDL_Surface * buffer;
 	CAnimImage * currentCursor;
-	CAnimImage * dndObject; //if set, overrides currentCursor
+
+	std::unique_ptr<CAnimImage> dndObject; //if set, overrides currentCursor
+
+	std::array<std::unique_ptr<CAnimImage>, 4> cursors;
+
 	bool showing;
 
-	/// Draw cursor preserving original image below cursor
-	void drawWithScreenRestore();
-	/// Restore original image below cursor
-	void drawRestored();
-	/// Simple draw cursor
-	void draw(SDL_Surface *to);
-	
+	void clearBuffer();
+	void updateBuffer(CIntObject * payload);
+	void replaceBuffer(CIntObject * payload);
+	void shiftPos( int &x, int &y );
+
+	void updateTexture();
 public:
 	/// position of cursor
 	int xpos, ypos;
@@ -59,18 +65,18 @@ public:
 	 * @param image Image to replace cursor with or nullptr to use the normal
 	 * cursor. CursorHandler takes ownership of object
 	 */
-	void dragAndDropCursor (CAnimImage * image);
-	
+	void dragAndDropCursor (std::unique_ptr<CAnimImage> image);
+
 	void render();
 
-	void shiftPos( int &x, int &y );
-	void hide() { showing=0; };
-	void show() { showing=1; };
+	void hide() { showing=false; };
+	void show() { showing=true; };
 
 	/// change cursor's positions to (x, y)
 	void cursorMove(const int & x, const int & y);
 	/// Move cursor to screen center
 	void centerCursor();
 
+	CCursorHandler();
 	~CCursorHandler();
 };

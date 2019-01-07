@@ -1,3 +1,12 @@
+/*
+ * imageviewer_moc.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 
 #include <QDesktopWidget>
@@ -5,9 +14,8 @@
 #include "imageviewer_moc.h"
 #include "ui_imageviewer_moc.h"
 
-ImageViewer::ImageViewer(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::ImageViewer)
+ImageViewer::ImageViewer(QWidget * parent)
+	: QDialog(parent), ui(new Ui::ImageViewer)
 {
 	ui->setupUi(this);
 }
@@ -23,7 +31,7 @@ QSize ImageViewer::calculateWindowSize()
 	return desktop.availableGeometry(desktop.primaryScreen()).size() * 0.8;
 }
 
-void ImageViewer::showPixmap(QPixmap & pixmap, QWidget *parent)
+void ImageViewer::showPixmap(QPixmap & pixmap, QWidget * parent)
 {
 	assert(!pixmap.isNull());
 

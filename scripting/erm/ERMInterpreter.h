@@ -1,9 +1,3 @@
-#pragma once
-
-
-#include "ERMParser.h"
-#include "ERMScriptModule.h"
-
 /*
  * ERMInterpreter.h, part of VCMI engine
  *
@@ -13,6 +7,11 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+
+#include "ERMParser.h"
+#include "ERMScriptModule.h"
 
 namespace VERMInterpreter
 {
@@ -842,7 +841,7 @@ public:
 	virtual void heroVisit(const CGHeroInstance *visitor, const CGObjectInstance *visitedObj, bool start) override;
 	virtual void init() override;//sets up environment etc.
 	virtual void executeUserCommand(const std::string &cmd) override;
-	virtual void giveInfoCB(CPrivilagedInfoCallback *cb) override;
+	virtual void giveInfoCB(CPrivilegedInfoCallback *cb) override;
 	virtual void giveActionCB(IGameEventRealizer *cb) override;
 
 	virtual void battleStart(const CCreatureSet *army1, const CCreatureSet *army2, int3 tile, const CGHeroInstance *hero1, const CGHeroInstance *hero2, bool side) override;

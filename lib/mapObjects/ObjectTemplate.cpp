@@ -1,3 +1,12 @@
+/*
+ * ObjectTemplate.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "CObjectClassesHandler.h"
 
@@ -12,16 +21,6 @@
 #include "../JsonNode.h"
 
 #include "CRewardableConstructor.h"
-
-/*
- * ObjectTemplate.cpp, part of VCMI engine
- *
- * Authors: listed in file AUTHORS in main folder
- *
- * License: GNU General Public License v2.0 or later
- * Full text of license available in license.txt file, in main folder
- *
- */
 
 static bool isOnVisitableFromTopList(int identifier, int type)
 {
@@ -54,7 +53,8 @@ ObjectTemplate::ObjectTemplate():
 	visitDir(8|16|32|64|128), // all but top
 	id(Obj::NO_OBJ),
 	subid(0),
-	printPriority(0)
+	printPriority(0),
+	stringID("")
 {
 }
 
@@ -64,7 +64,9 @@ ObjectTemplate::ObjectTemplate(const ObjectTemplate& other):
 	id(other.id),
 	subid(other.subid),
 	printPriority(other.printPriority),
-	animationFile(other.animationFile)
+	animationFile(other.animationFile),
+	editorAnimationFile(other.editorAnimationFile),
+	stringID(other.stringID)
 {
 	//default copy constructor is failing with usedTiles this for unknown reason
 
@@ -81,12 +83,26 @@ ObjectTemplate & ObjectTemplate::operator=(const ObjectTemplate & rhs)
 	subid = rhs.subid;
 	printPriority = rhs.printPriority;
 	animationFile = rhs.animationFile;
+	editorAnimationFile = rhs.editorAnimationFile;
+	stringID = rhs.stringID;
 
 	usedTiles.clear();
 	usedTiles.resize(rhs.usedTiles.size());
 	for(size_t i = 0; i < usedTiles.size(); i++)
 		std::copy(rhs.usedTiles[i].begin(), rhs.usedTiles[i].end(), std::back_inserter(usedTiles[i]));
 	return *this;
+}
+
+void ObjectTemplate::afterLoadFixup()
+{
+	if(id == Obj::EVENT)
+	{
+		setSize(1,1);
+		usedTiles[0][0] = VISITABLE;
+		visitDir = 0xFF;
+	}
+	boost::algorithm::replace_all(animationFile, "\\", "/");
+	boost::algorithm::replace_all(editorAnimationFile, "\\", "/");
 }
 
 void ObjectTemplate::readTxt(CLegacyConfigParser & parser)
@@ -207,16 +223,13 @@ void ObjectTemplate::readMap(CBinaryReader & reader)
 	reader.skip(16);
 	readMsk();
 
-	if (id == Obj::EVENT)
-	{
-		setSize(1,1);
-		usedTiles[0][0] = VISITABLE;
-	}
+	afterLoadFixup();
 }
 
 void ObjectTemplate::readJson(const JsonNode &node, const bool withTerrain)
 {
 	animationFile = node["animation"].String();
+	editorAnimationFile = node["editorAnimation"].String();
 
 	const JsonVector & visitDirs = node["visitableFrom"].Vector();
 	if (!visitDirs.empty())
@@ -247,7 +260,7 @@ void ObjectTemplate::readJson(const JsonNode &node, const bool withTerrain)
 	}
 
 	if(withTerrain && allowedTerrains.empty())
-		logGlobal->warnStream() << "Loaded template without allowed terrains!";
+		logGlobal->warn("Loaded template without allowed terrains!");
 
 
 	auto charToTile = [&](const char & ch) -> ui8
@@ -262,7 +275,7 @@ void ObjectTemplate::readJson(const JsonNode &node, const bool withTerrain)
 			case 'A' : return VISIBLE | BLOCKED | VISITABLE;
 			case 'T' : return BLOCKED | VISITABLE;
 			default:
-				logGlobal->errorStream() << "Unrecognized char " << ch << " in template mask";
+				logGlobal->error("Unrecognized char %s in template mask", ch);
 				return 0;
 		}
 	};
@@ -284,11 +297,14 @@ void ObjectTemplate::readJson(const JsonNode &node, const bool withTerrain)
 	}
 
 	printPriority = node["zIndex"].Float();
+
+	afterLoadFixup();
 }
 
 void ObjectTemplate::writeJson(JsonNode & node, const bool withTerrain) const
 {
 	node["animation"].String() = animationFile;
+	node["editorAnimation"].String() = editorAnimationFile;
 
 	if(visitDir != 0x0 && isVisitable())
 	{
@@ -320,7 +336,7 @@ void ObjectTemplate::writeJson(JsonNode & node, const bool withTerrain) const
 
 			for(auto type : allowedTerrains)
 			{
-				JsonNode value(JsonNode::DATA_STRING);
+				JsonNode value(JsonNode::JsonType::DATA_STRING);
 				value.String() = GameConstants::TERRAIN_NAMES[type.num];
 				data.push_back(value);
 			}
@@ -363,7 +379,7 @@ void ObjectTemplate::writeJson(JsonNode & node, const bool withTerrain) const
 
 	for(size_t i=0; i < height; i++)
 	{
-		JsonNode lineNode(JsonNode::DATA_STRING);
+		JsonNode lineNode(JsonNode::JsonType::DATA_STRING);
 
 		std::string & line = lineNode.String();
 		line.resize(width);
@@ -493,7 +509,7 @@ int3 ObjectTemplate::getVisitableOffset() const
 			if (isVisitableAt(x, y))
 				return int3(x,y,0);
 
-    //logGlobal->warnStream() << "Warning: getVisitableOffset called on non-visitable obj!";
+    //logGlobal->warn("Warning: getVisitableOffset called on non-visitable obj!");
 	return int3(0,0,0);
 }
 

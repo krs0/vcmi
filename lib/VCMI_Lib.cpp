@@ -20,6 +20,7 @@
 #include "CTownHandler.h"
 #include "CBuildingHandler.h"
 #include "spells/CSpellHandler.h"
+#include "CSkillHandler.h"
 #include "CGeneralTextHandler.h"
 #include "CModHandler.h"
 #include "IGameEventsReceiver.h"
@@ -32,13 +33,13 @@
 
 LibClasses * VLC = nullptr;
 
-DLL_LINKAGE void preinitDLL(CConsoleHandler *Console)
+DLL_LINKAGE void preinitDLL(CConsoleHandler * Console, bool onlyEssential)
 {
 	console = Console;
-	VLC = new LibClasses;
+	VLC = new LibClasses();
 	try
 	{
-		VLC->loadFilesystem();
+		VLC->loadFilesystem(onlyEssential);
 	}
 	catch(...)
 	{
@@ -47,9 +48,9 @@ DLL_LINKAGE void preinitDLL(CConsoleHandler *Console)
 	}
 }
 
-DLL_LINKAGE void loadDLLClasses()
+DLL_LINKAGE void loadDLLClasses(bool onlyEssential)
 {
-	VLC->init();
+	VLC->init(onlyEssential);
 }
 
 const IBonusTypeHandler * LibClasses::getBth() const
@@ -57,31 +58,31 @@ const IBonusTypeHandler * LibClasses::getBth() const
 	return bth;
 }
 
-void LibClasses::loadFilesystem()
+void LibClasses::loadFilesystem(bool onlyEssential)
 {
 	CStopWatch totalTime;
 	CStopWatch loadTime;
 
 	CResourceHandler::initialize();
-	logGlobal->infoStream()<<"\tInitialization: "<<loadTime.getDiff();
+	logGlobal->info("\tInitialization: %d ms", loadTime.getDiff());
 
 	CResourceHandler::load("config/filesystem.json");
-	logGlobal->infoStream()<<"\tData loading: "<<loadTime.getDiff();
+	logGlobal->info("\tData loading: %d ms", loadTime.getDiff());
 
 	modh = new CModHandler();
-	logGlobal->infoStream()<<"\tMod handler: "<<loadTime.getDiff();
+	logGlobal->info("\tMod handler: %d ms", loadTime.getDiff());
 
-	modh->loadMods();
+	modh->loadMods(onlyEssential);
 	modh->loadModFilesystems();
-	logGlobal->infoStream()<<"\tMod filesystems: "<<loadTime.getDiff();
+	logGlobal->info("\tMod filesystems: %d ms", loadTime.getDiff());
 
-	logGlobal->infoStream()<<"Basic initialization: "<<totalTime.getDiff();
+	logGlobal->info("Basic initialization: %d ms", totalTime.getDiff());
 }
 
-static void logHandlerLoaded(const std::string& name, CStopWatch &timer)
+static void logHandlerLoaded(const std::string & name, CStopWatch & timer)
 {
-   logGlobal->infoStream()<<"\t\t" << name << " handler: "<<timer.getDiff();
-};
+   logGlobal->info("\t\t %s handler: %d ms", name, timer.getDiff());
+}
 
 template <class Handler> void createHandler(Handler *&handler, const std::string &name, CStopWatch &timer)
 {
@@ -89,7 +90,7 @@ template <class Handler> void createHandler(Handler *&handler, const std::string
 	logHandlerLoaded(name, timer);
 }
 
-void LibClasses::init()
+void LibClasses::init(bool onlyEssential)
 {
 	CStopWatch pomtime, totalTime;
 
@@ -113,15 +114,17 @@ void LibClasses::init()
 
 	createHandler(spellh, "Spell", pomtime);
 
+	createHandler(skillh, "Skill", pomtime);
+
 	createHandler(terviewh, "Terrain view pattern", pomtime);
 
 	createHandler(tplh, "Template", pomtime); //templates need already resolved identifiers (refactor?)
 
-	logGlobal->infoStream()<<"\tInitializing handlers: "<< totalTime.getDiff();
+	logGlobal->info("\tInitializing handlers: %d ms", totalTime.getDiff());
 
 	modh->load();
 
-	modh->afterLoad();
+	modh->afterLoad(onlyEssential);
 
 	//FIXME: make sure that everything is ok after game restart
 	//TODO: This should be done every time mod config changes
@@ -137,6 +140,7 @@ void LibClasses::clear()
 	delete objh;
 	delete objtypeh;
 	delete spellh;
+	delete skillh;
 	delete modh;
 	delete bth;
 	delete tplh;
@@ -154,6 +158,7 @@ void LibClasses::makeNull()
 	objh = nullptr;
 	objtypeh = nullptr;
 	spellh = nullptr;
+	skillh = nullptr;
 	modh = nullptr;
 	bth = nullptr;
 	tplh = nullptr;
@@ -169,8 +174,8 @@ LibClasses::LibClasses()
 
 void LibClasses::callWhenDeserializing()
 {
-	// FIXME: check if any of these are needed
-	//generaltexth = new CGeneralTextHandler;
+	//FIXME: check if any of these are needed
+	//generaltexth = new CGeneralTextHandler();
 	//generaltexth->load();
 	//arth->load(true);
 	//modh->recreateHandlers();

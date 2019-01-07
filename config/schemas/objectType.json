@@ -8,10 +8,42 @@
 
 	"properties":{
 		"index": {
-			"type":"number",
+			"type":"number"
 		},
 		"name": {
-			"type":"string",
+			"type":"string"
+		},
+		"aiValue": {
+			"type":"number"
+		},
+
+		"sounds": {
+			"type":"object",
+			"additionalProperties" : false,
+			"description": "Sounds used by this object",
+			"properties" : {
+				"ambient": {
+					"type":"array",
+					"description": "Background sound of an object",
+					"items": {
+						"type": "string"
+					}
+				},
+				"visit": {
+					"type":"array",
+					"description": "Sound that played on object visit",
+					"items": {
+						"type": "string"
+					}
+				},
+				"removal": {
+					"type":"array",
+					"description": "Sound that played on object removal",
+					"items": {
+						"type": "string"
+					}
+				}
+			}
 		},
 
 		"base": {
@@ -20,7 +52,7 @@
 		"templates": {
 			"type":"object",
 			"additionalProperties": {
-				"$ref" : "vcmi:objectTemplate"
+				"$ref" : "objectTemplate.json"
 			}
 		}
 	}

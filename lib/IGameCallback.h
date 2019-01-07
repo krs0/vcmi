@@ -1,8 +1,3 @@
-#pragma once
-
-#include "CGameInfoCallback.h" // for CGameInfoCallback
-#include "CRandomGenerator.h"
-
 /*
  * IGameCallback.h, part of VCMI engine
  *
@@ -12,6 +7,10 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "CGameInfoCallback.h" // for CGameInfoCallback
+#include "CRandomGenerator.h"
 
 struct SetMovePoints;
 struct GiveBonus;
@@ -26,12 +25,12 @@ class CStackBasicDescriptor;
 class CGCreature;
 struct ShashInt3;
 
-class DLL_LINKAGE CPrivilagedInfoCallback : public CGameInfoCallback
+class DLL_LINKAGE CPrivilegedInfoCallback : public CGameInfoCallback
 {
 public:
 	CGameState * gameState();
 	void getFreeTiles (std::vector<int3> &tiles) const; //used for random spawns
-	void getTilesInRange(std::unordered_set<int3, ShashInt3> &tiles, int3 pos, int radious, boost::optional<PlayerColor> player = boost::optional<PlayerColor>(), int mode = 0, bool patrolDistance = false) const;  //mode 1 - only unrevealed tiles; mode 0 - all, mode -1 -  only unrevealed
+	void getTilesInRange(std::unordered_set<int3, ShashInt3> &tiles, int3 pos, int radious, boost::optional<PlayerColor> player = boost::optional<PlayerColor>(), int mode = 0, int3::EDistanceFormula formula = int3::DIST_2D) const; //mode 1 - only unrevealed tiles; mode 0 - all, mode -1 -  only revealed
 	void getAllTiles (std::unordered_set<int3, ShashInt3> &tiles, boost::optional<PlayerColor> player = boost::optional<PlayerColor>(), int level=-1, int surface=0) const; //returns all tiles on given level (-1 - both levels, otherwise number of level); surface: 0 - land and water, 1 - only land, 2 - only water
 	void pickAllowedArtsSet(std::vector<const CArtifact*> &out, CRandomGenerator & rand); //gives 3 treasures, 3 minors, 1 major -> used by Black Market and Artifact Merchant
 	void getAllowedSpells(std::vector<SpellID> &out, ui16 level);
@@ -51,7 +50,7 @@ public:
 	virtual void setBlockVis(ObjectInstanceID objid, bool bv)=0;
 	virtual void setOwner(const CGObjectInstance * objid, PlayerColor owner)=0;
 	virtual void changePrimSkill(const CGHeroInstance * hero, PrimarySkill::PrimarySkill which, si64 val, bool abs=false)=0;
-	virtual void changeSecSkill(const CGHeroInstance * hero, SecondarySkill which, int val, bool abs=false)=0; 
+	virtual void changeSecSkill(const CGHeroInstance * hero, SecondarySkill which, int val, bool abs=false)=0;
 	virtual void showBlockingDialog(BlockingDialog *iw) =0;
 	virtual void showGarrisonDialog(ObjectInstanceID upobj, ObjectInstanceID hid, bool removableUnits) =0; //cb will be called when player closes garrison window
 	virtual void showTeleportDialog(TeleportDialog *iw) =0;
@@ -92,14 +91,13 @@ public:
 	virtual void setManaPoints(ObjectInstanceID hid, int val)=0;
 	virtual void giveHero(ObjectInstanceID id, PlayerColor player)=0;
 	virtual void changeObjPos(ObjectInstanceID objid, int3 newPos, ui8 flags)=0;
-	virtual void sendAndApply(CPackForClient * info)=0;
+	virtual void sendAndApply(CPackForClient * pack) = 0;
 	virtual void heroExchange(ObjectInstanceID hero1, ObjectInstanceID hero2)=0; //when two heroes meet on adventure map
-	virtual void addQuest(int player, QuestInfo & quest){};
 	virtual void changeFogOfWar(int3 center, ui32 radius, PlayerColor player, bool hide) = 0;
 	virtual void changeFogOfWar(std::unordered_set<int3, ShashInt3> &tiles, PlayerColor player, bool hide) = 0;
 };
 
-class DLL_LINKAGE CNonConstInfoCallback : public CPrivilagedInfoCallback
+class DLL_LINKAGE CNonConstInfoCallback : public CPrivilegedInfoCallback
 {
 public:
 	PlayerState *getPlayer(PlayerColor color, bool verbose = true);
@@ -110,10 +108,11 @@ public:
 	TerrainTile * getTile(int3 pos);
 	CArtifactInstance * getArtInstance(ArtifactInstanceID aid);
 	CGObjectInstance * getObjInstance(ObjectInstanceID oid);
+	CArmedInstance * getArmyInstance(ObjectInstanceID oid);
 };
 
 /// Interface class for handling general game logic and actions
-class DLL_LINKAGE IGameCallback : public CPrivilagedInfoCallback, public IGameEventCallback
+class DLL_LINKAGE IGameCallback : public CPrivilegedInfoCallback, public IGameEventCallback
 {
 public:
 	virtual ~IGameCallback(){};

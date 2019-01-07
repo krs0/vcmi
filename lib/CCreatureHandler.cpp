@@ -1,3 +1,12 @@
+/*
+ * CCreatureHandler.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "CCreatureHandler.h"
 
@@ -10,16 +19,6 @@
 #include "StringConstants.h"
 
 #include "mapObjects/CObjectClassesHandler.h"
-
-/*
- * CCreatureHandler.cpp, part of VCMI engine
- *
- * Authors: listed in file AUTHORS in main folder
- *
- * License: GNU General Public License v2.0 or later
- * Full text of license available in license.txt file, in main folder
- *
- */
 
 int CCreature::getQuantityID(const int & quantity)
 {
@@ -114,7 +113,7 @@ CCreature::CCreature()
 	iconIndex = -1;
 }
 
-void CCreature::addBonus(int val, Bonus::BonusType type, int subtype /*= -1*/)
+void CCreature::addBonus(int val, Bonus::BonusType type, int subtype)
 {
 	auto added = std::make_shared<Bonus>(Bonus::PERMANENT, type, Bonus::CREATURE_ABILITY, val, idNumber, subtype, Bonus::BASE_NUMBER);
 	addNewBonus(added);
@@ -152,6 +151,26 @@ void CCreature::setId(CreatureID ID)
 	CBonusSystemNode::treeHasChanged();
 }
 
+void CCreature::fillWarMachine()
+{
+	switch (idNumber)
+	{
+	case CreatureID::CATAPULT: //Catapult
+		warMachine = ArtifactID::CATAPULT;
+		break;
+	case CreatureID::BALLISTA: //Ballista
+		warMachine = ArtifactID::BALLISTA;
+		break;
+	case CreatureID::FIRST_AID_TENT: //First Aid tent
+		warMachine = ArtifactID::FIRST_AID_TENT;
+		break;
+	case CreatureID::AMMO_CART: //Ammo cart
+		warMachine = ArtifactID::AMMO_CART;
+		break;
+	}
+	warMachine = ArtifactID::NONE; //this creature is not artifact
+}
+
 static void AddAbility(CCreature *cre, const JsonVector &ability_vec)
 {
 	auto nsf = std::make_shared<Bonus>();
@@ -170,7 +189,7 @@ static void AddAbility(CCreature *cre, const JsonVector &ability_vec)
 			cre->addBonus(-1, Bonus::LUCK);
 			cre->getBonusList().back()->effectRange = Bonus::ONLY_ENEMY_ARMY;
 		} else
-			logGlobal->errorStream() << "Error: invalid ability type " << type << " in creatures config";
+			logGlobal->error("Error: invalid ability type %s in creatures config", type);
 
 		return;
 	}
@@ -702,7 +721,7 @@ void CCreatureHandler::loadCreatureJson(CCreature * creature, const JsonNode & c
 	creature->animDefName = config["graphics"]["animation"].String();
 
 	//FIXME: MOD COMPATIBILITY
-	if (config["abilities"].getType() == JsonNode::DATA_STRUCT)
+	if (config["abilities"].getType() == JsonNode::JsonType::DATA_STRUCT)
 	{
 		for(auto &ability : config["abilities"].Struct())
 		{
@@ -719,7 +738,7 @@ void CCreatureHandler::loadCreatureJson(CCreature * creature, const JsonNode & c
 	{
 		for(const JsonNode &ability : config["abilities"].Vector())
 		{
-			if (ability.getType() == JsonNode::DATA_VECTOR)
+			if (ability.getType() == JsonNode::JsonType::DATA_VECTOR)
 			{
 				assert(0); // should be unused now
 				AddAbility(creature, ability.Vector()); // used only for H3 creatures
@@ -904,7 +923,7 @@ void CCreatureHandler::loadStackExp(Bonus & b, BonusList & bl, CLegacyConfigPars
 			case 'U':
 				b.type = Bonus::UNDEAD; break;
 			default:
-				logGlobal->traceStream() << "Not parsed bonus " << buf << mod;
+				logGlobal->trace("Not parsed bonus %s %s", buf, mod);
 				return;
 				break;
 		}
@@ -1014,7 +1033,7 @@ void CCreatureHandler::loadStackExp(Bonus & b, BonusList & bl, CLegacyConfigPars
 				b.type = Bonus::MIND_IMMUNITY;
 				break;
 			default:
-				logGlobal->traceStream() << "Not parsed bonus " << buf << mod;
+				logGlobal->trace("Not parsed bonus %s %s", buf, mod);
 				return;
 		}
 		break;
@@ -1055,7 +1074,7 @@ void CCreatureHandler::loadStackExp(Bonus & b, BonusList & bl, CLegacyConfigPars
 		b.valType = Bonus::INDEPENDENT_MAX;
 		break;
 	default:
-		logGlobal->traceStream() << "Not parsed bonus " << buf << mod;
+		logGlobal->trace("Not parsed bonus %s %s", buf, mod);
 		return;
 		break;
 	}
@@ -1153,7 +1172,7 @@ CreatureID CCreatureHandler::pickRandomMonster(CRandomGenerator & rand, int tier
 
 		if(!allowed.size())
 		{
-			logGlobal->warnStream() << "Cannot pick a random creature of tier " << tier << "!";
+			logGlobal->warn("Cannot pick a random creature of tier %d!", tier);
 			return CreatureID::NONE;
 		}
 

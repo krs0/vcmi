@@ -1,23 +1,3 @@
-#pragma once
-
-#include "../gui/CIntObject.h"
-#include "../../lib/BattleHex.h"
-#include "../windows/CWindowObject.h"
-
-struct SDL_Surface;
-class CDefHandler;
-class CGHeroInstance;
-class CBattleInterface;
-class CPicture;
-class CButton;
-class CToggleButton;
-class CToggleGroup;
-class CLabel;
-struct BattleResult;
-class CStack;
-class CAnimImage;
-class CPlayerInterface;
-
 /*
  * CBattleInterfaceClasses.h, part of VCMI engine
  *
@@ -27,6 +7,30 @@ class CPlayerInterface;
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "../gui/CIntObject.h"
+#include "../../lib/battle/BattleHex.h"
+#include "../windows/CWindowObject.h"
+
+struct SDL_Surface;
+class CGHeroInstance;
+class CBattleInterface;
+class CPicture;
+class CFilledTexture;
+class CButton;
+class CToggleButton;
+class CToggleGroup;
+class CLabel;
+class CTextBox;
+struct BattleResult;
+class CStack;
+namespace battle
+{
+	class Unit;
+}
+class CAnimImage;
+class CPlayerInterface;
 
 /// Class which shows the console at the bottom of the battle screen and manages the text of the console
 class CBattleConsole : public CIntObject
@@ -54,54 +58,66 @@ class CBattleHero : public CIntObject
 	void switchToNextPhase();
 public:
 	bool flip; //false if it's attacking hero, true otherwise
-	CDefHandler *dh, *flag; //animation and flag
+
+	std::shared_ptr<CAnimation> animation;
+	std::shared_ptr<CAnimation> flagAnimation;
+
 	const CGHeroInstance * myHero; //this animation's hero instance
 	const CBattleInterface * myOwner; //battle interface to which this animation is assigned
 	int phase; //stage of animation
 	int nextPhase; //stage of animation to be set after current phase is fully displayed
 	int currentFrame, firstFrame, lastFrame; //frame of animation
-	ui8 flagAnim, animCount; //for flag animation
+
+	size_t flagAnim;
+	ui8 animCount; //for flag animation
 	void show(SDL_Surface * to) override; //prints next frame of animation to to
 	void setPhase(int newPhase); //sets phase of hero animation
 	void hover(bool on) override;
 	void clickLeft(tribool down, bool previousState) override; //call-in
 	void clickRight(tribool down, bool previousState) override; //call-in
-	CBattleHero(const std::string &defName, bool filpG, PlayerColor player, const CGHeroInstance *hero, const CBattleInterface *owner); //c-tor
-	~CBattleHero(); //d-tor
+	CBattleHero(const std::string & animationPath, bool filpG, PlayerColor player, const CGHeroInstance * hero, const CBattleInterface * owner);
+	~CBattleHero();
 };
 
 class CHeroInfoWindow : public CWindowObject
 {
+private:
+	std::vector<std::shared_ptr<CLabel>> labels;
+	std::vector<std::shared_ptr<CAnimImage>> icons;
 public:
-	CHeroInfoWindow(const InfoAboutHero &hero, Point *position);
+	CHeroInfoWindow(const InfoAboutHero & hero, Point * position);
 };
 
 /// Class which manages the battle options window
-class CBattleOptionsWindow : public CIntObject
+class CBattleOptionsWindow : public WindowBase
 {
 private:
-	CPicture * background;
-	CButton * setToDefault, * exit;
-	CToggleButton * viewGrid, * movementShadow, * mouseShadow;
-	CToggleGroup * animSpeeds;
-
-	std::vector<CLabel*> labels;
+	std::shared_ptr<CPicture> background;
+	std::shared_ptr<CButton> setToDefault;
+	std::shared_ptr<CButton> exit;
+	std::shared_ptr<CToggleGroup> animSpeeds;
+	std::vector<std::shared_ptr<CLabel>> labels;
+	std::vector<std::shared_ptr<CToggleButton>> toggles;
 public:
-	CBattleOptionsWindow(const SDL_Rect &position, CBattleInterface *owner); //c-tor
+	CBattleOptionsWindow(const SDL_Rect & position, CBattleInterface * owner);
 
 	void bDefaultf(); //default button callback
 	void bExitf(); //exit button callback
 };
 
 /// Class which is responsible for showing the battle result window
-class CBattleResultWindow : public CIntObject
+class CBattleResultWindow : public WindowBase
 {
 private:
-	CButton *exit;
-	CPlayerInterface &owner;
+	std::shared_ptr<CPicture> background;
+	std::vector<std::shared_ptr<CLabel>> labels;
+	std::shared_ptr<CButton> exit;
+	std::vector<std::shared_ptr<CAnimImage>> icons;
+	std::shared_ptr<CTextBox> description;
+	CPlayerInterface & owner;
 public:
-	CBattleResultWindow(const BattleResult & br, const SDL_Rect & pos, CPlayerInterface &_owner); //c-tor
-	~CBattleResultWindow(); //d-tor
+	CBattleResultWindow(const BattleResult & br, CPlayerInterface & _owner);
+	~CBattleResultWindow();
 
 	void bExitf(); //exit button callback
 
@@ -118,7 +134,7 @@ public:
 	ui32 myNumber; //number of hex in commonly used format
 	bool accessible; //if true, this hex is accessible for units
 	//CStack * ourStack;
-	bool hovered, strictHovered; //for determining if hex is hovered by mouse (this is different problem than hex's graphic hovering)
+	bool strictHovered; //for determining if hex is hovered by mouse (this is different problem than hex's graphic hovering)
 	CBattleInterface * myInterface; //interface that owns me
 	static Point getXYUnitAnim(BattleHex hexNum, const CStack * creature, CBattleInterface * cbi); //returns (x, y) of left top corner of animation
 
@@ -136,29 +152,27 @@ class CStackQueue : public CIntObject
 	class StackBox : public CIntObject
 	{
 	public:
-		CPicture * bg;
-		CAnimImage * icon;
-		const CStack *stack;
-		bool small;
+		std::shared_ptr<CPicture> background;
+		std::shared_ptr<CAnimImage> icon;
+		std::shared_ptr<CLabel> amount;
+		std::shared_ptr<CAnimImage> stateIcon;
 
-		void showAll(SDL_Surface * to) override;
-		void setStack(const CStack *nStack);
-		StackBox(bool small);
+		void setUnit(const battle::Unit * unit, size_t turn = 0);
+		StackBox(CStackQueue * owner);
 	};
 
-public:
 	static const int QUEUE_SIZE = 10;
-	const bool embedded;
-	std::vector<const CStack *> stacksSorted;
-	std::vector<StackBox *> stackBoxes;
-
-	SDL_Surface * bg;
-
+	std::shared_ptr<CFilledTexture> background;
+	std::vector<std::shared_ptr<StackBox>> stackBoxes;
 	CBattleInterface * owner;
+
+	std::shared_ptr<CAnimation> icons;
+	std::shared_ptr<CAnimation> stateIcons;
+
+public:
+	const bool embedded;
 
 	CStackQueue(bool Embedded, CBattleInterface * _owner);
 	~CStackQueue();
 	void update();
-	void showAll(SDL_Surface *to) override;
-	void blitBg(SDL_Surface * to);
 };

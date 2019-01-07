@@ -1,7 +1,3 @@
-#pragma once
-
-#include "../lib/JsonNode.h"
-
 /*
  * CConfigHandler.h, part of VCMI engine
  *
@@ -11,6 +7,10 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "../lib/JsonNode.h"
+
 class Settings;
 class SettingsListener;
 
@@ -26,12 +26,13 @@ class DLL_LINKAGE SettingsStorage
 
 		NodeAccessor(SettingsStorage & _parent, std::vector<std::string> _path);
 		NodeAccessor<Accessor> operator [] (std::string nextNode) const;
-		NodeAccessor<Accessor> operator () (std::vector<std::string> _path);
+		NodeAccessor<Accessor> operator () (std::vector<std::string> _path) const;
 		operator Accessor() const;
 	};
 
 	std::set<SettingsListener*> listeners;
 	JsonNode config;
+
 	JsonNode & getNode(std::vector<std::string> path);
 
 	// Calls all required listeners
@@ -50,7 +51,8 @@ public:
 	const NodeAccessor<SettingsListener> listen;
 
 	//Read access, see JsonNode::operator[]
-	const JsonNode& operator [](std::string value);
+	const JsonNode & operator [](std::string value) const;
+	const JsonNode & toJsonNode() const;
 
 	friend class SettingsListener;
 	friend class Settings;
@@ -169,8 +171,8 @@ namespace config
 		typedef std::map<std::pair<int,int>, GUIOptions > GuiOptionsMap;
 		GuiOptionsMap guiOptions;
 		void init();
-		CConfigHandler(void); //c-tor
-		~CConfigHandler(void); //d-tor
+		CConfigHandler();
+		~CConfigHandler();
 
 		GUIOptions *go() { return current; };
 		void SetResolution(int x, int y)

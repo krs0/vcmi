@@ -1,3 +1,12 @@
+/*
+ * CGeneralTextHandler.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "CGeneralTextHandler.h"
 
@@ -8,16 +17,6 @@
 #include "CModHandler.h"
 #include "GameConstants.h"
 #include "VCMI_Lib.h"
-
-/*
- * CGeneralTextHandler.cpp, part of VCMI engine
- *
- * Authors: listed in file AUTHORS in main folder
- *
- * License: GNU General Public License v2.0 or later
- * Full text of license available in license.txt file, in main folder
- *
- */
 
 size_t Unicode::getCharacterSize(char firstByte)
 {
@@ -126,7 +125,7 @@ std::string Unicode::fromUnicode(const std::string &text, const std::string &enc
 	return boost::locale::conv::from_utf<char>(text, encoding);
 }
 
-void Unicode::trimRight(std::string & text, const size_t amount/* =1 */)
+void Unicode::trimRight(std::string & text, const size_t amount)
 {
 	if(text.empty())
 		return;
@@ -251,7 +250,7 @@ std::string CLegacyConfigParser::readRawString()
 	else
 		ret = extractNormalString();//string without quotes - copy till \t or \r
 
-		curr++;
+	curr++;
 	return ret;
 }
 
@@ -270,8 +269,8 @@ float CLegacyConfigParser::readNumber()
 
 	std::istringstream stream(input);
 
-	if (input.find(',') != std::string::npos) // code to handle conversion with comma as decimal separator
-		stream.imbue(std::locale(std::locale(), new LocaleWithComma));
+	if(input.find(',') != std::string::npos) // code to handle conversion with comma as decimal separator
+		stream.imbue(std::locale(std::locale(), new LocaleWithComma()));
 
 	float result;
 	if ( !(stream >> result) )
@@ -293,7 +292,7 @@ bool CLegacyConfigParser::endLine()
 	while (curr < end && *curr !=  '\n')
 		readString();
 
-		curr++;
+	curr++;
 
 	return curr < end;
 }
@@ -375,23 +374,6 @@ CGeneralTextHandler::CGeneralTextHandler()
 
 			color[0] = toupper(color[0]);
 			capColors.push_back(color);
-		}
-		while (parser.endLine());
-	}
-	{
-		CLegacyConfigParser parser("DATA/SSTRAITS.TXT");
-
-		//skip header
-		parser.endLine();
-		parser.endLine();
-
-		do
-		{
-			skillName.push_back(parser.readString());
-
-			skillInfoTexts.push_back(std::vector<std::string>());
-			for(int j = 0; j < 3; j++)
-				skillInfoTexts.back().push_back(parser.readString());
 		}
 		while (parser.endLine());
 	}
@@ -490,4 +472,33 @@ CGeneralTextHandler::CGeneralTextHandler()
 		}
 		while (parser.endLine());
 	}
+	if (VLC->modh->modules.COMMANDERS)
+	{
+		try
+		{
+			CLegacyConfigParser parser("DATA/ZNPC00.TXT");
+			parser.endLine();//header
+
+			do
+			{
+				znpc00.push_back(parser.readString());
+			} while (parser.endLine());
+		}
+		catch (const std::runtime_error &)
+		{
+			logGlobal->warn("WoG file ZNPC00.TXT containing commander texts was not found");
+		}
+	}
+}
+
+int32_t CGeneralTextHandler::pluralText(const int32_t textIndex, const int32_t count) const
+{
+	if(textIndex == 0)
+		return 0;
+	else if(textIndex < 0)
+		return -textIndex;
+	else if(count == 1)
+		return textIndex;
+	else
+		return textIndex + 1;
 }

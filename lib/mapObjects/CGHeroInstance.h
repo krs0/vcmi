@@ -1,13 +1,4 @@
-﻿#pragma once
-
-#include "CObjectHandler.h"
-#include "CArmedInstance.h"
-#include "../spells/Magic.h"
-
-#include "../CArtHandler.h" // For CArtifactSet
-#include "../CRandomGenerator.h"
-
-/*
+﻿/*
  * CGHeroInstance.h, part of VCMI engine
  *
  * Authors: listed in file AUTHORS in main folder
@@ -16,6 +7,14 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "CObjectHandler.h"
+#include "CArmedInstance.h"
+#include "../spells/Magic.h"
+
+#include "../CArtHandler.h" // For CArtifactSet
+#include "../CRandomGenerator.h"
 
 class CHero;
 class CGBoat;
@@ -38,8 +37,15 @@ public:
 };
 
 
-class DLL_LINKAGE CGHeroInstance : public CArmedInstance, public IBoatGenerator, public CArtifactSet, public ISpellCaster
+class DLL_LINKAGE CGHeroInstance : public CArmedInstance, public IBoatGenerator, public CArtifactSet, public spells::Caster
 {
+	// We serialize heroes into JSON for crossover
+	friend class CCampaignState;
+	friend class CMapLoaderH3M;
+
+private:
+	std::set<SpellID> spells; //known spells (spell IDs)
+
 public:
 	//////////////////////////////////////////////////////////////////////////
 
@@ -65,13 +71,12 @@ public:
 	ConstTransitivePtr<CCommanderInstance> commander;
 	const CGBoat *boat; //set to CGBoat when sailing
 
-	static const ui32 UNINITIALIZED_PORTRAIT = -1;
-	static const ui32 UNINITIALIZED_MANA = -1;
+	static const si32 UNINITIALIZED_PORTRAIT = -1;
+	static const si32 UNINITIALIZED_MANA = -1;
 	static const ui32 UNINITIALIZED_MOVEMENT = -1;
 
 	//std::vector<const CArtifact*> artifacts; //hero's artifacts from bag
 	//std::map<ui16, const CArtifact*> artifWorn; //map<position,artifact_id>; positions: 0 - head; 1 - shoulders; 2 - neck; 3 - right hand; 4 - left hand; 5 - torso; 6 - right ring; 7 - left ring; 8 - feet; 9 - misc1; 10 - misc2; 11 - misc3; 12 - misc4; 13 - mach1; 14 - mach2; 15 - mach3; 16 - mach4; 17 - spellbook; 18 - misc5
-	std::set<SpellID> spells; //known spells (spell IDs)
 	std::set<ObjectInstanceID> visitedObjects;
 
 	struct DLL_LINKAGE Patrol
@@ -96,7 +101,8 @@ public:
 		}
 	} patrol;
 
-	struct DLL_LINKAGE HeroSpecial : CBonusSystemNode
+	// deprecated - used only for loading of old saves
+	struct HeroSpecial : CBonusSystemNode
 	{
 		bool growsWithLevel;
 
@@ -108,8 +114,6 @@ public:
 			h & growsWithLevel;
 		}
 	};
-
-	std::vector<HeroSpecial*> specialty;
 
 	struct DLL_LINKAGE SecondarySkillsInfo
 	{
@@ -126,7 +130,9 @@ public:
 
 		template <typename Handler> void serialize(Handler &h, const int version)
 		{
-			h & magicSchoolCounter & wisdomCounter & rand;
+			h & magicSchoolCounter;
+			h & wisdomCounter;
+			h & rand;
 		}
 	} skillsInfo;
 
@@ -145,9 +151,16 @@ public:
 	//////////////////////////////////////////////////////////////////////////
 
 	bool hasSpellbook() const;
+	int maxSpellLevel() const;
+	void addSpellToSpellbook(SpellID spell);
+	void removeSpellFromSpellbook(SpellID spell);
+	bool spellbookContainsSpell(SpellID spell) const;
+	void removeSpellbook();
+	const std::set<SpellID> & getSpellsInSpellbook() const;
 	EAlignment::EAlignment getAlignment() const;
 	const std::string &getBiography() const;
 	bool needsLastStack()const override;
+	TFaction getFaction() const;
 	ui32 getTileCost(const TerrainTile &dest, const TerrainTile &from, const TurnInfo * ti) const; //move cost - applying pathfinding skill, road and terrain modifiers. NOT includes diagonal move penalty, last move levelling
 	int getNativeTerrain() const;
 	ui32 getLowestCreatureSpeed() const;
@@ -204,7 +217,7 @@ public:
 	void initHero(CRandomGenerator & rand);
 	void initHero(CRandomGenerator & rand, HeroTypeID SUBID);
 
-	void putArtifact(ArtifactPosition pos, CArtifactInstance *art);
+	void putArtifact(ArtifactPosition pos, CArtifactInstance * art) override;
 	void putInBackpack(CArtifactInstance *art);
 	void initExp(CRandomGenerator & rand);
 	void initArmy(CRandomGenerator & rand, IArmyDescriptor *dst = nullptr);
@@ -212,9 +225,8 @@ public:
 	void pushPrimSkill(PrimarySkill::PrimarySkill which, int val);
 	ui8 maxlevelsToMagicSchool() const;
 	ui8 maxlevelsToWisdom() const;
-	void Updatespecialty();
 	void recreateSecondarySkillsBonuses();
-	void updateSkill(SecondarySkill which, int val);
+	void updateSkillBonus(SecondarySkill which, int val);
 
 	bool hasVisions(const CGObjectInstance * target, const int subtype) const;
 	/// If this hero perishes, the scenario is failed
@@ -230,49 +242,83 @@ public:
 	CBonusSystemNode *whereShouldBeAttached(CGameState *gs) override;
 	std::string nodeName() const override;
 
-	///ISpellCaster
-	ui8 getSpellSchoolLevel(const CSpell * spell, int *outSelectedSchool = nullptr) const override;
-	ui32 getSpellBonus(const CSpell * spell, ui32 base, const CStack * affectedStack) const override;
+	///spells::Caster
+	int32_t getCasterUnitId() const override;
+	ui8 getSpellSchoolLevel(const spells::Spell * spell, int * outSelectedSchool = nullptr) const override;
+	int64_t getSpellBonus(const spells::Spell * spell, int64_t base, const battle::Unit * affectedStack) const override;
+	int64_t getSpecificSpellBonus(const spells::Spell * spell, int64_t base) const override;
 
-	///default spell school level for effect calculation
-	int getEffectLevel(const CSpell * spell) const override;
+	int getEffectLevel(const spells::Spell * spell) const override;
 
-	///default spell-power for damage/heal calculation
-	int getEffectPower(const CSpell * spell) const override;
+	int getEffectPower(const spells::Spell * spell) const override;
 
-	///default spell-power for timed effects duration
-	int getEnchantPower(const CSpell * spell) const override;
+	int getEnchantPower(const spells::Spell * spell) const override;
 
-	///damage/heal override(ignores spell configuration, effect level and effect power)
-	int getEffectValue(const CSpell * spell) const override;
+	int64_t getEffectValue(const spells::Spell * spell) const override;
 
 	const PlayerColor getOwner() const override;
 
 	void getCasterName(MetaString & text) const override;
-	void getCastDescription(const CSpell * spell, const std::vector<const CStack *> & attacked, MetaString & text) const override;
+	void getCastDescription(const spells::Spell * spell, const std::vector<const battle::Unit *> & attacked, MetaString & text) const override;
+	void spendMana(const spells::PacketSender * server, const int spellCost) const override;
 
 	void deserializationFix();
 
 	void initObj(CRandomGenerator & rand) override;
 	void onHeroVisit(const CGHeroInstance * h) const override;
 	std::string getObjectName() const override;
+
+	void afterAddToMap(CMap * map) override;
 protected:
 	void setPropertyDer(ui8 what, ui32 val) override;//synchr
+	///common part of hero instance and hero definition
+	void serializeCommonOptions(JsonSerializeFormat & handler);
+
 	void serializeJsonOptions(JsonSerializeFormat & handler) override;
 
 private:
 	void levelUpAutomatically(CRandomGenerator & rand);
+	void recreateSpecialtyBonuses(std::vector<HeroSpecial*> & specialtyDeprecated);
 
 public:
+	std::string getHeroTypeName() const;
+	void setHeroTypeName(const std::string & identifier);
+
+	void serializeJsonDefinition(JsonSerializeFormat & handler);
+
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
 		h & static_cast<CArmedInstance&>(*this);
 		h & static_cast<CArtifactSet&>(*this);
-		h & exp & level & name & biography & portrait & mana & secSkills & movement
-			& sex & inTownGarrison & spells & patrol & moveDir & skillsInfo;
-		h & visitedTown & boat;
-		h & type & specialty & commander & visitedObjects;
+		h & exp;
+		h & level;
+		h & name;
+		h & biography;
+		h & portrait;
+		h & mana;
+		h & secSkills;
+		h & movement;
+		h & sex;
+		h & inTownGarrison;
+		h & spells;
+		h & patrol;
+		h & moveDir;
+		h & skillsInfo;
+		h & visitedTown;
+		h & boat;
+		h & type;
+		if(version < 781)
+		{
+			std::vector<HeroSpecial*> specialtyDeprecated;
+			h & specialtyDeprecated;
+			if(!h.saving)
+				recreateSpecialtyBonuses(specialtyDeprecated);
+		}
+		h & commander;
+		h & visitedObjects;
 		BONUS_TREE_DESERIALIZATION_FIX
 		//visitied town pointer will be restored by map serialization method
+		if(version < 777 && !h.saving)
+			recreateSecondarySkillsBonuses();
 	}
 };

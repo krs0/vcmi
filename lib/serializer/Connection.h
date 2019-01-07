@@ -1,4 +1,3 @@
-
 /*
  * Connection.h, part of VCMI engine
  *
@@ -8,7 +7,6 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
-
 #pragma once
 
 #include "BinaryDeserializer.h"
@@ -24,7 +22,13 @@ namespace boost
 		{
 			class tcp;
 		}
+
+#if BOOST_VERSION >= 106600  // Boost version >= 1.66
+		class io_context;
+		typedef io_context io_service;
+#else
 		class io_service;
+#endif
 
 		template <typename Protocol> class stream_socket_service;
 		template <typename Protocol,typename StreamSocketService>
@@ -43,43 +47,43 @@ typedef boost::asio::basic_socket_acceptor<boost::asio::ip::tcp, boost::asio::so
 /// Main class for network communication
 /// Allows establishing connection and bidirectional read-write
 class DLL_LINKAGE CConnection
-	: public IBinaryReader, public IBinaryWriter
+	: public IBinaryReader, public IBinaryWriter, public std::enable_shared_from_this<CConnection>
 {
-	CConnection(void);
-
 	void init();
-	void reportState(CLogger * out) override;
+	void reportState(vstd::CLoggerBase * out) override;
 
 	int write(const void * data, unsigned size) override;
 	int read(void * data, unsigned size) override;
+
+	std::shared_ptr<boost::asio::io_service> io_service; //can be empty if connection made from socket
 public:
 	BinaryDeserializer iser;
 	BinarySerializer oser;
 
-	boost::mutex *rmx, *wmx; // read/write mutexes
-	TSocket * socket;
+	std::shared_ptr<boost::mutex> mutexRead;
+	std::shared_ptr<boost::mutex> mutexWrite;
+	std::shared_ptr<TSocket> socket;
 	bool connected;
 	bool myEndianess, contactEndianess; //true if little endian, if endianness is different we'll have to revert received multi-byte vars
-	boost::asio::io_service *io_service;
+	std::string contactUuid;
 	std::string name; //who uses this connection
+	std::string uuid;
 
 	int connectionID;
-	boost::thread *handler;
+	std::shared_ptr<boost::thread> handler;
 
-	bool receivedStop, sendStop;
-
-	CConnection(std::string host, std::string port, std::string Name);
-	CConnection(TAcceptor * acceptor, boost::asio::io_service *Io_service, std::string Name);
-	CConnection(TSocket * Socket, std::string Name); //use immediately after accepting connection into socket
+	CConnection(std::string host, ui16 port, std::string Name, std::string UUID);
+	CConnection(std::shared_ptr<TAcceptor> acceptor, std::shared_ptr<boost::asio::io_service> Io_service, std::string Name, std::string UUID);
+	CConnection(std::shared_ptr<TSocket> Socket, std::string Name, std::string UUID); //use immediately after accepting connection into socket
 
 	void close();
 	bool isOpen() const;
 	template<class T>
 	CConnection &operator&(const T&);
-	virtual ~CConnection(void);
+	virtual ~CConnection();
 
-	CPack *retreivePack(); //gets from server next pack (allocates it with new)
-	void sendPackToServer(const CPack &pack, PlayerColor player, ui32 requestID);
+	CPack * retrievePack();
+	void sendPack(const CPack * pack);
 
 	void disableStackSendingByID();
 	void enableStackSendingByID();
@@ -88,8 +92,10 @@ public:
 	void disableSmartVectorMemberSerialization();
 	void enableSmartVectorMemberSerializatoin();
 
-	void prepareForSendingHeroes(); //disables sending vectorized, enables smart pointer serialization, clears saved/loaded ptr cache
-	void enterPregameConnectionMode();
+	void enterLobbyConnectionMode();
+	void enterGameplayConnectionMode(CGameState * gs);
+
+	std::string toString() const;
 
 	template<class T>
 	CConnection & operator>>(T &t)
@@ -105,5 +111,3 @@ public:
 		return * this;
 	}
 };
-
-DLL_LINKAGE std::ostream &operator<<(std::ostream &str, const CConnection &cpc);

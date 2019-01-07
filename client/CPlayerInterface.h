@@ -1,3 +1,12 @@
+/*
+ * CPlayerInterface.h, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #pragma once
 
 
@@ -9,23 +18,6 @@
 #ifdef __GNUC__
 #define sprintf_s snprintf
 #endif
-
-#ifdef max
-#undef max
-#endif
-#ifdef min
-#undef min
-#endif
-
-/*
- * CPlayerInterface.h, part of VCMI engine
- *
- * Authors: listed in file AUTHORS in main folder
- *
- * License: GNU General Public License v2.0 or later
- * Full text of license available in license.txt file, in main folder
- *
- */
 
 class CButton;
 class CToggleGroup;
@@ -47,7 +39,6 @@ class CSlider;
 struct UpgradeInfo;
 template <typename T> struct CondSh;
 class CInGameConsole;
-class CGarrisonInt;
 class CInGameConsole;
 union SDL_Event;
 class CInfoWindow;
@@ -67,24 +58,11 @@ namespace boost
 	class recursive_mutex;
 }
 
-enum
-{
-	/*CHANGE_SCREEN_RESOLUTION = 1,*/
-	RETURN_TO_MAIN_MENU = 2,
-	//STOP_CLIENT = 3,
-	RESTART_GAME = 4,
-	RETURN_TO_MENU_LOAD,
-	FULLSCREEN_TOGGLED,
-	PREPARE_RESTART_CAMPAIGN,
-	FORCE_QUIT //quit client without question
-};
-
 /// Central class for managing user interface logic
 class CPlayerInterface : public CGameInterface, public IUpdateable
 {
 	const CArmedInstance * currentSelection;
 public:
-	bool observerInDuelMode;
 	ObjectInstanceID destinationTeleport; //contain -1 or object id if teleportation
 	int3 destinationTeleportPos;
 
@@ -96,7 +74,6 @@ public:
 	int firstCall; // -1 - just loaded game; 1 - just started game; 0 otherwise
 	int autosaveCount;
 	static const int SAVES_COUNT = 5;
-	static int howManyPeople;
 
 	CCastleInterface * castleInt; //nullptr if castle window isn't opened
 	static CBattleInterface * battleInt; //nullptr if no battle
@@ -105,7 +82,7 @@ public:
 	std::shared_ptr<CCallback> cb; //to communicate with engine
 	const BattleAction *curAction; //during the battle - action currently performed by active stack (or nullptr)
 
-	std::list<CInfoWindow *> dialogs; //queue of dialogs awaiting to be shown (not currently shown!)
+	std::list<std::shared_ptr<CInfoWindow>> dialogs; //queue of dialogs awaiting to be shown (not currently shown!)
 
 	std::vector<const CGHeroInstance *> wanderingHeroes; //our heroes on the adventure map (not the garrisoned ones)
 	std::vector<const CGTownInstance *> towns; //our towns on the adventure map
@@ -127,7 +104,10 @@ public:
 		SpellbookLastSetting();
 		template <typename Handler> void serialize( Handler &h, const int version )
 		{
-			h & spellbookLastPageBattle & spellbokLastPageAdvmap & spellbookLastTabBattle & spellbookLastTabAdvmap;
+			h & spellbookLastPageBattle;
+			h & spellbokLastPageAdvmap;
+			h & spellbookLastTabBattle;
+			h & spellbookLastTabAdvmap;
 		}
 	} spellbookSettings;
 
@@ -136,13 +116,9 @@ public:
 	int getLastIndex(std::string namePrefix);
 
 	//overridden funcs from CGameInterface
+	void garrisonsChanged(ObjectInstanceID id1, ObjectInstanceID id2) override;
+
 	void buildChanged(const CGTownInstance *town, BuildingID buildingID, int what) override; //what: 1 - built, 2 - demolished
-	void stackChagedCount(const StackLocation &location, const TQuantity &change, bool isAbsolute) override; //if absolute, change is the new count; otherwise count was modified by adding change
-	void stackChangedType(const StackLocation &location, const CCreature &newType) override; //used eg. when upgrading creatures
-	void stacksErased(const StackLocation &location) override; //stack removed from previously filled slot
-	void stacksSwapped(const StackLocation &loc1, const StackLocation &loc2) override;
-	void newStackInserted(const StackLocation &location, const CStackInstance &stack) override; //new stack inserted at given (previously empty position)
-	void stacksRebalanced(const StackLocation &src, const StackLocation &dst, TQuantity count) override; //moves creatures from src stack to dst slot, may be used for merging/splittint/moving stacks
 
 	void artifactPut(const ArtifactLocation &al) override;
 	void artifactRemoved(const ArtifactLocation &al) override;
@@ -150,6 +126,7 @@ public:
 	void artifactAssembled(const ArtifactLocation &al) override;
 	void artifactDisassembled(const ArtifactLocation &al) override;
 
+	void heroVisit(const CGHeroInstance * visitor, const CGObjectInstance * visitedObj, bool start) override;
 	void heroCreated(const CGHeroInstance* hero) override;
 	void heroGotLevel(const CGHeroInstance *hero, PrimarySkill::PrimarySkill pskill, std::vector<SecondarySkill> &skills, QueryID queryID) override;
 	void commanderGotLevel (const CCommanderInstance * commander, std::vector<ui32> skills, QueryID queryID) override;
@@ -161,12 +138,13 @@ public:
 	void heroMovePointsChanged(const CGHeroInstance * hero) override;
 	void heroVisitsTown(const CGHeroInstance* hero, const CGTownInstance * town) override;
 	void receivedResource() override;
-	void showInfoDialog(const std::string &text, const std::vector<Component*> &components, int soundID) override;
+	void showInfoDialog(const std::string & text, const std::vector<Component> & components, int soundID) override;
 	void showRecruitmentDialog(const CGDwelling *dwelling, const CArmedInstance *dst, int level) override;
 	void showShipyardDialog(const IShipyard *obj) override; //obj may be town or shipyard;
 	void showBlockingDialog(const std::string &text, const std::vector<Component> &components, QueryID askID, const int soundID, bool selection, bool cancel) override; //Show a dialog, player must take decision. If selection then he has to choose between one of given components, if cancel he is allowed to not choose. After making choice, CCallback::selectionMade should be called with number of selected component (1 - n) or 0 for cancel (if allowed) and askID.
 	void showTeleportDialog(TeleportChannelID channel, TTeleportExitsList exits, bool impassable, QueryID askID) override;
 	void showGarrisonDialog(const CArmedInstance *up, const CGHeroInstance *down, bool removableUnits, QueryID queryID) override;
+	void showMapObjectSelectDialog(QueryID askID, const Component & icon, const MetaString & title, const MetaString & description, const std::vector<ObjectInstanceID> & objects) override;
 	void showPuzzleMap() override;
 	void viewWorldMap() override;
 	void showMarketWindow(const IMarket *market, const CGHeroInstance *visitor) override;
@@ -208,15 +186,12 @@ public:
 	void battleSpellCast(const BattleSpellCast *sc) override;
 	void battleStacksEffectsSet(const SetStackEffect & sse) override; //called when a specific effect is set to stacks
 	void battleTriggerEffect(const BattleTriggerEffect & bte) override; //various one-shot effect
-	void battleStacksAttacked(const std::vector<BattleStackAttacked> & bsa) override;
+	void battleStacksAttacked(const std::vector<BattleStackAttacked> & bsa, const std::vector<MetaString> & battleLog) override;
 	void battleStartBefore(const CCreatureSet *army1, const CCreatureSet *army2, int3 tile, const CGHeroInstance *hero1, const CGHeroInstance *hero2) override; //called by engine just before battle starts; side=0 - left, side=1 - right
 	void battleStart(const CCreatureSet *army1, const CCreatureSet *army2, int3 tile, const CGHeroInstance *hero1, const CGHeroInstance *hero2, bool side) override; //called by engine when battle starts; side=0 - left, side=1 - right
-	void battleStacksHealedRes(const std::vector<std::pair<ui32, ui32> > & healedStacks, bool lifeDrain, bool tentHeal, si32 lifeDrainFrom) override; //called when stacks are healed / resurrected
-	void battleNewStackAppeared(const CStack * stack) override; //not called at the beginning of a battle or by resurrection; called eg. when elemental is summoned
-	void battleObstaclesRemoved(const std::set<si32> & removedObstacles) override; //called when a certain set  of obstacles is removed from batlefield; IDs of them are given
+	void battleUnitsChanged(const std::vector<UnitChanges> & units, const std::vector<CustomEffectInfo> & customEffects, const std::vector<MetaString> & battleLog) override;
+	void battleObstaclesChanged(const std::vector<ObstacleChanges> & obstacles) override;
 	void battleCatapultAttacked(const CatapultAttack & ca) override; //called when catapult makes an attack
-	void battleStacksRemoved(const BattleStacksRemoved & bsr) override; //called when certain stack is completely removed from battlefield
-	void battleObstaclePlaced(const CObstacleInstance &obstacle) override;
 	void battleGateStateChanged(const EGateState state) override;
 	void yourTacticPhase(int distance) override;
 
@@ -236,13 +211,13 @@ public:
 	void updateInfo(const CGObjectInstance * specific);
 	void init(std::shared_ptr<CCallback> CB) override;
 	int3 repairScreenPos(int3 pos); //returns position closest to pos we can center screen on
+	void activateForSpectator(); // TODO: spectator probably need own player interface class
 
 	// show dialogs
-	void showInfoDialog(const std::string &text, CComponent * component);
-	void showInfoDialog(const std::string &text, const std::vector<CComponent*> & components = std::vector<CComponent*>(), int soundID = 0, bool delComps = false);
+	void showInfoDialog(const std::string &text, std::shared_ptr<CComponent> component);
+	void showInfoDialog(const std::string &text, const std::vector<std::shared_ptr<CComponent>> & components = std::vector<std::shared_ptr<CComponent>>(), int soundID = 0);
 	void showInfoDialogAndWait(std::vector<Component> & components, const MetaString & text);
-	void showOkDialog(std::vector<Component> & components, const MetaString & text, const std::function<void()> & onOk);
-	void showYesNoDialog(const std::string &text, CFunctionList<void()> onYes, CFunctionList<void()> onNo, bool DelComps = false, const std::vector<CComponent*> & components = std::vector<CComponent*>()); //deactivateCur - whether current main interface should be deactivated; delComps - if components will be deleted on window close
+	void showYesNoDialog(const std::string &text, CFunctionList<void()> onYes, CFunctionList<void()> onNo, const std::vector<std::shared_ptr<CComponent>> & components = std::vector<std::shared_ptr<CComponent>>());
 
 	void stopMovement();
 	void moveHero(const CGHeroInstance *h, CGPath path);
@@ -256,15 +231,18 @@ public:
 	void acceptTurn(); //used during hot seat after your turn message is close
 	void tryDiggging(const CGHeroInstance *h);
 	void showShipyardDialogOrProblemPopup(const IShipyard *obj); //obj may be town or shipyard;
-	void requestReturningToMainMenu();
+	void requestReturningToMainMenu(bool won);
 	void sendCustomEvent(int code);
 	void proposeLoadingGame();
+
+	// Ambient sounds
+	void updateAmbientSounds(bool resetAll = false);
 
 	///returns true if all events are processed internally
 	bool capturedAllEvents();
 
-	CPlayerInterface(PlayerColor Player);//c-tor
-	~CPlayerInterface();//d-tor
+	CPlayerInterface(PlayerColor Player);
+	~CPlayerInterface();
 
 private:
 

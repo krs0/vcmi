@@ -1,5 +1,3 @@
-#pragma once
-
 /*
  * FileInfo.h, part of VCMI engine
  *
@@ -9,6 +7,7 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
 
 #include <boost/utility/string_ref.hpp>
 
@@ -50,4 +49,4 @@ boost::string_ref DLL_LINKAGE GetParentPath(boost::string_ref path);
  */
 boost::string_ref DLL_LINKAGE GetPathStem(boost::string_ref path);
 
-} // namespace FileInfo
+}

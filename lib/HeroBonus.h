@@ -1,7 +1,3 @@
-#pragma once
-
-#include "GameConstants.h"
-
 /*
  * HeroBonus.h, part of VCMI engine
  *
@@ -11,17 +7,24 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "GameConstants.h"
+#include "JsonNode.h"
 
 class CCreature;
 struct Bonus;
+class IBonusBearer;
 class CBonusSystemNode;
 class ILimiter;
 class IPropagator;
+class IUpdater;
 class BonusList;
 
 typedef std::shared_ptr<BonusList> TBonusListPtr;
 typedef std::shared_ptr<ILimiter> TLimiterPtr;
 typedef std::shared_ptr<IPropagator> TPropagatorPtr;
+typedef std::shared_ptr<IUpdater> TUpdaterPtr;
 typedef std::set<CBonusSystemNode*> TNodes;
 typedef std::set<const CBonusSystemNode*> TCNodes;
 typedef std::vector<CBonusSystemNode *> TNodesVector;
@@ -64,7 +67,43 @@ public:
 	}
 };
 
+class DLL_LINKAGE CBonusProxy
+{
+public:
+	CBonusProxy(const IBonusBearer * Target, CSelector Selector);
+	CBonusProxy(const CBonusProxy & other);
+	CBonusProxy(CBonusProxy && other);
 
+	CBonusProxy & operator=(CBonusProxy && other);
+	CBonusProxy & operator=(const CBonusProxy & other);
+
+	TBonusListPtr get() const;
+
+	const BonusList * operator->() const;
+private:
+	mutable int64_t cachedLast;
+	const IBonusBearer * target;
+	CSelector selector;
+	mutable TBonusListPtr data;
+};
+
+class DLL_LINKAGE CAddInfo : public std::vector<si32>
+{
+public:
+	enum { NONE = -1 };
+
+	CAddInfo();
+	CAddInfo(si32 value);
+
+	bool operator==(si32 value) const;
+	bool operator!=(si32 value) const;
+
+	si32 & operator[](size_type pos);
+	si32 operator[](size_type pos) const;
+
+	std::string toString() const;
+	JsonNode toJsonNode() const;
+};
 
 #define BONUS_TREE_DESERIALIZATION_FIX if(!h.saving && h.smartPointerSerialization) deserializationFix();
 
@@ -108,7 +147,7 @@ public:
 	BONUS_NAME(MAGIC_SCHOOL_SKILL) /* //eg. for magic plains terrain, subtype: school of magic (0 - all, 1 - fire, 2 - air, 4 - water, 8 - earth), value - level*/ \
 	BONUS_NAME(FREE_SHOOTING) /*stacks can shoot even if otherwise blocked (sharpshooter's bow effect)*/ \
 	BONUS_NAME(OPENING_BATTLE_SPELL) /*casts a spell at expert level at beginning of battle, val - spell power, subtype - spell id*/ \
-	BONUS_NAME(IMPROVED_NECROMANCY) /*allows Necropolis units other than skeletons to be raised by necromancy*/ \
+	BONUS_NAME(IMPROVED_NECROMANCY) /* raise more powerful creatures: subtype - creature type raised, addInfo - [required necromancy level, required stack level] */ \
 	BONUS_NAME(CREATURE_GROWTH_PERCENT) /*increases growth of all units in all towns, val - percentage*/ \
 	BONUS_NAME(FREE_SHIP_BOARDING) /*movement points preserved with ship boarding and landing*/  \
 	BONUS_NAME(NO_TYPE)									\
@@ -126,8 +165,8 @@ public:
 	BONUS_NAME(MAGIC_RESISTANCE) /*in % (value)*/		\
 	BONUS_NAME(CHANGES_SPELL_COST_FOR_ALLY) /*in mana points (value) , eg. mage*/ \
 	BONUS_NAME(CHANGES_SPELL_COST_FOR_ENEMY) /*in mana points (value) , eg. pegasus */ \
-	BONUS_NAME(SPELL_AFTER_ATTACK) /* subtype - spell id, value - chance %, additional info % 1000 - level, (additional info)/1000 -> [0 - all attacks, 1 - shot only, 2 - melee only*/ \
-	BONUS_NAME(SPELL_BEFORE_ATTACK) /* subtype - spell id, value - chance %, additional info % 1000 - level, (additional info)/1000 -> [0 - all attacks, 1 - shot only, 2 - melee only*/ \
+	BONUS_NAME(SPELL_AFTER_ATTACK) /* subtype - spell id, value - chance %, addInfo[0] - level, addInfo[1] -> [0 - all attacks, 1 - shot only, 2 - melee only] */ \
+	BONUS_NAME(SPELL_BEFORE_ATTACK) /* subtype - spell id, value - chance %, addInfo[0] - level, addInfo[1] -> [0 - all attacks, 1 - shot only, 2 - melee only] */ \
 	BONUS_NAME(SPELL_RESISTANCE_AURA) /*eg. unicorns, value - resistance bonus in % for adjacent creatures*/ \
 	BONUS_NAME(LEVEL_SPELL_IMMUNITY) /*creature is immune to all spell with level below or equal to value of this bonus */ \
 	BONUS_NAME(BLOCK_MAGIC_ABOVE) /*blocks casting spells of the level > value */ \
@@ -186,14 +225,14 @@ public:
 	BONUS_NAME(NO_LUCK) /*eg. when fighting on cursed ground*/	\
 	BONUS_NAME(NO_MORALE) /*eg. when fighting on cursed ground*/ \
 	BONUS_NAME(DARKNESS) /*val = radius */ \
-	BONUS_NAME(SPECIAL_SECONDARY_SKILL) /*val = id, additionalInfo = value per level in percent*/ \
-	BONUS_NAME(SPECIAL_SPELL_LEV) /*val = id, additionalInfo = value per level in percent*/\
+	BONUS_NAME(SPECIAL_SECONDARY_SKILL) /*subtype = id, val = value per level in percent*/ \
+	BONUS_NAME(SPECIAL_SPELL_LEV) /*subtype = id, val = value per level in percent*/\
 	BONUS_NAME(SPELL_DAMAGE) /*val = value*/\
 	BONUS_NAME(SPECIFIC_SPELL_DAMAGE) /*subtype = id of spell, val = value*/\
 	BONUS_NAME(SPECIAL_BLESS_DAMAGE) /*val = spell (bless), additionalInfo = value per level in percent*/\
 	BONUS_NAME(MAXED_SPELL) /*val = id*/\
 	BONUS_NAME(SPECIAL_PECULIAR_ENCHANT) /*blesses and curses with id = val dependent on unit's level, subtype = 0 or 1 for Coronius*/\
-	BONUS_NAME(SPECIAL_UPGRADE) /*val = base, additionalInfo = target */\
+	BONUS_NAME(SPECIAL_UPGRADE) /*subtype = base, additionalInfo = target */\
 	BONUS_NAME(DRAGON_NATURE) \
 	BONUS_NAME(CREATURE_DAMAGE)/*subtype 0 = both, 1 = min, 2 = max*/\
 	BONUS_NAME(EXP_MULTIPLIER)/* val - percent of additional exp gained by stack/commander (base value 100)*/\
@@ -222,6 +261,15 @@ public:
 	BONUS_NAME(CATAPULT_EXTRA_SHOTS) /*val - number of additional shots, requires CATAPULT bonus to work*/\
 	BONUS_NAME(RANGED_RETALIATION) /*allows shooters to perform ranged retaliation*/\
 	BONUS_NAME(BLOCKS_RANGED_RETALIATION) /*disallows ranged retaliation for shooter unit, BLOCKS_RETALIATION bonus is for melee retaliation only*/\
+  	BONUS_NAME(SECONDARY_SKILL_VAL2) /*for secondary skills that have multiple effects, like eagle eye (max level and chance)*/  \
+	BONUS_NAME(MANUAL_CONTROL) /* manually control warmachine with id = subtype, chance = val */  \
+	BONUS_NAME(WIDE_BREATH) /* initial desigh: dragon breath affecting multiple nearby hexes */\
+	BONUS_NAME(FIRST_STRIKE) /* first counterattack, then attack if possible */\
+	BONUS_NAME(SYNERGY_TARGET) /* dummy skill for alternative upgrades mod */\
+	BONUS_NAME(SHOOTS_ALL_ADJACENT) /* H4 Cyclops-like shoot (attacks all hexes neighboring with target) without spell-like mechanics */\
+	BONUS_NAME(BLOCK_MAGIC_BELOW) /*blocks casting spells of the level < value */ \
+	BONUS_NAME(DESTRUCTION) /*kills extra units after hit, subtype = 0 - kill percentage of units, 1 - kill amount, val = chance in percent to trigger, additional info - amount/percentage to kill*/ \
+
 	/* end of list */
 
 
@@ -307,12 +355,14 @@ struct DLL_LINKAGE Bonus : public std::enable_shared_from_this<Bonus>
 	si32 val;
 	ui32 sid; //source id: id of object/artifact/spell
 	ValueType valType;
+	std::string stacking; // bonuses with the same stacking value don't stack (e.g. Angel/Archangel morale bonus)
 
-	si32 additionalInfo;
+	CAddInfo additionalInfo;
 	LimitEffect effectRange; //if not NO_LIMIT, bonus will be omitted by default
 
 	TLimiterPtr limiter;
 	TPropagatorPtr propagator;
+	TUpdaterPtr updater;
 
 	std::string description;
 
@@ -322,7 +372,35 @@ struct DLL_LINKAGE Bonus : public std::enable_shared_from_this<Bonus>
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & duration & type & subtype & source & val & sid & description & additionalInfo & turnsRemain & valType & effectRange & limiter & propagator;
+		h & duration;
+		h & type;
+		h & subtype;
+		h & source;
+		h & val;
+		h & sid;
+		h & description;
+		if(version >= 783)
+		{
+			h & additionalInfo;
+		}
+		else
+		{
+			additionalInfo.resize(1, -1);
+			h & additionalInfo[0];
+		}
+		h & turnsRemain;
+		h & valType;
+		if(version >= 784)
+		{
+			h & stacking;
+		}
+		h & effectRange;
+		h & limiter;
+		h & propagator;
+		if(version >= 781)
+		{
+			h & updater;
+		}
 	}
 
 	template <typename Ptr>
@@ -380,9 +458,12 @@ struct DLL_LINKAGE Bonus : public std::enable_shared_from_this<Bonus>
 	}
 
 	std::string Description() const;
+	JsonNode toJsonNode() const;
+	std::string nameForBonus() const; // generate suitable name for bonus - e.g. for storing in json struct
 
 	std::shared_ptr<Bonus> addLimiter(TLimiterPtr Limiter); //returns this for convenient chain-calls
 	std::shared_ptr<Bonus> addPropagator(TPropagatorPtr Propagator); //returns this for convenient chain-calls
+	std::shared_ptr<Bonus> addUpdater(TUpdaterPtr Updater); //returns this for convenient chain-calls
 };
 
 DLL_LINKAGE std::ostream & operator<<(std::ostream &out, const Bonus &bonus);
@@ -430,6 +511,7 @@ public:
 	TInternalContainer::size_type operator-=(std::shared_ptr<Bonus> const &i);
 
 	// BonusList functions
+	void stackBonuses();
 	int totalValue() const;
 	void getBonuses(BonusList &out, const CSelector &selector, const CSelector &limit) const;
 	void getAllBonuses(BonusList &out) const;
@@ -441,7 +523,8 @@ public:
 	const std::shared_ptr<Bonus> getFirst(const CSelector &select) const;
 	int valOfBonuses(const CSelector &select) const;
 
-	void eliminateDuplicates();
+	// conversion / output
+	JsonNode toJsonNode() const;
 
 	// remove_if implementation for STL vector types
 	template <class Predicate>
@@ -532,8 +615,9 @@ public:
 struct BonusLimitationContext
 {
 	const std::shared_ptr<Bonus> b;
-	const CBonusSystemNode &node;
-	const BonusList &alreadyAccepted;
+	const CBonusSystemNode & node;
+	const BonusList & alreadyAccepted;
+	const BonusList & stillUndecided;
 };
 
 class DLL_LINKAGE ILimiter
@@ -544,6 +628,8 @@ public:
 	virtual ~ILimiter();
 
 	virtual int limit(const BonusLimitationContext &context) const; //0 - accept bonus; 1 - drop bonus; 2 - delay (drops eventually)
+	virtual std::string toString() const;
+	virtual JsonNode toJsonNode() const;
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
@@ -573,12 +659,15 @@ public:
 	bool hasBonusFrom(Bonus::BonusSource source, ui32 sourceID) const;
 
 	//various hlp functions for non-trivial values
-	ui32 getMinDamage() const; //used for stacks and creatures only
-	ui32 getMaxDamage() const;
+	//used for stacks and creatures only
+
+	virtual int getMinDamage(bool ranged) const;
+	virtual int getMaxDamage(bool ranged) const;
+	virtual int getAttack(bool ranged) const;
+	virtual int getDefence(bool ranged) const;
+
 	int MoraleVal() const; //range [-3, +3]
 	int LuckVal() const; //range [-3, +3]
-	si32 Attack() const; //get attack of stack with all modificators
-	si32 Defense(bool withFrenzy = true) const; //get defense of stack with all modificators
 	ui32 MaxHealth() const; //get max HP of stack with all modifiers
 	bool isLiving() const; //non-undead, non-non living or alive
 	virtual si32 magicResistance() const;
@@ -586,9 +675,11 @@ public:
 
 	si32 manaLimit() const; //maximum mana value for this hero (basically 10*knowledge)
 	int getPrimSkillLevel(PrimarySkill::PrimarySkill id) const;
+
+	virtual int64_t getTreeVersion() const = 0;
 };
 
-class DLL_LINKAGE CBonusSystemNode : public IBonusBearer, public boost::noncopyable
+class DLL_LINKAGE CBonusSystemNode : public virtual IBonusBearer, public boost::noncopyable
 {
 public:
 	enum ENodeTypes
@@ -608,8 +699,8 @@ private:
 
 	static const bool cachingEnabled;
 	mutable BonusList cachedBonuses;
-	mutable int cachedLast;
-	static int treeChanged;
+	mutable int64_t cachedLast;
+	static std::atomic<int32_t> treeChanged;
 
 	// Setting a value to cachingStr before getting any bonuses caches the result for later requests.
 	// This string needs to be unique, that's why it has to be setted in the following manner:
@@ -619,9 +710,11 @@ private:
 	void getBonusesRec(BonusList &out, const CSelector &selector, const CSelector &limit) const;
 	void getAllBonusesRec(BonusList &out) const;
 	const TBonusListPtr getAllBonusesWithoutCaching(const CSelector &selector, const CSelector &limit, const CBonusSystemNode *root = nullptr) const;
+	const std::shared_ptr<Bonus> update(const std::shared_ptr<Bonus> b) const;
 
 public:
 	explicit CBonusSystemNode();
+	explicit CBonusSystemNode(ENodeTypes NodeType);
 	CBonusSystemNode(CBonusSystemNode && other);
 	virtual ~CBonusSystemNode();
 
@@ -650,15 +743,15 @@ public:
 	void propagateBonus(std::shared_ptr<Bonus> b);
 	void unpropagateBonus(std::shared_ptr<Bonus> b);
 	void removeBonus(const std::shared_ptr<Bonus>& b);
+	void removeBonuses(const CSelector & selector);
+	void removeBonusesRecursive(const CSelector & s);
 	void newRedDescendant(CBonusSystemNode *descendant); //propagation needed
 	void removedRedDescendant(CBonusSystemNode *descendant); //de-propagation needed
 
 	bool isIndependentNode() const; //node is independent when it has no parents nor children
 	bool actsAsBonusSourceOnly() const;
-	///removes bonuses by selector
-	void popBonuses(const CSelector &s);
 	///updates count of remaining turns and removes outdated bonuses by selector
-	void updateBonuses(const CSelector &s);
+	void reduceBonusDurations(const CSelector &s);
 	virtual std::string bonusToString(const std::shared_ptr<Bonus>& bonus, bool description) const {return "";}; //description or bonus name
 	virtual std::string nodeName() const;
 
@@ -677,14 +770,19 @@ public:
 
 	static void treeHasChanged();
 
+	int64_t getTreeVersion() const override;
+
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & /*bonuses & */nodeType;
+//		h & bonuses;
+		h & nodeType;
 		h & exportedBonuses;
 		h & description;
 		BONUS_TREE_DESERIALIZATION_FIX
 		//h & parents & children;
 	}
+
+	friend class CBonusProxy;
 };
 
 namespace NBonus
@@ -776,14 +874,50 @@ public:
 	}
 };
 
-//Stores multiple limiters. If any of them fails -> bonus is dropped.
-class DLL_LINKAGE LimiterList : public ILimiter
+class DLL_LINKAGE AggregateLimiter : public ILimiter
 {
+protected:
 	std::vector<TLimiterPtr> limiters;
-
+	virtual const std::string & getAggregator() const = 0;
 public:
-	int limit(const BonusLimitationContext &context) const override;
 	void add(TLimiterPtr limiter);
+	JsonNode toJsonNode() const override;
+
+	template <typename Handler> void serialize(Handler & h, const int version)
+	{
+		h & static_cast<ILimiter&>(*this);
+		if(version >= 786)
+		{
+			h & limiters;
+		}
+	}
+};
+
+class DLL_LINKAGE AllOfLimiter : public AggregateLimiter
+{
+protected:
+	const std::string & getAggregator() const override;
+public:
+	static const std::string aggregator;
+	int limit(const BonusLimitationContext & context) const override;
+};
+
+class DLL_LINKAGE AnyOfLimiter : public AggregateLimiter
+{
+protected:
+	const std::string & getAggregator() const override;
+public:
+	static const std::string aggregator;
+	int limit(const BonusLimitationContext & context) const override;
+};
+
+class DLL_LINKAGE NoneOfLimiter : public AggregateLimiter
+{
+protected:
+	const std::string & getAggregator() const override;
+public:
+	static const std::string aggregator;
+	int limit(const BonusLimitationContext & context) const override;
 };
 
 class DLL_LINKAGE CCreatureTypeLimiter : public ILimiter //affect only stacks of given creature (and optionally it's upgrades)
@@ -797,11 +931,14 @@ public:
 	void setCreature (CreatureID id);
 
 	int limit(const BonusLimitationContext &context) const override;
+	virtual std::string toString() const override;
+	virtual JsonNode toJsonNode() const override;
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
 		h & static_cast<ILimiter&>(*this);
-		h & creature & includeUpgrades;
+		h & creature;
+		h & includeUpgrades;
 	}
 };
 
@@ -816,22 +953,28 @@ public:
 	HasAnotherBonusLimiter(Bonus::BonusType bonus, TBonusSubtype _subtype);
 
 	int limit(const BonusLimitationContext &context) const override;
+	virtual std::string toString() const override;
+	virtual JsonNode toJsonNode() const override;
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
 		h & static_cast<ILimiter&>(*this);
-		h & type & subtype & isSubtypeRelevant;
+		h & type;
+		h & subtype;
+		h & isSubtypeRelevant;
 	}
 };
 
-class DLL_LINKAGE CreatureNativeTerrainLimiter : public ILimiter //applies only to creatures that are on their native terrain
+class DLL_LINKAGE CreatureTerrainLimiter : public ILimiter //applies only to creatures that are on specified terrain, default native terrain
 {
 public:
 	int terrainType;
-	CreatureNativeTerrainLimiter();
-	CreatureNativeTerrainLimiter(int TerrainType);
+	CreatureTerrainLimiter();
+	CreatureTerrainLimiter(int TerrainType);
 
 	int limit(const BonusLimitationContext &context) const override;
+	virtual std::string toString() const override;
+	virtual JsonNode toJsonNode() const override;
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
@@ -848,6 +991,8 @@ public:
 	CreatureFactionLimiter(int TerrainType);
 
 	int limit(const BonusLimitationContext &context) const override;
+	virtual std::string toString() const override;
+	virtual JsonNode toJsonNode() const override;
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
@@ -864,6 +1009,8 @@ public:
 	CreatureAlignmentLimiter(si8 Alignment);
 
 	int limit(const BonusLimitationContext &context) const override;
+	virtual std::string toString() const override;
+	virtual JsonNode toJsonNode() const override;
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
@@ -900,7 +1047,8 @@ public:
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
 		h & static_cast<ILimiter&>(*this);
-		h & minRank & maxRank;
+		h & minRank;
+		h & maxRank;
 	}
 };
 
@@ -908,16 +1056,17 @@ namespace Selector
 {
 	extern DLL_LINKAGE CSelectFieldEqual<Bonus::BonusType> type;
 	extern DLL_LINKAGE CSelectFieldEqual<TBonusSubtype> subtype;
-	extern DLL_LINKAGE CSelectFieldEqual<si32> info;
+	extern DLL_LINKAGE CSelectFieldEqual<CAddInfo> info;
 	extern DLL_LINKAGE CSelectFieldEqual<Bonus::BonusSource> sourceType;
 	extern DLL_LINKAGE CSelectFieldEqual<Bonus::LimitEffect> effectRange;
 	extern DLL_LINKAGE CWillLastTurns turns;
 	extern DLL_LINKAGE CWillLastDays days;
 
 	CSelector DLL_LINKAGE typeSubtype(Bonus::BonusType Type, TBonusSubtype Subtype);
-	CSelector DLL_LINKAGE typeSubtypeInfo(Bonus::BonusType type, TBonusSubtype subtype, si32 info);
+	CSelector DLL_LINKAGE typeSubtypeInfo(Bonus::BonusType type, TBonusSubtype subtype, CAddInfo info);
 	CSelector DLL_LINKAGE source(Bonus::BonusSource source, ui32 sourceID);
 	CSelector DLL_LINKAGE sourceTypeSel(Bonus::BonusSource source);
+	CSelector DLL_LINKAGE valueType(Bonus::ValueType valType);
 
 	/**
 	 * Selects all bonuses
@@ -942,7 +1091,7 @@ extern DLL_LINKAGE const std::map<std::string, ui16> bonusDurationMap;
 extern DLL_LINKAGE const std::map<std::string, Bonus::LimitEffect> bonusLimitEffect;
 extern DLL_LINKAGE const std::map<std::string, TLimiterPtr> bonusLimiterMap;
 extern DLL_LINKAGE const std::map<std::string, TPropagatorPtr> bonusPropagatorMap;
-
+extern DLL_LINKAGE const std::map<std::string, TUpdaterPtr> bonusUpdaterMap;
 
 // BonusList template that requires full interface of CBonusSystemNode
 template <class InputIterator>
@@ -951,3 +1100,70 @@ void BonusList::insert(const int position, InputIterator first, InputIterator la
 	bonuses.insert(bonuses.begin() + position, first, last);
 	changed();
 }
+
+// observers for updating bonuses based on certain events (e.g. hero gaining level)
+
+class DLL_LINKAGE IUpdater
+{
+public:
+	virtual ~IUpdater();
+
+	virtual const std::shared_ptr<Bonus> update(const std::shared_ptr<Bonus> b, const CBonusSystemNode & context) const;
+	virtual std::string toString() const;
+	virtual JsonNode toJsonNode() const;
+
+	template <typename Handler> void serialize(Handler & h, const int version)
+	{
+	}
+};
+
+class DLL_LINKAGE GrowsWithLevelUpdater : public IUpdater
+{
+public:
+	int valPer20;
+	int stepSize;
+
+	GrowsWithLevelUpdater();
+	GrowsWithLevelUpdater(int valPer20, int stepSize = 1);
+
+	template <typename Handler> void serialize(Handler & h, const int version)
+	{
+		h & static_cast<IUpdater &>(*this);
+		h & valPer20;
+		h & stepSize;
+	}
+
+	const std::shared_ptr<Bonus> update(const std::shared_ptr<Bonus> b, const CBonusSystemNode & context) const override;
+	virtual std::string toString() const override;
+	virtual JsonNode toJsonNode() const override;
+};
+
+class DLL_LINKAGE TimesHeroLevelUpdater : public IUpdater
+{
+public:
+	TimesHeroLevelUpdater();
+
+	template <typename Handler> void serialize(Handler & h, const int version)
+	{
+		h & static_cast<IUpdater &>(*this);
+	}
+
+	const std::shared_ptr<Bonus> update(const std::shared_ptr<Bonus> b, const CBonusSystemNode & context) const override;
+	virtual std::string toString() const override;
+	virtual JsonNode toJsonNode() const override;
+};
+
+class DLL_LINKAGE TimesStackLevelUpdater : public IUpdater
+{
+public:
+	TimesStackLevelUpdater();
+
+	template <typename Handler> void serialize(Handler & h, const int version)
+	{
+		h & static_cast<IUpdater &>(*this);
+	}
+
+	const std::shared_ptr<Bonus> update(const std::shared_ptr<Bonus> b, const CBonusSystemNode & context) const override;
+	virtual std::string toString() const override;
+	virtual JsonNode toJsonNode() const override;
+};

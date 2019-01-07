@@ -1,4 +1,3 @@
-
 /*
  * CMapGenerator.h, part of VCMI engine
  *
@@ -14,9 +13,8 @@
 #include "../GameConstants.h"
 #include "../CRandomGenerator.h"
 #include "CMapGenOptions.h"
-#include "CRmgTemplateZone.h"
 #include "../int3.h"
-#include "CRmgTemplate.h" //for CRmgTemplateZoneConnection
+#include "CRmgTemplate.h"
 
 class CMap;
 class CRmgTemplate;
@@ -30,7 +28,7 @@ class CTileInfo;
 
 typedef std::vector<JsonNode> JsonVector;
 
-class rmgException : std::exception
+class rmgException : public std::exception
 {
 	std::string msg;
 public:
@@ -52,6 +50,8 @@ public:
 class DLL_LINKAGE CMapGenerator
 {
 public:
+	using Zones = std::map<TRmgTemplateZoneId, std::shared_ptr<CRmgTemplateZone>>;
+
 	explicit CMapGenerator();
 	~CMapGenerator(); // required due to std::unique_ptr
 
@@ -63,7 +63,7 @@ public:
 	int randomSeed;
 	CMapEditManager * editManager;
 
-	std::map<TRmgTemplateZoneId, CRmgTemplateZone*> getZones() const;
+	Zones & getZones();
 	void createDirectConnections();
 	void createConnections2();
 	void findZonesForQuestArts();
@@ -101,8 +101,8 @@ public:
 	void setZoneID(const int3& tile, TRmgTemplateZoneId zid);
 
 private:
-	std::list<CRmgTemplateZoneConnection> connectionsLeft;
-	std::map<TRmgTemplateZoneId, CRmgTemplateZone*> zones;
+	std::list<rmg::ZoneConnection> connectionsLeft;
+	Zones zones;
 	std::map<TFaction, ui32> zonesPerFaction;
 	ui32 zonesTotal; //zones that have their main town only
 

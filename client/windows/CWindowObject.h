@@ -1,7 +1,3 @@
-#pragma once
-
-#include "../gui/CIntObject.h"
-
 /*
  * CWindowObject.h, part of VCMI engine
  *
@@ -11,30 +7,31 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
 
-/// Basic class for windows
-class CWindowObject : public CIntObject
+#include "../gui/CIntObject.h"
+
+class CGStatusBar;
+
+class CWindowObject : public WindowBase
 {
-	CPicture * createBg(std::string imageName, bool playerColored);
+	std::shared_ptr<CPicture> createBg(std::string imageName, bool playerColored);
 	int getUsedEvents(int options);
 
-	CIntObject *shadow;
+	std::vector<std::shared_ptr<CPicture>> shadowParts;
+
 	void setShadow(bool on);
 
 	int options;
 
 protected:
-	CPicture * background;
+	std::shared_ptr<CPicture> background;
 
-	//Simple function with call to GH.popInt
-	void close();
 	//Used only if RCLICK_POPUP was set
 	void clickRight(tribool down, bool previousState) override;
 	//To display border
-	void showAll(SDL_Surface *to) override;
-	//change or set background image
-	void setBackground(std::string filename);
 	void updateShadow();
+	void setBackground(std::string filename);
 public:
 	enum EOptions
 	{
@@ -52,4 +49,16 @@ public:
 	CWindowObject(int options, std::string imageName, Point centerAt);
 	CWindowObject(int options, std::string imageName = "");
 	~CWindowObject();
+
+	void showAll(SDL_Surface * to) override;
+};
+
+class CStatusbarWindow : public CWindowObject
+{
+public:
+	CStatusbarWindow(int options, std::string imageName, Point centerAt);
+	CStatusbarWindow(int options, std::string imageName = "");
+	void activate() override;
+protected:
+	std::shared_ptr<CGStatusBar> statusbar;
 };

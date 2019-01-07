@@ -1,9 +1,3 @@
-#pragma once
-
-#include "../gui/CIntObject.h"
-#include "../gui/SDL_Extensions.h"
-#include "../../lib/FunctionList.h"
-
 /*
  * TextControls.h, part of VCMI engine
  *
@@ -13,6 +7,11 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "../gui/CIntObject.h"
+#include "../gui/SDL_Extensions.h"
+#include "../../lib/FunctionList.h"
 
 class CSlider;
 
@@ -41,14 +40,17 @@ protected:
 	Point getBorderSize() override;
 	virtual std::string visibleText();
 
-	CPicture *bg;
+	std::shared_ptr<CPicture> background;
 public:
 
 	std::string text;
 	bool autoRedraw;  //whether control will redraw itself on setTxt
 
 	std::string getText();
+	virtual void setAutoRedraw(bool option);
 	virtual void setText(const std::string &Txt);
+	virtual void setColor(const SDL_Color & Color);
+	size_t getWidth();
 
 	CLabel(int x=0, int y=0, EFonts Font = FONT_SMALL, EAlignment Align = TOPLEFT,
 	       const SDL_Color &Color = Colors::WHITE, const std::string &Text =  "");
@@ -58,13 +60,14 @@ public:
 /// Small helper class to manage group of similar labels
 class CLabelGroup : public CIntObject
 {
-	std::list<CLabel*> labels;
+	std::vector<std::shared_ptr<CLabel>> labels;
 	EFonts font;
 	EAlignment align;
 	SDL_Color color;
 public:
 	CLabelGroup(EFonts Font = FONT_SMALL, EAlignment Align = TOPLEFT, const SDL_Color &Color = Colors::WHITE);
 	void add(int x=0, int y=0, const std::string &text =  "");
+	size_t currentSize() const;
 };
 
 /// Multi-line label that can display multiple lines of text
@@ -100,35 +103,42 @@ class CTextBox : public CIntObject
 {
 	int sliderStyle;
 public:
-	CMultiLineLabel * label;
-	CSlider *slider;
+	std::shared_ptr<CMultiLineLabel> label;
+	std::shared_ptr<CSlider> slider;
 
-	CTextBox(std::string Text, const Rect &rect, int SliderStyle, EFonts Font = FONT_SMALL, EAlignment Align = TOPLEFT, const SDL_Color &Color = Colors::WHITE);
+	CTextBox(std::string Text, const Rect & rect, int SliderStyle, EFonts Font = FONT_SMALL, EAlignment Align = TOPLEFT, const SDL_Color & Color = Colors::WHITE);
 
 	void resize(Point newSize);
-	void setText(const std::string &Txt);
+	void setText(const std::string & Txt);
 	void sliderMoved(int to);
 };
 
 /// Status bar which is shown at the bottom of the in-game screens
-class CGStatusBar : public CLabel
+class CGStatusBar : public CLabel, public std::enable_shared_from_this<CGStatusBar>
 {
 	bool textLock; //Used for blocking changes to the text
 	void init();
 
-	CGStatusBar *oldStatusBar;
+	std::shared_ptr<CGStatusBar> oldStatusBar;
+
+	CGStatusBar(std::shared_ptr<CPicture> background_, EFonts Font = FONT_SMALL, EAlignment Align = CENTER, const SDL_Color & Color = Colors::WHITE);
+	CGStatusBar(int x, int y, std::string name, int maxw = -1);
 protected:
 	Point getBorderSize() override;
 
 public:
-
+	template<typename ...Args>
+	static std::shared_ptr<CGStatusBar> create(Args... args)
+	{
+		std::shared_ptr<CGStatusBar> ret{new CGStatusBar{args...}};
+		ret->init();
+		return ret;
+	}
 	void clear();//clears statusbar and refreshes
 	void setText(const std::string & Text) override; //prints text and refreshes statusbar
 
 	void show(SDL_Surface * to) override; //shows statusbar (with current text)
 
-	CGStatusBar(CPicture *BG, EFonts Font = FONT_SMALL, EAlignment Align = CENTER, const SDL_Color &Color = Colors::WHITE); //given CPicture will be captured by created sbar and it's pos will be used as pos for sbar
-	CGStatusBar(int x, int y, std::string name, int maxw=-1);
 	~CGStatusBar();
 
 	void lock(bool shouldLock); //If true, current text cannot be changed until lock(false) is called
@@ -161,6 +171,10 @@ protected:
 
 	void focusGot() override;
 	void focusLost() override;
+
+#ifdef VCMI_ANDROID
+	void notifyAndroidTextInputChanged(std::string & text);
+#endif
 public:
 	CFunctionList<void(const std::string &)> cb;
 	CFunctionList<void(std::string &, const std::string &)> filters;
@@ -173,7 +187,7 @@ public:
 	void clickLeft(tribool down, bool previousState) override;
 	void keyPressed(const SDL_KeyboardEvent & key) override;
 	bool captureThisEvent(const SDL_KeyboardEvent & key) override;
-	
+
 	void textInputed(const SDL_TextInputEvent & event) override;
 	void textEdited(const SDL_TextEditingEvent & event) override;
 

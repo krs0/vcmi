@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{276C3DB0-7A6B-4417-8E5C-322B08633AAC}</ProjectGuid>
     <RootNamespace>StupidAI</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -41,7 +41,7 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v140_xp</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RD|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -81,7 +81,7 @@
     <OutDir>$(VCMI_Out)\AI\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RD|Win32'">
-    <OutDir>$(VCMI_Out)</OutDir>
+    <OutDir>$(VCMI_Out)/AI</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RD|x64'">
     <OutDir>$(VCMI_Out)\AI\</OutDir>
@@ -116,11 +116,13 @@
       <AdditionalIncludeDirectories>$(FUZZYLITEDIR)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdInc.h</PrecompiledHeaderFile>
-      <AdditionalOptions>/Zm199 %(AdditionalOptions)</AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
     </ClCompile>
     <Link>
       <AdditionalDependencies>VCMI_lib.lib;FuzzyLite.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\libs;..\..;..</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(VCMI_Out);$(SolutionDir)\AI</AdditionalLibraryDirectories>
+      <AdditionalOptions>/d2:-notypeopt %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RD|x64'">
@@ -137,10 +139,41 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AIhelper.cpp" />
     <ClCompile Include="AIUtility.cpp" />
-    <ClCompile Include="Fuzzy.cpp" />
-    <ClCompile Include="Goals.cpp" />
+    <ClCompile Include="BuildingManager.cpp" />
+    <ClCompile Include="FuzzyEngines.cpp" />
+    <ClCompile Include="FuzzyHelper.cpp" />
+    <ClCompile Include="Goals\AbstractGoal.cpp" />
+    <ClCompile Include="Goals\AdventureSpellCast.cpp" />
+    <ClCompile Include="Goals\Build.cpp" />
+    <ClCompile Include="Goals\BuildBoat.cpp" />
+    <ClCompile Include="Goals\BuildThis.cpp" />
+    <ClCompile Include="Goals\BuyArmy.cpp" />
+    <ClCompile Include="Goals\ClearWayTo.cpp" />
+    <ClCompile Include="Goals\CollectRes.cpp" />
+    <ClCompile Include="Goals\CompleteQuest.cpp" />
+    <ClCompile Include="Goals\Conquer.cpp" />
+    <ClCompile Include="Goals\DigAtTile.cpp" />
+    <ClCompile Include="Goals\Explore.cpp" />
+    <ClCompile Include="Goals\FindObj.cpp" />
+    <ClCompile Include="Goals\GatherArmy.cpp" />
+    <ClCompile Include="Goals\GatherTroops.cpp" />
+    <ClCompile Include="Goals\GetArtOfType.cpp" />
+    <ClCompile Include="Goals\RecruitHero.cpp" />
+    <ClCompile Include="Goals\Trade.cpp" />
+    <ClCompile Include="Goals\VisitHero.cpp" />
+    <ClCompile Include="Goals\VisitObj.cpp" />
+    <ClCompile Include="Goals\VisitTile.cpp" />
+    <ClCompile Include="Goals\Win.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MapObjectsEvaluator.cpp" />
+    <ClCompile Include="Pathfinding\AINodeStorage.cpp" />
+    <ClCompile Include="Pathfinding\AIPathfinder.cpp" />
+    <ClCompile Include="Pathfinding\AIPathfinderConfig.cpp" />
+    <ClCompile Include="Pathfinding\PathfindingManager.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="SectorMap.cpp" />
     <ClCompile Include="StdInc.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -150,9 +183,43 @@
     <ClCompile Include="VCAI.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AIhelper.h" />
     <ClInclude Include="AIUtility.h" />
-    <ClInclude Include="Fuzzy.h" />
-    <ClInclude Include="Goals.h" />
+    <ClInclude Include="BuildingManager.h" />
+    <ClInclude Include="FuzzyEngines.h" />
+    <ClInclude Include="FuzzyHelper.h" />
+    <ClInclude Include="Goals\AbstractGoal.h" />
+    <ClInclude Include="Goals\AdventureSpellCast.h" />
+    <ClInclude Include="Goals\Build.h" />
+    <ClInclude Include="Goals\BuildBoat.h" />
+    <ClInclude Include="Goals\BuildThis.h" />
+    <ClInclude Include="Goals\BuyArmy.h" />
+    <ClInclude Include="Goals\CGoal.h" />
+    <ClInclude Include="Goals\ClearWayTo.h" />
+    <ClInclude Include="Goals\CollectRes.h" />
+    <ClInclude Include="Goals\CompleteQuest.h" />
+    <ClInclude Include="Goals\Conquer.h" />
+    <ClInclude Include="Goals\DigAtTile.h" />
+    <ClInclude Include="Goals\Explore.h" />
+    <ClInclude Include="Goals\FindObj.h" />
+    <ClInclude Include="Goals\GatherArmy.h" />
+    <ClInclude Include="Goals\GatherTroops.h" />
+    <ClInclude Include="Goals\GetArtOfType.h" />
+    <ClInclude Include="Goals\Goals.h" />
+    <ClInclude Include="Goals\Invalid.h" />
+    <ClInclude Include="Goals\RecruitHero.h" />
+    <ClInclude Include="Goals\Trade.h" />
+    <ClInclude Include="Goals\VisitHero.h" />
+    <ClInclude Include="Goals\VisitObj.h" />
+    <ClInclude Include="Goals\VisitTile.h" />
+    <ClInclude Include="Goals\Win.h" />
+    <ClInclude Include="MapObjectsEvaluator.h" />
+    <ClInclude Include="Pathfinding\AINodeStorage.h" />
+    <ClInclude Include="Pathfinding\AIPathfinder.h" />
+    <ClInclude Include="Pathfinding\AIPathfinderConfig.h" />
+    <ClInclude Include="Pathfinding\PathfindingManager.h" />
+    <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="SectorMap.h" />
     <ClInclude Include="StdInc.h" />
     <ClInclude Include="VCAI.h" />
   </ItemGroup>

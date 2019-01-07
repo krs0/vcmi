@@ -1,12 +1,3 @@
-#include "StdInc.h"
-#include "Connection.h"
-
-#include "../registerTypes/RegisterTypes.h"
-#include "../mapping/CMap.h"
-#include "../CGameState.h"
-
-#include <boost/asio.hpp>
-
 /*
  * Connection.cpp, part of VCMI engine
  *
@@ -16,6 +7,14 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#include "StdInc.h"
+#include "Connection.h"
+
+#include "../registerTypes/RegisterTypes.h"
+#include "../mapping/CMap.h"
+#include "../CGameState.h"
+
+#include <boost/asio.hpp>
 
 using namespace boost;
 using namespace boost::asio::ip;
@@ -33,8 +32,9 @@ using namespace boost::asio::ip;
 
 void CConnection::init()
 {
-	boost::asio::ip::tcp::no_delay option(true);
-	socket->set_option(option);
+	socket->set_option(boost::asio::ip::tcp::no_delay(true));
+	socket->set_option(boost::asio::socket_base::send_buffer_size(4194304));
+	socket->set_option(boost::asio::socket_base::receive_buffer_size(4194304));
 
 	enableSmartPointerSerialization();
 	disableStackSendingByID();
@@ -48,50 +48,46 @@ void CConnection::init()
 	connected = true;
 	std::string pom;
 	//we got connection
-	oser & std::string("Aiya!\n") & name & myEndianess; //identify ourselves
-	iser & pom & pom & contactEndianess;
-	logNetwork->infoStream() << "Established connection with "<<pom;
-	wmx = new boost::mutex;
-	rmx = new boost::mutex;
+	oser & std::string("Aiya!\n") & name & uuid & myEndianess; //identify ourselves
+	iser & pom & pom & contactUuid & contactEndianess;
+	logNetwork->info("Established connection with %s. UUID: %s", pom, contactUuid);
+	mutexRead = std::make_shared<boost::mutex>();
+	mutexWrite = std::make_shared<boost::mutex>();
 
-	handler = nullptr;
-	receivedStop = sendStop = false;
-	static int cid = 1;
-	connectionID = cid++;
 	iser.fileVersion = SERIALIZATION_VERSION;
 }
 
-CConnection::CConnection(std::string host, std::string port, std::string Name)
-:iser(this), oser(this), io_service(new asio::io_service), name(Name)
+CConnection::CConnection(std::string host, ui16 port, std::string Name, std::string UUID)
+	: io_service(std::make_shared<asio::io_service>()), iser(this), oser(this), name(Name), uuid(UUID), connectionID(0)
 {
 	int i;
 	boost::system::error_code error = asio::error::host_not_found;
-	socket = new tcp::socket(*io_service);
+	socket = std::make_shared<tcp::socket>(*io_service);
 	tcp::resolver resolver(*io_service);
-	tcp::resolver::iterator end, pom, endpoint_iterator = resolver.resolve(tcp::resolver::query(host,port),error);
+	tcp::resolver::iterator end, pom, endpoint_iterator = resolver.resolve(tcp::resolver::query(host, std::to_string(port)),error);
 	if(error)
 	{
-		logNetwork->errorStream() << "Problem with resolving: \n" << error;
+		logNetwork->error("Problem with resolving: \n%s", error.message());
 		goto connerror1;
 	}
 	pom = endpoint_iterator;
 	if(pom != end)
-		logNetwork->infoStream()<<"Found endpoints:";
+		logNetwork->info("Found endpoints:");
 	else
 	{
-		logNetwork->errorStream() << "Critical problem: No endpoints found!";
+		logNetwork->error("Critical problem: No endpoints found!");
 		goto connerror1;
 	}
 	i=0;
 	while(pom != end)
 	{
-		logNetwork->infoStream() << "\t" << i << ": " << (boost::asio::ip::tcp::endpoint&)*pom;
+		logNetwork->info("\t%d:%s", i, (boost::asio::ip::tcp::endpoint&)*pom);
 		pom++;
 	}
 	i=0;
 	while(endpoint_iterator != end)
 	{
-		logNetwork->infoStream() << "Trying connection to " << (boost::asio::ip::tcp::endpoint&)*endpoint_iterator << "  (" << i++ << ")";
+		logNetwork->info("Trying connection to %s(%d)", (boost::asio::ip::tcp::endpoint&)*endpoint_iterator, i++);
 		socket->connect(*endpoint_iterator, error);
 		if(!error)
 		{
@@ -100,37 +96,35 @@ CConnection::CConnection(std::string host, std::string port, std::string Name)
 		}
 		else
 		{
-			logNetwork->errorStream() << "Problem with connecting: " <<  error;
+			logNetwork->error("Problem with connecting: %s", error.message());
 		}
 		endpoint_iterator++;
 	}
 
 	//we shouldn't be here - error handling
 connerror1:
-	logNetwork->errorStream() << "Something went wrong... checking for error info";
+	logNetwork->error("Something went wrong... checking for error info");
 	if(error)
-		logNetwork->errorStream() << error;
+		logNetwork->error(error.message());
 	else
-		logNetwork->errorStream() << "No error info. ";
-	delete io_service;
-	//delete socket;
+		logNetwork->error("No error info. ");
 	throw std::runtime_error("Can't establish connection :(");
 }
-CConnection::CConnection(TSocket * Socket, std::string Name )
-	:iser(this), oser(this), socket(Socket),io_service(&Socket->get_io_service()), name(Name)//, send(this), rec(this)
+CConnection::CConnection(std::shared_ptr<TSocket> Socket, std::string Name, std::string UUID)
+	: iser(this), oser(this), socket(Socket), name(Name), uuid(UUID), connectionID(0)
 {
 	init();
 }
-CConnection::CConnection(TAcceptor * acceptor, boost::asio::io_service *Io_service, std::string Name)
-: iser(this), oser(this), name(Name)//, send(this), rec(this)
+CConnection::CConnection(std::shared_ptr<TAcceptor> acceptor, std::shared_ptr<boost::asio::io_service> io_service, std::string Name, std::string UUID)
+	: io_service(io_service), iser(this), oser(this), name(Name), uuid(UUID), connectionID(0)
 {
 	boost::system::error_code error = asio::error::host_not_found;
-	socket = new tcp::socket(*io_service);
+	socket = std::make_shared<tcp::socket>(*io_service);
 	acceptor->accept(*socket,error);
 	if (error)
 	{
-		logNetwork->errorStream() << "Error on accepting: " << error;
-		delete socket;
+		logNetwork->error("Error on accepting: %s", error.message());
+		socket.reset();
 		throw std::runtime_error("Can't establish connection :(");
 	}
 	init();
@@ -164,17 +158,12 @@ int CConnection::read(void * data, unsigned size)
 		throw;
 	}
 }
-CConnection::~CConnection(void)
+CConnection::~CConnection()
 {
 	if(handler)
 		handler->join();
 
-	delete handler;
-
 	close();
-	delete io_service;
-	delete wmx;
-	delete rmx;
 }
 
 template<class T>
@@ -191,8 +180,7 @@ void CConnection::close()
 	if(socket)
 	{
 		socket->close();
-		delete socket;
-		socket = nullptr;
+		socket.reset();
 	}
 }
 
@@ -201,31 +189,38 @@ bool CConnection::isOpen() const
 	return socket && connected;
 }
 
-void CConnection::reportState(CLogger * out)
+void CConnection::reportState(vstd::CLoggerBase * out)
 {
-	out->debugStream() << "CConnection";
+	out->debug("CConnection");
 	if(socket && socket->is_open())
 	{
-		out->debugStream() << "\tWe have an open and valid socket";
-		out->debugStream() << "\t" << socket->available() <<" bytes awaiting";
+		out->debug("\tWe have an open and valid socket");
+		out->debug("\t %d bytes awaiting", socket->available());
 	}
 }
 
-CPack * CConnection::retreivePack()
+CPack * CConnection::retrievePack()
 {
-	CPack *ret = nullptr;
-	boost::unique_lock<boost::mutex> lock(*rmx);
-	logNetwork->traceStream() << "Listening... ";
-	iser & ret;
-	logNetwork->traceStream() << "\treceived server message of type " << (ret? typeid(*ret).name() : "nullptr") << ", data: " << ret;
-	return ret;
+	CPack * pack = nullptr;
+	boost::unique_lock<boost::mutex> lock(*mutexRead);
+	iser & pack;
+	logNetwork->trace("Received CPack of type %s", (pack ? typeid(*pack).name() : "nullptr"));
+	if(pack == nullptr)
+	{
+		logNetwork->error("Received a nullptr CPack! You should check whether client and server ABI matches.");
+	}
+	else
+	{
+		pack->c = this->shared_from_this();
+	}
+	return pack;
 }
 
-void CConnection::sendPackToServer(const CPack &pack, PlayerColor player, ui32 requestID)
+void CConnection::sendPack(const CPack * pack)
 {
-	boost::unique_lock<boost::mutex> lock(*wmx);
-	logNetwork->traceStream() << "Sending to server a pack of type " << typeid(pack).name();
-	oser & player & requestID & &pack; //packs has to be sent as polymorphic pointers!
+	boost::unique_lock<boost::mutex> lock(*mutexWrite);
+	logNetwork->trace("Sending a pack of type %s", typeid(*pack).name());
+	oser & pack;
 }
 
 void CConnection::disableStackSendingByID()
@@ -248,21 +243,19 @@ void CConnection::enableSmartPointerSerialization()
 	iser.smartPointerSerialization = oser.smartPointerSerialization = true;
 }
 
-void CConnection::prepareForSendingHeroes()
-{
-	iser.loadedPointers.clear();
-	oser.savedPointers.clear();
-	disableSmartVectorMemberSerialization();
-	enableSmartPointerSerialization();
-	disableStackSendingByID();
-}
-
-void CConnection::enterPregameConnectionMode()
+void CConnection::enterLobbyConnectionMode()
 {
 	iser.loadedPointers.clear();
 	oser.savedPointers.clear();
 	disableSmartVectorMemberSerialization();
 	disableSmartPointerSerialization();
+}
+
+void CConnection::enterGameplayConnectionMode(CGameState * gs)
+{
+	enableStackSendingByID();
+	disableSmartPointerSerialization();
+	addStdVecItems(gs);
 }
 
 void CConnection::disableSmartVectorMemberSerialization()
@@ -275,7 +268,9 @@ void CConnection::enableSmartVectorMemberSerializatoin()
 	CSerializer::smartVectorMembersSerialization = true;
 }
 
-std::ostream & operator<<(std::ostream &str, const CConnection &cpc)
- {
-	return str << "Connection with " << cpc.name << " (ID: " << cpc.connectionID << /*", " << (cpc.host ? "host" : "guest") <<*/ ")";
- }
+std::string CConnection::toString() const
+{
+	boost::format fmt("Connection with %s (ID: %d UUID: %s)");
+	fmt % name % connectionID % uuid;
+	return fmt.str();
+}

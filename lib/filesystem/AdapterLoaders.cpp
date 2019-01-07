@@ -1,3 +1,12 @@
+/*
+ * AdapterLoaders.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "AdapterLoaders.h"
 
@@ -121,7 +130,7 @@ std::unordered_set<ResourceID> CFilesystemList::getFilteredFiles(std::function<b
 
 bool CFilesystemList::createResource(std::string filename, bool update)
 {
-	logGlobal->traceStream()<< "Creating " << filename;
+	logGlobal->trace("Creating %s", filename);
 	for (auto & loader : boost::adaptors::reverse(loaders))
 	{
 		if (writeableLoaders.count(loader.get()) != 0                       // writeable,
@@ -132,11 +141,11 @@ bool CFilesystemList::createResource(std::string filename, bool update)
 			// b) in update mode, call with filename that does not exists
 			assert(load(ResourceID(filename)));
 
-			logGlobal->traceStream()<< "Resource created successfully";
+			logGlobal->trace("Resource created successfully");
 			return true;
 		}
 	}
-	logGlobal->traceStream()<< "Failed to create resource";
+	logGlobal->trace("Failed to create resource");
 	return false;
 }
 

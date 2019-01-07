@@ -1,3 +1,12 @@
+/*
+ * ERMParser.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "ERMParser.h"
 
@@ -14,17 +23,6 @@
 namespace qi = boost::spirit::qi;
 namespace ascii = spirit::ascii;
 namespace phoenix = boost::phoenix;
-
-
-/*
- * ERMParser.cpp, part of VCMI engine
- *
- * Authors: listed in file AUTHORS in main folder
- *
- * License: GNU General Public License v2.0 or later
- * Full text of license available in license.txt file, in main folder
- *
- */
 
 
 //Greenspun's Tenth Rule of Programming:
@@ -61,7 +59,7 @@ class ParseErrorException : public std::exception
 
 };
 
-std::string CERMPreprocessor::retreiveCommandLine()
+std::string CERMPreprocessor::retrieveCommandLine()
 {
 	std::string wholeCommand;
 
@@ -173,7 +171,7 @@ std::vector<LineInfo> ERMParser::parseFile()
 	{
 		while(1)
 		{
-			std::string command = preproc.retreiveCommandLine();
+			std::string command = preproc.retrieveCommandLine();
 			if(command.length() == 0)
 				break;
 
@@ -471,7 +469,7 @@ namespace ERM
 		qi::rule<Iterator, TVExp(), ascii::space_type> vexp;
 		qi::rule<Iterator, TLine(), ascii::space_type> vline;
 	};
-};
+}
 
 ERM::TLine ERMParser::parseLine( const std::string & line, int realLineNo )
 {

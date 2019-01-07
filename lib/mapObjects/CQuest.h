@@ -1,11 +1,3 @@
-#pragma once
-
-#include "CObjectHandler.h"
-#include "CArmedInstance.h"
-
-#include "../CCreatureSet.h"
-#include "../NetPacksBase.h"
-
 /*
  * CQuest.h, part of VCMI engine
  *
@@ -15,6 +7,13 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "CObjectHandler.h"
+#include "CArmedInstance.h"
+
+#include "../CCreatureSet.h"
+#include "../NetPacksBase.h"
 
 class CGCreature;
 
@@ -67,10 +66,26 @@ public:
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & qid & missionType & progress & lastDay & m13489val & m2stats & m5arts & m6creatures & m7resources
-			& textOption & stackToKill & stackDirection & heroName & heroPortrait
-			& firstVisitText & nextVisitText & completedText & isCustomFirst
-			& isCustomNext & isCustomComplete;
+		h & qid;
+		h & missionType;
+		h & progress;
+		h & lastDay;
+		h & m13489val;
+		h & m2stats;
+		h & m5arts;
+		h & m6creatures;
+		h & m7resources;
+		h & textOption;
+		h & stackToKill;
+		h & stackDirection;
+		h & heroName;
+		h & heroPortrait;
+		h & firstVisitText;
+		h & nextVisitText;
+		h & completedText;
+		h & isCustomFirst;
+		h & isCustomNext;
+		h & isCustomComplete;
 		if(version >= 757)
 		{
 			h & completedOption;
@@ -80,6 +95,8 @@ public:
 			completedOption = 1;
 		}
 	}
+
+	void serializeJson(JsonSerializeFormat & handler, const std::string & fieldName);
 };
 
 class DLL_LINKAGE IQuestObject
@@ -96,6 +113,8 @@ public:
 	{
 		h & quest;
 	}
+protected:
+	void afterAddToMapCommon(CMap * map);
 };
 
 class DLL_LINKAGE CGSeerHut : public CArmedInstance, public IQuestObject //army is used when giving reward
@@ -124,15 +143,23 @@ public:
 	void finishQuest (const CGHeroInstance * h, ui32 accept) const; //common for both objects
 	virtual void completeQuest (const CGHeroInstance * h) const;
 
+	void afterAddToMap(CMap * map) override;
+
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & static_cast<CArmedInstance&>(*this) & static_cast<IQuestObject&>(*this);
-		h & rewardType & rID & rVal & seerName;
+		h & static_cast<CArmedInstance&>(*this);
+		h & static_cast<IQuestObject&>(*this);
+		h & rewardType;
+		h & rID;
+		h & rVal;
+		h & seerName;
 	}
 protected:
 	static const int OBJPROP_VISITED = 10;
 
 	void setPropertyDer(ui8 what, ui32 val) override;
+
+	void serializeJsonOptions(JsonSerializeFormat & handler) override;
 };
 
 class DLL_LINKAGE CGQuestGuard : public CGSeerHut
@@ -146,6 +173,8 @@ public:
 	{
 		h & static_cast<CGSeerHut&>(*this);
 	}
+protected:
+	void serializeJsonOptions(JsonSerializeFormat & handler) override;
 };
 
 class DLL_LINKAGE CGKeys : public CGObjectInstance //Base class for Keymaster and guards
@@ -192,6 +221,8 @@ public:
 	void getVisitText (MetaString &text, std::vector<Component> &components, bool isCustom, bool FirstVisit, const CGHeroInstance * h = nullptr) const override;
 	void getRolloverText (MetaString &text, bool onHover) const;
 	bool checkQuest (const CGHeroInstance * h) const override;
+
+	void afterAddToMap(CMap * map) override;
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{

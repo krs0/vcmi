@@ -1,7 +1,3 @@
-#pragma once
-
-#include "../../lib/GameConstants.h"
-
 /*
  * CCampaignHandler.h, part of VCMI engine
  *
@@ -11,10 +7,17 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "../../lib/GameConstants.h"
 
 struct StartInfo;
 class CGHeroInstance;
 class CBinaryReader;
+class CMap;
+class CMapHeader;
+class CMapInfo;
+class JsonNode;
 
 namespace CampaignVersion
 {
@@ -43,7 +46,14 @@ public:
 
 	template <typename Handler> void serialize(Handler &h, const int formatVersion)
 	{
-		h & version & mapVersion & name & description & difficultyChoosenByPlayer & music & filename & loadFromLod;
+		h & version;
+		h & mapVersion;
+		h & name;
+		h & description;
+		h & difficultyChoosenByPlayer;
+		h & music;
+		h & filename;
+		h & loadFromLod;
 	}
 };
 
@@ -71,7 +81,10 @@ public:
 
 		template <typename Handler> void serialize(Handler &h, const int formatVersion)
 		{
-			h & type & info1 & info2 & info3;
+			h & type;
+			h & info1;
+			h & info2;
+			h & info3;
 		}
 	};
 
@@ -81,7 +94,12 @@ public:
 
 	template <typename Handler> void serialize(Handler &h, const int formatVersion)
 	{
-		h & whatHeroKeeps & monstersKeptByHero & artifsKeptByHero & startOptions & playerColor & bonusesToChoose;
+		h & whatHeroKeeps;
+		h & monstersKeptByHero;
+		h & artifsKeptByHero;
+		h & startOptions;
+		h & playerColor;
+		h & bonusesToChoose;
 	}
 
 };
@@ -100,7 +118,10 @@ public:
 
 		template <typename Handler> void serialize(Handler &h, const int formatVersion)
 		{
-			h & hasPrologEpilog & prologVideo & prologMusic & prologText;
+			h & hasPrologEpilog;
+			h & prologVideo;
+			h & prologMusic;
+			h & prologText;
 		}
 	};
 
@@ -117,20 +138,45 @@ public:
 
 	CScenarioTravel travelOptions;
 	std::vector<HeroTypeID> keepHeroes; // contains list of heroes which should be kept for next scenario (doesn't matter if they lost)
-	std::vector<CGHeroInstance *> crossoverHeroes; // contains all heroes with the same state when the campaign scenario was finished
-	std::vector<CGHeroInstance *> placedCrossoverHeroes; // contains all placed crossover heroes defined by hero placeholders when the scenario was started
+	std::vector<JsonNode> crossoverHeroes; // contains all heroes with the same state when the campaign scenario was finished
+	std::vector<JsonNode> placedCrossoverHeroes; // contains all placed crossover heroes defined by hero placeholders when the scenario was started
 
-	const CGHeroInstance * strongestHero(PlayerColor owner) const;
 	void loadPreconditionRegions(ui32 regions);
 	bool isNotVoid() const;
-	std::vector<CGHeroInstance *> getLostCrossoverHeroes() const; /// returns a list of crossover heroes which started the scenario, but didn't complete it
+	// FIXME: due to usage of JsonNode I can't make these methods const
+	const CGHeroInstance * strongestHero(PlayerColor owner);
+	std::vector<CGHeroInstance *> getLostCrossoverHeroes(); /// returns a list of crossover heroes which started the scenario, but didn't complete it
+	std::vector<JsonNode> update787(std::vector<CGHeroInstance *> & heroes);
 
 	CCampaignScenario();
 
 	template <typename Handler> void serialize(Handler &h, const int formatVersion)
 	{
-		h & mapName & scenarioName & packedMapSize & preconditionRegions & regionColor & difficulty & conquered & regionText &
-			prolog & epilog & travelOptions & crossoverHeroes & placedCrossoverHeroes & keepHeroes;
+		h & mapName;
+		h & scenarioName;
+		h & packedMapSize;
+		h & preconditionRegions;
+		h & regionColor;
+		h & difficulty;
+		h & conquered;
+		h & regionText;
+		h & prolog;
+		h & epilog;
+		h & travelOptions;
+		if(formatVersion < 787)
+		{
+			std::vector<CGHeroInstance *> crossoverHeroesOld, placedCrossoverHeroesOld;
+			h & crossoverHeroesOld;
+			h & placedCrossoverHeroesOld;
+			crossoverHeroes = update787(crossoverHeroesOld);
+			placedCrossoverHeroes = update787(placedCrossoverHeroesOld);
+		}
+		else
+		{
+			h & crossoverHeroes;
+			h & placedCrossoverHeroes;
+		}
+		h & keepHeroes;
 	}
 };
 
@@ -143,7 +189,9 @@ public:
 
 	template <typename Handler> void serialize(Handler &h, const int formatVersion)
 	{
-		h & header & scenarios & mapPieces;
+		h & header;
+		h & scenarios;
+		h & mapPieces;
 	}
 
 	bool conquerable(int whichScenario) const;
@@ -161,12 +209,18 @@ public:
 
 	std::map<ui8, ui8> chosenCampaignBonuses;
 
-	//void initNewCampaign(const StartInfo &si);
 	void setCurrentMapAsConquered(const std::vector<CGHeroInstance*> & heroes);
 	boost::optional<CScenarioTravel::STravelBonus> getBonusForCurrentMap() const;
 	const CCampaignScenario & getCurrentScenario() const;
 	CCampaignScenario & getCurrentScenario();
 	ui8 currentBonusID() const;
+
+	CMap * getMap(int scenarioId = -1) const;
+	std::unique_ptr<CMapHeader> getHeader(int scenarioId = -1) const;
+	std::shared_ptr<CMapInfo> getMapInfo(int scenarioId = -1) const;
+
+	static JsonNode crossoverSerialize(CGHeroInstance * hero);
+	static CGHeroInstance * crossoverDeserialize(JsonNode & node);
 
 	CCampaignState();
 	CCampaignState(std::unique_ptr<CCampaign> _camp);
@@ -174,7 +228,11 @@ public:
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & camp & campaignName & mapsRemaining & mapsConquered & currentMap;
+		h & camp;
+		h & campaignName;
+		h & mapsRemaining;
+		h & mapsConquered;
+		h & currentMap;
 		h & chosenCampaignBonuses;
 	}
 };

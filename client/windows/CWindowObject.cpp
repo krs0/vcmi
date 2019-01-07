@@ -1,3 +1,12 @@
+/*
+ * CWindowObject.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "CWindowObject.h"
 
@@ -24,23 +33,14 @@
 #include "../../lib/CConfigHandler.h"
 #include "../../lib/CGeneralTextHandler.h" //for Unicode related stuff
 
-/*
- * CWindowObject.cpp, part of VCMI engine
- *
- * Authors: listed in file AUTHORS in main folder
- *
- * License: GNU General Public License v2.0 or later
- * Full text of license available in license.txt file, in main folder
- *
- */
-
 CWindowObject::CWindowObject(int options_, std::string imageName, Point centerAt):
-    CIntObject(getUsedEvents(options_), Point()),
-    shadow(nullptr),
-    options(options_),
-    background(createBg(imageName, options & PLAYER_COLORED))
+	WindowBase(getUsedEvents(options_), Point()),
+	options(options_),
+	background(createBg(imageName, options & PLAYER_COLORED))
 {
 	assert(parent == nullptr); //Safe to remove, but windows should not have parent
+
+	defActions = 255-DISPOSE;
 
 	if (options & RCLICK_POPUP)
 		CCS->curh->hide();
@@ -55,51 +55,48 @@ CWindowObject::CWindowObject(int options_, std::string imageName, Point centerAt
 }
 
 CWindowObject::CWindowObject(int options_, std::string imageName):
-    CIntObject(getUsedEvents(options_), Point()),
-    shadow(nullptr),
-    options(options_),
-    background(createBg(imageName, options & PLAYER_COLORED))
+	WindowBase(getUsedEvents(options_), Point()),
+	options(options_),
+	background(createBg(imageName, options_ & PLAYER_COLORED))
 {
 	assert(parent == nullptr); //Safe to remove, but windows should not have parent
 
-	if (options & RCLICK_POPUP)
+	defActions = 255-DISPOSE;
+
+	if(options & RCLICK_POPUP)
 		CCS->curh->hide();
 
-	if (background)
+	if(background)
 		pos = background->center();
 	else
 		center(Point(screen->w/2, screen->h/2));
 
-	if (!(options & SHADOW_DISABLED))
+	if(!(options & SHADOW_DISABLED))
 		setShadow(true);
 }
 
-CWindowObject::~CWindowObject()
-{
-	setShadow(false);
-}
+CWindowObject::~CWindowObject() = default;
 
-CPicture * CWindowObject::createBg(std::string imageName, bool playerColored)
+std::shared_ptr<CPicture> CWindowObject::createBg(std::string imageName, bool playerColored)
 {
-	OBJ_CONSTRUCTION_CAPTURING_ALL;
+	OBJECT_CONSTRUCTION_CUSTOM_CAPTURING(255-DISPOSE);
 
-	if (imageName.empty())
+	if(imageName.empty())
 		return nullptr;
 
-	auto  image = new CPicture(imageName);
-	if (playerColored)
+	auto image = std::make_shared<CPicture>(imageName);
+	if(playerColored)
 		image->colorize(LOCPLINT->playerID);
 	return image;
 }
 
 void CWindowObject::setBackground(std::string filename)
 {
-	OBJ_CONSTRUCTION_CAPTURING_ALL;
+	OBJECT_CONSTRUCTION_CUSTOM_CAPTURING(255-DISPOSE);
 
-	delete background;
 	background = createBg(filename, options & PLAYER_COLORED);
 
-	if (background)
+	if(background)
 		pos = background->center(Point(pos.w/2 + pos.x, pos.h/2 + pos.y));
 
 	updateShadow();
@@ -124,16 +121,16 @@ void CWindowObject::setShadow(bool on)
 	//size of shadow
 	static const int size = 8;
 
-	if (on == bool(shadow))
+	if(on == !shadowParts.empty())
 		return;
 
-	vstd::clear_pointer(shadow);
+	shadowParts.clear();
 
 	//object too small to cast shadow
-	if (pos.h <= size || pos.w <= size)
+	if(pos.h <= size || pos.w <= size)
 		return;
 
-	if (on)
+	if(on)
 	{
 
 		//helper to set last row
@@ -165,7 +162,7 @@ void CWindowObject::setShadow(bool on)
 		static SDL_Surface * shadowRightTempl = nullptr;
 
 		//one-time initialization
-		if (!shadowCornerTempl)
+		if(!shadowCornerTempl)
 		{
 			//create "template" surfaces
 			shadowCornerTempl = CSDL_Ext::createSurfaceWithBpp<4>(size, size);
@@ -185,8 +182,6 @@ void CWindowObject::setShadow(bool on)
 			blitAlphaRow(shadowBottomTempl, size-1);
 			blitAlphaRow(shadowCornerTempl, size-1);
 		}
-
-		OBJ_CONSTRUCTION_CAPTURING_ALL;
 
 		//FIXME: do something with this points
 		Point shadowStart;
@@ -216,27 +211,44 @@ void CWindowObject::setShadow(bool on)
 		blitAlphaRow(shadowRight, 0);
 
 		//generate "shadow" object with these 3 pieces in it
-		shadow = new CIntObject;
-		shadow->addChild(new CPicture(shadowCorner, shadowPos.x, shadowPos.y));
-		shadow->addChild(new CPicture(shadowRight,  shadowPos.x, shadowStart.y));
-		shadow->addChild(new CPicture(shadowBottom, shadowStart.x, shadowPos.y));
+		{
+			OBJECT_CONSTRUCTION_CUSTOM_CAPTURING(255-DISPOSE);
+
+			shadowParts.push_back(std::make_shared<CPicture>(shadowCorner, shadowPos.x, shadowPos.y));
+			shadowParts.push_back(std::make_shared<CPicture>(shadowRight, shadowPos.x, shadowStart.y));
+			shadowParts.push_back(std::make_shared<CPicture>(shadowBottom, shadowStart.x, shadowPos.y));
+
+		}
 	}
 }
 
 void CWindowObject::showAll(SDL_Surface *to)
 {
+	auto color = LOCPLINT ? LOCPLINT->playerID : PlayerColor(1);
+	if(settings["session"]["spectate"].Bool())
+		color = PlayerColor(1); // TODO: Spectator shouldn't need special code for UI colors
+
 	CIntObject::showAll(to);
 	if ((options & BORDERED) && (pos.h != to->h || pos.w != to->w))
-		CMessage::drawBorder(LOCPLINT ? LOCPLINT->playerID : PlayerColor(1), to, pos.w+28, pos.h+29, pos.x-14, pos.y-15);
-}
-
-void CWindowObject::close()
-{
-	GH.popIntTotally(this);
+		CMessage::drawBorder(color, to, pos.w+28, pos.h+29, pos.x-14, pos.y-15);
 }
 
 void CWindowObject::clickRight(tribool down, bool previousState)
 {
 	close();
 	CCS->curh->show();
+}
+
+CStatusbarWindow::CStatusbarWindow(int options, std::string imageName, Point centerAt) : CWindowObject(options, imageName, centerAt)
+{
+}
+
+CStatusbarWindow::CStatusbarWindow(int options, std::string imageName) : CWindowObject(options, imageName)
+{
+}
+
+void CStatusbarWindow::activate()
+{
+	CIntObject::activate();
+	GH.statusbar = statusbar;
 }

@@ -8,14 +8,46 @@
 
 	"properties":{
 		"index": {
-			"type":"number",
+			"type":"number"
 		},
 		"name": {
-			"type":"string",
+			"type":"string"
+		},
+		"defaultAiValue": {
+			"type":"number"
 		},
 
 		"handler": {
-			"type":"string",
+			"type":"string"
+		},
+
+		"sounds": {
+			"type":"object",
+			"additionalProperties" : false,
+			"description": "Sounds used by this object",
+			"properties" : {
+				"ambient": {
+					"type":"array",
+					"description": "Background sound of an object",
+					"items": {
+						"type": "string"
+					}
+				},
+				"visit": {
+					"type":"array",
+					"description": "Sound that played on object visit",
+					"items": {
+						"type": "string"
+					}
+				},
+				"removal": {
+					"type":"array",
+					"description": "Sound that played on object removal",
+					"items": {
+						"type": "string"
+					}
+				}
+			}
 		},
 
 		"base": {
@@ -24,7 +56,7 @@
 		"types": {
 			"type":"object",
 			"additionalProperties": {
-				"$ref" : "vcmi:objectType"
+				"$ref" : "objectType.json"
 			}
 		}
 	}

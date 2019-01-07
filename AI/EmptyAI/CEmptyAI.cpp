@@ -1,3 +1,12 @@
+/*
+ * CEmptyAI.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "CEmptyAI.h"
 
@@ -37,4 +46,9 @@ void CEmptyAI::showTeleportDialog(TeleportChannelID channel, TTeleportExitsList 
 void CEmptyAI::showGarrisonDialog(const CArmedInstance *up, const CGHeroInstance *down, bool removableUnits, QueryID queryID)
 {
 	cb->selectionMade(0, queryID);
+}
+
+void CEmptyAI::showMapObjectSelectDialog(QueryID askID, const Component & icon, const MetaString & title, const MetaString & description, const std::vector<ObjectInstanceID> & objects)
+{
+	cb->selectionMade(0, askID);
 }

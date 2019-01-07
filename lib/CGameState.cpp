@@ -1,3 +1,12 @@
+/*
+ * CGameState.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "CGameState.h"
 
@@ -11,13 +20,13 @@
 #include "CHeroHandler.h"
 #include "mapObjects/CObjectHandler.h"
 #include "CModHandler.h"
+#include "CSkillHandler.h"
 #include "mapping/CMap.h"
 #include "mapping/CMapService.h"
 #include "StartInfo.h"
 #include "NetPacks.h"
 #include "registerTypes/RegisterTypes.h"
-#include "mapping/CMapInfo.h"
-#include "BattleInfo.h"
+#include "battle/BattleInfo.h"
 #include "JsonNode.h"
 #include "filesystem/Filesystem.h"
 #include "GameConstants.h"
@@ -26,23 +35,9 @@
 #include "mapping/CMapEditManager.h"
 #include "serializer/CTypeList.h"
 #include "serializer/CMemorySerializer.h"
+#include "VCMIDirs.h"
 
-#ifdef min
-#undef min
-#endif
-#ifdef max
-#undef max
-#endif
-
-/*
- * CGameState.cpp, part of VCMI engine
- *
- * Authors: listed in file AUTHORS in main folder
- *
- * License: GNU General Public License v2.0 or later
- * Full text of license available in license.txt file, in main folder
- *
- */
+boost::shared_mutex CGameState::mutex;
 
 template <typename T> class CApplyOnGS;
 
@@ -53,7 +48,7 @@ public:
 	virtual ~CBaseForGSApply(){};
 	template<typename U> static CBaseForGSApply *getApplier(const U * t=nullptr)
 	{
-		return new CApplyOnGS<U>;
+		return new CApplyOnGS<U>();
 	}
 };
 
@@ -64,12 +59,10 @@ public:
 	{
 		T *ptr = static_cast<T*>(pack);
 
-		boost::unique_lock<boost::shared_mutex> lock(*gs->mx);
+		boost::unique_lock<boost::shared_mutex> lock(CGameState::mutex);
 		ptr->applyGs(gs);
 	}
 };
-
-static CApplier<CBaseForGSApply> *applierGs = nullptr;
 
 void MetaString::getLocalString(const std::pair<ui8,ui32> &txt, std::string &dst) const
 {
@@ -111,6 +104,10 @@ void MetaString::getLocalString(const std::pair<ui8,ui32> &txt, std::string &dst
 	{
 		dst = VLC->objtypeh->getObjectName(ser);
 	}
+	else if(type == SEC_SKILL_NAME)
+	{
+		dst = VLC->skillh->skillName(ser);
+	}
 	else
 	{
 		std::vector<std::string> *vec;
@@ -137,20 +134,20 @@ void MetaString::getLocalString(const std::pair<ui8,ui32> &txt, std::string &dst
 		case ADVOB_TXT:
 			vec = &VLC->generaltexth->advobtxt;
 			break;
-		case SEC_SKILL_NAME:
-			vec = &VLC->generaltexth->skillName;
-			break;
 		case COLOR:
 			vec = &VLC->generaltexth->capColors;
 			break;
+		case JK_TXT:
+			vec = &VLC->generaltexth->jktexts;
+			break;
 		default:
-			logGlobal->errorStream() << "Failed string substitution because type is " << type;
+			logGlobal->error("Failed string substitution because type is %d", type);
 			dst = "#@#";
 			return;
 		}
 		if(vec->size() <= ser)
 		{
-			logGlobal->errorStream() << "Failed string substitution with type " << type << " because index " << ser << " is out of bounds!";
+			logGlobal->error("Failed string substitution with type %d because index %d is out of bounds!", type, ser);
 			dst = "#!#";
 		}
 		else
@@ -197,7 +194,7 @@ DLL_LINKAGE void MetaString::toString(std::string &dst) const
 			boost::replace_first(dst, "%+d", '+' + boost::lexical_cast<std::string>(numbers[nums++]));
 			break;
 		default:
-			logGlobal->errorStream() << "MetaString processing error! Received message of type " << int(elem);
+			logGlobal->error("MetaString processing error! Received message of type %d", int(elem));
 			break;
 		}
 	}
@@ -254,7 +251,7 @@ DLL_LINKAGE std::string MetaString::buildList () const
 				lista.replace (lista.find("%d"), 2, boost::lexical_cast<std::string>(numbers[nums++]));
 				break;
 			default:
-				logGlobal->errorStream() << "MetaString processing error! Received message of type " << int(message[i]);
+				logGlobal->error("MetaString processing error! Received message of type %d",int(message[i]));
 		}
 
 	}
@@ -290,10 +287,10 @@ static CGObjectInstance * createObject(Obj id, int subid, int3 pos, PlayerColor 
 			break;
 		}
 	case Obj::TOWN:
-		nobj = new CGTownInstance;
+		nobj = new CGTownInstance();
 		break;
 	default: //rest of objects
-		nobj = new CGObjectInstance;
+		nobj = new CGObjectInstance();
 		break;
 	}
 	nobj->ID = id;
@@ -307,13 +304,13 @@ static CGObjectInstance * createObject(Obj id, int subid, int3 pos, PlayerColor 
 }
 
 CGHeroInstance * CGameState::HeroesPool::pickHeroFor(bool native, PlayerColor player, const CTown *town,
-	std::map<ui32, ConstTransitivePtr<CGHeroInstance> > &available, CRandomGenerator & rand, const CHeroClass * bannedClass /*= nullptr*/) const
+	std::map<ui32, ConstTransitivePtr<CGHeroInstance> > &available, CRandomGenerator & rand, const CHeroClass * bannedClass) const
 {
 	CGHeroInstance *ret = nullptr;
 
 	if(player>=PlayerColor::PLAYER_LIMIT)
 	{
-		logGlobal->errorStream() << "Cannot pick hero for " << town->faction->index << ". Wrong owner!";
+		logGlobal->error("Cannot pick hero for faction %d. Wrong owner!", town->faction->index);
 		return nullptr;
 	}
 
@@ -331,7 +328,7 @@ CGHeroInstance * CGameState::HeroesPool::pickHeroFor(bool native, PlayerColor pl
 		}
 		if(!pool.size())
 		{
-			logGlobal->errorStream() << "Cannot pick native hero for " << player << ". Picking any...";
+			logGlobal->error("Cannot pick native hero for %s. Picking any...", player.getStr());
 			return pickHeroFor(false, player, town, available, rand);
 		}
 		else
@@ -354,7 +351,7 @@ CGHeroInstance * CGameState::HeroesPool::pickHeroFor(bool native, PlayerColor pl
 		}
 		if(!pool.size() || sum == 0)
 		{
-			logGlobal->errorStream() << "There are no heroes available for player " << player<<"!";
+			logGlobal->error("There are no heroes available for player %s!", player.getStr());
 			return nullptr;
 		}
 
@@ -424,7 +421,7 @@ int CGameState::pickUnusedHeroTypeRandomly(PlayerColor owner)
 		return RandomGeneratorUtil::nextItem(factionHeroes, getRandomGenerator())->getNum();
 	}
 
-	logGlobal->warnStream() << "Cannot find free hero of appropriate faction for player " << owner << " - trying to get first available...";
+	logGlobal->warn("Cannot find free hero of appropriate faction for player %s - trying to get first available...", owner.getStr());
 	if(!otherHeroes.empty())
 	{
 		return RandomGeneratorUtil::nextItem(otherHeroes, getRandomGenerator())->getNum();
@@ -510,8 +507,29 @@ std::pair<Obj,int> CGameState::pickObject (CGObjectInstance *obj)
 			if (auto info = dynamic_cast<CCreGenAsCastleInfo*>(dwl->info))
 			{
 				faction = getRandomGenerator().nextInt(VLC->townh->factions.size() - 1);
-				if (info->asCastle)
+				if(info->asCastle && info->instanceId != "")
 				{
+					auto iter = map->instanceNames.find(info->instanceId);
+
+					if(iter == map->instanceNames.end())
+						logGlobal->error("Map object not found: %s", info->instanceId);
+					else
+					{
+						auto elem = iter->second;
+						if(elem->ID==Obj::RANDOM_TOWN)
+						{
+							randomizeObject(elem.get()); //we have to randomize the castle first
+							faction = elem->subID;
+						}
+						else if(elem->ID==Obj::TOWN)
+							faction = elem->subID;
+						else
+							logGlobal->error("Map object must be town: %s", info->instanceId);
+					}
+				}
+				else if(info->asCastle)
+				{
+
 					for(auto & elem : map->objects)
 					{
 						if(!elem)
@@ -534,12 +552,16 @@ std::pair<Obj,int> CGameState::pickObject (CGObjectInstance *obj)
 				}
 				else
 				{
-					while(!(info->castles[0]&(1<<faction)))
-					{
-						if((faction>7) && (info->castles[1]&(1<<(faction-8))))
-							break;
-						faction = getRandomGenerator().nextInt(GameConstants::F_NUMBER - 1);
-					}
+					std::set<int> temp;
+
+					for(int i = 0; i < info->allowedFactions.size(); i++)
+						if(info->allowedFactions[i])
+							temp.insert(i);
+
+					if(temp.empty())
+						logGlobal->error("Random faction selection failed. Nothing is allowed. Fall back to random.");
+					else
+						faction = *RandomGeneratorUtil::nextItem(temp, getRandomGenerator());
 				}
 			}
 			else // castle alignment fixed
@@ -583,7 +605,7 @@ std::pair<Obj,int> CGameState::pickObject (CGObjectInstance *obj)
 
 			if (result.first == Obj::NO_OBJ)
 			{
-				logGlobal->errorStream() << "Error: failed to find dwelling for "<< VLC->townh->factions[faction]->name << " of level " << int(level);
+				logGlobal->error("Error: failed to find dwelling for %s of level %d", VLC->townh->factions[faction]->name, int(level));
 				result = std::make_pair(Obj::CREATURE_GENERATOR1, *RandomGeneratorUtil::nextItem(VLC->objtypeh->knownSubObjects(Obj::CREATURE_GENERATOR1), getRandomGenerator()));
 			}
 
@@ -649,11 +671,10 @@ int CGameState::getDate(Date::EDateType mode) const
 CGameState::CGameState()
 {
 	gs = this;
-	mx = new boost::shared_mutex();
-	applierGs = new CApplier<CBaseForGSApply>;
-	registerTypesClientPacks1(*applierGs);
-	registerTypesClientPacks2(*applierGs);
-	//objCaller = new CObjectCallersHandler;
+	applier = std::make_shared<CApplier<CBaseForGSApply>>();
+	registerTypesClientPacks1(*applier);
+	registerTypesClientPacks2(*applier);
+	//objCaller = new CObjectCallersHandler();
 	globalEffects.setDescription("Global effects");
 	globalEffects.setNodeType(CBonusSystemNode::GLOBAL_EFFECTS);
 	day = 0;
@@ -661,21 +682,16 @@ CGameState::CGameState()
 
 CGameState::~CGameState()
 {
-	//delete mx;//TODO: crash on Linux (mutex must be unlocked before destruction)
 	map.dellNull();
 	curB.dellNull();
-	//delete scenarioOps; //TODO: fix for loading ind delete
-	//delete initialOpts;
-	delete applierGs;
-	//delete objCaller;
 
 	for(auto ptr : hpool.heroesPool) // clean hero pool
 		ptr.second.dellNull();
 }
 
-void CGameState::init(StartInfo * si)
+void CGameState::init(const IMapService * mapService, StartInfo * si, bool allowSavingRandomMap)
 {
-	logGlobal->infoStream() << "\tUsing random seed: "<< si->seedToBeUsed;
+	logGlobal->info("\tUsing random seed: %d", si->seedToBeUsed);
 	getRandomGenerator().setSeed(si->seedToBeUsed);
 	scenarioOps = CMemorySerializer::deepCopy(*si).release();
 	initialOpts = CMemorySerializer::deepCopy(*si).release();
@@ -684,16 +700,13 @@ void CGameState::init(StartInfo * si)
 	switch(scenarioOps->mode)
 	{
 	case StartInfo::NEW_GAME:
-		initNewGame();
+		initNewGame(mapService, allowSavingRandomMap);
 		break;
 	case StartInfo::CAMPAIGN:
 		initCampaign();
 		break;
-	case StartInfo::DUEL:
-		initDuel();
-		return;
 	default:
-		logGlobal->errorStream() << "Wrong mode: " << (int)scenarioOps->mode;
+		logGlobal->error("Wrong mode: %d", static_cast<int>(scenarioOps->mode));
 		return;
 	}
 	VLC->arth->initAllowedArtifactsList(map->allowedArtifact);
@@ -734,7 +747,7 @@ void CGameState::init(StartInfo * si)
 	map->checkForObjectives(); //needs to be run when all objects are properly placed
 
 	auto seedAfterInit = getRandomGenerator().nextInt();
-	logGlobal->infoStream() << "Seed after init is " << seedAfterInit << " (before was " << scenarioOps->seedToBeUsed << ")";
+	logGlobal->info("Seed after init is %d (before was %d)", seedAfterInit, scenarioOps->seedToBeUsed);
 	if(scenarioOps->seedPostInit > 0)
 	{
 		//RNG must be in the same state on all machines when initialization is done (otherwise we have desync)
@@ -746,7 +759,14 @@ void CGameState::init(StartInfo * si)
 	}
 }
 
-void CGameState::initNewGame()
+void CGameState::updateOnLoad(StartInfo * si)
+{
+	scenarioOps->playerInfos = si->playerInfos;
+	for(auto & i : si->playerInfos)
+		gs->players[i.first].human = i.second.isControlledByHuman();
+}
+
+void CGameState::initNewGame(const IMapService * mapService, bool allowSavingRandomMap)
 {
 	if(scenarioOps->createRandomMap())
 	{
@@ -755,8 +775,37 @@ void CGameState::initNewGame()
 
 		// Gen map
 		CMapGenerator mapGenerator;
-		map = mapGenerator.generate(scenarioOps->mapGenOptions.get(), scenarioOps->seedToBeUsed).release();
 
+		std::unique_ptr<CMap> randomMap = mapGenerator.generate(scenarioOps->mapGenOptions.get(), scenarioOps->seedToBeUsed);
+
+		if(allowSavingRandomMap)
+		{
+			try
+			{
+				auto path = VCMIDirs::get().userCachePath() / "RandomMaps";
+				boost::filesystem::create_directories(path);
+
+				std::shared_ptr<CMapGenOptions> options = scenarioOps->mapGenOptions;
+
+				const std::string templateName = options->getMapTemplate()->getName();
+				const ui32 seed = scenarioOps->seedToBeUsed;
+
+				const std::string fileName = boost::str(boost::format("%s_%d.vmap") % templateName % seed );
+				const auto fullPath = path / fileName;
+
+				mapService->saveMap(randomMap, fullPath);
+
+				logGlobal->info("Random map has been saved to:");
+				logGlobal->info(fullPath.string());
+			}
+			catch(...)
+			{
+				logGlobal->error("Saving random map failed with exception");
+				handleException();
+			}
+		}
+
+		map = randomMap.release();
 		// Update starting options
 		for(int i = 0; i < map->players.size(); ++i)
 		{
@@ -767,7 +816,7 @@ void CGameState::initNewGame()
 				playerSettings.compOnly = !playerInfo.canHumanPlay;
 				playerSettings.team = playerInfo.team;
 				playerSettings.castle = playerInfo.defaultCastle();
-				if(playerSettings.playerID == PlayerSettings::PLAYER_AI && playerSettings.name.empty())
+				if(playerSettings.isControlledByAI() && playerSettings.name.empty())
 				{
 					playerSettings.name = VLC->generaltexth->allTexts[468];
 				}
@@ -779,137 +828,28 @@ void CGameState::initNewGame()
 			}
 		}
 
-		logGlobal->infoStream() << boost::format("Generated random map in %i ms.") % sw.getDiff();
+		logGlobal->info("Generated random map in %i ms.", sw.getDiff());
 	}
 	else
 	{
-		logGlobal->infoStream() << "Open map file: " << scenarioOps->mapname;
-		map = CMapService::loadMap(scenarioOps->mapname).release();
+		logGlobal->info("Open map file: %s", scenarioOps->mapname);
+		const ResourceID mapURI(scenarioOps->mapname, EResType::MAP);
+		map = mapService->loadMap(mapURI).release();
 	}
 }
 
 void CGameState::initCampaign()
 {
-	logGlobal->infoStream() << "Open campaign map file: " << scenarioOps->campState->currentMap;
-	auto campaign = scenarioOps->campState;
-	assert(vstd::contains(campaign->camp->mapPieces, *scenarioOps->campState->currentMap));
-
-	std::string scenarioName = scenarioOps->mapname.substr(0, scenarioOps->mapname.find('.'));
-	boost::to_lower(scenarioName);
-	scenarioName += ':' + boost::lexical_cast<std::string>(*campaign->currentMap);
-
-	std::string & mapContent = campaign->camp->mapPieces[*campaign->currentMap];
-	auto buffer = reinterpret_cast<const ui8 *>(mapContent.data());
-	map = CMapService::loadMap(buffer, mapContent.size(), scenarioName).release();
-}
-
-void CGameState::initDuel()
-{
-	DuelParameters dp;
-	try //CLoadFile likes throwing
-	{
-		if(boost::algorithm::ends_with(scenarioOps->mapname, ".json"))
-		{
-			logGlobal->infoStream() << "Loading duel settings from JSON file: " << scenarioOps->mapname;
-			dp = DuelParameters::fromJSON(scenarioOps->mapname);
-			logGlobal->info("JSON file has been successfully read!");
-		}
-		else
-		{
-			CLoadFile lf(scenarioOps->mapname);
-			lf.serializer & dp;
-		}
-	}
-	catch(...)
-	{
-		logGlobal->errorStream() << "Cannot load duel settings from " << scenarioOps->mapname;
-		throw;
-	}
-
-	const CArmedInstance *armies[2] = {nullptr};
-	const CGHeroInstance *heroes[2] = {nullptr};
-	CGTownInstance *town = nullptr;
-
-	for(int i = 0; i < 2; i++)
-	{
-		CArmedInstance *obj = nullptr;
-		if(dp.sides[i].heroId >= 0)
-		{
-			const DuelParameters::SideSettings &ss = dp.sides[i];
-			auto h = new CGHeroInstance();
-			armies[i] = heroes[i] = h;
-			obj = h;
-			h->subID = ss.heroId;
-			for(int i = 0; i < ss.heroPrimSkills.size(); i++)
-				h->pushPrimSkill(static_cast<PrimarySkill::PrimarySkill>(i), ss.heroPrimSkills[i]);
-
-			if(!ss.spells.empty())
-			{
-				h->putArtifact(ArtifactPosition::SPELLBOOK, CArtifactInstance::createNewArtifactInstance(ArtifactID::SPELLBOOK));
-				boost::copy(ss.spells, std::inserter(h->spells, h->spells.begin()));
-			}
-
-			for(auto &parka : ss.artifacts)
-			{
-				h->putArtifact(ArtifactPosition(parka.first), parka.second);
-			}
-
-			typedef const std::pair<si32, si8> &TSecSKill;
-			for(TSecSKill secSkill : ss.heroSecSkills)
-				h->setSecSkillLevel(SecondarySkill(secSkill.first), secSkill.second, 1);
-
-			h->initHero(getRandomGenerator(), HeroTypeID(h->subID));
-			obj->initObj(getRandomGenerator());
-		}
-		else
-		{
-			auto c = new CGCreature();
-			armies[i] = obj = c;
-			//c->subID = 34;
-		}
-
-		obj->setOwner(PlayerColor(i));
-
-		for(int j = 0; j < ARRAY_COUNT(dp.sides[i].stacks); j++)
-		{
-			CreatureID cre = dp.sides[i].stacks[j].type;
-			TQuantity count = dp.sides[i].stacks[j].count;
-			if(count || obj->hasStackAtSlot(SlotID(j)))
-				obj->setCreature(SlotID(j), cre, count);
-		}
-
-		for(const DuelParameters::CusomCreature &cc : dp.creatures)
-		{
-			CCreature *c = VLC->creh->creatures[cc.id];
-			if(cc.attack >= 0)
-				c->getBonusLocalFirst(Selector::typeSubtype(Bonus::PRIMARY_SKILL, PrimarySkill::ATTACK))->val = cc.attack;
-			if(cc.defense >= 0)
-				c->getBonusLocalFirst(Selector::typeSubtype(Bonus::PRIMARY_SKILL, PrimarySkill::DEFENSE))->val = cc.defense;
-			if(cc.speed >= 0)
-				c->getBonusLocalFirst(Selector::type(Bonus::STACKS_SPEED))->val = cc.speed;
-			if(cc.HP >= 0)
-				c->getBonusLocalFirst(Selector::type(Bonus::STACK_HEALTH))->val = cc.HP;
-			if(cc.dmg >= 0)
-			{
-				c->getBonusLocalFirst(Selector::typeSubtype(Bonus::CREATURE_DAMAGE, 1))->val = cc.dmg;
-				c->getBonusLocalFirst(Selector::typeSubtype(Bonus::CREATURE_DAMAGE, 2))->val = cc.dmg;
-			}
-			if(cc.shoots >= 0)
-				c->getBonusLocalFirst(Selector::type(Bonus::SHOTS))->val = cc.shoots;
-		}
-	}
-
-	curB = BattleInfo::setupBattle(int3(-1,-1,-1), dp.terType, dp.bfieldType, armies, heroes, false, town);
-	curB->obstacles = dp.obstacles;
-	curB->localInit();
+	logGlobal->info("Open campaign map file: %d", scenarioOps->campState->currentMap.get());
+	map = scenarioOps->campState->getMap();
 }
 
 void CGameState::checkMapChecksum()
 {
-	logGlobal->infoStream() << "\tOur checksum for the map: "<< map->checksum;
+	logGlobal->info("\tOur checksum for the map: %d", map->checksum);
 	if(scenarioOps->mapfileChecksum)
 	{
-		logGlobal->infoStream() << "\tServer checksum for " << scenarioOps->mapname <<": "<< scenarioOps->mapfileChecksum;
+		logGlobal->info("\tServer checksum for %s: %d", scenarioOps->mapname, scenarioOps->mapfileChecksum);
 		if(map->checksum != scenarioOps->mapfileChecksum)
 		{
 			logGlobal->error("Wrong map checksum!!!");
@@ -1014,13 +954,11 @@ void CGameState::initPlayerStates()
 	for(auto & elem : scenarioOps->playerInfos)
 	{
 		PlayerState & p = players[elem.first];
-		//std::pair<PlayerColor, PlayerState> ins(elem.first,PlayerState());
 		p.color=elem.first;
-		p.human = elem.second.playerID;
+		p.human = elem.second.isControlledByHuman();
 		p.team = map->players[elem.first.getNum()].team;
 		teams[p.team].id = p.team;//init team
 		teams[p.team].players.insert(elem.first);//add player to team
-		//players.insert(ins);
 	}
 }
 
@@ -1086,6 +1024,7 @@ void CGameState::placeCampaignHeroes()
 				{
 					auto heroPlaceholder = dynamic_cast<CGHeroPlaceholder *>(obj.get());
 					map->removeBlockVisTiles(heroPlaceholder, true);
+					map->instanceNames.erase(obj->instanceName);
 					map->objects[heroPlaceholder->id.getNum()] = nullptr;
 					delete heroPlaceholder;
 				}
@@ -1119,7 +1058,7 @@ void CGameState::placeCampaignHeroes()
 
 				hero->subID = heroTypeId;
 				hero->portrait = hero->subID;
-				map->getEditManager()->insertObject(hero, hero->pos);
+				map->getEditManager()->insertObject(hero);
 			}
 		}
 	}
@@ -1127,10 +1066,11 @@ void CGameState::placeCampaignHeroes()
 
 void CGameState::placeStartingHero(PlayerColor playerColor, HeroTypeID heroTypeId, int3 townPos)
 {
-	townPos.x += 1;
+	townPos.x -= 2; //FIXME: use actual visitable offset of town
 
-	CGHeroInstance * hero =  static_cast<CGHeroInstance*>(createObject(Obj::HERO, heroTypeId.getNum(), townPos, playerColor));
-	map->getEditManager()->insertObject(hero, townPos);
+	CGObjectInstance * hero = createObject(Obj::HERO, heroTypeId.getNum(), townPos, playerColor);
+	hero->pos += hero->getVisitableOffset();
+	map->getEditManager()->insertObject(hero);
 }
 
 CGameState::CrossoverHeroesList CGameState::getCrossoverHeroesFromPreviousScenarios() const
@@ -1141,13 +1081,26 @@ CGameState::CrossoverHeroesList CGameState::getCrossoverHeroesFromPreviousScenar
 	auto bonus = campaignState->getBonusForCurrentMap();
 	if (bonus && bonus->type == CScenarioTravel::STravelBonus::HEROES_FROM_PREVIOUS_SCENARIO)
 	{
-		crossoverHeroes.heroesFromAnyPreviousScenarios = crossoverHeroes.heroesFromPreviousScenario = campaignState->camp->scenarios[bonus->info2].crossoverHeroes;
+		std::vector<CGHeroInstance *> heroes;
+		for(auto & node : campaignState->camp->scenarios[bonus->info2].crossoverHeroes)
+		{
+			auto h = CCampaignState::crossoverDeserialize(node);
+			heroes.push_back(h);
+		}
+		crossoverHeroes.heroesFromAnyPreviousScenarios = crossoverHeroes.heroesFromPreviousScenario = heroes;
 	}
 	else
 	{
 		if(!campaignState->mapsConquered.empty())
 		{
-			crossoverHeroes.heroesFromPreviousScenario = campaignState->camp->scenarios[campaignState->mapsConquered.back()].crossoverHeroes;
+			std::vector<CGHeroInstance *> heroes;
+			for(auto & node : campaignState->camp->scenarios[campaignState->mapsConquered.back()].crossoverHeroes)
+			{
+				auto h = CCampaignState::crossoverDeserialize(node);
+				heroes.push_back(h);
+			}
+			crossoverHeroes.heroesFromAnyPreviousScenarios = crossoverHeroes.heroesFromPreviousScenario = heroes;
+			crossoverHeroes.heroesFromPreviousScenario = heroes;
 
 			for(auto mapNr : campaignState->mapsConquered)
 			{
@@ -1158,15 +1111,22 @@ CGameState::CrossoverHeroesList CGameState::getCrossoverHeroesFromPreviousScenar
 				// remove heroes which didn't reached the end of the scenario, but were available at the start
 				for(auto hero : lostCrossoverHeroes)
 				{
-					vstd::erase_if(crossoverHeroes.heroesFromAnyPreviousScenarios,
-					               CGObjectInstanceBySubIdFinder(hero));
+//					auto hero = CCampaignState::crossoverDeserialize(node);
+					vstd::erase_if(crossoverHeroes.heroesFromAnyPreviousScenarios, [hero](CGHeroInstance * h)
+					{
+						return hero->subID == h->subID;
+					});
 				}
 
 				// now add heroes which completed the scenario
-				for(auto hero : scenario.crossoverHeroes)
+				for(auto node : scenario.crossoverHeroes)
 				{
+					auto hero = CCampaignState::crossoverDeserialize(node);
 					// add new heroes and replace old heroes with newer ones
-					auto it = range::find_if(crossoverHeroes.heroesFromAnyPreviousScenarios, CGObjectInstanceBySubIdFinder(hero));
+					auto it = range::find_if(crossoverHeroes.heroesFromAnyPreviousScenarios,  [hero](CGHeroInstance * h)
+					{
+						return hero->subID == h->subID;
+					});
 					if (it != crossoverHeroes.heroesFromAnyPreviousScenarios.end())
 					{
 						// replace old hero with newer one
@@ -1235,12 +1195,7 @@ void CGameState::prepareCrossoverHeroes(std::vector<CGameState::CampaignHeroRepl
 	{
 		for(CGHeroInstance * cgh : crossoverHeroes)
 		{
-			// Trimming spells
-			cgh->spells.clear();
-
-			// Spellbook will also be removed
-			if (cgh->hasSpellbook())
-				ArtifactLocation(cgh, ArtifactPosition(ArtifactPosition::SPELLBOOK)).removeArtifact();
+			cgh->removeSpellbook();
 		}
 	}
 
@@ -1293,7 +1248,7 @@ void CGameState::prepareCrossoverHeroes(std::vector<CGameState::CampaignHeroRepl
 	// Removing short-term bonuses
 	for(CGHeroInstance * cgh : crossoverHeroes)
 	{
-		cgh->popBonuses(CSelector(Bonus::OneDay)
+		cgh->removeBonusesRecursive(CSelector(Bonus::OneDay)
 			.Or(CSelector(Bonus::OneWeek))
 			.Or(CSelector(Bonus::NTurns))
 			.Or(CSelector(Bonus::NDays))
@@ -1356,7 +1311,7 @@ void CGameState::initStartingResources()
 		for(auto it = scenarioOps->playerInfos.cbegin();
 			it != scenarioOps->playerInfos.cend(); ++it)
 		{
-			if(it->second.playerID != PlayerSettings::PLAYER_AI)
+			if(it->second.isControlledByHuman())
 				ret.push_back(&it->second);
 		}
 
@@ -1509,7 +1464,7 @@ void CGameState::giveCampaignBonusToHero(CGHeroInstance * hero)
 		switch (curBonus->type)
 		{
 		case CScenarioTravel::STravelBonus::SPELL:
-			hero->spells.insert(SpellID(curBonus->info2));
+			hero->addSpellToSpellbook(SpellID(curBonus->info2));
 			break;
 		case CScenarioTravel::STravelBonus::MONSTER:
 			{
@@ -1588,6 +1543,11 @@ void CGameState::initFogOfWar()
 
 void CGameState::initStartingBonus()
 {
+	if (scenarioOps->mode == StartInfo::CAMPAIGN)
+		return;
+	// These are the single scenario bonuses; predefined
+	// campaign bonuses are spread out over other init* functions.
+
 	logGlobal->debug("\tStarting bonuses");
 	for(auto & elem : players)
 	{
@@ -1651,7 +1611,7 @@ void CGameState::initTowns()
 					PlayerInfo & pi = map->players[owner->color.getNum()];
 
 					if (owner->human && //human-owned
-						map->towns[g]->pos == pi.posOfMainTown + int3(2, 0, 0))
+						map->towns[g]->pos == pi.posOfMainTown)
 					{
 						map->towns[g]->builtBuildings.insert(
 							CBuildingHandler::campToERMU(chosenBonus->info1, map->towns[g]->subID, map->towns[g]->builtBuildings));
@@ -1791,7 +1751,7 @@ void CGameState::initMapObjects()
 	{
 		if(obj)
 		{
-			logGlobal->traceStream() << boost::format ("Calling Init for object %d, %s, %s") % obj->id.getNum() % obj->typeName % obj->subTypeName;
+			logGlobal->trace("Calling Init for object %d, %s, %s", obj->id.getNum(), obj->typeName, obj->subTypeName);
 			obj->initObj(getRandomGenerator());
 		}
 	}
@@ -1940,7 +1900,7 @@ UpgradeInfo CGameState::getUpgradeInfo(const CStackInstance &stack)
 		TBonusListPtr lista = h->getBonuses(Selector::typeSubtype(Bonus::SPECIAL_UPGRADE, base->idNumber));
 		for(const std::shared_ptr<Bonus> it : *lista)
 		{
-			auto nid = CreatureID(it->additionalInfo);
+			auto nid = CreatureID(it->additionalInfo[0]);
 			if (nid != base->idNumber) //in very specific case the upgrade is available by default (?)
 			{
 				ret.newID.push_back(nid);
@@ -2005,12 +1965,18 @@ PlayerRelations::PlayerRelations CGameState::getPlayerRelations( PlayerColor col
 void CGameState::apply(CPack *pack)
 {
 	ui16 typ = typeList.getTypeID(pack);
-	applierGs->getApplier(typ)->applyOnGS(this,pack);
+	applier->getApplier(typ)->applyOnGS(this, pack);
 }
 
 void CGameState::calculatePaths(const CGHeroInstance *hero, CPathsInfo &out)
 {
 	CPathfinder pathfinder(out, this, hero);
+	pathfinder.calculatePaths();
+}
+
+void CGameState::calculatePaths(std::shared_ptr<PathfinderConfig> config, const CGHeroInstance * hero)
+{
+	CPathfinder pathfinder(this, hero, config);
 	pathfinder.calculatePaths();
 }
 
@@ -2133,6 +2099,7 @@ void CGameState::updateRumor()
 			}
 			else
 				rumor.type = RumorState::TYPE_RAND;
+			FALLTHROUGH
 
 		case RumorState::TYPE_RAND:
 			do
@@ -2151,6 +2118,9 @@ bool CGameState::isVisible(int3 pos, PlayerColor player)
 {
 	if(player == PlayerColor::NEUTRAL)
 		return false;
+	if(player.isSpectator())
+		return true;
+
 	return getPlayerTeam(player)->fogOfWarMap[pos.x][pos.y][pos.z];
 }
 
@@ -2351,9 +2321,28 @@ bool CGameState::checkForVictory(PlayerColor player, const EventCondition & cond
 		{
 			return condition.value; // just convert to bool
 		}
+		case EventCondition::HAVE_0:
+		{
+			logGlobal->debug("Not implemented event condition type: %d", (int)condition.condition);
+			//TODO: support new condition format
+			return false;
+		}
+		case EventCondition::HAVE_BUILDING_0:
+		{
+			logGlobal->debug("Not implemented event condition type: %d", (int)condition.condition);
+			//TODO: support new condition format
+			return false;
+		}
+		case EventCondition::DESTROY_0:
+		{
+			logGlobal->debug("Not implemented event condition type: %d", (int)condition.condition);
+			//TODO: support new condition format
+			return false;
+		}
+		default:
+			logGlobal->error("Invalid event condition type: %d", (int)condition.condition);
+			return false;
 	}
-	assert(0);
-	return false;
 }
 
 PlayerColor CGameState::checkForStandardWin() const
@@ -2716,7 +2705,7 @@ void CGameState::giveHeroArtifact(CGHeroInstance *h, ArtifactID aid)
 	 ai->putAt(ArtifactLocation(h, ai->firstAvailableSlot(h)));
 }
 
-std::set<HeroTypeID> CGameState::getUnusedAllowedHeroes(bool alsoIncludeNotAllowed /*= false*/) const
+std::set<HeroTypeID> CGameState::getUnusedAllowedHeroes(bool alsoIncludeNotAllowed) const
 {
 	std::set<HeroTypeID> ret;
 	for(int i = 0; i < map->allowedHeroes.size(); i++)
@@ -2833,7 +2822,7 @@ void CGameState::replaceHeroesPlaceholders(const std::vector<CGameState::Campaig
 		map->objects[heroToPlace->id.getNum()] = heroToPlace;
 		map->addBlockVisTiles(heroToPlace);
 
-		scenarioOps->campState->getCurrentScenario().placedCrossoverHeroes.push_back(heroToPlace);
+		scenarioOps->campState->getCurrentScenario().placedCrossoverHeroes.push_back(CCampaignState::crossoverSerialize(heroToPlace));
 	}
 }
 
@@ -2990,7 +2979,7 @@ void InfoAboutHero::initFromHero(const CGHeroInstance *h, InfoAboutHero::EInfoLe
 	if(detailed)
 	{
 		//include details about hero
-		details = new Details;
+		details = new Details();
 		details->luck = h->LuckVal();
 		details->morale = h->MoraleVal();
 		details->mana = h->mana;
@@ -3044,7 +3033,7 @@ void InfoAboutTown::initFromTown(const CGTownInstance *t, bool detailed)
 	if(detailed)
 	{
 		//include details about hero
-		details = new Details;
+		details = new Details();
 		TResources income = t->dailyIncome();
 		details->goldIncome = income[Res::GOLD];
 		details->customRes = t->hasBuilt(BuildingID::RESOURCE_SILO);
@@ -3087,119 +3076,6 @@ int ArmyDescriptor::getStrength() const
 	return ret;
 }
 
-DuelParameters::SideSettings::StackSettings::StackSettings()
-	: type(CreatureID::NONE), count(0)
-{
-}
-
-DuelParameters::SideSettings::StackSettings::StackSettings(CreatureID Type, si32 Count)
-	: type(Type), count(Count)
-{
-}
-
-DuelParameters::SideSettings::SideSettings()
-{
-	heroId = -1;
-}
-
-DuelParameters::DuelParameters():
-	terType(ETerrainType::DIRT),
-	bfieldType(BFieldType::ROCKLANDS)
-{
-}
-
-DuelParameters DuelParameters::fromJSON(const std::string &fname)
-{
-	DuelParameters ret;
-
-	const JsonNode duelData(ResourceID("DATA/" + fname, EResType::TEXT));
-	ret.terType = ETerrainType((int)duelData["terType"].Float());
-	ret.bfieldType = BFieldType((int)duelData["bfieldType"].Float());
-	for(const JsonNode &n : duelData["sides"].Vector())
-	{
-		SideSettings &ss = ret.sides[(int)n["side"].Float()];
-		int i = 0;
-		for(const JsonNode &stackNode : n["army"].Vector())
-		{
-			ss.stacks[i].type = CreatureID((si32)stackNode.Vector()[0].Float());
-			ss.stacks[i].count = stackNode.Vector()[1].Float();
-			i++;
-		}
-
-		if(n["heroid"].getType() == JsonNode::DATA_FLOAT)
-			ss.heroId = n["heroid"].Float();
-		else
-			ss.heroId = -1;
-
-		for(const JsonNode &entry : n["heroPrimSkills"].Vector())
-			ss.heroPrimSkills.push_back(entry.Float());
-
-		for(const JsonNode &skillNode : n["heroSecSkills"].Vector())
-		{
-			std::pair<si32, si8> secSkill;
-			secSkill.first = skillNode.Vector()[0].Float();
-			secSkill.second = skillNode.Vector()[1].Float();
-			ss.heroSecSkills.push_back(secSkill);
-		}
-
-		assert(ss.heroPrimSkills.empty() || ss.heroPrimSkills.size() == GameConstants::PRIMARY_SKILLS);
-
-		if(ss.heroId != -1)
-		{
-			const JsonNode & spells = n["spells"];
-			if(spells.getType() == JsonNode::DATA_STRING  &&  spells.String() == "all")
-			{
-				for(auto spell : VLC->spellh->objects)
-					if(spell->id <= SpellID::SUMMON_AIR_ELEMENTAL)
-						ss.spells.insert(spell->id);
-			}
-			else
-				for(const JsonNode &spell : n["spells"].Vector())
-					ss.spells.insert(SpellID(spell.Float()));
-		}
-	}
-
-	for(const JsonNode &n : duelData["obstacles"].Vector())
-	{
-		auto oi = std::make_shared<CObstacleInstance>();
-		if(n.getType() == JsonNode::DATA_VECTOR)
-		{
-			oi->ID = n.Vector()[0].Float();
-			oi->pos = n.Vector()[1].Float();
-		}
-		else
-		{
-			assert(n.getType() == JsonNode::DATA_FLOAT);
-			oi->ID = 21;
-			oi->pos = n.Float();
-		}
-		oi->uniqueID = ret.obstacles.size();
-		ret.obstacles.push_back(oi);
-	}
-
-	for(const JsonNode &n : duelData["creatures"].Vector())
-	{
-		CusomCreature cc;
-		cc.id = n["id"].Float();
-
-#define retrieve(name)								\
-	if(n[ #name ].getType() == JsonNode::DATA_FLOAT)\
-	cc.name = n[ #name ].Float();			\
-	else											\
-	cc.name = -1;
-
-		retrieve(attack);
-		retrieve(defense);
-		retrieve(HP);
-		retrieve(dmg);
-		retrieve(shoots);
-		retrieve(speed);
-		ret.creatures.push_back(cc);
-	}
-
-	return ret;
-}
-
 TeamState::TeamState()
 {
 	setNodeType(TEAM);
@@ -3215,10 +3091,5 @@ TeamState::TeamState(TeamState && other):
 
 CRandomGenerator & CGameState::getRandomGenerator()
 {
-	//if(scenarioOps && scenarioOps->seedPostInit)
-	//{
-	//	logGlobal->trace("CGameState::getRandomGenerator used after initialization!");
-	//}
-	//logGlobal->traceStream() << "Fetching CGameState::rand with seed " << rand.nextInt();
 	return rand;
 }

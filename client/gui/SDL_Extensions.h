@@ -7,7 +7,6 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
-
 #pragma once
 #include <SDL_version.h>
 #include <SDL_render.h>
@@ -70,6 +69,7 @@ extern SDL_Surface * screen, *screen2, *screenBuf;
 void blitAt(SDL_Surface * src, int x, int y, SDL_Surface * dst=screen);
 void blitAt(SDL_Surface * src, const SDL_Rect & pos, SDL_Surface * dst=screen);
 bool isItIn(const SDL_Rect * rect, int x, int y);
+bool isItInOrLowerBounds(const SDL_Rect * rect, int x, int y);
 
 /**
  * The colors class defines color constants of type SDL_Color.
@@ -88,6 +88,12 @@ public:
 
 	/** green color used for in-game console */
 	static const SDL_Color GREEN;
+
+	/** the h3 orange color, used for blocked buttons */
+	static const SDL_Color ORANGE;
+
+	/** the h3 bright yellow color, used for selection border */
+	static const SDL_Color BRIGHT_YELLOW;
 
 	/** default key color for all 8 & 24 bit graphics */
 	static const SDL_Color DEFAULT_KEY_COLOR;
@@ -218,8 +224,10 @@ namespace CSDL_Ext
 	void stopTextInput();
 
 	void setColorKey(SDL_Surface * surface, SDL_Color color);
+
 	///set key-color to 0,255,255
 	void setDefaultColorKey(SDL_Surface * surface);
+
 	///set key-color to 0,255,255 only if it exactly mapped
 	void setDefaultColorKeyPresize(SDL_Surface * surface);
 }

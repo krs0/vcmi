@@ -1,8 +1,3 @@
-#include "StdInc.h"
-#include "CGameInfo.h"
-
-#include "../lib/VCMI_Lib.h"
-
 /*
  * CGameInfo.cpp, part of VCMI engine
  *
@@ -12,9 +7,17 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#include "StdInc.h"
+#include "CGameInfo.h"
+#include "../lib/CSkillHandler.h"
+#include "../lib/CGeneralTextHandler.h"
 
-const CGameInfo * CGI; //game info for general use
+#include "../lib/VCMI_Lib.h"
+
+const CGameInfo * CGI;
 CClientState * CCS = nullptr;
+CServerHandler * CSH;
+
 
 CGameInfo::CGameInfo()
 {
@@ -33,5 +36,6 @@ void CGameInfo::setFromLib()
 	heroh = VLC->heroh;
 	objh = VLC->objh;
 	spellh = VLC->spellh;
+	skillh = VLC->skillh;
 	objtypeh = VLC->objtypeh;
 }

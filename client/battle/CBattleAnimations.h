@@ -1,14 +1,3 @@
-#pragma once
-
-#include "../../lib/BattleHex.h"
-#include "../widgets/Images.h"
-
-class CBattleInterface;
-class CStack;
-class CCreatureAnimation;
-struct CatapultProjectileInfo;
-struct StackAttackedInfo;
-
 /*
  * CBattleAnimations.h, part of VCMI engine
  *
@@ -18,6 +7,16 @@ struct StackAttackedInfo;
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "../../lib/battle/BattleHex.h"
+#include "../widgets/Images.h"
+
+class CBattleInterface;
+class CStack;
+class CCreatureAnimation;
+struct CatapultProjectileInfo;
+struct StackAttackedInfo;
 
 /// Base class of battle animations
 class CBattleAnimation
@@ -40,7 +39,7 @@ public:
 class CBattleStackAnimation : public CBattleAnimation
 {
 public:
-	CCreatureAnimation * myAnim; //animation for our stack, managed by CBattleInterface
+	std::shared_ptr<CCreatureAnimation> myAnim; //animation for our stack, managed by CBattleInterface
 	const CStack * stack; //id of stack whose animation it is
 
 	CBattleStackAnimation(CBattleInterface * _owner, const CStack * _stack);
@@ -198,8 +197,16 @@ struct ProjectileInfo
 	std::shared_ptr<CatapultProjectileInfo> catapultInfo; // holds info about the parabolic trajectory of the cannon
 };
 
+class CRangedAttackAnimation : public CAttackAnimation
+{
+public:
+	CRangedAttackAnimation(CBattleInterface * owner_, const CStack * attacker, BattleHex dest_, const CStack * defender);
+protected:
+
+};
+
 /// Shooting attack
-class CShootingAnimation : public CAttackAnimation
+class CShootingAnimation : public CRangedAttackAnimation
 {
 private:
 	int catapultDamage;
@@ -209,18 +216,29 @@ public:
 	void endAnim() override;
 
 	//last two params only for catapult attacks
-	CShootingAnimation(CBattleInterface * _owner, const CStack * attacker, BattleHex _dest, 
-		const CStack * _attacked, bool _catapult = false, int _catapultDmg = 0); 
+	CShootingAnimation(CBattleInterface * _owner, const CStack * attacker, BattleHex _dest,
+		const CStack * _attacked, bool _catapult = false, int _catapultDmg = 0);
 	virtual ~CShootingAnimation(){};
 };
 
-/// This class manages a spell effect animation
-class CSpellEffectAnimation : public CBattleAnimation
+class CCastAnimation : public CRangedAttackAnimation
+{
+public:
+	CCastAnimation(CBattleInterface * owner_, const CStack * attacker, BattleHex dest_, const CStack * defender);
+
+	bool init() override;
+	void nextFrame() override;
+	void endAnim() override;
+
+};
+
+
+/// This class manages effect animation
+class CEffectAnimation : public CBattleAnimation
 {
 private:
-	ui32 effect;
 	BattleHex destTile;
-	std::string	customAnim;
+	std::shared_ptr<CAnimation>	customAnim;
 	int	x, y, dx, dy;
 	bool Vflip;
 	bool alignToBottom;
@@ -229,8 +247,10 @@ public:
 	void nextFrame() override;
 	void endAnim() override;
 
-	CSpellEffectAnimation(CBattleInterface * _owner, ui32 _effect, BattleHex _destTile, int _dx = 0, int _dy = 0, bool _Vflip = false, bool _alignToBottom = false);
-	CSpellEffectAnimation(CBattleInterface * _owner, std::string _customAnim, int _x, int _y, int _dx = 0, int _dy = 0, bool _Vflip = false, bool _alignToBottom = false);
-	CSpellEffectAnimation(CBattleInterface * _owner, std::string _customAnim, BattleHex _destTile, bool _Vflip = false, bool _alignToBottom = false);
-	virtual ~CSpellEffectAnimation(){};
+	CEffectAnimation(CBattleInterface * _owner, std::string _customAnim, int _x, int _y, int _dx = 0, int _dy = 0, bool _Vflip = false, bool _alignToBottom = false);
+
+	CEffectAnimation(CBattleInterface * _owner, std::shared_ptr<CAnimation> _customAnim, int _x, int _y, int _dx = 0, int _dy = 0);
+
+	CEffectAnimation(CBattleInterface * _owner, std::string _customAnim, BattleHex _destTile, bool _Vflip = false, bool _alignToBottom = false);
+	virtual ~CEffectAnimation(){};
 };

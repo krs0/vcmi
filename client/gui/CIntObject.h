@@ -7,7 +7,6 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
-
 #pragma once
 
 #include <SDL_events.h>
@@ -28,14 +27,14 @@ class IActivatable
 public:
 	virtual void activate()=0;
 	virtual void deactivate()=0;
-	virtual ~IActivatable(){}; //d-tor
+	virtual ~IActivatable(){};
 };
 
 class IUpdateable
 {
 public:
 	virtual void update()=0;
-	virtual ~IUpdateable(){}; //d-tor
+	virtual ~IUpdateable(){};
 };
 
 // Defines a show method
@@ -48,7 +47,7 @@ public:
 	{
 		show(to);
 	}
-	virtual ~IShowable(){}; //d-tor
+	virtual ~IShowable(){};
 };
 
 class IShowActivatable : public IShowable, public IActivatable
@@ -58,26 +57,29 @@ public:
 	enum {BLOCK_ADV_HOTKEYS = 2, REDRAW_PARENT=8};
 	int type; //bin flags using etype
 	IShowActivatable();
-	virtual ~IShowActivatable(){}; //d-tor
+	virtual ~IShowActivatable(){};
 };
 
+enum class EIntObjMouseBtnType { LEFT, MIDDLE, RIGHT };
 //typedef ui16 ActivityFlag;
 
 // Base UI element
 class CIntObject : public IShowActivatable //interface object
 {
-
 	ui16 used;//change via addUsed() or delUsed
 
 	//time handling
 	int toNextTick;
 	int timerDelay;
 
+	std::map<EIntObjMouseBtnType, bool> currentMouseState;
+
 	void onTimer(int timePassed);
 
 	//non-const versions of fields to allow changing them in CIntObject
 	CIntObject *parent_m; //parent object
 	ui16 active_m;
+
 protected:
 	//activate or deactivate specific action (LCLICK, RCLICK...)
 	void activate(ui16 what);
@@ -102,15 +104,15 @@ public:
 	/*const*/ Rect pos;
 
 	CIntObject(int used=0, Point offset=Point());
-	virtual ~CIntObject(); //d-tor
+	virtual ~CIntObject();
 
-	//l-clicks handling
-	/*const*/ bool pressedL; //for determining if object is L-pressed
-	virtual void clickLeft(tribool down, bool previousState){}
+	void updateMouseState(EIntObjMouseBtnType btn, bool state) { currentMouseState[btn] = state; }
+	bool mouseState(EIntObjMouseBtnType btn) const { return currentMouseState.count(btn) ? currentMouseState.at(btn) : false; }
 
-	//r-clicks handling
-	/*const*/ bool pressedR; //for determining if object is R-pressed
-	virtual void clickRight(tribool down, bool previousState){}
+	virtual void click(EIntObjMouseBtnType btn, tribool down, bool previousState);
+	virtual void clickLeft(tribool down, bool previousState) {}
+	virtual void clickRight(tribool down, bool previousState) {}
+	virtual void clickMiddle(tribool down, bool previousState) {}
 
 	//hover handling
 	/*const*/ bool hovered;  //for determining if object is hovered
@@ -138,7 +140,7 @@ public:
 	//double click
 	virtual void onDoubleClick(){}
 
-	enum {LCLICK=1, RCLICK=2, HOVER=4, MOVE=8, KEYBOARD=16, TIME=32, GENERAL=64, WHEEL=128, DOUBLECLICK=256, TEXTINPUT=512, ALL=0xffff};
+	enum {LCLICK=1, RCLICK=2, HOVER=4, MOVE=8, KEYBOARD=16, TIME=32, GENERAL=64, WHEEL=128, DOUBLECLICK=256, TEXTINPUT=512, MCLICK=1024, ALL=0xffff};
 	const ui16 & active;
 	void addUsedEvents(ui16 newActions);
 	void removeUsedEvents(ui16 newActions);
@@ -181,12 +183,9 @@ public:
 /*
  * Functions that should be used only by specific GUI elements. Don't use them unless you really know why they are here
  */
-	//wrappers for CSDL_Ext methods. This versions use coordinates relative to pos
-	void drawBorderLoc(SDL_Surface * sur, const Rect &r, const int3 &color);
+
 	//functions for printing text. Use CLabel where possible instead
 	void printAtLoc(const std::string & text, int x, int y, EFonts font, SDL_Color color, SDL_Surface * dst);
-	void printToLoc(const std::string & text, int x, int y, EFonts font, SDL_Color color, SDL_Surface * dst);
-	void printAtRightLoc(const std::string & text, int x, int y, EFonts font, SDL_Color color, SDL_Surface * dst);
 	void printAtMiddleLoc(const std::string & text, int x, int y, EFonts font, SDL_Color color, SDL_Surface * dst);
 	void printAtMiddleLoc(const std::string & text, const Point &p, EFonts font, SDL_Color color, SDL_Surface * dst);
 	void printAtMiddleWBLoc(const std::string & text, int x, int y, EFonts font, int charsPerLine, SDL_Color color, SDL_Surface * dst);
@@ -208,4 +207,12 @@ public:
 	CKeyShortcut(int key);
 	CKeyShortcut(std::set<int> Keys);
 	virtual void keyPressed(const SDL_KeyboardEvent & key) override; //call-in
+};
+
+class WindowBase : public CIntObject
+{
+public:
+	WindowBase(int used_ = 0, Point pos_ = Point());
+protected:
+    void close();
 };

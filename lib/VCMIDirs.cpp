@@ -15,6 +15,11 @@ namespace bfs = boost::filesystem;
 
 bfs::path IVCMIDirs::userSavePath() const { return userDataPath() / "Saves"; }
 
+bfs::path IVCMIDirs::fullLibraryPath(const std::string &desiredFolder, const std::string &baseLibName) const
+{
+	return libraryPath() / desiredFolder / libraryName(baseLibName);
+}
+
 void IVCMIDirs::init()
 {
 	// TODO: Log errors
@@ -23,6 +28,11 @@ void IVCMIDirs::init()
 	bfs::create_directories(userConfigPath());
 	bfs::create_directories(userSavePath());
 }
+
+#ifdef VCMI_ANDROID
+#include "CAndroidVMHelper.h"
+
+#endif
 
 #ifdef VCMI_WINDOWS
 
@@ -261,7 +271,7 @@ bfs::path VCMIDirsWIN32::userDataPath() const
 	wchar_t profileDir[MAX_PATH];
 
 	if (SHGetSpecialFolderPathW(nullptr, profileDir, CSIDL_MYDOCUMENTS, FALSE) != FALSE)
-		return bfs::path(profileDir) / "My Games\\vcmi";
+		return bfs::path(profileDir) / "My Games" / "vcmi";
 
 	return ".";
 }
@@ -340,7 +350,15 @@ class IVCMIDirsUNIX : public IVCMIDirs
 		boost::filesystem::path serverPath() const override;
 
 		std::string genHelpString() const override;
+
+		bool developmentMode() const;
 };
+
+bool IVCMIDirsUNIX::developmentMode() const
+{
+	// We want to be able to run VCMI from single directory. E.g to run from build output directory
+	return bfs::exists("AI") && bfs::exists("config") && bfs::exists("Mods") && bfs::exists("vcmiserver") && bfs::exists("vcmiclient");
+}
 
 bfs::path IVCMIDirsUNIX::clientPath() const { return binaryPath() / "vcmiclient"; }
 bfs::path IVCMIDirsUNIX::serverPath() const { return binaryPath() / "vcmiserver"; }
@@ -442,7 +460,17 @@ bfs::path VCMIDirsOSX::userConfigPath() const { return userDataPath() / "config"
 
 std::vector<bfs::path> VCMIDirsOSX::dataPaths() const
 {
-	return std::vector<bfs::path>(1, "../Data");
+	std::vector<bfs::path> ret;
+	//FIXME: need some proper codepath for detecting running from build output directory
+	if(developmentMode())
+	{
+		ret.push_back(".");
+	}
+	else
+	{
+		ret.push_back("../Resources/Data");
+	}
+	return ret;
 }
 
 bfs::path VCMIDirsOSX::libraryPath() const { return "."; }
@@ -469,9 +497,9 @@ bfs::path VCMIDirsXDG::userDataPath() const
 {
 	// $XDG_DATA_HOME, default: $HOME/.local/share
 	const char* homeDir;
-	if ((homeDir = getenv("XDG_DATA_HOME")))
-		return homeDir;
-	else if ((homeDir = getenv("HOME")))
+	if((homeDir = getenv("XDG_DATA_HOME")))
+		return bfs::path(homeDir) / "vcmi";
+	else if((homeDir = getenv("HOME")))
 		return bfs::path(homeDir) / ".local" / "share" / "vcmi";
 	else
 		return ".";
@@ -479,7 +507,7 @@ bfs::path VCMIDirsXDG::userDataPath() const
 bfs::path VCMIDirsXDG::userCachePath() const
 {
 	// $XDG_CACHE_HOME, default: $HOME/.cache
-	const char* tempResult;
+	const char * tempResult;
 	if ((tempResult = getenv("XDG_CACHE_HOME")))
 		return bfs::path(tempResult) / "vcmi";
 	else if ((tempResult = getenv("HOME")))
@@ -490,7 +518,7 @@ bfs::path VCMIDirsXDG::userCachePath() const
 bfs::path VCMIDirsXDG::userConfigPath() const
 {
 	// $XDG_CONFIG_HOME, default: $HOME/.config
-	const char* tempResult;
+	const char * tempResult;
 	if ((tempResult = getenv("XDG_CONFIG_HOME")))
 		return bfs::path(tempResult) / "vcmi";
 	else if ((tempResult = getenv("HOME")))
@@ -508,50 +536,102 @@ std::vector<bfs::path> VCMIDirsXDG::dataPaths() const
 	// in vcmi fs last directory has highest priority
 	std::vector<bfs::path> ret;
 
-	const char* tempResult;
-	ret.push_back(M_DATA_DIR);
-
-	if ((tempResult = getenv("XDG_DATA_DIRS")) != nullptr)
+	if(developmentMode())
 	{
-		std::string dataDirsEnv = tempResult;
-		std::vector<std::string> dataDirs;
-		boost::split(dataDirs, dataDirsEnv, boost::is_any_of(":"));
-		for (auto & entry : boost::adaptors::reverse(dataDirs))
-			ret.push_back(entry + "/vcmi");
+		//For now we'll disable usage of system directories when VCMI running from bin directory
+		ret.push_back(".");
 	}
 	else
 	{
-		ret.push_back("/usr/share/");
-		ret.push_back("/usr/local/share/");
+		ret.push_back(M_DATA_DIR);
+		const char * tempResult;
+		if((tempResult = getenv("XDG_DATA_DIRS")) != nullptr)
+		{
+			std::string dataDirsEnv = tempResult;
+			std::vector<std::string> dataDirs;
+			boost::split(dataDirs, dataDirsEnv, boost::is_any_of(":"));
+			for (auto & entry : boost::adaptors::reverse(dataDirs))
+				ret.push_back(bfs::path(entry) / "vcmi");
+		}
+		else
+		{
+			ret.push_back(bfs::path("/usr/share") / "vcmi");
+			ret.push_back(bfs::path("/usr/local/share") / "vcmi");
+		}
+
+		// Debian and other distributions might want to use it while it's not part of XDG
+		ret.push_back(bfs::path("/usr/share/games") / "vcmi");
 	}
 
 	return ret;
 }
 
-bfs::path VCMIDirsXDG::libraryPath() const { return M_LIB_DIR; }
-bfs::path VCMIDirsXDG::binaryPath() const { return M_BIN_DIR; }
+bfs::path VCMIDirsXDG::libraryPath() const
+{
+	if(developmentMode())
+		return ".";
+	else
+		return M_LIB_DIR;
+}
+
+bfs::path VCMIDirsXDG::binaryPath() const
+{
+	if(developmentMode())
+		return ".";
+	else
+		return M_BIN_DIR;
+}
 
 std::string VCMIDirsXDG::libraryName(const std::string& basename) const { return "lib" + basename + ".so"; }
+
 #ifdef VCMI_ANDROID
+
 class VCMIDirsAndroid : public VCMIDirsXDG
 {
+	std::string basePath;
+	std::string internalPath;
+	std::string nativePath;
 public:
-	boost::filesystem::path userDataPath() const override;
-	boost::filesystem::path userCachePath() const override;
-	boost::filesystem::path userConfigPath() const override;
+	bfs::path fullLibraryPath(const std::string & desiredFolder, const std::string & baseLibName) const override;
+	bfs::path libraryPath() const override;
+	bfs::path userDataPath() const override;
+	bfs::path userCachePath() const override;
+	bfs::path userConfigPath() const override;
 
-	std::vector<boost::filesystem::path> dataPaths() const override;
+	std::vector<bfs::path> dataPaths() const override;
+
+	void init() override;
 };
 
-// on Android HOME will be set to something like /sdcard/data/Android/is.xyz.vcmi/files/
-bfs::path VCMIDirsAndroid::userDataPath() const { return getenv("HOME"); }
+bfs::path VCMIDirsAndroid::libraryPath() const { return nativePath; }
+bfs::path VCMIDirsAndroid::userDataPath() const { return basePath; }
 bfs::path VCMIDirsAndroid::userCachePath() const { return userDataPath() / "cache"; }
 bfs::path VCMIDirsAndroid::userConfigPath() const { return userDataPath() / "config"; }
 
+bfs::path VCMIDirsAndroid::fullLibraryPath(const std::string & desiredFolder, const std::string & baseLibName) const
+{
+	// ignore passed folder (all libraries in android are dumped into a single folder)
+	return libraryPath() / libraryName(baseLibName);
+}
+
 std::vector<bfs::path> VCMIDirsAndroid::dataPaths() const
 {
-	return std::vector<bfs::path>(1, userDataPath());
+	std::vector<bfs::path> paths(2);
+	paths.push_back(internalPath);
+	paths.push_back(userDataPath());
+	return paths;
 }
+
+void VCMIDirsAndroid::init()
+{
+	// asks java code to retrieve needed paths from environment
+	CAndroidVMHelper envHelper;
+	basePath = envHelper.callStaticStringMethod(CAndroidVMHelper::NATIVE_METHODS_DEFAULT_CLASS, "dataRoot");
+	internalPath = envHelper.callStaticStringMethod(CAndroidVMHelper::NATIVE_METHODS_DEFAULT_CLASS, "internalDataRoot");
+	nativePath = envHelper.callStaticStringMethod(CAndroidVMHelper::NATIVE_METHODS_DEFAULT_CLASS, "nativePath");
+	IVCMIDirs::init();
+}
+
 #endif // VCMI_ANDROID
 #endif // VCMI_APPLE, VCMI_XDG
 #endif // VCMI_WINDOWS, VCMI_UNIX
@@ -569,7 +649,8 @@ namespace VCMIDirs
 			static VCMIDirsXDG singleton;
 		#elif defined(VCMI_APPLE)
 			static VCMIDirsOSX singleton;
-		#endif
+        #endif
+
 		static bool initialized = false;
 		if (!initialized)
 		{
@@ -584,3 +665,4 @@ namespace VCMIDirs
 		return singleton;
 	}
 }
+

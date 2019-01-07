@@ -1,3 +1,12 @@
+/*
+ * Filesystem.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "Filesystem.h"
 
@@ -13,6 +22,7 @@
 #include "../CStopWatch.h"
 
 std::map<std::string, ISimpleResourceLoader*> CResourceHandler::knownLoaders = std::map<std::string, ISimpleResourceLoader*>();
+CResourceHandler CResourceHandler::globalResourceHandler;
 
 CFilesystemGenerator::CFilesystemGenerator(std::string prefix):
 	filesystem(new CFilesystemList()),
@@ -39,7 +49,7 @@ void CFilesystemGenerator::loadConfig(const JsonNode & config)
 		for(auto & entry : mountPoint.second.Vector())
 		{
 			CStopWatch timer;
-			logGlobal->debugStream() << "\t\tLoading resource at " << prefix + entry["path"].String();
+			logGlobal->trace("\t\tLoading resource at %s%s", prefix, entry["path"].String());
 
 			auto map = genFunctorMap();
 			auto typeName = entry["type"].String();
@@ -48,7 +58,7 @@ void CFilesystemGenerator::loadConfig(const JsonNode & config)
 			if (functor != map.end())
 			{
 				functor->second(mountPoint.first, entry);
-				logGlobal->debugStream() << "Resource loaded in " << timer.getDiff() << " ms.";
+				logGlobal->trace("Resource loaded in %d ms", timer.getDiff());
 			}
 			else
 			{
@@ -103,21 +113,16 @@ void CFilesystemGenerator::loadJsonMap(const std::string &mountPoint, const Json
 	if (filename)
 	{
 		auto configData = CResourceHandler::get("initial")->load(ResourceID(URI, EResType::TEXT))->readAll();
-		const JsonNode config((char*)configData.first.get(), configData.second);
-		filesystem->addLoader(new CMappedFileLoader(mountPoint, config), false);
+		const JsonNode configInitial((char*)configData.first.get(), configData.second);
+		filesystem->addLoader(new CMappedFileLoader(mountPoint, configInitial), false);
 	}
-}
-
-void CResourceHandler::clear()
-{
-	delete knownLoaders["root"];
 }
 
 ISimpleResourceLoader * CResourceHandler::createInitial()
 {
 	//temporary filesystem that will be used to initialize main one.
 	//used to solve several case-sensivity issues like Mp3 vs MP3
-	auto initialLoader = new CFilesystemList;
+	auto initialLoader = new CFilesystemList();
 
 	//recurse only into specific directories
 	auto recurseInDir = [&](std::string URI, int depth)
@@ -165,7 +170,8 @@ void CResourceHandler::initialize()
 	//    |-saves
 	//    |-config
 
-	knownLoaders["root"] = new CFilesystemList();
+	globalResourceHandler.rootLoader = vstd::make_unique<CFilesystemList>();
+	knownLoaders["root"] = globalResourceHandler.rootLoader.get();
 	knownLoaders["saves"] = new CFilesystemLoader("SAVES/", VCMIDirs::get().userSavePath());
 	knownLoaders["config"] = new CFilesystemLoader("CONFIG/", VCMIDirs::get().userConfigPath());
 

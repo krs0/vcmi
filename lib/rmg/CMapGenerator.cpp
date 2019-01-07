@@ -1,3 +1,12 @@
+/*
+ * CMapGenerator.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "CMapGenerator.h"
 
@@ -9,6 +18,7 @@
 #include "../StringConstants.h"
 #include "../filesystem/Filesystem.h"
 #include "CZonePlacer.h"
+#include "CRmgTemplateZone.h"
 #include "../mapObjects/CObjectClassesHandler.h"
 
 static const int3 dirs4[] = {int3(0,1,0),int3(0,-1,0),int3(-1,0,0),int3(+1,0,0)};
@@ -113,7 +123,7 @@ void CMapGenerator::initQuestArtsRemaining()
 	}
 }
 
-std::unique_ptr<CMap> CMapGenerator::generate(CMapGenOptions * mapGenOptions, int randomSeed /*= std::time(nullptr)*/)
+std::unique_ptr<CMap> CMapGenerator::generate(CMapGenOptions * mapGenOptions, int randomSeed)
 {
 	this->mapGenOptions = mapGenOptions;
 	this->randomSeed = randomSeed;
@@ -139,10 +149,11 @@ std::unique_ptr<CMap> CMapGenerator::generate(CMapGenOptions * mapGenOptions, in
 		map->calculateGuardingGreaturePositions(); //clear map so that all tiles are unguarded
 		fillZones();
 		//updated guarded tiles will be calculated in CGameState::initMapObjects()
+		zones.clear();
 	}
 	catch (rmgException &e)
 	{
-		logGlobal->errorStream() << "Random map generation received exception: " << e.what();
+		logGlobal->error("Random map generation received exception: %s", e.what());
 	}
 	return std::move(map);
 }
@@ -244,7 +255,7 @@ void CMapGenerator::addPlayerInfo()
 
 		if (teamNumbers[j].empty())
 		{
-			logGlobal->errorStream() << boost::format("Not enough places in team for %s player") % ((j == CPUONLY) ? "CPU" : "CPU or human");
+			logGlobal->error("Not enough places in team for %s player", ((j == CPUONLY) ? "CPU" : "CPU or human"));
 			assert (teamNumbers[j].size());
 		}
         auto itTeam = RandomGeneratorUtil::nextItem(teamNumbers[j], rand);
@@ -264,13 +275,21 @@ void CMapGenerator::genZones()
 	editManager->drawTerrain(ETerrainType::GRASS, &rand);
 
 	auto tmpl = mapGenOptions->getMapTemplate();
-	zones = tmpl->getZones(); //copy from template (refactor?)
+	zones.clear();
+	for(const auto & option : tmpl->getZones())
+	{
+		auto zone = std::make_shared<CRmgTemplateZone>();
+		zone->setOptions(option.second.get());
+		zones[zone->getId()] = zone;
+		//todo: move to CRmgTemplateZone constructor
+		zone->setGenPtr(this);//immediately set gen pointer before taking any actions on zones
+	}
 
 	CZonePlacer placer(this);
 	placer.placeZones(mapGenOptions, &rand);
 	placer.assignZones(mapGenOptions);
 
-	logGlobal->infoStream() << "Zones generated successfully";
+	logGlobal->info("Zones generated successfully");
 }
 
 void CMapGenerator::fillZones()
@@ -281,28 +300,28 @@ void CMapGenerator::fillZones()
 
 	findZonesForQuestArts();
 
-	logGlobal->infoStream() << "Started filling zones";
+	logGlobal->info("Started filling zones");
 
 	//we need info about all town types to evaluate dwellings and pandoras with creatures properly
 	//place main town in the middle
 	for (auto it : zones)
-		it.second->initTownType(this);
+		it.second->initTownType();
 
 	//make sure there are some free tiles in the zone
 	for (auto it : zones)
-		it.second->initFreeTiles(this);
+		it.second->initFreeTiles();
 
 	createDirectConnections(); //direct
 	//make sure all connections are passable before creating borders
 	for (auto it : zones)
-		it.second->createBorder(this); //once direct connections are done
+		it.second->createBorder(); //once direct connections are done
 
 	createConnections2(); //subterranean gates and monoliths
 
-	std::vector<CRmgTemplateZone*> treasureZones;
+	std::vector<std::shared_ptr<CRmgTemplateZone>> treasureZones;
 	for (auto it : zones)
 	{
-		it.second->fill(this);
+		it.second->fill();
 		if (it.second->getType() == ETemplateZoneType::TREASURE)
 			treasureZones.push_back(it.second);
 	}
@@ -311,12 +330,12 @@ void CMapGenerator::fillZones()
 	createObstaclesCommon1();
 	//set back original terrain for underground zones
 	for (auto it : zones)
-		it.second->createObstacles1(this);
+		it.second->createObstacles1();
 	createObstaclesCommon2();
 	//place actual obstacles matching zone terrain
 	for (auto it : zones)
 	{
-		it.second->createObstacles2(this);
+		it.second->createObstacles2();
 	}
 
 	#define PRINT_MAP_BEFORE_ROADS false
@@ -356,7 +375,7 @@ void CMapGenerator::fillZones()
 
 	for (auto it : zones)
 	{
-		it.second->connectRoads(this); //draw roads after everything else has been placed
+		it.second->connectRoads(); //draw roads after everything else has been placed
 	}
 
 	//find place for Grail
@@ -369,7 +388,7 @@ void CMapGenerator::fillZones()
 
 	map->grailPos = *RandomGeneratorUtil::nextItem(*grailZone->getFreePaths(), rand);
 
-	logGlobal->infoStream() << "Zones filled successfully";
+	logGlobal->info("Zones filled successfully");
 }
 
 void CMapGenerator::createObstaclesCommon1()
@@ -452,7 +471,7 @@ void CMapGenerator::createObstaclesCommon2()
 				}
 			}
 		}
-		logGlobal->traceStream() << boost::format("Set %d tiles to BLOCKED and %d tiles to FREE") % blockedTiles % freeTiles;
+		logGlobal->trace("Set %d tiles to BLOCKED and %d tiles to FREE", blockedTiles, freeTiles);
 	}
 }
 
@@ -462,8 +481,8 @@ void CMapGenerator::findZonesForQuestArts()
 
 	for (auto connection : mapGenOptions->getMapTemplate()->getConnections())
 	{
-		auto zoneA = connection.getZoneA();
-		auto zoneB = connection.getZoneB();
+		auto zoneA = zones[connection.getZoneA()];
+		auto zoneB = zones[connection.getZoneB()];
 
 		if (zoneA->getId() > zoneB->getId())
 		{
@@ -480,8 +499,8 @@ void CMapGenerator::createDirectConnections()
 {
 	for (auto connection : mapGenOptions->getMapTemplate()->getConnections())
 	{
-		auto zoneA = connection.getZoneA();
-		auto zoneB = connection.getZoneB();
+		auto zoneA = zones[connection.getZoneA()];
+		auto zoneB = zones[connection.getZoneB()];
 
 		//rearrange tiles in random order
 		auto tilesCopy = zoneA->getTileInfo();
@@ -534,11 +553,11 @@ void CMapGenerator::createDirectConnections()
 				if (guardPos.valid())
 				{
 					//zones can make paths only in their own area
-					zoneA->connectWithCenter(this, guardPos, true);
-					zoneB->connectWithCenter(this, guardPos, true);
+					zoneA->connectWithCenter(guardPos, true);
+					zoneB->connectWithCenter(guardPos, true);
 
-					bool monsterPresent = zoneA->addMonster(this, guardPos, connection.getGuardStrength(), false, true);
-					zoneB->updateDistances(this, guardPos); //place next objects away from guard in both zones
+					bool monsterPresent = zoneA->addMonster(guardPos, connection.getGuardStrength(), false, true);
+					zoneB->updateDistances(guardPos); //place next objects away from guard in both zones
 
 					//set free tile only after connection is made to the center of the zone
 					if (!monsterPresent)
@@ -560,8 +579,8 @@ void CMapGenerator::createConnections2()
 {
 	for (auto & connection : connectionsLeft)
 	{
-		auto zoneA = connection.getZoneA();
-		auto zoneB = connection.getZoneB();
+		auto zoneA = zones[connection.getZoneA()];
+		auto zoneB = zones[connection.getZoneB()];
 
 		int3 guardPos(-1, -1, -1);
 
@@ -629,20 +648,20 @@ void CMapGenerator::createConnections2()
 
 					if (distanceFromA > 5 && distanceFromB > 5)
 					{
-						if (zoneA->areAllTilesAvailable(this, gate1, tile, tilesBlockedByObject) &&
-							zoneB->areAllTilesAvailable(this, gate2, otherTile, tilesBlockedByObject))
+						if (zoneA->areAllTilesAvailable(gate1, tile, tilesBlockedByObject) &&
+							zoneB->areAllTilesAvailable(gate2, otherTile, tilesBlockedByObject))
 						{
-							if (zoneA->getAccessibleOffset(this, sgt, tile).valid() && zoneB->getAccessibleOffset(this, sgt, otherTile).valid())
+							if (zoneA->getAccessibleOffset(sgt, tile).valid() && zoneB->getAccessibleOffset(sgt, otherTile).valid())
 							{
-								EObjectPlacingResult::EObjectPlacingResult result1 = zoneA->tryToPlaceObjectAndConnectToPath(this, gate1, tile);
-								EObjectPlacingResult::EObjectPlacingResult result2 = zoneB->tryToPlaceObjectAndConnectToPath(this, gate2, otherTile);
+								EObjectPlacingResult::EObjectPlacingResult result1 = zoneA->tryToPlaceObjectAndConnectToPath(gate1, tile);
+								EObjectPlacingResult::EObjectPlacingResult result2 = zoneB->tryToPlaceObjectAndConnectToPath(gate2, otherTile);
 
 								if ((result1 == EObjectPlacingResult::SUCCESS) && (result2 == EObjectPlacingResult::SUCCESS))
 								{
-									zoneA->placeObject(this, gate1, tile);
-									zoneA->guardObject(this, gate1, strength, true, true);
-									zoneB->placeObject(this, gate2, otherTile);
-									zoneB->guardObject(this, gate2, strength, true, true);
+									zoneA->placeObject(gate1, tile);
+									zoneA->guardObject(gate1, strength, true, true);
+									zoneB->placeObject(gate2, otherTile);
+									zoneB->guardObject(gate2, strength, true, true);
 									guardPos = tile; //set to break the loop
 									break;
 								}
@@ -694,11 +713,11 @@ void CMapGenerator::addHeaderInfo()
 void CMapGenerator::checkIsOnMap(const int3& tile) const
 {
 	if (!map->isInTheMap(tile))
-		throw  rmgException(boost::to_string(boost::format("Tile %s is outside the map") % tile));
+		throw rmgException(boost::to_string(boost::format("Tile %s is outside the map") % tile.toString()));
 }
 
 
-std::map<TRmgTemplateZoneId, CRmgTemplateZone*> CMapGenerator::getZones() const
+CMapGenerator::Zones & CMapGenerator::getZones()
 {
 	return zones;
 }
@@ -805,13 +824,7 @@ float CMapGenerator::getNearestObjectDistance(const int3 &tile) const
 int CMapGenerator::getNextMonlithIndex()
 {
 	if (monolithIndex >= VLC->objtypeh->knownSubObjects(Obj::MONOLITH_TWO_WAY).size())
-	{
-		//logGlobal->errorStream() << boost::to_string(boost::format("RMG Error! There is no Monolith Two Way with index %d available!") % monolithIndex);
-		//monolithIndex++;
-		//return VLC->objtypeh->knownSubObjects(Obj::MONOLITH_TWO_WAY).size() - 1;
-		//TODO: interrupt map generation and report error
 		throw rmgException(boost::to_string(boost::format("There is no Monolith Two Way with index %d available!") % monolithIndex));
-	}
 	else
 		return monolithIndex++;
 }

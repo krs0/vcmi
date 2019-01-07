@@ -1,9 +1,3 @@
-#pragma once
-
-
-#include "lib/CGameInfoCallback.h"
-#include "lib/int3.h" // for int3
-
 /*
  * CCallback.h, part of VCMI engine
  *
@@ -13,13 +7,17 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "lib/CGameInfoCallback.h"
+#include "lib/int3.h" // for int3
 
 class CGHeroInstance;
 class CGameState;
 struct CPath;
 class CGObjectInstance;
 class CArmedInstance;
-struct BattleAction;
+class BattleAction;
 class CGTownInstance;
 struct lua_State;
 class CClient;
@@ -27,6 +25,7 @@ class IShipyard;
 struct CGPathNode;
 struct CGPath;
 struct CPathsInfo;
+class PathfinderConfig;
 struct CPack;
 class IBattleEventsReceiver;
 class IGameEventsReceiver;
@@ -38,8 +37,8 @@ public:
 	bool waitTillRealize; //if true, request functions will return after they are realized by server
 	bool unlockGsWhenWaiting;//if true after sending each request, gs mutex will be unlocked so the changes can be applied; NOTICE caller must have gs mx locked prior to any call to actiob callback!
 	//battle
-	virtual int battleMakeAction(BattleAction* action)=0;//for casting spells by hero - DO NOT use it for moving active stack
-	virtual bool battleMakeTacticAction(BattleAction * action) =0; // performs tactic phase actions
+	virtual int battleMakeAction(const BattleAction * action) = 0;//for casting spells by hero - DO NOT use it for moving active stack
+	virtual bool battleMakeTacticAction(BattleAction * action) = 0; // performs tactic phase actions
 };
 
 class IGameActionCallback
@@ -58,9 +57,11 @@ public:
 	virtual bool upgradeCreature(const CArmedInstance *obj, SlotID stackPos, CreatureID newID=CreatureID::NONE)=0; //if newID==-1 then best possible upgrade will be made
 	virtual void swapGarrisonHero(const CGTownInstance *town)=0;
 
-	virtual void trade(const CGObjectInstance *market, EMarketMode::EMarketMode mode, int id1, int id2, int val1, const CGHeroInstance *hero = nullptr)=0; //mode==0: sell val1 units of id1 resource for id2 resiurce
+	virtual void trade(const CGObjectInstance * market, EMarketMode::EMarketMode mode, ui32 id1, ui32 id2, ui32 val1, const CGHeroInstance * hero = nullptr)=0; //mode==0: sell val1 units of id1 resource for id2 resiurce
+	virtual void trade(const CGObjectInstance * market, EMarketMode::EMarketMode mode, const std::vector<ui32> & id1, const std::vector<ui32> & id2, const std::vector<ui32> & val1, const CGHeroInstance * hero = nullptr)=0;
 
 	virtual int selectionMade(int selection, QueryID queryID) =0;
+	virtual int sendQueryReply(const JsonNode & reply, QueryID queryID) =0;
 	virtual int swapCreatures(const CArmedInstance *s1, const CArmedInstance *s2, SlotID p1, SlotID p2)=0;//swaps creatures between two possibly different garrisons // TODO: AI-unsafe code - fix it!
 	virtual int mergeStacks(const CArmedInstance *s1, const CArmedInstance *s2, SlotID p1, SlotID p2)=0;//joins first stack to the second (creatures must be same type)
 	virtual int mergeOrSwapStacks(const CArmedInstance *s1, const CArmedInstance *s2, SlotID p1, SlotID p2) =0; //first goes to the second
@@ -78,24 +79,24 @@ public:
 	virtual void buildBoat(const IShipyard *obj) = 0;
 };
 
-struct CPack;
+struct CPackForServer;
 
 class CBattleCallback : public IBattleCallback, public CPlayerBattleCallback
 {
 protected:
-	int sendRequest(const CPack *request); //returns requestID (that'll be matched to requestID in PackageApplied)
+	int sendRequest(const CPackForServer * request); //returns requestID (that'll be matched to requestID in PackageApplied)
 	CClient *cl;
-	//virtual bool hasAccess(int playerId) const;
 
 public:
-	CBattleCallback(CGameState *GS, boost::optional<PlayerColor> Player, CClient *C);
-	int battleMakeAction(BattleAction* action) override;//for casting spells by hero - DO NOT use it for moving active stack
+	CBattleCallback(boost::optional<PlayerColor> Player, CClient *C);
+	int battleMakeAction(const BattleAction * action) override;//for casting spells by hero - DO NOT use it for moving active stack
 	bool battleMakeTacticAction(BattleAction * action) override; // performs tactic phase actions
 
 	friend class CCallback;
 	friend class CClient;
 };
 
+class CPlayerInterface;
 class CCallback : public CPlayerSpecificInfoCallback, public IGameActionCallback, public CBattleCallback
 {
 public:
@@ -115,21 +116,17 @@ public:
 	void unregisterGameInterface(std::shared_ptr<IGameEventsReceiver> gameEvents);
 	void unregisterBattleInterface(std::shared_ptr<IBattleEventsReceiver> battleEvents);
 
-	void unregisterAllInterfaces(); //stops delivering information about game events to player interfaces -> can be called ONLY after victory/loss
-
 //commands
 	bool moveHero(const CGHeroInstance *h, int3 dst, bool transit = false) override; //dst must be free, neighbouring tile (this function can move hero only by one tile)
 	bool teleportHero(const CGHeroInstance *who, const CGTownInstance *where);
 	int selectionMade(int selection, QueryID queryID) override;
+	int sendQueryReply(const JsonNode & reply, QueryID queryID) override;
 	int swapCreatures(const CArmedInstance *s1, const CArmedInstance *s2, SlotID p1, SlotID p2) override;
 	int mergeOrSwapStacks(const CArmedInstance *s1, const CArmedInstance *s2, SlotID p1, SlotID p2) override; //first goes to the second
 	int mergeStacks(const CArmedInstance *s1, const CArmedInstance *s2, SlotID p1, SlotID p2) override; //first goes to the second
 	int splitStack(const CArmedInstance *s1, const CArmedInstance *s2, SlotID p1, SlotID p2, int val) override;
 	bool dismissHero(const CGHeroInstance * hero) override;
-	//bool swapArtifacts(const CGHeroInstance * hero1, ui16 pos1, const CGHeroInstance * hero2, ui16 pos2);
 	bool swapArtifacts(const ArtifactLocation &l1, const ArtifactLocation &l2) override;
-	//bool moveArtifact(const CGHeroInstance * hero, ui16 src, const CStackInstance * stack, ui16 dest); // TODO: unify classes
-	//bool moveArtifact(const CStackInstance * stack, ui16 src , const CGHeroInstance * hero, ui16 dest); // TODO: unify classes
 	bool assembleArtifacts(const CGHeroInstance * hero, ArtifactPosition artifactSlot, bool assemble, ArtifactID assembleTo) override;
 	bool buildBuilding(const CGTownInstance *town, BuildingID buildingID) override;
 	void recruitCreatures(const CGDwelling * obj, const CArmedInstance * dst, CreatureID ID, ui32 amount, si32 level=-1) override;
@@ -138,7 +135,8 @@ public:
 	void endTurn() override;
 	void swapGarrisonHero(const CGTownInstance *town) override;
 	void buyArtifact(const CGHeroInstance *hero, ArtifactID aid) override;
-	void trade(const CGObjectInstance *market, EMarketMode::EMarketMode mode, int id1, int id2, int val1, const CGHeroInstance *hero = nullptr) override;
+	void trade(const CGObjectInstance * market, EMarketMode::EMarketMode mode, ui32 id1, ui32 id2, ui32 val1, const CGHeroInstance * hero = nullptr) override;
+	void trade(const CGObjectInstance * market, EMarketMode::EMarketMode mode, const std::vector<ui32> & id1, const std::vector<ui32> & id2, const std::vector<ui32> & val1, const CGHeroInstance * hero = nullptr) override;
 	void setFormation(const CGHeroInstance * hero, bool tight) override;
 	void recruitHero(const CGObjectInstance *townOrTavern, const CGHeroInstance *hero) override;
 	void save(const std::string &fname) override;

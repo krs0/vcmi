@@ -1,4 +1,13 @@
-﻿#include "StdInc.h"
+﻿/*
+ * CObjectClassesHandler.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
+#include "StdInc.h"
 #include "CObjectClassesHandler.h"
 
 #include "../filesystem/Filesystem.h"
@@ -9,25 +18,24 @@
 #include "../CGeneralTextHandler.h"
 #include "../CModHandler.h"
 #include "../JsonNode.h"
+#include "../CSoundBase.h"
 
 #include "CRewardableConstructor.h"
 #include "CommonConstructors.h"
 #include "MapObjects.h"
 
-/*
- * CObjectClassesHandler.cpp, part of VCMI engine
- *
- * Authors: listed in file AUTHORS in main folder
- *
- * License: GNU General Public License v2.0 or later
- * Full text of license available in license.txt file, in main folder
- *
- */
+// FIXME: move into inheritNode?
+static void inheritNodeWithMeta(JsonNode & descendant, const JsonNode & base)
+{
+	std::string oldMeta = descendant.meta;
+	JsonUtils::inherit(descendant, base);
+	descendant.setMeta(oldMeta);
+}
 
 CObjectClassesHandler::CObjectClassesHandler()
 {
 #define SET_HANDLER_CLASS(STRING, CLASSNAME) handlerConstructors[STRING] = std::make_shared<CLASSNAME>;
-#define SET_HANDLER(STRING, TYPENAME) handlerConstructors[STRING] = std::make_shared<CDefaultObjectTypeHandler<TYPENAME> >
+#define SET_HANDLER(STRING, TYPENAME) handlerConstructors[STRING] = std::make_shared<CDefaultObjectTypeHandler<TYPENAME>>
 
 	// list of all known handlers, hardcoded for now since the only way to add new objects is via C++ code
 	//Note: should be in sync with registerTypesMapObjectTypes function
@@ -157,7 +165,7 @@ void CObjectClassesHandler::loadObjectEntry(const std::string & identifier, cons
 {
 	if (!handlerConstructors.count(obj->handlerName))
 	{
-		logGlobal->errorStream() << "Handler with name " << obj->handlerName << " was not found!";
+		logGlobal->error("Handler with name %s was not found!", obj->handlerName);
 		return;
 	}
 
@@ -184,7 +192,7 @@ void CObjectClassesHandler::loadObjectEntry(const std::string & identifier, cons
 		legacyTemplates.erase(range.first, range.second);
 	}
 
-	logGlobal->debugStream() << "Loaded object " << obj->identifier << "(" << obj->id << ")" << ":" << convertedId << "(" << id << ")" ;
+	logGlobal->debug("Loaded object %s(%d)::%s(%d)", obj->identifier, obj->id, convertedId, id);
 	assert(!obj->subObjects.count(id)); // DO NOT override
 	obj->subObjects[id] = handler;
 	obj->subIds[convertedId] = id;
@@ -198,10 +206,16 @@ CObjectClassesHandler::ObjectContainter * CObjectClassesHandler::loadFromJson(co
 	obj->handlerName = json["handler"].String();
 	obj->base = json["base"];
 	obj->id = selectNextID(json["index"], objects, 256);
+	if(json["defaultAiValue"].isNull())
+		obj->groupDefaultAiValue = boost::none;
+	else
+		obj->groupDefaultAiValue = json["defaultAiValue"].Integer();
+
 	for (auto entry : json["types"].Struct())
 	{
 		loadObjectEntry(entry.first, entry.second, obj);
 	}
+
 	return obj;
 }
 
@@ -222,7 +236,7 @@ void CObjectClassesHandler::loadObject(std::string scope, std::string name, cons
 
 void CObjectClassesHandler::loadSubObject(const std::string & identifier, JsonNode config, si32 ID, boost::optional<si32> subID)
 {
-	config.setType(JsonNode::DATA_STRUCT); // ensure that input is not NULL
+	config.setType(JsonNode::JsonType::DATA_STRUCT); // ensure that input is not NULL
 	assert(objects.count(ID));
 	if (subID)
 	{
@@ -231,9 +245,7 @@ void CObjectClassesHandler::loadSubObject(const std::string & identifier, JsonNo
 		config["index"].Float() = subID.get();
 	}
 
-	std::string oldMeta = config.meta; // FIXME: move into inheritNode?
-	JsonUtils::inherit(config, objects.at(ID)->base);
-	config.setMeta(oldMeta);
+	inheritNodeWithMeta(config, objects.at(ID)->base);
 
 	loadObjectEntry(identifier, config, objects[ID]);
 }
@@ -257,7 +269,7 @@ TObjectTypeHandler CObjectClassesHandler::getHandlerFor(si32 type, si32 subtype)
 		if (objects.at(type)->subObjects.count(subtype))
 			return objects.at(type)->subObjects.at(subtype);
 	}
-	logGlobal->errorStream() << "Failed to find object of type " << type << ":" << subtype;
+	logGlobal->error("Failed to find object of type %d:%d", type, subtype);
 	throw std::runtime_error("Object type handler not found");
 }
 
@@ -266,11 +278,21 @@ TObjectTypeHandler CObjectClassesHandler::getHandlerFor(std::string type, std::s
 	boost::optional<si32> id = VLC->modh->identifiers.getIdentifier("core", "object", type, false);
 	if(id)
 	{
-		si32 subId = objects.at(id.get())->subIds.at(subtype);
-		return objects.at(id.get())->subObjects.at(subId);
+		auto object = objects.at(id.get());
+		if(object->subIds.count(subtype))
+		{
+			si32 subId = object->subIds.at(subtype);
+
+			return object->subObjects.at(subId);
+		}
 	}
-	logGlobal->errorStream() << "Failed to find object of type " << type << ":" << subtype;
+	logGlobal->error("Failed to find object of type %s::%s", type, subtype);
 	throw std::runtime_error("Object type handler not found");
+}
+
+TObjectTypeHandler CObjectClassesHandler::getHandlerFor(CompoundMapObjectID compoundIdentifier) const
+{
+	return getHandlerFor(compoundIdentifier.primaryID, compoundIdentifier.secondaryID);
 }
 
 std::set<si32> CObjectClassesHandler::knownObjects() const
@@ -299,23 +321,23 @@ void CObjectClassesHandler::beforeValidate(JsonNode & object)
 {
 	for (auto & entry : object["types"].Struct())
 	{
-		JsonUtils::inherit(entry.second, object["base"]);
+		inheritNodeWithMeta(entry.second, object["base"]);
 		for (auto & templ : entry.second["templates"].Struct())
 		{
-			JsonUtils::inherit(templ.second, entry.second["base"]);
+			inheritNodeWithMeta(templ.second, entry.second["base"]);
 		}
 	}
 }
 
 void CObjectClassesHandler::afterLoadFinalization()
 {
-	for (auto entry : objects)
+	for(auto entry : objects)
 	{
-		for (auto obj : entry.second->subObjects)
+		for(auto obj : entry.second->subObjects)
 		{
 			obj.second->afterLoadFinalization();
-			if (obj.second->getTemplates().empty())
-				logGlobal->warnStream() << "No templates found for " << entry.first << ":" << obj.first;
+			if(obj.second->getTemplates().empty())
+				logGlobal->warn("No templates found for %d:%d", entry.first, obj.first);
 		}
 	}
 
@@ -323,7 +345,7 @@ void CObjectClassesHandler::afterLoadFinalization()
 	auto& portalVec = objects[Obj::MONOLITH_TWO_WAY]->subObjects;
 	size_t portalCount = portalVec.size();
 	size_t currentIndex = portalCount;
-	while (portalVec.size() < 100)
+	while(portalVec.size() < 100)
 	{
 		portalVec[currentIndex] = portalVec[currentIndex % portalCount];
 		currentIndex++;
@@ -334,7 +356,7 @@ std::string CObjectClassesHandler::getObjectName(si32 type) const
 {
 	if (objects.count(type))
 		return objects.at(type)->name;
-	logGlobal->errorStream() << "Access to non existing object of type "  << type;
+	logGlobal->error("Access to non existing object of type %d", type);
 	return "";
 }
 
@@ -349,9 +371,30 @@ std::string CObjectClassesHandler::getObjectName(si32 type, si32 subtype) const
 	return getObjectName(type);
 }
 
+SObjectSounds CObjectClassesHandler::getObjectSounds(si32 type) const
+{
+	if(objects.count(type))
+		return objects.at(type)->sounds;
+	logGlobal->error("Access to non existing object of type %d", type);
+	return SObjectSounds();
+}
+
+SObjectSounds CObjectClassesHandler::getObjectSounds(si32 type, si32 subtype) const
+{
+	if(knownSubObjects(type).count(subtype))
+		return getHandlerFor(type, subtype)->getSounds();
+	else
+		return getObjectSounds(type);
+}
+
 std::string CObjectClassesHandler::getObjectHandlerName(si32 type) const
 {
 	return objects.at(type)->handlerName;
+}
+
+boost::optional<si32> CObjectClassesHandler::getObjGroupAiValue(si32 primaryID) const
+{
+	return objects.at(primaryID)->groupDefaultAiValue;
 }
 
 AObjectTypeHandler::AObjectTypeHandler():
@@ -399,7 +442,7 @@ void AObjectTypeHandler::init(const JsonNode & input, boost::optional<std::strin
 
 	for (auto entry : input["templates"].Struct())
 	{
-		entry.second.setType(JsonNode::DATA_STRUCT);
+		entry.second.setType(JsonNode::JsonType::DATA_STRUCT);
 		JsonUtils::inherit(entry.second, base);
 
 		ObjectTemplate tmpl;
@@ -414,6 +457,20 @@ void AObjectTypeHandler::init(const JsonNode & input, boost::optional<std::strin
 		objectName = name;
 	else
 		objectName.reset(input["name"].String());
+
+	for(const JsonNode & node : input["sounds"]["ambient"].Vector())
+		sounds.ambient.push_back(node.String());
+
+	for(const JsonNode & node : input["sounds"]["visit"].Vector())
+		sounds.visit.push_back(node.String());
+
+	for(const JsonNode & node : input["sounds"]["removal"].Vector())
+		sounds.removal.push_back(node.String());
+
+	if(input["aiValue"].isNull())
+		aiValue = boost::none;
+	else
+		aiValue = input["aiValue"].Integer();
 
 	initTypeData(input);
 }
@@ -441,6 +498,11 @@ boost::optional<std::string> AObjectTypeHandler::getCustomName() const
 	return objectName;
 }
 
+SObjectSounds AObjectTypeHandler::getSounds() const
+{
+	return sounds;
+}
+
 void AObjectTypeHandler::addTemplate(const ObjectTemplate & templ)
 {
 	templates.push_back(templ);
@@ -450,7 +512,7 @@ void AObjectTypeHandler::addTemplate(const ObjectTemplate & templ)
 
 void AObjectTypeHandler::addTemplate(JsonNode config)
 {
-	config.setType(JsonNode::DATA_STRUCT); // ensure that input is not null
+	config.setType(JsonNode::JsonType::DATA_STRUCT); // ensure that input is not null
 	JsonUtils::inherit(config, base);
 	ObjectTemplate tmpl;
 	tmpl.id = Obj(type);
@@ -496,6 +558,11 @@ boost::optional<ObjectTemplate> AObjectTypeHandler::getOverride(si32 terrainType
 const RandomMapInfo & AObjectTypeHandler::getRMGInfo()
 {
 	return rmgInfo;
+}
+
+boost::optional<si32> AObjectTypeHandler::getAiValue() const
+{
+	return aiValue;
 }
 
 bool AObjectTypeHandler::isStaticObject()

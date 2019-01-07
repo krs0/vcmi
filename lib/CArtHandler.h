@@ -1,12 +1,3 @@
-#pragma once
-
-
-#include "../lib/HeroBonus.h"
-//#include "../lib/ConstTransitivePtr.h"
-//#include "JsonNode.h"
-#include "GameConstants.h"
-#include "IHandlerBase.h"
-
 /*
  * CArtHandler.h, part of VCMI engine
  *
@@ -16,6 +7,13 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "../lib/HeroBonus.h"
+//#include "../lib/ConstTransitivePtr.h"
+//#include "JsonNode.h"
+#include "GameConstants.h"
+#include "IHandlerBase.h"
 
 class CArtHandler;
 class CArtifact;
@@ -25,6 +23,7 @@ class CArtifactSet;
 class CArtifactInstance;
 class CRandomGenerator;
 class CMap;
+class JsonSerializeFormat;
 
 #define ART_BEARER_LIST \
 	ART_BEARER(HERO)\
@@ -60,6 +59,7 @@ public:
 	std::vector<CArtifact *> constituentOf; // Reverse map of constituents - combined arts that include this art
 	EartClass aClass;
 	ArtifactID id;
+	CreatureID warMachine;
 
 	const std::string &Name() const; //getter
 	const std::string &Description() const; //getter
@@ -77,11 +77,31 @@ public:
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
 		h & static_cast<CBonusSystemNode&>(*this);
-		h & name & description & eventText & image & large & advMapDef & iconIndex &
-			price & possibleSlots & constituents & constituentOf & aClass & id;
-		if(version>=759)
+		h & name;
+		h & description;
+		h & eventText;
+		h & image;
+		h & large;
+		h & advMapDef;
+		h & iconIndex;
+		h & price;
+		h & possibleSlots;
+		h & constituents;
+		h & constituentOf;
+		h & aClass;
+		h & id;
+		if(version >= 759)
 		{
 			h & identifier;
+		}
+
+		if(version >= 771)
+		{
+			h & warMachine;
+		}
+		else if(!h.saving)
+		{
+			fillWarMachine();
 		}
 	}
 
@@ -89,6 +109,8 @@ public:
 	~CArtifact();
 
 	friend class CArtHandler;
+private:
+	void fillWarMachine();
 };
 
 class DLL_LINKAGE CGrowingArtifact : public CArtifact //for example commander artifacts getting bonuses after battle
@@ -102,7 +124,8 @@ public:
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
 		h & static_cast<CArtifact&>(*this);
-		h & bonusesPerLevel & thresholdBonuses;
+		h & bonusesPerLevel;
+		h & thresholdBonuses;
 	}
 };
 
@@ -143,7 +166,8 @@ public:
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
 		h & static_cast<CBonusSystemNode&>(*this);
-		h & artType & id;
+		h & artType;
+		h & id;
 		BONUS_TREE_DESERIALIZATION_FIX
 	}
 
@@ -172,7 +196,8 @@ public:
 		ArtifactPosition slot;
 		template <typename Handler> void serialize(Handler &h, const int version)
 		{
-			h & art & slot;
+			h & art;
+			h & slot;
 		}
 
 		bool operator==(const ConstituentInfo &rhs) const;
@@ -212,7 +237,6 @@ public:
 
 	std::vector< ConstTransitivePtr<CArtifact> > artifacts;
 	std::vector<CArtifact *> allowedArtifacts;
-	std::set<ArtifactID> bigArtifacts; // Artifacts that cannot be moved to backpack, e.g. war machines.
 	std::set<ArtifactID> growingArtifacts;
 
 	void addBonuses(CArtifact *art, const JsonNode &bonusList);
@@ -230,13 +254,7 @@ public:
 	ArtifactID pickRandomArtifact(CRandomGenerator & rand, int flags, std::function<bool(ArtifactID)> accepts);
 
 	bool legalArtifact(ArtifactID id);
-	//void getAllowedArts(std::vector<ConstTransitivePtr<CArtifact> > &out, std::vector<CArtifact*> *arts, int flag);
-	//void getAllowed(std::vector<ConstTransitivePtr<CArtifact> > &out, int flags);
-	bool isBigArtifact (ArtifactID artID) const {return bigArtifacts.find(artID) != bigArtifacts.end();}
-	bool isTradableArtifact (ArtifactID id) const;
 	void initAllowedArtifactsList(const std::vector<bool> &allowed); //allowed[art_id] -> 0 if not allowed, 1 if allowed
-	static ArtifactID creatureToMachineID(CreatureID id);
-	static CreatureID machineIDToCreature(ArtifactID id);
 	void makeItCreatureArt (CArtifact * a, bool onlyCreature = true);
 	void makeItCreatureArt (ArtifactID aid, bool onlyCreature = true);
 	void makeItCommanderArt (CArtifact * a, bool onlyCommander = true);
@@ -253,17 +271,15 @@ public:
 
 	std::vector<bool> getDefaultAllowed() const override;
 
-	///json serialization helper
-	static si32 decodeArfifact(const std::string & identifier);
-
-	///json serialization helper
-	static std::string encodeArtifact(const si32 index);
-
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & artifacts & allowedArtifacts & treasures & minors & majors & relics
-			& growingArtifacts;
-		//if(!h.saving) sortArts();
+		h & artifacts;
+		h & allowedArtifacts;
+		h & treasures;
+		h & minors;
+		h & majors;
+		h & relics;
+		h & growingArtifacts;
 	}
 
 private:
@@ -292,7 +308,8 @@ struct DLL_LINKAGE ArtSlotInfo
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & artifact & locked;
+		h & artifact;
+		h & locked;
 	}
 };
 
@@ -302,7 +319,7 @@ public:
 	std::vector<ArtSlotInfo> artifactsInBackpack; //hero's artifacts from bag
 	std::map<ArtifactPosition, ArtSlotInfo> artifactsWorn; //map<position,artifact_id>; positions: 0 - head; 1 - shoulders; 2 - neck; 3 - right hand; 4 - left hand; 5 - torso; 6 - right ring; 7 - left ring; 8 - feet; 9 - misc1; 10 - misc2; 11 - misc3; 12 - misc4; 13 - mach1; 14 - mach2; 15 - mach3; 16 - mach4; 17 - spellbook; 18 - misc5
 
-	ArtSlotInfo &retreiveNewArtSlot(ArtifactPosition slot);
+	ArtSlotInfo & retrieveNewArtSlot(ArtifactPosition slot);
 	void setNewArtSlot(ArtifactPosition slot, CArtifactInstance *art, bool locked);
 	void eraseArtSlot(ArtifactPosition slot);
 
@@ -322,19 +339,26 @@ public:
 	bool isPositionFree(ArtifactPosition pos, bool onlyLockCheck = false) const;
 
 	virtual ArtBearer::ArtBearer bearerType() const = 0;
-	virtual ~CArtifactSet() = default;
+	virtual void putArtifact(ArtifactPosition pos, CArtifactInstance * art) = 0;
+	virtual ~CArtifactSet();
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & artifactsInBackpack & artifactsWorn;
+		h & artifactsInBackpack;
+		h & artifactsWorn;
 	}
 
 	void artDeserializationFix(CBonusSystemNode *node);
 
+	void serializeJsonArtifacts(JsonSerializeFormat & handler, const std::string & fieldName, CMap * map);
 protected:
-	void writeJson(JsonNode & json) const;
-	void readJson(const JsonNode & json);
 
-protected:
+
 	std::pair<const CCombinedArtifactInstance *, const CArtifactInstance *> searchForConstituent(int aid) const;
+private:
+	void serializeJsonHero(JsonSerializeFormat & handler, CMap * map);
+	void serializeJsonCreature(JsonSerializeFormat & handler, CMap * map);
+	void serializeJsonCommander(JsonSerializeFormat & handler, CMap * map);
+
+	void serializeJsonSlot(JsonSerializeFormat & handler, const ArtifactPosition & slot, CMap * map);//normal slots
 };

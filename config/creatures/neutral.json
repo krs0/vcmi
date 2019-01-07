@@ -115,7 +115,12 @@
 			{
 				"type" : "DRAGON_NATURE"
 			},
-		        "crystals" :
+			"magicResistance" :
+			{
+				"type" : "MAGIC_RESISTANCE",
+				"val" : 20
+			},
+			"crystals" :
 			{
 				"type" : "GENERATE_RESOURCE",
 				"subtype" : "resource.crystal",
@@ -250,6 +255,10 @@
 				"type" : "ACID_BREATH",
 				"val" : 25,
 				"addInfo" : 20
+			},
+			"fireBreath" :
+			{
+				"type" : "TWO_HEX_ATTACK_BREATH"
 			},
 			"reduceDefence" :
 			{
@@ -390,6 +399,13 @@
 		"index": 138,
 		"level": 1,
 		"faction": "neutral",
+		"abilities": 
+		{
+			"lucky" :
+			{
+				"type" : "SELF_LUCK"
+			}
+		 },
 		"graphics" :
 		{
 			"animation": "CHALF.DEF",
@@ -455,7 +471,13 @@
 			"undead" :
 			{
 				"type" : "UNDEAD"
-			}
+			},
+			"castCurse" :
+			{
+				"type" : "SPELL_AFTER_ATTACK",
+				"subtype" : "spell.curse",
+				"val" : 50
+			}			
 		},
 		"graphics" :
 		{

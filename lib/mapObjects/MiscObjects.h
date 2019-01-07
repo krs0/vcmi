@@ -1,9 +1,3 @@
-#pragma once
-
-#include "CObjectHandler.h"
-#include "CArmedInstance.h"
-#include "../ResourceSet.h"
-
 /*
  * MiscObjects.h, part of VCMI engine
  *
@@ -13,10 +7,16 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "CObjectHandler.h"
+#include "CArmedInstance.h"
+#include "../ResourceSet.h"
 
 class CMap;
 
-class DLL_LINKAGE CPlayersVisited: public CGObjectInstance
+/// Legacy class, use CRewardableObject instead
+class DLL_LINKAGE CTeamVisited: public CGObjectInstance
 {
 public:
 	std::set<PlayerColor> players; //players that visited this object
@@ -74,15 +74,24 @@ public:
 		ui8 upgrade; //random seed used to determine number of stacks and is there's upgraded stack
 		template <typename Handler> void serialize(Handler &h, const int version)
 		{
-			h & basicType & upgrade;
+			h & basicType;
+			h & upgrade;
 		}
 	} formation;
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
 		h & static_cast<CArmedInstance&>(*this);
-		h & identifier & character & message & resources & gainedArtifact & neverFlees & notGrowingTeam & temppower;
-		h & refusedJoining & formation;
+		h & identifier;
+		h & character;
+		h & message;
+		h & resources;
+		h & gainedArtifact;
+		h & neverFlees;
+		h & notGrowingTeam;
+		h & temppower;
+		h & refusedJoining;
+		h & formation;
 	}
 protected:
 	void setPropertyDer(ui8 what, ui32 val) override;
@@ -116,7 +125,7 @@ protected:
 	void serializeJsonOptions(JsonSerializeFormat & handler) override;
 };
 
-class DLL_LINKAGE CGWitchHut : public CPlayersVisited
+class DLL_LINKAGE CGWitchHut : public CTeamVisited
 {
 public:
 	std::vector<si32> allowedAbilities;
@@ -128,8 +137,9 @@ public:
 	void initObj(CRandomGenerator & rand) override;
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & static_cast<CPlayersVisited&>(*this);
-		h & allowedAbilities & ability;
+		h & static_cast<CTeamVisited&>(*this);
+		h & allowedAbilities;
+		h & ability;
 	}
 protected:
 	void serializeJsonOptions(JsonSerializeFormat & handler) override;
@@ -148,7 +158,8 @@ public:
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
 		h & static_cast<CGObjectInstance&>(*this);
-		h & bonusType & bonusID;
+		h & bonusType;
+		h & bonusID;
 	}
 protected:
 	void serializeJsonOptions(JsonSerializeFormat & handler) override;
@@ -189,10 +200,13 @@ public:
 	void pick( const CGHeroInstance * h ) const;
 	void initObj(CRandomGenerator & rand) override;
 
+	void afterAddToMap(CMap * map) override;
+
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
 		h & static_cast<CArmedInstance&>(*this);
-		h & message & storedArtifact;
+		h & message;
+		h & storedArtifact;
 	}
 protected:
 	void serializeJsonOptions(JsonSerializeFormat & handler) override;
@@ -216,13 +230,14 @@ public:
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
 		h & static_cast<CArmedInstance&>(*this);
-		h & amount & message;
+		h & amount;
+		h & message;
 	}
 protected:
 	void serializeJsonOptions(JsonSerializeFormat & handler) override;
 };
 
-class DLL_LINKAGE CGShrine : public CPlayersVisited
+class DLL_LINKAGE CGShrine : public CTeamVisited
 {
 public:
 	SpellID spell; //id of spell or NONE if random
@@ -233,7 +248,7 @@ public:
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & static_cast<CPlayersVisited&>(*this);;
+		h & static_cast<CTeamVisited&>(*this);;
 		h & spell;
 	}
 protected:
@@ -263,7 +278,8 @@ public:
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
 		h & static_cast<CArmedInstance&>(*this);
-		h & producedResource & producedQuantity;
+		h & producedResource;
+		h & producedQuantity;
 	}
 	ui32 defaultResProduction();
 protected:
@@ -282,7 +298,9 @@ struct DLL_LINKAGE TeleportChannel
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & entrances & exits & passability;
+		h & entrances;
+		h & exits;
+		h & passability;
 	}
 };
 
@@ -318,7 +336,9 @@ public:
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & type & channel & static_cast<CGObjectInstance&>(*this);
+		h & type;
+		h & channel;
+		h & static_cast<CGObjectInstance&>(*this);
 	}
 };
 
@@ -416,7 +436,9 @@ public:
 	}
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & static_cast<CGObjectInstance&>(*this) & direction & hero;
+		h & static_cast<CGObjectInstance&>(*this);
+		h & direction;
+		h & hero;
 	}
 };
 
@@ -452,7 +474,7 @@ public:
 	}
 };
 
-class DLL_LINKAGE CCartographer : public CPlayersVisited
+class DLL_LINKAGE CCartographer : public CTeamVisited
 {
 ///behaviour varies depending on surface and  floor
 public:
@@ -461,7 +483,7 @@ public:
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & static_cast<CPlayersVisited&>(*this);
+		h & static_cast<CTeamVisited&>(*this);
 	}
 };
 
@@ -470,7 +492,7 @@ class DLL_LINKAGE CGDenOfthieves : public CGObjectInstance
 	void onHeroVisit(const CGHeroInstance * h) const override;
 };
 
-class DLL_LINKAGE CGObelisk : public CPlayersVisited
+class DLL_LINKAGE CGObelisk : public CTeamVisited
 {
 public:
 	static const int OBJPROP_INC = 20;
@@ -484,7 +506,7 @@ public:
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & static_cast<CPlayersVisited&>(*this);
+		h & static_cast<CTeamVisited&>(*this);
 	}
 protected:
 	void setPropertyDer(ui8 what, ui32 val) override;
@@ -501,7 +523,7 @@ public:
 	{
 		h & static_cast<CGObjectInstance&>(*this);
 	}
-	void giveBonusTo( PlayerColor player ) const;
+	void giveBonusTo(PlayerColor player, bool onInit = false) const;
 protected:
 	void serializeJsonOptions(JsonSerializeFormat & handler) override;
 };

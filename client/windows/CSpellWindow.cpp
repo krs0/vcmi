@@ -1,3 +1,12 @@
+/*
+ * CSpellWindow.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "CSpellWindow.h"
 
@@ -25,24 +34,13 @@
 
 #include "../../CCallback.h"
 
-#include "../../lib/CStack.h"
 #include "../../lib/CConfigHandler.h"
 #include "../../lib/CGeneralTextHandler.h"
-#include "../../lib/CHeroHandler.h"
 #include "../../lib/spells/CSpellHandler.h"
+#include "../../lib/spells/Problem.h"
 #include "../../lib/GameConstants.h"
-#include "../../lib/CGameState.h"
-#include "../../lib/mapObjects/CGTownInstance.h"
 
-/*
- * CSpellWindow.cpp, part of VCMI engine
- *
- * Authors: listed in file AUTHORS in main folder
- *
- * License: GNU General Public License v2.0 or later
- * Full text of license available in license.txt file, in main folder
- *
- */
+#include "../../lib/mapObjects/CGHeroInstance.h"
 
 CSpellWindow::InteractiveArea::InteractiveArea(const SDL_Rect & myRect, std::function<void()> funcL, int helpTextId, CSpellWindow * _owner)
 {
@@ -104,7 +102,7 @@ CSpellWindow::CSpellWindow(const CGHeroInstance * _myHero, CPlayerInterface * _m
 	myHero(_myHero),
 	myInt(_myInt)
 {
-	OBJ_CONSTRUCTION_CAPTURING_ALL;
+	OBJECT_CONSTRUCTION_CAPTURING(255-DISPOSE);
 	//initializing castable spells
 	mySpells.reserve(CGI->spellh->objects.size());
 	for(const CSpell * spell : CGI->spellh->objects)
@@ -126,7 +124,7 @@ CSpellWindow::CSpellWindow(const CGHeroInstance * _myHero, CPlayerInterface * _m
 
 		++sitesPerOurTab[4];
 
-		spell->forEachSchool([&sitesPerOurTab](const SpellSchoolInfo & school, bool & stop)
+		spell->forEachSchool([&sitesPerOurTab](const spells::SchoolInfo & school, bool & stop)
 		{
 			++sitesPerOurTab[(ui8)school.id];
 		});
@@ -170,13 +168,13 @@ CSpellWindow::CSpellWindow(const CGHeroInstance * _myHero, CPlayerInterface * _m
 
 	//numbers of spell pages computed
 
-	leftCorner = new CPicture("SpelTrnL.bmp", 97, 77);
-	rightCorner = new CPicture("SpelTrnR.bmp", 487, 72);
+	leftCorner = std::make_shared<CPicture>("SpelTrnL.bmp", 97, 77);
+	rightCorner = std::make_shared<CPicture>("SpelTrnR.bmp", 487, 72);
 
-	spells = std::make_shared<CAnimation>("Spells");
+	spellIcons = std::make_shared<CAnimation>("Spells");
 
-	spellTab = new CAnimImage("SpelTab", selectedTab, 0, 524, 88);
-	schools = new CAnimImage("Schools",0,0,117,74);
+	schoolTab = std::make_shared<CAnimImage>("SpelTab", selectedTab, 0, 524, 88);
+	schoolPicture = std::make_shared<CAnimImage>("Schools", 0, 0, 117, 74);
 
 	schoolBorders[0] = std::make_shared<CAnimation>("SplevA.def");
 	schoolBorders[1] = std::make_shared<CAnimation>("SplevF.def");
@@ -184,34 +182,34 @@ CSpellWindow::CSpellWindow(const CGHeroInstance * _myHero, CPlayerInterface * _m
 	schoolBorders[3] = std::make_shared<CAnimation>("SplevE.def");
 
 	for(auto item : schoolBorders)
-		item->load();
-	mana = new CLabel(435, 426, FONT_SMALL, CENTER, Colors::YELLOW, boost::lexical_cast<std::string>(myHero->mana));
-	statusBar = new CGStatusBar(7, 569, "Spelroll.bmp");
+		item->preload();
+	mana = std::make_shared<CLabel>(435, 426, FONT_SMALL, CENTER, Colors::YELLOW, boost::lexical_cast<std::string>(myHero->mana));
+	statusBar = CGStatusBar::create(7, 569, "Spelroll.bmp");
 
 	SDL_Rect temp_rect = genRect(45, 35, 479 + pos.x, 405 + pos.y);
-	new InteractiveArea(temp_rect, std::bind(&CSpellWindow::fexitb, this), 460, this);
+	interactiveAreas.push_back(std::make_shared<InteractiveArea>(temp_rect, std::bind(&CSpellWindow::fexitb, this), 460, this));
 	temp_rect = genRect(45, 35, 221 + pos.x, 405 + pos.y);
-	new InteractiveArea(temp_rect, std::bind(&CSpellWindow::fbattleSpellsb, this), 453, this);
+	interactiveAreas.push_back(std::make_shared<InteractiveArea>(temp_rect, std::bind(&CSpellWindow::fbattleSpellsb, this), 453, this));
 	temp_rect = genRect(45, 35, 355 + pos.x, 405 + pos.y);
-	new InteractiveArea(temp_rect, std::bind(&CSpellWindow::fadvSpellsb, this), 452, this);
+	interactiveAreas.push_back(std::make_shared<InteractiveArea>(temp_rect, std::bind(&CSpellWindow::fadvSpellsb, this), 452, this));
 	temp_rect = genRect(45, 35, 418 + pos.x, 405 + pos.y);
-	new InteractiveArea(temp_rect, std::bind(&CSpellWindow::fmanaPtsb, this), 459, this);
+	interactiveAreas.push_back(std::make_shared<InteractiveArea>(temp_rect, std::bind(&CSpellWindow::fmanaPtsb, this), 459, this));
 
 	temp_rect = genRect(36, 56, 549 + pos.x, 94 + pos.y);
-	new InteractiveArea(temp_rect, std::bind(&CSpellWindow::selectSchool, this, 0), 454, this);
+	interactiveAreas.push_back(std::make_shared<InteractiveArea>(temp_rect, std::bind(&CSpellWindow::selectSchool, this, 0), 454, this));
 	temp_rect = genRect(36, 56, 549 + pos.x, 151 + pos.y);
-	new InteractiveArea(temp_rect, std::bind(&CSpellWindow::selectSchool, this, 3), 457, this);
+	interactiveAreas.push_back(std::make_shared<InteractiveArea>(temp_rect, std::bind(&CSpellWindow::selectSchool, this, 3), 457, this));
 	temp_rect = genRect(36, 56, 549 + pos.x, 210 + pos.y);
-	new InteractiveArea(temp_rect, std::bind(&CSpellWindow::selectSchool, this, 1), 455, this);
+	interactiveAreas.push_back(std::make_shared<InteractiveArea>(temp_rect, std::bind(&CSpellWindow::selectSchool, this, 1), 455, this));
 	temp_rect = genRect(36, 56, 549 + pos.x, 270 + pos.y);
-	new InteractiveArea(temp_rect, std::bind(&CSpellWindow::selectSchool, this, 2), 456, this);
+	interactiveAreas.push_back(std::make_shared<InteractiveArea>(temp_rect, std::bind(&CSpellWindow::selectSchool, this, 2), 456, this));
 	temp_rect = genRect(36, 56, 549 + pos.x, 330 + pos.y);
-	new InteractiveArea(temp_rect, std::bind(&CSpellWindow::selectSchool, this, 4), 458, this);
+	interactiveAreas.push_back(std::make_shared<InteractiveArea>(temp_rect, std::bind(&CSpellWindow::selectSchool, this, 4), 458, this));
 
 	temp_rect = genRect(leftCorner->bg->h, leftCorner->bg->w, 97 + pos.x, 77 + pos.y);
-	new InteractiveArea(temp_rect, std::bind(&CSpellWindow::fLcornerb, this), 450, this);
+	interactiveAreas.push_back(std::make_shared<InteractiveArea>(temp_rect, std::bind(&CSpellWindow::fLcornerb, this), 450, this));
 	temp_rect = genRect(rightCorner->bg->h, rightCorner->bg->w, 487 + pos.x, 72 + pos.y);
-	new InteractiveArea(temp_rect, std::bind(&CSpellWindow::fRcornerb, this), 451, this);
+	interactiveAreas.push_back(std::make_shared<InteractiveArea>(temp_rect, std::bind(&CSpellWindow::fRcornerb, this), 451, this));
 
 	//areas for spells
 	int xpos = 117 + pos.x, ypos = 90 + pos.y;
@@ -219,7 +217,7 @@ CSpellWindow::CSpellWindow(const CGHeroInstance * _myHero, CPlayerInterface * _m
 	for(int v=0; v<12; ++v)
 	{
 		temp_rect = genRect(65, 78, xpos, ypos);
-		spellAreas[v] = new SpellArea(temp_rect, this);
+		spellAreas[v] = std::make_shared<SpellArea>(temp_rect, this);
 
 		if(v == 5) //to right page
 		{
@@ -239,7 +237,7 @@ CSpellWindow::CSpellWindow(const CGHeroInstance * _myHero, CPlayerInterface * _m
 	}
 
 	selectedTab = battleSpellsOnly ? myInt->spellbookSettings.spellbookLastTabBattle : myInt->spellbookSettings.spellbookLastTabAdvmap;
-	spellTab->setFrame(selectedTab, 0);
+	schoolTab->setFrame(selectedTab, 0);
 	int cp = battleSpellsOnly ? myInt->spellbookSettings.spellbookLastPageBattle : myInt->spellbookSettings.spellbokLastPageAdvmap;
 	// spellbook last page battle index is not reset after battle, so this needs to stay here
 	vstd::abetween(cp, 0, std::max(0, pagesWithinCurrentTab() - 1));
@@ -250,9 +248,6 @@ CSpellWindow::CSpellWindow(const CGHeroInstance * _myHero, CPlayerInterface * _m
 
 CSpellWindow::~CSpellWindow()
 {
-	for(auto item : schoolBorders)
-		item->unload();
-	spells->unload();
 }
 
 void CSpellWindow::fexitb()
@@ -260,12 +255,12 @@ void CSpellWindow::fexitb()
 	(myInt->battleInt ? myInt->spellbookSettings.spellbookLastTabBattle : myInt->spellbookSettings.spellbookLastTabAdvmap) = selectedTab;
 	(myInt->battleInt ? myInt->spellbookSettings.spellbookLastPageBattle : myInt->spellbookSettings.spellbokLastPageAdvmap) = currentPage;
 
-	GH.popIntTotally(this);
+	close();
 }
 
 void CSpellWindow::fadvSpellsb()
 {
-	if (battleSpellsOnly == true)
+	if(battleSpellsOnly == true)
 	{
 		turnPageRight();
 		battleSpellsOnly = false;
@@ -276,7 +271,7 @@ void CSpellWindow::fadvSpellsb()
 
 void CSpellWindow::fbattleSpellsb()
 {
-	if (battleSpellsOnly == false)
+	if(battleSpellsOnly == false)
 	{
 		turnPageLeft();
 		battleSpellsOnly = true;
@@ -291,14 +286,14 @@ void CSpellWindow::fmanaPtsb()
 
 void CSpellWindow::selectSchool(int school)
 {
-	if (selectedTab != school)
+	if(selectedTab != school)
 	{
-		if (selectedTab < school)
+		if(selectedTab < school)
 			turnPageLeft();
 		else
 			turnPageRight();
 		selectedTab = school;
-		spellTab->setFrame(selectedTab, 0);
+		schoolTab->setFrame(selectedTab, 0);
 		setCurrentPage(0);
 	}
 	computeSpellsPerArea();
@@ -337,7 +332,7 @@ void CSpellWindow::computeSpellsPerArea()
 	spellsCurSite.reserve(mySpells.size());
 	for(const CSpell * spell : mySpells)
 	{
-		if(spell->combatSpell ^ !battleSpellsOnly
+		if(spell->isCombatSpell() ^ !battleSpellsOnly
 			&& ((selectedTab == 4) || spell->school.at((ESpellSchool)selectedTab))
 			)
 		{
@@ -407,9 +402,9 @@ void CSpellWindow::computeSpellsPerArea()
 void CSpellWindow::setCurrentPage(int value)
 {
 	currentPage = value;
-	schools->visible = selectedTab!=4 && currentPage == 0;
+	schoolPicture->visible = selectedTab!=4 && currentPage == 0;
 	if(selectedTab != 4)
-		schools->setFrame(selectedTab, 0);
+		schoolPicture->setFrame(selectedTab, 0);
 	leftCorner->visible = currentPage != 0;
 	rightCorner->visible = (currentPage+1) < pagesWithinCurrentTab();
 
@@ -418,14 +413,14 @@ void CSpellWindow::setCurrentPage(int value)
 
 void CSpellWindow::turnPageLeft()
 {
-	if (settings["video"]["spellbookAnimation"].Bool())
-		CCS->videoh->openAndPlayVideo("PGTRNLFT.SMK", pos.x+13, pos.y+15, screen);
+	if(settings["video"]["spellbookAnimation"].Bool())
+		CCS->videoh->openAndPlayVideo("PGTRNLFT.SMK", pos.x+13, pos.y+15);
 }
 
 void CSpellWindow::turnPageRight()
 {
-	if (settings["video"]["spellbookAnimation"].Bool())
-		CCS->videoh->openAndPlayVideo("PGTRNRGH.SMK", pos.x+13, pos.y+15, screen);
+	if(settings["video"]["spellbookAnimation"].Bool())
+		CCS->videoh->openAndPlayVideo("PGTRNRGH.SMK", pos.x+13, pos.y+15);
 }
 
 void CSpellWindow::keyPressed(const SDL_KeyboardEvent & key)
@@ -505,27 +500,23 @@ CSpellWindow::SpellArea::SpellArea(SDL_Rect pos, CSpellWindow * owner)
 	this->owner = owner;
 	addUsedEvents(LCLICK | RCLICK | HOVER);
 
-	spellCost = whichSchool = schoolLevel = -1;
+	schoolLevel = -1;
 	mySpell = nullptr;
-	schoolBorder = nullptr;
 
-	OBJ_CONSTRUCTION_CAPTURING_ALL;
+	OBJECT_CONSTRUCTION_CAPTURING(255-DISPOSE);
 
-	image = new CAnimImage(owner->spells, 0, 0);
+	image = std::make_shared<CAnimImage>(owner->spellIcons, 0, 0);
 	image->visible = false;
 
-	name  = new CLabel(39, 70, FONT_TINY, CENTER);
-	level = new CLabel(39, 82, FONT_TINY, CENTER);
-	cost  = new CLabel(39, 94, FONT_TINY, CENTER);
+	name = std::make_shared<CLabel>(39, 70, FONT_TINY, CENTER);
+	level = std::make_shared<CLabel>(39, 82, FONT_TINY, CENTER);
+	cost = std::make_shared<CLabel>(39, 94, FONT_TINY, CENTER);
 
 	for(auto l : {name, level, cost})
 		l->autoRedraw = false;
 }
 
-CSpellWindow::SpellArea::~SpellArea()
-{
-
-}
+CSpellWindow::SpellArea::~SpellArea() = default;
 
 void CSpellWindow::SpellArea::clickLeft(tribool down, bool previousState)
 {
@@ -537,215 +528,60 @@ void CSpellWindow::SpellArea::clickLeft(tribool down, bool previousState)
 			owner->myInt->showInfoDialog(boost::str(boost::format(CGI->generaltexth->allTexts[206]) % spellCost % owner->myHero->mana));
 			return;
 		}
-		//battle spell on adv map or adventure map spell during combat => display infowindow, not cast
-		if((mySpell->isCombatSpell() && !owner->myInt->battleInt)
-		   || (mySpell->isAdventureSpell() && (owner->myInt->battleInt || owner->myInt->castleInt)))
+
+		//anything that is not combat spell is adventure spell
+		//this not an error in general to cast even creature ability with hero
+		const bool combatSpell = mySpell->isCombatSpell();
+		if(mySpell->isCombatSpell() != !mySpell->isAdventureSpell())
 		{
-			std::vector<CComponent*> hlp(1, new CComponent(CComponent::spell, mySpell->id, 0));
-			owner->myInt->showInfoDialog(mySpell->getLevelInfo(schoolLevel).description, hlp);
+			logGlobal->error("Spell have invalid flags");
 			return;
 		}
 
-		//we will cast a spell
-		if(mySpell->combatSpell && owner->myInt->battleInt && owner->myInt->cb->battleCanCastSpell()) //if battle window is open
+		const bool inCombat = owner->myInt->battleInt != nullptr;
+		const bool inCastle = owner->myInt->castleInt != nullptr;
+
+		//battle spell on adv map or adventure map spell during combat => display infowindow, not cast
+		if((combatSpell ^ inCombat) || inCastle)
 		{
-			ESpellCastProblem::ESpellCastProblem problem = owner->myInt->cb->battleCanCastThisSpell(mySpell);
-			switch (problem)
-			{
-			case ESpellCastProblem::OK:
-				{
-					owner->myInt->battleInt->castThisSpell(mySpell->id);
-					owner->fexitb();
-					return;
-				}
-				break;
-			case ESpellCastProblem::ANOTHER_ELEMENTAL_SUMMONED:
-				{
-					std::string text = CGI->generaltexth->allTexts[538], elemental, caster;
-					const PlayerColor player = owner->myInt->playerID;
-
-					const TStacks stacks = owner->myInt->cb->battleGetStacksIf([player](const CStack * s)
-					{
-						return s->owner == player
-							&& vstd::contains(s->state, EBattleStackState::SUMMONED)
-							&& !vstd::contains(s->state, EBattleStackState::CLONED);
-					});
-					for(const CStack * s : stacks)
-					{
-						elemental = s->getCreature()->namePl;
-					}
-					if (owner->myHero->type->sex)
-					{ //female
-						caster = CGI->generaltexth->allTexts[540];
-					}
-					else
-					{ //male
-						caster = CGI->generaltexth->allTexts[539];
-					}
-					std::string summoner = owner->myHero->name;
-
-					text = boost::str(boost::format(text) % summoner % elemental % caster);
-
-					owner->myInt->showInfoDialog(text);
-				}
-				break;
-			case ESpellCastProblem::SPELL_LEVEL_LIMIT_EXCEEDED:
-				{
-					//Recanter's Cloak or similar effect. Try to retrieve bonus
-					const auto b = owner->myHero->getBonusLocalFirst(Selector::type(Bonus::BLOCK_MAGIC_ABOVE));
-					//TODO what about other values and non-artifact sources?
-					if(b && b->val == 2 && b->source == Bonus::ARTIFACT)
-					{
-						std::string artName = CGI->arth->artifacts[b->sid]->Name();
-						//The %s prevents %s from casting 3rd level or higher spells.
-						owner->myInt->showInfoDialog(boost::str(boost::format(CGI->generaltexth->allTexts[536])
-							% artName % owner->myHero->name));
-					}
-					else if(b && b->source == Bonus::TERRAIN_OVERLAY && b->sid == BFieldType::CURSED_GROUND)
-					{
-						owner->myInt->showInfoDialog(CGI->generaltexth->allTexts[537]);
-					}
-					else
-					{
-						// General message:
-						// %s recites the incantations but they seem to have no effect.
-						std::string text = CGI->generaltexth->allTexts[541], caster = owner->myHero->name;
-						text = boost::str(boost::format(text) % caster);
-						owner->myInt->showInfoDialog(text);
-					}
-				}
-				break;
-			case ESpellCastProblem::NO_APPROPRIATE_TARGET:
-				{
-					owner->myInt->showInfoDialog(CGI->generaltexth->allTexts[185]);
-				}
-				break;
-			default:
-				{
-					// General message:
-					std::string text = CGI->generaltexth->allTexts[541], caster = owner->myHero->name;
-					text = boost::str(boost::format(text) % caster);
-					owner->myInt->showInfoDialog(text);
-				}
-			}
+			std::vector<std::shared_ptr<CComponent>> hlp(1, std::make_shared<CComponent>(CComponent::spell, mySpell->id, 0));
+			owner->myInt->showInfoDialog(mySpell->getLevelInfo(schoolLevel).description, hlp);
 		}
-		else if(mySpell->isAdventureSpell() && !owner->myInt->battleInt) //adventure spell and not in battle
+		else if(combatSpell)
 		{
-			const CGHeroInstance *h = owner->myHero;
-			GH.popInt(owner);
-
-			auto guard = vstd::makeScopeGuard([this]
+			spells::detail::ProblemImpl problem;
+			if(mySpell->canBeCast(problem, owner->myInt->cb.get(), spells::Mode::HERO, owner->myHero))
 			{
-				(owner->myInt->battleInt ? owner->myInt->spellbookSettings.spellbookLastTabBattle : owner->myInt->spellbookSettings.spellbookLastTabAdvmap) = owner->selectedTab;
-				(owner->myInt->battleInt ? owner->myInt->spellbookSettings.spellbookLastPageBattle : owner->myInt->spellbookSettings.spellbokLastPageAdvmap) = owner->currentPage;
-				delete owner;
-			});
-
-			if(mySpell->id == SpellID::TOWN_PORTAL)
-			{
-				//special case
-				//todo: move to mechanics
-
-				std::vector <int> availableTowns;
-				std::vector <const CGTownInstance*> Towns = owner->myInt->cb->getTownsInfo(false);
-
-				vstd::erase_if(Towns, [this](const CGTownInstance * t)
-				{
-					const auto relations = owner->myInt->cb->getPlayerRelations(t->tempOwner, owner->myInt->playerID);
-					return relations == PlayerRelations::ENEMIES;
-				});
-
-				if (Towns.empty())
-				{
-					owner->myInt->showInfoDialog(CGI->generaltexth->allTexts[124]);
-					return;
-				}
-
-				const int movementCost = (h->getSpellSchoolLevel(mySpell) >= 3) ? 200 : 300;
-
-				if(h->movement < movementCost)
-				{
-					owner->myInt->showInfoDialog(CGI->generaltexth->allTexts[125]);
-					return;
-				}
-
-				if (h->getSpellSchoolLevel(mySpell) < 2) //not advanced or expert - teleport to nearest available city
-				{
-					auto nearest = Towns.cbegin(); //nearest town's iterator
-					si32 dist = owner->myInt->cb->getTown((*nearest)->id)->pos.dist2dSQ(h->pos);
-
-					for (auto i = nearest + 1; i != Towns.cend(); ++i)
-					{
-						const CGTownInstance * dest = owner->myInt->cb->getTown((*i)->id);
-						si32 curDist = dest->pos.dist2dSQ(h->pos);
-
-						if (curDist < dist)
-						{
-							nearest = i;
-							dist = curDist;
-						}
-					}
-
-					if ((*nearest)->visitingHero)
-						owner->myInt->showInfoDialog(CGI->generaltexth->allTexts[123]);
-					else
-					{
-						const CGTownInstance * town = owner->myInt->cb->getTown((*nearest)->id);
-						owner->myInt->cb->castSpell(h, mySpell->id, town->visitablePos());// - town->getVisitableOffset());
-					}
-				}
-				else
-				{ //let the player choose
-					for(auto & Town : Towns)
-					{
-						const CGTownInstance *t = Town;
-						if (t->visitingHero == nullptr) //empty town and this is
-						{
-							availableTowns.push_back(t->id.getNum());//add to the list
-						}
-					}
-
-					auto castTownPortal = [this, h](int townId)
-					{
-						const CGTownInstance * dest = owner->myInt->cb->getTown(ObjectInstanceID(townId));
-						owner->myInt->cb->castSpell(h, SpellID::TOWN_PORTAL, dest->visitablePos());
-					};
-
-					if (availableTowns.empty())
-						owner->myInt->showInfoDialog(CGI->generaltexth->allTexts[124]);
-					else
-						GH.pushInt (new CObjectListWindow(availableTowns,
-							new CAnimImage("SPELLSCR",mySpell->id),
-							CGI->generaltexth->jktexts[40], CGI->generaltexth->jktexts[41],
-							castTownPortal));
-				}
-				return;
-			}
-
-			if(mySpell->id == SpellID::SUMMON_BOAT)
-			{
-				//special case
-				//todo: move to mechanics
-				int3 pos = h->bestLocation();
-				if(pos.x < 0)
-				{
-					owner->myInt->showInfoDialog(CGI->generaltexth->allTexts[334]); //There is no place to put the boat.
-					return;
-				}
-			}
-
-			if(mySpell->getTargetType() == CSpell::LOCATION)
-			{
-				adventureInt->enterCastingMode(mySpell);
-			}
-			else if(mySpell->getTargetType() == CSpell::NO_TARGET)
-			{
-				owner->myInt->cb->castSpell(h, mySpell->id);
+				owner->myInt->battleInt->castThisSpell(mySpell->id);
+				owner->fexitb();
 			}
 			else
 			{
-				logGlobal->error("Invalid spell target type");
+				std::vector<std::string> texts;
+				problem.getAll(texts);
+				if(!texts.empty())
+					owner->myInt->showInfoDialog(texts.front());
+				else
+					owner->myInt->showInfoDialog("Unknown problem with this spell, no more information available.");
 			}
+		}
+		else //adventure spell
+		{
+			const CGHeroInstance * h = owner->myHero;
+			GH.popInts(1);
+
+			auto guard = vstd::makeScopeGuard([this]()
+			{
+				owner->myInt->spellbookSettings.spellbookLastTabAdvmap = owner->selectedTab;
+				owner->myInt->spellbookSettings.spellbokLastPageAdvmap = owner->currentPage;
+			});
+
+			if(mySpell->getTargetType() == spells::AimType::LOCATION)
+				adventureInt->enterCastingMode(mySpell);
+			else if(mySpell->getTargetType() == spells::AimType::NO_TARGET)
+				owner->myInt->cb->castSpell(h, mySpell->id);
+			else
+				logGlobal->error("Invalid spell target type");
 		}
 	}
 }
@@ -755,7 +591,7 @@ void CSpellWindow::SpellArea::clickRight(tribool down, bool previousState)
 	if(mySpell && down)
 	{
 		std::string dmgInfo;
-		int causedDmg = owner->myInt->cb->estimateSpellDamage(mySpell, owner->myHero);
+		auto causedDmg = owner->myInt->cb->estimateSpellDamage(mySpell, owner->myHero);
 		if(causedDmg == 0 || mySpell->id == SpellID::TITANS_LIGHTNING_BOLT) //Titan's Lightning Bolt already has damage info included
 			dmgInfo = "";
 		else
@@ -764,8 +600,7 @@ void CSpellWindow::SpellArea::clickRight(tribool down, bool previousState)
 			boost::algorithm::replace_first(dmgInfo, "%d", boost::lexical_cast<std::string>(causedDmg));
 		}
 
-		CRClickPopup::createAndPush(mySpell->getLevelInfo(schoolLevel).description + dmgInfo,
-		                            new CComponent(CComponent::spell, mySpell->id));
+		CRClickPopup::createAndPush(mySpell->getLevelInfo(schoolLevel).description + dmgInfo, std::make_shared<CComponent>(CComponent::spell, mySpell->id));
 	}
 }
 
@@ -780,20 +615,9 @@ void CSpellWindow::SpellArea::hover(bool on)
 	}
 }
 
-void CSpellWindow::SpellArea::showAll(SDL_Surface * to)
-{
-	if(mySpell)
-	{
-		//printing border (indicates level of magic school)
-		if(schoolBorder)
-			schoolBorder->draw(to, pos.x, pos.y);
-		CIntObject::showAll(to);
-	}
-}
-
 void CSpellWindow::SpellArea::setSpell(const CSpell * spell)
 {
-	schoolBorder = nullptr;
+	schoolBorder.reset();
 	image->visible = false;
 	name->setText("");
 	level->setText("");
@@ -801,12 +625,17 @@ void CSpellWindow::SpellArea::setSpell(const CSpell * spell)
 	mySpell = spell;
 	if(mySpell)
 	{
+		int whichSchool = 0; //0 - air magic, 1 - fire magic, 2 - water magic, 3 - earth magic,
 		schoolLevel = owner->myHero->getSpellSchoolLevel(mySpell, &whichSchool);
-		spellCost = owner->myInt->cb->getSpellCost(mySpell, owner->myHero);
+		auto spellCost = owner->myInt->cb->getSpellCost(mySpell, owner->myHero);
 
 		image->setFrame(mySpell->id);
 		image->visible = true;
-		schoolBorder = owner->schoolBorders[owner->selectedTab >= 4 ? whichSchool : owner->selectedTab]->getImage(schoolLevel,0);
+
+		{
+			OBJECT_CONSTRUCTION_CAPTURING(255-DISPOSE);
+			schoolBorder = std::make_shared<CAnimImage>(owner->schoolBorders[owner->selectedTab >= 4 ? whichSchool : owner->selectedTab], schoolLevel);
+		}
 
 		SDL_Color firstLineColor, secondLineColor;
 		if(spellCost > owner->myHero->mana) //hero cannot cast this spell

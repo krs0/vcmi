@@ -1,12 +1,3 @@
-#pragma once
-
-
-#include "../lib/FunctionList.h"
-#include "../lib/IGameCallback.h"
-#include "../lib/BattleAction.h"
-#include "CQuery.h"
-
-
 /*
  * CGameHandler.h, part of VCMI engine
  *
@@ -16,6 +7,12 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "../lib/FunctionList.h"
+#include "../lib/IGameCallback.h"
+#include "../lib/battle/BattleAction.h"
+#include "CQuery.h"
 
 class CGameHandler;
 class CVCMIServer;
@@ -31,7 +28,10 @@ struct NewStructures;
 class CGHeroInstance;
 class IMarket;
 
-class ServerSpellCastEnvironment;
+class SpellCastEnvironment;
+
+template<typename T> class CApplier;
+class CBaseForGHApply;
 
 struct PlayerStatus
 {
@@ -77,20 +77,24 @@ struct CasualtiesAfterBattle
 
 class CGameHandler : public IGameCallback, CBattleInfoCallback
 {
+	CVCMIServer * lobby;
+	std::shared_ptr<CApplier<CBaseForGHApply>> applier;
 public:
+	using FireShieldInfo = std::vector<std::pair<const CStack *, int64_t>>;
 	//use enums as parameters, because doMove(sth, true, false, true) is not readable
 	enum EGuardLook {CHECK_FOR_GUARDS, IGNORE_GUARDS};
 	enum EVisitDest {VISIT_DEST, DONT_VISIT_DEST};
 	enum ELEaveTile {LEAVING_TILE, REMAINING_ON_TILE};
 
-	std::map<PlayerColor, CConnection*> connections; //player color -> connection to client with interface of that player
+	std::map<PlayerColor, std::set<std::shared_ptr<CConnection>>> connections; //player color -> connection to client with interface of that player
 	PlayerStatuses states; //player color -> player state
-	std::set<CConnection*> conns;
 
 	//queries stuff
 	boost::recursive_mutex gsm;
 	ui32 QID;
 	Queries queries;
+
+	SpellCastEnvironment * spellEnv;
 
 	bool isValidObject(const CGObjectInstance *obj) const;
 	bool isBlockedByQueries(const CPack *pack, PlayerColor player);
@@ -103,15 +107,16 @@ public:
 	bool visitObjectAfterVictory;
 	//
 	void endBattle(int3 tile, const CGHeroInstance *hero1, const CGHeroInstance *hero2); //ends battle
-	void prepareAttack(BattleAttack &bat, const CStack *att, const CStack *def, int distance, int targetHex); //distance - number of hexes travelled before attacking
-	void applyBattleEffects(BattleAttack &bat, const CStack *att, const CStack *def, int distance, bool secondary); //damage, drain life & fire shield
+
+	void makeAttack(const CStack * attacker, const CStack * defender, int distance, BattleHex targetHex, bool first, bool ranged, bool counter);
+
+	void applyBattleEffects(BattleAttack & bat, std::shared_ptr<battle::CUnitState> attackerState, FireShieldInfo & fireShield, const CStack * def, int distance, bool secondary); //damage, drain life & fire shield
 	void checkBattleStateChanges();
 	void setupBattle(int3 tile, const CArmedInstance *armies[2], const CGHeroInstance *heroes[2], bool creatureBank, const CGTownInstance *town);
 	void setBattleResult(BattleResult::EResult resultType, int victoriusSide);
-	void duelFinished();
 
-	CGameHandler(void);
-	~CGameHandler(void);
+	CGameHandler(CVCMIServer * lobby);
+	~CGameHandler();
 
 	//////////////////////////////////////////////////////////////////////////
 	//from IGameCallback
@@ -143,6 +148,7 @@ public:
 
 	void removeAfterVisit(const CGObjectInstance *object) override;
 
+	bool giveHeroNewArtifact(const CGHeroInstance * h, const CArtifact * art);
 	void giveHeroNewArtifact(const CGHeroInstance *h, const CArtifact *artType, ArtifactPosition pos) override;
 	void giveHeroArtifact(const CGHeroInstance *h, const CArtifactInstance *a, ArtifactPosition pos) override;
 	void putArtifact(const ArtifactLocation &al, const CArtifactInstance *a) override;
@@ -187,24 +193,26 @@ public:
 	void commitPackage(CPackForClient *pack) override;
 
 	void init(StartInfo *si);
-	void handleConnection(std::set<PlayerColor> players, CConnection &c);
-	PlayerColor getPlayerAt(CConnection *c) const;
+	void handleClientDisconnection(std::shared_ptr<CConnection> c);
+	void handleReceivedPack(CPackForServer * pack);
+	PlayerColor getPlayerAt(std::shared_ptr<CConnection> c) const;
 
 	void playerMessage(PlayerColor player, const std::string &message, ObjectInstanceID currObj);
 	void updateGateState();
 	bool makeBattleAction(BattleAction &ba);
 	bool makeAutomaticAction(const CStack *stack, BattleAction &ba); //used when action is taken by stack without volition of player (eg. unguided catapult attack)
 	bool makeCustomAction(BattleAction &ba);
-	void stackAppearTrigger(const CStack *stack);
+	void stackEnchantedTrigger(const CStack * stack);
 	void stackTurnTrigger(const CStack *stack);
-	void handleDamageFromObstacle(const CObstacleInstance &obstacle, const CStack * curStack); //checks if obstacle is land mine and handles possible consequences
+	bool handleDamageFromObstacle(const CStack * curStack, bool stackIsMoving = false); //checks if obstacle is land mine and handles possible consequences
+
 	void removeObstacle(const CObstacleInstance &obstacle);
-	bool queryReply( QueryID qid, ui32 answer, PlayerColor player );
+	bool queryReply( QueryID qid, const JsonNode & answer, PlayerColor player );
 	bool hireHero( const CGObjectInstance *obj, ui8 hid, PlayerColor player );
 	bool buildBoat( ObjectInstanceID objid );
 	bool setFormation( ObjectInstanceID hid, ui8 formation );
 	bool tradeResources(const IMarket *market, ui32 val, PlayerColor player, ui32 id1, ui32 id2);
-	bool sacrificeCreatures(const IMarket *market, const CGHeroInstance *hero, SlotID slot, ui32 count);
+	bool sacrificeCreatures(const IMarket * market, const CGHeroInstance * hero, const std::vector<SlotID> & slot, const std::vector<ui32> & count);
 	bool sendResources(ui32 val, PlayerColor player, Res::ERes r1, PlayerColor r2);
 	bool sellCreatures(ui32 count, const IMarket *market, const CGHeroInstance * hero, SlotID slot, Res::ERes resourceID);
 	bool transformInUndead(const IMarket *market, const CGHeroInstance * hero, SlotID slot);
@@ -222,7 +230,8 @@ public:
 	bool disbandCreature( ObjectInstanceID id, SlotID pos );
 	bool arrangeStacks( ObjectInstanceID id1, ObjectInstanceID id2, ui8 what, SlotID p1, SlotID p2, si32 val, PlayerColor player);
 	void save(const std::string &fname);
-	void close();
+	void load(const std::string &fname);
+
 	void handleTimeEvents();
 	void handleTownEvents(CGTownInstance *town, NewTurn &n);
 	bool complain(const std::string &problem); //sends message to all clients, prints on the logs and return true
@@ -230,12 +239,13 @@ public:
 	void objectVisitEnded(const CObjectVisitQuery &query);
 	void engageIntoBattle( PlayerColor player );
 	bool dig(const CGHeroInstance *h);
-	bool castSpell(const CGHeroInstance *h, SpellID spellID, const int3 &pos);
 	void moveArmy(const CArmedInstance *src, const CArmedInstance *dst, bool allowMerging);
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & QID & states & finishingBattle;
+		h & QID;
+		h & states;
+		h & finishingBattle;
 		if(version >= 761)
 		{
 			h & getRandomGenerator();
@@ -243,29 +253,36 @@ public:
 	}
 
 	void sendMessageToAll(const std::string &message);
-	void sendMessageTo(CConnection &c, const std::string &message);
-	void sendToAllClients(CPackForClient * info);
-	void sendAndApply(CPackForClient * info) override;
-	void applyAndSend(CPackForClient * info);
-	void sendAndApply(CGarrisonOperationPack * info);
-	void sendAndApply(SetResources * info);
-	void sendAndApply(NewStructures * info);
+	void sendMessageTo(std::shared_ptr<CConnection> c, const std::string &message);
+	void sendToAllClients(CPackForClient * pack);
+	void sendAndApply(CPackForClient * pack) override;
+	void applyAndSend(CPackForClient * pack);
+	void sendAndApply(CGarrisonOperationPack * pack);
+	void sendAndApply(SetResources * pack);
+	void sendAndApply(NewStructures * pack);
 
 	struct FinishingBattleHelper
 	{
 		FinishingBattleHelper();
-		FinishingBattleHelper(std::shared_ptr<const CBattleQuery> Query, bool Duel, int RemainingBattleQueriesCount);
+		FinishingBattleHelper(std::shared_ptr<const CBattleQuery> Query, int RemainingBattleQueriesCount);
 
-		//std::shared_ptr<const CBattleQuery> query;
 		const CGHeroInstance *winnerHero, *loserHero;
 		PlayerColor victor, loser;
-		bool duel;
 
 		int remainingBattleQueriesCount;
 
 		template <typename Handler> void serialize(Handler &h, const int version)
 		{
-			h & /*query & */winnerHero & loserHero & victor & loser & duel & remainingBattleQueriesCount;
+			h & winnerHero;
+			h & loserHero;
+			h & victor;
+			h & loser;
+			if(version < 774 && !h.saving)
+			{
+				bool duel;
+				h & duel;
+			}
+			h & remainingBattleQueriesCount;
 		}
 	};
 
@@ -275,10 +292,10 @@ public:
 
 	void run(bool resume);
 	void newTurn();
-	void handleAttackBeforeCasting(BattleAttack *bat);
-	void handleAfterAttackCasting (const BattleAttack & bat);
-	void attackCasting(const BattleAttack & bat, Bonus::BonusType attackMode, const CStack * attacker);
-	bool sacrificeArtifact(const IMarket * m, const CGHeroInstance * hero, ArtifactPosition slot);
+	void handleAttackBeforeCasting(bool ranged, const CStack * attacker, const CStack * defender);
+	void handleAfterAttackCasting(bool ranged, const CStack * attacker, const CStack * defender);
+	void attackCasting(bool ranged, Bonus::BonusType attackMode, const battle::Unit * attacker, const battle::Unit * defender);
+	bool sacrificeArtifact(const IMarket * m, const CGHeroInstance * hero, const std::vector<ArtifactPosition> & slot);
 	void spawnWanderingMonsters(CreatureID creatureID);
 	void handleCheatCode(std::string & cheat, PlayerColor player, const CGHeroInstance * hero, const CGTownInstance * town, bool & cheated);
 	friend class CVCMIServer;
@@ -286,8 +303,6 @@ public:
 	CRandomGenerator & getRandomGenerator();
 
 private:
-	ServerSpellCastEnvironment * spellEnv;
-
 	std::list<PlayerColor> generatePlayerTurnOrder() const;
 	void makeStackDoNothing(const CStack * next);
 	void getVictoryLossMessage(PlayerColor player, const EVictoryLossCheckResult & victoryLossCheckResult, InfoWindow & out) const;
@@ -298,4 +313,7 @@ private:
 	void checkVictoryLossConditionsForAll();
 };
 
-void makeStackDoNothing();
+class ExceptionNotAllowedAction : public std::exception
+{
+
+};

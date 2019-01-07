@@ -1,14 +1,3 @@
-#pragma once
-
-
-#include "HeroBonus.h"
-#include "ConstTransitivePtr.h"
-#include "ResourceSet.h"
-#include "GameConstants.h"
-#include "JsonNode.h"
-#include "IHandlerBase.h"
-#include "CRandomGenerator.h"
-
 /*
  * CCreatureHandler.h, part of VCMI engine
  *
@@ -18,6 +7,15 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "HeroBonus.h"
+#include "ConstTransitivePtr.h"
+#include "ResourceSet.h"
+#include "GameConstants.h"
+#include "JsonNode.h"
+#include "IHandlerBase.h"
+#include "CRandomGenerator.h"
 
 class CLegacyConfigParser;
 class CCreatureHandler;
@@ -71,11 +69,20 @@ public:
 
 		template <typename Handler> void serialize(Handler &h, const int version)
 		{
-			h & timeBetweenFidgets & idleAnimationTime;
-			h & walkAnimationTime & attackAnimationTime & flightAnimationDistance;
-			h & upperRightMissleOffsetX & rightMissleOffsetX & lowerRightMissleOffsetX;
-			h & upperRightMissleOffsetY & rightMissleOffsetY & lowerRightMissleOffsetY;
-			h & missleFrameAngles & troopCountLocationOffset & attackClimaxFrame;
+			h & timeBetweenFidgets;
+			h & idleAnimationTime;
+			h & walkAnimationTime;
+			h & attackAnimationTime;
+			h & flightAnimationDistance;
+			h & upperRightMissleOffsetX;
+			h & rightMissleOffsetX;
+			h & lowerRightMissleOffsetX;
+			h & upperRightMissleOffsetY;
+			h & rightMissleOffsetY;
+			h & lowerRightMissleOffsetY;
+			h & missleFrameAngles;
+			h & troopCountLocationOffset;
+			h & attackClimaxFrame;
 			h & projectileImageName;
 		}
 	} animation;
@@ -94,9 +101,18 @@ public:
 
 		template <typename Handler> void serialize(Handler &h, const int version)
 		{
-			h & attack & defend & killed & move & shoot & wince & startMoving & endMoving;
+			h & attack;
+			h & defend;
+			h & killed;
+			h & move;
+			h & shoot;
+			h & wince;
+			h & startMoving;
+			h & endMoving;
 		}
 	} sounds;
+
+	ArtifactID warMachine;
 
 	bool isItNativeTerrain(int terrain) const;
 	bool isDoubleWide() const; //returns true if unit is double wide on battlefield
@@ -106,7 +122,7 @@ public:
 	bool isGood () const;
 	bool isEvil () const;
 	si32 maxAmount(const std::vector<si32> &res) const; //how many creatures can be bought
-	static int getQuantityID(const int & quantity); //0 - a few, 1 - several, 2 - pack, 3 - lots, 4 - horde, 5 - throng, 6 - swarm, 7 - zounds, 8 - legion
+	static int getQuantityID(const int & quantity); //1 - a few, 2 - several, 3 - pack, 4 - lots, 5 - horde, 6 - throng, 7 - swarm, 8 - zounds, 9 - legion
 	static int estimateCreatureCount(ui32 countID); //reverse version of above function, returns middle of range
 	bool isMyUpgrade(const CCreature *anotherCre) const;
 
@@ -128,23 +144,50 @@ public:
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
 		h & static_cast<CBonusSystemNode&>(*this);
-		h & namePl & nameSing & nameRef
-			& cost & upgrades
-			& fightValue & AIValue & growth & hordeGrowth
-			& ammMin & ammMax & level
-			& abilityText & animDefName & advMapDef;
-		h & iconIndex & smallIconName & largeIconName;
+		h & namePl;
+		h & nameSing;
+		h & nameRef;
+		h & cost;
+		h & upgrades;
+		h & fightValue;
+		h & AIValue;
+		h & growth;
+		h & hordeGrowth;
+		h & ammMin;
+		h & ammMax;
+		h & level;
+		h & abilityText;
+		h & animDefName;
+		h & advMapDef;
+		h & iconIndex;
+		h & smallIconName;
+		h & largeIconName;
 
-		h & idNumber & faction & sounds & animation;
+		h & idNumber;
+		h & faction;
+		h & sounds;
+		h & animation;
 
-		h & doubleWide & special;
+		h & doubleWide;
+		h & special;
 		if(version>=759)
 		{
 			h & identifier;
 		}
+		if(version >= 771)
+		{
+			h & warMachine;
+		}
+		else if(!h.saving)
+		{
+			fillWarMachine();
+		}
 	}
 
 	CCreature();
+
+private:
+	void fillWarMachine();
 };
 
 class DLL_LINKAGE CCreatureHandler : public IHandlerBase
@@ -219,9 +262,14 @@ public:
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
 		//TODO: should be optimized, not all these informations needs to be serialized (same for ccreature)
-		h & doubledCreatures & creatures;
-		h & expRanks & maxExpPerBattle & expAfterUpgrade;
-		h & skillLevels & skillRequirements & commanderLevelPremy;
+		h & doubledCreatures;
+		h & creatures;
+		h & expRanks;
+		h & maxExpPerBattle;
+		h & expAfterUpgrade;
+		h & skillLevels;
+		h & skillRequirements;
+		h & commanderLevelPremy;
 		h & allCreatures;
 		h & creaturesOfLevel;
 		BONUS_TREE_DESERIALIZATION_FIX

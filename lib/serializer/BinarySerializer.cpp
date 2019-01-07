@@ -1,8 +1,3 @@
-#include "StdInc.h"
-#include "BinarySerializer.h"
-
-#include "../registerTypes/RegisterTypes.h"
-
 /*
  * BinarySerializer.cpp, part of VCMI engine
  *
@@ -12,6 +7,11 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#include "StdInc.h"
+#include "BinarySerializer.h"
+#include "../filesystem/FileStream.h"
+
+#include "../registerTypes/RegisterTypes.h"
 
 extern template void registerTypes<BinarySerializer>(BinarySerializer & s);
 
@@ -48,18 +48,18 @@ void CSaveFile::openNextFile(const boost::filesystem::path &fname)
 	}
 	catch(...)
 	{
-		logGlobal->errorStream() << "Failed to save to " << fname;
+		logGlobal->error("Failed to save to %s", fname.string());
 		clear();
 		throw;
 	}
 }
 
-void CSaveFile::reportState(CLogger * out)
+void CSaveFile::reportState(vstd::CLoggerBase * out)
 {
-	out->debugStream() << "CSaveFile";
+	out->debug("CSaveFile");
 	if(sfile.get() && *sfile)
 	{
-		out->debugStream() << "\tOpened " << fName << "\n\tPosition: " << sfile->tellp();
+		out->debug("\tOpened %s \tPosition: %d", fName, sfile->tellp());
 	}
 }
 

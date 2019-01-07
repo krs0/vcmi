@@ -1,3 +1,12 @@
+/*
+ * CMapInfo.h, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #pragma once
 
 // Forward class declarations aren't enough here. The compiler
@@ -22,27 +31,41 @@ class DLL_LINKAGE CMapInfo
 public:
 	std::unique_ptr<CMapHeader> mapHeader; //may be nullptr if campaign
 	std::unique_ptr<CCampaignHeader> campaignHeader; //may be nullptr if scenario
-	StartInfo * scenarioOpts; //options with which scenario has been started (used only with saved games)
+	StartInfo * scenarioOptionsOfSave; // Options with which scenario has been started (used only with saved games)
 	std::string fileURI;
 	std::string date;
-	int playerAmnt; //players in map
-	int humanPlayers; //players ALLOWED to be controlled by human
-	int actualHumanPlayers; // >1 if multiplayer game
-	bool isRandomMap; // true if the map will be created randomly, false if not
+	int amountOfPlayersOnMap;
+	int amountOfHumanControllablePlayers;
+	int amountOfHumanPlayersInSave;
+	bool isRandomMap;
 
 	CMapInfo();
-	CMapInfo(CMapInfo && tmp);
 	virtual ~CMapInfo();
 
 	CMapInfo &operator=(CMapInfo &&other);
 
 	void mapInit(const std::string & fname);
+	void saveInit(ResourceID file);
 	void campaignInit();
 	void countPlayers();
+	// TODO: Those must be on client-side
+	std::string getName() const;
+	std::string getNameForList() const;
+	std::string getDescription() const;
+	int getMapSizeIconId() const;
+	std::pair<int, int> getMapSizeFormatIconId() const;
+	std::string getMapSizeName() const;
 
 	template <typename Handler> void serialize(Handler &h, const int Version)
 	{
-		h & mapHeader & campaignHeader & scenarioOpts & fileURI & date & playerAmnt & humanPlayers;
-		h & actualHumanPlayers & isRandomMap;
+		h & mapHeader;
+		h & campaignHeader;
+		h & scenarioOptionsOfSave;
+		h & fileURI;
+		h & date;
+		h & amountOfPlayersOnMap;
+		h & amountOfHumanControllablePlayers;
+		h & amountOfHumanPlayersInSave;
+		h & isRandomMap;
 	}
 };

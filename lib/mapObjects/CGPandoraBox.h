@@ -1,10 +1,4 @@
-﻿#pragma once
-
-#include "CObjectHandler.h"
-#include "CArmedInstance.h"
-#include "../ResourceSet.h"
-
-/*
+﻿/*
  * CGPandoraBox.h, part of VCMI engine
  *
  * Authors: listed in file AUTHORS in main folder
@@ -13,6 +7,11 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "CObjectHandler.h"
+#include "CArmedInstance.h"
+#include "../ResourceSet.h"
 
 struct InfoWindow;
 
@@ -45,12 +44,24 @@ public:
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
 		h & static_cast<CArmedInstance&>(*this);
-		h & message & hasGuardians & gainedExp & manaDiff & moraleDiff & luckDiff & resources & primskills
-			& abilities & abilityLevels & artifacts & spells & creatures;
+		h & message;
+		h & hasGuardians;
+		h & gainedExp;
+		h & manaDiff;
+		h & moraleDiff;
+		h & luckDiff;
+		h & resources;
+		h & primskills;
+		h & abilities;
+		h & abilityLevels;
+		h & artifacts;
+		h & spells;
+		h & creatures;
 	}
 protected:
 	void giveContentsUpToExp(const CGHeroInstance *h) const;
 	void giveContentsAfterExp(const CGHeroInstance *h) const;
+	void serializeJsonOptions(JsonSerializeFormat & handler) override;
 private:
 	void getText( InfoWindow &iw, bool &afterBattle, int val, int negative, int positive, const CGHeroInstance * h ) const;
 	void getText( InfoWindow &iw, bool &afterBattle, int text, const CGHeroInstance * h ) const;
@@ -68,11 +79,16 @@ public:
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
 		h & static_cast<CGPandoraBox &>(*this);
-		h & removeAfterVisit & availableFor & computerActivate & humanActivate;
+		h & removeAfterVisit;
+		h & availableFor;
+		h & computerActivate;
+		h & humanActivate;
 	}
 
 	CGEvent();
 	void onHeroVisit(const CGHeroInstance * h) const override;
+protected:
+	void serializeJsonOptions(JsonSerializeFormat & handler) override;
 private:
 	void activated(const CGHeroInstance * h) const;
 	void afterSuccessfulVisit() const override;

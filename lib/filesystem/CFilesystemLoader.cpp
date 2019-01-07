@@ -1,3 +1,12 @@
+/*
+ * CFilesystemLoader.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "CFilesystemLoader.h"
 
@@ -11,14 +20,15 @@ CFilesystemLoader::CFilesystemLoader(std::string _mountPoint, bfs::path baseDire
     mountPoint(std::move(_mountPoint)),
     fileList(listFiles(mountPoint, depth, initial))
 {
-	logGlobal->traceStream() << "File system loaded, " << fileList.size() << " files found";
+	logGlobal->trace("File system loaded, %d files found", fileList.size());
 }
 
 std::unique_ptr<CInputStream> CFilesystemLoader::load(const ResourceID & resourceName) const
 {
 	assert(fileList.count(resourceName));
-
-	return make_unique<CFileInputStream>(baseDirectory / fileList.at(resourceName));
+	bfs::path file = baseDirectory / fileList.at(resourceName);
+	logGlobal->trace("loading %s", file.string());
+	return make_unique<CFileInputStream>(file);
 }
 
 bool CFilesystemLoader::existsResource(const ResourceID & resourceName) const
@@ -67,7 +77,7 @@ bool CFilesystemLoader::createResource(std::string filename, bool update)
 
 	if (!boost::iequals(mountPoint, filename.substr(0, mountPoint.size())))
 	{
-		logGlobal->traceStream() << "Can't create file: wrong mount point: " << mountPoint;
+		logGlobal->trace("Can't create file: wrong mount point: %s", mountPoint);
 		return false;
 	}
 

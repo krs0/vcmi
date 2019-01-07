@@ -7,7 +7,6 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
-
 #include "StdInc.h"
 #include "CGameInfoCallback.h"
 
@@ -15,7 +14,7 @@
 #include "CGeneralTextHandler.h"
 #include "mapObjects/CObjectHandler.h" // for CGObjectInstance
 #include "StartInfo.h" // for StartInfo
-#include "BattleInfo.h" // for BattleInfo
+#include "battle/BattleInfo.h" // for BattleInfo
 #include "NetPacks.h" // for InfoWindow
 #include "CModHandler.h"
 #include "spells/CSpellHandler.h"
@@ -23,9 +22,9 @@
 #include "CPlayerState.h"
 
 //TODO make clean
-#define ERROR_VERBOSE_OR_NOT_RET_VAL_IF(cond, verbose, txt, retVal) do {if(cond){if(verbose)logGlobal->errorStream() << BOOST_CURRENT_FUNCTION << ": " << txt; return retVal;}} while(0)
-#define ERROR_RET_IF(cond, txt) do {if(cond){logGlobal->errorStream() << BOOST_CURRENT_FUNCTION << ": " << txt; return;}} while(0)
-#define ERROR_RET_VAL_IF(cond, txt, retVal) do {if(cond){logGlobal->errorStream() << BOOST_CURRENT_FUNCTION << ": " << txt; return retVal;}} while(0)
+#define ERROR_VERBOSE_OR_NOT_RET_VAL_IF(cond, verbose, txt, retVal) do {if(cond){if(verbose)logGlobal->error("%s: %s",BOOST_CURRENT_FUNCTION, txt); return retVal;}} while(0)
+#define ERROR_RET_IF(cond, txt) do {if(cond){logGlobal->error("%s: %s", BOOST_CURRENT_FUNCTION, txt); return;}} while(0)
+#define ERROR_RET_VAL_IF(cond, txt, retVal) do {if(cond){logGlobal->error("%s: %s", BOOST_CURRENT_FUNCTION, txt); return retVal;}} while(0)
 
 PlayerColor CGameInfoCallback::getOwner(ObjectInstanceID heroID) const
 {
@@ -99,8 +98,16 @@ const CTown * CGameInfoCallback::getNativeTown(PlayerColor color) const
 
 const CGObjectInstance * CGameInfoCallback::getObjByQuestIdentifier(int identifier) const
 {
-	ERROR_RET_VAL_IF(!vstd::contains(gs->map->questIdentifierToId, identifier), "There is no object with such quest identifier!", nullptr);
-	return getObj(gs->map->questIdentifierToId[identifier]);
+	if(gs->map->questIdentifierToId.empty())
+	{
+		//assume that it is VCMI map and quest identifier equals instance identifier
+		return getObj(ObjectInstanceID(identifier), true);
+	}
+	else
+	{
+		ERROR_RET_VAL_IF(!vstd::contains(gs->map->questIdentifierToId, identifier), "There is no object with such quest identifier!", nullptr);
+		return getObj(gs->map->questIdentifierToId[identifier]);
+	}
 }
 
 /************************************************************************/
@@ -113,7 +120,7 @@ const CGObjectInstance* CGameInfoCallback::getObj(ObjectInstanceID objid, bool v
 	if(oid < 0  ||  oid >= gs->map->objects.size())
 	{
 		if(verbose)
-			logGlobal->errorStream() << "Cannot get object with id " << oid;
+			logGlobal->error("Cannot get object with id %d", oid);
 		return nullptr;
 	}
 
@@ -121,14 +128,14 @@ const CGObjectInstance* CGameInfoCallback::getObj(ObjectInstanceID objid, bool v
 	if(!ret)
 	{
 		if(verbose)
-			logGlobal->errorStream() << "Cannot get object with id " << oid << ". Object was removed.";
+			logGlobal->error("Cannot get object with id %d. Object was removed", oid);
 		return nullptr;
 	}
 
 	if(!isVisible(ret, player) && ret->tempOwner != player)
 	{
 		if(verbose)
-			logGlobal->errorStream() << "Cannot get object with id " << oid << ". Object is not visible.";
+			logGlobal->error("Cannot get object with id %d. Object is not visible.", oid);
 		return nullptr;
 	}
 
@@ -161,7 +168,7 @@ void CGameInfoCallback::getUpgradeInfo(const CArmedInstance *obj, SlotID stackPo
 	//return gs->getUpgradeInfo(obj->getStack(stackPos));
 }
 
-const StartInfo * CGameInfoCallback::getStartInfo(bool beforeRandomization /*= false*/) const
+const StartInfo * CGameInfoCallback::getStartInfo(bool beforeRandomization) const
 {
 	//boost::shared_lock<boost::shared_mutex> lock(*gs->mx);
 	if(beforeRandomization)
@@ -182,14 +189,14 @@ int CGameInfoCallback::getSpellCost(const CSpell * sp, const CGHeroInstance * ca
 	return caster->getSpellCost(sp);
 }
 
-int CGameInfoCallback::estimateSpellDamage(const CSpell * sp, const CGHeroInstance * hero) const
+int64_t CGameInfoCallback::estimateSpellDamage(const CSpell * sp, const CGHeroInstance * hero) const
 {
 	//boost::shared_lock<boost::shared_mutex> lock(*gs->mx);
 
 	ERROR_RET_VAL_IF(hero && !canGetFullInfo(hero), "Cannot get info about caster!", -1);
 
-	if (hero) //we see hero's spellbook
-		return sp->calculateDamage(hero, nullptr, hero->getEffectLevel(sp), hero->getEffectPower(sp));
+	if(hero) //we see hero's spellbook
+		return sp->calculateDamage(hero);
 	else
 		return 0; //mage guild
 }
@@ -224,7 +231,7 @@ int CGameInfoCallback::howManyTowns(PlayerColor Player) const
 	return gs->players[Player].towns.size();
 }
 
-bool CGameInfoCallback::getTownInfo(const CGObjectInstance * town, InfoAboutTown & dest, const CGObjectInstance * selectedObject/* = nullptr*/) const
+bool CGameInfoCallback::getTownInfo(const CGObjectInstance * town, InfoAboutTown & dest, const CGObjectInstance * selectedObject) const
 {
 	ERROR_RET_VAL_IF(!isVisible(town, player), "Town is not visible!", false);  //it's not a town or it's not visible for layer
 	bool detailed = hasAccess(town->tempOwner);
@@ -264,7 +271,7 @@ std::vector<const CGObjectInstance*> CGameInfoCallback::getGuardingCreatures (in
 	return ret;
 }
 
-bool CGameInfoCallback::getHeroInfo(const CGObjectInstance * hero, InfoAboutHero & dest, const CGObjectInstance * selectedObject/* = nullptr*/) const
+bool CGameInfoCallback::getHeroInfo(const CGObjectInstance * hero, InfoAboutHero & dest, const CGObjectInstance * selectedObject) const
 {
 	const CGHeroInstance *h = dynamic_cast<const CGHeroInstance *>(hero);
 
@@ -281,7 +288,7 @@ bool CGameInfoCallback::getHeroInfo(const CGObjectInstance * hero, InfoAboutHero
 			infoLevel = InfoAboutHero::EInfoLevel::INBATTLE;
 		else
 			ERROR_RET_VAL_IF(!isVisible(h->getPosition(false)), "That hero is not visible!", false);
-	}	
+	}
 
 	if( (infoLevel == InfoAboutHero::EInfoLevel::BASIC) && nullptr != selectedObject)
 	{
@@ -317,7 +324,7 @@ bool CGameInfoCallback::getHeroInfo(const CGObjectInstance * hero, InfoAboutHero
 			}
 
 			if(nullptr == mostStrong)//just in case
-				logGlobal->errorStream() << "CGameInfoCallback::getHeroInfo: Unable to select most strong stack" << disguiseLevel;
+				logGlobal->error("CGameInfoCallback::getHeroInfo: Unable to select most strong stack");
 			else
 				for(auto & elem : info.army)
 				{
@@ -374,12 +381,10 @@ bool CGameInfoCallback::getHeroInfo(const CGObjectInstance * hero, InfoAboutHero
 			break;
 		default:
 			//invalid value
-			logGlobal->errorStream() << "CGameInfoCallback::getHeroInfo: Invalid DISGUISED bonus value " << disguiseLevel;
+			logGlobal->error("CGameInfoCallback::getHeroInfo: Invalid DISGUISED bonus value %d", disguiseLevel);
 			break;
 		}
-
 	}
-
 	return true;
 }
 
@@ -431,11 +436,11 @@ std::vector < const CGObjectInstance * > CGameInfoCallback::getBlockingObjs( int
 	return ret;
 }
 
-std::vector <const CGObjectInstance * > CGameInfoCallback::getVisitableObjs(int3 pos, bool verbose /*= true*/) const
+std::vector <const CGObjectInstance * > CGameInfoCallback::getVisitableObjs(int3 pos, bool verbose) const
 {
 	std::vector<const CGObjectInstance *> ret;
 	const TerrainTile *t = getTile(pos, verbose);
-	ERROR_VERBOSE_OR_NOT_RET_VAL_IF(!t, verbose, pos << " is not visible!", ret);
+	ERROR_VERBOSE_OR_NOT_RET_VAL_IF(!t, verbose, pos.toString() + " is not visible!", ret);
 
 	for(const CGObjectInstance * obj : t->visitableObjects)
 	{
@@ -472,14 +477,20 @@ std::vector<const CGHeroInstance *> CGameInfoCallback::getAvailableHeroes(const 
 	std::vector<const CGHeroInstance *> ret;
 	//ERROR_RET_VAL_IF(!isOwnedOrVisited(townOrTavern), "Town or tavern must be owned or visited!", ret);
 	//TODO: town needs to be owned, advmap tavern needs to be visited; to be reimplemented when visit tracking is done
-	range::copy(gs->players[*player].availableHeroes, std::back_inserter(ret));
-	vstd::erase_if(ret, [](const CGHeroInstance *h) { return h == nullptr; });
+	const CGTownInstance * town = getTown(townOrTavern->id);
+	if(townOrTavern->ID == Obj::TAVERN || (town && town->hasBuilt(BuildingID::TAVERN)))
+	{
+		range::copy(gs->players[*player].availableHeroes, std::back_inserter(ret));
+		vstd::erase_if(ret, [](const CGHeroInstance * h) {
+			return h == nullptr;
+		});
+	}
 	return ret;
 }
 
 const TerrainTile * CGameInfoCallback::getTile( int3 tile, bool verbose) const
 {
-	ERROR_VERBOSE_OR_NOT_RET_VAL_IF(!isVisible(tile), verbose, tile << " is not visible!", nullptr);
+	ERROR_VERBOSE_OR_NOT_RET_VAL_IF(!isVisible(tile), verbose, tile.toString() + " is not visible!", nullptr);
 
 	//boost::shared_lock<boost::shared_mutex> lock(*gs->mx);
 	return &gs->map->getTile(tile);
@@ -545,9 +556,9 @@ EBuildingState::EBuildingState CGameInfoCallback::canBuildStructure( const CGTow
 		const PlayerState *ps = getPlayer(t->tempOwner, false);
 		if(ps)
 		{
-			for(const CGTownInstance *t : ps->towns)
+			for(const CGTownInstance *town : ps->towns)
 			{
-				if(t->hasBuilt(BuildingID::CAPITOL))
+				if(town->hasBuilt(BuildingID::CAPITOL))
 				{
 					return EBuildingState::HAVE_CAPITAL; //no more than one capitol
 				}
@@ -587,7 +598,7 @@ const CMapHeader * CGameInfoCallback::getMapHeader() const
 
 bool CGameInfoCallback::hasAccess(boost::optional<PlayerColor> playerId) const
 {
-	return !player || gs->getPlayerRelations( *playerId, *player ) != PlayerRelations::ENEMIES;
+	return !player || player.get().isSpectator() || gs->getPlayerRelations( *playerId, *player ) != PlayerRelations::ENEMIES;
 }
 
 EPlayerStatus::EStatus CGameInfoCallback::getPlayerStatus(PlayerColor player, bool verbose) const
@@ -901,6 +912,16 @@ PlayerColor CGameInfoCallback::getLocalPlayer() const
 bool CGameInfoCallback::isInTheMap(const int3 &pos) const
 {
 	return gs->map->isInTheMap(pos);
+}
+
+void CGameInfoCallback::getVisibleTilesInRange(std::unordered_set<int3, ShashInt3> &tiles, int3 pos, int radious, int3::EDistanceFormula distanceFormula) const
+{
+	gs->getTilesInRange(tiles, pos, radious, getLocalPlayer(), -1, distanceFormula);
+}
+
+void CGameInfoCallback::calculatePaths(std::shared_ptr<PathfinderConfig> config, const CGHeroInstance * hero)
+{
+	gs->calculatePaths(config, hero);
 }
 
 const CArtifactInstance * CGameInfoCallback::getArtInstance( ArtifactInstanceID aid ) const

@@ -1,4 +1,3 @@
-
 /*
  * CSerializer.h, part of VCMI engine
  *
@@ -8,13 +7,12 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
-
 #pragma once
 
 #include "../ConstTransitivePtr.h"
 #include "../GameConstants.h"
 
-const ui32 SERIALIZATION_VERSION = 762;
+const ui32 SERIALIZATION_VERSION = 790;
 const ui32 MINIMAL_SERIALIZATION_VERSION = 753;
 const std::string SAVEGAME_MAGIC = "VCMISVG";
 
@@ -86,7 +84,7 @@ public:
 	CSerializer();
 	~CSerializer();
 
-	virtual void reportState(CLogger * out){};
+	virtual void reportState(vstd::CLoggerBase * out){};
 
 	template <typename T, typename U>
 	const VectorizedObjectInfo<T, U> *getVectorizedTypeInfo()
@@ -101,7 +99,9 @@ public:
 		else
 		{
 			assert(!i->second.empty());
+#ifndef __APPLE__
 			assert(i->second.type() == typeid(VectorizedObjectInfo<T, U>));
+#endif
 			VectorizedObjectInfo<T, U> *ret = &(boost::any_cast<VectorizedObjectInfo<T, U>&>(i->second));
 			return ret;
 		}

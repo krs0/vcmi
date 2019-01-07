@@ -1,11 +1,3 @@
-#pragma once
-
-#include "ObjectTemplate.h"
-
-//#include "../IGameCallback.h"
-#include "../int3.h"
-#include "../HeroBonus.h"
-
 /*
  * CObjectHandler.h, part of VCMI engine
  *
@@ -15,6 +7,13 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "ObjectTemplate.h"
+
+//#include "../IGameCallback.h"
+#include "../int3.h"
+#include "../HeroBonus.h"
 
 class CGHeroInstance;
 class IGameCallback;
@@ -23,6 +22,7 @@ struct MetaString;
 struct BattleResult;
 class JsonSerializeFormat;
 class CRandomGenerator;
+class CMap;
 
 // This one teleport-specific, but has to be available everywhere in callbacks and netpacks
 // For now it's will be there till teleports code refactored and moved into own file
@@ -58,7 +58,7 @@ public:
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		logGlobal->errorStream() << "IObjectInterface serialized, unexpected, should not happen!";
+		logGlobal->error("IObjectInterface serialized, unexpected, should not happen!");
 	}
 };
 
@@ -144,6 +144,11 @@ public:
 	std::set<int3> getBlockedOffsets() const; //returns set of relative positions blocked by this object
 	bool isVisitable() const; //returns true if object is visitable
 
+	boost::optional<std::string> getAmbientSound() const;
+	boost::optional<std::string> getVisitSound() const;
+	boost::optional<std::string> getRemovalSound() const;
+
+
 	/** VIRTUAL METHODS **/
 
 	/// Returns true if player can pass through visitable tiles of this object
@@ -172,17 +177,25 @@ public:
 	/// method for synchronous update. Note: For new properties classes should override setPropertyDer instead
 	void setProperty(ui8 what, ui32 val) override final;
 
-	//friend class CGameHandler;
+	virtual void afterAddToMap(CMap * map);
 
 	///Entry point of binary (de-)serialization
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
 		if(version >= 759)
 		{
-			h & instanceName & typeName & subTypeName;
+			h & instanceName;
+			h & typeName;
+			h & subTypeName;
 		}
 
-		h & pos & ID & subID & id & tempOwner & blockVisit & appearance;
+		h & pos;
+		h & ID;
+		h & subID;
+		h & id;
+		h & tempOwner;
+		h & blockVisit;
+		h & appearance;
 		//definfo is handled by map serializer
 	}
 

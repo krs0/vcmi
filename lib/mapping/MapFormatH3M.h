@@ -1,4 +1,3 @@
-
 /*
  * MapFormatH3M.h, part of VCMI engine
  *
@@ -241,6 +240,8 @@ private:
 		p.z = reader.readUInt8();
 		return p;
 	}
+
+	void afterRead();
 
 	/** List of templates loaded from the map, used on later stage to create
 	 *  objects but not needed for fully functional CMap */

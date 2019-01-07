@@ -1,9 +1,3 @@
-#include "StdInc.h"
-#include "CZipLoader.h"
-#include "FileStream.h"
-
-#include "../ScopeGuard.h"
-
 /*
  * CZipLoader.cpp, part of VCMI engine
  *
@@ -13,6 +7,11 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#include "StdInc.h"
+#include "CZipLoader.h"
+#include "FileStream.h"
+
+#include "../ScopeGuard.h"
 
 CZipStream::CZipStream(std::shared_ptr<CIOApi> api, const boost::filesystem::path & archive, unz64_file_pos filepos)
 {
@@ -58,7 +57,7 @@ CZipLoader::CZipLoader(const std::string & mountPoint, const boost::filesystem::
     mountPoint(mountPoint),
     files(listFiles(mountPoint, archive))
 {
-	logGlobal->traceStream() << "Zip archive loaded, " << files.size() << " files found";
+	logGlobal->trace("Zip archive loaded, %d files found", files.size());
 }
 
 std::unordered_map<ResourceID, unz64_file_pos> CZipLoader::listFiles(const std::string & mountPoint, const boost::filesystem::path & archive)
@@ -68,7 +67,7 @@ std::unordered_map<ResourceID, unz64_file_pos> CZipLoader::listFiles(const std::
 	unzFile file = unzOpen2_64(archive.c_str(), &zlibApi);
 
 	if(file == nullptr)
-		logGlobal->errorStream() << archive << " failed to open";
+		logGlobal->error("%s failed to open", archive.string());
 
 	if (unzGoToFirstFile(file) == UNZ_OK)
 	{
@@ -161,15 +160,15 @@ std::vector<std::string> ZipArchive::listFiles(boost::filesystem::path filename)
 		do
 		{
 			unz_file_info64 info;
-			std::vector<char> filename;
+			std::vector<char> zipFilename;
 
 			unzGetCurrentFileInfo64 (file, &info, nullptr, 0, nullptr, 0, nullptr, 0);
 
-			filename.resize(info.size_filename);
+			zipFilename.resize(info.size_filename);
 			// Get name of current file. Contrary to docs "info" parameter can't be null
-			unzGetCurrentFileInfo64 (file, &info, filename.data(), filename.size(), nullptr, 0, nullptr, 0);
+			unzGetCurrentFileInfo64 (file, &info, zipFilename.data(), zipFilename.size(), nullptr, 0, nullptr, 0);
 
-			ret.push_back(std::string(filename.data(), filename.size()));
+			ret.push_back(std::string(zipFilename.data(), zipFilename.size()));
 		}
 		while (unzGoToNextFile(file) == UNZ_OK);
 	}

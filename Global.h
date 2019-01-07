@@ -1,5 +1,3 @@
-#pragma once
-
 /*
  * Global.h, part of VCMI engine
  *
@@ -9,6 +7,7 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
 
 /* ---------------------------------------------------------------------------- */
 /* Compiler detection */
@@ -87,6 +86,21 @@ static_assert(sizeof(bool) == 1, "Bool needs to be 1 byte in size.");
 #  error "iOS system isn't yet supported."
 #endif
 
+// Each compiler uses own way to supress fall through warning. Try to find it.
+#ifdef __has_cpp_attribute
+#  if __has_cpp_attribute(fallthrough)
+#    define FALLTHROUGH [[fallthrough]];
+#  elif __has_cpp_attribute(gnu::fallthrough)
+#    define FALLTHROUGH [[gnu::fallthrough]];
+#  elif __has_cpp_attribute(clang::fallthrough)
+#    define FALLTHROUGH [[clang::fallthrough]];
+#  else
+#    define FALLTHROUGH
+#  endif
+#else
+#  define FALLTHROUGH
+#endif
+
 /* ---------------------------------------------------------------------------- */
 /* Commonly used C++, Boost headers */
 /* ---------------------------------------------------------------------------- */
@@ -95,6 +109,10 @@ static_assert(sizeof(bool) == 1, "Bool needs to be 1 byte in size.");
 #  define NOMINMAX					// Exclude min/max macros from <Windows.h>. Use std::[min/max] from <algorithm> instead.
 #  define _NO_W32_PSEUDO_MODIFIERS  // Exclude more macros for compiling with MinGW on Linux.
 #endif
+
+#ifdef VCMI_ANDROID
+#  define NO_STD_TOSTRING // android runtime (gnustl) currently doesn't support std::to_string, so we provide our impl in this case
+#endif // VCMI_ANDROID
 
 /* ---------------------------------------------------------------------------- */
 /* A macro to force inlining some of our functions */
@@ -139,6 +157,7 @@ static_assert(sizeof(bool) == 1, "Bool needs to be 1 byte in size.");
 #include <unordered_map>
 #include <utility>
 #include <vector>
+#include <atomic>
 
 //The only available version is 3, as of Boost 1.50
 #include <boost/version.hpp>
@@ -150,8 +169,11 @@ static_assert(sizeof(bool) == 1, "Bool needs to be 1 byte in size.");
 #define BOOST_THREAD_DONT_PROVIDE_THREAD_DESTRUCTOR_CALLS_TERMINATE_IF_JOINABLE 1
 #define BOOST_BIND_NO_PLACEHOLDERS
 
-#if defined(_MSC_VER) && (_MSC_VER == 1900)
-#define BOOST_NO_CXX11_VARIADIC_TEMPLATES //Variadic templates are buggy in VS2015, so turn this off to avoid compile errors
+#if defined(_MSC_VER) && (_MSC_VER == 1900 || _MSC_VER == 1910 || _MSC_VER == 1911)
+#define BOOST_NO_CXX11_VARIADIC_TEMPLATES //Variadic templates are buggy in VS2015 and VS2017, so turn this off to avoid compile errors
+#endif
+#if BOOST_VERSION >= 106600
+#define BOOST_ASIO_ENABLE_OLD_SERVICES
 #endif
 
 #include <boost/algorithm/string.hpp>
@@ -237,8 +259,6 @@ typedef boost::lock_guard<boost::recursive_mutex> TLockGuardRec;
 
 #define THROW_FORMAT(message, formatting_elems)  throw std::runtime_error(boost::str(boost::format(message) % formatting_elems))
 
-#define ASSERT_IF_CALLED_WITH_PLAYER if(!player) {logGlobal->errorStream() << BOOST_CURRENT_FUNCTION; assert(0);}
-
 // can be used for counting arrays
 template<typename T, size_t N> char (&_ArrayCountObj(const T (&)[N]))[N];
 #define ARRAY_COUNT(arr)    (sizeof(_ArrayCountObj(arr)))
@@ -250,7 +270,6 @@ template<typename T, size_t N> char (&_ArrayCountObj(const T (&)[N]))[N];
 /* VCMI standard library */
 /* ---------------------------------------------------------------------------- */
 #include <vstd/CLoggerBase.h>
-#include "lib/logging/CLogger.h" //todo: remove
 
 void inline handleException()
 {
@@ -270,25 +289,6 @@ void inline handleException()
 	{
 		logGlobal->error("Sorry, caught unknown exception type. No more info available.");
 	}
-}
-
-template<typename T>
-std::ostream & operator<<(std::ostream & out, const boost::optional<T> & opt)
-{
-	if(opt) return out << *opt;
-	else return out << "empty";
-}
-
-template<typename T>
-std::ostream & operator<<(std::ostream & out, const std::vector<T> & container)
-{
-	out << "[";
-	for(auto it = container.begin(); it != container.end(); ++it)
-	{
-		out << *it;
-		if(std::prev(container.end()) != it) out << ", ";
-	}
-	return out << "]";
 }
 
 namespace vstd
@@ -370,6 +370,24 @@ namespace vstd
 	typename Container::const_iterator find(const Container & c, const Item &i)
 	{
 		return std::find(c.begin(),c.end(),i);
+	}
+
+	//returns first key that maps to given value if present, returns success via found if provided
+	template <typename Key, typename T>
+	Key findKey(const std::map<Key, T> & map, const T & value, bool * found = nullptr)
+	{
+		for(auto iter = map.cbegin(); iter != map.cend(); iter++)
+		{
+			if(iter->second == value)
+			{
+				if(found)
+					*found = true;
+				return iter->first;
+			}
+		}
+		if(found)
+			*found = false;
+		return Key();
 	}
 
 	//removes element i from container c, returns false if c does not contain i
@@ -694,7 +712,32 @@ namespace vstd
 		return v3;
 	}
 
+	template <typename Key, typename V>
+	bool containsMapping(const std::multimap<Key,V> & map, const std::pair<const Key,V> & mapping)
+	{
+		auto range = map.equal_range(mapping.first);
+		for(auto contained = range.first; contained != range.second; contained++)
+		{
+			if(mapping.second == contained->second)
+				return true;
+		}
+		return false;
+	}
+
 	using boost::math::round;
 }
 using vstd::operator-=;
 using vstd::make_unique;
+
+#ifdef NO_STD_TOSTRING
+namespace std
+{
+	template <typename T>
+	inline std::string to_string(const T& value)
+	{
+		std::ostringstream ss;
+		ss << value;
+		return ss.str();
+	}
+}
+#endif // NO_STD_TOSTRING

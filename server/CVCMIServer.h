@@ -1,7 +1,3 @@
-#pragma once
-
-#include <boost/program_options.hpp>
-
 /*
  * CVCMIServer.h, part of VCMI engine
  *
@@ -11,90 +7,101 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "../lib/serializer/Connection.h"
+#include "../lib/StartInfo.h"
+
+#include <boost/program_options.hpp>
 
 class CMapInfo;
 
-class CConnection;
-struct CPackForSelectionScreen;
+struct CPackForLobby;
 class CGameHandler;
+struct SharedMemory;
 
-namespace boost
+struct StartInfo;
+struct LobbyInfo;
+class PlayerSettings;
+class PlayerColor;
+
+template<typename T> class CApplier;
+class CBaseForServerApply;
+class CBaseForGHApply;
+
+enum class EServerState : ui8
 {
-	namespace asio
-	{
-		namespace ip
-		{
-			class tcp;
-		}
-		class io_service;
-
-		template <typename Protocol> class stream_socket_service;
-		template <typename Protocol,typename StreamSocketService>
-		class basic_stream_socket;
-
-		template <typename Protocol> class socket_acceptor_service;
-		template <typename Protocol,typename SocketAcceptorService>
-		class basic_socket_acceptor;
-	}
+	LOBBY,
+	GAMEPLAY_STARTING,
+	GAMEPLAY,
+	GAMEPLAY_ENDED,
+	SHUTDOWN
 };
 
-typedef boost::asio::basic_socket_acceptor<boost::asio::ip::tcp, boost::asio::socket_acceptor_service<boost::asio::ip::tcp> > TAcceptor;
-typedef boost::asio::basic_stream_socket < boost::asio::ip::tcp , boost::asio::stream_socket_service<boost::asio::ip::tcp>  > TSocket;
-
-class CVCMIServer
+class CVCMIServer : public LobbyInfo
 {
-	boost::asio::io_service *io;
-	TAcceptor * acceptor;
-
-	CConnection *firstConnection;
-public:
-	CVCMIServer(); //c-tor
-	~CVCMIServer(); //d-tor
-
-	void start();
-	CGameHandler *initGhFromHostingConnection(CConnection &c);
-
-	void newGame();
-	void loadGame();
-	void newPregame();
-};
-
-class CPregameServer
-{
-public:
-	CConnection *host;
-	int listeningThreads;
-	std::set<CConnection *> connections;
-	std::list<CPackForSelectionScreen*> toAnnounce;
+	std::atomic<bool> restartGameplay; // FIXME: this is just a hack
+	std::shared_ptr<boost::asio::io_service> io;
+	std::shared_ptr<TAcceptor> acceptor;
+	std::shared_ptr<TSocket> upcomingConnection;
+	std::list<std::unique_ptr<CPackForLobby>> announceQueue;
 	boost::recursive_mutex mx;
+	std::shared_ptr<CApplier<CBaseForServerApply>> applier;
+	std::unique_ptr<boost::thread> announceLobbyThread;
 
-	//std::vector<CMapInfo> maps;
-	TAcceptor *acceptor;
-	TSocket *upcomingConnection;
+public:
+	std::shared_ptr<CGameHandler> gh;
+	std::atomic<EServerState> state;
+	ui16 port;
 
-	const CMapInfo *curmap;
-	StartInfo *curStartInfo;
+	boost::program_options::variables_map cmdLineOptions;
+	std::set<std::shared_ptr<CConnection>> connections;
+	std::atomic<int> currentClientId;
+	std::atomic<ui8> currentPlayerId;
+	std::shared_ptr<CConnection> hostClient;
 
-	CPregameServer(CConnection *Host, TAcceptor *Acceptor = nullptr);
-	~CPregameServer();
-
+	CVCMIServer(boost::program_options::variables_map & opts);
+	~CVCMIServer();
 	void run();
+	void prepareToStartGame();
+	void startGameImmidiately();
 
-	void processPack(CPackForSelectionScreen * pack);
-	void handleConnection(CConnection *cpc);
-	void connectionAccepted(const boost::system::error_code& ec);
-	void initConnection(CConnection *c);
+	void startAsyncAccept();
+	void connectionAccepted(const boost::system::error_code & ec);
+	void threadHandleClient(std::shared_ptr<CConnection> c);
+	void threadAnnounceLobby();
+	void handleReceivedPack(std::unique_ptr<CPackForLobby> pack);
 
-	void start_async_accept();
+	void announcePack(std::unique_ptr<CPackForLobby> pack);
+	bool passHost(int toConnectionId);
 
-	enum { INVALID, RUNNING, ENDING_WITHOUT_START, ENDING_AND_STARTING_GAME
-	} state;
+	void announceTxt(const std::string & txt, const std::string & playerName = "system");
+	void addToAnnounceQueue(std::unique_ptr<CPackForLobby> pack);
 
-	void announceTxt(const std::string &txt, const std::string &playerName = "system");
-	void announcePack(const CPackForSelectionScreen &pack);
+	void setPlayerConnectedId(PlayerSettings & pset, ui8 player) const;
+	void updateStartInfoOnMapChange(std::shared_ptr<CMapInfo> mapInfo, std::shared_ptr<CMapGenOptions> mapGenOpt = {});
 
-	void sendPack(CConnection * pc, const CPackForSelectionScreen & pack);
-	void startListeningThread(CConnection * pc);
+	void clientConnected(std::shared_ptr<CConnection> c, std::vector<std::string> & names, std::string uuid, StartInfo::EMode mode);
+	void clientDisconnected(std::shared_ptr<CConnection> c);
+
+	void updateAndPropagateLobbyState();
+
+	// Work with LobbyInfo
+	void setPlayer(PlayerColor clickedColor);
+	void optionNextHero(PlayerColor player, int dir); //dir == -1 or +1
+	int nextAllowedHero(PlayerColor player, int min, int max, int incl, int dir);
+	bool canUseThisHero(PlayerColor player, int ID);
+	std::vector<int> getUsedHeroes();
+	void optionNextBonus(PlayerColor player, int dir); //dir == -1 or +1
+	void optionNextCastle(PlayerColor player, int dir); //dir == -1 or +
+
+	// Campaigns
+	void setCampaignMap(int mapId);
+	void setCampaignBonus(int bonusId);
+
+	ui8 getIdOfFirstUnallocatedPlayer() const;
+
+#ifdef VCMI_ANDROID
+	static void create();
+#endif
 };
-
-extern boost::program_options::variables_map cmdLineOptions;

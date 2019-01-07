@@ -10,32 +10,41 @@
 
 #pragma once
 #include "Magic.h"
+#include "../JsonNode.h"
 #include "../IHandlerBase.h"
 #include "../ConstTransitivePtr.h"
 #include "../int3.h"
 #include "../GameConstants.h"
-#include "../BattleHex.h"
+#include "../battle/BattleHex.h"
 #include "../HeroBonus.h"
+
+namespace spells
+{
+	class ISpellMechanicsFactory;
+	class IBattleCast;
+}
 
 class CGObjectInstance;
 class CSpell;
-class ISpellMechanics;
 class IAdventureSpellMechanics;
 class CLegacyConfigParser;
 class CGHeroInstance;
 class CStack;
 class CBattleInfoCallback;
-struct BattleInfo;
+class BattleInfo;
 struct CPackForClient;
 struct BattleSpellCast;
 class CGameInfoCallback;
 class CRandomGenerator;
 class CMap;
-struct AdventureSpellCastParameters;
-struct BattleSpellCastParameters;
+class AdventureSpellCastParameters;
 class SpellCastEnvironment;
 
-struct SpellSchoolInfo
+
+namespace spells
+{
+
+struct SchoolInfo
 {
 	ESpellSchool id; //backlink
 	Bonus::BonusType damagePremyBonus;
@@ -45,10 +54,12 @@ struct SpellSchoolInfo
 	Bonus::BonusType knoledgeBonus;
 };
 
+}
+
 
 enum class VerticalPosition : ui8{TOP, CENTER, BOTTOM};
 
-class DLL_LINKAGE CSpell
+class DLL_LINKAGE CSpell : public spells::Spell
 {
 public:
 	struct ProjectileInfo
@@ -61,7 +72,8 @@ public:
 
 		template <typename Handler> void serialize(Handler & h, const int version)
 		{
-			h & minimumAngle & resourceName;
+			h & minimumAngle;
+			h & resourceName;
 		}
 	};
 
@@ -75,8 +87,9 @@ public:
 
 		template <typename Handler> void serialize(Handler & h, const int version)
 		{
-			h & resourceName & verticalPosition;
-			if(version >= 754) //save format backward compatibility
+			h & resourceName;
+			h & verticalPosition;
+			if(version >= 754)
 			{
 				h & pause;
 			}
@@ -110,9 +123,13 @@ public:
 
 		template <typename Handler> void serialize(Handler & h, const int version)
 		{
-			h & projectile & hit & cast;
+			h & projectile;
+			h & hit;
+			h & cast;
 			if(version >= 762)
+			{
 				h & affect;
+			}
 		}
 
 		std::string selectProjectile(const double angle) const;
@@ -130,17 +147,49 @@ public:
 		bool clearAffected;
 		std::string range;
 
-		std::vector<Bonus> effects;
+		//TODO: remove these two when AI will understand special effects
+		std::vector<std::shared_ptr<Bonus>> effects; //deprecated
+		std::vector<std::shared_ptr<Bonus>> cumulativeEffects; //deprecated
 
-		std::vector<std::shared_ptr<Bonus>> effectsTmp; //TODO: this should replace effects
+		JsonNode battleEffects;
 
 		LevelInfo();
 		~LevelInfo();
 
-		template <typename Handler> void serialize(Handler &h, const int version)
+		template <typename Handler> void serialize(Handler & h, const int version)
 		{
-			h & description & cost & power & AIValue & smartTarget & range & effects;
-			h & clearTarget & clearAffected;
+			h & description;
+			h & cost;
+			h & power;
+			h & AIValue;
+			h & smartTarget;
+			h & range;
+
+			if(version >= 773)
+			{
+				h & effects;
+				h & cumulativeEffects;
+			}
+			else
+			{
+				//all old effects treated as not cumulative, special cases handled by CSpell::serialize
+				std::vector<Bonus> old;
+				h & old;
+
+				if(!h.saving)
+				{
+					effects.clear();
+					cumulativeEffects.clear();
+					for(const Bonus & oldBonus : old)
+						effects.push_back(std::make_shared<Bonus>(oldBonus));
+				}
+			}
+
+			h & clearTarget;
+			h & clearAffected;
+
+			if(version >= 780)
+				h & battleEffects;
 		}
 	};
 
@@ -150,29 +199,27 @@ public:
 	 * \return Spell level info structure
 	 *
 	 */
-	const CSpell::LevelInfo& getLevelInfo(const int level) const;
+	const CSpell::LevelInfo & getLevelInfo(const int level) const;
 public:
-	enum ETargetType {NO_TARGET, CREATURE, OBSTACLE, LOCATION};
-	enum ESpellPositiveness {NEGATIVE = -1, NEUTRAL = 0, POSITIVE = 1};
+	enum ESpellPositiveness
+	{
+		NEGATIVE = -1,
+		NEUTRAL = 0,
+		POSITIVE = 1
+	};
 
 	struct DLL_LINKAGE TargetInfo
 	{
-		ETargetType type;
+		spells::AimType type;
 		bool smart;
 		bool massive;
-		bool onlyAlive;
-		///no immunity on primary target (mostly spell-like attack)
-		bool alwaysHitDirectly;
-
-		bool clearTarget;
 		bool clearAffected;
+		bool clearTarget;
 
-		TargetInfo(const CSpell * spell, const int level);
-		TargetInfo(const CSpell * spell, const int level, ECastingMode::ECastingMode mode);
-
-	private:
-		void init(const CSpell * spell, const int level);
+		TargetInfo(const CSpell * spell, const int level, spells::Mode mode);
 	};
+
+	using BTVector = std::vector<Bonus::BonusType>;
 
 	SpellID id;
 	std::string identifier;
@@ -180,7 +227,7 @@ public:
 
 	si32 level;
 
-	std::map<ESpellSchool, bool> school; //todo: use this instead of separate boolean fields
+	std::map<ESpellSchool, bool> school;
 
 	si32 power; //spell's power
 
@@ -192,11 +239,14 @@ public:
 
 	std::vector<SpellID> counteredSpells; //spells that are removed when effect of this spell is placed on creature (for bless-curse, haste-slow, and similar pairs)
 
+	JsonNode targetCondition; //custom condition on what spell can affect
+
 	CSpell();
 	~CSpell();
 
-	std::vector<BattleHex> rangeInHexes(BattleHex centralHex, ui8 schoolLvl, ui8 side, bool * outDroppedHexes = nullptr ) const; //convert range to specific hexes; last optional out parameter is set to true, if spell would cover unavailable hexes (that are not included in ret)
-	ETargetType getTargetType() const; //deprecated
+	std::vector<BattleHex> rangeInHexes(const CBattleInfoCallback * cb, spells::Mode mode, const spells::Caster * caster, BattleHex centralHex) const;
+
+	spells::AimType getTargetType() const;
 
 	bool isCombatSpell() const;
 	bool isAdventureSpell() const;
@@ -215,14 +265,14 @@ public:
 	bool isSpecialSpell() const;
 
 	bool hasEffects() const;
-	void getEffects(std::vector<Bonus> &lst, const int level) const;
+	void getEffects(std::vector<Bonus> & lst, const int level, const bool cumulative, const si32 duration, boost::optional<si32 *> maxDuration = boost::none) const;
 
-
+	bool hasBattleEffects() const;
 	///calculate spell damage on stack taking caster`s secondary skills and affectedCreature`s bonuses into account
-	ui32 calculateDamage(const ISpellCaster * caster, const CStack * affectedCreature, int spellSchoolLevel, int usedSpellPower) const;
+	int64_t calculateDamage(const spells::Caster * caster) const;
 
 	///selects from allStacks actually affected stacks
-	std::vector<const CStack *> getAffectedStacks(const CBattleInfoCallback * cb, ECastingMode::ECastingMode mode, const ISpellCaster * caster, int spellLvl, BattleHex destination) const;
+	std::vector<const CStack *> getAffectedStacks(const CBattleInfoCallback * cb, spells::Mode mode, const spells::Caster * caster, int spellLvl, const spells::Target & target) const;
 
 	si32 getCost(const int skillLevel) const;
 
@@ -238,7 +288,10 @@ public:
 	 *
 	 * Set stop to true to abort looping
 	 */
-	void forEachSchool(const std::function<void (const SpellSchoolInfo &, bool &)> & cb) const;
+	void forEachSchool(const std::function<void (const spells::SchoolInfo &, bool &)> & cb) const override;
+
+	int32_t getIndex() const override;
+	int32_t getLevel() const override;
 
 	/**
 	 * Returns resource name of icon for SPELL_IMMUNITY bonus
@@ -247,23 +300,65 @@ public:
 
 	const std::string& getCastSound() const;
 
-	template <typename Handler> void serialize(Handler &h, const int version)
+	template <typename Handler> void serialize(Handler & h, const int version)
 	{
-		h & identifier & id & name & level & power
-		  & probabilities  & attributes & combatSpell & creatureAbility & positiveness & counteredSpells;
-		h & isRising & isDamage & isOffensive;
+		h & identifier;
+		h & id;
+		h & name;
+		h & level;
+		h & power;
+		h & probabilities;
+		h & attributes;
+		h & combatSpell;
+		h & creatureAbility;
+		h & positiveness;
+		h & counteredSpells;
+		h & isRising;
+		h & isDamage;
+		h & isOffensive;
 		h & targetType;
-		h & immunities & limiters & absoluteImmunities & absoluteLimiters;
+
+		if(version >= 780)
+		{
+			h & targetCondition;
+		}
+		else
+		{
+			BTVector immunities;
+			BTVector absoluteImmunities;
+			BTVector limiters;
+			BTVector absoluteLimiters;
+
+			h & immunities;
+			h & limiters;
+			h & absoluteImmunities;
+			h & absoluteLimiters;
+
+			if(!h.saving)
+				targetCondition = convertTargetCondition(immunities, absoluteImmunities, limiters, absoluteLimiters);
+		}
+
 		h & iconImmune;
 		h & defaultProbability;
 		h & isSpecial;
-		h & castSound & iconBook & iconEffect & iconScenarioBonus & iconScroll;
+		h & castSound;
+		h & iconBook;
+		h & iconEffect;
+		h & iconScenarioBonus;
+		h & iconScroll;
 		h & levels;
 		h & school;
 		h & animationInfo;
 
-		if(!h.saving)
-			setup();
+		//backward compatibility
+		//can not be added to level structure as level structure does not know spell id
+		if(!h.saving && version < 773)
+		{
+			if(id == SpellID::DISRUPTING_RAY || id == SpellID::ACID_BREATH_DEFENSE)
+				for(auto & level : levels)
+					std::swap(level.effects, level.cumulativeEffects);
+		}
+
 	}
 	friend class CSpellHandler;
 	friend class Graphics;
@@ -271,40 +366,33 @@ public:
 	///internal interface (for callbacks)
 
 	///Checks general but spell-specific problems. Use only during battle.
-	ESpellCastProblem::ESpellCastProblem canBeCast(const CBattleInfoCallback * cb, ECastingMode::ECastingMode mode, const ISpellCaster * caster) const;
+	bool canBeCast(const CBattleInfoCallback * cb, spells::Mode mode, const spells::Caster * caster) const;
+	bool canBeCast(spells::Problem & problem, const CBattleInfoCallback * cb, spells::Mode mode, const spells::Caster * caster) const;
 
-	///checks for creature immunity / anything that prevent casting *at given hex* - doesn't take into account general problems such as not having spellbook or mana points etc.
-	ESpellCastProblem::ESpellCastProblem canBeCastAt(const CBattleInfoCallback * cb, const ISpellCaster * caster, ECastingMode::ECastingMode mode, BattleHex destination) const;
-
-	///checks for creature immunity / anything that prevent casting *at given target* - doesn't take into account general problems such as not having spellbook or mana points etc.
-	ESpellCastProblem::ESpellCastProblem isImmuneByStack(const ISpellCaster * caster, const CStack * obj) const;
+	///checks for creature immunity / anything that prevent casting *at given hex*
+	bool canBeCastAt(const CBattleInfoCallback * cb, spells::Mode mode, const spells::Caster * caster, BattleHex destination) const; //DEPREACTED
+	bool canBeCastAt(const CBattleInfoCallback * cb, spells::Mode mode, const spells::Caster * caster, const spells::Target & target) const;
 public:
 	///Server logic. Has write access to GameState via packets.
 	///May be executed on client side by (future) non-cheat-proof scripts.
 
-	bool adventureCast(const SpellCastEnvironment * env, AdventureSpellCastParameters & parameters) const;
-	void battleCast(const SpellCastEnvironment * env, const BattleSpellCastParameters & parameters) const;
+	bool adventureCast(const SpellCastEnvironment * env, const AdventureSpellCastParameters & parameters) const;
 
-public:
-	///Client-server logic. Has direct write access to GameState.
-	///Shall be called (only) when applying packets on BOTH SIDES
-
-	///implementation of BattleSpellCast applying
-	void applyBattle(BattleInfo * battle, const BattleSpellCast * packet) const;
 public://internal, for use only by Mechanics classes
 	///applies caster`s secondary skills and affectedCreature`s to raw damage
-	int adjustRawDamage(const ISpellCaster * caster, const CStack * affectedCreature, int rawDamage) const;
-	///returns raw damage or healed HP
-	int calculateRawEffectValue(int effectLevel, int effectPower) const;
-	///generic immunity calculation
-	ESpellCastProblem::ESpellCastProblem internalIsImmune(const ISpellCaster * caster, const CStack *obj) const;
+	int64_t adjustRawDamage(const spells::Caster * caster, const battle::Unit * affectedCreature, int64_t rawDamage) const;
 
+	///returns raw damage or healed HP
+	int64_t calculateRawEffectValue(int32_t effectLevel, int32_t basePowerMultiplier, int32_t levelPowerMultiplier) const;
+
+	std::unique_ptr<spells::Mechanics> battleMechanics(const spells::IBattleCast * event) const;
 private:
 	void setIsOffensive(const bool val);
 	void setIsRising(const bool val);
 
+	JsonNode convertTargetCondition(const BTVector & immunity, const BTVector & absImmunity, const BTVector & limit, const BTVector & absLimit) const;
+
 	//call this after load or deserialization. cant be done in constructor.
-	void setup();
 	void setupMechanics();
 private:
 	si32 defaultProbability;
@@ -316,12 +404,7 @@ private:
 
 	std::string attributes; //reference only attributes //todo: remove or include in configuration format, currently unused
 
-	ETargetType targetType;
-
-	std::vector<Bonus::BonusType> immunities; //any of these grants immunity
-	std::vector<Bonus::BonusType> absoluteImmunities; //any of these grants immunity, can't be negated
-	std::vector<Bonus::BonusType> limiters; //all of them are required to be affected
-	std::vector<Bonus::BonusType> absoluteLimiters; //all of them are required to be affected, can't be negated
+	spells::AimType targetType;
 
 	///graphics related stuff
 	std::string iconImmune;
@@ -335,7 +418,7 @@ private:
 
 	std::vector<LevelInfo> levels;
 
-	std::unique_ptr<ISpellMechanics> mechanics;//(!) do not serialize
+	std::unique_ptr<spells::ISpellMechanicsFactory> mechanics;//(!) do not serialize
 	std::unique_ptr<IAdventureSpellMechanics> adventureMechanics;//(!) do not serialize
 };
 
@@ -355,23 +438,27 @@ public:
 	/**
 	 * Gets a list of default allowed spells. OH3 spells are all allowed by default.
 	 *
-	 * @return a list of allowed spells, the index is the spell id and the value either 0 for not allowed or 1 for allowed
 	 */
 	std::vector<bool> getDefaultAllowed() const override;
 
-	const std::string getTypeName() const override;
+	const std::vector<std::string> & getTypeNames() const override;
 
-	///json serialization helper
-	static si32 decodeSpell(const std::string & identifier);
-
-	///json serialization helper
-	static std::string encodeSpell(const si32 index);
-
-	template <typename Handler> void serialize(Handler &h, const int version)
+	template <typename Handler> void serialize(Handler & h, const int version)
 	{
-		h & objects ;
+		h & objects;
+		if(!h.saving && version < 780)
+		{
+			update780();
+		}
+
+		if(!h.saving)
+		{
+			afterLoadFinalization();
+		}
 	}
 
 protected:
-	CSpell * loadFromJson(const JsonNode & json, const std::string & identifier) override;
+	CSpell * loadFromJson(const JsonNode & json, const std::string & identifier, size_t index) override;
+private:
+	void update780();
 };

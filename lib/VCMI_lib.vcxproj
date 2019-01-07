@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -21,14 +21,14 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B952FFC5-3039-4DE1-9F08-90ACDA483D8F}</ProjectGuid>
     <RootNamespace>VCMI_lib</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RD|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v140_xp</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RD|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -40,7 +40,7 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v140_xp</PlatformToolset>
-    <WholeProgramOptimization>False</WholeProgramOptimization>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -73,7 +73,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30128.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(VCMI_Out)</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..</OutDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(VCMI_Out)</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Configuration)\</IntDir>
@@ -102,8 +102,7 @@
       <AdditionalOptions>/MP4 %(AdditionalOptions) /bigobj
  /Zm150</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOSTDIR);$(ZLIBDIR);$(SDLDIR)</AdditionalIncludeDirectories>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -141,10 +140,12 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RD|Win32'">
     <ClCompile>
-      <AdditionalOptions>/Oy- /bigobj /Zm150 </AdditionalOptions>
+      <AdditionalOptions>/Oy- /bigobj</AdditionalOptions>
       <PreprocessorDefinitions>VCMI_DLL;VCMI_NO_EXTRA_VERSION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>StdInc.h</PrecompiledHeaderFile>
       <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalIncludeDirectories>$(BOOSTDIR);$(ZLIBDIR);$(SDLDIR)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <AdditionalDependencies>minizip.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -154,6 +155,7 @@
       </LinkTimeCodeGeneration>
       <AdditionalLibraryDirectories>..\..\libs</AdditionalLibraryDirectories>
       <AdditionalOptions>/LTCG %(AdditionalOptions)</AdditionalOptions>
+      <ForceFileOutput>MultiplyDefinedSymbolOnly</ForceFileOutput>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RD|x64'">
@@ -173,9 +175,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BattleAction.cpp" />
-    <ClCompile Include="BattleHex.cpp" />
-    <ClCompile Include="BattleInfo.cpp" />
+    <ClCompile Include="battle\BattleAction.cpp" />
+    <ClCompile Include="battle\BattleHex.cpp" />
+    <ClCompile Include="battle\BattleInfo.cpp" />
+    <ClCompile Include="battle\AccessibilityInfo.cpp" />
+    <ClCompile Include="battle\BattleAttackInfo.cpp" />
+    <ClCompile Include="battle\BattleProxy.cpp" />
+    <ClCompile Include="battle\CBattleInfoCallback.cpp" />
+    <ClCompile Include="battle\CBattleInfoEssentials.cpp" />
+    <ClCompile Include="battle\CCallbackBase.cpp" />
+    <ClCompile Include="battle\CPlayerBattleCallback.cpp" />
+    <ClCompile Include="battle\CUnitState.cpp" />
+    <ClCompile Include="battle\Destination.cpp" />
+    <ClCompile Include="battle\IBattleState.cpp" />
+    <ClCompile Include="battle\ReachabilityInfo.cpp" />
+    <ClCompile Include="battle\Unit.cpp" />
     <ClCompile Include="CArtHandler.cpp" />
     <ClCompile Include="CBonusTypeHandler.cpp" />
     <ClCompile Include="CBuildingHandler.cpp" />
@@ -188,8 +202,9 @@
     <ClCompile Include="CGeneralTextHandler.cpp" />
     <ClCompile Include="CHeroHandler.cpp" />
     <ClCompile Include="CModHandler.cpp" />
-    <ClCompile Include="CObstacleInstance.cpp" />
+    <ClCompile Include="battle\CObstacleInstance.cpp" />
     <ClCompile Include="CPathfinder.cpp" />
+    <ClCompile Include="CSkillHandler.cpp" />
     <ClCompile Include="CStack.cpp" />
     <ClCompile Include="CThreadHelper.cpp" />
     <ClCompile Include="CTownHandler.cpp" />
@@ -199,6 +214,7 @@
     <ClCompile Include="filesystem\FileInfo.cpp" />
     <ClCompile Include="filesystem\FileStream.cpp" />
     <ClCompile Include="filesystem\MinizipExtensions.cpp" />
+    <ClCompile Include="registerTypes\TypesLobbyPacks.cpp" />
     <ClCompile Include="serializer\BinaryDeserializer.cpp" />
     <ClCompile Include="serializer\BinarySerializer.cpp" />
     <ClCompile Include="serializer\CLoadIntegrityValidator.cpp" />
@@ -209,15 +225,34 @@
     <ClCompile Include="serializer\JsonDeserializer.cpp" />
     <ClCompile Include="serializer\JsonSerializeFormat.cpp" />
     <ClCompile Include="serializer\JsonSerializer.cpp" />
-    <ClCompile Include="SideInBattle.cpp" />
-    <ClCompile Include="SiegeInfo.cpp" />
+    <ClCompile Include="battle\SideInBattle.cpp" />
+    <ClCompile Include="battle\SiegeInfo.cpp" />
+    <ClCompile Include="spells\AbilityCaster.cpp" />
+    <ClCompile Include="spells\BonusCaster.cpp" />
     <ClCompile Include="spells\CSpellHandler.cpp" />
+    <ClCompile Include="spells\effects\Catapult.cpp" />
+    <ClCompile Include="spells\effects\Dispel.cpp" />
+    <ClCompile Include="spells\effects\Heal.cpp" />
+    <ClCompile Include="spells\effects\Obstacle.cpp" />
+    <ClCompile Include="spells\effects\RemoveObstacle.cpp" />
+    <ClCompile Include="spells\effects\Sacrifice.cpp" />
+    <ClCompile Include="spells\effects\Teleport.cpp" />
+    <ClCompile Include="spells\effects\UnitEffect.cpp" />
     <ClCompile Include="spells\ISpellMechanics.cpp" />
     <ClCompile Include="spells\AdventureSpellMechanics.cpp" />
     <ClCompile Include="spells\BattleSpellMechanics.cpp" />
-    <ClCompile Include="spells\CreatureSpellMechanics.cpp" />
-    <ClCompile Include="spells\CDefaultSpellMechanics.cpp" />
+    <ClCompile Include="spells\Problem.cpp" />
+    <ClCompile Include="spells\ProxyCaster.cpp" />
+    <ClCompile Include="spells\TargetCondition.cpp" />
     <ClCompile Include="spells\ViewSpellInt.cpp" />
+    <ClCompile Include="spells\effects\Effect.cpp" />
+    <ClCompile Include="spells\effects\Effects.cpp" />
+    <ClCompile Include="spells\effects\Clone.cpp" />
+    <ClCompile Include="spells\effects\Damage.cpp" />
+    <ClCompile Include="spells\effects\LocationEffect.cpp" />
+    <ClCompile Include="spells\effects\Registry.cpp" />
+    <ClCompile Include="spells\effects\Summon.cpp" />
+    <ClCompile Include="spells\effects\Timed.cpp" />
     <ClCompile Include="filesystem\AdapterLoaders.cpp" />
     <ClCompile Include="filesystem\CArchiveLoader.cpp" />
     <ClCompile Include="filesystem\CBinaryReader.cpp" />
@@ -261,13 +296,11 @@
     <ClCompile Include="registerTypes\TypesMapObjects1.cpp" />
     <ClCompile Include="registerTypes\TypesMapObjects2.cpp" />
     <ClCompile Include="registerTypes\TypesMapObjects3.cpp" />
-    <ClCompile Include="registerTypes\TypesPregamePacks.cpp" />
     <ClCompile Include="registerTypes\TypesServerPacks.cpp" />
     <ClCompile Include="rmg\CMapGenerator.cpp" />
     <ClCompile Include="logging\CLogger.cpp" />
     <ClCompile Include="logging\CBasicLogConfigurator.cpp" />
     <ClCompile Include="HeroBonus.cpp" />
-    <ClCompile Include="CBattleCallback.cpp" />
     <ClCompile Include="IGameCallback.cpp" />
     <ClCompile Include="CGameInfoCallback.cpp" />
     <ClCompile Include="JsonNode.cpp" />
@@ -279,6 +312,7 @@
     <ClCompile Include="rmg\CRmgTemplateZone.cpp" />
     <ClCompile Include="rmg\CZoneGraphGenerator.cpp" />
     <ClCompile Include="rmg\CZonePlacer.cpp" />
+    <ClCompile Include="StartInfo.cpp" />
     <ClCompile Include="StdInc.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">VCMI_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -290,14 +324,28 @@
     </ClCompile>
     <ClCompile Include="VCMIDirs.cpp" />
     <ClCompile Include="VCMI_Lib.cpp" />
+    <ClCompile Include="vstd\StringUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Global.h" />
     <ClInclude Include="..\Version.h" />
     <ClInclude Include="AI_Base.h" />
-    <ClInclude Include="BattleAction.h" />
-    <ClInclude Include="BattleHex.h" />
-    <ClInclude Include="BattleInfo.h" />
+    <ClInclude Include="battle\BattleAction.h" />
+    <ClInclude Include="battle\BattleHex.h" />
+    <ClInclude Include="battle\BattleInfo.h" />
+    <ClInclude Include="battle\AccessibilityInfo.h" />
+    <ClInclude Include="battle\BattleAttackInfo.h" />
+    <ClInclude Include="battle\BattleProxy.h" />
+    <ClInclude Include="battle\CBattleInfoCallback.h" />
+    <ClInclude Include="battle\CBattleInfoEssentials.h" />
+    <ClInclude Include="battle\CCallbackBase.h" />
+    <ClInclude Include="battle\CPlayerBattleCallback.h" />
+    <ClInclude Include="battle\CUnitState.h" />
+    <ClInclude Include="battle\Destination.h" />
+    <ClInclude Include="battle\IBattleState.h" />
+    <ClInclude Include="battle\IUnitInfo.h" />
+    <ClInclude Include="battle\ReachabilityInfo.h" />
+    <ClInclude Include="battle\Unit.h" />
     <ClInclude Include="CArtHandler.h" />
     <ClInclude Include="CBonusTypeHandler.h" />
     <ClInclude Include="CBuildingHandler.h" />
@@ -311,13 +359,14 @@
     <ClInclude Include="CGeneralTextHandler.h" />
     <ClInclude Include="CHeroHandler.h" />
     <ClInclude Include="CModHandler.h" />
-    <ClInclude Include="CObstacleInstance.h" />
+    <ClInclude Include="battle\CObstacleInstance.h" />
     <ClInclude Include="CondSh.h" />
     <ClInclude Include="ConstTransitivePtr.h" />
     <ClInclude Include="CPathfinder.h" />
     <ClInclude Include="CPlayerState.h" />
     <ClInclude Include="CRandomGenerator.h" />
     <ClInclude Include="CScriptingModule.h" />
+    <ClInclude Include="CSkillHandler.h" />
     <ClInclude Include="CSoundBase.h" />
     <ClInclude Include="CStack.h" />
     <ClInclude Include="CStopWatch.h" />
@@ -375,13 +424,13 @@
     <ClInclude Include="mapping\MapFormatH3M.h" />
     <ClInclude Include="mapping\MapFormatJson.h" />
     <ClInclude Include="NetPacksBase.h" />
+    <ClInclude Include="NetPacksLobby.h" />
     <ClInclude Include="registerTypes\RegisterTypes.h" />
     <ClInclude Include="rmg\CMapGenerator.h" />
     <ClInclude Include="logging\CLogger.h" />
     <ClInclude Include="logging\CBasicLogConfigurator.h" />
     <ClInclude Include="GameConstants.h" />
     <ClInclude Include="HeroBonus.h" />
-    <ClInclude Include="CBattleCallback.h" />
     <ClInclude Include="IGameCallback.h" />
     <ClInclude Include="CGameInfoCallback.h" />
     <ClInclude Include="IGameEventsReceiver.h" />
@@ -400,6 +449,7 @@
     <ClInclude Include="ScopeGuard.h" />
     <ClInclude Include="serializer\BinaryDeserializer.h" />
     <ClInclude Include="serializer\BinarySerializer.h" />
+    <ClInclude Include="serializer\Cast.h" />
     <ClInclude Include="serializer\CLoadIntegrityValidator.h" />
     <ClInclude Include="serializer\CMemorySerializer.h" />
     <ClInclude Include="serializer\CSerializer.h" />
@@ -408,17 +458,40 @@
     <ClInclude Include="serializer\JsonDeserializer.h" />
     <ClInclude Include="serializer\JsonSerializeFormat.h" />
     <ClInclude Include="serializer\JsonSerializer.h" />
-    <ClInclude Include="SideInBattle.h" />
-    <ClInclude Include="SiegeInfo.h" />
+    <ClInclude Include="battle\SideInBattle.h" />
+    <ClInclude Include="battle\SiegeInfo.h" />
+    <ClInclude Include="serializer\JsonTreeSerializer.h" />
+    <ClInclude Include="spells\AbilityCaster.h" />
     <ClInclude Include="spells\AdventureSpellMechanics.h" />
     <ClInclude Include="spells\BattleSpellMechanics.h" />
-    <ClInclude Include="spells\CDefaultSpellMechanics.h" />
-    <ClInclude Include="spells\CreatureSpellMechanics.h" />
+    <ClInclude Include="spells\BonusCaster.h" />
     <ClInclude Include="spells\CSpellHandler.h" />
+    <ClInclude Include="spells\effects\Catapult.h" />
+    <ClInclude Include="spells\effects\Dispel.h" />
+    <ClInclude Include="spells\effects\EffectsFwd.h" />
+    <ClInclude Include="spells\effects\Heal.h" />
+    <ClInclude Include="spells\effects\Obstacle.h" />
+    <ClInclude Include="spells\effects\RemoveObstacle.h" />
+    <ClInclude Include="spells\effects\Sacrifice.h" />
+    <ClInclude Include="spells\effects\Teleport.h" />
+    <ClInclude Include="spells\effects\UnitEffect.h" />
     <ClInclude Include="spells\ISpellMechanics.h" />
     <ClInclude Include="spells\Magic.h" />
+    <ClInclude Include="spells\ProxyCaster.h" />
     <ClInclude Include="spells\SpellMechanics.h" />
+    <ClInclude Include="spells\Problem.h" />
+    <ClInclude Include="spells\TargetCondition.h" />
     <ClInclude Include="spells\ViewSpellInt.h" />
+    <ClInclude Include="spells\effects\Effect.h" />
+    <ClInclude Include="spells\effects\Effects.h" />
+    <ClInclude Include="spells\effects\Clone.h" />
+    <ClInclude Include="spells\effects\Damage.h" />
+    <ClInclude Include="spells\effects\GlobalEffect.h" />
+    <ClInclude Include="spells\effects\LocationEffect.h" />
+    <ClInclude Include="spells\effects\Registry.h" />
+    <ClInclude Include="spells\effects\StackEffect.h" />
+    <ClInclude Include="spells\effects\Summon.h" />
+    <ClInclude Include="spells\effects\Timed.h" />
     <ClInclude Include="StartInfo.h" />
     <ClInclude Include="StdInc.h" />
     <ClInclude Include="StringConstants.h" />

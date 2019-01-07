@@ -4,9 +4,16 @@
 	"magicSpring" : {//magic source
 		"index" : 48,
 		"handler": "magicSpring",
+		"base" : {
+			"sounds" : {
+				"ambient" : ["LOOPFOUN"],
+				"visit" : ["FAERIE"]
+			}
+		},
 		"types" : {
 			"object" : {
-				"index" : 0//,
+				"index" : 0,
+				"aiValue" : 500//,
 				//"rmg" : {
 				//	"zoneLimit"	: 1,
 				//	"value"		: 500,
@@ -20,9 +27,16 @@
 	"mysticalGarden" : {
 		"index" : 55,
 		"handler": "oncePerWeek",
+		"base" : {
+			"sounds" : {
+				"ambient" : ["LOOPLEPR"],
+				"visit" : ["EXPERNCE"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 500,
 				"rmg" : {
 					"value"		: 500,
 					"rarity"	: 50
@@ -33,9 +47,16 @@
 	"windmill" :{
 		"index" : 112,
 		"handler": "oncePerWeek",
+		"base" : {
+			"sounds" : {
+				"ambient" : ["LOOPWIND"],
+				"visit" : ["GENIE"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 1500,
 				"rmg" : {
 					"value"		: 1500,
 					"rarity"	: 80
@@ -46,9 +67,16 @@
 	"waterWheel" : {
 		"index" : 109,
 		"handler": "oncePerWeek",
+		"base" : {
+			"sounds" : {
+				"ambient" : ["LOOPMILL"],
+				"visit" : ["GENIE"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 750,
 				"rmg" : {
 					"value"		: 750,
 					"rarity"	: 50
@@ -60,9 +88,15 @@
 	"leanTo" :{
 		"index" : 39,
 		"handler": "onceVisitable",
+		"base" : {
+			"sounds" : {
+				"visit" : ["GENIE"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 500,
 				"rmg" : {
 					"value"		: 500,
 					"rarity"	: 100
@@ -73,9 +107,15 @@
 	"corpse" :{
 		"index" : 22,
 		"handler": "onceVisitable",
+		"base" : {
+			"sounds" : {
+				"visit" : ["MYSTERY"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 500,
 				"rmg" : {
 					"value"		: 500,
 					"rarity"	: 100
@@ -86,9 +126,15 @@
 	"wagon" :{
 		"index" : 105,
 		"handler": "onceVisitable",
+		"base" : {
+			"sounds" : {
+				"visit" : ["GENIE"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 500,
 				"rmg" : {
 					"value"		: 500,
 					"rarity"	: 50
@@ -99,9 +145,15 @@
 	"warriorTomb" : {
 		"index" : 108,
 		"handler": "onceVisitable",
+		"base" : {
+			"sounds" : {
+				"visit" : ["GRAVEYARD"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 6000,
 				"rmg" : {
 					"value"		: 6000,
 					"rarity"	: 20
@@ -113,9 +165,17 @@
 	"campfire" :{
 		"index" : 12,
 		"handler": "pickable",
+		"base" : {
+			"sounds" : {
+				"ambient" : ["LOOPCAMP"],
+				"visit" : ["EXPERNCE"],
+				"removal" : [ "PICKUP01", "PICKUP02", "PICKUP03", "PICKUP04", "PICKUP05", "PICKUP06", "PICKUP07" ]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 2000,
 				"rmg" : {
 					"value"		: 2000,
 					"rarity"	: 500
@@ -126,9 +186,16 @@
 	"flotsam" :{
 		"index" : 29,
 		"handler": "pickable",
+		"base" : {
+			"sounds" : {
+				"visit" : ["GENIE"],
+				"removal" : [ "PICKUP01", "PICKUP02", "PICKUP03", "PICKUP04", "PICKUP05", "PICKUP06", "PICKUP07" ]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 2000,
 				"rmg" : {
 					"value"		: 2000,
 					"rarity"	: 100
@@ -139,9 +206,16 @@
 	"seaChest" :{
 		"index" : 82,
 		"handler": "pickable",
+		"base" : {
+			"sounds" : {
+				"visit" : ["CHEST"],
+				"removal" : [ "PICKUP01", "PICKUP02", "PICKUP03", "PICKUP04", "PICKUP05", "PICKUP06", "PICKUP07" ]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 1500,
 				"rmg" : {
 					"value"		: 1500,
 					"rarity"	: 500
@@ -152,9 +226,16 @@
 	"shipwreckSurvivor" : {
 		"index" : 86,
 		"handler": "pickable",
+		"base" : {
+			"sounds" : {
+				"visit" : ["TREASURE"],
+				"removal" : [ "PICKUP01", "PICKUP02", "PICKUP03", "PICKUP04", "PICKUP05", "PICKUP06", "PICKUP07" ]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 1500,
 				"rmg" : {
 					"value"		: 1500,
 					"rarity"	: 50
@@ -165,9 +246,16 @@
 	"treasureChest" : {
 		"index" : 101,
 		"handler": "pickable",
+		"base" : {
+			"sounds" : {
+				"visit" : ["CHEST"],
+				"removal" : [ "PICKUP01", "PICKUP02", "PICKUP03", "PICKUP04", "PICKUP05", "PICKUP06", "PICKUP07" ]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 1500,
 				"rmg" : {
 					"value"		: 1500,
 					"rarity"	: 1000
@@ -179,9 +267,16 @@
 	"arena" : {
 		"index" : 4,
 		"handler": "oncePerHero",
+		"base" : {
+			"sounds" : {
+				"ambient" : ["LOOPAREN"],
+				"visit" : ["NOMAD"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 3000,
 				"rmg" : {
 					"value"		: 3000,
 					"rarity"	: 50
@@ -192,9 +287,16 @@
 	"marlettoTower" : {
 		"index" : 23,
 		"handler": "oncePerHero",
+		"base" : {
+			"sounds" : {
+				"ambient" : ["LOOPSWAR"],
+				"visit" : ["NOMAD"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 1500,
 				"rmg" : {
 					"value"		: 1500,
 					"rarity"	: 100
@@ -205,9 +307,16 @@
 	"gardenOfRevelation" : {
 		"index" : 32,
 		"handler": "oncePerHero",
+		"base" : {
+			"sounds" : {
+				"ambient" : ["LOOPGARD"],
+				"visit" : ["GETPROTECTION"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 1500,
 				"rmg" : {
 					"value"		: 1500,
 					"rarity"	: 100
@@ -218,9 +327,15 @@
 	"libraryOfEnlightenment" : {
 		"index" : 41,
 		"handler": "oncePerHero",
+		"base" : {
+			"sounds" : {
+				"visit" : ["GAZEBO"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 12000,
 				"rmg" : {
 					"value"		: 12000,
 					"rarity"	: 20
@@ -231,9 +346,16 @@
 	"mercenaryCamp" : {
 		"index" : 51,
 		"handler": "oncePerHero",
+		"base" : {
+			"sounds" : {
+				"ambient" : ["LOOPMERC"],
+				"visit" : ["NOMAD"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 1500,
 				"rmg" : {
 					"value"		: 1500,
 					"rarity"	: 100
@@ -244,9 +366,16 @@
 	"starAxis" :{
 		"index" : 61,
 		"handler": "oncePerHero",
+		"base" : {
+			"sounds" : {
+				"ambient" : ["LOOPSTAR"],
+				"visit" : ["GAZEBO"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 1500,
 				"rmg" : {
 					"value"		: 1500,
 					"rarity"	: 100
@@ -257,9 +386,15 @@
 	"treeOfKnowledge" : {
 		"index" : 102,
 		"handler": "oncePerHero",
+		"base" : {
+			"sounds" : {
+				"visit" : ["GAZEBO"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 2500,
 				"rmg" : {
 					"mapLimit"	: 100,
 					"value"		: 2500,
@@ -271,9 +406,16 @@
 	"schoolOfMagic" : {
 		"index" : 47,
 		"handler": "oncePerHero",
+		"base" : {
+			"sounds" : {
+				"ambient" : ["LOOPMAGI"],
+				"visit" : ["FAERIE"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 1000,
 				"rmg" : {
 					"value"		: 1000,
 					"rarity"	: 50
@@ -284,9 +426,16 @@
 	"schoolOfWar" : {
 		"index" : 107,
 		"handler": "oncePerHero",
+		"base" : {
+			"sounds" : {
+				"ambient" : ["LOOPSWAR"],
+				"visit" : ["MILITARY"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 1000,
 				"rmg" : {
 					"value"		: 1000,
 					"rarity"	: 50
@@ -297,9 +446,16 @@
 	"learningStone" : {
 		"index" : 100,
 		"handler": "oncePerHero",
+		"base" : {
+			"sounds" : {
+				"ambient" : ["LOOPLEAR"],
+				"visit" : ["GAZEBO"]
+			}
+		},
 		"types" : {
 			"object" : { 
 				"index" : 0,
+				"aiValue" : 1500,
 				"rmg" : {
 					"value"		: 1500,
 					"rarity"	: 200
@@ -312,9 +468,16 @@
 	"buoy" : {
 		"index" : 11,
 		"handler": "bonusingObject",
+		"base" : {
+			"sounds" : {
+				"ambient" : ["LOOPBUOY"],
+				"visit" : ["MORALE"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 100,
 				"rmg" : {
 					"value"		: 100,
 					"rarity"	: 100
@@ -325,9 +488,15 @@
 	"swanPond" : {
 		"index" : 14,
 		"handler": "bonusingObject",
+		"base" : {
+			"sounds" : {
+				"visit" : ["LUCK"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 100,
 				"rmg" : {
 					"zoneLimit"	: 1,
 					"value"		: 100,
@@ -339,9 +508,16 @@
 	"faerieRing" : {
 		"index" : 28,
 		"handler": "bonusingObject",
+		"base" : {
+			"sounds" : {
+				"ambient" : ["LOOPFAER"],
+				"visit" : ["LUCK"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 100,
 				"rmg" : {
 					"zoneLimit"	: 1,
 					"value"		: 100,
@@ -353,9 +529,16 @@
 	"fountainOfFortune" : {
 		"index" : 30,
 		"handler": "bonusingObject",
+		"base" : {
+			"sounds" : {
+				"ambient" : ["LOOPFOUN"],
+				"visit" : ["LUCK"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 100,
 				"rmg" : {
 					"zoneLimit"	: 1,
 					"value"		: 100,
@@ -367,9 +550,16 @@
 	"fountainOfYouth" : {
 		"index" : 31,
 		"handler": "bonusingObject",
+		"base" : {
+			"sounds" : {
+				"ambient" : ["LOOPFALL"],
+				"visit" : ["MORALE"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 100,
 				"rmg" : {
 					"zoneLimit"	: 1,
 					"value"		: 100,
@@ -381,9 +571,15 @@
 	"idolOfFortune" : {
 		"index" : 38,
 		"handler": "bonusingObject",
+		"base" : {
+			"sounds" : {
+				"visit" : ["LUCK"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 100,
 				"rmg" : {
 					"zoneLimit"	: 1,
 					"value"		: 100,
@@ -398,9 +594,15 @@
 	"mermaids" : {
 		"index" : 52,
 		"handler": "bonusingObject",
+		"base" : {
+			"sounds" : {
+				"visit" : ["LUCK"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 100,
 				"rmg" : {
 					"value"		: 100,
 					"rarity"	: 20
@@ -411,9 +613,15 @@
 	"oasis" : {
 		"index" : 56,
 		"handler": "bonusingObject",
+		"base" : {
+			"sounds" : {
+				"visit" : ["MORALE"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 100,
 				"rmg" : {
 					"zoneLimit"	: 1,
 					"value"		: 100,
@@ -425,9 +633,16 @@
 	"stables" : {
 		"index" : 94,
 		"handler": "bonusingObject",
+		"base" : {
+			"sounds" : {
+				"ambient" : ["LOOPHORS"],
+				"visit" : ["STORE"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 200,
 				"rmg" : {
 					"zoneLimit"	: 1,
 					"value"		: 200,
@@ -439,9 +654,16 @@
 	"temple" : {
 		"index" : 96,
 		"handler": "bonusingObject",
+		"base" : {
+			"sounds" : {
+				"ambient" : ["LOOPSANC"],
+				"visit" : ["TEMPLE"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 100,
 				"rmg" : {
 					"zoneLimit"	: 1,
 					"value"		: 100,
@@ -453,9 +675,16 @@
 	"rallyFlag" : {
 		"index" : 64,
 		"handler": "bonusingObject",
+		"base" : {
+			"sounds" : {
+				"ambient" : ["LOOPFLAG"],
+				"visit" : ["MORALE"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 100,
 				"rmg" : {
 					"zoneLimit"	: 1,
 					"value"		: 100,
@@ -467,9 +696,15 @@
 	"wateringHole" : {//waters
 		"index" : 110,
 		"handler": "bonusingObject",
+		"base" : {
+			"sounds" : {
+				"visit" : ["MORALE"]
+			}
+		},
 		"types" : {
 			"object" : {
 				"index" : 0,
+				"aiValue" : 500,
 				"rmg" : {
 					"zoneLimit"	: 1,
 					"value"		: 500,

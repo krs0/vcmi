@@ -5,8 +5,8 @@
 	"$schema": "http://json-schema.org/draft-04/schema",
 	"required" : [ "general", "video", "adventure", "pathfinder", "battle", "server", "logging", "launcher" ],
 	"definitions" : {
-		"logLevelEnum" : { 
-			"type" : "string", 
+		"logLevelEnum" : {
+			"type" : "string",
 			"enum" : [ "trace", "debug", "info", "warn", "error" ]
 		}
 	},
@@ -17,7 +17,7 @@
 			"type" : "object",
 			"default": {},
 			"additionalProperties" : false,
-			"required" : [ "playerName", "showfps", "music", "sound", "encoding" ],
+			"required" : [ "playerName", "showfps", "music", "sound", "encoding", "swipe", "saveRandomMaps", "saveFrequency" ],
 			"properties" : {
 				"playerName" : {
 					"type":"string",
@@ -38,6 +38,30 @@
 				"encoding" : {
 					"type" : "string",
 					"default" : "CP1252"
+				},
+				"swipe" : {
+					"type" : "boolean",
+					"default" : true
+				},
+				"saveRandomMaps" : {
+					"type" : "boolean",
+					"default" : false
+				},
+				"lastMap" : {
+					"type":"string",
+					"default" : "Maps/Arrogance"
+				},
+				"lastSave" : {
+					"type":"string",
+					"default" : "NEWGAME"
+				},
+				"lastCampaign" : {
+					"type":"string",
+					"default" : ""
+				},
+				"saveFrequency" : {
+					"type" : "number",
+					"default" : 1
 				}
 			}
 		},
@@ -45,7 +69,7 @@
 			"type" : "object",
 			"additionalProperties" : false,
 			"default": {},
-			"required" : [ "screenRes", "bitsPerPixel", "fullscreen", "spellbookAnimation","driver", "showIntro", "displayIndex" ],
+			"required" : [ "screenRes", "bitsPerPixel", "fullscreen", "realFullscreen", "spellbookAnimation","driver", "showIntro", "displayIndex" ],
 			"properties" : {
 				"screenRes" : {
 					"type" : "object",
@@ -61,7 +85,11 @@
 					"type" : "number",
 					"default" : 32
 				},
-				"fullscreen" : {
+				"fullscreen": {
+					"type": "boolean",
+					"default": false
+				},
+				"realFullscreen" : {
 					"type" : "boolean",
 					"default" : false
 				},
@@ -184,7 +212,7 @@
 			"type" : "object",
 			"additionalProperties" : false,
 			"default": {},
-			"required" : [ "animationSpeed", "mouseShadow", "cellBorders", "stackRange", "showQueue" ],
+			"required" : [ "animationSpeed", "mouseShadow", "cellBorders", "stackRange", "showQueue", "queueSize" ],
 			"properties" : {
 				"animationSpeed" : {
 					"type" : "number",
@@ -205,6 +233,11 @@
 				"showQueue" : {
 					"type" : "boolean",
 					"default" : true
+				},
+				"queueSize" : {
+					"type" : "string",
+					"default" : "auto",
+					"enum" : [ "auto", "small", "big" ]
 				}
 			}
 		},

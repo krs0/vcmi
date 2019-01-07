@@ -1,7 +1,3 @@
-#pragma once
-
-#include "../gui/CIntObject.h"
-
 /*
  * CComponent.h, part of VCMI engine
  *
@@ -11,9 +7,13 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "../gui/CIntObject.h"
 
 struct Component;
 class CAnimImage;
+class CLabel;
 
 /// common popup window component
 class CComponent : public virtual CIntObject
@@ -35,6 +35,8 @@ public:
 	};
 
 private:
+	std::vector<std::shared_ptr<CLabel>> lines;
+
 	size_t getIndex();
 	const std::vector<std::string> getFileName();
 	void setSurface(std::string defName, int imgPos);
@@ -43,7 +45,7 @@ private:
 	void init(Etype Type, int Subtype, int Val, ESize imageSize);
 
 public:
-	CAnimImage *image; //our image
+	std::shared_ptr<CAnimImage> image;
 
 	Etype compType; //component type
 	ESize size; //component size.
@@ -54,8 +56,8 @@ public:
 	std::string getDescription();
 	std::string getSubtitle();
 
-	CComponent(Etype Type, int Subtype, int Val = 0, ESize imageSize=large);//c-tor
-	CComponent(const Component &c, ESize imageSize=large); //c-tor
+	CComponent(Etype Type, int Subtype, int Val = 0, ESize imageSize=large);
+	CComponent(const Component &c, ESize imageSize=large);
 
 	void clickRight(tribool down, bool previousState) override; //call-in
 };
@@ -72,20 +74,22 @@ public:
 	void select(bool on);
 
 	void clickLeft(tribool down, bool previousState) override; //call-in
-	CSelectableComponent(Etype Type, int Sub, int Val, ESize imageSize=large, std::function<void()> OnSelect = nullptr); //c-tor
-	CSelectableComponent(const Component &c, std::function<void()> OnSelect = nullptr); //c-tor
+	CSelectableComponent(Etype Type, int Sub, int Val, ESize imageSize=large, std::function<void()> OnSelect = nullptr);
+	CSelectableComponent(const Component & c, std::function<void()> OnSelect = nullptr);
 };
 
 /// box with multiple components (up to 8?)
 /// will take ownership on components and delete them afterwards
 class CComponentBox : public CIntObject
 {
-	std::vector<CComponent *> components;
+	std::vector<std::shared_ptr<CComponent>> components;
 
-	CSelectableComponent * selected;
+	std::vector<std::shared_ptr<CLabel>> orLabels;
+
+	std::shared_ptr<CSelectableComponent> selected;
 	std::function<void(int newID)> onSelect;
 
-	void selectionChanged(CSelectableComponent * newSelection);
+	void selectionChanged(std::shared_ptr<CSelectableComponent> newSelection);
 
 	//get position of "or" text between these comps
 	//it will place "or" equidistant to both images
@@ -99,14 +103,11 @@ public:
 	/// return index of selected item
 	int selectedIndex();
 
-	/// constructor for quite common 1-components popups
-	/// if position width or height are 0 then it will be determined automatically
-	CComponentBox(CComponent * components, Rect position);
 	/// constructor for non-selectable components
-	CComponentBox(std::vector<CComponent *> components, Rect position);
+	CComponentBox(std::vector<std::shared_ptr<CComponent>> components, Rect position);
 
 	/// constructor for selectable components
 	/// will also create "or" labels between components
 	/// onSelect - optional function that will be called every time on selection change
-	CComponentBox(std::vector<CSelectableComponent *> components, Rect position, std::function<void(int newID)> onSelect = nullptr);
+	CComponentBox(std::vector<std::shared_ptr<CSelectableComponent>> components, Rect position, std::function<void(int newID)> onSelect = nullptr);
 };

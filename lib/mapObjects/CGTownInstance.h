@@ -1,11 +1,3 @@
-#pragma once
-
-#include "CObjectHandler.h"
-#include "CGMarket.h" // For IMarket interface
-#include "CArmedInstance.h"
-
-#include "../CTownHandler.h" // For CTown
-
 /*
  * CGTownInstance.h, part of VCMI engine
  *
@@ -15,33 +7,56 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "CObjectHandler.h"
+#include "CGMarket.h" // For IMarket interface
+#include "CArmedInstance.h"
+
+#include "../CTownHandler.h" // For CTown
 
 class CCastleEvent;
 class CGTownInstance;
+class CGDwelling;
 
 class DLL_LINKAGE CSpecObjInfo
 {
 public:
-	virtual ~CSpecObjInfo(){};
-	PlayerColor player; //owner
+	CSpecObjInfo();
+	virtual ~CSpecObjInfo() = default;
+
+	virtual void serializeJson(JsonSerializeFormat & handler) = 0;
+
+	const CGDwelling * owner;
 };
 
 class DLL_LINKAGE CCreGenAsCastleInfo : public virtual CSpecObjInfo
 {
 public:
+	CCreGenAsCastleInfo();
 	bool asCastle;
-	ui32 identifier;
-	ui8 castles[2]; //allowed castles
+	ui32 identifier;//h3m internal identifier
+
+	std::vector<bool> allowedFactions;
+
+	std::string instanceId;//vcmi map instance identifier
+	void serializeJson(JsonSerializeFormat & handler) override;
 };
 
 class DLL_LINKAGE CCreGenLeveledInfo : public virtual CSpecObjInfo
 {
 public:
-	ui8 minLevel, maxLevel; //minimal and maximal level of creature in dwelling: <0, 6>
+	CCreGenLeveledInfo();
+	ui8 minLevel, maxLevel; //minimal and maximal level of creature in dwelling: <1, 7>
+
+	void serializeJson(JsonSerializeFormat & handler) override;
 };
 
 class DLL_LINKAGE CCreGenLeveledCastleInfo : public CCreGenAsCastleInfo, public CCreGenLeveledInfo
 {
+public:
+	CCreGenLeveledCastleInfo() = default;
+	void serializeJson(JsonSerializeFormat & handler) override;
 };
 
 class DLL_LINKAGE CGDwelling : public CArmedInstance
@@ -49,9 +64,13 @@ class DLL_LINKAGE CGDwelling : public CArmedInstance
 public:
 	typedef std::vector<std::pair<ui32, std::vector<CreatureID> > > TCreaturesSet;
 
-	CSpecObjInfo * info; //h3m info about dewlling
+	CSpecObjInfo * info; //random dwelling options; not serialized
 	TCreaturesSet creatures; //creatures[level] -> <vector of alternative ids (base creature and upgrades, creatures amount>
 
+	CGDwelling();
+	virtual ~CGDwelling();
+
+	void initRandomObjectInfo();
 protected:
 	void serializeJsonOptions(JsonSerializeFormat & handler) override;
 
@@ -69,7 +88,8 @@ private:
 public:
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & static_cast<CArmedInstance&>(*this) & creatures;
+		h & static_cast<CArmedInstance&>(*this);
+		h & creatures;
 	}
 };
 
@@ -83,7 +103,8 @@ public:
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & ID & id;
+		h & ID;
+		h & id;
 	}
 };
 class DLL_LINKAGE COPWBonus : public CGTownBuilding
@@ -170,23 +191,34 @@ public:
 		h & static_cast<CGDwelling&>(*this);
 		h & static_cast<IShipyard&>(*this);
 		h & static_cast<IMarket&>(*this);
-		h & name & builded & destroyed & identifier;
-		h & garrisonHero & visitingHero;
-		h & alignment & forbiddenBuildings & builtBuildings & bonusValue
-			& possibleSpells & obligatorySpells & spells & /*strInfo & */events & bonusingBuildings;
+		h & name;
+		h & builded;
+		h & destroyed;
+		h & identifier;
+		h & garrisonHero;
+		h & visitingHero;
+		h & alignment;
+		h & forbiddenBuildings;
+		h & builtBuildings;
+		h & bonusValue;
+		h & possibleSpells;
+		h & obligatorySpells;
+		h & spells;
+		h & events;
+		h & bonusingBuildings;
 
 		for (std::vector<CGTownBuilding*>::iterator i = bonusingBuildings.begin(); i!=bonusingBuildings.end(); i++)
 			(*i)->town = this;
 
-		h & town & townAndVis;
+		h & town;
+		h & townAndVis;
 		BONUS_TREE_DESERIALIZATION_FIX
 
 		vstd::erase_if(builtBuildings, [this](BuildingID building) -> bool
 		{
 			if(!town->buildings.count(building) ||  !town->buildings.at(building))
 			{
-				logGlobal->errorStream() << boost::format("#1444-like issue in CGTownInstance::serialize. From town %s at %s removing the bogus builtBuildings item %s")
-					% name % pos % building;
+				logGlobal->error("#1444-like issue in CGTownInstance::serialize. From town %s at %s removing the bogus builtBuildings item %s", name, pos.toString(), building);
 				return true;
 			}
 			return false;
@@ -233,6 +265,7 @@ public:
 	//checks if building is constructed and town has same subID
 	bool hasBuilt(BuildingID buildingID) const;
 	bool hasBuilt(BuildingID buildingID, int townID) const;
+	TResources getBuildingCost(BuildingID buildingID) const;
 	TResources dailyIncome() const; //calculates daily income of this town
 	int spellsAtLevel(int level, bool checkGuild) const; //levels are counted from 1 (1 - 5)
 	bool armedGarrison() const; //true if town has creatures in garrison or garrisoned hero
@@ -245,6 +278,8 @@ public:
 	void clearArmy() const;
 	void addHeroToStructureVisitors(const CGHeroInstance *h, si32 structureInstanceID) const; //hero must be visiting or garrisoned in town
 
+	const CTown * getTown() const ;
+
 	CGTownInstance();
 	virtual ~CGTownInstance();
 
@@ -255,7 +290,12 @@ public:
 	void initObj(CRandomGenerator & rand) override;
 	void battleFinished(const CGHeroInstance *hero, const BattleResult &result) const override;
 	std::string getObjectName() const override;
+
+	void afterAddToMap(CMap * map) override;
+	static void reset();
 protected:
 	void setPropertyDer(ui8 what, ui32 val) override;
 	void serializeJsonOptions(JsonSerializeFormat & handler) override;
+private:
+	int getDwellingBonus(const std::vector<CreatureID>& creatureIds, const std::vector<ConstTransitivePtr<CGDwelling> >& dwellings) const;
 };

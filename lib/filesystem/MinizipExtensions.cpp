@@ -71,7 +71,7 @@ template <class _Stream> inline int streamProxyClose(voidpf opaque, voidpf strea
 
 	_Stream * actualStream = static_cast<_Stream *>(stream);
 
-	logGlobal->traceStream() << "Proxy stream closed";
+	logGlobal->trace("Proxy stream closed");
 
 	actualStream->seek(0);
 
@@ -169,7 +169,7 @@ int ZCALLBACK CProxyIOApi::errorFileProxy(voidpf opaque, voidpf stream)
 
 CInputOutputStream * CProxyIOApi::openFile(const boost::filesystem::path & filename, int mode)
 {
-	logGlobal->traceStream() << "CProxyIOApi: stream opened for " <<filename.string() <<" with mode "<<mode;
+	logGlobal->trace("CProxyIOApi: stream opened for %s with mode %d", filename.string(), mode);
 
 	data->seek(0);
 	return data;
@@ -204,7 +204,7 @@ zlib_filefunc64_def CProxyROIOApi::getApiStructure()
 
 CInputStream * CProxyROIOApi::openFile(const boost::filesystem::path& filename, int mode)
 {
-	logGlobal->traceStream() << "CProxyIOApi: stream opened for " <<filename.string() <<" with mode "<<mode;
+	logGlobal->trace("CProxyROIOApi: stream opened for %s with mode %d", filename.string(), mode);
 
 	data->seek(0);
 	return data;
@@ -229,7 +229,7 @@ uLong ZCALLBACK CProxyROIOApi::readFileProxy(voidpf opaque, voidpf stream, void 
 
 uLong ZCALLBACK CProxyROIOApi::writeFileProxy(voidpf opaque, voidpf stream, const void* buf, uLong size)
 {
-	logGlobal->errorStream() << "Attempt to write to read-only stream";
+	logGlobal->error("Attempt to write to read-only stream");
 	return 0;
 }
 

@@ -1,3 +1,12 @@
+/*
+ * ERMInterpreter.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "ERMInterpreter.h"
 
@@ -10,16 +19,6 @@
 #include "../../lib/IGameCallback.h"
 #include "../../lib/mapObjects/CGHeroInstance.h"
 #include "../../lib/mapObjects/MiscObjects.h"
-
-/*
- * ERMInterpreter.cpp, part of VCMI engine
- *
- * Authors: listed in file AUTHORS in main folder
- *
- * License: GNU General Public License v2.0 or later
- * Full text of license available in license.txt file, in main folder
- *
- */
 
 namespace spirit = boost::spirit;
 using namespace VERMInterpreter;
@@ -383,7 +382,7 @@ void ERMInterpreter::scanForScripts()
 			if (ext == ".ERM" || ext == ".VERM")
 			{
 				ERMParser ep(dir->path().string());
-				FileInfo * finfo = new FileInfo;
+				FileInfo * finfo = new FileInfo();
 				finfo->filename = dir->path().string();
 
 				std::vector<LineInfo> buf = ep.parseFile();
@@ -399,7 +398,7 @@ void ERMInterpreter::scanForScripts()
 	}
 }
 
-void ERMInterpreter::printScripts( EPrintMode mode /*= EPrintMode::ALL*/ )
+void ERMInterpreter::printScripts(EPrintMode mode)
 {
 	std::map< LinePointer, ERM::TLine >::const_iterator prevIt;
 	for(std::map< LinePointer, ERM::TLine >::const_iterator it = scripts.begin(); it != scripts.end(); ++it)
@@ -474,7 +473,7 @@ ERMInterpreter::ERMInterpreter()
 	topDyn = globalEnv;
 }
 
-void ERMInterpreter::executeTrigger( VERMInterpreter::Trigger & trig, int funNum /*= -1*/, std::vector<int> funParams/*=std::vector<int>()*/ )
+void ERMInterpreter::executeTrigger(VERMInterpreter::Trigger & trig, int funNum, std::vector<int> funParams)
 {
 	//function-related logic
 	if(funNum != -1)
@@ -1775,7 +1774,7 @@ IexpValStr ERMInterpreter::getIexp( const ERM::TBodyOptionItem & opit ) const
 	return ret;
 }
 
-void ERMInterpreter::executeTriggerType( VERMInterpreter::TriggerType tt, bool pre, const TIDPattern & identifier, const std::vector<int> &funParams/*=std::vector<int>()*/ )
+void ERMInterpreter::executeTriggerType(VERMInterpreter::TriggerType tt, bool pre, const TIDPattern & identifier, const std::vector<int> &funParams)
 {
 	struct HLP
 	{
@@ -2717,7 +2716,7 @@ struct VEvaluator : boost::static_visitor<VOption>
 	}
 };
 
-VOption ERMInterpreter::eval( VOption line, Environment * env /*= nullptr*/ )
+VOption ERMInterpreter::eval(VOption line, Environment * env)
 {
 // 	if(line.children.isNil())
 // 		return;
@@ -2728,7 +2727,7 @@ VOption ERMInterpreter::eval( VOption line, Environment * env /*= nullptr*/ )
 	return boost::apply_visitor(VEvaluator(env ? *env : *topDyn), line);
 }
 
-VOptionList ERMInterpreter::evalEach( VermTreeIterator list, Environment * env /*= nullptr*/ )
+VOptionList ERMInterpreter::evalEach(VermTreeIterator list, Environment * env)
 {
 	VOptionList ret;
 	for(int g=0; g<list.size(); ++g)
@@ -2760,7 +2759,7 @@ void ERMInterpreter::executeUserCommand(const std::string &cmd)
 	}
 }
 
-void ERMInterpreter::giveInfoCB(CPrivilagedInfoCallback *cb)
+void ERMInterpreter::giveInfoCB(CPrivilegedInfoCallback *cb)
 {
 	icb = cb;
 }

@@ -1,3 +1,12 @@
+/*
+ * SDL_Extensions.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "SDL_Extensions.h"
 #include "SDL_Pixels.h"
@@ -11,24 +20,26 @@ const SDL_Color Colors::YELLOW = { 229, 215, 123, 0 };
 const SDL_Color Colors::WHITE = { 255, 243, 222, 0 };
 const SDL_Color Colors::METALLIC_GOLD = { 173, 142, 66, 0 };
 const SDL_Color Colors::GREEN = { 0, 255, 0, 0 };
+const SDL_Color Colors::ORANGE = { 232, 184, 32, 0 };
+const SDL_Color Colors::BRIGHT_YELLOW = { 242, 226, 110, 0 };
 const SDL_Color Colors::DEFAULT_KEY_COLOR = {0, 255, 255, 0};
 
 void SDL_UpdateRect(SDL_Surface *surface, int x, int y, int w, int h)
 {
 	Rect rect(x,y,w,h);
 	if(0 !=SDL_UpdateTexture(screenTexture, &rect, surface->pixels, surface->pitch))
-		logGlobal->errorStream() << __FUNCTION__ << "SDL_UpdateTexture " << SDL_GetError();
+		logGlobal->error("%sSDL_UpdateTexture %s", __FUNCTION__, SDL_GetError());
 
 	SDL_RenderClear(mainRenderer);
 	if(0 != SDL_RenderCopy(mainRenderer, screenTexture, NULL, NULL))
-		logGlobal->errorStream() << __FUNCTION__ << "SDL_RenderCopy " <<  SDL_GetError();
+		logGlobal->error("%sSDL_RenderCopy %s", __FUNCTION__, SDL_GetError());
 	SDL_RenderPresent(mainRenderer);
 
 }
 
 SDL_Surface * CSDL_Ext::newSurface(int w, int h, SDL_Surface * mod) //creates new surface, with flags/format same as in surface given
 {
-	SDL_Surface * ret = SDL_CreateRGBSurface(mod->flags,w,h,mod->format->BitsPerPixel,mod->format->Rmask,mod->format->Gmask,mod->format->Bmask,mod->format->Amask);
+	SDL_Surface * ret = SDL_CreateRGBSurface(0,w,h,mod->format->BitsPerPixel,mod->format->Rmask,mod->format->Gmask,mod->format->Bmask,mod->format->Amask);
 	if (mod->format->palette)
 	{
 		assert(ret->format->palette);
@@ -54,12 +65,17 @@ SDL_Surface * CSDL_Ext::createSurfaceWithBpp(int width, int height)
 	Channels::px<bpp>::b.set((Uint8*)&bMask, 255);
 	Channels::px<bpp>::a.set((Uint8*)&aMask, 255);
 
-	return SDL_CreateRGBSurface( SDL_SWSURFACE, width, height, bpp * 8, rMask, gMask, bMask, aMask);
+	return SDL_CreateRGBSurface(0, width, height, bpp * 8, rMask, gMask, bMask, aMask);
 }
 
 bool isItIn(const SDL_Rect * rect, int x, int y)
 {
 	return (x>rect->x && x<rect->x+rect->w) && (y>rect->y && y<rect->y+rect->h);
+}
+
+bool isItInOrLowerBounds(const SDL_Rect * rect, int x, int y)
+{
+	return (x >= rect->x && x < rect->x + rect->w) && (y >= rect->y && y < rect->y + rect->h);
 }
 
 void blitAt(SDL_Surface * src, int x, int y, SDL_Surface * dst)
@@ -134,7 +150,7 @@ SDL_Surface * CSDL_Ext::horizontalFlip(SDL_Surface * toRot)
 	SDL_UnlockSurface(ret);
 	SDL_UnlockSurface(toRot);
 	return ret;
-};
+}
 
 Uint32 CSDL_Ext::SDL_GetPixel(SDL_Surface *surface, const int & x, const int & y, bool colorByte)
 {
@@ -312,7 +328,7 @@ int CSDL_Ext::blit8bppAlphaTo24bpp(const SDL_Surface * src, const SDL_Rect * src
 	case 3: return blit8bppAlphaTo24bppT<3>(src, srcRect, dst, dstRect);
 	case 4: return blit8bppAlphaTo24bppT<4>(src, srcRect, dst, dstRect);
 	default:
-		logGlobal->errorStream() << (int)dst->format->BitsPerPixel << " bpp is not supported!!!";
+		logGlobal->error("%d bpp is not supported!", (int)dst->format->BitsPerPixel);
 		return -1;
 	}
 }
@@ -335,7 +351,7 @@ void CSDL_Ext::update(SDL_Surface * what)
 	if(!what)
 		return;
 	if(0 !=SDL_UpdateTexture(screenTexture, nullptr, what->pixels, what->pitch))
-		logGlobal->errorStream() << __FUNCTION__ << "SDL_UpdateTexture " << SDL_GetError();
+		logGlobal->error("%s SDL_UpdateTexture %s", __FUNCTION__, SDL_GetError());
 }
 void CSDL_Ext::drawBorder(SDL_Surface * sur, int x, int y, int w, int h, const int3 &color)
 {
@@ -393,7 +409,7 @@ void CSDL_Ext::setPlayerColor(SDL_Surface * sur, PlayerColor player)
 		SDL_SetColors(sur, color, 5, 1);
 	}
 	else
-		logGlobal->warnStream() << "Warning, setPlayerColor called on not 8bpp surface!";
+		logGlobal->warn("Warning, setPlayerColor called on not 8bpp surface!");
 }
 
 TColorPutter CSDL_Ext::getPutterFor(SDL_Surface * const &dest, int incrementing)
@@ -414,7 +430,7 @@ case BytesPerPixel:									\
 		CASE_BPP(3)
 		CASE_BPP(4)
 	default:
-		logGlobal->errorStream() << (int)dest->format->BitsPerPixel << "bpp is not supported!";
+		logGlobal->error("%d bpp is not supported!", (int)dest->format->BitsPerPixel);
 		return nullptr;
 	}
 
@@ -428,7 +444,7 @@ TColorPutterAlpha CSDL_Ext::getPutterAlphaFor(SDL_Surface * const &dest, int inc
 		CASE_BPP(3)
 		CASE_BPP(4)
 	default:
-		logGlobal->errorStream() << (int)dest->format->BitsPerPixel << "bpp is not supported!";
+		logGlobal->error("%d bpp is not supported!", (int)dest->format->BitsPerPixel);
 		return nullptr;
 	}
 #undef CASE_BPP
@@ -482,7 +498,7 @@ void CSDL_Ext::VflipSurf(SDL_Surface * surf)
 	}
 }
 
-void CSDL_Ext::SDL_PutPixelWithoutRefresh(SDL_Surface *ekran, const int & x, const int & y, const Uint8 & R, const Uint8 & G, const Uint8 & B, Uint8 A /*= 255*/)
+void CSDL_Ext::SDL_PutPixelWithoutRefresh(SDL_Surface *ekran, const int & x, const int & y, const Uint8 & R, const Uint8 & G, const Uint8 & B, Uint8 A)
 {
 	Uint8 *p = getPxPtr(ekran, x, y);
 	getPutterFor(ekran, false)(p, R, G, B);
@@ -495,7 +511,7 @@ void CSDL_Ext::SDL_PutPixelWithoutRefresh(SDL_Surface *ekran, const int & x, con
 	}
 }
 
-void CSDL_Ext::SDL_PutPixelWithoutRefreshIfInSurf(SDL_Surface *ekran, const int & x, const int & y, const Uint8 & R, const Uint8 & G, const Uint8 & B, Uint8 A /*= 255*/)
+void CSDL_Ext::SDL_PutPixelWithoutRefreshIfInSurf(SDL_Surface *ekran, const int & x, const int & y, const Uint8 & R, const Uint8 & G, const Uint8 & B, Uint8 A)
 {
 	const SDL_Rect & rect = ekran->clip_rect;
 

@@ -1,12 +1,3 @@
-﻿#pragma once
-
-#include "ObjectTemplate.h"
-
-#include "../GameConstants.h"
-#include "../ConstTransitivePtr.h"
-#include "../IHandlerBase.h"
-#include "../JsonNode.h"
-
 /*
  * CObjectClassesHandler.h, part of VCMI engine
  *
@@ -16,9 +7,32 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "ObjectTemplate.h"
+
+#include "../GameConstants.h"
+#include "../ConstTransitivePtr.h"
+#include "../IHandlerBase.h"
+#include "../JsonNode.h"
 
 class JsonNode;
 class CRandomGenerator;
+
+
+struct SObjectSounds
+{
+	std::vector<std::string> ambient;
+	std::vector<std::string> visit;
+	std::vector<std::string> removal;
+
+	template <typename Handler> void serialize(Handler &h, const int version)
+	{
+		h & ambient;
+		h & visit;
+		h & removal;
+	}
+};
 
 /// Structure that describes placement rules for this object in random map
 struct DLL_LINKAGE RandomMapInfo
@@ -44,7 +58,31 @@ struct DLL_LINKAGE RandomMapInfo
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & value & mapLimit & zoneLimit & rarity;
+		h & value;
+		h & mapLimit;
+		h & zoneLimit;
+		h & rarity;
+	}
+};
+
+struct DLL_LINKAGE CompoundMapObjectID
+{
+	si32 primaryID;
+	si32 secondaryID;
+
+	CompoundMapObjectID(si32 primID, si32 secID) : primaryID(primID), secondaryID(secID) {};
+
+	bool operator<(const CompoundMapObjectID& other) const
+	{
+		if(this->primaryID != other.primaryID)
+			return this->primaryID < other.primaryID;
+		else
+			return this->secondaryID < other.secondaryID;
+	}
+
+	bool operator==(const CompoundMapObjectID& other) const
+	{
+		return (this->primaryID == other.primaryID) && (this->secondaryID == other.secondaryID);
 	}
 };
 
@@ -106,6 +144,10 @@ class DLL_LINKAGE AObjectTypeHandler : public boost::noncopyable
 	JsonNode base; /// describes base template
 
 	std::vector<ObjectTemplate> templates;
+
+	SObjectSounds sounds;
+
+	boost::optional<si32> aiValue;
 protected:
 	void preInitObject(CGObjectInstance * obj) const;
 	virtual bool objectFilter(const CGObjectInstance *, const ObjectTemplate &) const;
@@ -129,6 +171,7 @@ public:
 
 	/// Returns object-specific name, if set
 	boost::optional<std::string> getCustomName() const;
+	SObjectSounds getSounds() const;
 
 	void addTemplate(const ObjectTemplate & templ);
 	void addTemplate(JsonNode config);
@@ -142,6 +185,8 @@ public:
 	boost::optional<ObjectTemplate> getOverride(si32 terrainType, const CGObjectInstance * object) const;
 
 	const RandomMapInfo & getRMGInfo();
+
+	boost::optional<si32> getAiValue() const;
 
 	virtual bool isStaticObject();
 
@@ -160,10 +205,23 @@ public:
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{
-		h & type & subtype & templates & rmgInfo & objectName;
+		h & type;
+		h & subtype;
+		h & templates;
+		h & rmgInfo;
+		h & objectName;
 		if(version >= 759)
 		{
-			h & typeName & subTypeName;
+			h & typeName;
+			h & subTypeName;
+		}
+		if(version >= 778)
+		{
+			h & sounds;
+		}
+		if(version >= 789)
+		{
+			h & aiValue;
 		}
 	}
 };
@@ -185,12 +243,28 @@ class DLL_LINKAGE CObjectClassesHandler : public IHandlerBase
 		std::map<si32, TObjectTypeHandler> subObjects;
 		std::map<std::string, si32> subIds;//full id from core scope -> subtype
 
+		SObjectSounds sounds;
+
+		boost::optional<si32> groupDefaultAiValue;
+
 		template <typename Handler> void serialize(Handler &h, const int version)
 		{
-			h & name & handlerName & base & subObjects;
+			h & name;
+			h & handlerName;
+			h & base;
+			h & subObjects;
 			if(version >= 759)
 			{
-				h & identifier & subIds;
+				h & identifier;
+				h & subIds;
+			}
+			if(version >= 778)
+			{
+				h & sounds;
+			}
+			if(version >= 789)
+			{
+				h & groupDefaultAiValue;
 			}
 		}
 	};
@@ -235,12 +309,18 @@ public:
 	/// returns handler for specified object (ID-based). ObjectHandler keeps ownership
 	TObjectTypeHandler getHandlerFor(si32 type, si32 subtype) const;
 	TObjectTypeHandler getHandlerFor(std::string type, std::string subtype) const;
+	TObjectTypeHandler getHandlerFor(CompoundMapObjectID compoundIdentifier) const;
 
 	std::string getObjectName(si32 type) const;
 	std::string getObjectName(si32 type, si32 subtype) const;
 
+	SObjectSounds getObjectSounds(si32 type) const;
+	SObjectSounds getObjectSounds(si32 type, si32 subtype) const;
+
 	/// Returns handler string describing the handler (for use in client)
 	std::string getObjectHandlerName(si32 type) const;
+
+	boost::optional<si32> getObjGroupAiValue(si32 primaryID) const; //default AI value of objects belonging to particular primaryID
 
 	template <typename Handler> void serialize(Handler &h, const int version)
 	{

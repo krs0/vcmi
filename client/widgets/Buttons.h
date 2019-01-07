@@ -1,3 +1,12 @@
+/*
+ * Buttons.h, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #pragma once
 
 #include "../gui/CIntObject.h"
@@ -15,16 +24,6 @@ namespace config
 {
 	struct ButtonInfo;
 }
-
-/*
- * Buttons.h, part of VCMI engine
- *
- * Authors: listed in file AUTHORS in main folder
- *
- * License: GNU General Public License v2.0 or later
- * Full text of license available in license.txt file, in main folder
- *
- */
 
 /// Typical Heroes 3 button which can be inactive or active and can
 /// hold further information if you right-click it
@@ -48,11 +47,12 @@ private:
 
 	std::array<int, 4> stateToIndex; // mapping of button state to index of frame in animation
 	std::array<std::string, 4> hoverTexts; //texts for statusbar, if empty - first entry will be used
+	std::array<boost::optional<SDL_Color>, 4> stateToBorderColor; // mapping of button state to border color
 	std::string helpBox; //for right-click help
 
-	CAnimImage * image; //image for this button
-	CIntObject * overlay;//object-overlay, can be null
-
+	std::shared_ptr<CAnimImage> image; //image for this button
+	std::shared_ptr<CIntObject> overlay;//object-overlay, can be null
+	bool animateLonelyFrame = false;
 protected:
 	void onButtonClicked(); // calls callback
 	void update();//to refresh button after image or text change
@@ -66,20 +66,28 @@ public:
 		hoverable,//if true, button will be highlighted when hovered (e.g. main menu)
 		soundDisabled;
 
-	// if set, button will have 1-px border around it with this color
-	boost::optional<SDL_Color> borderColor;
+	// sets border color for each button state;
+	// if it's set, the button will have 1-px border around it with this color
+	void setBorderColor(boost::optional<SDL_Color> normalBorderColor,
+	                    boost::optional<SDL_Color> pressedBorderColor,
+	                    boost::optional<SDL_Color> blockedBorderColor,
+	                    boost::optional<SDL_Color> highlightedBorderColor);
+
+	// sets the same border color for all button states.
+	void setBorderColor(boost::optional<SDL_Color> borderColor);
 
 	/// adds one more callback to on-click actions
 	void addCallback(std::function<void()> callback);
 
 	/// adds overlay on top of button image. Only one overlay can be active at once
-	void addOverlay(CIntObject * newOverlay);
-	void addTextOverlay(const std::string &Text, EFonts font, SDL_Color color = Colors::WHITE);
+	void addOverlay(std::shared_ptr<CIntObject> newOverlay);
+	void addTextOverlay(const std::string & Text, EFonts font, SDL_Color color = Colors::WHITE);
 
 	void addImage(std::string filename);
 	void addHoverText(ButtonState state, std::string text);
 
 	void setImageOrder(int state1, int state2, int state3, int state4);
+	void setAnimateLonelyFrame(bool agreement);
 	void block(bool on);
 
 	/// State modifiers
@@ -87,7 +95,7 @@ public:
 	bool isHighlighted();
 
 	/// Constructor
-	CButton(Point position, const std::string &defName, const std::pair<std::string, std::string> &help,
+	CButton(Point position, const std::string & defName, const std::pair<std::string, std::string> & help,
 	        CFunctionList<void()> Callback = 0, int key=0, bool playerColoredButton = false );
 
 	/// Appearance modifiers
@@ -154,14 +162,15 @@ class CToggleGroup : public CIntObject
 	int selectedID;
 	void selectionChanged(int to);
 public:
-	std::map<int, CToggleBase*> buttons;
+	std::map<int, std::shared_ptr<CToggleBase>> buttons;
 
 	CToggleGroup(const CFunctionList<void(int)> & OnChange);
 
 	void addCallback(std::function<void(int)> callback);
+	void resetCallback();
 
 	/// add one toggle/button into group
-	void addToggle(int index, CToggleBase * button);
+	void addToggle(int index, std::shared_ptr<CToggleBase> button);
 	/// Changes selection to specific value. Will select toggle with this ID, if present
 	void setSelected(int id);
 };
@@ -171,7 +180,7 @@ class CVolumeSlider : public CIntObject
 {
 	int value;
 	CFunctionList<void(int)> onChange;
-	CAnimImage * animImage;
+	std::shared_ptr<CAnimImage> animImage;
 	const std::pair<std::string, std::string> * const helpHandlers;
 	void setVolume(const int v);
 public:
@@ -180,7 +189,7 @@ public:
 	/// @param defName name of def animation for slider
 	/// @param value initial value for volume
 	/// @param help pointer to first helptext of slider
-	CVolumeSlider(const Point &position, const std::string &defName, const int value,
+	CVolumeSlider(const Point & position, const std::string & defName, const int value,
 	              const std::pair<std::string, std::string> * const help);
 
 	void moveTo(int id);
@@ -195,7 +204,11 @@ public:
 /// A typical slider which can be orientated horizontally/vertically.
 class CSlider : public CIntObject
 {
-	CButton *left, *right, *slider; //if vertical then left=up
+	//if vertical then left=up
+	std::shared_ptr<CButton> left;
+	std::shared_ptr<CButton> right;
+	std::shared_ptr<CButton> slider;
+
 	int capacity;//how many elements can be active at same time (e.g. hero list = 5)
 	int positions; //number of highest position (0 if there is only one)
 	bool horizontal;
@@ -208,7 +221,8 @@ class CSlider : public CIntObject
 	void sliderClicked();
 
 public:
-	enum EStyle {
+	enum EStyle
+	{
 		BROWN,
 		BLUE
 	};

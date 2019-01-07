@@ -1,3 +1,12 @@
+/*
+ * Images.h, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #pragma once
 
 #include "../gui/CIntObject.h"
@@ -8,16 +17,6 @@ struct Rect;
 class CAnimImage;
 class CLabel;
 class CAnimation;
-
-/*
- * Images.h, part of VCMI engine
- *
- * Authors: listed in file AUTHORS in main folder
- *
- * License: GNU General Public License v2.0 or later
- * Full text of license available in license.txt file, in main folder
- *
- */
 
 // Image class
 class CPicture : public CIntObject
@@ -51,7 +50,6 @@ public:
 	void show(SDL_Surface * to) override;
 	void showAll(SDL_Surface * to) override;
 	void convertToScreenBPP();
-	void colorizeAndConvert(PlayerColor player);
 	void colorize(PlayerColor player);
 };
 
@@ -84,7 +82,7 @@ public:
 
 	CAnimImage(const std::string & name, size_t Frame, size_t Group=0, int x=0, int y=0, ui8 Flags=0);
 	CAnimImage(std::shared_ptr<CAnimation> Anim, size_t Frame, size_t Group=0, int x=0, int y=0, ui8 Flags=0);
-	~CAnimImage();//d-tor
+	~CAnimImage();
 
 	//size of animation
 	size_t size();
@@ -107,12 +105,11 @@ public:
 		BASE=1,            //base frame will be blitted before current one
 		HORIZONTAL_FLIP=2, //TODO: will be displayed rotated
 		VERTICAL_FLIP=4,   //TODO: will be displayed rotated
-		USE_RLE=8,         //RLE-d version, support full alpha-channel for 8-bit images
 		PLAYER_COLORED=16, //TODO: all loaded images will be player-colored
 		PLAY_ONCE=32       //play animation only once and stop at last frame
 	};
 protected:
-	CAnimation * anim;
+	std::shared_ptr<CAnimation> anim;
 
 	size_t group, frame;//current frame
 
@@ -182,7 +179,7 @@ public:
 		HITTED=3,
 		DEFENCE=4,
 		DEATH=5,
-		//DEATH2=6, //unused?
+		DEATH_RANGED=6,
 		TURN_L=7,
 		TURN_R=8, //same
 		//TURN_L2=9, //identical to previous?
@@ -198,8 +195,16 @@ public:
 		CAST_DOWN=19,
 		MOVE_START=20,
 		MOVE_END=21,
-		DEAD = 22 // new group, used to show dead stacks. If empty - last frame from "DEATH" will be copied here
 
+		DEAD = 22, // new group, used to show dead stacks. If empty - last frame from "DEATH" will be copied here
+		DEAD_RANGED = 23, // new group, used to show dead stacks (if DEATH_RANGED was used). If empty - last frame from "DEATH_RANGED" will be copied here
+
+		VCMI_CAST_UP    = 30,
+		VCMI_CAST_FRONT = 31,
+		VCMI_CAST_DOWN  = 32,
+		VCMI_2HEX_UP    = 40,
+		VCMI_2HEX_FRONT = 41,
+		VCMI_2HEX_DOWN  = 42
 	};
 
 private:
@@ -221,7 +226,6 @@ public:
 	//clear queue and set animation to this sequence
 	void clearAndSet(EAnimType type);
 
-	CCreatureAnim(int x, int y, std::string name, Rect picPos,
-				  ui8 flags= USE_RLE, EAnimType = HOLDING );
+	CCreatureAnim(int x, int y, std::string name, ui8 flags = 0, EAnimType = HOLDING);
 
 };

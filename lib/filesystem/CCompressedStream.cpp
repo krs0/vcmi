@@ -1,3 +1,12 @@
+/*
+ * CCompressedStream.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "CCompressedStream.h"
 
@@ -84,7 +93,7 @@ CCompressedStream::CCompressedStream(std::unique_ptr<CInputStream> stream, bool 
 	assert(gzipStream);
 
 	// Allocate inflate state
-	inflateState = new z_stream;
+	inflateState = new z_stream();
 	inflateState->zalloc = Z_NULL;
 	inflateState->zfree = Z_NULL;
 	inflateState->opaque = Z_NULL;

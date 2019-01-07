@@ -1,4 +1,3 @@
-
 /*
  * CRmgTemplate.h, part of VCMI engine
  *
@@ -11,53 +10,153 @@
 
 #pragma once
 
+#include "../int3.h"
 #include "../GameConstants.h"
+#include "../ResourceSet.h"
+#include "CMapGenOptions.h"
 
-class CRmgTemplateZone;
+class JsonSerializeFormat;
 
-/// The CRmgTemplateZoneConnection describes the connection between two zones.
-class DLL_LINKAGE CRmgTemplateZoneConnection
+namespace ETemplateZoneType
+{
+	enum ETemplateZoneType
+	{
+		PLAYER_START,
+		CPU_START,
+		TREASURE,
+		JUNCTION
+	};
+}
+
+class DLL_LINKAGE CTreasureInfo
 {
 public:
-	CRmgTemplateZoneConnection();
+	ui32 min;
+	ui32 max;
+	ui16 density;
+	CTreasureInfo();
 
-	CRmgTemplateZone * getZoneA() const;
-	void setZoneA(CRmgTemplateZone * value);
-	CRmgTemplateZone * getZoneB() const;
-	void setZoneB(CRmgTemplateZone * value);
-	int getGuardStrength() const; /// Default: 0
-	void setGuardStrength(int value);
+	bool operator ==(const CTreasureInfo & other) const;
 
+	void serializeJson(JsonSerializeFormat & handler);
+};
+
+namespace rmg
+{
+
+class DLL_LINKAGE ZoneConnection
+{
+public:
+	ZoneConnection();
+
+	TRmgTemplateZoneId getZoneA() const;
+	TRmgTemplateZoneId getZoneB() const;
+	int getGuardStrength() const;
+
+	void serializeJson(JsonSerializeFormat & handler);
 private:
-	CRmgTemplateZone * zoneA, * zoneB;
+	TRmgTemplateZoneId zoneA;
+	TRmgTemplateZoneId zoneB;
 	int guardStrength;
 };
+
+class DLL_LINKAGE ZoneOptions
+{
+public:
+	static const std::set<ETerrainType> DEFAULT_TERRAIN_TYPES;
+	static const TRmgTemplateZoneId NO_ZONE;
+
+	class DLL_LINKAGE CTownInfo
+	{
+	public:
+		CTownInfo();
+
+		int getTownCount() const;
+		int getCastleCount() const;
+		int getTownDensity() const;
+		int getCastleDensity() const;
+
+		void serializeJson(JsonSerializeFormat & handler);
+
+	private:
+		int townCount;
+		int castleCount;
+		int townDensity;
+		int castleDensity;
+	};
+
+	ZoneOptions();
+
+	ZoneOptions & operator=(const ZoneOptions & other);
+
+	TRmgTemplateZoneId getId() const;
+	void setId(TRmgTemplateZoneId value);
+
+	ETemplateZoneType::ETemplateZoneType getType() const;
+	int getSize() const;
+	void setSize(int value);
+	boost::optional<int> getOwner() const;
+
+	const std::set<ETerrainType> & getTerrainTypes() const;
+	void setTerrainTypes(const std::set<ETerrainType> & value);
+
+	std::set<TFaction> getDefaultTownTypes() const;
+	const std::set<TFaction> & getTownTypes() const;
+
+	void setTownTypes(const std::set<TFaction> & value);
+	void setMonsterTypes(const std::set<TFaction> & value);
+
+	void setMinesInfo(const std::map<TResource, ui16> & value);
+	std::map<TResource, ui16> getMinesInfo() const;
+
+	void setTreasureInfo(const std::vector<CTreasureInfo> & value);
+	const std::vector<CTreasureInfo> & getTreasureInfo() const;
+
+	TRmgTemplateZoneId getMinesLikeZone() const;
+	TRmgTemplateZoneId getTerrainTypeLikeZone() const;
+	TRmgTemplateZoneId getTreasureLikeZone() const;
+
+	void addConnection(TRmgTemplateZoneId otherZone);
+	std::vector<TRmgTemplateZoneId> getConnections() const;
+
+	void serializeJson(JsonSerializeFormat & handler);
+
+protected:
+	TRmgTemplateZoneId id;
+	ETemplateZoneType::ETemplateZoneType type;
+	int size;
+	boost::optional<int> owner;
+	CTownInfo playerTowns;
+	CTownInfo neutralTowns;
+	bool matchTerrainToTown;
+	std::set<ETerrainType> terrainTypes;
+	bool townsAreSameType;
+
+	std::set<TFaction> townTypes;
+	std::set<TFaction> monsterTypes;
+
+	EMonsterStrength::EMonsterStrength zoneMonsterStrength;
+
+	std::map<TResource, ui16> mines; //obligatory mines to spawn in this zone
+
+	std::vector<CTreasureInfo> treasureInfo;
+
+	std::vector<TRmgTemplateZoneId> connections; //list of adjacent zones
+
+	TRmgTemplateZoneId minesLikeZone;
+	TRmgTemplateZoneId terrainTypeLikeZone;
+	TRmgTemplateZoneId treasureLikeZone;
+};
+
+}
 
 /// The CRmgTemplate describes a random map template.
 class DLL_LINKAGE CRmgTemplate
 {
 public:
-	class CSize
-	{
-	public:
-		CSize();
-		CSize(int width, int height, bool under);
+	using Zones = std::map<TRmgTemplateZoneId, std::shared_ptr<rmg::ZoneOptions>>;
 
-		int getWidth() const; /// Default: CMapHeader::MAP_SIZE_MIDDLE
-		void setWidth(int value);
-		int getHeight() const; /// Default: CMapHeader::MAP_SIZE_MIDDLE
-		void setHeight(int value);
-		bool getUnder() const; /// Default: true
-		void setUnder(bool value);
-		bool operator<=(const CSize & value) const;
-		bool operator>=(const CSize & value) const;
-
-	private:
-		int width, height;
-		bool under;
-	};
-
-	class CPlayerCountRange
+	class DLL_LINKAGE CPlayerCountRange
 	{
 	public:
 		void addRange(int lower, int upper);
@@ -65,34 +164,39 @@ public:
 		bool isInRange(int count) const;
 		std::set<int> getNumbers() const;
 
+		std::string toString() const;
+		void fromString(const std::string & value);
+
 	private:
-		std::list<std::pair<int, int> > range;
+		std::vector<std::pair<int, int> > range;
 	};
 
 	CRmgTemplate();
 	~CRmgTemplate();
 
+	bool matchesSize(const int3 & value) const;
+
+	void setId(const std::string & value);
 	const std::string & getName() const;
-	void setName(const std::string & value);
-	const CSize & getMinSize() const;
-	void setMinSize(const CSize & value);
-	const CSize & getMaxSize() const;
-	void setMaxSize(const CSize & value);
+
 	const CPlayerCountRange & getPlayers() const;
-	void setPlayers(const CPlayerCountRange & value);
 	const CPlayerCountRange & getCpuPlayers() const;
-	void setCpuPlayers(const CPlayerCountRange & value);
-	const std::map<TRmgTemplateZoneId, CRmgTemplateZone *> & getZones() const;
-	void setZones(const std::map<TRmgTemplateZoneId, CRmgTemplateZone *> & value);
-	const std::list<CRmgTemplateZoneConnection> & getConnections() const;
-	void setConnections(const std::list<CRmgTemplateZoneConnection> & value);
+	const Zones & getZones() const;
+	const std::vector<rmg::ZoneConnection> & getConnections() const;
 
 	void validate() const; /// Tests template on validity and throws exception on failure
 
+	void serializeJson(JsonSerializeFormat & handler);
+
 private:
+	std::string id;
 	std::string name;
-	CSize minSize, maxSize;
+	int3 minSize, maxSize;
 	CPlayerCountRange players, cpuPlayers;
-	std::map<TRmgTemplateZoneId, CRmgTemplateZone *> zones;
-	std::list<CRmgTemplateZoneConnection> connections;
+	Zones zones;
+	std::vector<rmg::ZoneConnection> connections;
+
+	void afterLoad();
+	void serializeSize(JsonSerializeFormat & handler, int3 & value, const std::string & fieldName);
+	void serializePlayers(JsonSerializeFormat & handler, CPlayerCountRange & value, const std::string & fieldName);
 };

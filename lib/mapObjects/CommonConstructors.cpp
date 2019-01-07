@@ -1,3 +1,12 @@
+/*
+ * CommonConstructors.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "CommonConstructors.h"
 
@@ -10,16 +19,6 @@
 #include "JsonRandom.h"
 #include "../CModHandler.h"
 #include "../IGameCallback.h"
-
-/*
- * CommonConstructors.cpp, part of VCMI engine
- *
- * Authors: listed in file AUTHORS in main folder
- *
- * License: GNU General Public License v2.0 or later
- * Full text of license available in license.txt file, in main folder
- *
- */
 
 CObstacleConstructor::CObstacleConstructor()
 {
@@ -199,14 +198,14 @@ void CDwellingInstanceConstructor::configureObject(CGObjectInstance * object, CR
 
 	bool guarded = false; //TODO: serialize for sanity
 
-	if (guards.getType() == JsonNode::DATA_BOOL) //simple switch
+	if (guards.getType() == JsonNode::JsonType::DATA_BOOL) //simple switch
 	{
 		if (guards.Bool())
 		{
 			guarded = true;
 		}
 	}
-	else if (guards.getType() == JsonNode::DATA_VECTOR) //custom guards (eg. Elemental Conflux)
+	else if (guards.getType() == JsonNode::JsonType::DATA_VECTOR) //custom guards (eg. Elemental Conflux)
 	{
 		for (auto & stack : JsonRandom::loadCreatures(guards, rng))
 		{
@@ -301,8 +300,6 @@ BankConfig CBankInstanceConstructor::generateConfig(const JsonNode & level, CRan
 
 void CBankInstanceConstructor::configureObject(CGObjectInstance * object, CRandomGenerator & rng) const
 {
-	//logGlobal->debugStream() << "Seed used to configure bank is " << rng.nextInt();
-
 	auto bank = dynamic_cast<CBank*>(object);
 
 	bank->resetDuration = bankResetDuration;
@@ -314,7 +311,6 @@ void CBankInstanceConstructor::configureObject(CGObjectInstance * object, CRando
 	assert(totalChance != 0);
 
 	si32 selectedChance = rng.nextInt(totalChance - 1);
-	//logGlobal->debugStream() << "Selected chance for bank config is " << selectedChance;
 
 	int cumulativeChance = 0;
 	for (auto & node : levels)

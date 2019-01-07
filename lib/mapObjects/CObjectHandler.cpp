@@ -53,7 +53,7 @@ static void showInfoDialog(const PlayerColor playerID, const ui32 txtID, const u
 	showInfoDialog(playerID,txtID,soundID);
 }*/
 
-static void showInfoDialog(const CGHeroInstance* h, const ui32 txtID, const ui16 soundID)
+static void showInfoDialog(const CGHeroInstance* h, const ui32 txtID, const ui16 soundID = 0)
 {
 	const PlayerColor playerID = h->getOwner();
 	showInfoDialog(playerID,txtID,soundID);
@@ -110,13 +110,13 @@ void IObjectInterface::heroLevelUpDone(const CGHeroInstance *hero) const
 
 CObjectHandler::CObjectHandler()
 {
-	logGlobal->traceStream() << "\t\tReading resources prices ";
+	logGlobal->trace("\t\tReading resources prices ");
 	const JsonNode config2(ResourceID("config/resources.json"));
 	for(const JsonNode &price : config2["resources_prices"].Vector())
 	{
 		resVals.push_back(price.Float());
 	}
-	logGlobal->traceStream() << "\t\tDone loading resource prices!";
+	logGlobal->trace("\t\tDone loading resource prices!");
 }
 
 PlayerColor CGObjectInstance::getOwner() const
@@ -196,8 +196,7 @@ void CGObjectInstance::setType(si32 ID, si32 subID)
 	auto handler = VLC->objtypeh->getHandlerFor(ID, subID);
 	if(!handler)
 	{
-		logGlobal->errorStream() << boost::format(
-			  "Unknown object type %d:%d at %s") % ID % subID % visitablePos();
+		logGlobal->error("Unknown object type %d:%d at %s", ID, subID, visitablePos().toString());
 		return;
 	}
 	if(!handler->getTemplates(tile.terType).empty())
@@ -272,6 +271,33 @@ std::string CGObjectInstance::getObjectName() const
 	return VLC->objtypeh->getObjectName(ID, subID);
 }
 
+boost::optional<std::string> CGObjectInstance::getAmbientSound() const
+{
+	const auto & sounds = VLC->objtypeh->getObjectSounds(ID, subID).ambient;
+	if(sounds.size())
+		return sounds.front(); // TODO: Support randomization of ambient sounds
+
+	return boost::none;
+}
+
+boost::optional<std::string> CGObjectInstance::getVisitSound() const
+{
+	const auto & sounds = VLC->objtypeh->getObjectSounds(ID, subID).visit;
+	if(sounds.size())
+		return *RandomGeneratorUtil::nextItem(sounds, CRandomGenerator::getDefault());
+
+	return boost::none;
+}
+
+boost::optional<std::string> CGObjectInstance::getRemovalSound() const
+{
+	const auto & sounds = VLC->objtypeh->getObjectSounds(ID, subID).removal;
+	if(sounds.size())
+		return *RandomGeneratorUtil::nextItem(sounds, CRandomGenerator::getDefault());
+
+	return boost::none;
+}
+
 std::string CGObjectInstance::getHoverText(PlayerColor player) const
 {
 	return getObjectName();
@@ -294,7 +320,7 @@ void CGObjectInstance::onHeroVisit( const CGHeroInstance * h ) const
 	case Obj::SANCTUARY:
 		{
 			//You enter the sanctuary and immediately feel as if a great weight has been lifted off your shoulders.  You feel safe here.
-			showInfoDialog(h,114,soundBase::GETPROTECTION);
+			showInfoDialog(h, 114);
 		}
 		break;
 	case Obj::TAVERN:
@@ -328,56 +354,38 @@ void CGObjectInstance::serializeJson(JsonSerializeFormat & handler)
 		handler.serializeString("type", typeName);
 		handler.serializeString("subtype", subTypeName);
 
-		handler.serializeNumeric("x", pos.x);
-		handler.serializeNumeric("y", pos.y);
-		handler.serializeNumeric("l", pos.z);
-		appearance.writeJson(handler.getCurrent()["template"], false);
+		handler.serializeInt("x", pos.x);
+		handler.serializeInt("y", pos.y);
+		handler.serializeInt("l", pos.z);
+		JsonNode app;
+		appearance.writeJson(app, false);
+		handler.serializeRaw("template",app, boost::none);
 	}
 
 	{
 		auto options = handler.enterStruct("options");
 		serializeJsonOptions(handler);
 	}
+}
 
-	if(handler.saving && handler.getCurrent()["options"].Struct().empty())
-	{
-		handler.getCurrent().Struct().erase("options");
-	}
+void CGObjectInstance::afterAddToMap(CMap * map)
+{
+	//nothing here
 }
 
 void CGObjectInstance::serializeJsonOptions(JsonSerializeFormat & handler)
 {
-
+	//nothing here
 }
 
 void CGObjectInstance::serializeJsonOwner(JsonSerializeFormat & handler)
 {
-	std::string temp;
+	ui8 temp = tempOwner.getNum();
 
-	//todo: use enum serialize
-	if(handler.saving)
-	{
-		if(tempOwner.isValidPlayer())
-		{
-			temp = GameConstants::PLAYER_COLOR_NAMES[tempOwner.getNum()];
-			handler.serializeString("owner", temp);
-		}
-	}
-	else
-	{
-		tempOwner = PlayerColor::NEUTRAL;//this method assumes that object is ownable
+	handler.serializeEnum("owner", temp, PlayerColor::NEUTRAL.getNum(), GameConstants::PLAYER_COLOR_NAMES);
 
-		handler.serializeString("owner", temp);
-
-		if(temp != "")
-		{
-			auto rawOwner = vstd::find_pos(GameConstants::PLAYER_COLOR_NAMES, temp);
-			if(rawOwner >=0)
-				tempOwner = PlayerColor(rawOwner);
-			else
-				logGlobal->errorStream() << "Invalid owner :" << temp;
-		}
-	}
+	if(!handler.saving)
+		tempOwner = PlayerColor(temp);
 }
 
 CGObjectInstanceBySubIdFinder::CGObjectInstanceBySubIdFinder(CGObjectInstance * obj) : obj(obj)
@@ -449,7 +457,7 @@ void IBoatGenerator::getProblemText(MetaString &out, const CGHeroInstance *visit
 			out.addTxt(MetaString::ADVOB_TXT, 189);
 		break;
 	case NO_WATER:
-		logGlobal->errorStream() << "Shipyard without water!!! " << o->pos << "\t" << o->id;
+		logGlobal->error("Shipyard without water! %s \t %d", o->pos.toString(), o->id.getNum());
 		return;
 	}
 }

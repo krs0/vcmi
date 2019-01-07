@@ -18,12 +18,89 @@
 #include "../CModHandler.h"
 #include "../IGameCallback.h"
 #include "../CGameState.h"
-#include "../mapping/CMapDefines.h"
+#include "../mapping/CMap.h"
 #include "../CPlayerState.h"
 #include "../serializer/JsonSerializeFormat.h"
 
 std::vector<const CArtifact *> CGTownInstance::merchantArtifacts;
 std::vector<int> CGTownInstance::universitySkills;
+
+CSpecObjInfo::CSpecObjInfo():
+	owner(nullptr)
+{
+
+}
+
+CCreGenAsCastleInfo::CCreGenAsCastleInfo():
+	CSpecObjInfo(),	asCastle(false),identifier(0)
+{
+
+}
+
+void CCreGenAsCastleInfo::serializeJson(JsonSerializeFormat & handler)
+{
+	handler.serializeString("sameAsTown", instanceId);
+
+	if(!handler.saving)
+	{
+		asCastle = (instanceId != "");
+		allowedFactions.clear();
+	}
+
+	if(!asCastle)
+	{
+		std::vector<bool> standard;
+		standard.resize(VLC->townh->factions.size(), true);
+
+		JsonSerializeFormat::LIC allowedLIC(standard, &CTownHandler::decodeFaction, &CTownHandler::encodeFaction);
+		allowedLIC.any = allowedFactions;
+
+		handler.serializeLIC("allowedFactions", allowedLIC);
+
+		if(!handler.saving)
+		{
+			allowedFactions = allowedLIC.any;
+		}
+	}
+}
+
+CCreGenLeveledInfo::CCreGenLeveledInfo():
+	CSpecObjInfo(),
+	minLevel(0), maxLevel(7)
+{
+
+}
+
+void CCreGenLeveledInfo::serializeJson(JsonSerializeFormat & handler)
+{
+	handler.serializeInt("minLevel", minLevel, ui8(1));
+	handler.serializeInt("maxLevel", maxLevel, ui8(7));
+
+	if(!handler.saving)
+	{
+		//todo: safely allow any level > 7
+		vstd::amax(minLevel, 1);
+		vstd::amin(minLevel, 7);
+		vstd::abetween(maxLevel, minLevel, 7);
+	}
+}
+
+void CCreGenLeveledCastleInfo::serializeJson(JsonSerializeFormat & handler)
+{
+	CCreGenAsCastleInfo::serializeJson(handler);
+	CCreGenLeveledInfo::serializeJson(handler);
+}
+
+CGDwelling::CGDwelling():
+	CArmedInstance()
+{
+	info = nullptr;
+}
+
+CGDwelling::~CGDwelling()
+{
+	vstd::clear_pointer(info);
+}
 
 void CGDwelling::initObj(CRandomGenerator & rand)
 {
@@ -58,12 +135,30 @@ void CGDwelling::initObj(CRandomGenerator & rand)
 	}
 }
 
+void CGDwelling::initRandomObjectInfo()
+{
+	vstd::clear_pointer(info);
+	switch(ID)
+	{
+		case Obj::RANDOM_DWELLING: info = new CCreGenLeveledCastleInfo();
+			break;
+		case Obj::RANDOM_DWELLING_LVL: info = new CCreGenAsCastleInfo();
+			break;
+		case Obj::RANDOM_DWELLING_FACTION: info = new CCreGenLeveledInfo();
+			break;
+	}
+
+	if(info)
+		info->owner = this;
+}
+
 void CGDwelling::setPropertyDer(ui8 what, ui32 val)
 {
 	switch (what)
 	{
 		case ObjProperty::OWNER: //change owner
-			if (ID == Obj::CREATURE_GENERATOR1) //single generators
+			if (ID == Obj::CREATURE_GENERATOR1 || ID == Obj::CREATURE_GENERATOR2
+				|| ID == Obj::CREATURE_GENERATOR3 || ID == Obj::CREATURE_GENERATOR4)
 			{
 				if (tempOwner != PlayerColor::NEUTRAL)
 				{
@@ -105,7 +200,7 @@ void CGDwelling::onHeroVisit( const CGHeroInstance * h ) const
 		bd.player = h->tempOwner;
 		bd.text.addTxt(MetaString::GENERAL_TXT, 421); //Much to your dismay, the %s is guarded by %s %s. Do you wish to fight the guards?
 		bd.text.addReplacement(ID == Obj::CREATURE_GENERATOR1 ? MetaString::CREGENS : MetaString::CREGENS4, subID);
-		bd.text.addReplacement(MetaString::ARRAY_TXT, 176 + Slots().begin()->second->getQuantityID()*3);
+		bd.text.addReplacement(MetaString::ARRAY_TXT, 173 + Slots().begin()->second->getQuantityID()*3);
 		bd.text.addReplacement(*Slots().begin()->second);
 		cb->showBlockingDialog(&bd);
 		return;
@@ -201,13 +296,13 @@ void CGDwelling::updateGuards() const
 		for (auto creatureEntry : creatures)
 		{
 			const CCreature * crea = VLC->creh->creatures[creatureEntry.second.at(0)];
-
 			SlotID slot = getSlotFor(crea->idNumber);
-			StackLocation stackLocation = StackLocation(this, slot);;
+
 			if (hasStackAtSlot(slot)) //stack already exists, overwrite it
 			{
 				ChangeStackCount csc;
-				csc.sl = stackLocation;
+				csc.army = this->id;
+				csc.slot = slot;
 				csc.count = crea->growth * 3;
 				csc.absoluteValue = true;
 				cb->sendAndApply(&csc);
@@ -215,8 +310,10 @@ void CGDwelling::updateGuards() const
 			else //slot is empty, create whole new stack
 			{
 				InsertNewStack ns;
-				ns.sl = stackLocation;
-				ns.stack = CStackBasicDescriptor(crea->idNumber, crea->growth * 3);
+				ns.army = this->id;
+				ns.slot = slot;
+				ns.type = crea->idNumber;
+				ns.count = crea->growth * 3;
 				cb->sendAndApply(&ns);
 			}
 		}
@@ -318,9 +415,24 @@ void CGDwelling::blockingDialogAnswered(const CGHeroInstance *hero, ui32 answer)
 
 void CGDwelling::serializeJsonOptions(JsonSerializeFormat & handler)
 {
-	//todo: CGDwelling::serializeJsonOptions
-	if(ID != Obj::WAR_MACHINE_FACTORY && ID != Obj::REFUGEE_CAMP)
+	if(!handler.saving)
+		initRandomObjectInfo();
+
+	switch (ID)
+	{
+	case Obj::WAR_MACHINE_FACTORY:
+	case Obj::REFUGEE_CAMP:
+		//do nothing
+		break;
+	case Obj::RANDOM_DWELLING:
+	case Obj::RANDOM_DWELLING_LVL:
+	case Obj::RANDOM_DWELLING_FACTION:
+		info->serializeJson(handler);
+		//fall through
+	default:
 		serializeJsonOwner(handler);
+		break;
+	}
 }
 
 int CGTownInstance::getSightRadius() const //returns sight distance
@@ -437,9 +549,7 @@ GrowthInfo CGTownInstance::getGrowthInfo(int level) const
 	int dwellingBonus = 0;
 	if(const PlayerState *p = cb->getPlayer(tempOwner, false))
 	{
-		for(const CGDwelling *dwelling : p->dwellings)
-			if(vstd::contains(creatures[level].second, dwelling->creatures[0].second[0]))
-				dwellingBonus++;
+		dwellingBonus = getDwellingBonus(creatures[level].second, p->dwellings);
 	}
 
 	if(dwellingBonus)
@@ -459,6 +569,19 @@ GrowthInfo CGTownInstance::getGrowthInfo(int level) const
 		ret.entries.push_back(GrowthInfo::Entry(subID, BuildingID::GRAIL, ret.totalGrowth() / 2));
 
 	return ret;
+}
+
+int CGTownInstance::getDwellingBonus(const std::vector<CreatureID>& creatureIds, const std::vector<ConstTransitivePtr<CGDwelling> >& dwellings) const
+{
+	int totalBonus = 0;
+	for (const auto& dwelling : dwellings)
+	{
+		for (const auto& creature : dwelling->creatures)
+		{
+			totalBonus += vstd::contains(creatureIds, creature.second[0]) ? 1 : 0;
+		}
+	}
+	return totalBonus;
 }
 
 TResources CGTownInstance::dailyIncome() const
@@ -495,7 +618,7 @@ bool CGTownInstance::hasCapitol() const
 	return hasBuilt(BuildingID::CAPITOL);
 }
 CGTownInstance::CGTownInstance()
-	:IShipyard(this), IMarket(this), town(nullptr), builded(0), destroyed(0), identifier(0), alignment(0xff)
+	:CGDwelling(), IShipyard(this), IMarket(this), town(nullptr), builded(0), destroyed(0), identifier(0), alignment(0xff)
 {
 
 }
@@ -584,20 +707,20 @@ void CGTownInstance::onHeroVisit(const CGHeroInstance * h) const
 	}
 	else
 	{
-		logGlobal->errorStream() << h->name << " visits allied town of " << name << " from different pos?";
+		logGlobal->error("%s visits allied town of %s from different pos?", h->name, name);
 	}
 }
 
 void CGTownInstance::onHeroLeave(const CGHeroInstance * h) const
 {
 	//FIXME: find out why this issue appears on random maps
-	if (visitingHero == h)
+	if(visitingHero == h)
 	{
 		cb->stopHeroVisitCastle(this, h);
-		//logGlobal->warnStream() << h->name << " correctly left town " << name;
+		logGlobal->trace("%s correctly left town %s", h->name, name);
 	}
 	else
-		logGlobal->warnStream() << "Warning, " << h->name << " tries to leave the town " << name << " but hero is not inside.";
+		logGlobal->warn("Warning, %s tries to leave the town %s but hero is not inside.", h->name, name);
 }
 
 std::string CGTownInstance::getObjectName() const
@@ -633,7 +756,7 @@ void CGTownInstance::initObj(CRandomGenerator & rand)
 			break;
 		case ETownType::DUNGEON:
 			bonusingBuildings.push_back (new COPWBonus(BuildingID::MANA_VORTEX, this));
-			//fallthrough
+			FALLTHROUGH
 		case ETownType::TOWER: case ETownType::INFERNO: case ETownType::STRONGHOLD:
 			bonusingBuildings.push_back (new CTownBonus(BuildingID::SPECIAL_4, this));
 			break;
@@ -1013,23 +1136,18 @@ void CGTownInstance::recreateBuildingsBonuses()
 	}
 }
 
-bool CGTownInstance::addBonusIfBuilt(BuildingID building, Bonus::BonusType type, int val, int subtype /*= -1*/)
+bool CGTownInstance::addBonusIfBuilt(BuildingID building, Bonus::BonusType type, int val, int subtype)
 {
 	static auto emptyPropagator = TPropagatorPtr();
 	return addBonusIfBuilt(building, type, val, emptyPropagator, subtype);
 }
 
-bool CGTownInstance::addBonusIfBuilt(BuildingID building, Bonus::BonusType type, int val, TPropagatorPtr & prop, int subtype /*= -1*/)
+bool CGTownInstance::addBonusIfBuilt(BuildingID building, Bonus::BonusType type, int val, TPropagatorPtr & prop, int subtype)
 {
 	if(hasBuilt(building))
 	{
 		std::ostringstream descr;
-		descr << town->buildings.at(building)->Name() << " ";
-		if(val > 0)
-			descr << "+";
-		else if(val < 0)
-			descr << "-";
-		descr << val;
+		descr << town->buildings.at(building)->Name();
 
 		auto b = std::make_shared<Bonus>(Bonus::PERMANENT, type, Bonus::TOWN_STRUCTURE, val, building, descr.str(), subtype);
 		if(prop)
@@ -1045,8 +1163,8 @@ void CGTownInstance::setVisitingHero(CGHeroInstance *h)
 {
 	//if (!(!!visitingHero == !h))
 	//{
-	//	logGlobal->warnStream() << boost::format("Hero visiting town %s is %s ") % name % (visitingHero.get() ? visitingHero->name : "NULL");
-	//	logGlobal->warnStream() << boost::format("New hero will be %s ") % (h ? h->name : "NULL");
+	//	logGlobal->warn("Hero visiting town %s is %s ", name, (visitingHero.get() ? visitingHero->name : "NULL"));
+	//	logGlobal->warn("New hero will be %s ", (h ? h->name : "NULL"));
 	//
 	//}
 	assert(!!visitingHero == !h);
@@ -1101,6 +1219,21 @@ bool CGTownInstance::armedGarrison() const
 	return stacksCount() || garrisonHero;
 }
 
+const CTown * CGTownInstance::getTown() const
+{
+    if(ID == Obj::RANDOM_TOWN)
+		return VLC->townh->randomTown;
+	else
+	{
+		if(nullptr == town)
+		{
+			return VLC->townh->factions[subID]->town;
+		}
+		else
+			return town;
+	}
+}
+
 int CGTownInstance::getTownLevel() const
 {
 	// count all buildings that are not upgrades
@@ -1127,6 +1260,18 @@ bool CGTownInstance::hasBuilt(BuildingID buildingID, int townID) const
 	if (townID == town->faction->index || townID == ETownType::ANY)
 		return hasBuilt(buildingID);
 	return false;
+}
+
+TResources CGTownInstance::getBuildingCost(BuildingID buildingID) const
+{ 
+	if (vstd::contains(town->buildings, buildingID))
+		return town->buildings.at(buildingID)->resources;
+	else
+	{
+		logGlobal->error("Town %s at %s has no possible building %d!", name, pos.toString(), buildingID.toEnum());
+		return TResources();
+	}
+
 }
 
 bool CGTownInstance::hasBuilt(BuildingID buildingID) const
@@ -1191,8 +1336,8 @@ void CGTownInstance::addHeroToStructureVisitors( const CGHeroInstance *h, si32 s
 	else
 	{
 		//should never ever happen
-		logGlobal->errorStream() << "Cannot add hero " << h->name << " to visitors of structure #" << structureInstanceID;
-		assert(0);
+		logGlobal->error("Cannot add hero %s to visitors of structure # %d", h->name, structureInstanceID);
+		throw std::runtime_error("internal error");
 	}
 }
 
@@ -1211,37 +1356,115 @@ void CGTownInstance::battleFinished(const CGHeroInstance *hero, const BattleResu
 	}
 }
 
+void CGTownInstance::afterAddToMap(CMap * map)
+{
+	if(ID == Obj::TOWN)
+		map->towns.push_back(this);
+}
+
+void CGTownInstance::reset()
+{
+	CGTownInstance::merchantArtifacts.clear();
+	CGTownInstance::universitySkills.clear();
+}
+
 void CGTownInstance::serializeJsonOptions(JsonSerializeFormat & handler)
 {
 	CGObjectInstance::serializeJsonOwner(handler);
-	CCreatureSet::serializeJson(handler, "army");
-	handler.serializeBool<ui8>("tightFormation", 1, 0, formation);
+	CCreatureSet::serializeJson(handler, "army", 7);
+	handler.serializeBool<ui8>("tightFormation", formation, 1, 0, 0);
 	handler.serializeString("name", name);
 
-
-
-	if(!handler.saving)
 	{
-		builtBuildings.insert(BuildingID::DEFAULT);//just in case
+		auto decodeBuilding = [this](const std::string & identifier) -> si32
+		{
+			auto rawId = VLC->modh->identifiers.getIdentifier("core", getTown()->getBuildingScope(), identifier);
+
+			if(rawId)
+				return rawId.get();
+			else
+				return -1;
+		};
+
+		auto encodeBuilding = [this](si32 index) -> std::string
+		{
+			return getTown()->buildings.at(BuildingID(index))->identifier;
+		};
+
+		const std::set<si32> standard = getTown()->getAllBuildings();//by default all buildings are allowed
+		JsonSerializeFormat::LICSet buildingsLIC(standard, decodeBuilding, encodeBuilding);
+
+		if(handler.saving)
+		{
+			bool customBuildings = false;
+
+			boost::logic::tribool hasFort(false);
+
+			for(const BuildingID id : forbiddenBuildings)
+			{
+				buildingsLIC.none.insert(id);
+				customBuildings = true;
+			}
+
+			for(const BuildingID id : builtBuildings)
+			{
+				if(id == BuildingID::DEFAULT)
+					continue;
+
+				const CBuilding * building = getTown()->buildings.at(id);
+
+				if(building->mode == CBuilding::BUILD_AUTO)
+					continue;
+
+				if(id == BuildingID::FORT)
+					hasFort = true;
+
+				buildingsLIC.all.insert(id);
+				customBuildings = true;
+			}
+
+			if(customBuildings)
+				handler.serializeLIC("buildings", buildingsLIC);
+			else
+				handler.serializeBool("hasFort",hasFort);
+		}
+		else
+		{
+			handler.serializeLIC("buildings", buildingsLIC);
+
+			builtBuildings.insert(BuildingID::VILLAGE_HALL);
+
+			if(buildingsLIC.none.empty() && buildingsLIC.all.empty())
+			{
+				builtBuildings.insert(BuildingID::DEFAULT);
+
+				bool hasFort = false;
+				handler.serializeBool("hasFort",hasFort);
+				if(hasFort)
+					builtBuildings.insert(BuildingID::FORT);
+			}
+			else
+			{
+				for(const si32 item : buildingsLIC.none)
+					forbiddenBuildings.insert(BuildingID(item));
+				for(const si32 item : buildingsLIC.all)
+					builtBuildings.insert(BuildingID(item));
+			}
+		}
 	}
 
-	//todo: serialize buildings
-//	{
-//		std::vector<bool> standard;
-//		standard.resize(44, true);
-//
-//
-//		JsonSerializeFormat::LIC buildingsLIC(, CTownHandler::decodeBuilding, CTownHandler::encodeBuilding);
-//	}
-
 	{
-		JsonSerializeFormat::LIC spellsLIC(VLC->spellh->getDefaultAllowed(), CSpellHandler::decodeSpell, CSpellHandler::encodeSpell);
+		std::vector<bool> standard = VLC->spellh->getDefaultAllowed();
+		JsonSerializeFormat::LIC spellsLIC(standard, SpellID::decode, SpellID::encode);
 
-		for(SpellID id : possibleSpells)
-			spellsLIC.any[id.num] = true;
+		if(handler.saving)
+		{
+			for(SpellID id : possibleSpells)
+				spellsLIC.any[id.num] = true;
 
-		for(SpellID id : obligatorySpells)
-			spellsLIC.all[id.num] = true;
+			for(SpellID id : obligatorySpells)
+				spellsLIC.all[id.num] = true;
+		}
 
 		handler.serializeLIC("spells", spellsLIC);
 
@@ -1251,18 +1474,14 @@ void CGTownInstance::serializeJsonOptions(JsonSerializeFormat & handler)
 			for(si32 idx = 0; idx < spellsLIC.any.size(); idx++)
 			{
 				if(spellsLIC.any[idx])
-				{
 					possibleSpells.push_back(SpellID(idx));
-				}
 			}
 
 			obligatorySpells.clear();
 			for(si32 idx = 0; idx < spellsLIC.all.size(); idx++)
 			{
 				if(spellsLIC.all[idx])
-				{
 					obligatorySpells.push_back(SpellID(idx));
-				}
 			}
 		}
 	}
@@ -1302,6 +1521,13 @@ void COPWBonus::onHeroVisit (const CGHeroInstance * h) const
 					gb.bonus = Bonus(Bonus::ONE_WEEK, Bonus::LAND_MOVEMENT, Bonus::OBJECT, 600, 94, VLC->generaltexth->arraytxt[100]);
 					gb.id = heroID.getNum();
 					cb->giveHeroBonus(&gb);
+
+					SetMovePoints mp;
+					mp.val = 600;
+					mp.absolute = false;
+					mp.hid = heroID;
+					cb->setMovePoints(&mp);
+
 					iw.text << VLC->generaltexth->allTexts[580];
 					cb->showInfoDialog(&iw);
 				}

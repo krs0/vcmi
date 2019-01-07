@@ -1,10 +1,20 @@
+/*
+ * cmodlistview_moc.h, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #pragma once
 
 #include "../StdInc.h"
 #include "../../lib/CConfigHandler.h"
 
-namespace Ui {
-	class CModListView;
+namespace Ui
+{
+class CModListView;
 }
 
 class CModManager;
@@ -19,7 +29,7 @@ class CModListView : public QWidget
 {
 	Q_OBJECT
 
-	CModManager * manager;
+	std::unique_ptr<CModManager> manager;
 	CModListModel * modModel;
 	CModFilterModel * filterModel;
 	CDownloadManager * dlManager;
@@ -41,7 +51,7 @@ class CModListView : public QWidget
 	// find mods unknown to mod list (not present in repo and not installed)
 	QStringList findInvalidDependencies(QString mod);
 	// find mods that block enabling of this mod: conflicting with this mod or one of required mods
-	QStringList findBlockingMods(QString mod);
+	QStringList findBlockingMods(QString modUnderTest);
 	// find mods that depend on this one
 	QStringList findDependentMods(QString mod, bool excludeDisabled);
 
@@ -52,8 +62,9 @@ class CModListView : public QWidget
 
 	QString genChangelogText(CModEntry & mod);
 	QString genModInfoText(CModEntry & mod);
+
 public:
-	explicit CModListView(QWidget *parent = 0);
+	explicit CModListView(QWidget * parent = 0);
 	~CModListView();
 
 	void showModInfo();
@@ -70,12 +81,12 @@ private slots:
 	void modSelected(const QModelIndex & current, const QModelIndex & previous);
 	void downloadProgress(qint64 current, qint64 max);
 	void downloadFinished(QStringList savedFiles, QStringList failedFiles, QStringList errors);
-	void modelReset ();
+	void modelReset();
 	void hideProgressBar();
 
 	void on_hideModInfoButton_clicked();
 
-	void on_lineEdit_textChanged(const QString &arg1);
+	void on_lineEdit_textChanged(const QString & arg1);
 
 	void on_comboBox_currentIndexChanged(int index);
 
@@ -93,14 +104,14 @@ private slots:
 
 	void on_refreshButton_clicked();
 
-	void on_allModsView_activated(const QModelIndex &index);
+	void on_allModsView_activated(const QModelIndex & index);
 
 	void on_tabWidget_currentChanged(int index);
 
-	void on_screenshotsList_clicked(const QModelIndex &index);
+	void on_screenshotsList_clicked(const QModelIndex & index);
 
 	void on_showInfoButton_clicked();
 
 private:
-	Ui::CModListView *ui;
+	Ui::CModListView * ui;
 };

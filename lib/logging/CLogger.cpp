@@ -1,3 +1,12 @@
+/*
+ * CLogger.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "CLogger.h"
 
@@ -15,12 +24,32 @@ namespace ELogLevel
 			case INFO:  return ANDROID_LOG_INFO;
 			case WARN:  return ANDROID_LOG_WARN;
 			case ERROR: return ANDROID_LOG_ERROR;
-			default:;
+		default:
+			break;
 		}
 		return ANDROID_LOG_UNKNOWN;
 	}
 }
 #endif
+
+namespace vstd
+{
+
+CLoggerBase::~CLoggerBase() = default;
+
+
+CTraceLogger::CTraceLogger(const CLoggerBase * logger, const std::string & beginMessage, const std::string & endMessage)
+	: logger(logger), endMessage(endMessage)
+{
+	logger->trace(beginMessage);
+}
+
+CTraceLogger::~CTraceLogger()
+{
+	logger->trace(endMessage);
+}
+
+}//namespace vstd
 
 const std::string CLoggerDomain::DOMAIN_GLOBAL = "global";
 
@@ -45,27 +74,16 @@ bool CLoggerDomain::isGlobalDomain() const { return name == DOMAIN_GLOBAL; }
 
 const std::string& CLoggerDomain::getName() const { return name; }
 
-CLoggerStream::CLoggerStream(const CLogger & logger, ELogLevel::ELogLevel level) : logger(logger), level(level), sbuffer(nullptr) {}
-
-CLoggerStream::~CLoggerStream()
-{
-	if(sbuffer)
-	{
-		logger.log(level, sbuffer->str());
-		delete sbuffer;
-		sbuffer = nullptr;
-	}
-}
-
 boost::recursive_mutex CLogger::smx;
 boost::recursive_mutex CLogManager::smx;
 
-DLL_LINKAGE CLogger * logGlobal = CLogger::getGlobalLogger();
+DLL_LINKAGE vstd::CLoggerBase * logGlobal = CLogger::getGlobalLogger();
 
-DLL_LINKAGE CLogger * logBonus = CLogger::getLogger(CLoggerDomain("bonus"));
-DLL_LINKAGE CLogger * logNetwork = CLogger::getLogger(CLoggerDomain("network"));
-DLL_LINKAGE CLogger * logAi = CLogger::getLogger(CLoggerDomain("ai"));
-DLL_LINKAGE CLogger * logAnim = CLogger::getLogger(CLoggerDomain("animation"));
+DLL_LINKAGE vstd::CLoggerBase * logBonus = CLogger::getLogger(CLoggerDomain("bonus"));
+DLL_LINKAGE vstd::CLoggerBase * logNetwork = CLogger::getLogger(CLoggerDomain("network"));
+DLL_LINKAGE vstd::CLoggerBase * logAi = CLogger::getLogger(CLoggerDomain("ai"));
+DLL_LINKAGE vstd::CLoggerBase * logAnim = CLogger::getLogger(CLoggerDomain("animation"));
+DLL_LINKAGE vstd::CLoggerBase * logMod = CLogger::getLogger(CLoggerDomain("mod"));
 
 CLogger * CLogger::getLogger(const CLoggerDomain & domain)
 {
@@ -106,12 +124,6 @@ CLogger::CLogger(const CLoggerDomain & domain) : domain(domain)
 		parent = getLogger(domain.getParent());
 	}
 }
-
-CLoggerStream CLogger::traceStream() const { return CLoggerStream(*this, ELogLevel::TRACE); }
-CLoggerStream CLogger::debugStream() const { return CLoggerStream(*this, ELogLevel::DEBUG); }
-CLoggerStream CLogger::infoStream() const { return CLoggerStream(*this, ELogLevel::INFO); }
-CLoggerStream CLogger::warnStream() const { return CLoggerStream(*this, ELogLevel::WARN); }
-CLoggerStream CLogger::errorStream() const { return CLoggerStream(*this, ELogLevel::ERROR); }
 
 void CLogger::log(ELogLevel::ELogLevel level, const std::string & message) const
 {
@@ -179,13 +191,6 @@ void CLogger::clearTargets()
 bool CLogger::isDebugEnabled() const { return getEffectiveLevel() <= ELogLevel::DEBUG; }
 bool CLogger::isTraceEnabled() const { return getEffectiveLevel() <= ELogLevel::TRACE; }
 
-CTraceLogger::CTraceLogger(const CLogger * logger, const std::string & beginMessage, const std::string & endMessage)
-	: logger(logger), endMessage(endMessage)
-{
-	logger->trace(beginMessage);
-}
-CTraceLogger::~CTraceLogger() { logger->trace(std::move(endMessage)); }
-
 CLogManager & CLogManager::get()
 {
 	TLockGuardRec _(smx);
@@ -193,7 +198,7 @@ CLogManager & CLogManager::get()
 	return instance;
 }
 
-CLogManager::CLogManager() { }
+CLogManager::CLogManager() = default;
 CLogManager::~CLogManager()
 {
 	for(auto & i : loggers)
@@ -345,8 +350,8 @@ void CLogConsoleTarget::write(const LogRecord & record)
 	std::string message = formatter.format(record);
 
 #ifdef VCMI_ANDROID
-	__android_log_write(ELogLevel::toAndroid(record.level), "VCMI", message.c_str());
-#endif
+    __android_log_write(ELogLevel::toAndroid(record.level), ("VCMI-" + record.domain.getName()).c_str(), message.c_str());
+#else
 
 	const bool printToStdErr = record.level >= ELogLevel::WARN;
 	if(console)
@@ -364,6 +369,7 @@ void CLogConsoleTarget::write(const LogRecord & record)
 		else
 			std::cout << message << std::endl;
 	}
+#endif
 }
 
 bool CLogConsoleTarget::isColoredOutputEnabled() const { return coloredOutputEnabled; }
@@ -378,7 +384,7 @@ void CLogConsoleTarget::setFormatter(const CLogFormatter & formatter) { this->fo
 const CColorMapping & CLogConsoleTarget::getColorMapping() const { return colorMapping; }
 void CLogConsoleTarget::setColorMapping(const CColorMapping & colorMapping) { this->colorMapping = colorMapping; }
 
-CLogFileTarget::CLogFileTarget(boost::filesystem::path filePath, bool append /*= true*/)
+CLogFileTarget::CLogFileTarget(boost::filesystem::path filePath, bool append)
 	: file(std::move(filePath), append ? std::ios_base::app : std::ios_base::out)
 {
 	formatter.setPattern("%d %l %n [%t] - %m");

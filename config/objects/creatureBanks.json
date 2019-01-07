@@ -2,11 +2,20 @@
 	"creatureBank" : {
 		"index" :16,
 		"handler": "bank",
+		"base" : {
+			"sounds" : {
+				"visit" : ["ROGUE"]
+			}
+		},
 		"types" : {
 			"cyclopsStockpile" :
 			{
 				"index" : 0,
 				"name" : "Cyclops Stockpile",
+				"aiValue" : 3000,
+				"sounds" : {
+					"ambient" : ["LOOPCAVE"]
+				},
 				"rmg" : {
 					"value"		: 3000,
 					"rarity"	: 100
@@ -112,6 +121,10 @@
 				"index" : 1,
 				"resetDuration" : 0,
 				"name" : "Dwarven Treasury",
+				"aiValue" : 2000,
+				"sounds" : {
+					"ambient" : ["LOOPDWAR"]
+				},
 				"rmg" : {
 					"value"		: 2000,
 					"rarity"	: 100
@@ -199,6 +212,10 @@
 				"index" : 2,
 				"resetDuration" : 0,
 				"name" : "Griffin Conservatory",
+				"aiValue" : 9000,
+				"sounds" : {
+					"ambient" : ["LOOPGRIF"]
+				},
 				"rmg" : {
 					"value"		: 2000,
 					"rarity"	: 100
@@ -270,6 +287,10 @@
 				"index" : 3,
 				"resetDuration" : 0,
 				"name" : "Imp Cache",
+				"aiValue" : 1500,
+				"sounds" : {
+					"ambient" : ["LOOPFIRE"]
+				},
 				"rmg" : {
 					"value"		: 5000,
 					"rarity"	: 100
@@ -356,6 +377,10 @@
 				"index" : 4,
 				"resetDuration" : 0,
 				"name" : "Medusa Stores",
+				"aiValue" : 1500,
+				"sounds" : {
+					"ambient" : ["LOOPMEDU"]
+				},
 				"rmg" : {
 					"value"		: 1500,
 					"rarity"	: 100
@@ -443,6 +468,10 @@
 				"index" : 5,
 				"resetDuration" : 0,
 				"name" : "Naga Bank",
+				"aiValue" : 3000,
+				"sounds" : {
+					"ambient" : ["LOOPNAGA"]
+				},
 				"rmg" : {
 					"value"		: 3000,
 					"rarity"	: 100
@@ -530,6 +559,10 @@
 				"index" : 6,
 				"resetDuration" : 0,
 				"name" : "Dragon Fly Hive",
+				"aiValue" : 9000,
+				"sounds" : {
+					"ambient" : ["LOOPLEAR"]
+				},
 				"rmg" : {
 					"value"		: 9000,
 					"rarity"	: 100
@@ -607,6 +640,7 @@
 				"index" : 0,
 				"resetDuration" : 0,
 				"name" : "Shipwreck",
+				"aiValue" : 2000,
 				"rmg" : {
 					"value"		: 2000,
 					"rarity"	: 100
@@ -698,6 +732,7 @@
 				"index" : 0,
 				"resetDuration" : 0,
 				"name" : "Derelict Ship",
+				"aiValue" : 4000,
 				"rmg" : {
 					"value"		: 4000,
 					"rarity"	: 20
@@ -785,11 +820,18 @@
 	"crypt" : {
 		"index" :84,
 		"handler": "bank",
+		"base" : {
+			"sounds" : {
+				"ambient" : ["LOOPDEAD"],
+				"visit" : ["GRAVEYARD"]
+			}
+		},
 		"types" : {
 			"crypt" : {
 				"index" : 0,
 				"resetDuration" : 0,
 				"name" : "Crypt",
+				"aiValue" : 1500,
 				"rmg" : {
 					"value"		: 1000,
 					"rarity"	: 100
@@ -874,11 +916,18 @@
 	"dragonUtopia" : {
 		"index" :25,
 		"handler": "bank",
+		"base" : {
+			"sounds" : {
+				"ambient" : ["LOOPDRAG"],
+				"visit" : ["DRAGON"]
+			}
+		},
 		"types" : {
 			"dragonUtopia" : {
 				"index" : 0,
 				"resetDuration" : 0,
 				"name" : "Dragon Utopia",
+				"aiValue" : 11000,
 				"rmg" : {
 					"value"		: 10000,
 					"rarity"	: 100
@@ -983,11 +1032,17 @@
 	"pyramid" : {
 		"index" :63,
 		"handler": "bank",
+		"base" : {
+			"sounds" : {
+				"visit" : ["MYSTERY"]
+			}
+		},
 		"types" : {
 			"pyramid" : {
 				"index" : 0,
 				"resetDuration" : 0,
 				"name" : "Pyramid",
+				"aiValue" : 8000,
 				"rmg" : {
 					"value"		: 5000,
 					"rarity"	: 20

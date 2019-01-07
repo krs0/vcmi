@@ -1,3 +1,12 @@
+/*
+ * CCreatureSet.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "CCreatureSet.h"
 
@@ -12,16 +21,7 @@
 #include "CHeroHandler.h"
 #include "IBonusTypeHandler.h"
 #include "serializer/JsonSerializeFormat.h"
-
-/*
- * CCreatureSet.cpp, part of VCMI engine
- *
- * Authors: listed in file AUTHORS in main folder
- *
- * License: GNU General Public License v2.0 or later
- * Full text of license available in license.txt file, in main folder
- *
- */
+#include "NetPacksBase.h"
 
 const CStackInstance &CCreatureSet::operator[](SlotID slot) const
 {
@@ -45,12 +45,12 @@ bool CCreatureSet::setCreature(SlotID slot, CreatureID type, TQuantity quantity)
 {
 	if(!slot.validSlot())
 	{
-		logGlobal->errorStream() << "Cannot set slot " << slot;
+		logGlobal->error("Cannot set slot %d", slot.getNum());
 		return false;
 	}
 	if(!quantity)
 	{
-		logGlobal->warnStream() << "Using set creature to delete stack?";
+		logGlobal->warn("Using set creature to delete stack?");
 		eraseStack(slot);
 		return true;
 	}
@@ -62,12 +62,12 @@ bool CCreatureSet::setCreature(SlotID slot, CreatureID type, TQuantity quantity)
 	return true;
 }
 
-SlotID CCreatureSet::getSlotFor(CreatureID creature, ui32 slotsAmount/*=7*/) const /*returns -1 if no slot available */
+SlotID CCreatureSet::getSlotFor(CreatureID creature, ui32 slotsAmount) const /*returns -1 if no slot available */
 {
 	return getSlotFor(VLC->creh->creatures[creature], slotsAmount);
 }
 
-SlotID CCreatureSet::getSlotFor(const CCreature *c, ui32 slotsAmount/*=ARMY_SIZE*/) const
+SlotID CCreatureSet::getSlotFor(const CCreature *c, ui32 slotsAmount) const
 {
 	assert(c->valid());
 	for(auto & elem : stacks)
@@ -81,7 +81,7 @@ SlotID CCreatureSet::getSlotFor(const CCreature *c, ui32 slotsAmount/*=ARMY_SIZE
 	return getFreeSlot(slotsAmount);
 }
 
-SlotID CCreatureSet::getFreeSlot(ui32 slotsAmount/*=ARMY_SIZE*/) const
+SlotID CCreatureSet::getFreeSlot(ui32 slotsAmount) const
 {
 	for(ui32 i=0; i<slotsAmount; i++)
 	{
@@ -112,7 +112,7 @@ TExpType CCreatureSet::getStackExperience(SlotID slot) const
 }
 
 
-bool CCreatureSet::mergableStacks(std::pair<SlotID, SlotID> &out, SlotID preferable /*= -1*/) const /*looks for two same stacks, returns slot positions */
+bool CCreatureSet::mergableStacks(std::pair<SlotID, SlotID> &out, SlotID preferable) const /*looks for two same stacks, returns slot positions */
 {
 	//try to match creature to our preferred stack
 	if(preferable.validSlot() &&  vstd::contains(stacks, preferable))
@@ -157,7 +157,7 @@ void CCreatureSet::sweep()
 	}
 }
 
-void CCreatureSet::addToSlot(SlotID slot, CreatureID cre, TQuantity count, bool allowMerging/* = true*/)
+void CCreatureSet::addToSlot(SlotID slot, CreatureID cre, TQuantity count, bool allowMerging)
 {
 	const CCreature *c = VLC->creh->creatures[cre];
 
@@ -171,11 +171,11 @@ void CCreatureSet::addToSlot(SlotID slot, CreatureID cre, TQuantity count, bool 
 	}
 	else
 	{
-		logGlobal->errorStream() << "Failed adding to slot!";
+		logGlobal->error("Failed adding to slot!");
 	}
 }
 
-void CCreatureSet::addToSlot(SlotID slot, CStackInstance *stack, bool allowMerging/* = true*/)
+void CCreatureSet::addToSlot(SlotID slot, CStackInstance *stack, bool allowMerging)
 {
 	assert(stack->valid(true));
 
@@ -189,11 +189,11 @@ void CCreatureSet::addToSlot(SlotID slot, CStackInstance *stack, bool allowMergi
 	}
 	else
 	{
-		logGlobal->errorStream() << "Cannot add to slot " << slot << " stack " << *stack;
+		logGlobal->error("Cannot add to slot %d stack %s", slot.getNum(), stack->nodeName());
 	}
 }
 
-bool CCreatureSet::validTypes(bool allowUnrandomized /*= false*/) const
+bool CCreatureSet::validTypes(bool allowUnrandomized) const
 {
 	for(auto & elem : stacks)
 	{
@@ -399,10 +399,7 @@ void CCreatureSet::setToArmy(CSimpleArmy &src)
 	{
 		auto i = src.army.begin();
 
-		assert(i->second.type);
-		assert(i->second.count);
-
-		putStack(i->first, new CStackInstance(i->second.type, i->second.count));
+		putStack(i->first, new CStackInstance(i->second.first, i->second.second));
 		src.army.erase(i);
 	}
 }
@@ -424,11 +421,11 @@ CStackInstance * CCreatureSet::detachStack(SlotID slot)
 	return ret;
 }
 
-void CCreatureSet::setStackType(SlotID slot, const CCreature *type)
+void CCreatureSet::setStackType(SlotID slot, CreatureID type)
 {
 	assert(hasStackAtSlot(slot));
 	CStackInstance *s = stacks[slot];
-	s->setType(type->idNumber);
+	s->setType(type);
 	armyChanged();
 }
 
@@ -483,31 +480,46 @@ void CCreatureSet::armyChanged()
 
 }
 
-void CCreatureSet::serializeJson(JsonSerializeFormat & handler, const std::string & fieldName)
+void CCreatureSet::serializeJson(JsonSerializeFormat & handler, const std::string & fieldName, const boost::optional<int> fixedSize)
 {
 	if(handler.saving && stacks.empty())
 		return;
-	JsonNode & json = handler.getCurrent()[fieldName];
+
+	auto a = handler.enterArray(fieldName);
+
 
 	if(handler.saving)
 	{
+		size_t sz = 0;
+
+		for(const auto & p : stacks)
+			vstd::amax(sz, p.first.getNum()+1);
+
+		if(fixedSize)
+			vstd::amax(sz, fixedSize.get());
+
+		a.resize(sz, JsonNode::JsonType::DATA_STRUCT);
+
 		for(const auto & p : stacks)
 		{
-			JsonNode stack_node;
-			p.second->writeJson(stack_node);
-			json.Vector()[p.first.getNum()] = stack_node;
+			auto s = a.enterStruct(p.first.getNum());
+			p.second->serializeJson(handler);
 		}
 	}
 	else
 	{
-		for(size_t idx = 0; idx < json.Vector().size(); idx++)
+		for(size_t idx = 0; idx < a.size(); idx++)
 		{
-			if(json.Vector()[idx]["amount"].Float() > 0)
+			auto s = a.enterStruct(idx);
+
+			TQuantity amount = 0;
+
+			handler.serializeInt("amount", amount);
+
+			if(amount > 0)
 			{
 				CStackInstance * new_stack = new CStackInstance();
-
-				new_stack->readJson(json.Vector()[idx]);
-
+				new_stack->serializeJson(handler);
 				putStack(SlotID(idx), new_stack);
 			}
 		}
@@ -624,7 +636,8 @@ void CStackInstance::setType(const CCreature *c)
 			experience *= VLC->creh->expAfterUpgrade / 100.0;
 	}
 
-	type = c;
+	CStackBasicDescriptor::setType(c);
+
 	if(type)
 		attachTo(const_cast<CCreature*>(type));
 }
@@ -658,7 +671,7 @@ void CStackInstance::setArmyObj(const CArmedInstance *ArmyObj)
 	}
 }
 
-std::string CStackInstance::getQuantityTXT(bool capitalized /*= true*/) const
+std::string CStackInstance::getQuantityTXT(bool capitalized) const
 {
 	int quantity = getQuantityID();
 
@@ -733,23 +746,43 @@ ArtBearer::ArtBearer CStackInstance::bearerType() const
 	return ArtBearer::CREATURE;
 }
 
-void CStackInstance::writeJson(JsonNode& json) const
+void CStackInstance::putArtifact(ArtifactPosition pos, CArtifactInstance * art)
 {
-	if(idRand > -1)
-	{
-		json["level"].Float() = (int)idRand / 2;
-		json["upgraded"].Bool() = (idRand % 2) > 0;
-	}
-	CStackBasicDescriptor::writeJson(json);
+	assert(!getArt(pos));
+	art->putAt(ArtifactLocation(this, pos));
 }
 
-void CStackInstance::readJson(const JsonNode& json)
+void CStackInstance::serializeJson(JsonSerializeFormat & handler)
 {
-	if(json["type"].String() == "")
+	//todo: artifacts
+	CStackBasicDescriptor::serializeJson(handler);//must be first
+
+	if(handler.saving)
 	{
-		idRand = json["level"].Float() * 2 + (int)json["upgraded"].Bool();
+		if(idRand > -1)
+		{
+			int level = (int)idRand / 2;
+
+			boost::logic::tribool upgraded = (idRand % 2) > 0;
+
+			handler.serializeInt("level", level, 0);
+			handler.serializeBool("upgraded", upgraded);
+		}
 	}
-	CStackBasicDescriptor::readJson(json);
+	else
+	{
+		//type set by CStackBasicDescriptor::serializeJson
+		if(type == nullptr)
+		{
+			int level = 0;
+			bool upgraded = false;
+
+			handler.serializeInt("level", level, 0);
+			handler.serializeBool("upgraded", upgraded);
+
+			idRand = level * 2 + (int)(bool)upgraded;
+		}
+	}
 }
 
 CCommanderInstance::CCommanderInstance()
@@ -789,7 +822,7 @@ void CCommanderInstance::setAlive (bool Alive)
 	alive = Alive;
 	if (!alive)
 	{
-		popBonuses(Bonus::UntilCommanderKilled);
+		removeBonusesRecursive(Bonus::UntilCommanderKilled);
 	}
 }
 
@@ -844,34 +877,30 @@ CStackBasicDescriptor::CStackBasicDescriptor(const CCreature *c, TQuantity Count
 {
 }
 
-void CStackBasicDescriptor::writeJson(JsonNode& json) const
+void CStackBasicDescriptor::setType(const CCreature * c)
 {
-	json.setType(JsonNode::DATA_STRUCT);
-	if(type)
-		json["type"].String() = type->identifier;
-	json["amount"].Float() = count;
+	type = c;
 }
 
-void CStackBasicDescriptor::readJson(const JsonNode& json)
+void CStackBasicDescriptor::serializeJson(JsonSerializeFormat & handler)
 {
-	auto typeName = json["type"].String();
-	if(typeName != "")
-		type = VLC->creh->getCreature("core", json["type"].String());
-	count = json["amount"].Float();
-}
+	handler.serializeInt("amount", count);
 
-DLL_LINKAGE std::ostream & operator<<(std::ostream & str, const CStackInstance & sth)
-{
-	if(!sth.valid(true))
-		str << "an invalid stack!";
-
-	str << "stack with " << sth.count << " of ";
-	if(sth.type)
-		str << sth.type->namePl;
+	if(handler.saving)
+	{
+		if(type)
+		{
+			std::string typeName = type->identifier;
+			handler.serializeString("type", typeName);
+		}
+	}
 	else
-		str << sth.idRand;
-
-	return str;
+	{
+		std::string typeName("");
+		handler.serializeString("type", typeName);
+		if(typeName != "")
+			setType(VLC->creh->getCreature("core", typeName));
+	}
 }
 
 void CSimpleArmy::clear()
@@ -887,6 +916,6 @@ CSimpleArmy::operator bool() const
 bool CSimpleArmy::setCreature(SlotID slot, CreatureID cre, TQuantity count)
 {
 	assert(!vstd::contains(army, slot));
-	army[slot] = CStackBasicDescriptor(cre, count);
+	army[slot] = std::make_pair(cre, count);
 	return true;
 }

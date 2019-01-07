@@ -1,14 +1,3 @@
-#pragma once
-
-
-#include "BattleAction.h"
-#include "IGameEventsReceiver.h"
-#include "CGameStateFwd.h"
-
-#include "spells/ViewSpellInt.h"
-
-#include "mapObjects/CObjectHandler.h"
-
 /*
  * CGameInterface.h, part of VCMI engine
  *
@@ -18,6 +7,15 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "battle/BattleAction.h"
+#include "IGameEventsReceiver.h"
+#include "CGameStateFwd.h"
+
+#include "spells/ViewSpellInt.h"
+
+#include "mapObjects/CObjectHandler.h"
 
 using boost::logic::tribool;
 class CCallback;
@@ -25,7 +23,6 @@ class CBattleCallback;
 class ICallback;
 class CGlobalAI;
 struct Component;
-class CSelectableComponent;
 struct TryMoveHero;
 class CGHeroInstance;
 class CGTownInstance;
@@ -45,7 +42,6 @@ struct Bonus;
 struct PackageApplied;
 struct SetObjectProperty;
 struct CatapultAttack;
-struct BattleStacksRemoved;
 struct StackLocation;
 class CStackInstance;
 class CCommanderInstance;
@@ -98,6 +94,7 @@ public:
 	// all stacks operations between these objects become allowed, interface has to call onEnd when done
 	virtual void showGarrisonDialog(const CArmedInstance *up, const CGHeroInstance *down, bool removableUnits, QueryID queryID) = 0;
 	virtual void showTeleportDialog(TeleportChannelID channel, TTeleportExitsList exits, bool impassable, QueryID askID) = 0;
+	virtual void showMapObjectSelectDialog(QueryID askID, const Component & icon, const MetaString & title, const MetaString & description, const std::vector<ObjectInstanceID> & objects) = 0;
 	virtual void finish(){}; //if for some reason we want to end
 
 	virtual void showWorldViewEx(const std::vector<ObjectPosInfo> & objectPositions){};
@@ -135,20 +132,17 @@ public:
 	virtual void battleNewRound(int round) override;
 	virtual void battleCatapultAttacked(const CatapultAttack & ca) override;
 	virtual void battleStart(const CCreatureSet *army1, const CCreatureSet *army2, int3 tile, const CGHeroInstance *hero1, const CGHeroInstance *hero2, bool side) override;
-	virtual void battleStacksAttacked(const std::vector<BattleStackAttacked> & bsa) override;
+	virtual void battleStacksAttacked(const std::vector<BattleStackAttacked> & bsa, const std::vector<MetaString> & battleLog) override;
 	virtual void actionStarted(const BattleAction &action) override;
 	virtual void battleNewRoundFirst(int round) override;
 	virtual void actionFinished(const BattleAction &action) override;
 	virtual void battleStacksEffectsSet(const SetStackEffect & sse) override;
-	//virtual void battleTriggerEffect(const BattleTriggerEffect & bte);
-	virtual void battleStacksRemoved(const BattleStacksRemoved & bsr) override;
-	virtual void battleObstaclesRemoved(const std::set<si32> & removedObstacles) override;
-	virtual void battleNewStackAppeared(const CStack * stack) override;
+	virtual void battleObstaclesChanged(const std::vector<ObstacleChanges> & obstacles) override;
 	virtual void battleStackMoved(const CStack * stack, std::vector<BattleHex> dest, int distance) override;
 	virtual void battleAttack(const BattleAttack *ba) override;
 	virtual void battleSpellCast(const BattleSpellCast *sc) override;
 	virtual void battleEnd(const BattleResult *br) override;
-	virtual void battleStacksHealedRes(const std::vector<std::pair<ui32, ui32> > & healedStacks, bool lifeDrain, bool tentHeal, si32 lifeDrainFrom) override;
+	virtual void battleUnitsChanged(const std::vector<UnitChanges> & units, const std::vector<CustomEffectInfo> & customEffects, const std::vector<MetaString> & battleLog) override;
 
 	virtual void saveGame(BinarySerializer & h, const int version) override; //saving
 	virtual void loadGame(BinaryDeserializer & h, const int version) override; //loading

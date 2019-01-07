@@ -1,12 +1,3 @@
-#include "StdInc.h"
-
-#include "../lib/filesystem/Filesystem.h"
-#include "SDL.h"
-#include "SDL_image.h"
-#include "CBitmapHandler.h"
-#include "gui/SDL_Extensions.h"
-#include "../lib/vcmi_endian.h"
-
 /*
  * CBitmapHandler.cpp, part of VCMI engine
  *
@@ -16,7 +7,14 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#include "StdInc.h"
 
+#include "../lib/filesystem/Filesystem.h"
+#include "SDL.h"
+#include "SDL_image.h"
+#include "CBitmapHandler.h"
+#include "gui/SDL_Extensions.h"
+#include "../lib/vcmi_endian.h"
 
 namespace BitmapHandler
 {
@@ -27,9 +25,9 @@ namespace BitmapHandler
 
 bool isPCX(const ui8 *header)//check whether file can be PCX according to header
 {
-	int fSize  = read_le_u32(header + 0);
-	int width  = read_le_u32(header + 4);
-	int height = read_le_u32(header + 8);
+	ui32 fSize  = read_le_u32(header + 0);
+	ui32 width  = read_le_u32(header + 4);
+	ui32 height = read_le_u32(header + 8);
 	return fSize == width*height || fSize == width*height*3;
 }
 
@@ -59,7 +57,7 @@ SDL_Surface * BitmapHandler::loadH3PCX(ui8 * pcx, size_t size)
 
 	if (format==PCX8B)
 	{
-		ret = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, 8, 0, 0, 0, 0);
+		ret = SDL_CreateRGBSurface(0, width, height, 8, 0, 0, 0, 0);
 
 		it = 0xC;
 		for (int i=0; i<height; i++)
@@ -91,7 +89,7 @@ SDL_Surface * BitmapHandler::loadH3PCX(ui8 * pcx, size_t size)
 		int gmask = 0x00ff00;
 		int rmask = 0xff0000;
 #endif
-		ret = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, 24, rmask, gmask, bmask, 0);
+		ret = SDL_CreateRGBSurface(0, width, height, 24, rmask, gmask, bmask, 0);
 
 		//it == 0xC;
 		for (int i=0; i<height; i++)
@@ -108,7 +106,7 @@ SDL_Surface * BitmapHandler::loadBitmapFromDir(std::string path, std::string fna
 {
 	if(!fname.size())
 	{
-		logGlobal->warnStream() << "Call to loadBitmap with void fname!";
+		logGlobal->warn("Call to loadBitmap with void fname!");
 		return nullptr;
 	}
 	if (!CResourceHandler::get()->existsResource(ResourceID(path + fname, EResType::IMAGE)))
@@ -132,7 +130,7 @@ SDL_Surface * BitmapHandler::loadBitmapFromDir(std::string path, std::string fna
 		}
 		else
 		{
-			logGlobal->errorStream()<<"Failed to open "<<fname<<" as H3 PCX!";
+			logGlobal->error("Failed to open %s as H3 PCX!", fname);
 			return nullptr;
 		}
 	}
@@ -153,8 +151,8 @@ SDL_Surface * BitmapHandler::loadBitmapFromDir(std::string path, std::string fna
 		}
 		else
 		{
-			logGlobal->errorStream() << "Failed to open " << fname << " via SDL_Image";
-			logGlobal->errorStream() << "Reason: " << IMG_GetError();
+			logGlobal->error("Failed to open %s via SDL_Image", fname);
+			logGlobal->error("Reason: %s", IMG_GetError());
 			return nullptr;
 		}
 	}
@@ -180,12 +178,12 @@ SDL_Surface * BitmapHandler::loadBitmapFromDir(std::string path, std::string fna
 
 SDL_Surface * BitmapHandler::loadBitmap(std::string fname, bool setKey)
 {
-	SDL_Surface *bitmap;
+	SDL_Surface * bitmap = nullptr;
 
 	if (!(bitmap = loadBitmapFromDir("DATA/", fname, setKey)) &&
 		!(bitmap = loadBitmapFromDir("SPRITES/", fname, setKey)))
 	{
-		logGlobal->errorStream() << "Error: Failed to find file " << fname;
+		logGlobal->error("Error: Failed to find file %s", fname);
 	}
 
 	return bitmap;

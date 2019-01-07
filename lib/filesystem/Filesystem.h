@@ -1,5 +1,3 @@
-#pragma once
-
 /*
  * Filesystem.h, part of VCMI engine
  *
@@ -9,6 +7,7 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
 
 #include "CInputStream.h"
 #include "ISimpleResourceLoader.h"
@@ -77,13 +76,6 @@ public:
 	static void initialize();
 
 	/**
-	 * Semi-debug method to track all possible cases of memory leaks
-	 * Used before exiting application
-	 *
-	 */
-	static void clear();
-
-	/**
 	 * Will load all filesystem data from Json data at this path (normally - config/filesystem.json)
 	 * @param fsConfigURI - URI from which data will be loaded
 	 */
@@ -104,7 +96,12 @@ public:
 	 */
 	static ISimpleResourceLoader * createFileSystem(const std::string &prefix, const JsonNode & fsConfig);
 
+	~CResourceHandler() = default;
 private:
 	/** Instance of resource loader */
 	static std::map<std::string, ISimpleResourceLoader*> knownLoaders;
+	static CResourceHandler globalResourceHandler;
+
+	CResourceHandler() {};
+	std::unique_ptr<ISimpleResourceLoader> rootLoader;
 };

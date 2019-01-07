@@ -1,3 +1,12 @@
+/*
+ * Images.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "Images.h"
 
@@ -25,16 +34,6 @@
 #include "../../lib/CGeneralTextHandler.h" //for Unicode related stuff
 #include "../../lib/CRandomGenerator.h"
 
-/*
- * Images.cpp, part of VCMI engine
- *
- * Authors: listed in file AUTHORS in main folder
- *
- * License: GNU General Public License v2.0 or later
- * Full text of license available in license.txt file, in main folder
- *
- */
-
 CPicture::CPicture( SDL_Surface *BG, int x, int y, bool Free )
 {
 	init();
@@ -50,7 +49,7 @@ CPicture::CPicture( const std::string &bmpname, int x, int y )
 {
 	init();
 	bg = BitmapHandler::loadBitmap(bmpname);
-	freeSurf = true;;
+	freeSurf = true;
 	pos.x += x;
 	pos.y += y;
 	if(bg)
@@ -64,19 +63,19 @@ CPicture::CPicture( const std::string &bmpname, int x, int y )
 	}
 }
 
-CPicture::CPicture(const Rect &r, const SDL_Color &color, bool screenFormat /*= false*/)
+CPicture::CPicture(const Rect &r, const SDL_Color &color, bool screenFormat)
 {
 	init();
 	createSimpleRect(r, screenFormat, SDL_MapRGB(bg->format, color.r, color.g,color.b));
 }
 
-CPicture::CPicture(const Rect &r, ui32 color, bool screenFormat /*= false*/)
+CPicture::CPicture(const Rect &r, ui32 color, bool screenFormat)
 {
 	init();
 	createSimpleRect(r, screenFormat, color);
 }
 
-CPicture::CPicture(SDL_Surface *BG, const Rect &SrcRect, int x /*= 0*/, int y /*= 0*/, bool free /*= false*/)
+CPicture::CPicture(SDL_Surface * BG, const Rect &SrcRect, int x, int y, bool free)
 {
 	visible = true;
 	needRefresh = false;
@@ -174,17 +173,10 @@ void CPicture::createSimpleRect(const Rect &r, bool screenFormat, ui32 color)
 	if(screenFormat)
 		bg = CSDL_Ext::newSurface(r.w, r.h);
 	else
-		bg = SDL_CreateRGBSurface(SDL_SWSURFACE, r.w, r.h, 8, 0, 0, 0, 0);
+		bg = SDL_CreateRGBSurface(0, r.w, r.h, 8, 0, 0, 0, 0);
 
 	SDL_FillRect(bg, nullptr, color);
 	freeSurf = true;
-}
-
-void CPicture::colorizeAndConvert(PlayerColor player)
-{
-	assert(bg);
-	colorize(player);
-	convertToScreenBPP();
 }
 
 void CPicture::colorize(PlayerColor player)
@@ -248,7 +240,7 @@ void CAnimImage::init()
 	if (flags & CShowableAnim::BASE)
 		anim->load(0,group);
 
-	IImage *img = anim->getImage(frame, group);
+	auto img = anim->getImage(frame, group);
 	if (img)
 	{
 		pos.w = img->width();
@@ -258,9 +250,6 @@ void CAnimImage::init()
 
 CAnimImage::~CAnimImage()
 {
-	anim->unload(frame, group);
-	if (flags & CShowableAnim::BASE)
-		anim->unload(0,group);
 }
 
 void CAnimImage::showAll(SDL_Surface * to)
@@ -268,13 +257,11 @@ void CAnimImage::showAll(SDL_Surface * to)
 	if(!visible)
 		return;
 
-	IImage *img;
-
-	if ( flags & CShowableAnim::BASE && frame != 0)
-		if ((img = anim->getImage(0, group)))
+	if(flags & CShowableAnim::BASE && frame != 0)
+		if(auto img = anim->getImage(0, group))
 			img->draw(to, pos.x, pos.y);
 
-	if ((img = anim->getImage(frame, group)))
+	if(auto img = anim->getImage(frame, group))
 		img->draw(to, pos.x, pos.y);
 }
 
@@ -285,11 +272,9 @@ void CAnimImage::setFrame(size_t Frame, size_t Group)
 	if (anim->size(Group) > Frame)
 	{
 		anim->load(Frame, Group);
-		anim->unload(frame, group);
 		frame = Frame;
 		group = Group;
-		IImage *img = anim->getImage(frame, group);
-		if (img)
+		if(auto img = anim->getImage(frame, group))
 		{
 			if (flags & CShowableAnim::PLAYER_COLORED)
 				img->playerColored(player);
@@ -298,7 +283,7 @@ void CAnimImage::setFrame(size_t Frame, size_t Group)
 		}
 	}
 	else
-		logGlobal->errorStream() << "Error: accessing unavailable frame " << Group << ":" << Frame << " in CAnimation!";
+		logGlobal->error("Error: accessing unavailable frame %d:%d in CAnimation!", Group, Frame);
 }
 
 void CAnimImage::playerColored(PlayerColor currPlayer)
@@ -311,7 +296,7 @@ void CAnimImage::playerColored(PlayerColor currPlayer)
 }
 
 CShowableAnim::CShowableAnim(int x, int y, std::string name, ui8 Flags, ui32 Delay, size_t Group):
-	anim(new CAnimation(name, Flags & USE_RLE)),
+	anim(std::make_shared<CAnimation>(name)),
 	group(Group),
 	frame(0),
 	first(0),
@@ -334,7 +319,6 @@ CShowableAnim::CShowableAnim(int x, int y, std::string name, ui8 Flags, ui32 Del
 CShowableAnim::~CShowableAnim()
 {
 	anim->unloadGroup(group);
-	delete anim;
 }
 
 void CShowableAnim::setAlpha(ui32 alphaValue)
@@ -352,8 +336,9 @@ bool CShowableAnim::set(size_t Group, size_t from, size_t to)
 	if (max < from || max == 0)
 		return false;
 
-	anim->load(Group);
-	anim->unload(group);
+	anim->unloadGroup(group);
+	anim->loadGroup(Group);
+
 	group = Group;
 	frame = first = from;
 	last = max;
@@ -367,8 +352,9 @@ bool CShowableAnim::set(size_t Group)
 		return false;
 	if (group != Group)
 	{
-		anim->loadGroup(Group);
 		anim->unloadGroup(group);
+		anim->loadGroup(Group);
+
 		first = 0;
 		group = Group;
 		last = anim->size(Group);
@@ -422,9 +408,9 @@ void CShowableAnim::blitImage(size_t frame, size_t group, SDL_Surface *to)
 {
 	assert(to);
 	Rect src( xOffset, yOffset, pos.w, pos.h);
-	IImage * img = anim->getImage(frame, group);
-	if (img)
-		img->draw(to, pos.x-xOffset, pos.y-yOffset, &src, alpha);
+	auto img = anim->getImage(frame, group);
+	if(img)
+		img->draw(to, pos.x, pos.y, &src, alpha);
 }
 
 void CShowableAnim::rotate(bool on, bool vertical)
@@ -436,16 +422,12 @@ void CShowableAnim::rotate(bool on, bool vertical)
 		flags &= ~flag;
 }
 
-CCreatureAnim::CCreatureAnim(int x, int y, std::string name, Rect picPos, ui8 flags, EAnimType type):
+CCreatureAnim::CCreatureAnim(int x, int y, std::string name, ui8 flags, EAnimType type):
 	CShowableAnim(x,y,name,flags,4,type)
 {
-	xOffset = picPos.x;
-	yOffset = picPos.y;
-	if (picPos.w)
-		pos.w = picPos.w;
-	if (picPos.h)
-		pos.h = picPos.h;
-};
+	xOffset = 0;
+	yOffset = 0;
+}
 
 void CCreatureAnim::loopPreview(bool warMachine)
 {

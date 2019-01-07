@@ -1,3 +1,12 @@
+/*
+ * CMapService.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "CMapService.h"
 
@@ -5,6 +14,7 @@
 #include "../filesystem/CBinaryReader.h"
 #include "../filesystem/CCompressedStream.h"
 #include "../filesystem/CMemoryStream.h"
+#include "../filesystem/CMemoryBuffer.h"
 
 #include "CMap.h"
 
@@ -12,49 +22,61 @@
 #include "MapFormatJson.h"
 
 
-std::unique_ptr<CMap> CMapService::loadMap(const std::string & name)
+std::unique_ptr<CMap> CMapService::loadMap(const ResourceID & name) const
 {
 	auto stream = getStreamFromFS(name);
+	return getMapLoader(stream)->loadMap();
+}
+
+std::unique_ptr<CMapHeader> CMapService::loadMapHeader(const ResourceID & name) const
+{
+	auto stream = getStreamFromFS(name);
+	return getMapLoader(stream)->loadMapHeader();
+}
+
+std::unique_ptr<CMap> CMapService::loadMap(const ui8 * buffer, int size, const std::string & name) const
+{
+	auto stream = getStreamFromMem(buffer, size);
 	std::unique_ptr<CMap> map(getMapLoader(stream)->loadMap());
 	std::unique_ptr<CMapHeader> header(map.get());
 
+	//might be original campaign and require patch
 	getMapPatcher(name)->patchMapHeader(header);
 	header.release();
 
 	return map;
 }
 
-std::unique_ptr<CMapHeader> CMapService::loadMapHeader(const std::string & name)
+std::unique_ptr<CMapHeader> CMapService::loadMapHeader(const ui8 * buffer, int size, const std::string & name) const
 {
-	auto stream = getStreamFromFS(name);
+	auto stream = getStreamFromMem(buffer, size);
 	std::unique_ptr<CMapHeader> header = getMapLoader(stream)->loadMapHeader();
+
+	//might be original campaign and require patch
 	getMapPatcher(name)->patchMapHeader(header);
 	return header;
 }
 
-std::unique_ptr<CMap> CMapService::loadMap(const ui8 * buffer, int size, const std::string & name)
+void CMapService::saveMap(const std::unique_ptr<CMap> & map, boost::filesystem::path fullPath) const
 {
-	auto stream = getStreamFromMem(buffer, size);
-	std::unique_ptr<CMap> map(getMapLoader(stream)->loadMap());
-	std::unique_ptr<CMapHeader> header(map.get());
+	CMemoryBuffer serializeBuffer;
+	{
+		CMapSaverJson saver(&serializeBuffer);
+		saver.saveMap(map);
+	}
+	{
+		boost::filesystem::remove(fullPath);
+		boost::filesystem::ofstream tmp(fullPath, boost::filesystem::ofstream::binary);
 
-	getMapPatcher(name)->patchMapHeader(header);
-	header.release();
-
-	return map;
+		tmp.write((const char *)serializeBuffer.getBuffer().data(),serializeBuffer.getSize());
+		tmp.flush();
+		tmp.close();
+	}
 }
 
-std::unique_ptr<CMapHeader> CMapService::loadMapHeader(const ui8 * buffer, int size, const std::string & name)
+std::unique_ptr<CInputStream> CMapService::getStreamFromFS(const ResourceID & name)
 {
-	auto stream = getStreamFromMem(buffer, size);
-	std::unique_ptr<CMapHeader> header = getMapLoader(stream)->loadMapHeader();
-	getMapPatcher(name)->patchMapHeader(header);
-	return header;
-}
-
-std::unique_ptr<CInputStream> CMapService::getStreamFromFS(const std::string & name)
-{
-	return CResourceHandler::get()->load(ResourceID(name, EResType::MAP));
+	return CResourceHandler::get()->load(name);
 }
 
 std::unique_ptr<CInputStream> CMapService::getStreamFromMem(const ui8 * buffer, int size)
@@ -113,6 +135,6 @@ std::unique_ptr<IMapPatcher> CMapService::getMapPatcher(std::string scenarioName
 		node = loadPatches("config/mapOverrides.json");
 
 	boost::to_lower(scenarioName);
-	logGlobal->debugStream() << "Request to patch map " << scenarioName;
+	logGlobal->debug("Request to patch map %s", scenarioName);
 	return std::unique_ptr<IMapPatcher>(new CMapPatcher(node[scenarioName]));
 }

@@ -1,4 +1,3 @@
-
 /*
  * CRmgTemplateStorage.h, part of VCMI engine
  *
@@ -11,13 +10,10 @@
 
 #pragma once
 
-#include "CRmgTemplate.h"
-#include "CRmgTemplateZone.h"
 #include "../IHandlerBase.h"
 
 class JsonNode;
-
-typedef std::vector<JsonNode> JsonVector;
+class CRmgTemplate;
 
 /// The CJsonRmgTemplateLoader loads templates from a JSON file.
 class DLL_LINKAGE CRmgTemplateStorage : public IHandlerBase
@@ -36,14 +32,6 @@ public:
 	virtual void loadObject(std::string scope, std::string name, const JsonNode & data, size_t index) override;
 
 private:
-	CRmgTemplate::CSize parseMapTemplateSize(const std::string & text) const;
-	CRmgTemplateZone::CTownInfo parseTemplateZoneTowns(const JsonNode & node) const;
-	ETemplateZoneType::ETemplateZoneType parseZoneType(const std::string & type) const;
-	std::set<TFaction> parseTownTypes(const JsonVector & townTypesVector, const std::set<TFaction> & defaultTownTypes) const;
-	std::set<ETerrainType> parseTerrainTypes(const JsonVector & terTypeStrings, const std::set<ETerrainType> & defaultTerrainTypes) const;
-	CRmgTemplate::CPlayerCountRange parsePlayers(const std::string & players) const;
-
-protected:
 	std::map<std::string, CRmgTemplate *> templates;
 };
 

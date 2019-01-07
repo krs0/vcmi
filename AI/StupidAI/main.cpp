@@ -1,3 +1,12 @@
+/*
+ * main.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 
 #include "../../lib/AI_Base.h"
@@ -5,12 +14,6 @@
 
 #ifdef __GNUC__
 #define strcpy_s(a, b, c) strncpy(a, c, b)
-#endif
-
-#ifdef VCMI_ANDROID
-#define GetGlobalAiVersion StupidAI_GetGlobalAiVersion
-#define GetAiName StupidAI_GetAiName
-#define GetNewBattleAI StupidAI_GetNewBattleAI
 #endif
 
 static const char *g_cszAiName = "Stupid AI 0.1";

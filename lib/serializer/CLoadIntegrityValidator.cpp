@@ -1,8 +1,3 @@
-#include "StdInc.h"
-#include "CLoadIntegrityValidator.h"
-
-#include "../registerTypes/RegisterTypes.h"
-
 /*
  * CLoadIntegrityValidator.cpp, part of VCMI engine
  *
@@ -12,8 +7,13 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#include "StdInc.h"
+#include "CLoadIntegrityValidator.h"
+#include "../filesystem/FileStream.h"
 
-CLoadIntegrityValidator::CLoadIntegrityValidator(const boost::filesystem::path &primaryFileName, const boost::filesystem::path &controlFileName, int minimalVersion /*= version*/)
+#include "../registerTypes/RegisterTypes.h"
+
+CLoadIntegrityValidator::CLoadIntegrityValidator(const boost::filesystem::path &primaryFileName, const boost::filesystem::path &controlFileName, int minimalVersion)
 	: serializer(this), foundDesync(false)
 {
 	registerTypes(serializer);
@@ -40,7 +40,7 @@ int CLoadIntegrityValidator::read( void * data, unsigned size )
 		controlFile->read(controlData.data(), size);
 		if(std::memcmp(data, controlData.data(), size))
 		{
-			logGlobal->errorStream() << "Desync found! Position: " << primaryFile->sfile->tellg();
+			logGlobal->error("Desync found! Position: %d", primaryFile->sfile->tellg());
 			foundDesync = true;
 			//throw std::runtime_error("Savegame dsynchronized!");
 		}

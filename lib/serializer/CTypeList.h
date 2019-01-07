@@ -1,4 +1,3 @@
-
 /*
  * CTypeList.h, part of VCMI engine
  *
@@ -8,7 +7,6 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
-
 #pragma once
 
 #include "CSerializer.h"
@@ -217,7 +215,8 @@ class CApplier : boost::noncopyable
 public:
 	T * getApplier(ui16 ID)
 	{
-		assert(apps.count(ID));
+		if(!apps.count(ID))
+			throw std::runtime_error("No applier found.");
 		return apps[ID].get();
 	}
 

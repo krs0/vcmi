@@ -1,3 +1,12 @@
+/*
+ * AdventureMapClasses.h, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #pragma once
 
 #include "ObjectLists.h"
@@ -7,34 +16,29 @@ class CArmedInstance;
 class CAnimation;
 class CAnimImage;
 class CShowableAnim;
+class CFilledTexture;
 class CGGarrison;
 class CGObjectInstance;
 class CGHeroInstance;
 class CGTownInstance;
 class CButton;
 struct Component;
+class CComponent;
 struct InfoAboutArmy;
 struct InfoAboutHero;
 struct InfoAboutTown;
-
-/*
- * CAdventureMapClasses.h, part of VCMI engine
- *
- * Authors: listed in file AUTHORS in main folder
- *
- * License: GNU General Public License v2.0 or later
- * Full text of license available in license.txt file, in main folder
- *
- */
+class CHeroTooltip;
+class CTownTooltip;
+class CTextBox;
 
 /// Base UI Element for hero\town lists
 class CList : public CIntObject
 {
 protected:
-	class CListItem : public CIntObject
+	class CListItem : public CIntObject, public std::enable_shared_from_this<CListItem>
 	{
 		CList * parent;
-		CIntObject * selection;
+		std::shared_ptr<CIntObject> selection;
 	public:
 		CListItem(CList * parent);
 		~CListItem();
@@ -45,7 +49,7 @@ protected:
 		void onSelect(bool on);
 
 		/// create object with selection rectangle
-		virtual CIntObject * genSelection()=0;
+		virtual std::shared_ptr<CIntObject> genSelection()=0;
 		/// reaction on item selection (e.g. enable selection border)
 		/// NOTE: item may be deleted in selected state
 		virtual void select(bool on)=0;
@@ -57,7 +61,7 @@ protected:
 		virtual std::string getHoverText()=0;
 	};
 
-	CListBox * list;
+	std::shared_ptr<CListBox> listBox;
 	const size_t size;
 
 	/**
@@ -72,22 +76,20 @@ protected:
 	 * @param create - function for creating items in listbox
 	 * @param destroy - function for deleting items in listbox
 	 */
-	CList(int size, Point position, std::string btnUp, std::string btnDown, size_t listAmount, int helpUp, int helpDown,
-		  CListBox::CreateFunc create, CListBox::DestroyFunc destroy = CListBox::DestroyFunc());
+	CList(int size, Point position, std::string btnUp, std::string btnDown, size_t listAmount, int helpUp, int helpDown, CListBox::CreateFunc create);
 
 	//for selection\deselection
-	CListItem *selected;
-	void select(CListItem * which);
+	std::shared_ptr<CListItem> selected;
+	void select(std::shared_ptr<CListItem> which);
 	friend class CListItem;
+
+	std::shared_ptr<CButton> scrollUp;
+	std::shared_ptr<CButton> scrollDown;
 
 	/// should be called when list is invalidated
 	void update();
 
 public:
-
-	CButton * scrollUp;
-	CButton * scrollDown;
-
 	/// functions that will be called when selection changes
 	CFunctionList<void()> onSelect;
 
@@ -106,21 +108,24 @@ class CHeroList	: public CList
 	/// Empty hero item used as placeholder for unused entries in list
 	class CEmptyHeroItem : public CIntObject
 	{
+		std::shared_ptr<CAnimImage> movement;
+		std::shared_ptr<CAnimImage> mana;
+		std::shared_ptr<CPicture> portrait;
 	public:
 		CEmptyHeroItem();
 	};
 
 	class CHeroItem : public CListItem
 	{
-		CAnimImage * movement;
-		CAnimImage * mana;
-		CAnimImage * portrait;
+		std::shared_ptr<CAnimImage> movement;
+		std::shared_ptr<CAnimImage> mana;
+		std::shared_ptr<CAnimImage> portrait;
 	public:
 		const CGHeroInstance * const hero;
 
-		CHeroItem(CHeroList *parent, const CGHeroInstance * hero);
+		CHeroItem(CHeroList * parent, const CGHeroInstance * hero);
 
-		CIntObject * genSelection() override;
+		std::shared_ptr<CIntObject> genSelection() override;
 		void update();
 		void select(bool on) override;
 		void open() override;
@@ -128,7 +133,7 @@ class CHeroList	: public CList
 		std::string getHoverText() override;
 	};
 
-	CIntObject * createHeroItem(size_t index);
+	std::shared_ptr<CIntObject> createHeroItem(size_t index);
 public:
 	/**
 	 * @brief CHeroList
@@ -148,13 +153,13 @@ class CTownList	: public CList
 {
 	class CTownItem : public CListItem
 	{
-		CAnimImage * picture;
+		std::shared_ptr<CAnimImage> picture;
 	public:
 		const CGTownInstance * const town;
 
 		CTownItem(CTownList *parent, const CGTownInstance * town);
 
-		CIntObject * genSelection() override;
+		std::shared_ptr<CIntObject> genSelection() override;
 		void update();
 		void select(bool on) override;
 		void open() override;
@@ -162,7 +167,7 @@ class CTownList	: public CList
 		std::string getHoverText() override;
 	};
 
-	CIntObject * createTownItem(size_t index);
+	std::shared_ptr<CIntObject> createTownItem(size_t index);
 public:
 	/**
 	 * @brief CTownList
@@ -181,14 +186,14 @@ class CMinimap;
 
 class CMinimapInstance : public CIntObject
 {
-	CMinimap *parent;
+	CMinimap * parent;
 	SDL_Surface * minimap;
 	int level;
 
 	//get color of selected tile on minimap
 	const SDL_Color & getTileColor(const int3 & pos);
 
-	void blitTileWithColor(const SDL_Color & color, const int3 & pos, SDL_Surface *to, int x, int y);
+	void blitTileWithColor(const SDL_Color & color, const int3 & pos, SDL_Surface * to, int x, int y);
 
 	//draw minimap already scaled.
 	//result is not antialiased. Will result in "missing" pixels on huge maps (>144)
@@ -197,19 +202,17 @@ public:
 	CMinimapInstance(CMinimap * parent, int level);
 	~CMinimapInstance();
 
-	void showAll(SDL_Surface *to) override;
-	void tileToPixels (const int3 &tile, int &x, int &y,int toX = 0, int toY = 0);
-
-	void refreshTile(const int3 &pos);
+	void showAll(SDL_Surface * to) override;
+	void tileToPixels (const int3 & tile, int & x, int & y, int toX = 0, int toY = 0);
+	void refreshTile(const int3 & pos);
 };
 
 /// Minimap which is displayed at the right upper corner of adventure map
 class CMinimap : public CIntObject
 {
 protected:
-
-	CPicture *aiShield; //the graphic displayed during AI turn
-	CMinimapInstance * minimap;
+	std::shared_ptr<CPicture> aiShield; //the graphic displayed during AI turn
+	std::shared_ptr<CMinimapInstance> minimap;
 	int level;
 
 	//to initialize colors
@@ -246,30 +249,73 @@ class CInfoBar : public CIntObject
 	//all visible information located in one object - for ease of replacing
 	class CVisibleInfo : public CIntObject
 	{
-		//list of objects that must be redrawed on each frame on a top of animation
-		std::list<CIntObject *> forceRefresh;
+	public:
+		void show(SDL_Surface * to) override;
 
-		//the only part of gui we need to know about for updating - AI progress
-		CAnimImage *aiProgress;
+	protected:
+		std::shared_ptr<CPicture> background;
+		std::list<std::shared_ptr<CIntObject>> forceRefresh;
+
+		CVisibleInfo();
+	};
+
+	class EmptyVisibleInfo : public CVisibleInfo
+	{
+	public:
+		EmptyVisibleInfo();
+	};
+
+	class VisibleHeroInfo : public CVisibleInfo
+	{
+		std::shared_ptr<CHeroTooltip> heroTooltip;
+	public:
+		VisibleHeroInfo(const CGHeroInstance * hero);
+	};
+
+	class VisibleTownInfo : public CVisibleInfo
+	{
+		std::shared_ptr<CTownTooltip> townTooltip;
+	public:
+		VisibleTownInfo(const CGTownInstance * town);
+	};
+
+	class VisibleDateInfo : public CVisibleInfo
+	{
+		std::shared_ptr<CShowableAnim> animation;
+		std::shared_ptr<CLabel> label;
 
 		std::string getNewDayName();
-		void playNewDaySound();
-
 	public:
-		CVisibleInfo(Point position);
+		VisibleDateInfo();
+	};
 
-		void show(SDL_Surface *to) override;
+	class VisibleEnemyTurnInfo : public CVisibleInfo
+	{
+		std::shared_ptr<CAnimImage> banner;
+		std::shared_ptr<CShowableAnim> glass;
+		std::shared_ptr<CShowableAnim> sand;
+	public:
+		VisibleEnemyTurnInfo(PlayerColor player);
+	};
 
-		//functions that must be called only once
-		void loadHero(const CGHeroInstance * hero);
-		void loadTown(const CGTownInstance * town);
-		void loadDay();
-		void loadEnemyTurn(PlayerColor player);
-		void loadGameStatus();
-		void loadComponent(const Component &comp, std::string message);
+	class VisibleGameStatusInfo : public CVisibleInfo
+	{
+		std::shared_ptr<CLabel> allyLabel;
+		std::shared_ptr<CLabel> enemyLabel;
 
-		//can be called multiple times
-		void updateEnemyTurn(double progress);
+		std::vector<std::shared_ptr<CAnimImage>> flags;
+		std::vector<std::shared_ptr<CAnimImage>> hallIcons;
+		std::vector<std::shared_ptr<CLabel>> hallLabels;
+	public:
+		VisibleGameStatusInfo();
+	};
+
+	class VisibleComponentInfo : public CVisibleInfo
+	{
+		std::shared_ptr<CComponent> comp;
+		std::shared_ptr<CTextBox> text;
+	public:
+		VisibleComponentInfo(const Component & compToDisplay, std::string message);
 	};
 
 	enum EState
@@ -277,13 +323,11 @@ class CInfoBar : public CIntObject
 		EMPTY, HERO, TOWN, DATE, GAME, AITURN, COMPONENT
 	};
 
-	CVisibleInfo * visibleInfo;
+	std::shared_ptr<CVisibleInfo> visibleInfo;
 	EState state;
-	//currently displayed object. May be null if state is not hero or town
-	const CGObjectInstance * currentObject;
 
 	//removes all information about current state, deactivates timer (if any)
-	void reset(EState newState);
+	void reset();
 
 	void tick() override;
 
@@ -291,6 +335,7 @@ class CInfoBar : public CIntObject
 	void clickRight(tribool down, bool previousState) override;
 	void hover(bool on) override;
 
+	void playNewDaySound();
 public:
 	CInfoBar(const Rect & pos);
 
@@ -302,9 +347,6 @@ public:
 
 	/// print enemy turn progress
 	void startEnemyTurn(PlayerColor color);
-	/// updates enemy turn.
-	/// NOTE: currently DISABLED. Check comments in CInfoBar::CVisibleInfo::loadEnemyTurn()
-	void updateEnemyTurn(double progress);
 
 	/// reset to default view - selected object
 	void showSelection();
@@ -320,16 +362,16 @@ public:
 /// simple panel that contains other displayable elements; used to separate groups of controls
 class CAdvMapPanel : public CIntObject
 {
-	/// ptrs to child-buttons that can be recolored with setPlayerColor()
-	std::vector<CButton *> buttons;
+	std::vector<std::shared_ptr<CButton>> colorableButtons;
+	std::vector<std::shared_ptr<CIntObject>> otherObjects;
 	/// the surface passed to this obj will be freed in dtor
 	SDL_Surface * background;
 public:
 	CAdvMapPanel(SDL_Surface * bg, Point position);
 	virtual ~CAdvMapPanel();
 
-	void addChildToPanel(CIntObject * obj, ui8 actions = 0);
-	void addChildColorableButton(CButton * btn);
+	void addChildToPanel(std::shared_ptr<CIntObject> obj, ui8 actions = 0);
+	void addChildColorableButton(std::shared_ptr<CButton> button);
 	/// recolors all buttons to given player color
 	void setPlayerColor(const PlayerColor & clr);
 
@@ -342,10 +384,9 @@ class CAdvMapWorldViewPanel : public CAdvMapPanel
 	/// data that allows reconstruction of panel info icons
 	std::vector<std::pair<int, Point>> iconsData;
 	/// ptrs to child-pictures constructed from iconsData
-	std::vector<CAnimImage *> currentIcons;
-	/// temporary surface drawn below world view panel on higher resolutions (won't be needed when world view panel is configured for extraResolutions mod)
-	SDL_Surface * tmpBackgroundFiller;
-	int fillerHeight;
+	std::vector<std::shared_ptr<CAnimImage>> currentIcons;
+	/// surface drawn below world view panel on higher resolutions (won't be needed when world view panel is configured for extraResolutions mod)
+	std::shared_ptr<CFilledTexture> backgroundFiller;
 	std::shared_ptr<CAnimation> icons;
 public:
 	CAdvMapWorldViewPanel(std::shared_ptr<CAnimation> _icons, SDL_Surface * bg, Point position, int spaceBottom, const PlayerColor &color);
@@ -353,8 +394,7 @@ public:
 
 	void addChildIcon(std::pair<int, Point> data, int indexOffset);
 	/// recreates all pictures from given def to recolor them according to current player color
-	void recolorIcons(const PlayerColor &color, int indexOffset);
-	void showAll(SDL_Surface * to) override;
+	void recolorIcons(const PlayerColor & color, int indexOffset);
 };
 
 class CInGameConsole : public CIntObject
@@ -379,5 +419,5 @@ public:
 	void endEnteringText(bool printEnteredText);
 	void refreshEnteredText();
 
-	CInGameConsole(); //c-tor
+	CInGameConsole();
 };

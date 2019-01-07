@@ -1,3 +1,12 @@
+/*
+ * cmodlist.h, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #pragma once
 
 #include <QVariantMap>
@@ -8,14 +17,14 @@ class JsonNode;
 
 namespace ModStatus
 {
-	enum EModStatus
-	{
-		MASK_NONE = 0,
-		ENABLED = 1,
-		INSTALLED = 2,
-		UPDATEABLE = 4,
-		MASK_ALL = 255
-	};
+enum EModStatus
+{
+	MASK_NONE = 0,
+	ENABLED = 1,
+	INSTALLED = 2,
+	UPDATEABLE = 4,
+	MASK_ALL = 255
+};
 }
 
 class CModEntry
@@ -26,6 +35,7 @@ class CModEntry
 	QVariantMap modSettings;
 
 	QString modname;
+
 public:
 	CModEntry(QVariantMap repository, QVariantMap localData, QVariantMap modSettings, QString modname);
 
@@ -61,6 +71,7 @@ class CModList
 	QVariantMap modSettings;
 
 	QVariantMap copyField(QVariantMap data, QString from, QString to);
+
 public:
 	virtual void resetRepositories();
 	virtual void addRepository(QVariantMap data);

@@ -1,3 +1,12 @@
+/*
+ * CAdvmapInterface.h, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #pragma once
 
 #include "../widgets/AdventureMapClasses.h"
@@ -23,50 +32,55 @@ struct MapDrawingInfo;
 
 /*****************************/
 
-/*
- * CAdvmapInterface.h, part of VCMI engine
- *
- * Authors: listed in file AUTHORS in main folder
- *
- * License: GNU General Public License v2.0 or later
- * Full text of license available in license.txt file, in main folder
- *
- */
-
 enum class EAdvMapMode
 {
 	NORMAL,
 	WORLD_VIEW
 };
 
-/// Adventure options dialogue where you can view the world, dig, play the replay of the last turn,...
+/// Adventure options dialog where you can view the world, dig, play the replay of the last turn,...
 class CAdventureOptions : public CWindowObject
 {
 public:
-	CButton *exit, *viewWorld, *puzzle, *dig, *scenInfo/*, *replay*/;
+	std::shared_ptr<CButton> exit;
+	std::shared_ptr<CButton> viewWorld;
+	std::shared_ptr<CButton> puzzle;
+	std::shared_ptr<CButton> dig;
+	std::shared_ptr<CButton> scenInfo;
+	/*std::shared_ptr<CButton> replay*/
 
 	CAdventureOptions();
 	static void showScenarioInfo();
 };
 
 /// Holds information about which tiles of the terrain are shown/not shown at the screen
-class CTerrainRect
-	:  public CIntObject
+class CTerrainRect : public CIntObject
 {
 	SDL_Surface * fadeSurface;
 	EMapAnimRedrawStatus lastRedrawStatus;
-	CFadeAnimation * fadeAnim;
+	std::shared_ptr<CFadeAnimation> fadeAnim;
+
+	int3 swipeInitialMapPos;
+	int3 swipeInitialRealPos;
+	bool isSwiping;
+	static constexpr float SwipeTouchSlop = 16.0f;
+
+	void handleHover(const SDL_MouseMotionEvent & sEvent);
+	void handleSwipeMove(const SDL_MouseMotionEvent & sEvent);
+	/// handles start/finish of swipe (press/release of corresponding button); returns true if state change was handled
+	bool handleSwipeStateChange(bool btnPressed);
 public:
 	int tilesw, tilesh; //width and height of terrain to blit in tiles
 	int3 curHoveredTile;
 	int moveX, moveY; //shift between actual position of screen and the one we wil blit; ranges from -31 to 31 (in pixels)
+	CGPath * currentPath;
 
 	CTerrainRect();
 	virtual ~CTerrainRect();
-	CGPath * currentPath;
 	void deactivate() override;
 	void clickLeft(tribool down, bool previousState) override;
 	void clickRight(tribool down, bool previousState) override;
+	void clickMiddle(tribool down, bool previousState) override;
 	void hover(bool on) override;
 	void mouseMoved (const SDL_MouseMotionEvent & sEvent) override;
 	void show(SDL_Surface * to) override;
@@ -87,7 +101,8 @@ public:
 class CResDataBar : public CIntObject
 {
 public:
-	SDL_Surface * bg;
+	std::shared_ptr<CPicture> background;
+
 	std::vector<std::pair<int,int> > txtpos;
 	std::string datetext;
 
@@ -121,6 +136,9 @@ public:
 	enum{LEFT=1, RIGHT=2, UP=4, DOWN=8};
 	ui8 scrollingDir; //uses enum: LEFT RIGHT, UP, DOWN
 	bool scrollingState;
+	bool swipeEnabled;
+	bool swipeMovementRequested;
+	int3 swipeTargetPosition;
 
 	enum{NA, INGAME, WAITING} state;
 
@@ -148,22 +166,22 @@ public:
 
 	SDL_Surface * bg;
 	SDL_Surface * bgWorldView;
-	std::vector<CAnimImage *> gems;
+	std::vector<std::shared_ptr<CAnimImage>> gems;
 	CMinimap minimap;
-	CGStatusBar statusbar;
+	std::shared_ptr<CGStatusBar> statusbar;
 
-	CButton * kingOverview;
-	CButton * underground;
-	CButton * questlog;
-	CButton * sleepWake;
-	CButton * moveHero;
-	CButton * spellbook;
-	CButton * advOptions;
-	CButton * sysOptions;
-	CButton * nextHero;
-	CButton * endTurn;
+	std::shared_ptr<CButton> kingOverview;
+	std::shared_ptr<CButton> underground;
+	std::shared_ptr<CButton> questlog;
+	std::shared_ptr<CButton> sleepWake;
+	std::shared_ptr<CButton> moveHero;
+	std::shared_ptr<CButton> spellbook;
+	std::shared_ptr<CButton> advOptions;
+	std::shared_ptr<CButton> sysOptions;
+	std::shared_ptr<CButton> nextHero;
+	std::shared_ptr<CButton> endTurn;
 
-	CButton * worldViewUnderground;
+	std::shared_ptr<CButton> worldViewUnderground;
 
 	CTerrainRect terrain; //visible terrain
 	CResDataBar resdatabar;
@@ -171,9 +189,9 @@ public:
 	CTownList townList;
 	CInfoBar infoBar;
 
-	CAdvMapPanel *panelMain; // panel that holds all right-side buttons in normal view
-	CAdvMapWorldViewPanel *panelWorldView; // panel that holds all buttons and other ui in world view
-	CAdvMapPanel *activeMapPanel; // currently active panel (either main or world view, depending on current mode)
+	std::shared_ptr<CAdvMapPanel> panelMain; // panel that holds all right-side buttons in normal view
+	std::shared_ptr<CAdvMapWorldViewPanel> panelWorldView; // panel that holds all buttons and other ui in world view
+	std::shared_ptr<CAdvMapPanel> activeMapPanel; // currently active panel (either main or world view, depending on current mode)
 
 	std::shared_ptr<CAnimation> worldViewIcons;// images for world view overlay
 
@@ -242,6 +260,10 @@ public:
 
 	/// changes current adventure map mode; used to switch between default view and world view; scale is ignored if EAdvMapMode == NORMAL
 	void changeMode(EAdvMapMode newMode, float newScale = 0.36f);
+
+	void handleMapScrollingUpdate();
+	void handleSwipeUpdate();
+
 };
 
-extern CAdvMapInt *adventureInt;
+extern std::shared_ptr<CAdvMapInt> adventureInt;

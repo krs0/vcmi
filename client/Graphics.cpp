@@ -1,3 +1,12 @@
+/*
+ * Graphics.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "Graphics.h"
 
@@ -15,6 +24,7 @@
 #include "../lib/CGeneralTextHandler.h"
 #include "../lib/CCreatureHandler.h"
 #include "CBitmapHandler.h"
+#include "../lib/CSkillHandler.h"
 #include "../lib/spells/CSpellHandler.h"
 #include "../lib/CGameState.h"
 #include "../lib/JsonNode.h"
@@ -24,22 +34,6 @@
 #include "../lib/mapObjects/CObjectHandler.h"
 
 using namespace CSDL_Ext;
-#ifdef min
-#undef min
-#endif
-#ifdef max
-#undef max
-#endif
-
-/*
- * Graphics.cpp, part of VCMI engine
- *
- * Authors: listed in file AUTHORS in main folder
- *
- * License: GNU General Public License v2.0 or later
- * Full text of license available in license.txt file, in main folder
- *
- */
 
 Graphics * graphics = nullptr;
 
@@ -233,16 +227,10 @@ std::shared_ptr<CAnimation> Graphics::loadHeroFlagAnimation(const std::string & 
 
 	for(const auto & rotation : rotations)
 	{
-        const int sourceGroup = rotation.first;
-        const int targetGroup = rotation.second;
+		const int sourceGroup = rotation.first;
+		const int targetGroup = rotation.second;
 
-        for(size_t frame = 0; frame < anim->size(sourceGroup); ++frame)
-		{
-			anim->duplicateImage(sourceGroup, frame, targetGroup);
-
-			IImage * image = anim->getImage(frame, targetGroup);
-			image->verticalFlip();
-		}
+		anim->createFlippedGroup(sourceGroup, targetGroup);
 	}
 
 	return anim;
@@ -263,15 +251,10 @@ std::shared_ptr<CAnimation> Graphics::loadHeroAnimation(const std::string &name)
 
 	for(const auto & rotation : rotations)
 	{
-        const int sourceGroup = rotation.first;
-        const int targetGroup = rotation.second;
+		const int sourceGroup = rotation.first;
+		const int targetGroup = rotation.second;
 
-        for(size_t frame = 0; frame < anim->size(sourceGroup); ++frame)
-		{
-			anim->duplicateImage(sourceGroup, frame, targetGroup);
-			IImage * image = anim->getImage(frame, targetGroup);
-			image->verticalFlip();
-		}
+		anim->createFlippedGroup(sourceGroup, targetGroup);
 	}
 
 	return anim;
@@ -281,7 +264,7 @@ void Graphics::blueToPlayersAdv(SDL_Surface * sur, PlayerColor player)
 {
 	if(sur->format->palette)
 	{
-		SDL_Color *palette = nullptr;
+		SDL_Color * palette = nullptr;
 		if(player < PlayerColor::PLAYER_LIMIT)
 		{
 			palette = playerColorPalette + 32*player.getNum();
@@ -292,10 +275,47 @@ void Graphics::blueToPlayersAdv(SDL_Surface * sur, PlayerColor player)
 		}
 		else
 		{
-			logGlobal->errorStream() << "Wrong player id in blueToPlayersAdv (" << player << ")!";
+			logGlobal->error("Wrong player id in blueToPlayersAdv (%s)!", player.getStr());
 			return;
 		}
+//FIXME: not all player colored images have player palette at last 32 indexes
+//NOTE: following code is much more correct but still not perfect (bugged with status bar)
+
 		SDL_SetColors(sur, palette, 224, 32);
+
+
+#if 0
+
+		SDL_Color * bluePalette = playerColorPalette + 32;
+
+		SDL_Palette * oldPalette = sur->format->palette;
+
+		SDL_Palette * newPalette = SDL_AllocPalette(256);
+
+		for(size_t destIndex = 0; destIndex < 256; destIndex++)
+		{
+			SDL_Color old = oldPalette->colors[destIndex];
+
+			bool found = false;
+
+			for(size_t srcIndex = 0; srcIndex < 32; srcIndex++)
+			{
+				if(old.b == bluePalette[srcIndex].b && old.g == bluePalette[srcIndex].g && old.r == bluePalette[srcIndex].r)
+				{
+					found = true;
+					newPalette->colors[destIndex] = palette[srcIndex];
+					break;
+				}
+			}
+			if(!found)
+				newPalette->colors[destIndex] = old;
+		}
+
+		SDL_SetSurfacePalette(sur, newPalette);
+
+		SDL_FreePalette(newPalette);
+
+#endif // 0
 	}
 	else
 	{
@@ -303,7 +323,7 @@ void Graphics::blueToPlayersAdv(SDL_Surface * sur, PlayerColor player)
 		// Add some kind of player-colored overlay?
 		// Or keep palette approach here and replace only colors of specific value(s)
 		// Or just wait for OpenGL support?
-		logGlobal->warnStream() << "Image must have palette to be player-colored!";
+		logGlobal->warn("Image must have palette to be player-colored!");
 	}
 }
 
@@ -321,7 +341,7 @@ void Graphics::loadFogOfWar()
 	for(const int rotation : rotations)
 	{
 		fogOfWarPartialHide->duplicateImage(0, rotation, 0);
-		IImage * image = fogOfWarPartialHide->getImage(size, 0);
+		auto image = fogOfWarPartialHide->getImage(size, 0);
 		image->verticalFlip();
 		size++;
 	}
@@ -365,7 +385,7 @@ std::shared_ptr<CAnimation> Graphics::getAnimation(const ObjectTemplate & info)
 
 	if(info.animationFile.empty())
 	{
-		logGlobal->warnStream() << boost::format("Def name for obj (%d,%d) is empty!") % info.id % info.subid;
+		logGlobal->warn("Def name for obj (%d,%d) is empty!", info.id, info.subid);
 		return std::shared_ptr<CAnimation>();
 	}
 
@@ -460,5 +480,17 @@ void Graphics::initializeImageLists()
 		addImageListEntry(spell->id+1, "SPELLINT", spell->iconEffect);
 		addImageListEntry(spell->id, "SPELLBON", spell->iconScenarioBonus);
 		addImageListEntry(spell->id, "SPELLSCR", spell->iconScroll);
+	}
+
+	for(const CSkill * skill : CGI->skillh->objects)
+	{
+		for(int level = 1; level <= 3; level++)
+		{
+			int frame = 2 + level + 3 * skill->id;
+			const CSkill::LevelInfo & skillAtLevel = skill->at(level);
+			addImageListEntry(frame, "SECSK32", skillAtLevel.iconSmall);
+			addImageListEntry(frame, "SECSKILL", skillAtLevel.iconMedium);
+			addImageListEntry(frame, "SECSK82", skillAtLevel.iconLarge);
+		}
 	}
 }

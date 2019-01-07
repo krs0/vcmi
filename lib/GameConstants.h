@@ -1,5 +1,3 @@
-#pragma once
-
 /*
  * GameConstants.h, part of VCMI engine
  *
@@ -9,16 +7,13 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
 
 #include "ConstTransitivePtr.h"
 
 namespace GameConstants
 {
 	DLL_LINKAGE extern const std::string VCMI_VERSION;
-
-	const int BFIELD_WIDTH = 17;
-	const int BFIELD_HEIGHT = 11;
-	const int BFIELD_SIZE = BFIELD_WIDTH * BFIELD_HEIGHT;
 
 	const int PUZZLE_MAP_PIECES = 48;
 
@@ -54,12 +49,18 @@ namespace GameConstants
 	const int CREATURES_COUNT = 197;
 
 	const ui32 BASE_MOVEMENT_COST = 100; //default cost for non-diagonal movement
+
+	const int HERO_PORTRAIT_SHIFT = 30;// 2 special frames + some extra portraits
+
+	const std::array<int, 11> POSSIBLE_TURNTIME = {1, 2, 4, 6, 8, 10, 15, 20, 25, 30, 0};
 }
 
 class CArtifact;
 class CArtifactInstance;
 class CCreature;
+class CHero;
 class CSpell;
+class CSkill;
 class CGameInfoCallback;
 class CNonConstInfoCallback;
 
@@ -203,7 +204,6 @@ class ArtifactInstanceID : public BaseForID<ArtifactInstanceID, si32>
 	friend class CNonConstInfoCallback;
 };
 
-
 class QueryID : public BaseForID<QueryID, si32>
 {
 	INSTID_LIKE_CLASS_COMMON(QueryID, si32)
@@ -222,7 +222,6 @@ class ObjectInstanceID : public BaseForID<ObjectInstanceID, si32>
 	friend class CGameInfoCallback;
 	friend class CNonConstInfoCallback;
 };
-
 
 class HeroTypeID : public BaseForID<HeroTypeID, si32>
 {
@@ -256,12 +255,14 @@ class PlayerColor : public BaseForID<PlayerColor, ui8>
 		PLAYER_LIMIT_I = 8
 	};
 
+	DLL_LINKAGE static const PlayerColor SPECTATOR; //252
 	DLL_LINKAGE static const PlayerColor CANNOT_DETERMINE; //253
 	DLL_LINKAGE static const PlayerColor UNFLAGGABLE; //254 - neutral objects (pandora, banks)
 	DLL_LINKAGE static const PlayerColor NEUTRAL; //255
 	DLL_LINKAGE static const PlayerColor PLAYER_LIMIT; //player limit per map
 
 	DLL_LINKAGE bool isValidPlayer() const; //valid means < PLAYER_LIMIT (especially non-neutral)
+	DLL_LINKAGE bool isSpectator() const;
 
 	DLL_LINKAGE std::string getStr(bool L10n = false) const;
 	DLL_LINKAGE std::string getStrCap(bool L10n = false) const;
@@ -317,6 +318,8 @@ public:
 
 	SecondarySkill(ESecondarySkill _num = WRONG) : num(_num)
 	{}
+
+	DLL_LINKAGE const CSkill * toSkill() const;
 
 	ID_LIKE_CLASS_COMMON(SecondarySkill, ESecondarySkill)
 
@@ -438,24 +441,12 @@ namespace ESpellCastProblem
 {
 	enum ESpellCastProblem
 	{
-		OK, NO_HERO_TO_CAST_SPELL, ALREADY_CASTED_THIS_TURN, NO_SPELLBOOK, ANOTHER_ELEMENTAL_SUMMONED,
+		OK, NO_HERO_TO_CAST_SPELL, CASTS_PER_TURN_LIMIT, NO_SPELLBOOK,
 		HERO_DOESNT_KNOW_SPELL, NOT_ENOUGH_MANA, ADVMAP_SPELL_INSTEAD_OF_BATTLE_SPELL,
-		SECOND_HEROS_SPELL_IMMUNITY, SPELL_LEVEL_LIMIT_EXCEEDED, NO_SPELLS_TO_DISPEL,
+		SPELL_LEVEL_LIMIT_EXCEEDED, NO_SPELLS_TO_DISPEL,
 		NO_APPROPRIATE_TARGET, STACK_IMMUNE_TO_SPELL, WRONG_SPELL_TARGET, ONGOING_TACTIC_PHASE,
 		MAGIC_IS_BLOCKED, //For Orb of Inhibition and similar - no casting at all
-		NOT_DECIDED,
 		INVALID
-	};
-}
-
-namespace ECastingMode
-{
-	enum ECastingMode
-	{
-		HERO_CASTING, AFTER_ATTACK_CASTING, //also includes cast before attack
-		MAGIC_MIRROR, CREATURE_ACTIVE_CASTING, ENCHANTER_CASTING,
-		SPELL_LIKE_ATTACK,
-		PASSIVE_CASTING//f.e. opening battle spells
 	};
 }
 
@@ -466,26 +457,6 @@ namespace EMarketMode
 		RESOURCE_RESOURCE, RESOURCE_PLAYER, CREATURE_RESOURCE, RESOURCE_ARTIFACT,
 		ARTIFACT_RESOURCE, ARTIFACT_EXP, CREATURE_EXP, CREATURE_UNDEAD, RESOURCE_SKILL,
 		MARTKET_AFTER_LAST_PLACEHOLDER
-	};
-}
-
-namespace EBattleStackState
-{
-	enum EBattleStackState
-	{
-		ALIVE = 180,
-		SUMMONED, CLONED,
-		GHOST, //stack was removed from battlefield
-		HAD_MORALE,
-		WAITING,
-		MOVED,
-		DEFENDING,
-		FEAR,
-		//remember to drain mana only once per turn
-		DRAINED_MANA,
-		//only for defending animation
-		DEFENDING_ANIM,
-		GHOST_PENDING// stack will become GHOST in next battle state update
 	};
 }
 
@@ -513,8 +484,6 @@ namespace EWallState
 		DESTROYED,
 		DAMAGED,
 		INTACT
-
-
 	};
 }
 
@@ -773,30 +742,27 @@ namespace Date
 	};
 }
 
-namespace Battle
+enum class EActionType : int32_t
 {
-	enum ActionType
-	{
-		CANCEL = -3,
-		END_TACTIC_PHASE = -2,
-		INVALID = -1,
-		NO_ACTION = 0,
-		HERO_SPELL,
-		WALK, DEFEND,
-		RETREAT,
-		SURRENDER,
-		WALK_AND_ATTACK,
-		SHOOT,
-		WAIT,
-		CATAPULT,
-		MONSTER_SPELL,
-		BAD_MORALE,
-		STACK_HEAL,
-		DAEMON_SUMMONING
-	};
-}
+	CANCEL = -3,
+	END_TACTIC_PHASE = -2,
+	INVALID = -1,
+	NO_ACTION = 0,
+	HERO_SPELL,
+	WALK, DEFEND,
+	RETREAT,
+	SURRENDER,
+	WALK_AND_ATTACK,
+	SHOOT,
+	WAIT,
+	CATAPULT,
+	MONSTER_SPELL,
+	BAD_MORALE,
+	STACK_HEAL,
+	DAEMON_SUMMONING
+};
 
-std::ostream & operator<<(std::ostream & os, const Battle::ActionType actionType);
+DLL_LINKAGE std::ostream & operator<<(std::ostream & os, const EActionType actionType);
 
 class DLL_LINKAGE ETerrainType
 {
@@ -964,6 +930,10 @@ public:
 
 	DLL_LINKAGE const CArtifact * toArtifact() const;
 
+	///json serialization helpers
+	static si32 decode(const std::string & identifier);
+	static std::string encode(const si32 index);
+
 	ID_LIKE_CLASS_COMMON(ArtifactID, EArtifactID)
 
 	EArtifactID num;
@@ -1012,6 +982,10 @@ public:
 	ID_LIKE_CLASS_COMMON(CreatureID, ECreatureID)
 
 	ECreatureID num;
+
+	///json serialization helpers
+	static si32 decode(const std::string & identifier);
+	static std::string encode(const si32 index);
 };
 
 ID_LIKE_OPERATORS(CreatureID, CreatureID::ECreatureID)
@@ -1055,6 +1029,10 @@ public:
 	ID_LIKE_CLASS_COMMON(SpellID, ESpellID)
 
 	ESpellID num;
+
+	///json serialization helpers
+	static si32 decode(const std::string & identifier);
+	static std::string encode(const si32 index);
 };
 
 ID_LIKE_OPERATORS(SpellID, SpellID::ESpellID)
@@ -1067,10 +1045,43 @@ enum class ESpellSchool: ui8
 	EARTH 	= 3
 };
 
+enum class EMetaclass: ui8
+{
+	INVALID = 0,
+	ARTIFACT,
+	CREATURE,
+	FACTION,
+	EXPERIENCE,
+	HERO,
+	HEROCLASS,
+	LUCK,
+	MANA,
+	MORALE,
+	MOVEMENT,
+	OBJECT,
+	PRIMARY_SKILL,
+	SECONDARY_SKILL,
+	SPELL,
+	RESOURCE
+};
+
+enum class EHealLevel: ui8
+{
+	HEAL,
+	RESURRECT,
+	OVERHEAL
+};
+
+enum class EHealPower : ui8
+{
+	ONE_BATTLE,
+	PERMANENT
+};
+
 // Typedef declarations
 typedef ui8 TFaction;
 typedef si64 TExpType;
-typedef std::pair<ui32, ui32> TDmgRange;
+typedef std::pair<si64, si64> TDmgRange;
 typedef si32 TBonusSubtype;
 typedef si32 TQuantity;
 

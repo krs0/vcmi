@@ -17,22 +17,26 @@
 	"catapult":
 	{
 		"index" : 3,
-		"type" : ["HERO"]
+		"type" : ["HERO"],
+		"warMachine" : "catapult"
 	},
 	"ballista":
 	{
 		"index" : 4,
-		"type" : ["HERO"]
+		"type" : ["HERO"],
+		"warMachine" : "ballista"
 	},
 	"ammoCart":
 	{
 		"index" : 5,
-		"type" : ["HERO"]
+		"type" : ["HERO"],
+		"warMachine" : "ammoCart"
 	},
 	"firstAidTent":
 	{
 		"index" : 6,
-		"type" : ["HERO"]
+		"type" : ["HERO"],
+		"warMachine" : "firstAidTent"
 	},
 	"centaurAxe":
 	{
@@ -1333,7 +1337,7 @@
 				"subtype" : 1,
 				"val" : 0,
 				"valueType" : "BASE_NUMBER"
-			}			
+			}
 		],
 		"index" : 93,
 		"type" : ["HERO"]
@@ -1545,7 +1549,8 @@
 				"subtype" : "resource.crystal",
 				"type" : "GENERATE_RESOURCE",
 				"val" : 1,
-				"valueType" : "BASE_NUMBER"
+				"valueType" : "BASE_NUMBER",
+				"stacking" : "ALWAYS"
 			}
 		],
 		"index" : 109,
@@ -1558,7 +1563,8 @@
 				"subtype" : "resource.gems",
 				"type" : "GENERATE_RESOURCE",
 				"val" : 1,
-				"valueType" : "BASE_NUMBER"
+				"valueType" : "BASE_NUMBER",
+				"stacking" : "ALWAYS"
 			}
 		],
 		"index" : 110,
@@ -1571,7 +1577,8 @@
 				"subtype" : "resource.mercury",
 				"type" : "GENERATE_RESOURCE",
 				"val" : 1,
-				"valueType" : "BASE_NUMBER"
+				"valueType" : "BASE_NUMBER",
+				"stacking" : "ALWAYS"
 			}
 		],
 		"index" : 111,
@@ -1584,7 +1591,8 @@
 				"subtype" : "resource.ore",
 				"type" : "GENERATE_RESOURCE",
 				"val" : 1,
-				"valueType" : "BASE_NUMBER"
+				"valueType" : "BASE_NUMBER",
+				"stacking" : "ALWAYS"
 			}
 		],
 		"index" : 112,
@@ -1597,7 +1605,8 @@
 				"subtype" : "resource.sulfur",
 				"type" : "GENERATE_RESOURCE",
 				"val" : 1,
-				"valueType" : "BASE_NUMBER"
+				"valueType" : "BASE_NUMBER",
+				"stacking" : "ALWAYS"
 			}
 		],
 		"index" : 113,
@@ -1610,7 +1619,8 @@
 				"subtype" : "resource.wood",
 				"type" : "GENERATE_RESOURCE",
 				"val" : 1,
-				"valueType" : "BASE_NUMBER"
+				"valueType" : "BASE_NUMBER",
+				"stacking" : "ALWAYS"
 			}
 		],
 		"index" : 114,
@@ -1623,7 +1633,8 @@
 				"subtype" : "resource.gold",
 				"type" : "GENERATE_RESOURCE",
 				"val" : 1000,
-				"valueType" : "BASE_NUMBER"
+				"valueType" : "BASE_NUMBER",
+				"stacking" : "ALWAYS"
 			}
 		],
 		"index" : 115,
@@ -1636,7 +1647,8 @@
 				"subtype" : "resource.gold",
 				"type" : "GENERATE_RESOURCE",
 				"val" : 750,
-				"valueType" : "BASE_NUMBER"
+				"valueType" : "BASE_NUMBER",
+				"stacking" : "ALWAYS"
 			}
 		],
 		"index" : 116,
@@ -1649,7 +1661,8 @@
 				"subtype" : "resource.gold",
 				"type" : "GENERATE_RESOURCE",
 				"val" : 500,
-				"valueType" : "BASE_NUMBER"
+				"valueType" : "BASE_NUMBER",
+				"stacking" : "ALWAYS"
 			}
 		],
 		"index" : 117,
@@ -1880,9 +1893,19 @@
 	{
 		"bonuses" : [
 			{
-				"type" : "IMPROVED_NECROMANCY", //TODO: more flexible?
-				"val" : 0,
-				"valueType" : "BASE_NUMBER"
+				"type" : "IMPROVED_NECROMANCY",
+				"subtype" : "creature.walkingDead",
+				"addInfo" : 1
+			},
+			{
+				"type" : "IMPROVED_NECROMANCY",
+				"subtype" : "creature.wight",
+				"addInfo" : 2
+			},
+			{
+				"type" : "IMPROVED_NECROMANCY",
+				"subtype" : "creature.lich",
+				"addInfo" : 3
 			}
 		],
 		"index" : 130,

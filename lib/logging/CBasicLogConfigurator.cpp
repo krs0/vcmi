@@ -1,5 +1,15 @@
+/*
+ * CBasicLogConfigurator.cpp, part of VCMI engine
+ *
+ * Authors: listed in file AUTHORS in main folder
+ *
+ * License: GNU General Public License v2.0 or later
+ * Full text of license available in license.txt file, in main folder
+ *
+ */
 #include "StdInc.h"
 #include "CBasicLogConfigurator.h"
+#include "CLogger.h"
 
 #include "../CConfigHandler.h"
 
@@ -102,7 +112,7 @@ ELogLevel::ELogLevel CBasicLogConfigurator::getLogLevel(const std::string & leve
 		{"warn", ELogLevel::WARN},
 		{"error", ELogLevel::ERROR},
 	};
-	
+
 	const auto & levelPair = levelMap.find(level);
 	if(levelPair != levelMap.end())
 		return levelPair->second;

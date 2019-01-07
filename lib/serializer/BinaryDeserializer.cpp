@@ -1,8 +1,3 @@
-#include "StdInc.h"
-#include "BinaryDeserializer.h"
-
-#include "../registerTypes/RegisterTypes.h"
-
 /*
  * BinaryDeserializer.cpp, part of VCMI engine
  *
@@ -12,10 +7,15 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#include "StdInc.h"
+#include "BinaryDeserializer.h"
+#include "../filesystem/FileStream.h"
+
+#include "../registerTypes/RegisterTypes.h"
 
 extern template void registerTypes<BinaryDeserializer>(BinaryDeserializer & s);
 
-CLoadFile::CLoadFile(const boost::filesystem::path & fname, int minimalVersion /*= version*/)
+CLoadFile::CLoadFile(const boost::filesystem::path & fname, int minimalVersion)
 	: serializer(this)
 {
 	registerTypes(serializer);
@@ -58,15 +58,15 @@ void CLoadFile::openNextFile(const boost::filesystem::path & fname, int minimalV
 
 		if(serializer.fileVersion > SERIALIZATION_VERSION)
 		{
-			logGlobal->warnStream() << boost::format("Warning format version mismatch: found %d when current is %d! (file %s)\n") % serializer.fileVersion % SERIALIZATION_VERSION % fName;
+			logGlobal->warn("Warning format version mismatch: found %d when current is %d! (file %s)\n", serializer.fileVersion, SERIALIZATION_VERSION , fName);
 
 			auto versionptr = (char*)&serializer.fileVersion;
 			std::reverse(versionptr, versionptr + 4);
-			logGlobal->warnStream() << "Version number reversed is " << serializer.fileVersion << ", checking...";
+			logGlobal->warn("Version number reversed is %x, checking...", serializer.fileVersion);
 
 			if(serializer.fileVersion == SERIALIZATION_VERSION)
 			{
-				logGlobal->warnStream() << fname << " seems to have different endianness! Entering reversing mode.";
+				logGlobal->warn("%s seems to have different endianness! Entering reversing mode.", fname.string());
 				serializer.reverseEndianess = true;
 			}
 			else
@@ -80,13 +80,11 @@ void CLoadFile::openNextFile(const boost::filesystem::path & fname, int minimalV
 	}
 }
 
-void CLoadFile::reportState(CLogger * out)
+void CLoadFile::reportState(vstd::CLoggerBase * out)
 {
-	out->debugStream() << "CLoadFile";
+	out->debug("CLoadFile");
 	if(!!sfile && *sfile)
-	{
-		out->debugStream() << "\tOpened " << fName << "\n\tPosition: " << sfile->tellg();
-	}
+		out->debug("\tOpened %s Position: %d", fName, sfile->tellg());
 }
 
 void CLoadFile::clear()

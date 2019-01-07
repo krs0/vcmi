@@ -1,9 +1,3 @@
-#pragma once
-
-#include "../../lib/vcmi_endian.h"
-#include "gui/Geometries.h"
-#include "../../lib/GameConstants.h"
-
 /*
  * CAnimation.h, part of VCMI engine
  *
@@ -13,6 +7,11 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
+
+#include "../../lib/vcmi_endian.h"
+#include "Geometries.h"
+#include "../../lib/GameConstants.h"
 
 struct SDL_Surface;
 class JsonNode;
@@ -23,20 +22,16 @@ class CDefFile;
  */
 class IImage
 {
-	int refCount;
 public:
+	using BorderPallete = std::array<SDL_Color, 3>;
 
 	//draws image on surface "where" at position
 	virtual void draw(SDL_Surface * where, int posX = 0, int posY = 0, Rect * src = nullptr, ui8 alpha = 255) const=0;
 	virtual void draw(SDL_Surface * where, SDL_Rect * dest, SDL_Rect * src, ui8 alpha = 255) const = 0;
 
-	virtual std::unique_ptr<IImage> scaleFast(float scale) const = 0;
+	virtual std::shared_ptr<IImage> scaleFast(float scale) const = 0;
 
 	virtual void exportBitmap(const boost::filesystem::path & path) const = 0;
-
-	//decrease ref count, returns true if image can be deleted (refCount <= 0)
-	bool decreaseRef();
-	void increaseRef();
 
 	//Change palette to specific player
 	virtual void playerColored(PlayerColor player)=0;
@@ -50,11 +45,14 @@ public:
 	//only indexed bitmaps, 16 colors maximum
 	virtual void shiftPalette(int from, int howMany) = 0;
 
+	//only indexed bitmaps, colors 5,6,7 must be special
+	virtual void setBorderPallete(const BorderPallete & borderPallete) = 0;
+
 	virtual void horizontalFlip() = 0;
 	virtual void verticalFlip() = 0;
 
 	IImage();
-	virtual ~IImage() {};
+	virtual ~IImage();
 };
 
 /// Class for handling animation
@@ -65,39 +63,34 @@ private:
 	std::map<size_t, std::vector <JsonNode> > source;
 
 	//bitmap[group][position], store objects with loaded bitmaps
-	std::map<size_t, std::map<size_t, IImage* > > images;
+	std::map<size_t, std::map<size_t, std::shared_ptr<IImage> > > images;
 
 	//animation file name
 	std::string name;
 
-	//if true all frames will be stored in compressed (RLE) state
-	const bool compressed;
-
 	bool preloaded;
 
+	std::shared_ptr<CDefFile> defFile;
+
 	//loader, will be called by load(), require opened def file for loading from it. Returns true if image is loaded
-	bool loadFrame(CDefFile * file, size_t frame, size_t group);
+	bool loadFrame(size_t frame, size_t group);
 
 	//unloadFrame, returns true if image has been unloaded ( either deleted or decreased refCount)
 	bool unloadFrame(size_t frame, size_t group);
 
 	//initialize animation from file
 	void initFromJson(const JsonNode & input);
-	void init(CDefFile * file);
-
-	//try to open def file
-	CDefFile * getFile() const;
+	void init();
 
 	//to get rid of copy-pasting error message :]
 	void printError(size_t frame, size_t group, std::string type) const;
 
 	//not a very nice method to get image from another def file
 	//TODO: remove after implementing resource manager
-	IImage * getFromExtraDef(std::string filename);
+	std::shared_ptr<IImage> getFromExtraDef(std::string filename);
 
 public:
-
-	CAnimation(std::string Name, bool Compressed = false);
+	CAnimation(std::string Name);
 	CAnimation();
 	~CAnimation();
 
@@ -108,8 +101,7 @@ public:
 	//add custom surface to the selected position.
 	void setCustom(std::string filename, size_t frame, size_t group=0);
 
-	//get pointer to image from specific group, nullptr if not found
-	IImage * getImage(size_t frame, size_t group=0, bool verbose=true) const;
+	std::shared_ptr<IImage> getImage(size_t frame, size_t group=0, bool verbose=true) const;
 
 	void exportBitmaps(const boost::filesystem::path & path) const;
 
@@ -128,6 +120,12 @@ public:
 
 	//total count of frames in group (including not loaded)
 	size_t size(size_t group=0) const;
+
+	void horizontalFlip();
+	void verticalFlip();
+	void playerColored(PlayerColor player);
+
+	void createFlippedGroup(const size_t sourceGroup, const size_t targetGroup);
 };
 
 const float DEFAULT_DELTA = 0.05f;

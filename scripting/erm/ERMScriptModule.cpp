@@ -1,10 +1,5 @@
-#include "StdInc.h"
-#include "ERMScriptModule.h"
-
-#include "ERMInterpreter.h"
-
 /*
- * ERMScriptingModule.cpp, part of VCMI engine
+ * ERMScriptModule.cpp, part of VCMI engine
  *
  * Authors: listed in file AUTHORS in main folder
  *
@@ -12,9 +7,13 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#include "StdInc.h"
+#include "ERMScriptModule.h"
+
+#include "ERMInterpreter.h"
 
 IGameEventRealizer *acb;
-CPrivilagedInfoCallback *icb;
+CPrivilegedInfoCallback *icb;
 
 
 #ifdef __GNUC__
