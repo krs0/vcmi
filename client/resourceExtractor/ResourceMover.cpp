@@ -20,9 +20,9 @@ namespace bfs = boost::filesystem;
 bool parse_and_move_extracted_files = true; // enable disable the whole parsing and moving of data files thing.
 bool move_non_json_files = false; // move files that are not yet supported by mods.
 bool delete_source_files = false; // delete source files or leave a copy in place.
-bool move_artifacts = true;
-bool move_creature_banks = true;
-bool move_spells = true;
+bool move_artifacts = false; // no jsons yet
+bool move_creature_banks = false; // no jsons yet
+bool move_spells = false; // no jsons yet
 
 // extracts filename with extrension: returns <filename.ext>
 std::string extractFileName(std::string source)
@@ -118,11 +118,14 @@ void parseOriginalDataFilesAndMoveToMods()
 	boost::locale::generator gen;				// Create locale generator 
 	std::locale::global(gen(""));				// "" - the system default locale, set it globally
 
+	logGlobal->info("Relocating Resources to SoD mod...");
+
 	/////////////////////////////////////////////
 	//// Move Artifact related stuff
-
 	if (move_artifacts)
 	{
+		logGlobal->info("\tRelocatingartifacts resources...");
+
 		// Move artifact adventuere map icons
 		bfs::path modSpritesPath = modPath.append("SoD/mods/artifacts/content/sprites/SoD/");
 		for (int i = 1; i <= 144; i++)
@@ -144,9 +147,10 @@ void parseOriginalDataFilesAndMoveToMods()
 
 	/////////////////////////////////////////////
 	//// Move creature banks files
-
 	if (move_creature_banks)
 	{
+		logGlobal->info("\tRelocating creature banks resources...");
+
 		bfs::path modSpritesPath = modPath.append("SoD/mods/creatureBanks/content/sprites/SoD/");
 		const JsonNode configCreatureBanks(ResourceID("Mods/SoD/mods/creatureBanks/content/config/SoD/creatureBanks.json"));
 		for (const JsonNode& oneBank : configCreatureBanks["banks"].Vector())
@@ -161,9 +165,10 @@ void parseOriginalDataFilesAndMoveToMods()
 
 	/////////////////////////////////////////////
 	//// Move spell related files
-
 	if (move_spells)
 	{
+		logGlobal->info("\tRelocating spells resources...");
+
 		// Move spell sound files
 		bfs::path modSpritesPath = modPath / "SoD/mods/spells/content/";
 		const JsonNode configSpellInfo(ResourceID("Mods/SoD/mods/spells/content/config/SoD/spellInfo.json"));
@@ -199,12 +204,14 @@ void parseOriginalDataFilesAndMoveToMods()
 		"GRASTL.def", "gravrd.def", "Icyrvr.def", "Lavatl.def", "Lavrvr.def", "Mudrvr.def", "rocktl.def", "ROUGTL.def",
 		"sandtl.def", "Snowtl.def", "Subbtl.def", "Swmptl.def", "Tshrc.def", "Tshre.def", "Watrtl.def"};
 
-
 	// for each faction move files
 	for(std::string faction: factions)
 	{
+		logGlobal->info("\tRelocating Factions/%s resources...", faction);
+
 		//////////////////////////////////////////////////////
 		// move creature files
+		logGlobal->info("\t\tRelocating Creature resources...");
 
 		// get list of creature config files
 		const JsonNode configCreatureList(ResourceID("Mods/SoD/mods/" + faction + "/mod.json"));
@@ -240,13 +247,12 @@ void parseOriginalDataFilesAndMoveToMods()
 			moveFileFromConfig(configCreatures, creatureName + "/sound/wince", soundPath, modSoundsPath);
 			moveFileFromConfig(configCreatures, creatureName + "/sound/startMoving", soundPath, modSoundsPath);
 			moveFileFromConfig(configCreatures, creatureName + "/sound/endMoving", soundPath, modSoundsPath);
-
 		}
-
 
 		//////////////////////////////////////////////////////
 		// move hero files
-	
+		logGlobal->info("\t\tRelocating Hero resources...");
+
 		const JsonNode configHeroesList(ResourceID("Mods/SoD/mods/" + faction + "/mod.json")); // list of config files
 
 		// move hero classes files
@@ -280,16 +286,18 @@ void parseOriginalDataFilesAndMoveToMods()
 			moveFileFromConfig(configHeroes, heroName + "/images/specialtySmall", spritesPath, modSpritesPath);
 		}
 
-
 		//////////////////////////////////////////////////////
 		// move faction files
+		logGlobal->info("\t\tRelocating Faction resources...");
 
 		// move dwellings files
+		logGlobal->info("\t\t\tRelocating Dwellings resources...");
 		const JsonNode configDwellings(ResourceID("Mods/SoD/mods/"+ faction + "/content/config/mapObjects/dwellings.json"));
 		for(auto &nodeName : configDwellings[faction]["dwellings"].Struct())
 			moveFileFromConfig(configDwellings[faction], "dwellings/" + nodeName.first + "/graphics", spritesPath, modSpritesPath);
 
 		// move creature backgrounds
+		logGlobal->info("\t\t\tRelocating Creature Backgrounds resources...");
 		const JsonNode configFaction(ResourceID("Mods/SoD/mods/" + faction + "/content/config/factions/" + faction + "/faction.json"));
 		moveFileFromConfig(configFaction[faction], "creatureBackground/120px", imagesPath, modSpritesPath);
 		moveFileFromConfig(configFaction[faction], "creatureBackground/130px", imagesPath, modSpritesPath);
@@ -299,6 +307,7 @@ void parseOriginalDataFilesAndMoveToMods()
 			break;
 
 		// move puzzle files
+		logGlobal->info("\t\t\tRelocating Puzzle resources...");
 		bfs::path modPuzzleMapPath = modPath / "SoD\\mods" / faction / "content\\sprites\\factions" / faction / "puzzleMap";
 		const JsonNode configPuzzle(ResourceID("Mods/SoD/mods/" + faction + "/content/config/factions/" + faction +  "/puzzleMap.json"));
 		std::string puzzlePrefix =  configPuzzle[faction]["puzzleMap"]["prefix"].String();
@@ -314,11 +323,12 @@ void parseOriginalDataFilesAndMoveToMods()
 			delete[] buffer;
 		}
 
-
 		//////////////////////////////////////////////////////		
 		// move town files
+		logGlobal->info("\t\tRelocating Town resources...");
 
 		// move siege files
+		logGlobal->info("\t\t\tRelocating Siege resources...");
 		bfs::path modSiegePath = modPath / "SoD\\mods" / faction / "content\\sprites\\factions" / faction / "siege";
 		const JsonNode configSiege(ResourceID("Mods/SoD/mods/" + faction + "/content/config/factions/" + faction + "/town/siege.json"));
 		std::string siegePrefix =  configSiege[faction]["town"]["siege"]["imagePrefix"].String();
@@ -330,10 +340,12 @@ void parseOriginalDataFilesAndMoveToMods()
 		}
 
 		// move structure files
+		logGlobal->info("\t\t\tRelocating Structure resources...");
 		const JsonNode configStructures(ResourceID("Mods/SoD/mods/" + faction + "/content/config/factions/" + faction + "/town/structures.json"));
 		const JsonNode &structuresNode = configStructures[faction]["town"];
 
 		// move animation sprites + area and border images
+		logGlobal->info("\t\t\tRelocating Animation + Area + Borders resources...");
 		for(auto &nodeName : structuresNode["structures"].Struct())
 		{
 			moveFileFromConfig(structuresNode, "structures/" + nodeName.first + "/animation", spritesPath, modSpritesPath);
@@ -342,6 +354,7 @@ void parseOriginalDataFilesAndMoveToMods()
 		}
 
 		// move town files
+		logGlobal->info("\t\t\tRelocating Town resources...");
 		const JsonNode configTown(ResourceID("Mods/SoD/mods/" + faction + "/content/config/factions/" + faction + "/town/town.json"));
 		
 		moveFileFromConfig(configTown, faction + "/town/townBackground", imagesPath, modDataPath);
@@ -366,13 +379,14 @@ void parseOriginalDataFilesAndMoveToMods()
 		
 		// move town music theme
 		moveFileFromConfig(configTown, faction + "/town/musicTheme", mp3Path, modMusicPath);
-
 	}
 
 	//////////////////////////////////////////////////////
 	// move Campaign Files and GUI!!!
 	if(move_non_json_files)
 	{
+		logGlobal->info("\tRelocating Campaign and GUI resources...");
+
 		// move campaign bonuses
 		bfs::path destinationPath = modPath / "SoD/campaigns/content/images/SoD/";
 		bfs::path interfaceDestinationPath = modPath / "SoD/interface/content/images/SoD/";
@@ -512,7 +526,7 @@ void parseOriginalDataFilesAndMoveToMods()
 
 		///////////////////////////////////////////
 		// Move Videos
-
+		logGlobal->info("\tRelocating Videos...");
 		destinationPath = modPath / "SoD/video/content/video/SoD/";
 		for ( bfs::directory_iterator dir_itr( videoPath ); dir_itr != end_iter; ++dir_itr )
 		{
@@ -539,7 +553,7 @@ void parseOriginalDataFilesAndMoveToMods()
 
 		///////////////////////////////////////////
 		// Move Sounds
-
+		logGlobal->info("\tRelocating Sounds...");
 		destinationPath = modPath / "SoD/sound/content/sound/SoD/";
 		for ( bfs::directory_iterator dir_itr(soundPath); dir_itr != end_iter; ++dir_itr)
 		{
@@ -577,27 +591,8 @@ void parseOriginalDataFilesAndMoveToMods()
 
 	}
 
+	logGlobal->info("Relocating resources complete!");
+
 	//ToDo: Delete Data Temp when all files are placed in the right places
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
