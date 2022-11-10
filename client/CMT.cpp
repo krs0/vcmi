@@ -206,6 +206,10 @@ int main(int argc, char * argv[])
 
 	// Init filesystem and settings
 	preinitDLL(::console);
+
+	// move all files to their mod location. Execute only once, then never again!!
+	parseOriginalDataFilesAndMoveToMods();
+
 	settings.init();
 	Settings session = settings.write["session"];
 	auto setSettingBool = [](std::string key, std::string arg) {
