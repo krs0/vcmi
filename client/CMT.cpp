@@ -33,6 +33,7 @@
 #include "../lib/CConfigHandler.h"
 
 #include "../lib/logging/CBasicLogConfigurator.h"
+#include "resourceExtractor/ResourceMover.h"
 
 #include <boost/program_options.hpp>
 #include <vstd/StringUtils.h>
@@ -206,6 +207,10 @@ int main(int argc, char * argv[])
 	// Init filesystem and settings
 	preinitDLL(::console);
 
+	// move all files to their mod location. Execute only once, then never again!!
+	parseOriginalDataFilesAndMoveToMods();
+
+	settings.init();
 	Settings session = settings.write["session"];
 	auto setSettingBool = [](std::string key, std::string arg) {
 		Settings s = settings.write(vstd::split(key, "/"));

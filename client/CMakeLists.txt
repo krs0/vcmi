@@ -77,6 +77,7 @@ set(client_SRCS
 	render/Colors.cpp
 	render/Graphics.cpp
 	render/IFont.cpp
+		resourceExtractor/ResourceMover.cpp
 
 	renderSDL/CBitmapFont.cpp
 	renderSDL/CBitmapHanFont.cpp
@@ -207,6 +208,7 @@ set(client_HEADERS
 	mainmenu/CMainMenu.h
 	mainmenu/CPrologEpilogVideo.h
 	mainmenu/CreditsScreen.h
+		resourceExtractor/ResourceMover.h
 
 	mapView/IMapRendererContext.h
 	mapView/IMapRendererObserver.h
