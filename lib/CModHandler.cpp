@@ -437,6 +437,10 @@ bool ContentTypeHandler::loadMod(const std::string & modName, bool validate)
 				logMod->trace("found original data in loadMod(%s) at index %d", name, index);
 				JsonUtils::merge(originalData[index], data);
 				std::swap(originalData[index], data);
+
+				// ToDo: krs - At this point complete configuration is available in originalData
+				logGlobal->trace("\n%s\n%s", name, data.toJson());
+
 				originalData[index].clear(); // do not use same data twice (same ID)
 			}
 			else

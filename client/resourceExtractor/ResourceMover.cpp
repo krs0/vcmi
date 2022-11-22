@@ -17,7 +17,7 @@
 
 namespace bfs = boost::filesystem;
 
-bool parse_and_move_extracted_files = true; // enable disable the whole parsing and moving of data files thing.
+bool parse_and_move_extracted_files = false; // enable disable the whole parsing and moving of data files thing.
 bool move_non_json_files = false; // move files that are not yet supported by mods.
 bool delete_source_files = false; // delete source files or leave a copy in place.
 bool move_artifacts = false; // no jsons yet
