@@ -210,10 +210,16 @@ MainWindow::MainWindow(QWidget* parent) :
 
 	graphics = new Graphics(); // should be before curh->init()
 
+	// move all files to their mod location. Needs to be executed only once!
+	parseOriginalDataFilesAndMoveToMods();
+
 	graphics->load(); //must be after Content loading but should be in main thread
 
-	if (extractionOptions.extractArchives) // Needs to be executed only once!
+	if (extractionOptions.extractArchives)
 		ResourceConverter::convertExtractedResourceFiles(extractionOptions.conversionOptions);
+		
+	// move all files to their mod location. Needs to be executed only once!
+	parseOriginalDataFilesAndMoveToMods();
 	
 	ui->mapView->setScene(controller.scene(0));
 	ui->mapView->setController(&controller);
