@@ -21,7 +21,6 @@
 
 namespace bfs = boost::filesystem;
 
-bool parse_and_move_extracted_files = false; // enable disable the whole parsing and moving of data files thing.
 bool move_non_json_files = false; // move files that are not yet supported by mods.
 bool delete_source_files = false; // delete source files or leave a copy in place.
 bool move_artifacts = false; // no jsons yet
@@ -104,9 +103,9 @@ void moveFileFromConfig(const JsonNode node, std::string nodeStructure, bfs::pat
 }
 
 // parse all H3 original source folders (extracted previously) for all resources and moves them to teir corresponding places inside the Mod folder
-void parseOriginalDataFilesAndMoveToMods()
+void parseOriginalDataFilesAndMoveToMods(bool move_extracted_files)
 {
-	if (!parse_and_move_extracted_files)
+	if (!move_extracted_files)
 		return;
 
 	// All Videos remain in Data/Videos

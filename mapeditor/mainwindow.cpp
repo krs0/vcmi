@@ -211,7 +211,7 @@ MainWindow::MainWindow(QWidget* parent) :
 	graphics = new Graphics(); // should be before curh->init()
 
 	// move all files to their mod location. Needs to be executed only once!
-	parseOriginalDataFilesAndMoveToMods();
+	parseOriginalDataFilesAndMoveToMods(move_extracted_files);
 
 	graphics->load(); //must be after Content loading but should be in main thread
 
