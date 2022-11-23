@@ -35,6 +35,7 @@
 #include "../lib/RiverHandler.h"
 #include "../lib/TerrainHandler.h"
 #include "../lib/filesystem/CFilesystemLoader.h"
+#include "resourceExtractor/ResourceMover.h"
 
 #include "maphandler.h"
 #include "graphics.h"
@@ -203,10 +204,17 @@ MainWindow::MainWindow(QWidget* parent) :
 	init();
 
 	graphics = new Graphics(); // should be before curh->init()
-	graphics->load();//must be after Content loading but should be in main thread
+
+	// move all files to their mod location. Needs to be executed only once!
+	parseOriginalDataFilesAndMoveToMods();
+
+	graphics->load(); //must be after Content loading but should be in main thread
 
 	if (extractionOptions.extractArchives)
 		ResourceConverter::convertExtractedResourceFiles(extractionOptions.conversionOptions);
+		
+	// move all files to their mod location. Needs to be executed only once!
+	parseOriginalDataFilesAndMoveToMods();
 	
 	ui->mapView->setScene(controller.scene(0));
 	ui->mapView->setController(&controller);

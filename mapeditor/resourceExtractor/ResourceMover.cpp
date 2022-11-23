@@ -6,14 +6,8 @@
 #include "../lib/VCMIDirs.h"
 #include "../lib/filesystem/Filesystem.h"
 
-#include "SDL.h"
-#include "./gui/CAnimation.h"
-#include "CBitmapHandler.h"
-
 #include "boost/filesystem/path.hpp"
 #include "boost/locale.hpp"
-#include <thread>
-#include <chrono>
 
 namespace bfs = boost::filesystem;
 
