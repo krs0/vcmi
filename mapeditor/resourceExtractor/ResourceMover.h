@@ -1,7 +1,5 @@
-#pragma once
-
 /*
- * VCMI_Lib.cpp, part of VCMI engine
+ * ResourceMover.h, part of VCMI engine
  *
  * Authors: listed in file AUTHORS in main folder
  *
@@ -9,5 +7,6 @@
  * Full text of license available in license.txt file, in main folder
  *
  */
+#pragma once
  
-void parseOriginalDataFilesAndMoveToMods();
+void parseOriginalDataFilesAndMoveToMods(bool move_extracted_files = false);
