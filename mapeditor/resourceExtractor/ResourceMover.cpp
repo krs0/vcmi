@@ -102,21 +102,23 @@ void moveFileFromConfig(const JsonNode node, std::string nodeStructure, bfs::pat
 	}
 }
 
+ResourceMover::ResourceMover()
+{
+	modPath = VCMIDirs::get().userDataPath() / "Mods";
+	dataPath = VCMIDirs::get().userDataPath() / "extracted";
+	spritesPath = dataPath / "Sprites";
+	imagesPath = dataPath / "Images";
+	soundPath = dataPath / "Sound";
+	videoPath = dataPath / "Video";
+	mp3Path = VCMIDirs::get().userDataPath() / "Mp3";
+	modContentPath = ""; 
+}
+
 // parse all H3 original source folders (extracted previously) for all resources and moves them to teir corresponding places inside the Mod folder
-void parseOriginalDataFilesAndMoveToMods(bool move_extracted_files)
+void ResourceMover::parseOriginalDataFilesAndMoveToMods(bool move_extracted_files)
 {
 	if (!move_extracted_files)
 		return;
-
-	// All Videos remain in Data/Videos
-	bfs::path modPath = VCMIDirs::get().userDataPath() / "Mods";
-	bfs::path dataPath = VCMIDirs::get().userDataPath() / "extracted";
-	bfs::path spritesPath = dataPath / "Sprites";
-	bfs::path imagesPath = dataPath / "Images";
-	bfs::path soundPath = dataPath / "Sound";
-	bfs::path videoPath = dataPath / "Video";
-	bfs::path mp3Path = VCMIDirs::get().userDataPath() / "Mp3";
-	bfs::path modContentPath = "";
 
 	boost::locale::generator gen;				// Create locale generator 
 	std::locale::global(gen(""));				// "" - the system default locale, set it globally
