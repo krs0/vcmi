@@ -9,4 +9,23 @@
  */
 #pragma once
  
-void parseOriginalDataFilesAndMoveToMods(bool move_extracted_files = false);
+namespace bfs = boost::filesystem;
+
+class ResourceMover
+{
+
+public:
+	ResourceMover();
+
+	void parseOriginalDataFilesAndMoveToMods(bool move_extracted_files = false);
+
+private:
+	bfs::path modPath;
+	bfs::path dataPath;
+	bfs::path spritesPath;
+	bfs::path imagesPath;
+	bfs::path soundPath;
+	bfs::path videoPath;
+	bfs::path mp3Path;
+	bfs::path modContentPath;
+};
