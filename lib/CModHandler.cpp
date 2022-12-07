@@ -439,7 +439,7 @@ bool ContentTypeHandler::loadMod(const std::string & modName, bool validate)
 				std::swap(originalData[index], data);
 
 				// ToDo: krs - At this point complete configuration is available in originalData
-				logGlobal->trace("\n%s\n%s", name, data.toJson());
+				// logGlobal->trace("\n%s\n%s", name, data.toJson());
 
 				originalData[index].clear(); // do not use same data twice (same ID)
 			}
