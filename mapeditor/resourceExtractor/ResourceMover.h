@@ -34,7 +34,7 @@ private:
 	// Move no json files
 	void moveNonJsonFiles(bool move_non_json_files);
 	// Move all creature files for a faction
-	void moveCreaturesFiles(const std::string faction, const JsonNode configCreatureList);
+	void moveCreaturesFiles(const std::string faction, const JsonNode factionConfigs);
 	// move hero classes files
 	void moveHeroClasses(const std::string faction, const JsonNode factionConfigs);
 	void moveIndividualHeroes(const std::string faction, const JsonNode factionConfigs);
@@ -44,6 +44,12 @@ private:
 	void moveSiege(const std::string faction, const JsonNode factionConfigs);
 	void moveStructures(const std::string faction, const JsonNode factionConfigs);
 	void moveTown(const std::string faction, const JsonNode factionConfigs);
+
+	void moveCampaignAndGuiImages();
+	void moveCampaignAndGuiSprites();
+
+	void moveVideos();
+	void moveSounds();
 
 	bfs::path modPath;
 	bfs::path dataPath;
