@@ -128,6 +128,8 @@ void ResourceMover::parseOriginalDataFilesAndMoveToMods(bool move_extracted_file
 	moveSpells(true);
 	moveFactions(true);
 
+	moveNonJsonFiles(true);
+
 	logGlobal->info("Relocating resources complete!");
 
 	//ToDo: Delete Data Temp when all files are placed in the right places
@@ -582,7 +584,7 @@ void ResourceMover::movePuzzle(const std::string faction, const JsonNode faction
 		char* buffer = new char[256];
 
 		sprintf(buffer, "%02d", i); // index format is XX
-		std::string filename = puzzlePrefix + buffer + ".bmp";
+		std::string filename = puzzlePrefix + buffer + ".png";
 		moveFile(filename, imagesPath, modPuzzleMapPath);
 
 		delete[] buffer;
@@ -603,7 +605,7 @@ void ResourceMover::moveSiege(const std::string faction, const JsonNode factionC
 
 	for (std::string siegeBuilding : siegeBuildings)
 	{
-		std::string filename = siegePrefix + siegeBuilding + ".bmp";
+		std::string filename = siegePrefix + siegeBuilding + ".png";
 		moveFile(filename, imagesPath, modSiegePath);
 	}
 }
@@ -640,26 +642,19 @@ void ResourceMover::moveTown(const std::string faction, const JsonNode factionCo
 
 	const JsonNode configTown(ResourceID("Mods/SoD/mods/" + faction + "/content/config/factions/" + faction + "/town/town.json"));
 
-	moveFileFromConfig(configTown, faction + "/town/townBackground", imagesPath, modDataPath);
-	moveFileFromConfig(configTown, faction + "/town/guildWindow", imagesPath, modDataPath);
-	moveFileFromConfig(configTown, faction + "/town/hallBackground", imagesPath, modDataPath);
-
-	moveFileFromConfig(configTown, faction + "/town/mapObject/templates/capitol/animation", spritesPath, modSpritesPath);
-	moveFileFromConfig(configTown, faction + "/town/mapObject/templates/castle/animation", spritesPath, modSpritesPath);
-	moveFileFromConfig(configTown, faction + "/town/mapObject/templates/citadel/animation", spritesPath, modSpritesPath);
-	moveFileFromConfig(configTown, faction + "/town/mapObject/templates/fort/animation", spritesPath, modSpritesPath);
-	moveFileFromConfig(configTown, faction + "/town/mapObject/templates/village/animation", spritesPath, modSpritesPath);
+	for (auto background : { "townBackground", "guildWindow", "hallBackground" })
+		moveFileFromConfig(configTown, faction + "/town/" + background, imagesPath, modDataPath);
 
 	moveFileFromConfig(configTown, faction + "/town/buildingsIcons", spritesPath, modSpritesPath);
 
-	for (auto& nodeName : configTown[faction]["town"]["icons"].Struct())
+	for(std::string townLevel : { "fort", "citadel", "castle", "village", "capitol"})
+		moveFileFromConfig(configTown, faction + "/town/mapObject/templates/" + townLevel + "/animation", spritesPath, modSpritesPath);
+
+	for(auto & nodeName : configTown[faction]["town"]["icons"].Struct())
 	{
-		moveFileFromConfig(configTown[faction]["town"]["icons"], nodeName.first + "/normal/small", spritesPath, modSpritesPath);
-		moveFileFromConfig(configTown[faction]["town"]["icons"], nodeName.first + "/normal/large", spritesPath, modSpritesPath);
-		moveFileFromConfig(configTown[faction]["town"]["icons"], nodeName.first + "/built/small", spritesPath, modSpritesPath);
-		moveFileFromConfig(configTown[faction]["town"]["icons"], nodeName.first + "/built/large", spritesPath, modSpritesPath);
+		for(auto townIcon : { "normal/small", "/normal/large", "built/small", "built/large" })
+			moveFileFromConfig(configTown[faction]["town"]["icons"], nodeName.first + "/" + townIcon, spritesPath, modSpritesPath);
 	}
 
-	// move town music theme
 	moveFileFromConfig(configTown, faction + "/town/musicTheme", mp3Path, modMusicPath);
 }
