@@ -329,8 +329,10 @@ void ResourceMover::moveIndividualHeroes(const std::string faction, const JsonNo
 
 		const JsonNode configHeroes(ResourceID("Mods/SoD/mods/" + faction + "/content/config/heroes/" + configFileName));
 
-		for(std::string iconType : { "large", "small", "specialtySmall", "specialtyLarge" })
-			moveFileFromConfig(configHeroes, heroName + "/images/" + iconType, imagesPath, modSpritesPath);
+		moveFileFromConfig(configHeroes, heroName + "/images/small", imagesPath, modSpritesPath);
+		moveFileFromConfig(configHeroes, heroName + "/images/large", imagesPath, modSpritesPath);
+		moveFileFromConfig(configHeroes, heroName + "/images/specialtySmall", spritesPath / "UN32", modSpritesPath);
+		moveFileFromConfig(configHeroes, heroName + "/images/specialtyLarge", spritesPath / "UN44", modSpritesPath);
 	}
 }
 
