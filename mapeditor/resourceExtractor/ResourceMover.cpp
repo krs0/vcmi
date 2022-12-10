@@ -152,15 +152,15 @@ void ResourceMover::moveArtifacts(bool move_artifacts)
 
 void ResourceMover::moveCreatureBanks(bool move_creature_banks)
 {
-	if (move_creature_banks)
+	if(move_creature_banks)
 	{
 		logGlobal->info("\tRelocating creature banks resources...");
 
 		bfs::path modSpritesPath = modPath.append("SoD/mods/creatureBanks/content/sprites/SoD/");
 		const JsonNode configCreatureBanks(ResourceID("Mods/SoD/mods/creatureBanks/content/config/SoD/creatureBanks.json"));
-		for (const JsonNode& oneBank : configCreatureBanks["banks"].Vector())
+		for(const JsonNode& oneBank : configCreatureBanks["banks"].Vector())
 		{
-			for (const JsonNode& graphics : oneBank["graphics"].Vector())
+			for(const JsonNode& graphics : oneBank["graphics"].Vector())
 			{
 				std::string sTemp = graphics["adventureMap"].String();
 				moveFile(sTemp, spritesPath, modSpritesPath);
@@ -171,17 +171,17 @@ void ResourceMover::moveCreatureBanks(bool move_creature_banks)
 
 void ResourceMover::moveSpells(bool move_spells)
 {
-	if (move_spells)
+	if(move_spells)
 	{
 		logGlobal->info("\tRelocating spells resources...");
 
 		// Move spell sound files
 		bfs::path modSpritesPath = modPath / "SoD/mods/spells/content/";
 		const JsonNode configSpellInfo(ResourceID("Mods/SoD/mods/spells/content/config/SoD/spellInfo.json"));
-		for (auto& spell : configSpellInfo["spells"].Struct())
+		for(auto & spell : configSpellInfo["spells"].Struct())
 		{
 			std::string spellSoundPath = spell.second["soundfile"].String();
-			if (spellSoundPath != "")
+			if(spellSoundPath != "")
 			{
 				std::string spellSoundfile = extractFileName(spellSoundPath);
 				moveFile(soundPath / spellSoundfile, modSpritesPath / spellSoundPath);
@@ -285,7 +285,7 @@ void ResourceMover::moveHeroClasses(const std::string faction, const JsonNode fa
 
 	logGlobal->info("\t\t\tRelocating Hero Classes resources...");
 
-	for(const JsonNode& heroClasesNode : factionConfigs["heroClasses"].Vector())
+	for(const JsonNode & heroClasesNode : factionConfigs["heroClasses"].Vector())
 	{
 		std::string sTemp = heroClasesNode.String();
 		std::string configFileName = extractFileName(sTemp);
@@ -446,13 +446,13 @@ void ResourceMover::moveVideos()
 
 	logGlobal->info("\tRelocating Videos...");
 
-	for (bfs::directory_entry& entry : bfs::directory_iterator(videoPath))
+	for(bfs::directory_entry & directoryEntry : bfs::directory_iterator(videoPath))
 	{
 		try
 		{
-			if(bfs::is_regular_file(entry))
+			if(bfs::is_regular_file(directoryEntry))
 			{
-				std::string filename = entry.path().filename().string();
+				std::string filename = directoryEntry.path().filename().string();
 				filename = boost::locale::to_lower(filename);
 
 				moveFile(filename, videoPath, destinationPath);
@@ -474,13 +474,13 @@ void ResourceMover::moveSounds()
 
 	logGlobal->info("\tRelocating Sounds...");
 	
-	for (bfs::directory_entry & entry : bfs::directory_iterator(soundPath))
+	for(bfs::directory_entry & directoryEntry : bfs::directory_iterator(soundPath))
 	{
 		try
 		{
-			if(bfs::is_regular_file(entry))
+			if(bfs::is_regular_file(directoryEntry))
 			{
-				filename = entry.path().filename().string();
+				filename = directoryEntry.path().filename().string();
 				filename = boost::algorithm::to_lower_copy(filename);
 
 				// adventure map sounds
@@ -514,15 +514,15 @@ void ResourceMover::moveCampaignAndGuiImages()
 	bfs::path interfaceDestinationPath = modPath / "SoD/interface/content/images/SoD/";
 
 	// sort and move campaign and GUI images
-	for (bfs::directory_entry & entry : bfs::directory_iterator(imagesPath))
+	for(bfs::directory_entry & directoryEntry : bfs::directory_iterator(imagesPath))
 	{
 		std::string filename;
 
 		try
 		{
-			if(bfs::is_regular_file(entry))
+			if(bfs::is_regular_file(directoryEntry))
 			{
-				filename = entry.path().filename().string();
+				filename = directoryEntry.path().filename().string();
 				filename = boost::algorithm::to_lower_copy(filename);
 
 				// bo Something
@@ -610,13 +610,13 @@ void ResourceMover::moveCampaignAndGuiSprites()
 	for(std::string filename : adventureMapTerrains)
 		moveFile(filename, spritesPath, interfaceDestinationPath / "adventureMapTerrains/");
 
-	for(bfs::directory_entry & entry : bfs::directory_iterator(spritesPath))
+	for(bfs::directory_entry & directoryEntry : bfs::directory_iterator(spritesPath))
 	{
 		try
 		{
-			if(bfs::is_regular_file(entry))
+			if(bfs::is_regular_file(directoryEntry))
 			{
-				filename = entry.path().filename().string();
+				filename = directoryEntry.path().filename().string();
 				filename = boost::algorithm::to_lower_copy(filename);
 
 				// combat Obstacles
