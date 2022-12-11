@@ -14,53 +14,12 @@
 
 #include "../lib/VCMIDirs.h"
 #include "../lib/filesystem/Filesystem.h"
+#include "../lib/filesystem/FileInfo.h"
 
 #include "boost/filesystem/path.hpp"
 #include "boost/locale.hpp"
 
 namespace bfs = boost::filesystem;
-
-// extracts filename with extrension: returns <filename.ext>
-std::string extractFileName(std::string source)
-{
-	int index = source.find_last_of("/");
-	return source.substr(index+1);
-}
-
-// removes extension from a filename: returns <filename>
-std::string removeExtension(std::string filename)
-{
-	int index = filename.find_last_of(".");
-	return filename.substr(0, index);
-}
-
-// move file using complete file paths for source and destination files
-void moveFile(bfs::path sourceFilePath, bfs::path destinationFilePath, bool deleteSource)
-{
-	boost::system::error_code returnedError;
-	auto destinationFolderPath = destinationFilePath.parent_path();
-
-	if (!bfs::exists(sourceFilePath))
-		return;
-
-	bfs::create_directories(destinationFolderPath, returnedError);
-	if (returnedError)
-	{
-		logGlobal->error("Destination folder hierarchy could not be created! " + destinationFolderPath.string());
-		return;
-	}
-			
-	if (deleteSource)
-		bfs::rename(sourceFilePath, destinationFilePath);
-	else
-		bfs::copy_file(sourceFilePath, destinationFilePath, bfs::copy_option::overwrite_if_exists);
-}
-
-// move file using file name and source and destination folders
-void moveFile(std::string filename, bfs::path sourceFolder, bfs::path destinationFolder, bool deleteSource)
-{
-	moveFile(sourceFolder / filename, destinationFolder / filename, deleteSource);
-}
 
 ResourceMover::ResourceMover()
 {
@@ -156,7 +115,7 @@ void ResourceMover::moveSpells(bool move_spells)
 			std::string spellSoundPath = spell.second["soundfile"].String();
 			if(spellSoundPath != "")
 			{
-				std::string spellSoundfile = extractFileName(spellSoundPath);
+				std::string spellSoundfile = getFileName(spellSoundPath);
 				moveFile(soundPath / spellSoundfile, modSpritesPath / spellSoundPath, deleteSource);
 			}
 		}
@@ -231,8 +190,8 @@ void ResourceMover::moveCreaturesFiles(const std::string faction, const JsonNode
 	for(const JsonNode & creatureMod : factionConfigs["creatures"].Vector())
 	{
 		std::string configFilePath = creatureMod.String();
-		std::string configFileName = extractFileName(configFilePath);
-		std::string creatureName = removeExtension(configFileName);
+		std::string configFileName = getFileName(configFilePath);
+		std::string creatureName = getFileStem(configFileName);
 
 		const JsonNode configCreatures(ResourceID("Mods/SoD/mods/" + faction + "/content/" + configFilePath));
 
@@ -261,8 +220,8 @@ void ResourceMover::moveHeroClasses(const std::string faction, const JsonNode fa
 	for(const JsonNode & heroClasesNode : factionConfigs["heroClasses"].Vector())
 	{
 		std::string sTemp = heroClasesNode.String();
-		std::string configFileName = extractFileName(sTemp);
-		std::string heroClassName = removeExtension(configFileName);
+		std::string configFileName = getFileName(sTemp);
+		std::string heroClassName = getFileStem(configFileName);
 
 		const JsonNode configHeroClass(ResourceID("Mods/SoD/mods/" + faction + "/content/config/heroClasses/" + configFileName));
 
@@ -285,8 +244,8 @@ void ResourceMover::moveIndividualHeroes(const std::string faction, const JsonNo
 	for(const JsonNode & heroNode : factionConfigs["heroes"].Vector()) // list of config files
 	{
 		std::string sTemp = heroNode.String();
-		std::string configFileName = extractFileName(sTemp);
-		std::string heroName = removeExtension(configFileName);
+		std::string configFileName = getFileName(sTemp);
+		std::string heroName = getFileStem(configFileName);
 
 		const JsonNode configHeroes(ResourceID("Mods/SoD/mods/" + faction + "/content/config/heroes/" + configFileName));
 
@@ -636,12 +595,52 @@ void ResourceMover::moveResource(const JsonNode node, std::string nodeStructure,
 		std::string partialFilePath = node.resolvePointer(nodeStructure).String();
 
 		// move actual file
-		std::string fileToMove = extractFileName(partialFilePath);
+		std::string fileToMove = getFileName(partialFilePath);
 		moveFile(sourceRoot / fileToMove, destinationRoot / partialFilePath, deleteSource);
 
 		// move file's .msk
-		std::string partialMaskPath = removeExtension(partialFilePath) + ".msk";
-		std::string maskToMove = extractFileName(partialMaskPath);
+		std::string partialMaskPath = getFileStem(partialFilePath) + ".msk";
+		std::string maskToMove = getFileName(partialMaskPath);
 		moveFile(sourceRoot / maskToMove, destinationRoot / partialMaskPath, deleteSource);
 	}
 }
+
+#pragma region Helper Functions
+
+std::string getFileName(std::string filePath)
+{
+	return FileInfo::GetFilename(filePath).to_string();
+}
+
+std::string getFileStem(std::string filePath)
+{
+	return FileInfo::GetStem(filePath).to_string();
+}
+
+void moveFile(bfs::path sourceFilePath, bfs::path destinationFilePath, bool deleteSource)
+{
+	boost::system::error_code returnedError;
+	auto destinationFolderPath = destinationFilePath.parent_path();
+
+	if (!bfs::exists(sourceFilePath))
+		return;
+
+	bfs::create_directories(destinationFolderPath, returnedError);
+	if (returnedError)
+	{
+		logGlobal->error("Destination folder hierarchy could not be created! " + destinationFolderPath.string());
+		return;
+	}
+
+	if (deleteSource)
+		bfs::rename(sourceFilePath, destinationFilePath);
+	else
+		bfs::copy_file(sourceFilePath, destinationFilePath, bfs::copy_option::overwrite_if_exists);
+}
+
+void moveFile(std::string filename, bfs::path sourceFolder, bfs::path destinationFolder, bool deleteSource)
+{
+	moveFile(sourceFolder / filename, destinationFolder / filename, deleteSource);
+}
+
+#pragma endregion
