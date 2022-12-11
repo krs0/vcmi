@@ -106,6 +106,7 @@ void MainWindow::parseCommandLine(ExtractionOptions & extractionOptions)
 		{"s", QCoreApplication::translate("main", "From an extracted archive, it Splits TwCrPort, CPRSMALL, FlagPort, ITPA, ITPt, Un32 and Un44 into individual PNG's.")},
 		{"c", QCoreApplication::translate("main", "From an extracted archive, Converts single Images (found in Images folder) from .pcx to png.")},
 		{"d", QCoreApplication::translate("main", "Delete original files, for the ones splitted / converted.")},
+		{"m", QCoreApplication::translate("main", "Move extracted files to their proper place in SoD Mod.")},
 		});
 
 	parser.process(qApp->arguments());
@@ -119,7 +120,9 @@ void MainWindow::parseCommandLine(ExtractionOptions & extractionOptions)
 		parser.isSet("e"), {
 			parser.isSet("s"),
 			parser.isSet("c"),
-			parser.isSet("d")}};
+			parser.isSet("d")},
+		parser.isSet("m")
+	};
 }
 
 void MainWindow::loadTranslation()
@@ -207,12 +210,12 @@ MainWindow::MainWindow(QWidget* parent) :
 
 	graphics->load(); //must be after Content loading but should be in main thread
 
-	if (extractionOptions.extractArchives)
+	if (extractionOptions.extractArchives) // Needs to be executed only once!
 		ResourceConverter::convertExtractedResourceFiles(extractionOptions.conversionOptions);
 
-	// move all files to their mod location. Needs to be executed only once!
+	// Move all extracted archives to their SoD mod location. Needs to be executed only once!
 	ResourceMover resMover;
-	resMover.parseOriginalDataFilesAndMoveToMods(move_extracted_files);
+	resMover.parseOriginalDataFilesAndMoveToMods(extractionOptions.moveExtractedArchivesToSoDMod);
 	
 	ui->mapView->setScene(controller.scene(0));
 	ui->mapView->setController(&controller);

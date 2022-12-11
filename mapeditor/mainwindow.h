@@ -164,5 +164,4 @@ private:
 
 	// command line options
 	QString mapFilePath;			// FilePath to the H3 or VCMI map to open
-	bool move_extracted_files = false; // enable/disable the whole moving of H3 data files from Extracted to SoD Mod.
 };

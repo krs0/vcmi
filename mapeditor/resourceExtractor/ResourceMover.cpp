@@ -101,9 +101,9 @@ ResourceMover::ResourceMover()
 	modContentPath = ""; 
 }
 
-void ResourceMover::parseOriginalDataFilesAndMoveToMods(bool move_extracted_files)
+void ResourceMover::parseOriginalDataFilesAndMoveToMods(bool moveExtractedArchivesToSoDMod)
 {
-	if (!move_extracted_files)
+	if (!moveExtractedArchivesToSoDMod)
 		return;
 
 	boost::locale::generator gen;				// Create locale generator 
