@@ -23,6 +23,9 @@ namespace bfs = boost::filesystem;
 
 ResourceMover::ResourceMover()
 {
+	//boost::locale::generator gen;				// Create locale generator 
+	//std::locale::global(gen(""));				// "" - the system default locale, set it globally
+
 	modPath = VCMIDirs::get().userDataPath() / "Mods";
 	dataPath = VCMIDirs::get().userDataPath() / "extracted";
 	spritesPath = dataPath / "Sprites";
@@ -37,9 +40,6 @@ void ResourceMover::parseOriginalDataFilesAndMoveToMods(bool moveExtractedArchiv
 {
 	if (!moveExtractedArchivesToSoDMod)
 		return;
-
-	boost::locale::generator gen;				// Create locale generator 
-	std::locale::global(gen(""));				// "" - the system default locale, set it globally
 
 	logGlobal->info("Relocating Resources to SoD mod...");
 
@@ -62,8 +62,8 @@ void ResourceMover::moveArtifacts(bool move_artifacts)
 	{
 		logGlobal->info("\tRelocatingartifacts resources...");
 
-		// Move artifact adventuere map icons
-		bfs::path modSpritesPath = modPath.append("SoD/mods/artifacts/content/sprites/SoD/");
+		// Move artifact adventuere map icons: AVAxxxx.def and its .msk
+		bfs::path modSpritesPath = modPath / "SoD/mods/artifacts/content/sprites/SoD/";
 		for (int i = 1; i <= 144; i++)
 		{
 			char* buffer = new char[256];
@@ -77,6 +77,7 @@ void ResourceMover::moveArtifacts(bool move_artifacts)
 		}
 
 		// Move artifact icons, all in 1 file identified by index.
+		// ToDo: krs - split to PNG's?
 		moveFile("artifact.def", spritesPath, modSpritesPath, deleteSource);
 		moveFile("artifBon.def", spritesPath, modSpritesPath, deleteSource);
 	}
@@ -88,7 +89,7 @@ void ResourceMover::moveCreatureBanks(bool move_creature_banks)
 	{
 		logGlobal->info("\tRelocating creature banks resources...");
 
-		bfs::path modSpritesPath = modPath.append("SoD/mods/creatureBanks/content/sprites/SoD/");
+		bfs::path modSpritesPath = modPath / "SoD/mods/creatureBanks/content/sprites/SoD/";
 		const JsonNode configCreatureBanks(ResourceID("Mods/SoD/mods/creatureBanks/content/config/SoD/creatureBanks.json"));
 		for(const JsonNode& oneBank : configCreatureBanks["banks"].Vector())
 		{
@@ -134,7 +135,7 @@ void ResourceMover::moveFactions(bool move_factions)
 	{
 		logGlobal->info("\tRelocating Factions/%s resources...", faction);
 
-		const JsonNode factionConfigs(ResourceID("Mods/SoD/mods/" + faction + "/mod.json"));
+		const JsonNode factionConfigs(ResourceID("Mods/SoD/mods/factions/" + faction + "/mod.json"));
 
 		moveCreaturesFiles(faction, factionConfigs);
 
@@ -586,11 +587,11 @@ void ResourceMover::moveCampaignAndGuiSprites()
 void ResourceMover::moveResource(const JsonNode node, std::string nodeStructure, bfs::path sourceRoot, bfs::path destinationRoot)
 {
 	// add leading / if missing
-	if (nodeStructure.substr(0, 1) != "/")
+	if(nodeStructure.substr(0, 1) != "/")
 		nodeStructure = "/" + nodeStructure;
 
 	auto resolvedNode = node.resolvePointer(nodeStructure);
-	if (!resolvedNode.isNull())
+	if(!resolvedNode.isNull())
 	{
 		std::string partialFilePath = node.resolvePointer(nodeStructure).String();
 
@@ -622,17 +623,17 @@ void moveFile(bfs::path sourceFilePath, bfs::path destinationFilePath, bool dele
 	boost::system::error_code returnedError;
 	auto destinationFolderPath = destinationFilePath.parent_path();
 
-	if (!bfs::exists(sourceFilePath))
+	if(!bfs::exists(sourceFilePath))
 		return;
 
 	bfs::create_directories(destinationFolderPath, returnedError);
-	if (returnedError)
+	if(returnedError)
 	{
 		logGlobal->error("Destination folder hierarchy could not be created! " + destinationFolderPath.string());
 		return;
 	}
 
-	if (deleteSource)
+	if(deleteSource)
 		bfs::rename(sourceFilePath, destinationFilePath);
 	else
 		bfs::copy_file(sourceFilePath, destinationFilePath, bfs::copy_option::overwrite_if_exists);

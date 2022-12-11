@@ -214,10 +214,6 @@ MainWindow::MainWindow(QWidget* parent) :
 
 	if (extractionOptions.extractArchives) // Needs to be executed only once!
 		ResourceConverter::convertExtractedResourceFiles(extractionOptions.conversionOptions);
-
-	// Move all extracted archives to their SoD mod location. Needs to be executed only once!
-	ResourceMover resMover;
-	resMover.parseOriginalDataFilesAndMoveToMods(extractionOptions.moveExtractedArchivesToSoDMod);
 	
 	ui->mapView->setScene(controller.scene(0));
 	ui->mapView->setController(&controller);
