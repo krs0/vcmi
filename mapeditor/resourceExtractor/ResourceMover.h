@@ -69,3 +69,19 @@ private:
 	bool move_creature_banks = false; // no jsons yet
 	bool move_spells = false; // no jsons yet
 };
+
+#pragma region Helper Functions
+
+// Simplified wrapper over FileInfo::GetFilename
+std::string getFileName(std::string filePath);
+
+// simplified wrapper over FileInfo::GetStem
+std::string getFileStem(std::string filePath);
+
+// move file using complete file paths for source and destination files
+void moveFile(bfs::path sourceFilePath, bfs::path destinationFilePath, bool deleteSource);
+
+// move file using file name and source and destination folders
+void moveFile(std::string filename, bfs::path sourceFolder, bfs::path destinationFolder, bool deleteSource);
+
+#pragma endregion
