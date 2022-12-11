@@ -51,6 +51,8 @@ private:
 	void moveVideos();
 	void moveSounds();
 
+	void moveResource(const JsonNode node, std::string nodeStructure, bfs::path sourceRoot, bfs::path destinationRoot);
+
 	bfs::path modPath;
 	bfs::path dataPath;
 	bfs::path spritesPath;
@@ -59,4 +61,11 @@ private:
 	bfs::path videoPath;
 	bfs::path mp3Path;
 	bfs::path modContentPath;
+
+	bool deleteSource = false; // delete source files or leave a copy in place.
+
+	bool move_non_json_files = false; // move files that are not yet supported by mods.
+	bool move_artifacts = false; // no jsons yet
+	bool move_creature_banks = false; // no jsons yet
+	bool move_spells = false; // no jsons yet
 };

@@ -20,12 +20,6 @@
 
 namespace bfs = boost::filesystem;
 
-bool move_non_json_files = false; // move files that are not yet supported by mods.
-bool delete_source_files = false; // delete source files or leave a copy in place.
-bool move_artifacts = false; // no jsons yet
-bool move_creature_banks = false; // no jsons yet
-bool move_spells = false; // no jsons yet
-
 // extracts filename with extrension: returns <filename.ext>
 std::string extractFileName(std::string source)
 {
@@ -41,52 +35,31 @@ std::string removeExtension(std::string filename)
 }
 
 // move file using complete file paths for source and destination files
-void moveFile(bfs::path sourceFilePath, bfs::path destinationFilePath)
+void moveFile(bfs::path sourceFilePath, bfs::path destinationFilePath, bool deleteSource)
 {
 	boost::system::error_code returnedError;
-
 	auto destinationFolderPath = destinationFilePath.parent_path();
 
-	if (bfs::exists(sourceFilePath))
-	{
-		bfs::create_directories(destinationFolderPath, returnedError);
+	if (!bfs::exists(sourceFilePath))
+		return;
 
-		if (!returnedError)
-			if (!delete_source_files)
-				bfs::copy_file(sourceFilePath, destinationFilePath, bfs::copy_option::overwrite_if_exists);
-			else
-				bfs::rename(sourceFilePath, destinationFilePath);
-		else
-			logGlobal->error("Destination folder hierarchy could not be created! " + destinationFolderPath.string());
+	bfs::create_directories(destinationFolderPath, returnedError);
+	if (returnedError)
+	{
+		logGlobal->error("Destination folder hierarchy could not be created! " + destinationFolderPath.string());
+		return;
 	}
+			
+	if (deleteSource)
+		bfs::rename(sourceFilePath, destinationFilePath);
+	else
+		bfs::copy_file(sourceFilePath, destinationFilePath, bfs::copy_option::overwrite_if_exists);
 }
 
 // move file using file name and source and destination folders
-void moveFile(std::string filename, bfs::path sourceFolder, bfs::path destinationFolder)
+void moveFile(std::string filename, bfs::path sourceFolder, bfs::path destinationFolder, bool deleteSource)
 {
-	moveFile(sourceFolder / filename, destinationFolder / filename);
-}
-
-void moveResource(const JsonNode node, std::string nodeStructure, bfs::path sourceRoot, bfs::path destinationRoot)
-{
-	// add leading / if missing
-	if (nodeStructure.substr(0, 1) != "/")
-		nodeStructure = "/" + nodeStructure;
-
-	auto resolvedNode = node.resolvePointer(nodeStructure);
-	if (!resolvedNode.isNull())
-	{
-		std::string partialFilePath = node.resolvePointer(nodeStructure).String();
-
-		// move actual file
-		std::string fileToMove = extractFileName(partialFilePath);
-		moveFile(sourceRoot / fileToMove, destinationRoot / partialFilePath);
-
-		// move file's .msk
-		std::string partialMaskPath = removeExtension(partialFilePath) + ".msk";
-		std::string maskToMove = extractFileName(partialMaskPath);
-		moveFile(sourceRoot / maskToMove, destinationRoot / partialMaskPath);
-	}
+	moveFile(sourceFolder / filename, destinationFolder / filename, deleteSource);
 }
 
 ResourceMover::ResourceMover()
@@ -138,15 +111,15 @@ void ResourceMover::moveArtifacts(bool move_artifacts)
 			sprintf(buffer, "%04d", i);	// indexes are in 0xxx format.
 
 			std::string filename = std::string("AVA") + buffer;
-			moveFile(filename + ".def", spritesPath, modSpritesPath);
-			moveFile(filename + ".msk", spritesPath, modSpritesPath);
+			moveFile(filename + ".def", spritesPath, modSpritesPath, deleteSource);
+			moveFile(filename + ".msk", spritesPath, modSpritesPath, deleteSource);
 
 			delete[] buffer;
 		}
 
 		// Move artifact icons, all in 1 file identified by index.
-		moveFile("artifact.def", spritesPath, modSpritesPath);
-		moveFile("artifBon.def", spritesPath, modSpritesPath);
+		moveFile("artifact.def", spritesPath, modSpritesPath, deleteSource);
+		moveFile("artifBon.def", spritesPath, modSpritesPath, deleteSource);
 	}
 }
 
@@ -163,7 +136,7 @@ void ResourceMover::moveCreatureBanks(bool move_creature_banks)
 			for(const JsonNode& graphics : oneBank["graphics"].Vector())
 			{
 				std::string sTemp = graphics["adventureMap"].String();
-				moveFile(sTemp, spritesPath, modSpritesPath);
+				moveFile(sTemp, spritesPath, modSpritesPath, deleteSource);
 			}
 		}
 	}
@@ -184,13 +157,13 @@ void ResourceMover::moveSpells(bool move_spells)
 			if(spellSoundPath != "")
 			{
 				std::string spellSoundfile = extractFileName(spellSoundPath);
-				moveFile(soundPath / spellSoundfile, modSpritesPath / spellSoundPath);
+				moveFile(soundPath / spellSoundfile, modSpritesPath / spellSoundPath, deleteSource);
 			}
 		}
 
 		// Move spell graphics files
-		moveFile("spells.def", spritesPath, modPath / "SoD/mods/spells/content/sprites/SoD");
-		moveFile("spellScr.def", spritesPath, modPath / "SoD/mods/spells/content/sprites/SoD");
+		moveFile("spells.def", spritesPath, modPath / "SoD/mods/spells/content/sprites/SoD", deleteSource);
+		moveFile("spellScr.def", spritesPath, modPath / "SoD/mods/spells/content/sprites/SoD", deleteSource);
 	}
 }
 
@@ -364,7 +337,7 @@ void ResourceMover::movePuzzle(const std::string faction, const JsonNode faction
 
 		sprintf(buffer, "%02d", i); // index format is XX
 		std::string filename = puzzlePrefix + buffer + ".png";
-		moveFile(filename, imagesPath, modPuzzleMapPath);
+		moveFile(filename, imagesPath, modPuzzleMapPath, deleteSource);
 
 		delete[] buffer;
 	}
@@ -385,7 +358,7 @@ void ResourceMover::moveSiege(const std::string faction, const JsonNode factionC
 	for(std::string siegeBuilding : siegeBuildings)
 	{
 		std::string filename = siegePrefix + siegeBuilding + ".png";
-		moveFile(filename, imagesPath, modSiegePath);
+		moveFile(filename, imagesPath, modSiegePath, deleteSource);
 	}
 }
 
@@ -455,7 +428,7 @@ void ResourceMover::moveVideos()
 				std::string filename = directoryEntry.path().filename().string();
 				filename = boost::locale::to_lower(filename);
 
-				moveFile(filename, videoPath, destinationPath);
+				moveFile(filename, videoPath, destinationPath, deleteSource);
 			}
 			else
 				logGlobal->info("\t\t\t\tVideo file: %s has no processing rule!", filename);
@@ -490,13 +463,13 @@ void ResourceMover::moveSounds()
 					(filename.find("graveyard") == 0) || (filename.find("killfade") == 0) || (filename.find("lighthouse") == 0) ||
 					(filename.find("luck") == 0) || (filename.find("military") == 0) || (filename.find("morale") == 0) ||
 					(filename.find("quest") == 0) || (filename.find("storm") == 0) || (filename.find("telptin") == 0) || (filename.find("temple") == 0))
-					moveFile(filename, soundPath, destinationPath / "adventureMap/");
+					moveFile(filename, soundPath, destinationPath / "adventureMap/", deleteSource);
 
 				// battle sounds
 				else if((filename.find("badluck") == 0) || (filename.find("badmrle") == 0) || (filename.find("drawbrg") == 0) ||
 					(filename.find("goodluck") == 0) || (filename.find("goodmrle") == 0) || (filename.find("keepshot") == 0) ||
 					(filename.find("wallhit") == 0) || (filename.find("wallmiss") == 0))
-					moveFile(filename, soundPath, destinationPath / "battle/");
+					moveFile(filename, soundPath, destinationPath / "battle/", deleteSource);
 			}
 		}
 		catch(const std::exception & ex)
@@ -528,26 +501,26 @@ void ResourceMover::moveCampaignAndGuiImages()
 				// bo Something
 				if(filename.find("bo") == 0)
 					if ((filename.find("box") != 0))
-						moveFile(filename, imagesPath, destinationPath / "boSomething/");
+						moveFile(filename, imagesPath, destinationPath / "boSomething/", deleteSource);
 					else {}
 
 				// Campaign Maps
 				else if(filename.find(".h3c") != std::string::npos)
-					moveFile(filename, imagesPath, destinationPath / "campaignMaps/");
+					moveFile(filename, imagesPath, destinationPath / "campaignMaps/", deleteSource);
 
 				// Campaign Bonuses
 				else if(filename.find("cbon") == 0)
-					moveFile(filename, imagesPath, destinationPath / "campaignBonuses/");
+					moveFile(filename, imagesPath, destinationPath / "campaignBonuses/", deleteSource);
 
 				// Caption Screens
 				if(filename.find("csl") == 0)
-					moveFile(filename, imagesPath, destinationPath / "captionScreens/");
+					moveFile(filename, imagesPath, destinationPath / "captionScreens/", deleteSource);
 
 				// Campaign Images
 				else if(filename.find("camp") == 0)
 					if(filename.find("campback") != 0 || filename.find("campbrf") != 0 || filename.find("campchk") != 0 ||
 						filename.find("campswrd") != 0 || filename.find("campbkx2") != 0)
-						moveFile(filename, imagesPath, destinationPath / "campaignImages/");
+						moveFile(filename, imagesPath, destinationPath / "campaignImages/", deleteSource);
 					else {}
 
 				// Campaign World Maps
@@ -557,27 +530,27 @@ void ResourceMover::moveCampaignAndGuiImages()
 					filename.find("n1") == 0 || filename.find("nb") == 0 || filename.find("ni") == 0 || filename.find("rn") == 0 ||
 					filename.find("s1") == 0 || filename.find("sp") == 0 || filename.find("ta") == 0 || filename.find("ua") == 0)
 					&& (filename.find("_") != std::string::npos))
-					moveFile(filename, imagesPath, destinationPath / "campaignsWorldMaps/");
+					moveFile(filename, imagesPath, destinationPath / "campaignsWorldMaps/", deleteSource);
 
 				// Config Files
 				else if(filename.find(".txt") != std::string::npos)
-					moveFile(filename, imagesPath, dataPath / "Config/");
+					moveFile(filename, imagesPath, dataPath / "Config/", deleteSource);
 
 				// Fonts
 				else if(filename.find(".fnt") != std::string::npos)
-					moveFile(filename, imagesPath, dataPath / "Fonts/");
+					moveFile(filename, imagesPath, dataPath / "Fonts/", deleteSource);
 
 				// Battle Backgrounds
 				else if(filename.find("cmbk") == 0)
-					moveFile(filename, imagesPath, interfaceDestinationPath / "battleBackgrounds/");
+					moveFile(filename, imagesPath, interfaceDestinationPath / "battleBackgrounds/", deleteSource);
 
 				// Battle Obstacles
 				else if(filename.find("ob") == 0)
-					moveFile(filename, imagesPath, interfaceDestinationPath / "battleObstacles/");
+					moveFile(filename, imagesPath, interfaceDestinationPath / "battleObstacles/", deleteSource);
 
 				// GUI
 				else
-					moveFile(filename, imagesPath, interfaceDestinationPath / "gui/");
+					moveFile(filename, imagesPath, interfaceDestinationPath / "gui/", deleteSource);
 			}
 		}
 		catch(const std::exception& ex)
@@ -604,11 +577,11 @@ void ResourceMover::moveCampaignAndGuiSprites()
 
 	// extra adventure map objects
 	for(auto adventureMapObject : extraAdventureMapObjects)
-		moveFile(adventureMapObject, spritesPath, interfaceDestinationPath / "adventureMapObjects/");
+		moveFile(adventureMapObject, spritesPath, interfaceDestinationPath / "adventureMapObjects/", deleteSource);
 
 	// adventure map terrains
 	for(std::string filename : adventureMapTerrains)
-		moveFile(filename, spritesPath, interfaceDestinationPath / "adventureMapTerrains/");
+		moveFile(filename, spritesPath, interfaceDestinationPath / "adventureMapTerrains/", deleteSource);
 
 	for(bfs::directory_entry & directoryEntry : bfs::directory_iterator(spritesPath))
 	{
@@ -621,32 +594,54 @@ void ResourceMover::moveCampaignAndGuiSprites()
 
 				// combat Obstacles
 				if(filename.find("ob") == 0)
-					moveFile(filename, spritesPath, interfaceDestinationPath / "combatObstacles/");
+					moveFile(filename, spritesPath, interfaceDestinationPath / "combatObstacles/", deleteSource);
 
 				// Cursors
 				else if(filename.find("cr") == 0)
-					moveFile(filename, spritesPath, interfaceDestinationPath / "gui/cursors/");
+					moveFile(filename, spritesPath, interfaceDestinationPath / "gui/cursors/", deleteSource);
 
 				// Adventure Map Objects
 				else if(filename.find("av") == 0)
-					moveFile(filename, spritesPath, interfaceDestinationPath / "adventureMapObjects/");
+					moveFile(filename, spritesPath, interfaceDestinationPath / "adventureMapObjects/", deleteSource);
 
 				// Adventure Map Terrains / River Deltas
 				else if(filename.find("delt") != std::string::npos)
-					moveFile(filename, spritesPath, interfaceDestinationPath / "adventureMapTerrains/deltas/");
+					moveFile(filename, spritesPath, interfaceDestinationPath / "adventureMapTerrains/deltas/", deleteSource);
 
 				// Campaign Maps
 				else if(filename.find(".h3c") != std::string::npos)
-					moveFile(filename, spritesPath, destinationPath / "campaignMaps/");
+					moveFile(filename, spritesPath, destinationPath / "campaignMaps/", deleteSource);
 
 				// rest is GUI
 				else
-					moveFile(filename, spritesPath, interfaceDestinationPath / "gui/");
+					moveFile(filename, spritesPath, interfaceDestinationPath / "gui/", deleteSource);
 			}
 		}
 		catch(const std::exception & ex)
 		{
 			std::cout << filename << " " << ex.what() << std::endl;
 		}
+	}
+}
+
+void ResourceMover::moveResource(const JsonNode node, std::string nodeStructure, bfs::path sourceRoot, bfs::path destinationRoot)
+{
+	// add leading / if missing
+	if (nodeStructure.substr(0, 1) != "/")
+		nodeStructure = "/" + nodeStructure;
+
+	auto resolvedNode = node.resolvePointer(nodeStructure);
+	if (!resolvedNode.isNull())
+	{
+		std::string partialFilePath = node.resolvePointer(nodeStructure).String();
+
+		// move actual file
+		std::string fileToMove = extractFileName(partialFilePath);
+		moveFile(sourceRoot / fileToMove, destinationRoot / partialFilePath, deleteSource);
+
+		// move file's .msk
+		std::string partialMaskPath = removeExtension(partialFilePath) + ".msk";
+		std::string maskToMove = extractFileName(partialMaskPath);
+		moveFile(sourceRoot / maskToMove, destinationRoot / partialMaskPath, deleteSource);
 	}
 }
