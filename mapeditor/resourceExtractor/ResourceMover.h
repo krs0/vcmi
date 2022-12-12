@@ -53,14 +53,22 @@ private:
 
 	void moveResource(const JsonNode node, std::string nodeStructure, bfs::path sourceRoot, bfs::path destinationRoot);
 
-	bfs::path modPath;
+	bfs::path modsPath;
 	bfs::path dataPath;
 	bfs::path spritesPath;
 	bfs::path imagesPath;
 	bfs::path soundPath;
 	bfs::path videoPath;
 	bfs::path mp3Path;
+
 	bfs::path modContentPath;
+	bfs::path modSpritesPath;
+	bfs::path modImagesPath;
+	bfs::path modSoundsPath;
+	bfs::path modMusicPath;
+	bfs::path modDataPath;
+
+	std::string modResourceRoot;
 
 	bool deleteSource = false; // delete source files or leave a copy in place.
 
