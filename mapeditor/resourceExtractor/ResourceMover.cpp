@@ -263,8 +263,17 @@ void ResourceMover::moveDwellings(const std::string faction, const JsonNode fact
 	logGlobal->info("\t\t\tRelocating Dwellings resources...");
 
 	const JsonNode configDwellings(ResourceID(modResourceRoot + "content/config/mapObjects/dwellings.json"));
-	for(auto & nodeName : configDwellings["creatureGeneratorCommon"]["types"].Struct())
-		moveResource(nodeName.second, "templates/default/animation", spritesPath, modSpritesPath);
+	for (auto & nodeStruct : configDwellings["creatureGeneratorCommon"]["types"].Struct())
+	{
+		JsonNode dwellingNode = nodeStruct.second;
+
+		// move adventue map animation
+		moveResource(dwellingNode, "templates/default/animation", spritesPath, modSpritesPath);
+
+		// move adventure map loop sounds
+		for(auto & subNode : dwellingNode["sounds"]["ambient"].Vector())
+			moveResource(subNode, "", soundPath, modSoundsPath);
+	}
 }
 
 void ResourceMover::moveCreatureBackgrounds(const std::string faction, const JsonNode factionConfigs)
@@ -570,14 +579,14 @@ void ResourceMover::moveCampaignAndGuiSprites()
 
 void ResourceMover::moveResource(const JsonNode node, std::string nodeStructure, bfs::path sourceRoot, bfs::path destinationRoot)
 {
-	// add leading / if missing
-	if(nodeStructure.substr(0, 1) != "/")
+	// add leading / if missing and not empty
+	if(nodeStructure.substr(0, 1) != "/" && !nodeStructure.empty())
 		nodeStructure = "/" + nodeStructure;
 
 	auto resolvedNode = node.resolvePointer(nodeStructure);
 	if(!resolvedNode.isNull())
 	{
-		std::string partialFilePath = node.resolvePointer(nodeStructure).String();
+		std::string partialFilePath = resolvedNode.String();
 
 		// move actual file
 		std::string fileToMove = getFileName(partialFilePath);
