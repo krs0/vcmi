@@ -26,14 +26,13 @@ ResourceMover::ResourceMover()
 	//boost::locale::generator gen;				// Create locale generator 
 	//std::locale::global(gen(""));				// "" - the system default locale, set it globally
 
-	modPath = VCMIDirs::get().userDataPath() / "Mods";
+	modsPath = VCMIDirs::get().userDataPath() / "Mods";
 	dataPath = VCMIDirs::get().userDataPath() / "extracted";
 	spritesPath = dataPath / "Sprites";
 	imagesPath = dataPath / "Images";
 	soundPath = dataPath / "Sound";
 	videoPath = dataPath / "Video";
 	mp3Path = VCMIDirs::get().userDataPath() / "Mp3";
-	modContentPath = ""; 
 }
 
 void ResourceMover::parseOriginalDataFilesAndMoveToMods(bool moveExtractedArchivesToSoDMod)
@@ -62,8 +61,9 @@ void ResourceMover::moveArtifacts(bool move_artifacts)
 	{
 		logGlobal->info("\tRelocatingartifacts resources...");
 
+		bfs::path modSpritesPath = modsPath / "SoD/mods/artifacts/content/sprites/SoD/";
+
 		// Move artifact adventuere map icons: AVAxxxx.def and its .msk
-		bfs::path modSpritesPath = modPath / "SoD/mods/artifacts/content/sprites/SoD/";
 		for (int i = 1; i <= 144; i++)
 		{
 			char* buffer = new char[256];
@@ -89,14 +89,15 @@ void ResourceMover::moveCreatureBanks(bool move_creature_banks)
 	{
 		logGlobal->info("\tRelocating creature banks resources...");
 
-		bfs::path modSpritesPath = modPath / "SoD/mods/creatureBanks/content/sprites/SoD/";
+		bfs::path modSpritesPath = modsPath / "SoD/mods/creatureBanks/content/sprites/SoD/";
+
 		const JsonNode configCreatureBanks(ResourceID("Mods/SoD/mods/creatureBanks/content/config/SoD/creatureBanks.json"));
 		for(const JsonNode& oneBank : configCreatureBanks["banks"].Vector())
 		{
 			for(const JsonNode& graphics : oneBank["graphics"].Vector())
 			{
-				std::string sTemp = graphics["adventureMap"].String();
-				moveFile(sTemp, spritesPath, modSpritesPath, deleteSource);
+				std::string creatureBankFilename = graphics["adventureMap"].String();
+				moveFile(creatureBankFilename, spritesPath, modSpritesPath, deleteSource);
 			}
 		}
 	}
@@ -108,22 +109,25 @@ void ResourceMover::moveSpells(bool move_spells)
 	{
 		logGlobal->info("\tRelocating spells resources...");
 
+		modContentPath = "SoD/mods/spells/content/";
+		modSpritesPath = modsPath / modContentPath / "sprites/SoD";
+		modSoundsPath = modsPath / modContentPath / "sounds/SoD";
+
 		// Move spell sound files
-		bfs::path modSpritesPath = modPath / "SoD/mods/spells/content/";
-		const JsonNode configSpellInfo(ResourceID("Mods/SoD/mods/spells/content/config/SoD/spellInfo.json"));
+		const JsonNode configSpellInfo(ResourceID("Mods/" + modContentPath.string() + "config/SoD/spellInfo.json"));
 		for(auto & spell : configSpellInfo["spells"].Struct())
 		{
 			std::string spellSoundPath = spell.second["soundfile"].String();
 			if(spellSoundPath != "")
 			{
 				std::string spellSoundfile = getFileName(spellSoundPath);
-				moveFile(soundPath / spellSoundfile, modSpritesPath / spellSoundPath, deleteSource);
+				moveFile(soundPath / spellSoundfile, modSoundsPath / spellSoundfile, deleteSource);
 			}
 		}
 
 		// Move spell graphics files
-		moveFile("spells.def", spritesPath, modPath / "SoD/mods/spells/content/sprites/SoD", deleteSource);
-		moveFile("spellScr.def", spritesPath, modPath / "SoD/mods/spells/content/sprites/SoD", deleteSource);
+		moveFile("spells.def", spritesPath, modSpritesPath, deleteSource);
+		moveFile("spellScr.def", spritesPath, modSpritesPath, deleteSource);
 	}
 }
 
@@ -135,7 +139,16 @@ void ResourceMover::moveFactions(bool move_factions)
 	{
 		logGlobal->info("\tRelocating Factions/%s resources...", faction);
 
-		const JsonNode factionConfigs(ResourceID("Mods/SoD/mods/factions/" + faction + "/mod.json"));
+		// set all root paths for current faction
+		modResourceRoot = "Mods/SoD/mods/factions/mods/" + faction + "/";
+		modContentPath = modsPath / "SoD/mods/factions/mods" / faction / "content";
+		modSpritesPath = modContentPath / "sprites";
+		modImagesPath = modContentPath / "images";
+		modSoundsPath = modContentPath / "sounds";
+		modDataPath = modContentPath / "data";
+		modMusicPath = modContentPath / "mp3";
+
+		const JsonNode factionConfigs(ResourceID(modResourceRoot + "mod.json"));
 
 		moveCreaturesFiles(faction, factionConfigs);
 
@@ -181,11 +194,6 @@ void ResourceMover::moveNonJsonFiles(bool move_non_json_files)
 
 void ResourceMover::moveCreaturesFiles(const std::string faction, const JsonNode factionConfigs)
 {
-	modContentPath = modPath / "SoD\\mods" / faction / "content";
-	bfs::path modSpritesPath = modContentPath / "sprites";
-	bfs::path modImagesPath = modContentPath / "images";
-	bfs::path modSoundsPath = modContentPath / "sounds";
-
 	logGlobal->info("\t\tRelocating Creature resources...");
 
 	for(const JsonNode & creatureMod : factionConfigs["creatures"].Vector())
@@ -194,12 +202,12 @@ void ResourceMover::moveCreaturesFiles(const std::string faction, const JsonNode
 		std::string configFileName = getFileName(configFilePath);
 		std::string creatureName = getFileStem(configFileName);
 
-		const JsonNode configCreatures(ResourceID("Mods/SoD/mods/" + faction + "/content/" + configFilePath));
+		const JsonNode configCreatures(ResourceID(modResourceRoot + "content/" + configFilePath));
 
 		// move creature sprites
 		moveResource(configCreatures, creatureName + "/graphics/animation", spritesPath, modSpritesPath);
 		moveResource(configCreatures, creatureName + "/graphics/map", spritesPath, modSpritesPath);
-		moveResource(configCreatures, creatureName + "/graphics/missile/projectile", spritesPath, modSpritesPath);
+		moveResource(configCreatures, creatureName + "/graphics/missile/projectile", spritesPath, modSpritesPath); // ignored for non-ranged
 
 		// move creature icons
 		moveResource(configCreatures, creatureName + "/graphics/iconSmall", spritesPath / "CPrSmalL", modImagesPath);
@@ -213,9 +221,6 @@ void ResourceMover::moveCreaturesFiles(const std::string faction, const JsonNode
 
 void ResourceMover::moveHeroClasses(const std::string faction, const JsonNode factionConfigs)
 {
-	modContentPath = modPath / "SoD\\mods" / faction / "content";
-	bfs::path modSpritesPath = modContentPath / "sprites";
-
 	logGlobal->info("\t\t\tRelocating Hero Classes resources...");
 
 	for(const JsonNode & heroClasesNode : factionConfigs["heroClasses"].Vector())
@@ -224,7 +229,7 @@ void ResourceMover::moveHeroClasses(const std::string faction, const JsonNode fa
 		std::string configFileName = getFileName(sTemp);
 		std::string heroClassName = getFileStem(configFileName);
 
-		const JsonNode configHeroClass(ResourceID("Mods/SoD/mods/" + faction + "/content/config/heroClasses/" + configFileName));
+		const JsonNode configHeroClass(ResourceID(modResourceRoot + "content/config/heroClasses/" + configFileName));
 
 		moveResource(configHeroClass, heroClassName + "/animation/battle/female", spritesPath, modSpritesPath);
 		moveResource(configHeroClass, heroClassName + "/animation/battle/male", spritesPath, modSpritesPath);
@@ -236,10 +241,6 @@ void ResourceMover::moveHeroClasses(const std::string faction, const JsonNode fa
 
 void ResourceMover::moveIndividualHeroes(const std::string faction, const JsonNode factionConfigs)
 {
-	modContentPath = modPath / "SoD\\mods" / faction / "content";
-	bfs::path modSpritesPath = modContentPath / "sprites";
-	bfs::path modSoundsPath = modContentPath / "sounds";
-
 	logGlobal->info("\t\t\tRelocating Individual Hero resources...");
 
 	for(const JsonNode & heroNode : factionConfigs["heroes"].Vector()) // list of config files
@@ -248,7 +249,7 @@ void ResourceMover::moveIndividualHeroes(const std::string faction, const JsonNo
 		std::string configFileName = getFileName(sTemp);
 		std::string heroName = getFileStem(configFileName);
 
-		const JsonNode configHeroes(ResourceID("Mods/SoD/mods/" + faction + "/content/config/heroes/" + configFileName));
+		const JsonNode configHeroes(ResourceID(modResourceRoot + "content/config/heroes/" + configFileName));
 
 		moveResource(configHeroes, heroName + "/images/small", imagesPath, modSpritesPath);
 		moveResource(configHeroes, heroName + "/images/large", imagesPath, modSpritesPath);
@@ -259,26 +260,18 @@ void ResourceMover::moveIndividualHeroes(const std::string faction, const JsonNo
 
 void ResourceMover::moveDwellings(const std::string faction, const JsonNode factionConfigs)
 {
-	modContentPath = modPath / "SoD\\mods" / faction / "content";
-	bfs::path modSpritesPath = modContentPath / "sprites";
-	bfs::path modSoundsPath = modContentPath / "sounds";
-
 	logGlobal->info("\t\t\tRelocating Dwellings resources...");
 
-	const JsonNode configDwellings(ResourceID("Mods/SoD/mods/" + faction + "/content/config/mapObjects/dwellings.json"));
-	for(auto & nodeName : configDwellings[faction]["dwellings"].Struct())
-		moveResource(configDwellings[faction], "dwellings/" + nodeName.first + "/graphics", spritesPath, modSpritesPath);
+	const JsonNode configDwellings(ResourceID(modResourceRoot + "content/config/mapObjects/dwellings.json"));
+	for(auto & nodeName : configDwellings["creatureGeneratorCommon"]["types"].Struct())
+		moveResource(nodeName.second, "templates/default/animation", spritesPath, modSpritesPath);
 }
 
 void ResourceMover::moveCreatureBackgrounds(const std::string faction, const JsonNode factionConfigs)
 {
-	modContentPath = modPath / "SoD\\mods" / faction / "content";
-	bfs::path modSpritesPath = modContentPath / "sprites";
-	bfs::path modSoundsPath = modContentPath / "sounds";
-
 	logGlobal->info("\t\t\tRelocating Creature Backgrounds resources...");
 
-	const JsonNode configFaction(ResourceID("Mods/SoD/mods/" + faction + "/content/config/factions/" + faction + "/faction.json"));
+	const JsonNode configFaction(ResourceID(modResourceRoot + "content/config/factions/" + faction + "/faction.json"));
 	moveResource(configFaction[faction], "creatureBackground/120px", imagesPath, modSpritesPath);
 	moveResource(configFaction[faction], "creatureBackground/130px", imagesPath, modSpritesPath);
 }
@@ -287,8 +280,8 @@ void ResourceMover::movePuzzle(const std::string faction, const JsonNode faction
 {
 	logGlobal->info("\t\t\tRelocating Puzzle resources...");
 
-	bfs::path modPuzzleMapPath = modPath / "SoD\\mods" / faction / "content\\sprites\\factions" / faction / "puzzleMap";
-	const JsonNode configPuzzle(ResourceID("Mods/SoD/mods/" + faction + "/content/config/factions/" + faction + "/puzzleMap.json"));
+	bfs::path modPuzzleMapPath = modSpritesPath / "factions" / faction / "puzzleMap";
+	const JsonNode configPuzzle(ResourceID(modResourceRoot + "content/config/factions/" + faction + "/puzzleMap.json"));
 	std::string puzzlePrefix = configPuzzle[faction]["puzzleMap"]["prefix"].String();
 
 	for(int i = 0; i <= 48; i++)
@@ -311,8 +304,8 @@ void ResourceMover::moveSiege(const std::string faction, const JsonNode factionC
 
 	logGlobal->info("\t\t\tRelocating Siege resources...");
 
-	bfs::path modSiegePath = modPath / "SoD\\mods" / faction / "content\\sprites\\factions" / faction / "siege";
-	const JsonNode configSiege(ResourceID("Mods/SoD/mods/" + faction + "/content/config/factions/" + faction + "/town/siege.json"));
+	bfs::path modSiegePath = modSpritesPath / "factions" / faction / "siege";
+	const JsonNode configSiege(ResourceID(modResourceRoot + "content/config/factions/" + faction + "/town/siege.json"));
 	std::string siegePrefix = configSiege[faction]["town"]["siege"]["imagePrefix"].String();
 
 	for(std::string siegeBuilding : siegeBuildings)
@@ -324,13 +317,9 @@ void ResourceMover::moveSiege(const std::string faction, const JsonNode factionC
 
 void ResourceMover::moveStructures(const std::string faction, const JsonNode factionConfigs)
 {
-	modContentPath = modPath / "SoD\\mods" / faction / "content";
-	bfs::path modSpritesPath = modContentPath / "sprites";
-	bfs::path modDataPath = modContentPath / "data";
-
 	logGlobal->info("\t\t\tRelocating Structure resources...");
 	
-	const JsonNode configStructures(ResourceID("Mods/SoD/mods/" + faction + "/content/config/factions/" + faction + "/town/structures.json"));
+	const JsonNode configStructures(ResourceID(modResourceRoot + "content/config/factions/" + faction + "/town/structures.json"));
 	const JsonNode& structuresNode = configStructures[faction]["town"];
 
 	// move animation sprites + area and border images
@@ -345,14 +334,9 @@ void ResourceMover::moveStructures(const std::string faction, const JsonNode fac
 
 void ResourceMover::moveTown(const std::string faction, const JsonNode factionConfigs)
 {
-	modContentPath = modPath / "SoD\\mods" / faction / "content";
-	bfs::path modSpritesPath = modContentPath / "sprites";
-	bfs::path modDataPath = modContentPath / "data";
-	bfs::path modMusicPath = modContentPath / "music";
-
 	logGlobal->info("\t\t\tRelocating Town resources...");
 
-	const JsonNode configTown(ResourceID("Mods/SoD/mods/" + faction + "/content/config/factions/" + faction + "/town/town.json"));
+	const JsonNode configTown(ResourceID(modResourceRoot + "content/config/factions/" + faction + "/town/town.json"));
 
 	for(auto background : { "townBackground", "guildWindow", "hallBackground" })
 		moveResource(configTown, faction + "/town/" + background, imagesPath, modDataPath);
@@ -375,7 +359,7 @@ void ResourceMover::moveVideos()
 {
 	std::string filename;
 
-	bfs::path destinationPath = modPath / "SoD/video/content/video/SoD/";
+	bfs::path destinationPath = modsPath / "SoD/video/content/video/SoD/";
 
 	logGlobal->info("\tRelocating Videos...");
 
@@ -402,7 +386,7 @@ void ResourceMover::moveVideos()
 
 void ResourceMover::moveSounds()
 {
-	bfs::path destinationPath = modPath / "SoD/sound/content/sound/SoD/";
+	bfs::path destinationPath = modsPath / "SoD/sound/content/sound/SoD/";
 	std::string filename;
 
 	logGlobal->info("\tRelocating Sounds...");
@@ -443,8 +427,8 @@ void ResourceMover::moveCampaignAndGuiImages()
 {
 	// move campaign bonuses ??? Investigate where these bonuses are moved
 
-	bfs::path destinationPath = modPath / "SoD/campaigns/content/images/SoD/";
-	bfs::path interfaceDestinationPath = modPath / "SoD/interface/content/images/SoD/";
+	bfs::path destinationPath = modsPath / "SoD/campaigns/content/images/SoD/";
+	bfs::path interfaceDestinationPath = modsPath / "SoD/interface/content/images/SoD/";
 
 	// sort and move campaign and GUI images
 	for(bfs::directory_entry & directoryEntry : bfs::directory_iterator(imagesPath))
@@ -532,8 +516,8 @@ void ResourceMover::moveCampaignAndGuiSprites()
 	std::string filename;
 
 	// sort and move campaign and GUI sprites
-	bfs::path destinationPath = modPath / "SoD/campaigns/content/sprites/SoD/";
-	bfs::path interfaceDestinationPath = modPath / "SoD/interface/content/sprites/SoD/";
+	bfs::path destinationPath = modsPath / "SoD/campaigns/content/sprites/SoD/";
+	bfs::path interfaceDestinationPath = modsPath / "SoD/interface/content/sprites/SoD/";
 
 	// extra adventure map objects
 	for(auto adventureMapObject : extraAdventureMapObjects)
