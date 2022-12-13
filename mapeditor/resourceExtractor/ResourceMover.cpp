@@ -162,7 +162,7 @@ void ResourceMover::moveFactions(bool move_factions)
 
 		// exit for if current faction is neutral. Neutral faction does not have the rest of files.
 		if(faction == "neutral")
-			break;
+			continue;
 
 		movePuzzle(faction, factionConfigs);
 
@@ -263,16 +263,23 @@ void ResourceMover::moveDwellings(const std::string faction, const JsonNode fact
 	logGlobal->info("\t\t\tRelocating Dwellings resources...");
 
 	const JsonNode configDwellings(ResourceID(modResourceRoot + "content/config/mapObjects/dwellings.json"));
-	for (auto & nodeStruct : configDwellings["creatureGeneratorCommon"]["types"].Struct())
+
+	std::vector<std::string> creatureGeneratorTypes = { "creatureGeneratorCommon", "creatureGeneratorSpecial" };
+
+	// loop over both creature generator types
+	for (std::string creatureGeneratorType : creatureGeneratorTypes)
 	{
-		JsonNode dwellingNode = nodeStruct.second;
+		for (auto& nodeStruct : configDwellings[creatureGeneratorType]["types"].Struct())
+		{
+			JsonNode dwellingNode = nodeStruct.second;
 
-		// move adventue map animation
-		moveResource(dwellingNode, "templates/default/animation", spritesPath, modSpritesPath);
+			// move adventue map animation
+			moveResource(dwellingNode, "templates/default/animation", spritesPath, modSpritesPath);
 
-		// move adventure map loop sounds
-		for(auto & subNode : dwellingNode["sounds"]["ambient"].Vector())
-			moveResource(subNode, "", soundPath, modSoundsPath);
+			// move adventure map loop sounds
+			for (auto& subNode : dwellingNode["sounds"]["ambient"].Vector())
+				moveResource(subNode, "", soundPath, modSoundsPath);
+		}
 	}
 }
 
@@ -281,15 +288,15 @@ void ResourceMover::moveCreatureBackgrounds(const std::string faction, const Jso
 	logGlobal->info("\t\t\tRelocating Creature Backgrounds resources...");
 
 	const JsonNode configFaction(ResourceID(modResourceRoot + "content/config/factions/" + faction + "/faction.json"));
-	moveResource(configFaction[faction], "creatureBackground/120px", imagesPath, modSpritesPath);
-	moveResource(configFaction[faction], "creatureBackground/130px", imagesPath, modSpritesPath);
+	moveResource(configFaction[faction], "creatureBackground/120px", imagesPath, modImagesPath);
+	moveResource(configFaction[faction], "creatureBackground/130px", imagesPath, modImagesPath);
 }
 
 void ResourceMover::movePuzzle(const std::string faction, const JsonNode factionConfigs)
 {
 	logGlobal->info("\t\t\tRelocating Puzzle resources...");
 
-	bfs::path modPuzzleMapPath = modSpritesPath / "factions" / faction / "puzzleMap";
+	bfs::path modPuzzleMapPath = modImagesPath / "factions" / faction / "puzzleMap";
 	const JsonNode configPuzzle(ResourceID(modResourceRoot + "content/config/factions/" + faction + "/puzzleMap.json"));
 	std::string puzzlePrefix = configPuzzle[faction]["puzzleMap"]["prefix"].String();
 
@@ -313,7 +320,7 @@ void ResourceMover::moveSiege(const std::string faction, const JsonNode factionC
 
 	logGlobal->info("\t\t\tRelocating Siege resources...");
 
-	bfs::path modSiegePath = modSpritesPath / "factions" / faction / "siege";
+	bfs::path modSiegePath = modImagesPath / "factions" / faction / "siege";
 	const JsonNode configSiege(ResourceID(modResourceRoot + "content/config/factions/" + faction + "/town/siege.json"));
 	std::string siegePrefix = configSiege[faction]["town"]["siege"]["imagePrefix"].String();
 
@@ -336,8 +343,8 @@ void ResourceMover::moveStructures(const std::string faction, const JsonNode fac
 	for(auto & nodeName : structuresNode["structures"].Struct())
 	{
 		moveResource(structuresNode, "structures/" + nodeName.first + "/animation", spritesPath, modSpritesPath);
-		moveResource(structuresNode, "structures/" + nodeName.first + "/area", imagesPath, modDataPath);
-		moveResource(structuresNode, "structures/" + nodeName.first + "/border", imagesPath, modDataPath);
+		moveResource(structuresNode, "structures/" + nodeName.first + "/area", imagesPath, modImagesPath);
+		moveResource(structuresNode, "structures/" + nodeName.first + "/border", imagesPath, modImagesPath);
 	}
 }
 
@@ -348,17 +355,22 @@ void ResourceMover::moveTown(const std::string faction, const JsonNode factionCo
 	const JsonNode configTown(ResourceID(modResourceRoot + "content/config/factions/" + faction + "/town/town.json"));
 
 	for(auto background : { "townBackground", "guildWindow", "hallBackground" })
-		moveResource(configTown, faction + "/town/" + background, imagesPath, modDataPath);
+		moveResource(configTown, faction + "/town/" + background, imagesPath, modImagesPath);
 
-	moveResource(configTown, faction + "/town/buildingsIcons", spritesPath, modSpritesPath);
+	moveResource(configTown, faction + "/town/buildingsIcons", spritesPath, modImagesPath);
 
 	for(std::string townLevel : { "fort", "citadel", "castle", "village", "capitol"})
 		moveResource(configTown, faction + "/town/mapObject/templates/" + townLevel + "/animation", spritesPath, modSpritesPath);
 
-	for(auto & nodeName : configTown[faction]["town"]["icons"].Struct())
+	JsonNode townIconsNode = configTown[faction]["town"]["icons"];
+	for(auto & nodeName : townIconsNode.Struct())
 	{
-		for(auto townIcon : { "normal/small", "/normal/large", "built/small", "built/large" })
-			moveResource(configTown[faction]["town"]["icons"], nodeName.first + "/" + townIcon, spritesPath, modSpritesPath);
+		std::string buildingName = nodeName.first;
+
+		moveResource(townIconsNode, buildingName + "/normal/small", spritesPath / "ITPA", modImagesPath);
+		moveResource(townIconsNode, buildingName + "/normal/large", spritesPath / "ITPT", modImagesPath);
+		moveResource(townIconsNode, buildingName + "/built/small", spritesPath / "ITPA", modImagesPath);
+		moveResource(townIconsNode, buildingName + "/built/large", spritesPath / "ITPT", modImagesPath);
 	}
 
 	moveResource(configTown, faction + "/town/musicTheme", mp3Path, modMusicPath);
