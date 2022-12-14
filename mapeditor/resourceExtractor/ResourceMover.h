@@ -24,15 +24,15 @@ public:
 
 private:
 	// Move Artifact related stuff
-	void moveArtifacts(bool move_artifacts);
+	void moveArtifacts();
 	// Move creature banks files
-	void moveCreatureBanks(bool move_creature_banks);
+	void moveCreatureBanks();
 	// Move spell related files
-	void moveSpells(bool move_spells);
+	void moveSpells();
 	// For each faction move files
-	void moveFactions(bool move_factions);
+	void moveFactions();
 	// Move no json files
-	void moveNonJsonFiles(bool move_non_json_files);
+	void moveNonJsonFiles();
 	// Move all creature files for a faction
 	void moveCreaturesFiles(const std::string faction, const JsonNode factionConfigs);
 	// move hero classes files
@@ -48,8 +48,8 @@ private:
 	void moveCampaignAndGuiImages();
 	void moveCampaignAndGuiSprites();
 
-	void moveVideos();
 	void moveSounds();
+	void moveVideos();
 
 	void moveResource(const JsonNode node, std::string nodeStructure, bfs::path sourceRoot, bfs::path destinationRoot);
 
@@ -70,12 +70,12 @@ private:
 
 	std::string modResourceRoot;
 
-	bool deleteSource = false; // delete source files or leave a copy in place.
+	bool deleteSource = true; // delete source files or leave a copy in place.
 
-	bool move_non_json_files = false; // move files that are not yet supported by mods.
-	bool move_artifacts = false; // no jsons yet
-	bool move_creature_banks = false; // no jsons yet
-	bool move_spells = false; // no jsons yet
+	bool move_non_json_files = true; // move files that are not yet supported by mods.
+	bool move_artifacts = true; // no jsons yet
+	bool move_creature_banks = true; // no jsons yet
+	bool move_spells = true; // no jsons yet
 };
 
 #pragma region Helper Functions
@@ -91,5 +91,9 @@ void moveFile(bfs::path sourceFilePath, bfs::path destinationFilePath, bool dele
 
 // move file using file name and source and destination folders
 void moveFile(std::string filename, bfs::path sourceFolder, bfs::path destinationFolder, bool deleteSource);
+
+// Moves a file from a list of filenames, if its name starts with filePrefix. (EG: ar matches arc23.waw)
+// Optionaly it also looks for a substring if its present anywhere in the filename. (EG filePrefix ar filePart _ will give a match in arc_23.wav)
+void moveFileIfFoundInList(std::string filePrefix, std::vector<std::string> filenames, bfs::path sourceFolder, bfs::path destinationFolder, bool deleteSource, std::string filePart = "");
 
 #pragma endregion

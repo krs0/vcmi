@@ -42,12 +42,12 @@ void ResourceMover::parseOriginalDataFilesAndMoveToMods(bool moveExtractedArchiv
 
 	logGlobal->info("Relocating Resources to SoD mod...");
 
-	moveArtifacts(true);
-	moveCreatureBanks(true);
-	moveSpells(true);
-	moveFactions(true);
+	moveArtifacts();
+	moveCreatureBanks();
+	moveSpells();
+	moveFactions();
 
-	moveNonJsonFiles(true);
+	moveNonJsonFiles();
 
 	logGlobal->info("Relocating resources complete!");
 
@@ -55,7 +55,7 @@ void ResourceMover::parseOriginalDataFilesAndMoveToMods(bool moveExtractedArchiv
 
 }
 
-void ResourceMover::moveArtifacts(bool move_artifacts)
+void ResourceMover::moveArtifacts()
 {
 	if (move_artifacts)
 	{
@@ -83,7 +83,7 @@ void ResourceMover::moveArtifacts(bool move_artifacts)
 	}
 }
 
-void ResourceMover::moveCreatureBanks(bool move_creature_banks)
+void ResourceMover::moveCreatureBanks()
 {
 	if(move_creature_banks)
 	{
@@ -103,7 +103,7 @@ void ResourceMover::moveCreatureBanks(bool move_creature_banks)
 	}
 }
 
-void ResourceMover::moveSpells(bool move_spells)
+void ResourceMover::moveSpells()
 {
 	if(move_spells)
 	{
@@ -131,7 +131,7 @@ void ResourceMover::moveSpells(bool move_spells)
 	}
 }
 
-void ResourceMover::moveFactions(bool move_factions)
+void ResourceMover::moveFactions()
 {
 	std::vector<std::string> factions = { "castle", "conflux", "dungeon", "fortress", "inferno", "necropolis", "neutral", "rampart", "stronghold", "tower" };
 
@@ -176,7 +176,7 @@ void ResourceMover::moveFactions(bool move_factions)
 	}
 }
 
-void ResourceMover::moveNonJsonFiles(bool move_non_json_files)
+void ResourceMover::moveNonJsonFiles()
 {
 	if(move_non_json_files)
 	{
@@ -186,9 +186,9 @@ void ResourceMover::moveNonJsonFiles(bool move_non_json_files)
 
 		moveCampaignAndGuiSprites();
 
-		moveVideos();
-
 		moveSounds();
+
+		moveVideos();
 	}
 }
 
@@ -251,10 +251,10 @@ void ResourceMover::moveIndividualHeroes(const std::string faction, const JsonNo
 
 		const JsonNode configHeroes(ResourceID(modResourceRoot + "content/config/heroes/" + configFileName));
 
-		moveResource(configHeroes, heroName + "/images/small", imagesPath, modSpritesPath);
-		moveResource(configHeroes, heroName + "/images/large", imagesPath, modSpritesPath);
-		moveResource(configHeroes, heroName + "/images/specialtySmall", spritesPath / "UN32", modSpritesPath);
-		moveResource(configHeroes, heroName + "/images/specialtyLarge", spritesPath / "UN44", modSpritesPath);
+		moveResource(configHeroes, heroName + "/images/small", imagesPath, modImagesPath);
+		moveResource(configHeroes, heroName + "/images/large", imagesPath, modImagesPath);
+		moveResource(configHeroes, heroName + "/images/specialtySmall", spritesPath / "UN32", modImagesPath);
+		moveResource(configHeroes, heroName + "/images/specialtyLarge", spritesPath / "UN44", modImagesPath);
 	}
 }
 
@@ -376,74 +376,6 @@ void ResourceMover::moveTown(const std::string faction, const JsonNode factionCo
 	moveResource(configTown, faction + "/town/musicTheme", mp3Path, modMusicPath);
 }
 
-void ResourceMover::moveVideos()
-{
-	std::string filename;
-
-	bfs::path destinationPath = modsPath / "SoD/video/content/video/SoD/";
-
-	logGlobal->info("\tRelocating Videos...");
-
-	for(bfs::directory_entry & directoryEntry : bfs::directory_iterator(videoPath))
-	{
-		try
-		{
-			if(bfs::is_regular_file(directoryEntry))
-			{
-				std::string filename = directoryEntry.path().filename().string();
-				filename = boost::locale::to_lower(filename);
-
-				moveFile(filename, videoPath, destinationPath, deleteSource);
-			}
-			else
-				logGlobal->info("\t\t\t\tVideo file: %s has no processing rule!", filename);
-		}
-		catch(const std::exception & ex)
-		{
-			std::cout << filename << " " << ex.what() << std::endl;
-		}
-	}
-}
-
-void ResourceMover::moveSounds()
-{
-	bfs::path destinationPath = modsPath / "SoD/sound/content/sound/SoD/";
-	std::string filename;
-
-	logGlobal->info("\tRelocating Sounds...");
-	
-	for(bfs::directory_entry & directoryEntry : bfs::directory_iterator(soundPath))
-	{
-		try
-		{
-			if(bfs::is_regular_file(directoryEntry))
-			{
-				filename = directoryEntry.path().filename().string();
-				filename = boost::algorithm::to_lower_copy(filename);
-
-				// adventure map sounds
-				if((filename.find("horse") == 0) || (filename.find("loop") == 0) || (filename.find("pickup") == 0) ||
-					(filename.find("treasure") == 0) || (filename.find("chest") == 0) || (filename.find("digsound") == 0) ||
-					(filename.find("expernce") == 0) || (filename.find("flagmine") == 0) || (filename.find("getprotection") == 0) ||
-					(filename.find("graveyard") == 0) || (filename.find("killfade") == 0) || (filename.find("lighthouse") == 0) ||
-					(filename.find("luck") == 0) || (filename.find("military") == 0) || (filename.find("morale") == 0) ||
-					(filename.find("quest") == 0) || (filename.find("storm") == 0) || (filename.find("telptin") == 0) || (filename.find("temple") == 0))
-					moveFile(filename, soundPath, destinationPath / "adventureMap/", deleteSource);
-
-				// battle sounds
-				else if((filename.find("badluck") == 0) || (filename.find("badmrle") == 0) || (filename.find("drawbrg") == 0) ||
-					(filename.find("goodluck") == 0) || (filename.find("goodmrle") == 0) || (filename.find("keepshot") == 0) ||
-					(filename.find("wallhit") == 0) || (filename.find("wallmiss") == 0))
-					moveFile(filename, soundPath, destinationPath / "battle/", deleteSource);
-			}
-		}
-		catch(const std::exception & ex)
-		{
-			std::cout << filename << " " << ex.what() << std::endl;
-		}
-	}
-}
-
 void ResourceMover::moveCampaignAndGuiImages()
 {
 	// move campaign bonuses ??? Investigate where these bonuses are moved
@@ -478,27 +410,22 @@ void ResourceMover::moveCampaignAndGuiImages()
 					moveFile(filename, imagesPath, destinationPath / "campaignBonuses/", deleteSource);
 
 				// Caption Screens
-				if(filename.find("csl") == 0)
+				else if(filename.find("csl") == 0)
 					moveFile(filename, imagesPath, destinationPath / "captionScreens/", deleteSource);
 
 				// Campaign Images
 				else if(filename.find("camp") == 0)
-					if(filename.find("campback") != 0 || filename.find("campbrf") != 0 || filename.find("campchk") != 0 ||
-						filename.find("campswrd") != 0 || filename.find("campbkx2") != 0)
-						moveFile(filename, imagesPath, destinationPath / "campaignImages/", deleteSource);
-					else {}
+				{
+					std::vector<std::string> campaignImages = { "campback", "campbrf", "campchk", "campswrd", "campbkx2" };
+					moveFileIfFoundInList(filename, campaignImages, imagesPath, destinationPath / "campaignImages/", deleteSource);
+				}
 
 				// Campaign World Maps
-				else if((filename.find("ar") == 0 || filename.find("bb") == 0 || filename.find("br") == 0 || filename.find("e1") == 0 ||
-					filename.find("e2") == 0 || filename.find("el") == 0 || filename.find("g1") == 0 || filename.find("g2") == 0 ||
-					filename.find("g3") == 0 || filename.find("hs") == 0 || filename.find("is") == 0 || filename.find("kr") == 0 ||
-					filename.find("n1") == 0 || filename.find("nb") == 0 || filename.find("ni") == 0 || filename.find("rn") == 0 ||
-					filename.find("s1") == 0 || filename.find("sp") == 0 || filename.find("ta") == 0 || filename.find("ua") == 0)
-					&& (filename.find("_") != std::string::npos))
-					moveFile(filename, imagesPath, destinationPath / "campaignsWorldMaps/", deleteSource);
+				std::vector<std::string> campaignWorldMapsPrefixes = { "ar", "bb", "br", "e1", "e2", "el", "g1", "g2", "g3", "hs", "is", "kr", "n1", "nb", "ni", "rn", "s1", "sp", "ta", "ua" };
+				moveFileIfFoundInList(filename, campaignWorldMapsPrefixes, imagesPath, destinationPath / "campaignsWorldMaps/", deleteSource, "_");
 
 				// Config Files
-				else if(filename.find(".txt") != std::string::npos)
+				if(filename.find(".txt") != std::string::npos)
 					moveFile(filename, imagesPath, dataPath / "Config/", deleteSource);
 
 				// Fonts
@@ -589,6 +516,68 @@ void ResourceMover::moveCampaignAndGuiSprites()
 	}
 }
 
+void ResourceMover::moveSounds()
+{
+	bfs::path destinationPath = modsPath / "SoD/sound/content/sound/SoD/";
+	std::string filename;
+
+	logGlobal->info("\tRelocating Sounds...");
+
+	for (bfs::directory_entry& directoryEntry : bfs::directory_iterator(soundPath))
+	{
+		try
+		{
+			if (bfs::is_regular_file(directoryEntry))
+			{
+				filename = directoryEntry.path().filename().string();
+				filename = boost::algorithm::to_lower_copy(filename);
+
+				// adventure map sounds
+				std::vector<std::string> adventureMapSounds = { "horse", "loop", "pickup", "treasure", "chest", "digsound", "expernce", "flagmine", "getprotection",
+					"graveyard", "killfade", "lighthouse", "luck", "military", "morale", "quest", "storm", "telptin", "temple" };
+				moveFileIfFoundInList(filename, adventureMapSounds, soundPath, destinationPath / "adventureMap/", deleteSource);
+
+				// battle sounds
+				std::vector<std::string> battleSounds = { "badluck", "badmrle", "drawbrg", "goodluck", "goodmrle", "keepshot", "wallhit", "wallmiss" };
+				moveFileIfFoundInList(filename, battleSounds, soundPath, destinationPath / "battle/", deleteSource);
+			}
+		}
+		catch (const std::exception& ex)
+		{
+			std::cout << filename << " " << ex.what() << std::endl;
+		}
+	}
+}
+
+void ResourceMover::moveVideos()
+{
+	std::string filename;
+
+	bfs::path destinationPath = modsPath / "SoD/video/content/video/SoD/";
+
+	logGlobal->info("\tRelocating Videos...");
+
+	for (bfs::directory_entry& directoryEntry : bfs::directory_iterator(videoPath))
+	{
+		try
+		{
+			if (bfs::is_regular_file(directoryEntry))
+			{
+				std::string filename = directoryEntry.path().filename().string();
+				filename = boost::locale::to_lower(filename);
+
+				moveFile(filename, videoPath, destinationPath, deleteSource);
+			}
+			else
+				logGlobal->info("\t\t\t\tVideo file: %s has no processing rule!", filename);
+		}
+		catch (const std::exception& ex)
+		{
+			std::cout << filename << " " << ex.what() << std::endl;
+		}
+	}
+}
+
 void ResourceMover::moveResource(const JsonNode node, std::string nodeStructure, bfs::path sourceRoot, bfs::path destinationRoot)
 {
 	// add leading / if missing and not empty
@@ -647,6 +636,18 @@ void moveFile(bfs::path sourceFilePath, bfs::path destinationFilePath, bool dele
 void moveFile(std::string filename, bfs::path sourceFolder, bfs::path destinationFolder, bool deleteSource)
 {
 	moveFile(sourceFolder / filename, destinationFolder / filename, deleteSource);
+}
+
+void moveFileIfFoundInList(std::string filename, std::vector<std::string> filePrefixes, bfs::path sourceFolder, bfs::path destinationFolder, bool deleteSource, std::string filePart)
+{
+	for(auto & filePrefix : filePrefixes)
+	{
+		if(filename.find(filePrefix) == 0 && filename.find(filePart) != std::string::npos)
+		{
+			moveFile(filename, sourceFolder, destinationFolder, deleteSource);
+			break;
+		}
+	}
 }
 
 #pragma endregion
