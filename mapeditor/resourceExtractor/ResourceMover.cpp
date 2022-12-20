@@ -401,10 +401,6 @@ void ResourceMover::moveCampaignAndGuiImages()
 						moveFile(filename, imagesPath, destinationPath / "boSomething/", deleteSource);
 					else {}
 
-				// Campaign Maps
-				else if(filename.find(".h3c") != std::string::npos)
-					moveFile(filename, imagesPath, destinationPath / "campaignMaps/", deleteSource);
-
 				// Campaign Bonuses
 				else if(filename.find("cbon") == 0)
 					moveFile(filename, imagesPath, destinationPath / "campaignBonuses/", deleteSource);
@@ -466,6 +462,7 @@ void ResourceMover::moveCampaignAndGuiSprites()
 	// sort and move campaign and GUI sprites
 	bfs::path destinationPath = modsPath / "SoD/campaigns/content/sprites/SoD/";
 	bfs::path interfaceDestinationPath = modsPath / "SoD/interface/content/sprites/SoD/";
+	bfs::path mapsDestinationPath = modsPath / "SoD/campaigns/content/maps/SoD/";
 
 	// extra adventure map objects
 	for(auto adventureMapObject : extraAdventureMapObjects)
@@ -484,8 +481,12 @@ void ResourceMover::moveCampaignAndGuiSprites()
 				filename = directoryEntry.path().filename().string();
 				filename = boost::algorithm::to_lower_copy(filename);
 
+				// Campaign Maps
+				if (filename.find(".h3c") != std::string::npos)
+					moveFile(filename, spritesPath, mapsDestinationPath, deleteSource);
+
 				// combat Obstacles
-				if(filename.find("ob") == 0)
+				else if (filename.find("ob") == 0)
 					moveFile(filename, spritesPath, interfaceDestinationPath / "combatObstacles/", deleteSource);
 
 				// Cursors
@@ -499,10 +500,6 @@ void ResourceMover::moveCampaignAndGuiSprites()
 				// Adventure Map Terrains / River Deltas
 				else if(filename.find("delt") != std::string::npos)
 					moveFile(filename, spritesPath, interfaceDestinationPath / "adventureMapTerrains/deltas/", deleteSource);
-
-				// Campaign Maps
-				else if(filename.find(".h3c") != std::string::npos)
-					moveFile(filename, spritesPath, destinationPath / "campaignMaps/", deleteSource);
 
 				// rest is GUI
 				else
@@ -533,13 +530,22 @@ void ResourceMover::moveSounds()
 				filename = boost::algorithm::to_lower_copy(filename);
 
 				// adventure map sounds
-				std::vector<std::string> adventureMapSounds = { "horse", "loop", "pickup", "treasure", "chest", "digsound", "expernce", "flagmine", "getprotection",
+				std::vector<std::string> adventureMapSounds = { "cavehead", "horse", "loop", "pickup", "treasure", "chest", "digsound", "dragon", "expernce", "flagmine", "getprotection",
 					"graveyard", "killfade", "lighthouse", "luck", "military", "morale", "quest", "storm", "telptin", "temple" };
 				moveFileIfFoundInList(filename, adventureMapSounds, soundPath, destinationPath / "adventureMap/", deleteSource);
 
 				// battle sounds
 				std::vector<std::string> battleSounds = { "badluck", "badmrle", "drawbrg", "goodluck", "goodmrle", "keepshot", "wallhit", "wallmiss" };
 				moveFileIfFoundInList(filename, battleSounds, soundPath, destinationPath / "battle/", deleteSource);
+
+				// interface sounds
+				std::vector<std::string> interfaceSounds = { "battle", "buildtwn", "button", "chat", "climax", "danger", "faerie", "gazebo", "genie", "mystery", 
+					"newday", "newmonth", "newweek", "nomad", "nwherolv", "obelisk", "playcome", "playexit", "playturn", "rogue", "store", "sysmsg", "timeover", "ultimateartifact" };
+				moveFileIfFoundInList(filename, interfaceSounds, soundPath, destinationPath / "interface/", deleteSource);
+
+				// campaign sounds
+				std::vector<std::string> campaignSounds = { "abvo", "e1", "e2", "g1", "g2", "g3", "h3x2", "n1", "s1" };
+				moveFileIfFoundInList(filename, campaignSounds, soundPath, destinationPath / "campaign", deleteSource);
 			}
 		}
 		catch (const std::exception& ex)
