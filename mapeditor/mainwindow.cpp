@@ -198,6 +198,7 @@ MainWindow::MainWindow(QWidget* parent) :
 		QApplication::quit();
 	}
 
+	// Move all extracted archives to their SoD mod location. Needs to be executed only once!
 	ResourceMover resMover;
 	resMover.parseOriginalDataFilesAndMoveToMods(extractionOptions.moveExtractedArchivesToSoDMod);
 
