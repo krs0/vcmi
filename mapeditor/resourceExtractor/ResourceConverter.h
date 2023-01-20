@@ -11,7 +11,7 @@
 
 namespace bfs = boost::filesystem;
 
-// Struct for holding all Convertor Options
+/// Struct for holding all Convertor Options
 struct ConversionOptions
 {
 	bool splitDefs = false;			// splits TwCrPort, CPRSMALL, FlagPort, ITPA, ITPt, Un32 and Un44 into individual PNG's
@@ -19,7 +19,7 @@ struct ConversionOptions
 	bool deleteOriginals = false;	// delete original files, for the ones splitted / converted.
 };
 
-// Struct for holding all Resource Extractor / Converter options
+/// Struct for holding all Resource Extractor / Converter options
 struct ExtractionOptions
 {
 	bool extractArchives = false;	// if set, original H3 archives will be extracted into a separate folder
@@ -39,15 +39,15 @@ class ResourceConverter
 
 public:
 
-	// Splits def files that are shared between factions and converts pcx to PNG depending on Extraction Options
+	/// Splits def files that are shared between factions and converts pcx to PNG depending on Extraction Options
 	static void convertExtractedResourceFiles(ConversionOptions conversionOptions);
 
 private:
 
-	// Converts all .pcx from extractedFolder/Images into .png
+	/// Converts all .pcx from extractedFolder/Images into .png
 	static void doConvertPcxToPng(const bfs::path & sourceFolder, bool deleteOriginals);
 
-	// splits a .def file into individual images and converts the output to PNG format
+	/// splits a .def file into individual images and converts the output to PNG format
 	static void splitDefFile(const std::string & fileName, const bfs::path & sourceFolder, bool deleteOriginals);
 
 	/// <summary>

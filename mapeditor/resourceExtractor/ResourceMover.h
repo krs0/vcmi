@@ -19,23 +19,23 @@ class ResourceMover
 public:
 	ResourceMover();
 
-	// parse all H3 original source folders (extracted previously) for all resources and moves them to teir corresponding places inside the Mod folder
+	/// Parse all H3 original source folders (extracted previously) for all resources and moves them to teir corresponding places inside the Mod folder
 	void parseOriginalDataFilesAndMoveToMods(bool move_extracted_files = false);
 
 private:
-	// Move Artifact related stuff
+	/// Move Artifact related files
 	void moveArtifacts();
-	// Move creature banks files
+	/// Move creature banks files
 	void moveCreatureBanks();
-	// Move spell related files
+	/// Move spell related files
 	void moveSpells();
-	// For each faction move files
+	/// For each faction move faction files
 	void moveFactions();
-	// Move no json files
+	/// Move no json files
 	void moveNonJsonFiles();
-	// Move all creature files for a faction
+	/// Move all creature files for a faction
 	void moveCreaturesFiles(const std::string faction, const JsonNode factionConfigs);
-	// move hero classes files
+	/// move hero classes files
 	void moveHeroClasses(const std::string faction, const JsonNode factionConfigs);
 	void moveIndividualHeroes(const std::string faction, const JsonNode factionConfigs);
 	void moveDwellings(const std::string faction, const JsonNode factionConfigs);
@@ -80,20 +80,20 @@ private:
 
 #pragma region Helper Functions
 
-// Simplified wrapper over FileInfo::GetFilename
+/// Simplified wrapper over FileInfo::GetFilename
 std::string getFileName(std::string filePath);
 
-// simplified wrapper over FileInfo::GetStem
+/// simplified wrapper over FileInfo::GetStem
 std::string getFileStem(std::string filePath);
 
-// move file using complete file paths for source and destination files
+/// move file using complete file paths for source and destination files
 void moveFile(bfs::path sourceFilePath, bfs::path destinationFilePath, bool deleteSource);
 
-// move file using file name and source and destination folders
+/// move file using file name and source and destination folders
 void moveFile(std::string filename, bfs::path sourceFolder, bfs::path destinationFolder, bool deleteSource);
 
-// Moves a file from a list of filenames, if its name starts with filePrefix. (EG: ar matches arc23.waw)
-// Optionaly it also looks for a substring if its present anywhere in the filename. (EG filePrefix ar filePart _ will give a match in arc_23.wav)
+/// Moves a file from a list of filenames, if its name starts with filePrefix. (EG: ar matches arc23.waw)
+/// Optionaly it also looks for a substring if its present anywhere in the filename. (EG filePrefix ar filePart _ will give a match in arc_23.wav)
 void moveFileIfFoundInList(std::string filePrefix, std::vector<std::string> filenames, bfs::path sourceFolder, bfs::path destinationFolder, bool deleteSource, std::string filePart = "");
 
 #pragma endregion
