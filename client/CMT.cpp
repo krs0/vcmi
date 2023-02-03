@@ -33,7 +33,6 @@
 #include "../lib/CConfigHandler.h"
 
 #include "../lib/logging/CBasicLogConfigurator.h"
-#include "resourceExtractor/ResourceMover.h"
 
 #include <boost/program_options.hpp>
 #include <vstd/StringUtils.h>
