@@ -329,14 +329,14 @@ Fullscreen Exclusive Mode - game will cover entirety of your screen and will use
         </widget>
        </item>
        <item row="10" column="0">
-        <widget class="QLabel" name="labelAutosaveLimit">
+        <widget class="QLabel" name="labelAutosaveCountLimit">
          <property name="text">
-          <string>Autosave limit</string>
+          <string>Autosave count limit</string>
          </property>
         </widget>
        </item>
        <item row="10" column="1">
-        <widget class="QSpinBox" name="spinBoxAutosaveLimit">
+        <widget class="QSpinBox" name="spinBoxAutosaveCountLimit">
          <property name="specialValueText">
           <string/>
          </property>
@@ -560,7 +560,7 @@ Fullscreen Exclusive Mode - game will cover entirety of your screen and will use
        <item row="8" column="0">
         <widget class="QLabel" name="labelAutosaveMode">
          <property name="text">
-          <string>Autosave Mode</string>
+          <string>Autosave mode</string>
          </property>
         </widget>
        </item>
@@ -661,7 +661,7 @@ Fullscreen Exclusive Mode - game will cover entirety of your screen and will use
        <item row="9" column="0">
         <widget class="QLabel" name="labelAutosaveFrequency">
          <property name="text">
-          <string>Autosave Frequency</string>
+          <string>Autosave frequency</string>
          </property>
         </widget>
        </item>
