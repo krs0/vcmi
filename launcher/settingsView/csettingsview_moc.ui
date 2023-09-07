@@ -335,13 +335,6 @@ Fullscreen Exclusive Mode - game will cover entirety of your screen and will use
          </property>
         </widget>
        </item>
-       <item row="10" column="1">
-        <widget class="QSpinBox" name="spinBoxAutosaveCountLimit">
-         <property name="specialValueText">
-          <string/>
-         </property>
-        </widget>
-       </item>
        <item row="19" column="1" colspan="4">
         <widget class="QComboBox" name="comboBoxDisplayIndex"/>
        </item>
@@ -407,37 +400,6 @@ Fullscreen Exclusive Mode - game will cover entirety of your screen and will use
          <property name="checked">
           <bool>true</bool>
          </property>
-        </widget>
-       </item>
-       <item row="8" column="1">
-        <widget class="QComboBox" name="comboBoxAutosaveMode">
-         <property name="editable">
-          <bool>false</bool>
-         </property>
-         <property name="currentText">
-          <string>Simple</string>
-         </property>
-         <property name="currentIndex">
-          <number>1</number>
-         </property>
-         <property name="maxVisibleItems">
-          <number>3</number>
-         </property>
-         <item>
-          <property name="text">
-           <string>Off</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Simple</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Using Schema</string>
-          </property>
-         </item>
         </widget>
        </item>
        <item row="15" column="1" colspan="4">
@@ -665,8 +627,46 @@ Fullscreen Exclusive Mode - game will cover entirety of your screen and will use
          </property>
         </widget>
        </item>
-       <item row="9" column="1">
+       <item row="8" column="1" colspan="4">
+        <widget class="QComboBox" name="comboBoxAutosaveMode">
+         <property name="editable">
+          <bool>false</bool>
+         </property>
+         <property name="currentText">
+          <string>Simple</string>
+         </property>
+         <property name="currentIndex">
+          <number>1</number>
+         </property>
+         <property name="maxVisibleItems">
+          <number>3</number>
+         </property>
+         <item>
+          <property name="text">
+           <string>Off</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Simple</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Using Schema</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="9" column="1" colspan="4">
         <widget class="QSpinBox" name="spinBoxAutosaveFrequency"/>
+       </item>
+       <item row="10" column="1" colspan="4">
+        <widget class="QSpinBox" name="spinBoxAutosaveCountLimit">
+         <property name="specialValueText">
+          <string/>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
