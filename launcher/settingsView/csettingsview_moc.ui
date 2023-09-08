@@ -633,13 +633,13 @@ Fullscreen Exclusive Mode - game will cover entirety of your screen and will use
           <bool>false</bool>
          </property>
          <property name="currentText">
-          <string>Simple</string>
+          <string>Off</string>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <property name="maxVisibleItems">
-          <number>3</number>
+          <number>4</number>
          </property>
          <item>
           <property name="text">
@@ -648,7 +648,12 @@ Fullscreen Exclusive Mode - game will cover entirety of your screen and will use
          </item>
          <item>
           <property name="text">
-           <string>Simple</string>
+           <string>Using Counter</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Using Turn Info</string>
           </property>
          </item>
          <item>
