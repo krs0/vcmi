@@ -370,6 +370,8 @@ void SelectionTab::showPopupWindow(const Point & cursorPosition)
 
 		GH.windows().createAndPushWindow<CMapInfoTooltipBox>(text, ResourcePath(curItems[py]->fileURI), tabType);
 	}
+	else
+		CRClickPopup::createAndPush(curItems[py]->folderName);
 }
 
 auto SelectionTab::checkSubfolder(std::string path)
