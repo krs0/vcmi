@@ -141,3 +141,8 @@ Debug builds with MSVC are generally extremely slow since it's not just VCMI bin
 ### I got crash within library XYZ.dll
 
 VCPKG generated projects quite often have both debug and regular libs available to linker so it can select wrong lib. For stable RelWithDebInfo build you may try to remove debug folder from VCPKG/installed/x64-windows. Same is done on CI. Also it reduces package size at least twice.
+
+### Launcher and editor are not compiling on Windows 10
+`Error		failed to create symbolic link '....vcmi/build/bin/RelWithDebInfo/launcher/icons': A required privilege is not held by the client.	VCMI_launcher...`
+Enabling `Developer Mode` fixes that.
+
