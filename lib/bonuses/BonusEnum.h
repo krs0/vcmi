@@ -194,6 +194,7 @@ class JsonNode;
 	BONUS_NAME(TRANSMUTATION_IMMUNITY) /*blocks TRANSMUTATION bonus*/\
 	BONUS_NAME(COMBAT_MANA_BONUS) /* Additional mana per combat */ \
 	BONUS_NAME(SPECIFIC_SPELL_RANGE) /* value used for allowed spell range, subtype - spell id */\
+	BONUS_NAME(STACKS_INITIATIVE)  /*additional info - percent of initiative bonus applied after direct bonuses; >0 - added, <0 - subtracted to this part*/ \
 	/* end of list */
 
 
