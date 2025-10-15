@@ -75,6 +75,11 @@ static bool useAvailableAmountAsCreatureLabel()
 	return settings["gameTweaks"]["availableCreaturesAsDwellingLabel"].Bool();
 }
 
+static bool isInitiativeEnabled()
+{
+	return LIBRARY->engineSettings()->getBoolean(EGameSettings::MODULE_INITIATIVE);
+}
+
 CBuildingRect::CBuildingRect(CCastleBuildings * Par, const CGTownInstance * Town, const CStructure * Str)
 	: CShowableAnim(0, 0, Str->defName, CShowableAnim::BASE, BUILDING_FRAME_TIME),
 	  parent(Par),
@@ -2036,6 +2041,7 @@ CFortScreen::RecruitArea::RecruitArea(int posX, int posY, const CGTownInstance *
 	addUsedEvents(SHOW_POPUP);
 
 	icons = std::make_shared<CPicture>(ImagePath::builtin("TPCAINFO"), 261, 3);
+	// ToDo: krs - if initiative is enabled overrite growth icon with initiative icon
 
 	if(getMyBuilding() != nullptr)
 	{
@@ -2067,7 +2073,10 @@ CFortScreen::RecruitArea::RecruitArea(int posX, int posY, const CGTownInstance *
 		sizes.y+=21;
 		values.push_back(std::make_shared<LabeledValue>(sizes, LIBRARY->generaltexth->allTexts[193], LIBRARY->generaltexth->fcommands[4], getMyCreature()->valOfBonuses(BonusType::STACKS_SPEED)));
 		sizes.y+=20;
-		values.push_back(std::make_shared<LabeledValue>(sizes, LIBRARY->generaltexth->allTexts[194], LIBRARY->generaltexth->fcommands[5], town->creatureGrowth(level)));
+		if (!isInitiativeEnabled())
+			values.push_back(std::make_shared<LabeledValue>(sizes, LIBRARY->generaltexth->allTexts[194], LIBRARY->generaltexth->fcommands[5], town->creatureGrowth(level)));
+		else
+			values.push_back(std::make_shared<LabeledValue>(sizes, LIBRARY->generaltexth->translate("vcmi.battle.initiative"), LIBRARY->generaltexth->fcommands[5], getMyCreature()->valOfBonuses(BonusType::STACKS_INITIATIVE)));
 	}
 }
 
