@@ -32,6 +32,8 @@
 	"vcmi.adventureMap.dwelling3" : "{%s}\n\nWould you like to recruit %s, %s, or %s?",
 	
 	"vcmi.artifact.charges" : "Charges",
+
+	"vcmi.battle.initiative" : "Initiative",
 	
 	"vcmi.battle.action.move" : "Move unit to specified location",
 	"vcmi.battle.action.info" : "Show unit information",
