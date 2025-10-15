@@ -148,7 +148,9 @@
 			"properties" : {
 				"stackExperience" : { "type" : "boolean" },
 				"stackArtifact" : { "type" : "boolean" },
-				"commanders" : { "type" : "boolean" }
+				"commanders" : { "type" : "boolean" },
+				"initiative" : { "type" : "boolean" }
+
 			}
 		},
 		"pathfinder": {

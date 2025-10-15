@@ -732,7 +732,9 @@
 			// if enabled, certain artifacts can be granted to creatures (WoG feature)
 			"stackArtifact": false,
 			// if enabled, all heroes gain commander creature in battle (WoG feature)
-			"commanders": false
+			"commanders": false,
+			// if enabled, creatures will act in order of their initiative during combat
+			"initiative": false
 		},
 		
 		"pathfinder" :
