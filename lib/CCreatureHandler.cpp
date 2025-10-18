@@ -1066,6 +1066,8 @@ void CCreatureHandler::loadStackExp(Bonus & b, BonusList & bl, CLegacyConfigPars
 		break;
 	case 'S':
 		b.type = BonusType::STACKS_SPEED; break;
+	case 'I':
+		b.type = BonusType::STACKS_INITIATIVE; break;
 	case 'O':
 		b.type = BonusType::SHOTS; break;
 	case 'b':

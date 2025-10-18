@@ -157,6 +157,16 @@ std::vector<std::shared_ptr<Bonus>> CHeroHandler::createCreatureSpecialty(Creatu
 	if (growthPerStep == 0)
 		growthPerStep = LIBRARY->engineSettings()->getInteger(EGameSettings::HEROES_SPECIALTY_CREATURE_GROWTH);
 
+	// add a fixed +1 to stack initiative
+	{
+		auto bonus = std::make_shared<Bonus>();
+		bonus->limiter.reset(new CCreatureTypeLimiter(specCreature, true));
+		bonus->type = BonusType::STACKS_INITIATIVE;
+		bonus->val = 1;
+		result.push_back(bonus);
+	}
+
+	// add a fixed +1 to stacks speed
 	{
 		auto bonus = std::make_shared<Bonus>();
 		bonus->limiter.reset(new CCreatureTypeLimiter(specCreature, true));

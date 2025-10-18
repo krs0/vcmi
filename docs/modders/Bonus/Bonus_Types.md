@@ -427,6 +427,12 @@ Increases movement speed of units in battle
 
 - val: additional movement speed points
 
+### STACKS_INITIATIVE
+
+Increases initiative of units in battle
+
+- val: additional initiative points
+
 ### CREATURE_DAMAGE
 
 Increases base damage of creature in battle
