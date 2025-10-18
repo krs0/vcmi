@@ -14,6 +14,8 @@
 #include <vcmi/spells/Spell.h>
 
 #include "../CCreatureHandler.h"
+#include "../GameLibrary.h"
+#include "../IGameSettings.h"
 
 #include "../serializer/JsonDeserializer.h"
 #include "../serializer/JsonSerializer.h"
@@ -334,6 +336,7 @@ CUnitState::CUnitState():
 	health(this),
 	shots(this),
 	stackSpeedPerTurn(this, Selector::type()(BonusType::STACKS_SPEED), BonusCacheMode::VALUE),
+	stackInitiativePerTurn(this, Selector::type()(LIBRARY->engineSettings()->getBoolean(EGameSettings::MODULE_INITIATIVE) ? BonusType::STACKS_INITIATIVE : BonusType::STACKS_SPEED), BonusCacheMode::VALUE),
 	immobilizedPerTurn(this, Selector::type()(BonusType::SIEGE_WEAPON).Or(Selector::type()(BonusType::BIND_EFFECT)), BonusCacheMode::PRESENCE),
 	bonusCache(this),
 	cloneID(-1)
@@ -589,7 +592,7 @@ void CUnitState::setPosition(const BattleHex & hex)
 
 int32_t CUnitState::getInitiative(int turn) const
 {
-	return stackSpeedPerTurn.getValue(turn);
+	return stackInitiativePerTurn.getValue(turn);
 }
 
 ui32 CUnitState::getMovementRange(int turn) const

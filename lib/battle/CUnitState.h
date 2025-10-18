@@ -267,6 +267,7 @@ private:
 
 	BonusCachePerTurn immobilizedPerTurn;
 	BonusCachePerTurn stackSpeedPerTurn;
+	BonusCachePerTurn stackInitiativePerTurn;
 	UnitBonusValuesProxy bonusCache;
 
 	void reset();

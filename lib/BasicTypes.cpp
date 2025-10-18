@@ -167,11 +167,11 @@ int32_t ACreature::getInitiative(int turn) const
 	}
 	else
 	{
-		const std::string cachingStrSS = "type_STACKS_INITIATIVE_turns_" + std::to_string(turn);
-		int initiative = getBonusBearer()->valOfBonuses(Selector::type()(BonusType::STACKS_INITIATIVE).And(Selector::turns(turn)), cachingStrSS);
+		const std::string cachingStrSI = "type_STACKS_INITIATIVE_turns_" + std::to_string(turn);
+		int initiative = getBonusBearer()->valOfBonuses(Selector::type()(BonusType::STACKS_INITIATIVE).And(Selector::turns(turn)), cachingStrSI);
 		if(initiative)
 			return initiative;
-		return getBonusBearer()->valOfBonuses(Selector::type()(BonusType::STACKS_SPEED).And(Selector::turns(turn)), cachingStrSS);
+		return getBonusBearer()->valOfBonuses(Selector::type()(BonusType::STACKS_SPEED).And(Selector::turns(turn)), cachingStrSI);
 	}
 }
 

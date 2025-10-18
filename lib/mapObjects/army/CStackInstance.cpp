@@ -34,7 +34,9 @@ CStackInstance::CStackInstance(IGameInfoCallback * cb, BonusNodeType nodeType, b
 	, CArtifactSet(cb)
 	, GameCallbackHolder(cb)
 	, nativeTerrain(this, Selector::type()(BonusType::TERRAIN_NATIVE))
-	, initiative(this, Selector::type()(BonusType::STACKS_SPEED))
+	, initiative(this, Selector::type()(LIBRARY->engineSettings()->getBoolean(EGameSettings::MODULE_INITIATIVE) 
+		? BonusType::STACKS_INITIATIVE 
+		: BonusType::STACKS_SPEED))
 	, totalExperience(0)
 {
 }

@@ -386,7 +386,8 @@ std::unique_ptr<BattleInfo> BattleInfo::setupBattle(IGameInfoCallback *cb, const
 	//native terrain bonuses
 	auto nativeTerrain = std::make_shared<CreatureTerrainLimiter>();
 	
-	currentBattle->addNewBonus(std::make_shared<Bonus>(BonusDuration::ONE_BATTLE, BonusType::STACKS_SPEED, BonusSource::TERRAIN_NATIVE, 1,  BonusSourceID())->addLimiter(nativeTerrain));
+	currentBattle->addNewBonus(std::make_shared<Bonus>(BonusDuration::ONE_BATTLE, BonusType::STACKS_INITIATIVE, BonusSource::TERRAIN_NATIVE, 1, BonusSourceID())->addLimiter(nativeTerrain));
+	currentBattle->addNewBonus(std::make_shared<Bonus>(BonusDuration::ONE_BATTLE, BonusType::STACKS_SPEED, BonusSource::TERRAIN_NATIVE, 1, BonusSourceID())->addLimiter(nativeTerrain));
 	currentBattle->addNewBonus(std::make_shared<Bonus>(BonusDuration::ONE_BATTLE, BonusType::PRIMARY_SKILL, BonusSource::TERRAIN_NATIVE, 1, BonusSourceID(), BonusSubtypeID(PrimarySkill::ATTACK))->addLimiter(nativeTerrain));
 	currentBattle->addNewBonus(std::make_shared<Bonus>(BonusDuration::ONE_BATTLE, BonusType::PRIMARY_SKILL, BonusSource::TERRAIN_NATIVE, 1, BonusSourceID(), BonusSubtypeID(PrimarySkill::DEFENSE))->addLimiter(nativeTerrain));
 	//////////////////////////////////////////////////////////////////////////
