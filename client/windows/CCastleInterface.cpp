@@ -2041,8 +2041,7 @@ CFortScreen::RecruitArea::RecruitArea(int posX, int posY, const CGTownInstance *
 	addUsedEvents(SHOW_POPUP);
 
 	icons = std::make_shared<CPicture>(ImagePath::builtin("TPCAINFO"), 261, 3);
-	if (!isInitiativeEnabled()) //if initiative is enabled overrite growth icon with initiative icon
-		initiativeIconOverlay = std::make_shared<CPicture>(ImagePath::builtin("battle/initiativeFortRecruitmentOverlay.png"), 263, 106);
+	// ToDo: krs - if initiative is enabled overrite growth icon with initiative icon
 
 	if(getMyBuilding() != nullptr)
 	{
