@@ -460,6 +460,9 @@ CStackWindow::CommanderMainSection::CommanderMainSection(CStackWindow * owner, i
 
 	for(int index = ECommander::ATTACK; index <= ECommander::SPELL_POWER; ++index)
 	{
+		if(index == ECommander::INITIATIVE)
+			continue; // initiative not implemented in gui yet
+			 
 		Point skillPos = getSkillPos(index);
 
 		auto icon = std::make_shared<CCommanderSkillIcon>(std::make_shared<CPicture>(getSkillImage(index), skillPos.x, skillPos.y), false, [=]()
