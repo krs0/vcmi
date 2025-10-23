@@ -71,7 +71,7 @@ enum class ESpellCastProblem : int8_t
 
 namespace ECommander
 {
-	enum SecondarySkills {ATTACK, DEFENSE, HEALTH, DAMAGE, SPEED, SPELL_POWER, CASTS, RESISTANCE};
+	enum SecondarySkills {ATTACK, DEFENSE, HEALTH, DAMAGE, SPEED, INITIATIVE, SPELL_POWER, CASTS, RESISTANCE};
 	const int MAX_SKILL_LEVEL = 5;
 }
 

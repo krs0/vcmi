@@ -444,6 +444,7 @@ CStackWindow::CommanderMainSection::CommanderMainSection(CStackWindow * owner, i
 
 	auto getSkillPos = [](int index)
 	{
+		index == ECommander::SPELL_POWER ? index = 5 : index; // spell power is 6th not initiative
 		return Point(10 + 80 * (index%3), 20 + 80 * (index/3));
 	};
 
@@ -460,6 +461,9 @@ CStackWindow::CommanderMainSection::CommanderMainSection(CStackWindow * owner, i
 
 	for(int index = ECommander::ATTACK; index <= ECommander::SPELL_POWER; ++index)
 	{
+		if(index == ECommander::INITIATIVE)
+			continue; // initiative not implemented in gui yet
+			 
 		Point skillPos = getSkillPos(index);
 
 		auto icon = std::make_shared<CCommanderSkillIcon>(std::make_shared<CPicture>(getSkillImage(index), skillPos.x, skillPos.y), false, [=]()
@@ -1064,6 +1068,7 @@ std::string CStackWindow::getCommanderSkillDescription(int skillIndex, int skill
 		"health",
 		"damage",
 		"speed",
+		"initiative",
 		"magic"
 	};
 

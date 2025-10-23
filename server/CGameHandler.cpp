@@ -235,6 +235,9 @@ void CGameHandler::levelUpCommander (const CCommanderInstance * c, int skill)
 			case ECommander::SPEED:
 				scp.accumulatedBonus.type = BonusType::STACKS_SPEED;
 				break;
+			case ECommander::INITIATIVE:
+				scp.accumulatedBonus.type = BonusType::STACKS_INITIATIVE;
+				break;
 			case ECommander::SPELL_POWER:
 				scp.accumulatedBonus.type = BonusType::SPELL_DAMAGE_REDUCTION;
 				scp.accumulatedBonus.subtype = BonusSubtypeID(SpellSchool::ANY);
@@ -292,9 +295,13 @@ void CGameHandler::levelUpCommander(const CCommanderInstance * c)
 	}
 
 	//picking sec. skills for choice
-
+	bool initiativeEnabled = LIBRARY->engineSettings()->getBoolean(EGameSettings::MODULE_INITIATIVE); 
 	for (int i = 0; i <= ECommander::SPELL_POWER; ++i)
 	{
+		// if initiative module is disabled, skip initiative skill
+		if(i == ECommander::INITIATIVE && !initiativeEnabled)
+			continue;
+
 		if (c->secondarySkills.at(i) < ECommander::MAX_SKILL_LEVEL)
 			clu.skills.push_back(i);
 	}
