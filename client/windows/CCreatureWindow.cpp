@@ -444,6 +444,7 @@ CStackWindow::CommanderMainSection::CommanderMainSection(CStackWindow * owner, i
 
 	auto getSkillPos = [](int index)
 	{
+		index == ECommander::SPELL_POWER ? index = 5 : index; // spell power is 6th not initiative
 		return Point(10 + 80 * (index%3), 20 + 80 * (index/3));
 	};
 
@@ -1067,6 +1068,7 @@ std::string CStackWindow::getCommanderSkillDescription(int skillIndex, int skill
 		"health",
 		"damage",
 		"speed",
+		"initiative",
 		"magic"
 	};
 
