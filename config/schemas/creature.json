@@ -98,10 +98,11 @@
 			},
 			"description" : "Cost to recruit this creature"
 		},
-		"speed" :     { "type" : "number" },
-		"hitPoints" : { "type" : "number" },
-		"attack" :    { "type" : "number" },
-		"defense" :   { "type" : "number" },
+		"speed" :      { "type" : "number" },
+		"initiative" : { "type" : "number" },	
+		"hitPoints" :  { "type" : "number" },
+		"attack" :     { "type" : "number" },
+		"defense" :    { "type" : "number" },
 		"damage" : {
 			"type" : "object",
 			"additionalProperties" : false,
